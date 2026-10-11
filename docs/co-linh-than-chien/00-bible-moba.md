@@ -1,5 +1,8 @@
 # 00 · MOBA Bible — bản đối chiếu sản xuất local
 
+> **[USER LOCK — 2026-10-11] INPUT MỚI:** bốn phím kỹ năng là **Q / W / E / R** (R = Ultimate), **D = Dash chung**. Không còn skill trên chuột trái/chuột phải. Các dòng LMB/RMB/V/Space trong tài liệu lịch sử bên dưới bị supersede ở tầng thiết kế; chưa ngầm khẳng định runtime Spawn đã đổi. Basic Attack là hành động riêng và input của nó phải được xác định/đồng bộ khi tích hợp; không gán thành skill slot. Xem [91 · Control lock](91-khoa-input-qwer-d.md).
+
+
 **Cập nhật bàn giao 09/10/2026:** chủ dự án xác nhận luật Sân Tập và reconnect đã fix; hai mục này **ĐÃ ĐÓNG THEO XÁC NHẬN OWNER**, không mở lại hoặc xin duyệt lại. Các report/source fixture 9351 là evidence lịch sử, không xác định trạng thái world sau đó. Ưu tiên [66 · Bàn giao cho Savi](66-ban-giao-cho-savi.md).
 
 **Nguồn kiểm cuối09/10:9351e23c6c6b4cc55a160dbf7aec268973b6394d.** Receipt373b bên dưới là lịch sử lượt đầu;9351 đổi cleanup dấuấn vàUI, không đổi các luật/data được mô tả. Dùng doc64 với lượt source mới nhất và bảng27ID đã sửa; không lấy câu “mới nhất” trong lịch sử làm trạng thái hiện tại.
