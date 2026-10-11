@@ -1,5 +1,8 @@
 # 90 · Nghiên cứu cảm hứng tướng MOBA cho roster Cổ Linh mới
 
+> **[USER LOCK — 2026-10-11]:** Toàn bộ 24 hero mới có bốn skill **Q/W/E/R** (R = Ultimate), **D = Dash chung**. Không có skill LMB/RMB. Basic Attack là hành động riêng. Theo [91](91-khoa-input-qwer-d.md). Sáu thiết kế đầu được mã hóa ở [`roster24/batch01-06.json`](roster24/batch01-06.json).
+
+
 **Trạng thái:** RESEARCH / PROPOSAL, chưa duyệt production.  
 **Ngày:** 11-10-2026.  
 **Phạm vi:** nghiên cứu archetype để xây lại roster tướng Cổ Linh; không đổi source game, assets, số combat, kit production hay 9 tướng đã có.
