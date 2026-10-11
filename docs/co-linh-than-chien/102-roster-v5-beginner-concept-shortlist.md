@@ -1,82 +1,74 @@
-# 102 · COLINH Roster V5 — Danh Mục Tuyển Chọn Tướng Nhập Môn (Beginner Concept Shortlist)
+# 102 · COLINH Roster V5 — Danh Mục Tuyển Chọn Tướng Nhập Môn & Thần Thoại Cổ Linh (Beginner & Mythic Shortlist)
 
-**Thời điểm ban hành:** 12/10/2026  
-**Trạng thái tài liệu:** `BEGINNER_CONCEPT_SHORTLIST / PROPOSAL_RESEARCH_POOL / PENDING_OWNER_FINAL_GATE`  
-**Mục tiêu:** Xây dựng danh mục tướng dễ tiếp cận (Low Skill Floor) cho người chơi mới, giải quyết triệt để sự thiếu hụt tướng nhập môn mà không sao chép nguyên bản bộ kỹ năng của game khác.  
-**Quy chế thiết kế nghiêm ngặt:**
-- **Không tự ý ghi đè Roster chính thức.** Đây là danh mục nghiên cứu riêng biệt (Proposal Pool).
-- **Không tạo asset 3D, không viết kit chi tiết Q/W/E/R.**
+**Thời điểm ban hành:** 12/10/2026 (Hiệu đính V2 sau Gateway Nghiệm Thu của Owner)  
+**Trạng thái tài liệu:** `BEGINNER_MYTHIC_SHORTLIST_V2 / MASTER_DECISION_REFERENCE / PENDING_GAMEPLAY_GATE`  
+**Nguyên tắc triển khai:**
+- Tài liệu này là **quyết định phân loại mới nhất** của Roster V5 (thay thế vai trò phân loại của tài liệu 100, giữ tài liệu 100 làm lịch sử audit Vòng 4).
+- **Không tự ý sửa roster game đang chạy, không tạo asset 3D, không viết kit chi tiết Q/W/E/R.**
 - Mọi thông số thời gian, tầm xa, phần trăm đều là **`[Mục tiêu thiết kế / Giả định thử nghiệm - HYPOTHESIS]`**, chưa phải số liệu nghiệm thu thực tế.
-- Bỏ toàn bộ các phát biểu khẳng định thị trường không có nguồn hoặc cam đoan pháp lý cảm tính.
+- Xác nhận minh bạch: Repository hiện tại là kho tài liệu thiết kế, **không chứa mã nguồn engine hoặc binary game Spawn**. Tuyệt đối không tuyên bố khống PASS_ENGINE khi chưa chạy thử nghiệm trên runtime thực tế.
 
 ---
 
 ## 1. Chuẩn Hóa Master Registry & Kiểm Kê Danh Mục Roster V5
 
-Để bảo đảm tính nhất quán của cơ sở dữ liệu trên toàn bộ dự án, Hội đồng phân định rạch ròi 3 nhóm danh mục:
+Hội đồng minh bạch hóa và phân định rạch ròi cơ sở dữ liệu dự án:
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────┐
-│                   BẢNG KIỂM KÊ MASTER REGISTRY ROSTER V5                        │
+│                   BẢNG KIỂM KÊ MASTER REGISTRY ROSTER V5 (V2)                   │
 ├──────────────────────────────────────────────────────────────────────────────────┤
-│ 1. NHÓM CONCEPT ĐANG XÉT TRONG ROSTER V5 (47 Concept Hiệu Lực):                  │
-│    - Strong Keep (10): Kora, Forge, Aero, Iro, Nera, Vero, Kiko, Moka, Brak, Rolo│
-│    - Keep / Needs Rewrite (6): Inka, Libro, Jeli, Pavo, Mok (#37), Kymos         │
-│    - Candidate Under Spike (2): Eelix (Locomotion), Oneira (CC Cleanse)          │
-│    - Reserve (22): Dron, Soma, Liora, Rana, Boto, Sira, Rava, Namo, Taxa, Loko,  │
-│      Marduk, Vark, Vika, Rako, Erran, Garo, Gravi, Mira, Spora, Tethys,          │
-│      Magneto, Chrona                                                             │
-│    - Cut List (7): Oren, Mora, Cala, Mono, Teko, Vorta, Plasm                    │
+│ 1. NHÓM 47 CONCEPT ROSTER V5 ĐANG XÉT:                                           │
+│    • Ưu tiên nghiên cứu cốt lõi (18):                                            │
+│      - Strong Keep (10): Kora, Forge, Aero, Iro, Nera, Vero, Kiko, Moka, Brak,   │
+│        Rolo                                                                      │
+│      - Keep / Needs Rewrite (6): Inka, Libro, Jeli, Pavo, Mok (#37), Kymos       │
+│      - Candidate Under Spike (2): Eelix (Locomotion), Oneira (CC Cleanse)        │
+│    • Nhóm dự bị không ưu tiên (22 Reserve):                                      │
+│      Dron, Soma, Liora, Rana, Boto, Sira, Rava, Namo, Taxa, Loko, Marduk, Vark,   │
+│      Vika, Rako, Erran, Garo, Gravi, Mira, Spora, Tethys, Magneto, Chrona         │
+│    • Nhóm loại bỏ (7 Cut List):                                                  │
+│      Oren, Mora, Cala, Mono, Teko, Vorta, Plasm                                  │
 ├──────────────────────────────────────────────────────────────────────────────────┤
 │ 2. BẢN LỊCH SỬ ĐÃ THAY THẾ (2 Concept Lưu Trữ):                                  │
 │    - #15-OLD Brak (Đã thay bằng Aero #15)                                        │
 │    - #30-OLD Kipa (Đã thay bằng Iro #30)                                         │
 ├──────────────────────────────────────────────────────────────────────────────────┤
-│ 3. NHÓM ĐỀ XUẤT NHẬP MÔN MỚI (Proposal Pool — Giữ ID Nghiên Cứu Riêng):          │
-│    - #38 Linh Hầu (Đấu sĩ Cổ Thần Trượng)                                        │
-│    - #39 Kael (Đấu sĩ Đánh tay Cuồng Nhịp)                                       │
-│    - #40 Liễu Tiễn (Xạ thủ Sương Băng)                                           │
-│    - #41 Dương Tiễn (Chiến tướng Tam Tiêm Đao — Bản viết lại)                    │
-│    - #42 Pyra (Pháp sư Dung Nham Cổ — Bản viết lại)                              │
-│    - [Rewrite Pool]: Bác Quân (Tạm loại kit Jax, chờ ý tưởng cơ học độc bản)     │
+│ 3. NHÓM ĐỀ XUẤT MỚI (Proposal Pool — Giữ ID Nghiên Cứu Riêng):                   │
+│    • Nhóm Nhập Môn Ưu Tiên (Tier 1):                                             │
+│      - #38 Linh Hầu (Đấu sĩ Cổ Thần Trượng — Dài/Ngắn)                           │
+│      - #39 Kael (Đấu sĩ Đánh tay Cuồng Nhịp — Sửa quy tắc mục tiêu)              │
+│      - #40 Liễu Tiễn (Xạ thủ Sương Băng — Sửa đường rút lui)                     │
+│      - Forge (#17 từ Strong Keep) & Jeli (#34 từ Keep/Rewrite)                   │
+│    • Nhóm Pháp Sư Đang Thử Nghiệm:                                               │
+│      - #42 Pyra (Đổi sang biến thể Một Lõi Nhiệt Kích Hoạt)                      │
+│    • Nhóm Đấu Sĩ Kỹ Thuật (Advanced Tier):                                       │
+│      - #41 Dương Tiễn (Thiên Nhãn Soi Chiếu — Không ép Tier 1)                   │
+│    • Nhóm Thần Thoại Cổ Linh (Vietnamese Mythic Quintet):                        │
+│      - #43 Phù Dong (Thiết Mã Thiên Tướng — Cảm hứng Thánh Gióng)                │
+│    • Rewrite Pool: Bác Quân (Tạm loại kit Jax, chờ cơ học độc bản)               │
 └──────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 2. Giải Quyết Triệt Để Nhận Diện: Kiko (#01) vs. Linh Hầu (#38)
+## 2. Giải Quyết Nhận Diện: Kiko (#01) vs. Linh Hầu (#38)
 
-Thực hiện chuẩn xác chỉ đạo của Owner theo **Phương án B**: Giữ nguyên Kiko (#01) là Sát Thủ Ảo Ảnh; Linh Hầu được cấp mã nghiên cứu riêng là **#38 Linh Hầu**. 
+Chính thức xác nhận **Phương án B**: Giữ nguyên Kiko (#01) là Sát Thủ Ảo Ảnh; Linh Hầu được cấp mã nghiên cứu riêng là **#38 Linh Hầu**. 
 
-Để triệt tiêu hoàn toàn nguy cơ trùng lặp hình thể, hai nhân vật được tách biệt tuyệt đối về ngôn ngữ thiết kế:
+| Tiêu chí | Kiko (#01 — Sát Thủ Ảo Ảnh) | Linh Hầu (#38 — Đấu Sĩ Cổ Trượng) |
+| :--- | :--- | :--- |
+| **Thể hình (Body Silhouette)** | Nhỏ thó, gầy gò, lưng cong nhanh nhẹn, trọng tâm thấp | Đồ sộ, ngực nở vai rộng, đứng thẳng hai chân uy nghi |
+| **Dáng chạy (Locomotion)** | Nhào lộn 4 chi lắt léo, lén lút thoắt ẩn thoắt hiện | Sải bước đường hoàng, vác gậy trên vai vững chãi |
+| **Vũ khí** | Song trảo cơ khí gắn mu tay (tuyệt đối không cầm gậy) | **Cổ Thần Trượng** Tinh Thạch to bản, hai đầu nạm đồng cổ |
+| **Trang phục & Màu sắc** | Giáp da tối màu, mặt nạ đồng che nửa mặt, vệt tím khói | Chiến giáp hoàng kim Cổ Linh, lông xám bạc, vệt hổ phách |
+| **Lối chơi cốt lõi** | Ranh mãnh, outplay góc nhìn bằng ảo ảnh quang học | Trực diện, càn lướt tiền tuyến, vung trượng nện đất đầm tay |
 
-```
-┌──────────────────────────────────────────────────────────────────────────────────┐
-│              SO SÁNH NHẬN DIỆN THỊ GIÁC: KIKO (#01) VS. LINH HẦU (#38)           │
-├──────────────────────┬────────────────────────────┬──────────────────────────────┤
-│ ĐẶC TRƯNG            │ KIKO (#01 — SÁT THỦ)       │ LINH HẦU (#38 — ĐẤU SĨ)      │
-├──────────────────────┼────────────────────────────┼──────────────────────────────┤
-│ 1. Thể hình          │ Nhỏ thó, gầy gò, lưng cong │ Đồ sộ, ngực nở vai rộng,     │
-│    (Body Silhouette) │ nhanh nhẹn, trọng tâm thấp │ đứng thẳng hai chân uy nghi  │
-├──────────────────────┼────────────────────────────┼──────────────────────────────┤
-│ 2. Dáng di chuyển    │ Nhào lộn 4 chi lắt léo,    │ Bước đi vững chãi, sải bước  │
-│    (Locomotion)      │ thoắt ẩn thoắt hiện        │ đường hoàng, vác gậy trên vai│
-├──────────────────────┼────────────────────────────┼──────────────────────────────┤
-│ 3. Vũ khí            │ Song trảo cơ khí gắn mu tay│ Cổ Thần Trượng Tinh Thạch to │
-│                      │ (tuyệt đối không cầm gậy)  │ bản, hai đầu nạm đồng cổ     │
-├──────────────────────┼────────────────────────────┼──────────────────────────────┤
-│ 4. Trang phục & Màu  │ Giáp da tối màu, mạng che  │ Chiến giáp hoàng kim Cổ Linh,│
-│                      │ mặt đồng, vệt tím sương mù │ lông xám bạc, vệt hổ phách   │
-├──────────────────────┼────────────────────────────┼──────────────────────────────┤
-│ 5. Phong thái        │ Ranh mãnh, cợt nhả, lừa gạt│ Hào hùng, ngạo nghễ, trực    │
-│                      │ đối thủ tung chiêu vào hư  │ diện, lao thẳng vào giữa     │
-│                      │ không (Outplay tâm lý)     │ quân địch (Đè bẹp tiền tuyến)│
-└──────────────────────┴────────────────────────────┴──────────────────────────────┘
-```
+*(Lưu ý: Sự khác biệt trên đây được xác nhận trên tài liệu thiết kế; sẽ được kiểm chứng bằng silhouette thực tế ở camera isometric trong đợt thử nghiệm gameplay).*
 
 ---
 
-## 3. Chi Tiết Các Concept Nhập Môn Được Tinh Chỉnh & Viết Lại Hoàn Toàn
+## 3. Tinh Chỉnh Cơ Học Cho Nhóm Tướng Nhập Môn Ưu Tiên
 
 ---
 
@@ -85,153 +77,165 @@ Thực hiện chuẩn xác chỉ đạo của Owner theo **Phương án B**: Gi�
 
 - **Player Fantasy:** *"Tôi pick Linh Hầu vì tôi muốn cầm thần trượng biến điệu cự ly: vươn dài chọc đẩy kẻ địch từ tầm trung, thu ngắn nện đứt gãy mặt đất ở cự ly gần và chống gậy bật nhảy mở combat dũng mãnh."*
 - **Core Gameplay Toy — Biến Điệu Tầm Trượng (Staff Reach Modulation):**
-  - *Thế Trượng Dài:* Linh Hầu phóng dài đầu trượng ra phía trước, gây sát thương đường thẳng và đẩy lùi nhẹ mục tiêu ở tầm trung `[HYPOTHESIS: ~500 unit]`. Dùng để cấu rỉa và giữ khoảng cách.
-  - *Thế Trượng Ngắn:* Thu trượng về nện mạnh xuống mặt đất ở cự ly gần `[HYPOTHESIS: ~200 unit]`, gây sát thương chấn động bộc phát.
+  - *Thế Trượng Dài:* Vươn dài đầu trượng ra phía trước, gây sát thương đường thẳng và đẩy lùi nhẹ mục tiêu ở tầm trung `[HYPOTHESIS: ~500 unit]`. Dùng để cấu rỉa và giữ khoảng cách an toàn.
+  - *Thế Trượng Ngắn:* Thu trượng về nện mạnh xuống đất ở cự ly gần `[HYPOTHESIS: ~200 unit]`, gây sát thương chấn động bộc phát.
   - *Mở giao tranh:* **Chống Trượng Bật Nhảy (Pole Vault Dive)** — Cắm trượng lấy đà nhảy vọt vào tâm giao tranh giáng đòn nện đất làm chậm diện rộng.
-- **Thoát khỏi LoL Wukong:** Không tàng hình phân thân, không múa trượng lốc xoáy (Cyclone knockup). Đòn đánh đầm tay, phụ thuộc vào căn cự ly gậy.
-- **Dự kiến độ khó:** `[Mục tiêu thiết kế: Sàn kỹ năng thấp ~1.5 sao]`. Người mới chỉ cần nhảy vào và bấm nện đầm tay; người chơi thành thạo căn chuẩn góc vươn dài để giữ an toàn.
-- **Counterplay:** Khi vươn dài trượng theo trục thẳng, hai bên sườn bị hở; đối thủ dùng Dash (D) lướt né sang một bên để áp sát.
+- **Thoát khỏi LoL Wukong:** Không tàng hình phân thân, không múa trượng lốc xoáy (Cyclone knockup). Đòn đánh đầm tay, trực quan.
+- **Dự kiến độ khó:** `[Mục tiêu thiết kế: Sàn kỹ năng thấp ~1.5 sao]`.
+- **Counterplay:** Khi vươn dài trượng theo trục thẳng, hai bên sườn bị hở; đối thủ dùng Dash (D) né sang một bên để áp sát.
 
 ---
 
 ### 3.2. CUỒNG ĐAO / KAEL (#39 — Đấu Sĩ Đánh Tay Cuồng Nhịp)
-*Đấu sĩ cận chiến duy trì nhịp chém — Sửa đổi cơ chế gãy nhịp thân thiện với người mới.*
+*Đấu sĩ cận chiến duy trì nhịp chém — Sửa đổi quy tắc mục tiêu chống lạm dụng hồi phục.*
 
 - **Player Fantasy:** *"Tôi pick Kael vì tôi muốn cầm đại đao lao vào chém tay liên thanh: đòn đánh trúng càng nhiều thì nhịp chém càng nhanh, duy trì thế bám đuổi quyết liệt."*
-- **Core Gameplay Toy — Nhịp Chém Liên Kích (Continuous Hit Momentum — Bản Sửa Đổi):**
+- **Core Gameplay Toy — Nhịp Chém Liên Kích (Continuous Hit Momentum):**
   - Khi Kael chém trúng địch, tích lũy tầng "Cuồng Nhịp" `[HYPOTHESIS: tối đa 5 tầng]`. Mỗi tầng tăng tốc độ đánh và hồi một lượng máu nhỏ cố định.
-  - **Sửa lỗi theo chỉ đạo của Owner (Không xóa sạch tức thì):** Khi đổi mục tiêu hoặc khi rời khỏi tầm đánh quá 2.0s, số tầng Cuồng Nhịp **không bị mất trắng ngay lập tức mà suy giảm dần dần** (giảm 1 tầng mỗi 1.2s `[HYPOTHESIS]`). Điều này giúp người mới không bị trừng phạt quá khắc nghiệt khi mục tiêu di chuyển trong giao tranh hỗn loạn.
-- **Thoát khỏi Master Yi / Tryndamere:** Không có bất tử 5s, không có chém lướt không thể chọn làm mục tiêu, không có reset toàn bộ hồi chiêu. Kael có 1 chiêu lướt ngắn hướng thẳng vào mục tiêu để duy trì nhịp và 1 chiêu gầm thét tăng kháng làm chậm trong thời gian ngắn `[HYPOTHESIS: ~2.0s]`.
-- **Dự kiến độ khó:** `[Mục tiêu thiết kế: Sàn kỹ năng thấp ~1.0 sao]`. Người mới chỉ cần chọn mục tiêu và nhấp chuột chém; người chơi giỏi biết cách luân chuyển giữa các mục tiêu gần nhau để giữ tầng nhịp luôn ở mức tối đa.
-- **Counterplay:** Khống chế cứng (choáng/trói) hoặc thả diều kéo dài để các tầng Cuồng Nhịp tụt dốc hoàn toàn.
+  - Khi rời khỏi giao tranh quá 2.0s, số tầng Cuồng Nhịp **suy giảm dần dần** (giảm 1 tầng mỗi 1.2s `[HYPOTHESIS]`), giúp người mới không bị mất trắng sức mạnh trong combat hỗn loạn.
+- **Quy tắc mục tiêu phân cấp (Target Rules — Đã sửa theo Owner):**
+  - **Tướng địch:** Tích đủ 100% tầng Cuồng Nhịp và nhận 100% lượng máu hồi phục.
+  - **Lính & Quái rừng:** Chỉ tích tối đa 2 tầng Cuồng Nhịp; lượng máu hồi phục giảm xuống còn **30%** `[HYPOTHESIS]` để ngăn Kael biến thành cỗ máy farm hồi phục vô hạn ngoài lane/rừng.
+  - **Công trình (Trụ / Nhà chính):** Đòn đánh vào công trình **KHÔNG hồi máu và KHÔNG tích tầng** (chỉ tạm dừng bộ đếm thời gian suy giảm tầng).
+- **Thoát khỏi Master Yi / Tryndamere:** Không có bất tử 5s, không có chém lướt untargetable, không có chuỗi reset hồi chiêu.
+- **Dự kiến độ khó:** `[Mục tiêu thiết kế: Sàn kỹ năng thấp ~1.0 sao]`.
+- **Counterplay:** Dùng hiệu ứng khống chế cứng hoặc thả diều để kéo giãn cự ly khiến các tầng Cuồng Nhịp suy giảm hoàn toàn.
 
 ---
 
 ### 3.3. LIỄU TIỄN (#40 — Xạ Thủ Sương Băng Chiến Thuật)
-*Xạ thủ giữ cự ly — Sửa đổi cơ chế để không sinh chướng ngại vật va chạm phá vỡ navigation.*
+*Xạ thủ giữ cự ly — Sửa đổi vị trí vệt băng tự nhiên trên đường rút lui.*
 
-- **Player Fantasy:** *"Tôi pick Liễu Tiễn vì tôi muốn làm một cung thủ an toàn từ tầm xa: bắn ra các vệt sương băng trên mặt đất để làm chậm kẻ truy đuổi và gia tăng tốc độ thả diều cho bản thân."*
-- **Core Gameplay Toy — Vệt Sương Băng Chiến Thuật (Frost Path Marking — Bản Sửa Đổi):**
-  - **Sửa lỗi theo chỉ đạo của Owner (Không sinh vật thể va chạm):** Liễu Tiễn **KHÔNG tạo ra trụ băng vật lý chặn đường hay thay đổi navigation của map**.
-  - Thay vào đó, sau mỗi 3 đòn đánh thường, phát bắn thứ tư rải một **Vệt Sương Băng (Frost Ground Decal)** mỏng trên mặt đất `[HYPOTHESIS: tồn tại ~2.5s]`.
-  - Kẻ địch đi trên vệt sương băng bị giảm tốc chạy `[HYPOTHESIS: ~20%]`; Liễu Tiễn đi trên vệt sương băng được tăng tốc chạy `[HYPOTHESIS: ~15%]`, giúp việc thả diều (hit-and-run) cực kỳ mượt mà.
-  - Có 1 chiêu lướt lùi bắn mũi tên băng làm chậm kẻ địch gần nhất.
-- **Thoát khỏi Ashe:** Không có mưa tên hình nón (Volley), không có đại tiễn xuyên map. Ultimate là **Mưa Băng Rơi (Hailstorm Zone)** thả một quầng sương giá làm chậm diện rộng tầm trung.
-- **Dự kiến độ khó:** `[Mục tiêu thiết kế: Sàn kỹ năng thấp ~1.0 sao]`. Rất trực quan, tầm bắn xa, đứng từ xa nhấp bắn và lùi dần trên vệt băng an toàn.
-- **Counterplay:** Vệt băng mỏng chỉ nằm trên mặt đất; các tướng lao vào từ trên không hoặc lướt qua nhanh hoàn toàn không bị ảnh hưởng.
+- **Player Fantasy:** *"Tôi pick Liễu Tiễn vì tôi muốn làm một cung thủ an toàn từ tầm xa: dệt nên các vệt sương băng trên đường rút lui để vừa đi vừa bắn thả diều và cản bước kẻ truy đuổi."*
+- **Core Gameplay Toy — Vệt Sương Băng Rút Lui (Retreat Frost Trail — Đã sửa theo Owner):**
+  - **Không phá vỡ navigation:** Tuyệt đối không sinh trụ băng va chạm vật lý chặn đường.
+  - **Quy tắc dệt vệt băng tự nhiên:** 
+    - Khi Liễu Tiễn bắn trúng tướng địch trong trạng thái đang di chuyển (vừa bắn vừa lùi), một **Vệt Sương Băng (Frost Trail)** mỏng tự động xuất hiện **ngay dưới chân Liễu Tiễn kéo dài theo hướng Liễu Tiễn đang di chuyển** `[HYPOTHESIS: tồn tại ~2.5s]`.
+    - Liễu Tiễn di chuyển trên vệt băng được tăng $15\%$ tốc độ chạy `[HYPOTHESIS]`.
+    - Kẻ địch đuổi theo giẫm vào vệt băng sẽ bị giảm $20\%$ tốc độ chạy `[HYPOTHESIS]`.
+    - *Ý nghĩa thiết kế:* Người mới không cần phải nhắm hay căn góc đặt bẫy; chỉ cần thực hiện thao tác cơ bản của xạ thủ (vừa bắn vừa lùi) là hệ thống tự động dệt nên con đường băng hỗ trợ thả diều ngay dưới chân!
+- **Dự kiến độ khó:** `[Mục tiêu thiết kế: Sàn kỹ năng thấp ~1.0 sao]`.
+- **Counterplay:** Vệt băng mỏng không chặn đạn đạo; sát thủ có chiêu lướt vượt địa hình hoặc nhảy từ trên không hoàn toàn có thể bắt kịp.
 
 ---
 
-### 3.4. DƯƠNG TIỄN (#41 — Chiến Tướng Tam Tiêm Đao — Bản Viết Lại Hoàn Toàn)
-*Kỳ phùng địch thủ của Linh Hầu — Xóa bỏ hoàn toàn bộ kỹ năng Xin Zhao, phát triển cơ chế Thiên Nhãn độc bản.*
+### 3.4. PYRA (#42 — Viêm Thạch / Dung Nham Cổ — Viết Lại Biến Thể Một Lõi)
+*So sánh 2 phương án và chọn biến thể Một Lõi Nhiệt Kích Hoạt cho Mage nhập môn.*
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
-│ DƯƠNG TIỄN (#41) — BẢN VIẾT LẠI HOÀN TOÀN CƠ CHẾ                      │
+│ SO SÁNH 2 PHƯƠNG ÁN PHÁP SƯ PYRA:                                      │
 ├────────────────────────────────────────────────────────────────────────┤
-│ • BỎ HOÀN TOÀN: Đòn đánh 3 nhát hất tung + R quét đẩy trừ 1 mục tiêu   │
-│ • CƠ CHẾ MỚI: Thiên Nhãn Soi Yếu Điểm & Tam Tiêm Xuyên Kích           │
-│   (Truesight Weakpoint & Piercing Thrust)                              │
-│ • Độ khó: Dự kiến ~2.0 Sao (Đâm đầm tay, căn góc điểm yếu trực quan)   │
+│ • Phương án A (Cũ — 2 Tinh Thạch Nối Dây): Bị loại vì trùng tư duy     │
+│   nối điểm/hình học của Inka, quá phức tạp cho người mới chơi.         │
+│ • Phương án B (Mới được chọn — LÕI NHIỆT KÍCH HOẠT / THERMAL CORE):     │
+│   Tập trung vào 1 quả cầu dung nham đơn lẻ: Ném ra → Tỏa nhiệt →       │
+│   Tái kích hoạt nổ sóng nhiệt lớn. Cực kỳ dễ hiểu!                     │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-- **Player Fantasy:** *"Tôi pick Dương Tiễn vì tôi muốn làm chiến thần ba mắt uy dũng: mở Thiên Nhãn soi thấu điểm yếu của đối thủ, thả Linh Khuyển khống chế và tung đòn đâm Tam Tiêm Đao xuyên giáp xé toạc điểm yếu."*
-- **Silhouette & Nhận diện:** Thần tướng Cổ Linh khôi giáp hoàng kim uy nghiêm, trán có Thiên Nhãn Tinh Thạch rực sáng; tay cầm **Tam Tiêm Lưỡng Nhận Đao** chia 3 mũi sắc bén.
-- **Core Gameplay Toy — Thiên Nhãn Soi Yếu Điểm & Tam Tiêm Xuyên Kích:**
-  1. **Thiên Nhãn Soi Điểm Yếu (Truesight Scan):** Kỹ năng chủ động mở Thiên Nhãn quét một luồng sáng hình nón trước mặt. Kẻ địch trúng sáng bị lộ diện (kể cả tàng hình) và xuất hiện một **Điểm Yếu Tinh Thạch (Weakpoint)** hiển thị rõ ràng trên một hướng cơ thể (Trước/Sau/Sườn) trong 4.0s `[HYPOTHESIS]`.
-  2. **Tam Tiêm Xuyên Kích (Piercing Thrust):** Dương Tiễn tung đòn đâm thương thẳng về phía trước. Nếu đâm trúng góc có Điểm Yếu, đòn đâm sẽ **xuyên qua giáp và gây sát thương bộc phát cực mạnh**; nếu đâm trúng góc thường chỉ gây sát thương cơ bản.
-  3. **Linh Khuyển Khóa Chân (Hound Pin):** Phóng một bóng Linh Khuyển Tinh Thạch dạng one-shot projectile lao thẳng tới cắn giữ chân mục tiêu đầu tiên trúng phải trong 1.0s `[HYPOTHESIS]`, giúp Dương Tiễn có đủ thời gian bước tới căn góc đâm vào Điểm Yếu.
-- **Thoát khỏi Xin Zhao:** Không có chuỗi 3 đòn hất tung, không có chiêu cuối quét đẩy tạo lôi đài. Lối chơi xoay quanh việc **Soi điểm yếu $\rightarrow$ Khóa chân $\rightarrow$ Chọn góc đâm thương chính xác**.
-- **Dự kiến độ khó:** `[Mục tiêu thiết kế: Sàn kỹ năng ~2.0 sao]`. Người mới chỉ cần bấm soi và đâm thẳng; người chơi giỏi di chuyển linh hoạt để đâm đúng góc điểm yếu.
-- **Counterplay:** Khi bị đánh dấu Điểm Yếu, đối thủ chỉ cần xoay mặt/đổi hướng đứng để che giấu góc điểm yếu khỏi mũi thương của Dương Tiễn.
+- **Player Fantasy:** *"Tôi pick Pyra vì tôi muốn ném một lõi dung nham nóng rực xuống sàn đấu: làm chậm kẻ địch xung quanh và chủ động kích nổ lõi nhiệt để tạo vụ nổ sóng lửa diện rộng."*
+- **Core Gameplay Toy — Lõi Dung Nham Kích Hoạt (Activated Thermal Core):**
+  - Pyra ném một **Lõi Dung Nham (Thermal Core)** bay chậm hình cầu tới một vị trí chỉ định `[HYPOTHESIS: tầm ném ~700 unit]`.
+  - Khi cắm xuống đất, Lõi tỏa ra một quầng nhiệt làm chậm nhẹ kẻ địch trong bán kính nhỏ `[HYPOTHESIS: ~15% slow]`.
+  - **Quyết định của người chơi:** 
+    - Có thể **bấm nút tái kích hoạt ngay lập tức** để kích nổ Lõi, gây sát thương bộc phát tức thời.
+    - Hoặc để Lõi tự sôi trong 2.5s; khi tự phát nổ, bán kính vụ nổ và sát thương sẽ tăng thêm $30\%$ `[HYPOTHESIS]`.
+- **Thoát khỏi Inka:** 0 đường vẽ, 0 nối dây phức tạp. Đây là trải nghiệm ném một quả bom nhiệt hẹn giờ kinh điển nhưng có quyền kiểm soát thời điểm nổ, rất phù hợp cho tân thủ tập chơi Pháp sư.
+- **Dự kiến độ khó:** `[Mục tiêu thiết kế: Sàn kỹ năng thấp ~1.5 sao]`.
+- **Counterplay:** Lõi Dung Nham phát ra tiếng rít và quầng sáng đỏ cảnh báo rõ ràng; kẻ địch có thể dùng Dash (D) lướt thoát khỏi bán kính nổ trước khi lõi đạt đỉnh nhiệt.
 
 ---
 
-### 3.5. PYRA (#42 — Viêm Thạch / Dung Nham Cổ — Bản Viết Lại Hoàn Toàn)
-*Pháp sư nhập môn kiểm soát không gian — Xóa bỏ bộ chiêu chung chung, phát triển cơ chế Dây Chuyền Dung Nham.*
+### 3.5. DƯƠNG TIỄN (#41 — Đấu Sĩ Kỹ Thuật / Technical Fighter)
+*Chính thức chuyển sang nhóm Đấu Sĩ Nâng Cao (Advanced Tier), không ép vào Tier 1.*
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│ PYRA (#42) — BẢN VIẾT LẠI HOÀN TOÀN CƠ CHẾ                            │
-├────────────────────────────────────────────────────────────────────────┤
-│ • BỎ HOÀN TOÀN: Cầu lửa nổ + Bờ tường lửa + Cột lửa rơi tự do          │
-│ • CƠ CHẾ MỚI: Dây Chuyền Dung Nham Hai Điểm (Pyre Tether Nodes)        │
-│ • Độ khó: Dự kiến ~1.5 Sao (Dễ ngắm, bẫy 2 điểm trực quan)            │
-└────────────────────────────────────────────────────────────────────────┘
-```
-
-- **Player Fantasy:** *"Tôi pick Pyra vì tôi muốn kiểm soát đường đi bằng bẫy dung nham hai điểm: cắm hai Tinh Thạch Lửa tạo đường nối rực cháy và kích nổ toàn bộ đường nối thiêu rụi kẻ địch."*
-- **Silhouette & Nhận diện:** Pháp sư nguyên tố dạng đá lửa Cổ Linh, cơ thể ghép từ các phiến đá bazan đen với các đường nứt dung nham rực cam; hai tay lơ lửng điều khiển hai viên Tinh Thạch Lửa.
-- **Core Gameplay Toy — Dây Chuyền Dung Nham Hai Điểm (Pyre Tether Nodes):**
-  - Pyra có thể cắm tối đa 2 **Tinh Thạch Lửa (Pyre Stones)** trên mặt đất ở khoảng cách trung bình `[HYPOTHESIS: tầm cắm ~600 unit]`.
-  - Khi có đủ 2 viên đá trên sàn, một **Dải Dây Chuyền Dung Nham (Magma Tether)** tự động hình thành nối giữa hai viên đá. Kẻ địch bước ngang qua dải dây bị thiêu đốt liên tục và chịu hiệu ứng làm chậm `[HYPOTHESIS: ~30%]`.
-  - **Kích nổ đường nối:** Pyra bắn một tia nhiệt kích hoạt vào 1 trong 2 viên đá: Toàn bộ dải dung nham nối giữa 2 viên đá phát nổ tức thì thành một đợt sóng lửa bộc phát!
-- **Thoát khỏi pháp sư lửa generic:** Không phải ném cầu lửa hay thả thiên thạch vô hồn. Dạy người mới cách tư duy hình học đơn giản nhất: **Đặt điểm A $\rightarrow$ Đặt điểm B $\rightarrow$ Tạo ranh giới dung nham $\rightarrow$ Kích nổ**.
-- **Dự kiến độ khó:** `[Mục tiêu thiết kế: Sàn kỹ năng ~1.5 sao]`. Người mới chỉ cần cắm 2 điểm ngang lối đi hẹp để chặn đường; người chơi giỏi cắm kẹp đối phương vào giữa để kích nổ kép.
-- **Counterplay:** Kẻ địch có thể đánh 2 đòn đánh thường phá hủy một trong hai Tinh Thạch Lửa để làm đứt gãy đường dây trước khi nó phát nổ `[HYPOTHESIS]`.
+- **Phân loại mới:** **Đấu Sĩ Kỹ Thuật (Technical Fighter)** — Dành cho người chơi đã có kinh nghiệm (Độ khó dự kiến ~3.5 sao).
+- **Core Toy:** **Thiên Nhãn Soi Chiếu & Tam Tiêm Xuyên Kích (Truesight Scan & Piercing Thrust)**.
+  - Tạm thời **chưa khóa cứng điều kiện điểm yếu theo hướng mặt** (tránh rủi ro góc xoay nhân vật quá phức tạp).
+  - Thay vào đó, Thiên Nhãn quét nón phát hiện tàng hình và đánh dấu "Điểm Yếu Tinh Thạch" lên mục tiêu; Dương Tiễn tung cú đâm Tam Tiêm Đao xuyên thấu sát thương nếu mục tiêu đang trong trạng thái bị Linh Khuyển cắn giữ chân.
+  - Giữ lại để nghiên cứu độc lập, không đưa vào danh sách 5 tướng nhập môn thử nghiệm đợt 1.
 
 ---
 
-### 3.6. BÁC QUÂN (Tạm Loại Về Rewrite Pool)
-- **Quyết định:** Tuân thủ chỉ đạo của Owner, **Bác Quân chính thức được đưa về REWRITE POOL**. Hội đồng không tiếp tục phát triển bộ chiêu thức né đòn + đòn thứ 3 nổ kiểu Jax do chưa tìm được cơ chế Cổ Linh hóa thực sự độc bản và khác biệt.
+## 4. Danh Sách 5 Tướng Nhập Môn Ưu Tiên (Thử Nghiệm Đợt 1)
 
----
-
-## 4. Roster 6 Tướng Thử Nghiệm Nhập Môn Hoàn Chỉnh (Trải Đều 5 Vai Trò)
-
-Dưới đây là danh sách 6 vị trí thử nghiệm cho người mới đã được rà soát và phê duyệt nguyên tắc:
+Chốt danh sách 5 tướng nhập môn đã đủ độ chín để chuẩn bị cho đợt thử nghiệm gameplay tối thiểu:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
-│               DANH SÁCH 6 TƯỚNG THỬ NGHIỆM NHẬP MÔN (TIER 1 ĐỀ XUẤT)                   │
+│               5 TƯỚNG NHẬP MÔN ƯU TIÊN CHO FIRST GAMEPLAY GATE                         │
 ├───────────────┬───────────────────────────┬────────────────────────────────────────────┤
-│ VAI TRÒ       │ ỨNG CỬ VIÊN               │ CORE GAMEPLAY TOY & BÀI HỌC CHO TÂN THỦ    │
+│ VAI TRÒ       │ ỨNG CỬ VIÊN               │ CORE GAMEPLAY TOY & THAO TÁC CƠ BẢN        │
 ├───────────────┼───────────────────────────┼────────────────────────────────────────────┤
 │ 1. ĐẤU SĨ     │ LINH HẦU (#38)            │ Biến điệu tầm trượng dài/ngắn, nện đất     │
-│    (Fighter)  │ (Hầu Vương Thần Trượng)   │ đầm tay, nhảy chống trượng mở giao tranh.  │
+│    (Fighter)  │                           │ đầm tay, nhảy chống trượng mở combat.      │
 ├───────────────┼───────────────────────────┼────────────────────────────────────────────┤
-│ 2. ĐÁNH TAY   │ CUỒNG ĐAO / KAEL (#39)    │ Tích tầng Cuồng Nhịp chém tay liên tục;    │
-│    (Skirmisher│ (Tàn Kiếm Cổ Tộc)         │ nhịp suy giảm dần giúp newbie giữ phong độ.│
+│ 2. ĐÁNH TAY   │ CUỒNG ĐAO / KAEL (#39)    │ Chém tay tích tầng Cuồng Nhịp; suy giảm    │
+│    (Skirmisher│                           │ dần; hạn chế hồi máu trên lính/quái.       │
 ├───────────────┼───────────────────────────┼────────────────────────────────────────────┤
-│ 3. XẠ THỦ     │ LIỄU TIỄN (#40)           │ Vệt sương băng trên mặt đất hỗ trợ thả     │
-│    (Marksman) │ (Thợ Săn Băng Cung)       │ diều; không phá vỡ navigation bản đồ.      │
+│ 3. XẠ THỦ     │ LIỄU TIỄN (#40)           │ Vừa bắn vừa lùi tự dệt vệt sương băng hỗ   │
+│    (Marksman) │                           │ trợ thả diều mượt mà; không collision.    │
 ├───────────────┼───────────────────────────┼────────────────────────────────────────────┤
-│ 4. ĐỠ ĐÒN     │ LÒ CỔ / FORGE (#17)       │ Đứng tuyến trước hút đòn, tích nhiệt dâng  │
+│ 4. ĐỠ ĐÒN     │ LÒ CỔ / FORGE (#17)       │ Đứng tuyến trước ăn đòn tích nhiệt dâng    │
 │    (Tank)     │ (Từ Strong Keep Roster V5)│ cao và xả áp suất mở combat diện rộng.     │
 ├───────────────┼───────────────────────────┼────────────────────────────────────────────┤
 │ 5. HỖ TRỢ     │ SỨA CHUÔNG / JELI (#34)   │ Hồi phục diện rộng theo nhịp chuông nước;  │
 │    (Support)  │ (Từ Keep/Rewrite Roster V5) đi kèm bảo vệ chủ lực, giữ cự ly an toàn.  │
-├───────────────┼───────────────────────────┼────────────────────────────────────────────┤
-│ 6. PHÁP SƯ    │ VIÊM THẠCH / PYRA (#42)   │ Cắm 2 tinh thạch tạo dây dung nham và kích │
-│    (Mage)     │ (Pháp Sư Dung Nham Cổ)    │ nổ; tư duy kiểm soát không gian 2 điểm.    │
-└───────────────┴───────────────────────────┴────────────────────────────────────────────┘
+├───────────────┴───────────────────────────┴────────────────────────────────────────────┤
+│ * Vị trí Pháp sư nhập môn: Pyra (#42 biến thể Lõi Nhiệt) tiếp tục hoàn thiện logic      │
+│   trước khi đưa vào thử nghiệm chung.                                                  │
+└────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-*(Lưu ý: **Dương Tiễn (#41)** được giữ lại trong Proposal Pool như một phương án Đấu Sĩ Thần Binh bổ trợ độc lập, có thể luân chuyển với Linh Hầu hoặc mở rộng sau này).*
+---
+
+## 5. Chuẩn Art Direction: Bộ Ngũ Thần Thoại Cổ Linh (Mythic Quintet)
+
+Được Owner chính thức phê duyệt làm chuẩn Art Direction hoành tráng cho nhóm tướng biểu tượng mang hồn cốt thần thoại Việt (đã lưu trữ tại `docs/co-linh-than-chien/art-concepts/`):
+
+```
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│             BỘ NGŨ THẦN THOẠI CỔ LINH (MYTHIC SCALE ART DIRECTION)                     │
+├─────────────────┬───────────┬──────────────────────────────────────────────────────────┤
+│ CẢM HỨNG GỐC    │ DANH XƯNG │ QUY MÔ HÌNH THỂ & THẨM MỸ THẦN THOẠI (MYTHIC ENTITIES)   │
+├─────────────────┼───────────┼──────────────────────────────────────────────────────────┤
+│ 1. THÁNH GIÓNG  │ PHÙ DONG  │ THIẾT MÃ THIÊN TƯỚNG: Ngựa sắt và chủ tướng là MỘT THỰC  │
+│                 │ (#43)     │ THỂ CHIẾN ĐẤU DUY NHẤT. Khoảnh khắc huyền thoại: khi     │
+│                 │           │ kiếm gãy vụn, nhổ Cổ Trúc sấm sét quét sạch chiến trường!│
+│                 │           │ [Art: art-concepts/01-phu-dong-thiet-ma.png]             │
+├─────────────────┼───────────┼──────────────────────────────────────────────────────────┤
+│ 2. SƠN TINH     │ TẢN SƠN   │ THÁNH SƠN CỔ THẠCH: Titan ngực rực Thái Dương Đông Sơn,  │
+│                 │           │ vác cả rặng núi ngọc bích cổ mọc ngược lên trời.         │
+│                 │           │ [Art: art-concepts/04-tan-son-co-thach.png]              │
+├─────────────────┼───────────┼──────────────────────────────────────────────────────────┤
+│ 3. THỦY TINH    │ TRIỀU BÁ  │ HẮC LONG THỦY TỘC: Chúa tể biển sâu nửa người nửa rồng   │
+│                 │           │ vảy đen, điều khiển 3 đại long xoáy nước cuộn trào.      │
+│                 │           │ [Art: art-concepts/03-trieu-ba-thuy-long.png]            │
+├─────────────────┼───────────┼──────────────────────────────────────────────────────────┤
+│ 4. THẠCH SANH   │ DŨNG THẠCH│ THẦN RÌU & THIÊN CẦM: Chiến thần mình đồng đen vác đại rìu│
+│                 │           │ xéo chém nứt đất, lưng ngự Thiên Cầm gảy thánh âm giải hòa│
+│                 │           │ [Art: art-concepts/02-dung-thach-than-riu.png]           │
+├─────────────────┼───────────┼──────────────────────────────────────────────────────────┤
+│ 5. NỎ CAO LỖ    │ CỔ LỖ     │ HUYỀN QUY THẦN CƠ SƯ: Pháo đài công thành bán thần mang   │
+│                 │           │ mai rùa đồng cổ, bắn vạn tiễn như mưa sao băng xuyên lục địa│
+│                 │           │ [Art: art-concepts/05-co-lo-than-no.png]                 │
+└─────────────────┴───────────┴──────────────────────────────────────────────────────────┘
+```
+
+> **Đặc tả chiều sâu cho Phù Dong (#43 — Đóng góp cốt lõi của Owner):**  
+> - Phù Dong không phải một kỵ sĩ thông thường ngồi trên lưng ngựa rồi xuống ngựa. Ngựa sắt và Chủ tướng kết hợp thành một **Thực thể chiến đấu cơ khí thần thoại thống nhất (Unified War Centaur/Cavalry Entity)**: Vó ngựa dập ra lốc xoáy lôi hỏa, tay cầm thanh Thần Kiếm Tinh Thạch đâm chém dũng mãnh ở giai đoạn đầu.  
+> - **Khoảnh khắc biến thành Huyền Thoại:** Khi thanh Thần Kiếm bị gãy vụn trong giao tranh ác liệt $\rightarrow$ Phù Dong nhổ bật cây **Thiên Lôi Cổ Trúc (Cụm tre Tinh Thạch sấm sét cao 4.5m)** từ lòng đất, chuyển hóa toàn bộ phong cách chiến đấu sang quét càn quét diện rộng cực kỳ hoành tráng!
 
 ---
 
-## 5. Ma Trận Đối Chiếu Tránh Trùng Lặp Trải Nghiệm (Cross-Check Với Shortlist Roster V5)
+## 6. Kế Hoạch Chuẩn Bị Cho First Gameplay Gate
 
-Bảo đảm 6 tướng nhập môn không cạnh tranh trực tiếp hay triệt tiêu lối chơi của 16 tướng Shortlist hiện tại:
-
-| Tướng Nhập Môn Mới | Tướng Shortlist Hiện Tại Có Nguy Cơ Gần Nhất | Khác Biệt Tuyệt Đối Về Trải Nghiệm Gameplay |
-| :--- | :--- | :--- |
-| **Linh Hầu (#38)** | **Brak (#02 — Piston Parry)** | Brak là đấu sĩ phản đòn nhịp điệu Sekiro (kỹ năng cực cao); Linh Hầu là đấu sĩ càn lướt trực diện, biến điệu tầm đánh dài/ngắn, ai vào cũng nện trúng ngay. |
-| **Linh Hầu (#38)** | **Kiko (#01 — Sát Thủ Ảo Ảnh)** | Kiko là sát thủ nhỏ con lừa góc nhìn bằng ảo ảnh; Linh Hầu là đấu sĩ đồ sộ càn lướt tiền tuyến bằng đại trượng. |
-| **Cuồng Đao / Kael (#39)** | **Vero (#03 — Vết Kiếm Thời Gian)** | Vero là sát thủ dồn sát thương trễ tính toán; Kael là đấu sĩ đánh tay đầm đòn duy trì nhịp chém liên thanh tại chỗ. |
-| **Liễu Tiễn (#40)** | **Iro (#30) & Aero (#15)** | Iro là sniper ngắm tĩnh xuyên map; Aero là phi cơ lượn rải bom; Liễu Tiễn là xạ thủ bắn cung truyền thống vừa đi vừa bắn an toàn trên vệt băng. |
-| **Dương Tiễn (#41)** | **Nera (#07 — Dạ Neo)** | Nera bắn neo cơ động kéo tường/giật lệch; Dương Tiễn lao vào phóng linh khuyển khóa chân và căn góc đâm xuyên điểm yếu của mục tiêu. |
-| **Pyra (#42)** | **Inka (#19 — Pháp Sư Thư Pháp)** | Inka vẽ các đường mực hình học phức tạp; Pyra chỉ cắm 2 điểm tạo dây dung nham cực kỳ trực quan, dễ hiểu. |
-
----
-
-## 6. Kính Trình Owner Nghiệm Thu & Phê Chuẩn
-
-Hội đồng kính trình Owner xem xét các nội dung đã chuẩn hóa:
-1. **Xác nhận giải quyết Kiko & Linh Hầu:** Kiko #01 giữ nguyên Sát Thủ Ảo Ảnh; Linh Hầu mang ID nghiên cứu riêng #38 với thể hình và thần trượng độc bản.
-2. **Xác nhận sửa đổi Kael & Liễu Tiễn:** Kael suy giảm nhịp dần dần; Liễu Tiễn chỉ rải vệt sương băng trên sàn, không sinh chướng ngại vật va chạm.
-3. **Phê duyệt bản viết lại của Dương Tiễn (#41) & Pyra (#42):** Thoát ly hoàn toàn khỏi Xin Zhao và phép lửa generic.
-4. **Xác nhận đưa Bác Quân về Rewrite Pool.**
-5. **Chấp thuận bộ 6 ứng viên thử nghiệm nhập môn** làm cơ sở nghiên cứu trước khi bước sang giai đoạn Playtest.
+Thực hiện nghiêm túc quy chế kỹ thuật của dự án:
+1. **Xác nhận hiện trạng Repository:** Repo `codehaivl-dotcom/lol` là kho tài liệu thiết kế chuẩn hóa, **chưa chứa source code hoặc binary của game engine Spawn**. Do đó, Hội đồng tuyệt đối không tạo prototype Unity giả lập hay tuyên bố PASS_ENGINE khống.
+2. **Kế hoạch thử nghiệm tối thiểu (Minimum Gameplay Logic Test):**
+   - Khi được kết nối với runtime Spawn thực tế, Hội đồng sẽ chuẩn bị kịch bản kiểm tra cho **5 tướng nhập môn ưu tiên** (Linh Hầu, Kael, Liễu Tiễn, Forge, Jeli):
+     - Xác minh thao tác cơ bản dễ hiểu, đòn đánh có cảm giác đầm tay.
+     - Xác minh vòng lặp lối chơi (loop) không gây nhàm chán.
+     - Xác minh đối thủ có đủ thời gian và công cụ phản ứng (Counterplay minh bạch).
+     - Đảm bảo **tuyệt đối không xung đột với nút D (Universal Dash)** theo chuẩn tài liệu 91.
