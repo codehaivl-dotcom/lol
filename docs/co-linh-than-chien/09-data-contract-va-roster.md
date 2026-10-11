@@ -1,5 +1,8 @@
 # Data contract, roster và localization mapping
 
+> **[USER LOCK — 2026-10-11 / new roster overlay]:** Với roster 24 mới, skill slots canonical **Q/W/E/R**, **D = Dash chung**, `basic_attack` là hành động riêng. Contract `lmb/rmb` trong nội dung lịch sử là legacy; bản chuyển đổi mapping `old.q→q, old.rmb→w, old.e→e, old.r→r, old.lmb→basic_attack`; **không gán skill lên chuột trái hoặc phải**. Cần cập nhật runtime schemas riêng khi tích hợp. Xem [doc 91](91-khoa-input-qwer-d.md).
+
+
 **Khung (2026-10-07, @lukasai):** game mới hoàn toàn. Số liệu do dự án tự tune và cân bằng bằng mô phỏng (04). Data của game khác chỉ là tham khảo, không phải source of truth.
 **Nguyên tắc:** mỗi số gameplay nằm ở đúng một nơi. Localization là lớp tách rời. Không dùng tên hiển thị làm khóa save/network. Khoá người chơi trong state/save là `userId` (`pa_…`), không phải playerId của phiên.
 
