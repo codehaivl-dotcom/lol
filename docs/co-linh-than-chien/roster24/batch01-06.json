@@ -1,0 +1,900 @@
+{
+  "version": "roster24-v1-draft",
+  "status": "PRODUCTION_DESIGN_NOT_BALANCED",
+  "heroes": [
+    {
+      "id": "phi_cong_lac_ky",
+      "vi": "Phi Công Lạc Kỷ",
+      "en": "Epoch Stray",
+      "role": "marksman_artillery",
+      "tier": "medium",
+      "body": "Phi công bé trong buồng lái tàu cánh vành khuyên, hai động cơ đặt lệch; tàu chiếm silhouette, mặt kính chỉ lộ mắt người lái.",
+      "palette": "ngọc lam oxy hóa / cam cháy / thép trắng",
+      "form": "vehicle hovering; không chân chạm đất; bay 0,35m",
+      "rig": "pilot 18 bones + craft hinge/propeller 12 bones; engine exhaust sockets x2",
+      "height": "tàu ngang 2,3m dài 2,6m; gameplay capsule không đổi khi nâng cánh",
+      "style": "hài lém lỉnh, cơ khí làm bằng hợp kim ký ức có dấu định hướng khắc sâu, không phi cơ WWI",
+      "lore": "Anh vốn là hoa tiêu của đoàn khai phá các vành khí quyển trước Đại Tịch. Một cơn bão thời sai đã đưa tàu về nơi chuyến bay chưa từng được phê duyệt. Bản ghi TKT giữ lại mọi cuộc gọi cứu hộ, nhưng không lưu người nhận. Anh chiến đấu để lần ra tín hiệu cuối cùng, chứ không phục vụ liên minh nào trọn vẹn.",
+      "hook": "Lái tàu cổ lượn quanh đội hình, đo nhiệt động cơ bằng nhịp bắn; pháo binh cơ động không phải mage ném cầu.",
+      "s": [
+        590,
+        92,
+        59,
+        3.6,
+        25,
+        3.2,
+        30,
+        1.6,
+        6.15,
+        0.66,
+        0.026,
+        430,
+        32
+      ],
+      "basic": "Đạn kim xuyên bằng kim loại ký ức cỡ nhỏ, bắn từ nòng bên phải, 10,5m, single-target; không splash.",
+      "passive": "Sau 3 đòn đánh thường vào tướng trong 5 giây, tích 1 NHIỆT (tối đa 3); mỗi NHIỆT +4% tốc chạy; Q tiêu cả 3 thêm 35 sát thương vật lý, hồi trạng thái sau 4 giây không đánh.",
+      "q": {
+        "n": "Nghiêng Cánh",
+        "aim": "direction",
+        "geo": "line range 9m width 1.0m",
+        "power": {
+          "type": "physical",
+          "base": 65,
+          "step": 20,
+          "ratio": "0.75 AD"
+        },
+        "cd": [
+          10,
+          9.5,
+          9,
+          8.5,
+          8
+        ],
+        "cost": [
+          55,
+          60,
+          65,
+          70,
+          75
+        ],
+        "behavior": "Tàu lượn ngang 2m rồi xả một dải 3 viên; mỗi mục tiêu chỉ nhận damage 1 lần/cast; không gây AoE ngoài 1m.",
+        "anim": "tay lái gạt, cánh nghiêng, nòng súng bật",
+        "vfx": "ba tracer mảnh và khói kim loại nhỏ",
+        "sfx": "servo lệch pha + súng rền khô"
+      },
+      "rmb": {
+        "n": "Mồi Lửa Từ Trời",
+        "aim": "point",
+        "geo": "circle radius 2.2m, range 10m",
+        "power": {
+          "type": "magic",
+          "base": 48,
+          "step": 17,
+          "ratio": "0.4 AP"
+        },
+        "cd": [
+          15,
+          14,
+          13,
+          12,
+          11
+        ],
+        "cost": [
+          65,
+          65,
+          70,
+          70,
+          75
+        ],
+        "behavior": "Thả bom có bóng cảnh báo 0.65s; nổ gây slow 25% trong 1.4s, không phá địa hình.",
+        "anim": "cửa khoang mở, tàu dội lên",
+        "vfx": "bom hình trụ lưỡng sắc, vòng nổ đúng 2.2m",
+        "sfx": "click khóa bom + nổ dội"
+      },
+      "e": {
+        "n": "Đổi Tầng Gió",
+        "aim": "direction",
+        "geo": "dash 4.5m (no hitbox)",
+        "power": {
+          "type": "none",
+          "base": 0,
+          "step": 0,
+          "ratio": "—"
+        },
+        "cd": [
+          18,
+          17,
+          16,
+          15,
+          14
+        ],
+        "cost": [
+          70,
+          70,
+          70,
+          70,
+          70
+        ],
+        "behavior": "Lướt 4.5m trong 0.45s, có thể đi xuyên minion nhưng không xuyên terrain; 1.2s sau lướt +18% tốc đánh.",
+        "anim": "buồng lái nghiêng, quạt xoay đổi trục",
+        "vfx": "dải khí mỏng phía sau",
+        "sfx": "gió hút rồi vút"
+      },
+      "r": {
+        "n": "Phi Đội Không Có Trong Sổ",
+        "aim": "point",
+        "geo": "three parallel line lanes length 12m width 1.3m, spacing 2m",
+        "power": {
+          "type": "physical",
+          "base": 110,
+          "step": 70,
+          "ratio": "0.9 bonus AD"
+        },
+        "cd": [
+          100,
+          85,
+          70
+        ],
+        "cost": [
+          100,
+          100,
+          100
+        ],
+        "behavior": "T=0.9s đánh dấu hành lang 3 đường; t=1.25/1.65/2.05s ba bóng phi cơ bay quét lần lượt, một mục tiêu chịu tối đa 2 hit/cast, hit thứ hai 40% damage; địch thấy lane 0.9s để né.",
+        "anim": "phi công khóa kính, giật cần ba nhịp, tàu lộn",
+        "vfx": "ba silhouette phi đội ký ức lướt theo ba đường thật, không phủ kín lane",
+        "sfx": "radio rè → ba tiếng động cơ → bom xé gió → tín hiệu mất"
+      },
+      "counter": "Dễ bị khóa khi E hồi; báo trước R ba line rõ, né ngang; không bắn qua tường.",
+      "ai": "giữ khoảng 8–10m, dùng E khi bị áp sát, R chỉ khi ít nhất hai địch trong corridor",
+      "priority": "P1",
+      "inspire": "phi công arcade + trạm quan sát thời gian + pháo binh chiến thuật",
+      "special": "projectile no AoE salvo; R lanes cannot damage outside previews"
+    },
+    {
+      "id": "mach_nhua_bat_tu",
+      "vi": "Mạch Nhựa",
+      "en": "Memory Latex",
+      "role": "fighter_sustain",
+      "tier": "medium",
+      "body": "Sinh thể giọt thủy tinh dẻo như nhựa cây, một thân hình chữ Y kéo dài, rễ hút ký ức ở chân; mặt là một vạch sáng nghiêng thay biểu cảm.",
+      "palette": "hổ phách non / tím thẫm / lõi xanh nõn",
+      "form": "blob humanoid elastic; ba chân giả thay đổi khi đi",
+      "rig": "squash-stretch lattice 16 controllers; secondary bones 22; stable hit capsule",
+      "height": "cao 1,75m; tay giãn 3m chỉ lúc attack",
+      "style": "nghịch ngợm nhưng hơi đáng sợ; không thân kẹo tròn hay vật thể trơn xanh lá",
+      "lore": "Mạch Nhựa là chất niêm phong hầm ký ức từng được dạy cách nhận biết đau đớn. Nó học được lòng trắc ẩn từ những bản ghi chiến binh mà mình giữ lại. Khi Đại Tịch tới, chất niêm phong tự bước ra khỏi cửa và tìm những ký ức bị bỏ rơi. Nó chưa bao giờ phân biệt được việc ghép một người với việc chữa lành người ấy.",
+      "hook": "Cận chiến dùng cơ thể kéo dãn, bị đánh rơi mảnh để thu lại; đổi nhịp tấn công và hồi phục.",
+      "s": [
+        745,
+        111,
+        61,
+        4.1,
+        34,
+        4,
+        30,
+        1.8,
+        6,
+        0.65,
+        0.025,
+        0,
+        0
+      ],
+      "basic": "Một nắm tay hóa sợi quất mục tiêu 2.6m, physical single target; trail sợi mỏng chính xác.",
+      "passive": "Tối đa 3 MẢNH: mỗi khi mất 13% maxHP bởi tướng địch rơi 1 mảnh cạnh thân (cd tạo mảnh 2s). Nhặt bằng chạm trong 3m hồi 35+2% maxHP, mảnh tan sau 8s; tối đa hồi 9% maxHP mỗi 10s.",
+      "q": {
+        "n": "Quăng Dây Ký Ức",
+        "aim": "direction",
+        "geo": "line length 6m width 0.8m",
+        "power": {
+          "type": "physical",
+          "base": 60,
+          "step": 18,
+          "ratio": "0.8 AD"
+        },
+        "cd": [
+          9,
+          8.5,
+          8,
+          7.5,
+          7
+        ],
+        "cost": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "behavior": "Kéo dài tay như thòng lọng; chạm tướng đầu gây damage và slow 30% 1s; không kéo tướng, không xuyên terrain.",
+        "anim": "vai vặn xoắn và tay kéo ra",
+        "vfx": "sợi nhựa bóng hổ phách kèm dấu bám",
+        "sfx": "dây giãn + bật tách"
+      },
+      "rmb": {
+        "n": "Bật Giật",
+        "aim": "direction",
+        "geo": "dash 4m + circle impact radius 1.3m",
+        "power": {
+          "type": "physical",
+          "base": 48,
+          "step": 15,
+          "ratio": "0.6 AD"
+        },
+        "cd": [
+          15,
+          14,
+          13,
+          12,
+          11
+        ],
+        "cost": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "behavior": "Nén người rồi bật 4m; tại điểm đến gây damage khu vực 1.3m, không vượt tường.",
+        "anim": "toàn thân nén thành giọt rồi bung",
+        "vfx": "sóng đàn hồi tròn tại điểm rơi duy nhất",
+        "sfx": "sợi giãn đàn hồi trầm"
+      },
+      "e": {
+        "n": "Gom Mảnh",
+        "aim": "self",
+        "geo": "self heal; collect radius 5m",
+        "power": {
+          "type": "heal",
+          "base": 40,
+          "step": 20,
+          "ratio": "0.3 AP"
+        },
+        "cd": [
+          20,
+          19,
+          18,
+          17,
+          16
+        ],
+        "cost": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "behavior": "Hút toàn bộ mảnh trong 5m về lõi; mỗi mảnh +15% hiệu quả hồi riêng; không tạo mảnh nếu không có.",
+        "anim": "thân lõm vào rồi hút vụn",
+        "vfx": "các mảnh bay theo đường cong chính xác",
+        "sfx": "tiếng thủy tinh mềm dồn"
+      },
+      "r": {
+        "n": "Tái Tạo Cơ Thể Cuối",
+        "aim": "self",
+        "geo": "circle radius 4m, three delayed ripples",
+        "power": {
+          "type": "magic",
+          "base": 80,
+          "step": 55,
+          "ratio": "0.5 AP"
+        },
+        "cd": [
+          100,
+          85,
+          70
+        ],
+        "cost": [
+          0,
+          0,
+          0
+        ],
+        "behavior": "0–0.9s bung thành 6 mảnh nhưng không untargetable; t=1.0/1.4/1.8s mỗi nhịp gợn trong 4m gây 33% tổng damage; mỗi hero trúng tối đa 3 nhịp. Kết thúc hồi 7/9/11% HP đã mất, không hồi từ creep.",
+        "anim": "lưới xương hóa sáu dải, từng dải quay về lõi",
+        "vfx": "một mạng nhựa đàn hồi sáu cánh, tuyệt đối không trông như quả bóng nổ",
+        "sfx": "sáu dây bật → ba nhịp trống nước → hợp nhất"
+      },
+      "counter": "Cản nhặt mảnh bằng zoning; khóa cứng trước khi E; heal reduction phản chế.",
+      "ai": "ưu tiên nhặt mảnh khi dưới 55% HP, R nếu hai tướng trong 4m và HP dưới 65%",
+      "priority": "P1",
+      "inspire": "động học vật liệu dẻo + đồ chơi đàn hồi + kỹ thuật niêm phong ký ức",
+      "special": "no proc infinite; heal cap server authoritative"
+    },
+    {
+      "id": "hau_khuyet",
+      "vi": "Hầu Khuyết",
+      "en": "The Unfinished Ape",
+      "role": "assassin_trickster",
+      "tier": "high",
+      "body": "Linh hầu nhỏ chân dài, một tai nguyên vẹn, tai kia vỡ thành dải dữ liệu; đuôi hình dấu hỏi chia ba đoạn, hai tay giữ thẻ gỗ trống.",
+      "palette": "than nâu / kem tro / xanh ký tự",
+      "form": "quadruped sprint, biped attack; đứng 1m3",
+      "rig": "beast bipod quadruped transition; tail chain 11 segments; no staff",
+      "height": "cao 1.35m; đuôi dài 1.6m",
+      "style": "nhanh, tinh quái, không vương miện/vòng kim cô/gậy; mặt lém và cổ máy cổ",
+      "lore": "Hầu Khuyết từng canh các lối thoát của một trường huấn luyện Cổ Linh. Nó học mọi thủ tục an ninh rồi cố tình làm sai để bảo vệ học viên trốn khỏi lệnh thanh trừng. TKT ghi tên nó như một lỗi hệ thống có tiếng cười. Trong chiến tranh, nó không chọn ai đáng thắng; nó chọn kẻ đang quá chắc mình sẽ thắng.",
+      "hook": "Đổi vị trí với bóng giả trong một khoảnh khắc và biến trickster thành sát thủ high-skill.",
+      "s": [
+        570,
+        88,
+        66,
+        4.3,
+        25,
+        3,
+        28,
+        1.6,
+        6.45,
+        0.72,
+        0.031,
+        350,
+        25
+      ],
+      "basic": "Hai cú cào nhanh theo mục tiêu 2.1m; đòn thứ ba gõ thẻ gỗ vào cổ đối thủ, single target.",
+      "passive": "Mỗi lần tránh một skillshot bằng E hoặc đổi chỗ RMB (phát hiện intersection dự đoán trong 0.25s) nhận 1 MƯU, tối đa 2, tồn tại 6s. Đòn đánh thường tiêu 1 MƯU +22–64 vật lý theo level, mỗi mục tiêu cd 2s.",
+      "q": {
+        "n": "Bật Vết Chân",
+        "aim": "direction",
+        "geo": "dash 5m + single target on path width 0.6m",
+        "power": {
+          "type": "physical",
+          "base": 55,
+          "step": 19,
+          "ratio": "0.9 bonus AD"
+        },
+        "cd": [
+          10,
+          9.5,
+          9,
+          8.5,
+          8
+        ],
+        "cost": [
+          50,
+          55,
+          60,
+          65,
+          70
+        ],
+        "behavior": "Đột kích thẳng, trúng hero đầu, kết thúc ngay sau mục tiêu; không xuyên tường.",
+        "anim": "chồm 4 chân lao rồi quất đuôi",
+        "vfx": "vết chân treo lơ lửng ngắn",
+        "sfx": "chạm đất ba nhịp ngắn"
+      },
+      "rmb": {
+        "n": "Gửi Bóng Đi Trước",
+        "aim": "point",
+        "geo": "decoy circle collision 0.45m at <=6m, no damage",
+        "power": {
+          "type": "none",
+          "base": 0,
+          "step": 0,
+          "ratio": "—"
+        },
+        "cd": [
+          19,
+          18,
+          17,
+          16,
+          15
+        ],
+        "cost": [
+          75,
+          75,
+          75,
+          75,
+          75
+        ],
+        "behavior": "Đặt bóng giả đứng 2.5s, tồn tại tối đa 1. Tái bấm trong 1.5s đổi vị trí nếu LOS và khoảng cách <=8m; bóng không đánh/trụ không target, biến mất nếu hero chết.",
+        "anim": "hầu phất hai thẻ, thẻ dựng thành bóng",
+        "vfx": "silhouette sai một chi tiết có thể nhận ra (đuôi bóng thiếu khớp)",
+        "sfx": "cười giật ngắn + giấy búng"
+      },
+      "e": {
+        "n": "Trốn Qua Khe",
+        "aim": "direction",
+        "geo": "dash 3.5m no damage",
+        "power": {
+          "type": "none",
+          "base": 0,
+          "step": 0,
+          "ratio": "—"
+        },
+        "cd": [
+          16,
+          15,
+          14,
+          13,
+          12
+        ],
+        "cost": [
+          60,
+          60,
+          60,
+          60,
+          60
+        ],
+        "behavior": "Dodge 0.18s ở giữa dash; không untargetable thêm; kháng slow 40% 1s, không phá tường.",
+        "anim": "lách thấp dưới thân địch",
+        "vfx": "vệt dữ liệu hầu chưa hoàn chỉnh",
+        "sfx": "gõ thẻ vang kép"
+      },
+      "r": {
+        "n": "Sân Khấu Thiếu Một Người",
+        "aim": "point",
+        "geo": "circle radius 4.5m range 6m; 3 telegraphed strikes",
+        "power": {
+          "type": "physical",
+          "base": 85,
+          "step": 50,
+          "ratio": "0.7 bonus AD"
+        },
+        "cd": [
+          110,
+          95,
+          80
+        ],
+        "cost": [
+          100,
+          100,
+          100
+        ],
+        "behavior": "Đặt sân khấu 0.8s, t=1.0/1.4/1.8s bóng hầu lao theo ba hình hướng khác nhau; mỗi mục tiêu tối đa 2 hit (hit 2 còn 50%); trúng cả hai gây silence 0.7s; Hầu thật vẫn chịu damage, không vô hình.",
+        "anim": "nhân vật xoay ba tư thế khác nhau, thẻ gỗ lật như cửa sân khấu",
+        "vfx": "ba cổng dữ liệu dựng thấp, bóng có khe khi nhìn kỹ",
+        "sfx": "tiếng cười tách ba phía → im phắc"
+      },
+      "counter": "Bóng không gây damage nên theo dõi tướng thật; stun trước dash; R báo trước ba hướng.",
+      "ai": "mixed newbie: ưu tiên RMB khi thấp HP, không coi decoy là hero thật, Q chỉ sau khi đối thủ dùng dash",
+      "priority": "P1",
+      "inspire": "trickster dân gian + lỗi giả lập + thú leo trèo",
+      "special": "no identical recognizable monkey-king iconography"
+    },
+    {
+      "id": "thon_trieu",
+      "vi": "Thôn Triều",
+      "en": "Tide Devourer",
+      "role": "tank_zone",
+      "tier": "medium",
+      "body": "Thủy quái thân cá voi ngắn như tàu nổi, mõm là cửa thành đá, hai vây như cầu gãy; một phố tinh thể tí hon phát sáng trên lưng.",
+      "palette": "xanh thẳm / rêu đồng / vàng cửa sổ",
+      "form": "horizontal kaiju swims 0.4m above floor; no legs",
+      "rig": "whale spine 13 bones + fins x4 + city static instanced props (non-colliding)",
+      "height": "dài visual 3.7m, rộng 1.75m; combat capsule 1.3m anchored center",
+      "style": "đáng sợ nhưng hiền với sinh vật trú ẩn, không nuốt cả tướng/phóng đại camera",
+      "lore": "Người ta từng xây một khu phố nghiên cứu trên lưng một sinh vật điều áp biển cổ. Khi Đại Tịch nhấn chìm thủ phủ, con vật mang dân cư qua những vùng nước tối hơn bản đồ. Một lần quay lại, mọi căn nhà trên lưng đều còn sáng nhưng không có người. Trong TKT nó vẫn lặp lại lịch trình chuyến cuối như lời hứa chưa hoàn thành.",
+      "hook": "Tank ngang với thành phố trên lưng, chắn lối đi bằng sóng nước nhưng không có thân thể che camera.",
+      "s": [
+        840,
+        122,
+        58,
+        3.8,
+        42,
+        4.4,
+        37,
+        2.1,
+        5.7,
+        0.55,
+        0.015,
+        390,
+        26
+      ],
+      "basic": "Vây đập đơn mục tiêu 2.6m, hit khu vực nhỏ tại contact nhưng damage chỉ target.",
+      "passive": "Mỗi tướng đồng minh trong 5m nhận +6 giáp/+6 MR (không stack với Thôn Triều khác); Thôn Triều nhận +2 giáp mỗi đồng minh gần (tối đa 8). Aura không hoạt động khi chết.",
+      "q": {
+        "n": "Sóng Mạn Thuyền",
+        "aim": "direction",
+        "geo": "cone 95deg length 4.5m",
+        "power": {
+          "type": "magic",
+          "base": 55,
+          "step": 17,
+          "ratio": "0.35 AP"
+        },
+        "cd": [
+          9,
+          8.5,
+          8,
+          7.5,
+          7
+        ],
+        "cost": [
+          50,
+          55,
+          60,
+          65,
+          70
+        ],
+        "behavior": "Quạt sóng gây slow 30% 1.5s; không chặn projectile.",
+        "anim": "mõm nâng rồi hắt sóng dưới bụng",
+        "vfx": "mặt nước quạt 95° chính xác, ánh cửa sổ phản",
+        "sfx": "thuyền nặng va nước"
+      },
+      "rmb": {
+        "n": "Vây Cứu Nạn",
+        "aim": "target ally",
+        "geo": "single ally within 7m",
+        "power": {
+          "type": "shield",
+          "base": 70,
+          "step": 25,
+          "ratio": "0.45 AP"
+        },
+        "cd": [
+          17,
+          16,
+          15,
+          14,
+          13
+        ],
+        "cost": [
+          70,
+          70,
+          75,
+          75,
+          80
+        ],
+        "behavior": "Đặt mái che năng lượng lên đồng minh 2.8s, có thể chắn damage nhưng không thay collision",
+        "anim": "vây phải gập thành mái",
+        "vfx": "vòm ánh nhỏ chỉ ôm target, không tạo circle đánh lừa",
+        "sfx": "vòng chuông cứu hộ xa"
+      },
+      "e": {
+        "n": "Lặn Nông",
+        "aim": "direction",
+        "geo": "dash 3m + line water width 1.4m length 3m",
+        "power": {
+          "type": "magic",
+          "base": 35,
+          "step": 12,
+          "ratio": "0.2 AP"
+        },
+        "cd": [
+          20,
+          19,
+          18,
+          17,
+          16
+        ],
+        "cost": [
+          75,
+          75,
+          75,
+          75,
+          75
+        ],
+        "behavior": "Trượt 3m xuyên minion, để lại lối nước 3s slow 20%; qua tường không được.",
+        "anim": "bụng hạ, vây rẽ thành vệt nước",
+        "vfx": "rãnh nước mặt sàn PBR không thay terrain",
+        "sfx": "bọt áp lực"
+      },
+      "r": {
+        "n": "Phố Đèn Còn Cháy",
+        "aim": "self",
+        "geo": "circle aura radius 6m, 2 pulses",
+        "power": {
+          "type": "magic",
+          "base": 70,
+          "step": 45,
+          "ratio": "0.35 AP"
+        },
+        "cd": [
+          120,
+          105,
+          90
+        ],
+        "cost": [
+          100,
+          100,
+          100
+        ],
+        "behavior": "1s phát còi tàu + đường phố trên lưng bừng sáng; xung 1 t=1.2 gây damage/slow, xung 2 t=2.2 gây damage 60% + knockback 1.3m, đồng minh nhận shield 70/100/130 trong 3s; không gây stun liên tục.",
+        "anim": "thân ngửa lưng lộ thành phố, hai vây dựng, rung ba nhịp",
+        "vfx": "cả phố bật đèn, hai vành sóng nước chính xác 6m, biểu tượng nhà tắt dần",
+        "sfx": "còi tàu trầm → đèn hàng loạt bật → thủy áp nổ → chuông xa"
+      },
+      "counter": "R telegraph rõ 1s; tướng cơ động rời vòng; bắn vào thân dài nhưng collision trung tâm không phình theo visual.",
+      "ai": "ưu tiên đứng trước carry, R khi 2+ địch vào 6m hoặc cứu ít nhất 2 đồng minh",
+      "priority": "P1",
+      "inspire": "cá voi vận tải + thành phố trú ẩn + thảm họa biển cổ",
+      "special": "scale optical only; gameplay collider constant"
+    },
+    {
+      "id": "au_tru",
+      "vi": "Ấu Trụ",
+      "en": "Pillar Child",
+      "role": "fighter_controller",
+      "tier": "high",
+      "body": "Một đứa trẻ ký ức nhỏ mang nón ánh sáng, bên cạnh khối cột khổng lồ treo trên hai vòng truyền lực; cột không có mặt và di chuyển độc lập trong giới hạn tether.",
+      "palette": "trắng ngà / tím mica / đồng sẫm",
+      "form": "two body visual, one gameplay controller, child anchors master hit capsule",
+      "rig": "child humanoid 28bones; pillar 10 actuators; tether spline 2m",
+      "height": "trẻ 1.15m, cột cao 2.8m cách 1.0m; camera ưu tiên anchor trẻ",
+      "style": "cảm giác người bé điều khiển máy cũ nhưng không sao chép mecha có người ngồi",
+      "lore": "Nó không phải đứa trẻ nguyên gốc mà là học viên ký ức cuối cùng được mạng Mạch Trụ lưu dự phòng. Những người chăm sóc trao cho nó một cột bảo vệ có thể tự học. Khi chiến tranh đến, cột từ chối mọi lệnh tấn công cho tới khi học viên dạy nó cách chắn cho người khác. Trận đánh nào nó cũng tìm một người gọi tên mình.",
+      "hook": "Điều khiển avatar quanh thân, đổi vị trí đánh để tạo góc chiến thuật; một ghế, một hitbox hero, không hai sinh mạng.",
+      "s": [
+        680,
+        101,
+        61,
+        4,
+        32,
+        3.7,
+        34,
+        1.8,
+        6,
+        0.64,
+        0.023,
+        470,
+        34
+      ],
+      "basic": "Cột vươn cánh tay máy đánh target tối đa 3.0m tính từ child, single-target; không đánh hai lần vì hai thân.",
+      "passive": "Cột luôn đi theo điểm chỉ cách child <=2.5m; mỗi hit skill từ vị trí cột tạo 1 KHẮC (max 3), đủ 3 thì đòn LMB kế tiếp +35–95 physical theo level và tiêu hết.",
+      "q": {
+        "n": "Lệnh Cột",
+        "aim": "point",
+        "geo": "point range 5m; pillar move bounded tether 2.5m",
+        "power": {
+          "type": "none",
+          "base": 0,
+          "step": 0,
+          "ratio": "—"
+        },
+        "cd": [
+          10,
+          9,
+          8,
+          7,
+          6
+        ],
+        "cost": [
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "behavior": "Lệnh cột trượt tới vị trí hợp lệ <=2.5m từ child, sau 0.3s đặt xuống; không dịch child, cột không có collision cứng.",
+        "anim": "trẻ chỉ tay, hai bánh đẩy kéo cột",
+        "vfx": "hình bóng cột hiện ở điểm đến, dấu tether chính xác",
+        "sfx": "servo đá trượt"
+      },
+      "rmb": {
+        "n": "Vành Bảo Vệ",
+        "aim": "point",
+        "geo": "circle radius 2m centered pillar",
+        "power": {
+          "type": "shield",
+          "base": 55,
+          "step": 23,
+          "ratio": "0.35 AP"
+        },
+        "cd": [
+          15,
+          14,
+          13,
+          12,
+          11
+        ],
+        "cost": [
+          75,
+          75,
+          80,
+          80,
+          85
+        ],
+        "behavior": "Tạo shield 2.2s cho đồng minh trong vòng đúng tại cast, mỗi ally tối đa 1 shield từ cast.",
+        "anim": "trẻ đặt hai tay lên ngực, cột mở vòng",
+        "vfx": "vành tím trong bán kính 2m chỉ ally",
+        "sfx": "tinh thể gõ rỗng"
+      },
+      "e": {
+        "n": "Nện Gối Trụ",
+        "aim": "direction",
+        "geo": "line 4m width 1.4m from pillar",
+        "power": {
+          "type": "physical",
+          "base": 65,
+          "step": 19,
+          "ratio": "0.65 bonus AD"
+        },
+        "cd": [
+          12,
+          11.5,
+          11,
+          10.5,
+          10
+        ],
+        "cost": [
+          60,
+          65,
+          70,
+          75,
+          80
+        ],
+        "behavior": "Cột đập xuống đường chỉ hướng gây slow 25% 1.4s, không phá địa hình.",
+        "anim": "cột gập ba khớp rồi nện, trẻ lùi một bước",
+        "vfx": "vệt chấn mạch thẳng 4m từ cột",
+        "sfx": "khớp khổng lồ đóng một nhịp"
+      },
+      "r": {
+        "n": "Bài Học Cuối Cùng",
+        "aim": "self",
+        "geo": "transform avatar circle impact radius 4m",
+        "power": {
+          "type": "physical",
+          "base": 95,
+          "step": 65,
+          "ratio": "0.85 bonus AD"
+        },
+        "cd": [
+          110,
+          95,
+          80
+        ],
+        "cost": [
+          120,
+          120,
+          120
+        ],
+        "behavior": "0–1.0s hai vòng gom cột vào thân child; t=1.25s cột hóa thân khổng thể trong 6s, nện một lần vào vòng 4m gây damage và knock-up 0.6s; 6s R chỉ thay range LMB thành 3.4m và +12% armor, không cộng HP; sau 6s cột tách ra. Không có hero body thứ hai.",
+        "anim": "từ chỉ tay → cột gập quỳ → ghép giáp → khổng thể nện hai tay",
+        "vfx": "silhouette khổng thể hình cột đôi, chân trẻ vẫn thấy ở lõi, lớp đá PBR",
+        "sfx": "hai tiếng then khóa → trống mạch → nện sâu → tháo khớp"
+      },
+      "counter": "Tấn công child khi cột ngoài vị trí; Q bị giới hạn tether; R báo 1s, slow/leash trước nện.",
+      "ai": "Q giữ cột phía trước; RMB che carry; R khi 2+ địch gần và tránh dùng khi hết máu",
+      "priority": "P1",
+      "inspire": "đứa trẻ robot cộng sự + trò điều khiển hình học + cột cân bằng thế giới",
+      "special": "one authoritative hero; summoned pillar is visual/attack socket only"
+    },
+    {
+      "id": "ke_an_nhip",
+      "vi": "Kẻ Ăn Nhịp",
+      "en": "Beat Eater",
+      "role": "assassin_duelist",
+      "tier": "high",
+      "body": "Kẻ đeo mặt nạ sứ trống rỗng, một chân dài một chân ngắn, quanh tay là ba kim nhịp như thiết bị đo nhịp sinh học của đối thủ.",
+      "palette": "đỏ gạch / đen than / trắng xương",
+      "form": "asymmetric humanoid acrobat; âm thanh lạch cạch theo mỗi bước",
+      "rig": "humanoid asymmetric gait + three articulated baton chains",
+      "height": "1.85m; vũ khí là bộ kim chứ không phải gương",
+      "style": "high-skill duelist học thời điểm đánh, không trộm ultimate hay đổi hình",
+      "lore": "Một vệ sĩ không thể nhận ra khuôn mặt được giao nhiệm vụ đo thời điểm phản bội. Hắn lưu nhịp tay và hơi thở của từng người, không lưu tên. Kể từ Đại Tịch, hắn tìm những đòn đánh chưa kịp phát ra để hoàn tất bản ghi. Cái tên Kẻ Ăn Nhịp do các binh sĩ bịa ra để không phải gọi đúng chức vụ của hắn.",
+      "hook": "Đấu sĩ sát thủ đọc nhịp tấn công đối thủ rồi phản chiêu; người chơi thắng bằng timing chứ không cướp skill.",
+      "s": [
+        595,
+        90,
+        65,
+        4.2,
+        27,
+        3.2,
+        29,
+        1.8,
+        6.35,
+        0.71,
+        0.029,
+        380,
+        28
+      ],
+      "basic": "Kim thép gõ ngắn 2.1m, hit single-target 2 nhịp animation nhưng chỉ một damage event.",
+      "passive": "Khi địch tung skill trong 6m, hiện 1 DẤU NHỊP trên mục tiêu 3s (mỗi địch 7s ICD). Đánh thường lên mục tiêu có dấu +35–85 damage vật lý theo level và giảm Q CD 1.5s; không kích hoạt từ cast của đồng minh.",
+      "q": {
+        "n": "Gõ Trễ",
+        "aim": "target",
+        "geo": "target range 3m",
+        "power": {
+          "type": "physical",
+          "base": 58,
+          "step": 18,
+          "ratio": "0.75 bonus AD"
+        },
+        "cd": [
+          9,
+          8.5,
+          8,
+          7.5,
+          7
+        ],
+        "cost": [
+          55,
+          55,
+          60,
+          60,
+          65
+        ],
+        "behavior": "Đâm sau delay 0.25s; vào địch có Dấu Nhịp gây thêm slow 25% 1s; không teleport.",
+        "anim": "kim trượt ngược rồi bật thẳng",
+        "vfx": "vệt sơn đỏ nhỏ một điểm",
+        "sfx": "kim kim loại méo nhịp"
+      },
+      "rmb": {
+        "n": "Nửa Phách",
+        "aim": "self",
+        "geo": "parry front cone 100deg 0.45s",
+        "power": {
+          "type": "none",
+          "base": 0,
+          "step": 0,
+          "ratio": "—"
+        },
+        "cd": [
+          18,
+          17,
+          16,
+          15,
+          14
+        ],
+        "cost": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "behavior": "Trong 0.45s giảm 55% damage từ phía trước, nếu chặn được đòn nhận 1 Dấu Nhịp lên kẻ gây damage (ICD 8s); không block CC cứng.",
+        "anim": "hai kim bắt chéo trước mặt",
+        "vfx": "mặt quạt 100° chỉ là parry front visual, không vẽ AoE",
+        "sfx": "hai kim va chát"
+      },
+      "e": {
+        "n": "Đổi Phách",
+        "aim": "direction",
+        "geo": "dash 3.8m no damage",
+        "power": {
+          "type": "none",
+          "base": 0,
+          "step": 0,
+          "ratio": "—"
+        },
+        "cd": [
+          16,
+          15,
+          14,
+          13,
+          12
+        ],
+        "cost": [
+          70,
+          70,
+          70,
+          70,
+          70
+        ],
+        "behavior": "Lách sang góc chọn, sau dash LMB đầu trong 2s +20% attack speed; qua tường không được.",
+        "anim": "khom gối lệch, xoay một vòng",
+        "vfx": "vạch nhịp ngắn quỹ đạo dash",
+        "sfx": "nhịp gõ hụt"
+      },
+      "r": {
+        "n": "Khoảng Lặng Giữa Hai Nhịp",
+        "aim": "target",
+        "geo": "target range 6m, single target ritual",
+        "power": {
+          "type": "physical",
+          "base": 110,
+          "step": 75,
+          "ratio": "1.1 bonus AD"
+        },
+        "cd": [
+          105,
+          90,
+          75
+        ],
+        "cost": [
+          100,
+          100,
+          100
+        ],
+        "behavior": "Đánh dấu mục tiêu sau tell 0.65s, 1s sau chém đúng khi mục tiêu tung skill tiếp theo hoặc hết 1.8s: gây damage; nếu đối thủ cast trong cửa sổ này, damage +25% và silence 0.65s; không ép đối phương cast, không copy skill.",
+        "anim": "ba kim đóng thành vòng đo, một kim đứng im rồi bổ mạnh",
+        "vfx": "đồng hồ ba nhịp treo quanh target, nửa vòng sáng tắt ở impact",
+        "sfx": "nhịp metronome chậm → im lặng → cú gõ trầm"
+      },
+      "counter": "Ngừng cast khi bị R đánh dấu để tránh bonus; parry chỉ phía trước; kit yếu khi địch đứng xa.",
+      "ai": "policy average nhận dấu; newbie có 200–350ms phản ứng; không đọc server tương lai",
+      "priority": "P2",
+      "inspire": "võ thuật nhịp phản công + máy đo ký ức + đấu sĩ lệch bước",
+      "special": "distinct from Bach Dien: no copied ult or mirrors"
+    }
+  ]
+}
