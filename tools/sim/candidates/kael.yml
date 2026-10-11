@@ -1,0 +1,54 @@
+# ỨNG VIÊN WAVE 1 · #39 Kael · Cuồng Đao · Đấu Sĩ Đánh Tay Skirmisher
+heroes:
+  kael:
+    role: fighter_skirmisher
+    tuning: { hp: 0.98, dmg: 1.04 }
+    resource: none
+    stats: { hp: 680, resource: 0, ad: 68, ap: 0, armor: 35, mr: 30, moveSpeed: 6.3, attackSpeed: 0.68, hpRegen: 1.6, resourceRegen: 0 }
+    growth: { hp: 92, resource: 0, ad: 4.4, ap: 0, armor: 3.8, mr: 1.5, moveSpeed: 0, attackSpeed: 0.024, hpRegen: 0.15, resourceRegen: 0 }
+    passive:
+      type: every_nth_hit          # Cuồng Nhịp: Đòn đánh liên tiếp tích lũy tốc độ đánh và hồi máu nhỏ
+      n: 2
+      bonusDamage: { type: physical, base: 18, ad: 0.35 }
+      effects: [{ heal: 15 }]
+    lmb: { aim: melee, range: 1.7 }   # Đánh thường bằng song đao cự ly gần
+    q:    # Cuồng Trảm Lướt: lướt chém xuyên mục tiêu đầu tiên
+      aim: skillshot
+      width: 1.4
+      speed: 26
+      range: 6.5
+      windup: 0.1
+      cooldown: [9, 8.5, 8, 7.5, 7]
+      cost: [0, 0, 0, 0, 0]
+      dash: { distance: 6.5, toward: true }
+      damage: { type: physical, base: [60, 95, 130, 165, 200], bonusAd: 0.85 }
+    rmb:  # Song Đao Toái Kích: vung song đao chém kép làm chậm đối thủ
+      aim: area
+      radius: 3.2
+      range: 0
+      windup: 0.15
+      cooldown: [11, 10.5, 10, 9.5, 9]
+      cost: [0, 0, 0, 0, 0]
+      hits: 2
+      damage: { type: physical, base: [40, 65, 90, 115, 140], ad: 0.4 }
+      effects: [{ slow: 0.3, duration: 1.0 }]
+    e:    # Kích Thích Huyết Mạch: tăng tốc độ đánh và nhận lượng khiên phản ứng
+      aim: self
+      windup: 0
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [0, 0, 0, 0, 0]
+      shield: { base: [60, 95, 130, 165, 200], duration: 2.5 }
+    r:    # Huyết Cuồng Phong Ma: chuỗi chém liên hoàn tốc độ cao
+      aim: area
+      radius: 4.0
+      range: 4.5
+      delay: 0.2
+      windup: 0.2
+      cooldown: [70, 60, 50]
+      cost: [0, 0, 0]
+      dash: { distance: 4.5, toward: true }
+      hits: 3
+      damage: { type: physical, base: [80, 130, 180], bonusAd: 0.6 }
+      effects: [{ slow: 0.35, duration: 1.5 }]
+builds:
+  kael: [keeneye, thornseed_quiver, qua_mach, heartforge, buoc_van]

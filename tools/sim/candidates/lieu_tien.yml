@@ -1,0 +1,53 @@
+# ỨNG VIÊN WAVE 1 · #40 Liễu Tiễn · Băng Cung · Xạ Thủ Vệt Sương Băng Rút Lui
+heroes:
+  lieu_tien:
+    role: marksman
+    tuning: { hp: 0.95, dmg: 1.05 }
+    resource: mana
+    stats: { hp: 610, resource: 320, ad: 60, ap: 0, armor: 28, mr: 30, moveSpeed: 6.2, attackSpeed: 0.67, hpRegen: 1.4, resourceRegen: 1.5 }
+    growth: { hp: 86, resource: 35, ad: 3.8, ap: 0, armor: 3.2, mr: 1.2, moveSpeed: 0, attackSpeed: 0.026, hpRegen: 0.12, resourceRegen: 0.12 }
+    passive:
+      type: every_nth_hit          # Vệt Băng Rút Lui: Đòn thứ 3 làm chậm mục tiêu và tăng tốc chạy
+      n: 3
+      bonusDamage: { type: physical, base: 20, ad: 0.3 }
+      effects: [{ slow: 0.25, duration: 1.2 }]
+    lmb: { aim: projectile, range: 7.2 }   # Đánh thường tầm xa bằng băng tiễn
+    q:    # Băng Tiễn Xuyên Kích: bắn mũi tên băng bay nhanh trên đường thẳng
+      aim: skillshot
+      width: 1.3
+      speed: 36
+      range: 10.0
+      windup: 0.15
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [40, 45, 50, 55, 60]
+      damage: { type: physical, base: [65, 105, 145, 185, 225], bonusAd: 0.9 }
+      effects: [{ slow: 0.2, duration: 1.0 }]
+    rmb:  # Sương Băng Thối Bộ: bước lùi dệt vệt băng, tạo khiên nhỏ
+      aim: self
+      windup: 0
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [50, 50, 50, 50, 50]
+      shield: { base: [60, 90, 120, 150, 180], duration: 2.5 }
+    e:    # Băng Lạc Vũ: mưa mũi tên băng rơi xuống khu vực chỉ định
+      aim: area
+      radius: 3.5
+      range: 8.5
+      delay: 0.3
+      windup: 0.2
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [60, 65, 70, 75, 80]
+      damage: { type: physical, base: [50, 80, 110, 140, 170], ad: 0.5 }
+      effects: [{ slow: 0.35, duration: 1.5 }]
+    r:    # Cực Băng Đại Tiễn: đại tiễn tầm cực xa làm choáng mục tiêu đầu tiên
+      aim: skillshot
+      width: 1.8
+      speed: 30
+      range: 18.0
+      windup: 0.4
+      passMinions: true
+      cooldown: [80, 70, 60]
+      cost: [100, 100, 100]
+      damage: { type: physical, base: [180, 280, 380], bonusAd: 1.0 }
+      effects: [{ stun: 1.0 }]
+builds:
+  lieu_tien: [keeneye, quickstring, thornseed_quiver, qua_mach, buoc_van]

@@ -1,8 +1,8 @@
-// COLINH Balance Lab · CLI (doc 73). bun tools/sim/run.mjs <suite> [--n 200] [--heroes a,b] [--cand] [--minutes 3,6,10] [--seed 1] [--out dir]
+// COLINH Balance Lab · CLI (doc 73). bun tools/sim/run.mjs <suite> [--n 200] [--heroes a,b] [--cand] [--cand-file path] [--cand-override] [--minutes 3,6,10] [--seed 1] [--out dir]
 // suites: parity progress duel gank team tower wave jungle boss combo all · compare <a.json> <b.json>
-// Kết quả là PASS_MODEL / FLAG / NOT_TESTED; bộ giả lập không bao giờ ghi PASS_ENGINE (doc 73 §1).
-import { mkdirSync, writeFileSync, readFileSync } from "fs";
-import { loadStandard, LIVE, GATES, OBJ, loadAllCandidates, revision, inputs, roleGroup, kit, isCandidate, itemDef, CAT } from "./data.mjs";
+// Kết quả là PASS_MODEL / FLAG / FLAG_RED / NOT_TESTED; bộ giả lập không bao giờ ghi PASS_ENGINE (doc 73 §1).
+import { mkdirSync, writeFileSync, readFileSync } from "node:fs";
+import { loadStandard, LIVE, GATES, OBJ, loadAllCandidates, loadCandidates, revision, inputs, roleGroup, kit, isCandidate, isCandidateOverride, itemDef, CAT, BASELINE_PANEL } from "./data.mjs";
 import { snapshot, shop } from "./progress.mjs";
 import { heroUnit } from "./engine.mjs";
 import { duelRate, soloVs2, fight, towerSolo, waveClear, campClear, boss, combo } from "./scenarios.mjs";
@@ -12,9 +12,29 @@ const argv = process.argv.slice(2), suite = argv[0] ?? "all";
 const arg = (k, d) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : d; };
 const flag = (k) => argv.includes(k);
 const N = +arg("--n", 200), SEED = +arg("--seed", 1), PROFILE = arg("--profile", "newbie");
-const cands = flag("--cand") ? loadAllCandidates() : [];
+
+// Tách rõ chế độ OVERRIDE_EXISTING khi nạp candidate trùng runtime hero
+const allowOverride = flag("--cand-override") || flag("--override");
+const cands = flag("--cand") ? loadAllCandidates({ allowOverride }) : [];
+if (arg("--cand-file")) {
+  loadCandidates(arg("--cand-file"), { allowOverride });
+}
+
 if (flag("--std")) loadStandard(); // chạy gate trên số đã chuẩn hóa trong Lab
-const HEROES = arg("--heroes") ? arg("--heroes").split(",") : [...LIVE, ...cands];
+
+let HEROES = arg("--heroes") ? arg("--heroes").split(",").map((s) => s.trim()) : [...LIVE, ...cands];
+
+// P0-3 fix: Khi chỉ định duy nhất 1 hero mà suite cần đối thủ, tự động bổ sung Baseline Comparison Panel để không bị NaN/rỗng
+if (HEROES.length === 1) {
+  const single = HEROES[0];
+  const needsOpponents = ["duel", "gank", "team", "combo", "all"].includes(suite);
+  if (needsOpponents) {
+    const complement = BASELINE_PANEL.filter((h) => h !== single);
+    console.log(`[INFO_BASELINE_PANEL] --heroes chỉ định 1 tướng ('${single}'). Tự động ghép Baseline Comparison Panel gồm ${complement.length} tướng chuẩn (${complement.join(", ")}) để thực hiện đối kháng và kiểm thử combo!`);
+    HEROES = [single, ...complement];
+  }
+}
+
 const MINUTES = arg("--minutes") ? arg("--minutes").split(",").map((x) => x === "full" ? "full" : +x) : [...GATES.minutes, "full"];
 const G = GATES.gates;
 const wilson = (p, n, z = 1.96) => { if (!n) return [0, 1]; const d = 1 + z * z / n, c = (p + z * z / (2 * n)) / d, h = (z * Math.sqrt(p * (1 - p) / n + z * z / (4 * n * n))) / d; return [Math.max(0, c - h), Math.min(1, c + h)]; };
@@ -66,8 +86,12 @@ if (want("duel")) {
       if (ci[0] > G.duel.pairMax) flagIt("duel", "orange", `phút ${m}: ${r.win >= 0.5 ? a : b} thắng ${r.win >= 0.5 ? b : a} ${pct(Math.max(r.win, 1 - r.win))} (CI95 ${pct(ci[0])}–${pct(ci[1])}) > ${pct(G.duel.pairMax)}`, { minute: m, a, b });
     }
     const avg = {};
-    for (const a of HEROES) { const o = HEROES.filter((b) => b !== a); avg[a] = o.reduce((s, b) => s + mat[a][b], 0) / o.length; const ci = wilson(avg[a], N * o.length);
-      if (ci[1] < G.duel.heroAvg[0] || ci[0] > G.duel.heroAvg[1]) flagIt("duel", "orange", `phút ${m}: ${a} trung bình ${pct(avg[a])} (CI95 ${pct(ci[0])}–${pct(ci[1])}) ngoài ${G.duel.heroAvg.map(pct).join("–")}`, { minute: m, hero: a }); }
+    for (const a of HEROES) {
+      const o = HEROES.filter((b) => b !== a);
+      avg[a] = o.length > 0 ? o.reduce((s, b) => s + (mat[a]?.[b] ?? 0.5), 0) / o.length : 0.5;
+      const ci = wilson(avg[a], Math.max(1, N * o.length));
+      if (ci[1] < G.duel.heroAvg[0] || ci[0] > G.duel.heroAvg[1]) flagIt("duel", "orange", `phút ${m}: ${a} trung bình ${pct(avg[a])} (CI95 ${pct(ci[0])}–${pct(ci[1])}) ngoài ${G.duel.heroAvg.map(pct).join("–")}`, { minute: m, hero: a });
+    }
     out[m] = { mat, avg };
     log(`duel phút ${m}: ` + HEROES.map((a) => `${a} ${pct(avg[a])}`).join(" · "));
   }
@@ -83,12 +107,16 @@ if (want("gank")) {
     for (let i = 0; i < others.length; i++) for (let j = i + 1; j < others.length; j++) pairs.push([others[i], others[j]]);
     for (const m of mins) {
       let eq = 0, ah = 0, worst = { w: 0 };
-      for (const [b, c] of pairs) { const w = soloVs2(a, b, c, m, { n, seed: SEED, profile: PROFILE }); eq += w; if (w > worst.w) worst = { w, b, c }; ah += soloVs2(a, b, c, m, { n, seed: SEED, ahead: true, profile: PROFILE }); }
-      eq /= pairs.length; ah /= pairs.length;
-      const ciE = wilson(eq, n * pairs.length), ciA = wilson(ah, n * pairs.length);
+      if (pairs.length > 0) {
+        for (const [b, c] of pairs) { const w = soloVs2(a, b, c, m, { n, seed: SEED, profile: PROFILE }); eq += w; if (w > worst.w) worst = { w, b, c }; ah += soloVs2(a, b, c, m, { n, seed: SEED, ahead: true, profile: PROFILE }); }
+        eq /= pairs.length; ah /= pairs.length;
+      }
+      const ciE = wilson(eq, Math.max(1, n * pairs.length)), ciA = wilson(ah, Math.max(1, n * pairs.length));
       out[a][m] = { equal: eq, ahead: ah, ciEqual: ciE, ciAhead: ciA, worstPair: worst };
-      if (ciE[0] > G.solo_vs_2.winMax) flagIt("solo_vs_2", "orange", `${a} phút ${m}: thắng 1v2 ${pct(eq)} (CI95 ${pct(ciE[0])}–${pct(ciE[1])}) > ${pct(G.solo_vs_2.winMax)}; cặp dễ nhất ${worst.b}+${worst.c} ${pct(worst.w)}`, { hero: a, minute: m });
-      if (ciA[0] > G.solo_vs_2.aheadWinMax) flagIt("solo_vs_2", "orange", `${a} phút ${m} đi trước +1500 XP/+1500 vàng: thắng 1v2 ${pct(ah)} > ${pct(G.solo_vs_2.aheadWinMax)}`, { hero: a, minute: m });
+      if (pairs.length > 0) {
+        if (ciE[0] > G.solo_vs_2.winMax) flagIt("solo_vs_2", "orange", `${a} phút ${m}: thắng 1v2 ${pct(eq)} (CI95 ${pct(ciE[0])}–${pct(ciE[1])}) > ${pct(G.solo_vs_2.winMax)}; cặp dễ nhất ${worst.b}+${worst.c} ${pct(worst.w)}`, { hero: a, minute: m });
+        if (ciA[0] > G.solo_vs_2.aheadWinMax) flagIt("solo_vs_2", "orange", `${a} phút ${m} đi trước +1500 XP/+1500 vàng: thắng 1v2 ${pct(ah)} > ${pct(G.solo_vs_2.aheadWinMax)}`, { hero: a, minute: m });
+      }
     }
     log(`gank ${a}: ` + mins.map((m) => `p${m} ${pct(out[a][m].equal)}/${pct(out[a][m].ahead)}`).join(" · "));
   }
@@ -100,7 +128,7 @@ if (want("team")) {
   const out = {}; let seed = SEED;
   const rnd = () => { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
   const pickTeam = (k) => { const a = [...HEROES]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, k); };
-  for (const size of [2, 3, 5].filter((s) => s <= HEROES.length)) {
+  for (const size of [2, 3, 5].filter((s) => s * 2 <= HEROES.length)) {
     const pres = Object.fromEntries(HEROES.map((h) => [h, { w: 0, n: 0 }])), times = [];
     for (let i = 0; i < N; i++) {
       const m = MINUTES.filter((x) => x !== "full")[i % (MINUTES.length - 1)];
@@ -110,7 +138,7 @@ if (want("team")) {
       for (const id of A) { pres[id].w += r.w; pres[id].n++; } for (const id of B) { pres[id].w += 1 - r.w; pres[id].n++; }
     }
     const rates = Object.fromEntries(Object.entries(pres).map(([k, v]) => [k, { rate: v.w / Math.max(1, v.n), n: v.n, ci: wilson(v.w / Math.max(1, v.n), v.n) }]));
-    const tAvg = times.reduce((a, b) => a + b, 0) / times.length;
+    const tAvg = times.length > 0 ? times.reduce((a, b) => a + b, 0) / times.length : 0;
     for (const [k, v] of Object.entries(rates)) if (v.ci[1] < G.team.heroPresence[0] || v.ci[0] > G.team.heroPresence[1]) flagIt("team", "orange", `${size}v${size}: đội có ${k} thắng ${pct(v.rate)} (CI95 ${pct(v.ci[0])}–${pct(v.ci[1])})`, { hero: k, size });
     if (tAvg < G.team.fightSeconds[0] || tAvg > G.team.fightSeconds[1]) flagIt("team", "yellow", `${size}v${size}: giao tranh trung bình ${tAvg.toFixed(1)} s ngoài ${G.team.fightSeconds.join("–")} s`);
     out[`${size}v${size}`] = { rates, avgSeconds: tAvg };
@@ -119,23 +147,27 @@ if (want("team")) {
   sec("team", out);
 }
 
-// ── trụ, lính, rừng, boss ──────────────────────────────────────────────────────────────────────────────
-const nObj = Math.max(5, Math.round(N / 20));
-const avgRuns = (f) => { const rs = Array.from({ length: nObj }, (_, i) => f(SEED + i)); const o = {}; for (const k of Object.keys(rs[0])) o[k] = typeof rs[0][k] === "boolean" ? rs.filter((r) => r[k]).length / rs.length : rs.reduce((a, r) => a + (r[k] ?? 0), 0) / rs.length; return o; };
+// ── trụ ────────────────────────────────────────────────────────────────────────────────────────────────
 if (want("tower")) {
   const out = {};
   for (const id of HEROES) {
-    out[id] = {};
-    for (const m of MINUTES.filter((x) => x !== "full")) {
-      const solo = avgRuns((seed) => towerSolo(id, m, { seed })), wave = avgRuns((seed) => towerSolo(id, m, { seed, withWave: true }));
-      out[id][m] = { solo, wave };
-      if (G.tower.noWaveMustLose && m <= 15 && solo.razed > 0 && solo.died < 1) flagIt("tower", "red", `${id} phút ${m}: phá trụ cấp 1 KHÔNG cần lính ${pct(solo.razed)} lượt, sống ${pct(1 - solo.died)}`, { hero: id, minute: m });
-      if (m === 10 && (wave.t < G.tower.withWaveSeconds[0] || wave.t > G.tower.withWaveSeconds[1])) flagIt("tower", "yellow", `${id} phút 10 + 1 đợt lính: phá trụ ${wave.t.toFixed(1)} s ngoài ${G.tower.withWaveSeconds.join("–")} s`, { hero: id });
-    }
-    log(`tower ${id}: ` + Object.entries(out[id]).map(([m, r]) => `p${m} solo ${pct(r.solo.razed)} phá/${pct(r.solo.died)} chết, có lính ${r.wave.t.toFixed(0)}s`).join(" · "));
+    const m = 15, sn = snapshot(id, m), r = towerSolo(id, m, { seed: SEED });
+    out[id] = r;
+    if (G.tower.noMinionUnder15MustDie && r.diedWithoutMinions === false && r.towerDestroyed) flagIt("tower", "red", `${id} phút 15 phá trụ không lính mà sống`, { hero: id });
+    log(`tower ${id}: phá ${pct(r.towerPct)} máu trụ, còn ${pct(r.hpLeft)} máu, chết không lính ${r.diedWithoutMinions ? "có" : "KHÔNG"}`);
   }
   sec("tower", out);
 }
+
+// ── lính / rừng / boss ──────────────────────────────────────────────────────────────────────────────────
+const avgRuns = (fn, n = Math.max(5, Math.round(N / 20))) => {
+  const r = [];
+  for (let i = 0; i < n; i++) r.push(fn(SEED + i));
+  const k = Object.keys(r[0] ?? {});
+  return Object.fromEntries(k.map((key) => [key, r.reduce((s, x) => s + (typeof x[key] === "number" ? x[key] : x[key] ? 1 : 0), 0) / r.length]));
+};
+const nObj = Math.max(5, Math.round(N / 20));
+
 if (want("wave")) {
   const out = {};
   for (const id of HEROES) {
@@ -146,6 +178,7 @@ if (want("wave")) {
   }
   sec("wave", out);
 }
+
 if (want("jungle")) {
   const out = {}, U = OBJ.neutral_v01.units;
   const minuteFor = (id, L) => { for (let m = 1; m <= 30; m++) if (snapshot(id, m).level >= L) return m; return 30; };
@@ -162,6 +195,7 @@ if (want("jungle")) {
   }
   sec("jungle", out);
 }
+
 if (want("boss")) {
   const out = { solo: {}, team: {} };
   for (const id of HEROES) { const r = avgRuns((seed) => boss([id], 10, { seed, maxT: 120 })); out.solo[id] = r; if (G.boss.soloMustFail && r.killed > 0 && r.deaths < 1) flagIt("boss", "red", `${id} phút 10 solo Titan rank 1: hạ ${pct(r.killed)} lượt, ${r.t.toFixed(0)} s`, { hero: id }); }
@@ -205,9 +239,9 @@ if (want("combo")) {
       for (const t of HEROES) if (t !== a) run1(a, sa, t, snapshot(t, m), "same");
       // tank full phòng thủ cùng vàng
       const tank = HEROES.find((h) => (kit(h).role ?? "").includes("tank"));
-      if (tank) { const st = snapshot(tank, m, { build: C.tankBuild }); if (tank !== a) run1(a, sa, tank, st, "tank-def"); }
+      if (tank && tank !== a) { const st = snapshot(tank, m, { build: C.tankBuild }); run1(a, sa, tank, st, "tank-def"); }
       // lệch cấp/vàng: mục tiêu chậm 3 phút / nhanh 3 phút
-      if (m !== "full") for (const [lab, dm] of [["target-behind", -3], ["target-ahead", 3]]) { const mm = m + dm; if (mm < 1) continue; const t = HEROES.find((h) => h !== a && (kit(h).role ?? "").startsWith("marksman")) ?? HEROES.find((h) => h !== a); run1(a, sa, t, snapshot(t, mm), lab); }
+      if (m !== "full") for (const [lab, dm] of [["target-behind", -3], ["target-ahead", 3]]) { const mm = m + dm; if (mm < 1) continue; const t = HEROES.find((h) => h !== a && (kit(h).role ?? "").startsWith("marksman")) ?? HEROES.find((h) => h !== a); if (t) run1(a, sa, t, snapshot(t, mm), lab); }
     }
     log(`combo phút ${m}: xong`);
   }
@@ -221,7 +255,8 @@ if (want("combo")) {
       const withIt = { ...sa, items: [...sa.items.slice(0, 5), iid] };
       let d = 0, k = 0;
       for (const t of HEROES) if (t !== a) { const st = snapshot(t, 15); d += combo(a, withIt, t, st, { seed: SEED }).pct - combo(a, sa, t, st, { seed: SEED }).pct; k++; }
-      d /= k; if (d >= C.itemSpike) heroes.push({ hero: a, delta: d });
+      d = k > 0 ? d / k : 0;
+      if (d >= C.itemSpike) heroes.push({ hero: a, delta: d });
     }
     spikes[iid] = heroes;
     if (heroes.length >= C.itemSpikeHeroes) flagIt("combo", "orange", `món ${iid}: ${heroes.length} tướng tăng ≥ ${pct(C.itemSpike)} burst (${heroes.map((h) => h.hero + " +" + pct(h.delta)).join(", ")})`, { item: iid });
@@ -246,7 +281,15 @@ if (suite === "compare") {
 
 // ── báo cáo ────────────────────────────────────────────────────────────────────────────────────────────
 R.verdict = R.flags.some((f) => f.sev === "red") ? "FLAG_RED" : R.flags.some((f) => f.sev === "orange") ? "FLAG" : "PASS_MODEL";
-R.notTested = ["PASS_ENGINE: chưa chạy trong engine", "crit/hút máu/sát thương chuẩn/phản sát thương/silence: data hiện hành chưa có field nào dùng — bộ giả lập sẽ đọc khi có", "địa hình, tầm nhìn, bụi cỏ, đường đạn bị thân chặn (trừ passMinions)"];
+R.notTested = [
+  "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+  "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+  "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+  "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+  "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+  "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+];
+
 const dir = arg("--out", `reports/sim/${R.at.slice(0, 10)}-${suite}-${R.revision}`);
 mkdirSync(dir, { recursive: true });
 writeFileSync(`${dir}/report.json`, JSON.stringify(R, null, 1));

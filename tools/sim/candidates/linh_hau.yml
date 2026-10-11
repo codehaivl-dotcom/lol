@@ -1,0 +1,53 @@
+# ỨNG VIÊN WAVE 1 · #38 Linh Hầu · Cổ Thần Trượng · Đấu Sĩ Biến Điệu Tầm Trượng
+heroes:
+  linh_hau:
+    role: fighter
+    tuning: { hp: 1.05, dmg: 0.98 }
+    resource: none
+    stats: { hp: 740, resource: 0, ad: 65, ap: 0, armor: 38, mr: 32, moveSpeed: 6.2, attackSpeed: 0.65, hpRegen: 1.8, resourceRegen: 0 }
+    growth: { hp: 98, resource: 0, ad: 4.0, ap: 0, armor: 4.0, mr: 1.6, moveSpeed: 0, attackSpeed: 0.018, hpRegen: 0.16, resourceRegen: 0 }
+    passive:
+      type: every_nth_hit          # Thần Trượng Biến Điệu: Đòn thứ 3 vươn dài nện đất gây thêm sát thương và làm chậm
+      n: 3
+      bonusDamage: { type: physical, base: 25, ad: 0.45 }
+      effects: [{ slow: 0.3, duration: 1.2 }]
+    lmb: { aim: melee, range: 2.2 }   # Đánh thường bằng trường trượng tầm trung
+    q:    # Trượng Kích Xuyên Phá: đâm trượng tới trước gây sát thương vật lý
+      aim: skillshot
+      width: 1.5
+      speed: 25
+      range: 7.0
+      windup: 0.15
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [55, 90, 125, 160, 195], bonusAd: 0.8 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
+    rmb:  # Trượng Thủ Nghinh Phong: chống trượng tạo lớp khiên năng lượng
+      aim: self
+      windup: 0
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [0, 0, 0, 0, 0]
+      shield: { base: [75, 115, 155, 195, 235], maxHp: 0.06, duration: 3.0 }
+    e:    # Hoành Tảo Bát Phương: quét trượng vòng quanh người
+      aim: area
+      radius: 3.8
+      delay: 0.1
+      range: 0
+      windup: 0.1
+      cooldown: [9, 8.5, 8, 7.5, 7]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [50, 80, 110, 140, 170], ad: 0.6 }
+      effects: [{ slow: 0.2, duration: 1.0 }]
+    r:    # Cổ Thần Nộ Phách: nhảy lên nện thẳng trượng xuống đất tạo chấn động
+      aim: area
+      radius: 4.5
+      range: 6.0
+      delay: 0.4
+      windup: 0.3
+      cooldown: [75, 65, 55]
+      cost: [0, 0, 0]
+      dash: { distance: 6.0, toward: true }
+      damage: { type: physical, base: [160, 260, 360], bonusAd: 1.1 }
+      effects: [{ stun: 0.8 }]
+builds:
+  linh_hau: [qua_mach, heartforge, oathguard_plate, an_tinh, buoc_van]
