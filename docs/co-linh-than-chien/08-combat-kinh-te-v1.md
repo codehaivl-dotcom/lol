@@ -1,5 +1,8 @@
 # Combat, tiến trình, objective và kinh tế V1
 
+> **[USER LOCK — 2026-10-11 / supersession]:** **Q/W/E/R** là bốn slot kỹ năng; **D** = Dash chung; R Ultimate; không còn LMB/RMB làm slot skill. Bảng điều khiển, rank và các trích dẫn LMB/RMB/V/Space lịch sử bên dưới chưa cập nhật runtime, không còn là nguồn xác định keybinding cho roster mới. Theo [91](91-khoa-input-qwer-d.md). Basic Attack là hành động độc lập.
+
+
 **Đơn vị:** mét, giây, HP, vàng nội bộ `g`, XP.  
 **Khung:** game mới. Mọi số dưới đây là **giá trị khởi điểm** của Cổ Linh, chốt bằng mô phỏng (04 §3) rồi chuyển vào `scripts/lib/data/*.yml`, nơi trở thành canonical. Nhãn theo README: [V1 SPEC], [THAM KHẢO], [TBD-SIM]. Quyết định D1–D12 ở 10 đã chốt.
 
