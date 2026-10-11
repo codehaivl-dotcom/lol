@@ -1,86 +1,76 @@
-# 99 · Cổ Đăng Thảo / Đăng Mộc (Mok) — Master Concept Bible & Hội Đồng Thẩm Định Toàn Diện
+# 99 · Đăng Mộc / Mok — Concept Bible V2 (Tinh Giản & Khóa Core Gameplay)
 
-**Thời điểm ban hành:** 12/10/2026  
-**Trạng thái tài liệu:** `SCOUT_MASTER_BIBLE / RATIFIED_BY_7_ROLES / PENDING_OWNER_FINAL_APPROVAL`  
-**Hội đồng thẩm định:** 7 Thành viên độc lập (Gameplay, Archetype, AI Pipeline, UX/Camera, Balance, IP Risk, Marketing).  
-**Đầu vào đối soát:** Gợi ý của Owner về Archetype Trinh Sát từ tam giác *Maokai + Teemo + Lux*.
+**Trạng thái tài liệu:** `CONCEPT_REWRITE_V2 / SCOUT_CORE_ONLY / PENDING_OWNER_FINAL_REVIEW`  
+**Nhóm phân loại:** `Keep / Needs Rewrite` (Ứng cử viên Hỗ Trợ / Trinh Sát)  
+**Tên làm việc thống nhất:** **Đăng Mộc / Mok** (Tên cũ "Sylva" hay "Cổ Đăng Thảo" chỉ mang tính tham khảo lịch sử).  
+**Nguyên tắc sửa đổi:** Cắt bỏ toàn bộ tính năng thừa (bẻ đạn, lướt xuyên tường, ngụy trang, trói toàn vùng, chiếm nút D); gỡ các tuyên bố kỹ thuật và marketing chưa kiểm chứng; tập trung vào **một Core Toy duy nhất: Đặt đèn & Quyết định Giữ hay Tiêu thụ đèn**.
 
 ---
 
-## 1. Bản Đồ Hội Tụ Của 7 Chuyên Gia (The 7-Role Consensus & Guardrails)
+## 1. Player Fantasy Cốt Lõi
+> **"Tôi pick Mok vì tôi muốn soi trước nơi nguy hiểm, đặt đèn ở vị trí thông minh và khiến đối thủ phải trả giá khi cố phục kích đồng đội."**
+
+Mok không phải là sát thủ mở giao tranh, không phải pháp sư trói diện rộng, và không phải cỗ máy bảo kê toàn năng. Mok là một **Trinh Sát Tác Chiến Bằng Cổ Đăng (Combat Lantern Scout)** — kẻ biến thông tin bản đồ thành lợi thế chiến thuật cụ thể cho toàn đội.
+
+---
+
+## 2. Silhouette & Nhận Diện Thị Giác
+- **Hình thể:** Thực thể thực vật cơ khí cổ sinh (Biophilic Automaton) nhỏ gọn, tạo thành từ các khối gỗ hóa thạch màu hổ phách kết hợp khung đồng cổ oxy hóa.
+- **Vũ khí / Đặc trưng nhận diện:** Một **Nhánh Đăng Mạch** vươn từ sau lưng qua vai, treo lơ lửng một chiếc **Cổ Đăng Tinh Thạch**. Không cầm gậy phép, không cầm ống thổi.
+- **Cổ Đăng trên sân đấu:** Là **một loại vật thể duy nhất (Static Prop)** cắm cố định tại chỗ. Đèn phát ra ánh sáng huỳnh quang màu hổ phách dịu mắt. Tuyệt đối không có AI riêng, không có chân chạy đuổi theo mục tiêu, không có hệ thống pathfinding.
+
+---
+
+## 3. Core Gameplay Toy & Hai Quyết Định Cốt Lõi
+
+Toàn bộ gameplay của Mok xoay quanh việc quản lý và đưa ra 2 quyết định đánh đổi liên tục:
 
 ```
-                            [ĐĂNG MỘC / MOK - TRINH SÁT CỔ LINH]
-                                            │
-        ┌─────────────────────────┬─────────┴─────────┬─────────────────────────┐
-        ▼                         ▼                   ▼                         ▼
-   [GAMEPLAY LEAD]        [ARCHETYPE ANALYST]   [AI PRODUCTION]           [UX REVIEWER]
-- Lantern Warp & Glide  - Mạch rễ quang học   - 9.6/10 Khả thi         - Cấm Flash trắng
-- Tầm nhìn đi kèm phạt  - Khúc xạ bẻ góc đạn  - 1.2-1.5m biped         - Safe Pocket 450u
-- 3 nhịp combat 5v5     - Thoát bẫy Teemo/AP  - 1 Draw Call instancing - Decal neo sàn Z=0
-        │                         │                   │                         │
-        └─────────────────────────┼───────────────────┴─────────────────────────┘
-                                  ▼
-                         [BALANCE REVIEWER]
-                      - Tối đa 3 Hoa Đèn trên map
-                      - Độ trễ nổ 0.75s (cho phép né bằng Dash D)
-                      - Sát thương nhỏ, cấm nuke AP
-                      - Skillshot mù có đường bay
-                                  │
-        ┌─────────────────────────┴─────────────────────────┐
-        ▼                                                   ▼
-   [IP RISK REVIEWER]                              [MARKETING REVIEWER]
-- CẤM sóc/chuột Yordle & ống thổi (Teemo)       - Điểm thị hiếu 93/100 (S-Tier)
-- CẤM người cây Treant & chồi chạy (Maokai)     - Mascot quốc dân (Baby Groot vibe)
-- CẤM tiểu thư Demacia & laser 7 màu (Lux)      - Highlight "Caught in 4K"
-- Biophilic Automaton: Gỗ hổ phách + đồng cổ    - Slogan: "Đêm tối thuộc về các ngươi..."
+                            [CỔ ĐĂNG CỦA MOK]
+                                    │
+        ┌───────────────────────────┴───────────────────────────┐
+        ▼                                                       ▼
+ [QUYẾT ĐỊNH 1: ĐẶT ĐÈN Ở ĐÂU?]          [QUYẾT ĐỊNH 2: GIỮ HAY TIÊU THỤ ĐÈN?]
+ - Thăm dò bụi rậm phía trước             - GIỮ ĐÈN: Lấy tầm nhìn liên tục
+ - Soi đường rút lui cho xạ thủ           - TIÊU THỤ ĐÈN: Kích hoạt khống chế mềm,
+ - Giành quyền kiểm soát mục tiêu lớn       đèn biến mất ngay lập tức
 ```
 
----
+### Quyết định 1: Đặt Đèn Ở Đâu?
+- Mok ném một Cổ Đăng tới vị trí chỉ định trong tầm trung. Đèn cắm xuống mở ra vùng sáng xua tan sương mù chiến tranh (Fog of War) trong một bán kính nhất định `[HYPOTHESIS]`.
+- Người chơi phải cân nhắc: Dùng đèn để face-check an toàn một bụi rậm đáng ngờ, cắm sau lưng để soi đường rút lui của xạ thủ, hay cắm quanh hang bùa lớn để canh chừng đối phương tiếp cận?
 
-## 2. One-Page Concept Bible: Đăng Mộc / Mok (#37-New Candidate)
-*Thần Thụ Thắp Sáng — Pháp Sư Trinh Sát / Hỗ Trợ Kiểm Soát Quang Học*
-
-### 1. Player Fantasy
-> *"Tôi pick Mok vì không một kẻ nào có thể ẩn nấp trong khu rừng của tôi: Tôi biến bóng tối sợ hãi của đối thủ thành sân khấu ánh sáng của riêng mình. Tôi soi sáng chiến trường từ xa an toàn, giăng mạng lưới mạch rễ báo động và trói nghiến kẻ địch trong hào quang rực rỡ."*
-
-### 2. Silhouette & Nhận Diện Thị Giác
-- **Hình thể:** Thực thể thực vật cơ khí cổ sinh (Biophilic Automaton) nhỏ nhắn (cao cỡ $1.3\text{m} - 1.5\text{m}$), đan kết từ gỗ hóa thạch màu hổ phách và khung đồng cổ oxy hóa màu lam ngọc.
-- **Vũ khí / Đặc trưng:** Một **Nhánh Đăng Mạch** vươn từ sau gáy vòng qua vai ra phía trước, treo lơ lửng một **Cổ Đăng Tinh Thạch** phát ra ánh sáng huỳnh quang hổ phách dịu mắt.
-- **Camera Isometric:** Nhận diện ngay lập tức bằng chiếc đèn lồng đung đưa tự nhiên theo từng bước chạy lon ton; khi cắm cọc đèn, vệt sáng nở ra trên mặt đất theo trục $Z=0$ với viền dạ quang hổ phách ấm.
-- **Khóa thiết kế IP (100% An toàn):** Không lông lá chuột Yordle, không mũ thám hiểm ống thổi Teemo; không thân cây cồng kềnh Maokai; không tiểu thư váy áo Lux.
-
-### 3. Core Gameplay Toy & Loop
-- **Cổ Đăng Trinh Sát & Mạch Rễ Phát Quang (Leyline Lantern Network):**
-  - **Phóng Cổ Đăng Tầm Xa (Nhịp Lux E):** Mok ném một Cổ Đăng Tinh Thạch cắm vào vị trí chỉ định cách xa tới 1000 unit (xuyên địa hình/bụi rậm) $\rightarrow$ Ngay lập tức mở toang sương mù (Fog of War) trong bán kính 450 unit mà **không cần face-check**.
-  - **Mạch Rễ Báo Động (Nhịp Maokai / Teemo cải tiến):** Cắm từ 2 Đèn Lồng trở lên, rễ cây quang tử sẽ tự động nối ngầm giữa các đèn. Kẻ địch cắt qua đường rễ sẽ làm đứt mạch sáng, rung chuông cơ khí cảnh báo toàn đội và bị gắn ấn "Phơi Bày" (Exposed). Đồng minh di chuyển trên mạch rễ được tăng $25\%$ tốc độ chạy.
-  - **Lướt Rễ Thần Tốc (High-mobility Grapple):** Mok có thể kích hoạt phóng dây rễ kéo bản thân lướt xuyên địa hình bay về phía ngọn Cổ Đăng gần nhất để đào thoát hoặc tiếp cận.
-- **Nhịp thở giao tranh 5v5:**  
-  *Tiền giao tranh:* Ném đèn soi hang Rồng/Baron $\rightarrow$ *Mở giao tranh:* Nối mạch rễ bẻ góc kỹ năng của team và lướt vào $\rightarrow$ *Ultimate:* Kích hoạt toàn bộ đèn bùng nổ quầng hào quang làm chói mắt diện rộng và trói chân kẻ địch trên mạch rễ.
-
-### 4. Player Agency
-- Bàn cờ ánh sáng chiến thuật: Người chơi tự quyết định giăng mạng lưới đèn lồng ở các cửa ngõ hiểm yếu (choke points) để biến vùng rừng đối phương thành khu vực sáng đèn an toàn cho toàn đội khai thác tài nguyên.
-
-### 5. Counterplay & Victim Agency (Cửa Sống Tuyệt Đối)
-- **Đèn có thể bị phá hủy (3 Hit Wards):** Cổ Đăng phát quang rõ ràng trong sương mù, không tàng hình vô lý. Kẻ địch có thể dùng kỹ năng định hướng rà quét từ xa hoặc đánh 3 đòn đánh thường để phá hủy đèn, nhận thưởng 15 vàng.
-- **Độ trễ kích nổ 0.75s:** Nếu đạp trúng nụ hoa bẫy, hoa phồng to và hiện vòng cảnh báo màu đỏ trong 0.75 giây, cho phép nạn nhân bấm nút **Dash (D)** phản xạ thoát ra an toàn.
-- **Khóa tầm nhìn (Near-Sight) an toàn sinh lý:** Hiệu ứng làm mù của Mok chỉ kéo dài 1.5s và **luôn giữ lại vòng nhìn an toàn 450 unit quanh người nạn nhân** (vignette màu chàm dịu, KHÔNG chớp trắng flashbang, KHÔNG rung camera, KHÔNG che thanh máu). Nạn nhân vẫn nhìn thấy bản thân và cận chiến để tự vệ hoặc lùi lại.
-
-### 6. Khác Biệt Cùng Vai Trò (Why Pick Over Inka / Libro / Jeli?)
-- Inka kiểm soát bằng mực chia cắt đất; Libro hoãn nợ sốc sát thương; Jeli hồi máu nhịp chuông; **Mok là tướng duy nhất làm chủ hoàn toàn sương mù chiến tranh và mạng lưới thông tin tình báo**, biến cả bản đồ tối tăm thành lợi thế tuyệt đối cho team mình.
+### Quyết định 2: Giữ Đèn Hay Tiêu Thụ Đèn?
+Đây là chiều sâu cơ học lớn nhất của Mok — **phải hy sinh một lợi thế để đổi lấy một lợi thế khác**:
+- **Lựa chọn A — Giữ Đèn (Surveillance):** Giữ ngọn đèn tồn tại để cung cấp thông tin vị trí và kiểm soát tầm nhìn liên tục cho toàn đội.
+- **Lựa chọn B — Tiêu Thụ Đèn (Tactical Detonation):** Mok kích hoạt lệnh tiêu thụ ngọn đèn. Cổ Đăng lập tức bùng nổ một luồng sóng chấn quang học:
+  - Gây một hiệu ứng khống chế mềm có cảnh báo (Làm chậm hoặc Thu hẹp tầm nhìn ngắn hạn `[HYPOTHESIS]`).
+  - **Đèn biến mất hoàn toàn ngay sau khi kích hoạt!** Mok mất đi tầm nhìn tại khu vực đó và phải chờ thời gian hồi chiêu để đặt lại đèn mới.
 
 ---
 
-## 3. Khung Quy Chuẩn Sản Xuất AI & Kỹ Thuật Unity 6 Mobile
+## 4. Tương Tác Sạch & Counterplay Minh Bạch
 
-- **Polycount:** 8.500 Triangles (Hero) + 300 Triangles (Cổ Đăng).
-- **Khung xương:** Biped chuẩn 24 bones + 3 bones cuống đèn (`SpringBone` physics nhẹ ~0.02ms).
-- **Shader:** URP Stylized PBR với Emission Mask nhịp thở (Zero Realtime Point Light).
-- **Batching:** GPU Instancing toàn bộ các Cổ Đăng cắm trên sân thành **1 Draw Call duy nhất**.
-- **Luật Cấm Pet/RTS:** Cổ Đăng là Static Prop cắm rễ cố định, **zero NavMesh, zero AI pathfinding**.
+Để đảm bảo đối kháng công bằng và không tạo ra trải nghiệm ức chế:
+1. **Quy tắc phát hiện và phá đèn:** Cổ Đăng phát ra ánh sáng mờ mà cả hai phe đều nhìn thấy được. Kẻ địch không cần mắt kiểm soát vẫn có thể nhìn thấy Cổ Đăng nếu bước vào tầm sáng. Đèn có vạch máu cố định `[HYPOTHESIS: 2-3 đòn đánh thường]` để đối thủ chủ động dọn dẹp.
+2. **Cảnh báo khi kích nổ đèn:** Khi Mok bấm lệnh tiêu thụ đèn, Cổ Đăng có thời gian trễ phát quang và âm thanh cảnh báo ngắn `[HYPOTHESIS]`, cho phép kẻ địch có phản xạ di chuyển hoặc dùng nút **Dash (D chung)** để thoát ra khỏi bán kính ảnh hưởng.
+3. **Tuân thủ quy tắc Input 91:** Mok **hoàn toàn không sử dụng phím D cho bất kỳ kỹ năng lướt riêng nào**. Phím D là nút Dash chung của toàn bộ nhân vật trong game. Mọi thao tác ném đèn và tiêu thụ đèn được bố trí trong bộ kỹ năng Q/W/E/R.
 
 ---
 
-## 4. Đề Xuất Phân Bổ Roster V5
+## 5. Danh Sách Cơ Chế Đã Bị Cắt Bỏ Khỏi Core Concept
 
-Hội đồng đề xuất Owner đưa **Đăng Mộc / Mok** vào danh sách ứng cử viên chính thức của nhóm **Hỗ Trợ / Pháp Sư Kiểm Soát (Scout / Control Mage)** để bù đắp hoàn hảo sự thiếu hụt vị trí này trong Roster V5!
+Hội đồng chính thức loại bỏ các cơ chế gây loãng và chồng chéo quyền lực:
+- ❌ **CẮT BỎ mạng lưới bẻ góc projectile:** Quá phức tạp và đòi hỏi hệ thống combat hoàn toàn mới.
+- ❌ **CẮT BỎ lướt xuyên tường tới đèn:** Biến tướng trinh sát thành sát thủ cơ động cao vô lý.
+- ❌ **CẮT BỎ ngụy trang tự động:** Gây trùng lặp với cơ chế của Teemo và sát thủ bóng tối.
+- ❌ **CẮT BỎ trói diện rộng toàn vùng:** Gây chồng chéo với pháp sư kiểm soát giao tranh tổng.
+- ❌ **CẮT BỎ bẫy nổ độc tố:** Tránh hoàn toàn lối chơi rải mìn gây ức chế.
+
+---
+
+## 6. Rủi Ro Kỹ Thuật & Giả Định Cần Thử Nghiệm `[HYPOTHESIS]`
+
+- **Tương tác Fog of War:** Cần kiểm tra cách hệ thống tầm nhìn của dự án xử lý việc một vật thể tĩnh chia sẻ tầm nhìn qua vách đá và bụi rậm.
+- **Ranh giới phá đèn:** Cần playtest thực tế để tìm điểm cân bằng giữa: thời gian tồn tại của đèn, tầm ném, và lượng đòn đánh cần thiết để phá đèn mà không làm người chơi nản lòng.
+- **Hình thể AI dựng:** Sinh vật gỗ hóa thạch biped nhỏ gọn là khả thi cho tạo hình sinh vật, nhưng cần thử nghiệm prompt GenAI cụ thể trước khi đánh giá tính sẵn sàng cho production.
