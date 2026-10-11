@@ -1,5 +1,8 @@
 # Nguyên tắc thiết kế, tham khảo và cân bằng
 
+> **[USER LOCK — 2026-10-11]:** Skill = **Q/W/E/R**; **D = Dash chung**. Không gán skill lên chuột trái/chuột phải. Các mô tả input LMB/RMB bên dưới là lịch sử và bị supersede bởi [doc 91](91-khoa-input-qwer-d.md); cần migration runtime riêng, không tuyên bố đã đổi engine.
+
+
 **Quyết định gốc (2026-10-07, @lukasai):** Cổ Linh Thần Chiến là **game mới hoàn toàn**. Tướng mới, tạo hình mới, kit mới. Mọi chỉ số do dự án tự tune và được cân bằng bằng mô phỏng. Data của game khác chỉ là **gợi ý**.
 
 ## 1. Phần chốt ở tầng sản phẩm
