@@ -1,0 +1,12 @@
+# Lab-only (creator 2026-10-10): hao_nhat fit theo chức năng tank — chỉ hp/armor/mr ×0.9, sát thương giữ số gốc, tuning = 1.
+# Mục tiêu: Δ so tank cùng vai (cot_ben, thach_ho, sam_kha) trong [−5, +5] điểm. KHÔNG phải dữ liệu runtime.
+heroes:
+  hao_nhat:
+    stats:
+      hp: 630
+      armor: 37.8
+      mr: 30.6
+    growth:
+      hp: 97.2
+      armor: 4.14
+      mr: 1.71

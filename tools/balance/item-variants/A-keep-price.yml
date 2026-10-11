@@ -1,0 +1,9 @@
+# A: same prices, stats cut to ~1.0 (basic) / ~1.15 (completed) gold efficiency on the doc59 yardstick
+quickstring:      { slot: weapon, cost: 400, attackSpeed: 0.11, thirdHit: 12 }
+keeneye:          { slot: weapon, cost: 950, ad: 20, attackSpeed: 0.15 }
+iron_plate:       { slot: armor, cost: 450, armor: 14, hp: 60 }
+oathguard_plate:  { slot: armor, cost: 1050, armor: 30, hp: 200, mr: 10 }
+thornseed_quiver: { slot: charm, cost: 500, attackSpeed: 0.08, hp: 100 }
+heartforge:       { slot: charm, cost: 1000, hp: 300, hpRegen: 1.5 }
+phial_of_dawn:    { slot: relic, cost: 150, active: { heal: 150, duration: 4, cooldown: 60 } }
+bastion_stone:    { slot: relic, cost: 300, active: { shield: 180, duration: 3, cooldown: 60 } }

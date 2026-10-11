@@ -1,0 +1,9 @@
+# C: basic armour is armour only (HP lives in charms), completed armour keeps HP+armour+MR
+quickstring:      { slot: weapon, cost: 400, attackSpeed: 0.12, thirdHit: 10 }
+keeneye:          { slot: weapon, cost: 1100, ad: 24, attackSpeed: 0.18 }
+iron_plate:       { slot: armor, cost: 400, armor: 20 }
+oathguard_plate:  { slot: armor, cost: 1250, armor: 35, hp: 200, mr: 15 }
+thornseed_quiver: { slot: charm, cost: 450, attackSpeed: 0.06, hp: 110 }
+heartforge:       { slot: charm, cost: 1100, hp: 340, hpRegen: 2 }
+phial_of_dawn:    { slot: relic, cost: 150, active: { heal: 150, duration: 4, cooldown: 60 } }
+bastion_stone:    { slot: relic, cost: 300, active: { shield: 180, duration: 3, cooldown: 60 } }

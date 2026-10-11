@@ -1,0 +1,18 @@
+# doc 55 · one row per hero: the ONLY thing a new hero adds to get readable basic attacks, missiles, hits, areas and CC.
+# el     = palette in scripts/lib/vfx/look.js PAL (fire, iron-blood, moon, storm…) · motif = the small thing it sheds/throws (MOTIF)
+# basic  = doc 76 B Attack Visual Profile. melee: { melee: blade|thrust|heavy|claw, hit: single|cleave|pierce|splash } (a short trail at the target; never a reach-sized crescent)
+#          ranged: { shape: comet|lance|arrow|shard|bolt|rune|flame, size: drawn diameter m (0.2–0.34 for a basic: smaller than any skill), hit: single|pierce|splash }
+# skills = per slot overrides: { el?, shape?, motif?, tier?, volley? (n parallel shots filling the width) } (tier 2 skill, 3 ult; r defaults to 3, others to 2)
+# Missile size = the skill's real hitbox width (heroes.yml width) = the outer rim's diameter, so what you dodge is what you see.
+moc_lam:   { el: moc,    motif: chip,   basic: { melee: blade, hit: single },   skills: { q: { shape: shard }, e: { shape: sweep }, r: { motif: chip } } }
+kha_tan:   { el: huyet,  motif: blood,  basic: { melee: heavy, hit: single },             skills: { e: { shape: lance, motif: spark }, q: { shape: sweep }, rmb: { shape: thrust } } }
+mi_dang:   { el: nguyet, motif: petal,  basic: { melee: thrust, hit: single },  skills: { q: { shape: comet }, e: { shape: leaf, motif: petal } } }
+hoa_tuy:   { el: hoa,    motif: ember,  basic: { shape: flame, size: 0.3, hit: single }, skills: { rmb: { shape: shard }, r: { el: dung } } }
+nham_vu:   { el: thach,  motif: spark,  basic: { shape: arrow, size: 0.34, hit: single }, skills: { q: { shape: arrow }, rmb: { shape: lance }, r: { shape: lance } } }
+van_dao:   { el: phong,  motif: mote,   basic: { shape: bolt, size: 0.26, hit: single },  skills: { rmb: { shape: bolt, el: loi }, q: { el: loi }, r: { el: loi } } }
+hao_nhat:  { el: quang,  motif: spark,  basic: { melee: blade, hit: single },   skills: { q: { shape: none }, e: { shape: none }, r: { motif: spark } } }  # q = shield dash, e = rope of light: skillfx.js draws their bodies
+huong_mai: { el: hong,   motif: petal,  basic: { shape: lance, size: 0.22, hit: single }, skills: { q: { shape: lance, el: thanh }, rmb: { shape: none }, e: { shape: none }, r: { shape: none } } }  # rmb = returning ring, e = light wall, r = dawn dome: skillfx.js draws their bodies
+bach_dien: { el: thach,  motif: spark,  basic: { shape: shard, size: 0.24, hit: single }, skills: { q: { shape: ring }, rmb: { shape: gash }, r: { shape: none } } }  # r = Trăm Gương: skillfx.js phát scripts/effects/vfx-bach-r.fx.js
+mac_lien:  { el: huyet,  motif: blood,  basic: { shape: comet, size: 0.24, hit: single }, skills: { q: { shape: lance }, rmb: { shape: comet }, r: { shape: none } } }  # q = 3 nét sơn son bay thật (fan lanes); r = Nét Cuối: skillfx.js mac_lien.r
+cot_ben:   { el: thach,  motif: chip,   basic: { melee: heavy, hit: single }, skills: { q: { shape: none }, r: { shape: none } } }  # q = bừa tre bay thật (skillfx BODY), r = Vùi Bùn: skillfx.js cot_ben.r
+ngu_dang:  { el: thach,  motif: spark,  basic: { melee: heavy, hit: single }, skills: { q: { shape: none }, r: { shape: none } } }  # q = chuông đồng bay thật trên xích (skillfx BODY), r = Lồng Vọng: skillfx.js ngu_dang.r (vfx-ngu-r.fx.js)

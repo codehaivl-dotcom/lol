@@ -1,0 +1,119 @@
+# Tranh vẽ (spawn paint). Portrait cùng một khung prompt; xem history nếu vẽ lại.
+backdrop: /cdn/value.0e6f9abdf40781c4ab46c90049551345c0d4b9de51ea448bb9d4203ff18cb760.png
+portraits:
+  moc_lam: /cdn/value.41e364455d87a377d81d2d17dd81a116fe56bece2258aa404d97e2eba9b209ea.png
+  kha_tan: /cdn/value.071843c8b8c1386e4663da925978059b532221b9d27bed112318d00016cb6369.png
+  mi_dang: /cdn/value.2f16d59db67e093ce845800f930e0406b48a96de599c8c1319ef44590777fc50.png
+  hoa_tuy: /cdn/value.1d0b965fe72907dac176317ad9deea50102d2ccd9621b95a7b20b11de3753e3e.png
+  nham_vu: /cdn/value.33f6b977b6ac8a82747efc67ee4832360c0a6fe437e8cbe9ebd71e7d6197cfa2.png
+  van_dao: /cdn/value.110b18b9c66a83f85aff4e69ade2bb650565bc1d13306f2274b337c3f5b05334.png
+  hao_nhat: /cdn/value.08be2782b6d7b8084219df33baf6a6031181209ad0717818c6377872f22ce541.png
+  huong_mai: /cdn/value.bf5849f8d1b360c3a38e1b6586e6f1da88886b85e40f334efad9cb918e32618b.png
+  bach_dien: /cdn/value.78a7aac88ed2b17e33dc925049ab35bc8690dd946f5c13c6665964251761cd7d.png
+  mac_lien: /cdn/value.c7fcad90cf48781d32c03c591b471a682c0c2197ecaa8df3c89e3b2994c12760.png
+  ngu_dang: /cdn/value.770e8ca8269866b191fbff80fb9e1794c0570d685a5bd105d72ae452d50d30d3.png
+  cot_ben: /cdn/value.e224ae4ae2f99bb9eb4ea4e0d8199c393e8db9360f885f04e93b6ab80fd17e07.png
+icons:
+  ngu_dang:
+    passive: "/cdn/value.1516a50d01c4bcbf0b2993a491385b1a70b5fe585b8c4cc16a72929f3d2f3352.png"
+    q: "/cdn/value.ec0a89e9ed1fdb3dd3f76f2a18ee7ad1bb31b25f78ea5c636ac671fa3c30f2b7.png"
+    rmb: "/cdn/value.1dc4f5d5dcce3e0ec62801e9fba76aa5802a185d3268757beead810bad16a022.png"
+    e: "/cdn/value.7748e01612ccb80e5d4756dc84b2a5009a6075f9278f36dcdf58f0f077aaa439.png"
+    r: "/cdn/value.78575047b9ce5650d8d70fb9419a7c37f7480ae13d21c6b0a3f572148261a5c6.png"
+  mac_lien:
+    passive: "/cdn/value.5d82a15f5fff2b874b05fb9fed95c4550bc554980101fc3b5477ca908b166165.png"
+    q: "/cdn/value.243bf84f1fa55876173b2404be2d978ba8875a8a023be2a3d22782a9c6168464.png"
+    rmb: "/cdn/value.578135c18594d001b7396ea41a6bfc5bd58a30c47ebdc66489a56d22d8632bf2.png"
+    e: "/cdn/value.9a972473e5a134110dbc68acee9771a95923fd727ac078243e78c8b5f5df5087.png"
+    r: "/cdn/value.ec056f388716926dd9d6289ee15f65a86738b142f11c88f6d709452b4b78c592.png"
+  bach_dien:
+    passive: "/cdn/value.56e66f3872d9cae2ef55c4317e3d2d1afdedf88675c92feb48742ea905ec62f5.png"
+    q: "/cdn/value.32793bcbc675c270ec47662b02d7e79bcd3f38e36a00a0ec10a4ef1ea2101581.png"
+    rmb: "/cdn/value.9bf3c0aa2369ad911f815da6b2bfddc8f51afcbc190c3fd52f264267d05d1f03.png"
+    e: "/cdn/value.098ef08f33f97d636f04e7395f0740c81444b804d3ae2a121db4c9b0d1295917.png"
+    r: "/cdn/value.5ef4f39b7d4e7ab1dbb858d72d08f553f044eff7a3f681ac4141a4337191c8d0.png"
+  cot_ben:
+    passive: "/cdn/value.2cf37ec0104b8b53c85fc7f8fed345d37b73edee91486dc125a4b0ab72870508.png"
+    q: "/cdn/value.a8f5e264ed339ef6c61594360f27693ace5dc9f1b7fe914fab0f9fa2848f408c.png"
+    rmb: "/cdn/value.27593814c70e91564a928dc0e4dfdd9cad5aa1e3f464ab6c4c2b8b4f75014b9b.png"
+    e: "/cdn/value.4760ec05ed3126b1b14df95fc787ca6703b2e5c39cb76517466bc10ae1891408.png"
+    r: "/cdn/value.dee184a4c1bbab926c35334d426d9e59192aeef56f6ee6c4c8707e13f121d907.png"
+  huong_mai:
+    passive: "/cdn/value.8c2b71fdb8bd9592c5d2bf98fc30135281d2f9267b3a8ca64515447860c74f6e.png"
+    q: "/cdn/value.b1ca14e475103f65cc72cdcb6278d4eceb58689973bc6ffbc213fd31a6d9261b.png"
+    rmb: "/cdn/value.a6883a76296a2ebad59fc05187db9889a4b57f9135ce55da30f43973b1f32b25.png"
+    e: "/cdn/value.c4c23d5c1c5712a6812c4abed4ae320add8c1a69bb34f77cbb520e6d2a38d5a8.png"
+    r: "/cdn/value.fe0702807c4475b92c4333f9da13e1f0dcf00f8b9a04238e93121ff4c647cffe.png"
+  hao_nhat:
+    passive: "/cdn/value.78b86da1ac045c64b2871fc48103c84074103ba58cbca3985908bde1c4440b27.png"
+    q: "/cdn/value.2834f7bd0f858560f42eb5970d06c3320853957063b0906b007cce3b9b1de733.png"
+    rmb: "/cdn/value.ee907510f8cb96d0b19d28e938f8c11d60a0c0f89902b992ab2114ced91325f3.png"
+    e: "/cdn/value.7259a74d926ac0dc10b01c055d94364caeb563698bcd33ac226b8b325a4cafe5.png"
+    r: "/cdn/value.89d092d18bd246ff34b9a4373c7b75d5b7ede071732666a7cb5ca082f838f866.png"
+  hoa_tuy:
+    passive: "/cdn/value.5a2216a322a20e03c2d0a13b81c31c05a9c7a5efa3fab72a51c69f00b3e908c3.png"
+    q: "/cdn/value.576b77a50ae5c9c081dab8f96ba835f8eb0835287b60a39575a39fb510433b24.png"
+    rmb: "/cdn/value.15aa00143fffb67fa4a9db1ade6ec64bf4a3ef3b9b1a08b4b2a21836913113f5.png"
+    e: "/cdn/value.87c7504b990cdd23e43ef5f821f01032c7effa293a43b8e672ad67e680328265.png"
+    r: "/cdn/value.e638ab5a39470a20f2adcd4c181265923b88b1d24051a552b83036f4a5d46d9e.png"
+  kha_tan:
+    passive: "/cdn/value.a9078da14daeb84ea993154bb00d94f5f59d171aba31a6571b43cd9253a749d0.png"
+    q: "/cdn/value.fe9a326a1347e5bd7c46ad22041ef3e229aaf9813793de20f8b9d42bf4787edf.png"
+    rmb: "/cdn/value.afa7c98ccafe17934b06d2a89867cd016a47fcd7fddf74051fe50b33b2d1d335.png"
+    e: "/cdn/value.e717f746e7f99882733a8b42f14976df89eff22593d0b3c04b1250fe1a7ec706.png"
+    r: "/cdn/value.da0210475187ef74d991c18624c2b57210820bdc84352cc5b88588e2230c196d.png"
+  mi_dang:
+    passive: "/cdn/value.5a790813450b68e1e99995b9202539da5a2bfa96ebb6d9de257da84f8ff59b7a.png"
+    q: "/cdn/value.a86c9d61ca2ab66edc1a9994520dbee7432798b821867830ce764c1eb4bfb08d.png"
+    rmb: "/cdn/value.2032b49e1705c6ac7989afe811a628a28a066c0239d147b44746c357e8b702e8.png"
+    e: "/cdn/value.6047207467fdee0211c3f286ce01cfe6ad99af642f669e5877165f6e143f00f3.png"
+    r: "/cdn/value.c40709d925c4102096e4b180a1db25e491f9a71f52e00084d3b6ce58e8ac23bd.png"
+  moc_lam:
+    passive: "/cdn/value.a96558f226d9bb075e2abfe6e01aecc276afb1a5b0fd5e4347c5ab97ab6ae2ac.png"
+    q: "/cdn/value.107ebdb781359c1735f3da9a15472154296a2e49aacbb3d6a46b3e95f92b703f.png"
+    rmb: "/cdn/value.f68084ce32f209dddb058ef55e5f1bfea4b7ef7eb3bbe22f5a28585c65db3587.png"
+    e: "/cdn/value.4d722dcc5db999ab4666a4c54bc158f832982b68c28f8ce0e8c917010aecccfd.png"
+    r: "/cdn/value.fe8205c6cb396c3a6ba7d27cd128c46db5db1a9fae84f9a4424b12041475c264.png"
+  nham_vu:
+    passive: "/cdn/value.0991faa2d0cab411757c8bc6cb7f1a3620bb9b41e4ea106c0c0b329517dd31c2.png"
+    q: "/cdn/value.8f8faa52197186d08563c79b8e6d6bb52bbac0725ed08863ba2d51fbc5290262.png"
+    rmb: "/cdn/value.40ce9f6a3de8b9fbdfdaececae5b932ee02b5b93ba5555d9639c0139ff010535.png"
+    e: "/cdn/value.3348c7fdd4f8912a8e617a9ccde151cd9d4bdb2c96e7099a99a564af04c54e1b.png"
+    r: "/cdn/value.71db438cf20e4ebc71f0430b22e1c2975affda7288debe1aa41f6d63650949b7.png"
+  van_dao:
+    passive: "/cdn/value.472a2e8da69087b5c4cc8dd927204bba39d918a81afb7b09c0a40fe909f89d3e.png"
+    q: "/cdn/value.f19d17564e9052e9185f319f7c51515f062ee40ff604e62647b383b56e0ffa39.png"
+    rmb: "/cdn/value.bdbe22042e30481edf2f3e3ee9958f0679bb693ee7845553ae877d468955234e.png"
+    e: "/cdn/value.b5328c4f3b77118ebd4337af4b469df9a63ea81cebf8c86ab29d1d9e920c2ebb.png"
+    r: "/cdn/value.7b34c533f150f6f38095fa8498fd35eac2dc5d12079b537a1e9e6cb0e9d72e05.png"
+maps:
+  mach_giua: /cdn/value.3774c1d8ae726e4d5e49783971bed447b843f1ea604af570e8f79b05eb1202dc.png
+# Biểu tượng món đồ (spawn paint, cùng khung prompt "game item icon … Dong Son accents"), 2026-10-08
+items:
+  quickstring: /cdn/value.bf74d29a042158081509d7a8e30f8d71d844437a1129be7332889b762ebcabd8.png
+  keeneye: /cdn/value.538bdbc9fd26eb3a23ae9d340402d7b1bdd10999a8f40fbe370c82b535e05298.png
+  iron_plate: /cdn/value.b271de93fc2f8b49645bb406ede29a8d1f5dada198687c8d8fa16dd1eadd536e.png
+  oathguard_plate: /cdn/value.8bfcbbdf35e86413cf28d50a5596a4bfca9136fae71d54f9f7f34a697db649e4.png
+  thornseed_quiver: /cdn/value.8819a1500b4fd4a70f8e9900de2383861d2f911fd2c7088db8708588cbc68971.png
+  heartforge: /cdn/value.8e872181beadfbf15f8de568843d0017fdf6eb67ddb4da03e260276a7e5e86cc.png
+  phial_of_dawn: /cdn/value.f7329fdeb8ac4208793795eaa370935eb9214f2dab2730a5d5efd76a8bbb2474.png
+  bastion_stone: /cdn/value.38e4e345c4921e42173976717b89720192ef7fbdb5f76899401ec960e9584337.png
+  kinh_luu: /cdn/value.452fa6731fe840464b7f8ea97c08ccc391e209bde30025231f0334b580572634.jpeg
+  mach_tinh: /cdn/value.dfc013b13ed11666e31d49b9506c8e2cc4cdd11015338faec16b8ff52ade13de.png
+  an_tinh: /cdn/value.8b1ec0e4373e8fd09e0091c01ae91fe256f60682d91c759df6b78e5e840b538a.png
+  nanh_mach: /cdn/value.a16aa3423baebc0a010c484eb692b885de5d8bb07bfdb54c42edc26f8f98857a.png
+  kinh_song: /cdn/value.5688fd545bf6f15439758217bbbe6ac409a16cdafc7433ab2a1208b5dccf3296.png
+  qua_mach: /cdn/value.9b4a750d11ff1d1469add9cf9bedac580f7b8b54942a2cd0dbf99ca061db5dd9.png
+  chuong_may: /cdn/value.09860fbd0bf4c77af08857d6069c5dc58c986c253839230c6fbc42b3c4897254.png
+  ngoc_am: /cdn/value.58e731181e328d5426181817fe134cdaf53e30abfaf2d4ac734b3cf5b539a454.png
+  dong_van: /cdn/value.fe614f3099c93095250bb371ff344c27ca074e7d670bf94e2149b11ab2a49997.png
+  hat_sinh: /cdn/value.583a2ef5f21ff7009fe43d4ef7686a42c96e7c7767f0a95fe19722d2729d85b1.jpeg
+  binh_mach: /cdn/value.0e8c9fd4a1994d075fd2bb7a4b613cf3976e79c7e92d670f1bfed952bcb2a0c0.jpeg
+  lo_than_ky: /cdn/value.f48496385014a0582b560133e4a387dfef6820d6495927a242ebc3a344f346f4.jpeg
+  nanh_khep: /cdn/value.1c311f85c4c7978f01158f27f548b45e4548b33dc544859231ce22d765ff031d.jpeg
+  buoc_van: /cdn/value.824e9ac94ed19d1376dd77d97dd6489905766fdc865d9ec4c232723d72a0436b.jpeg
+  dang_hoi_am: /cdn/value.70e18a404b5c09ffc1addd1cac46ded8179592eb2a9299dc1b96dca42056a0d5.jpeg
+  soi_nhip: /cdn/value.1945249690c385bf1dbf8594183d0d3c4088368dfb2597f18e6b748ec7facf22.jpeg
+dodgeIcon: /cdn/value.7f77d3cf61cda6302252123112d21381641cc16f75804fa227b60872657b7bf2.png
+recallIcon: /cdn/value.c0cd09c2dc68e66cd7e195d0d62ea33a1789e63e9457c051f483768695e19e9b.png
+attackIcon: /cdn/value.b141c616a0f09abd9361c8014602f7e55991a2b07fe33783e9dec0ea59640968.png # nút ĐÁNH mobile, nắm đấm đồng (2026-10-08)

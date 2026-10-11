@@ -1,0 +1,57 @@
+# ỨNG VIÊN · Lam Nghi · Người Đếm Sao · hỗ trợ khống chế và bảo vệ (doc 03 §6). Chỉ sống trong Lab.
+heroes:
+  lam_nghi:
+    role: support_control
+    resource: mana
+    stats: { hp: 610, resource: 400, ad: 52, ap: 0, armor: 26, mr: 31, moveSpeed: 6.2, attackSpeed: 0.64, hpRegen: 1.3, resourceRegen: 1.9 }
+    growth: { hp: 94, resource: 45, ad: 2.8, ap: 0, armor: 4.0, mr: 1.4, moveSpeed: 0, attackSpeed: 0.015, hpRegen: 0.13, resourceRegen: 0.14 }
+    passive:
+      type: every_nth_hit           # Tinh Tú Bất Động: viên sao thứ ba ghim mục tiêu, làm chậm nặng
+      n: 3
+      bonusDamage: { type: magic, base: 15, ap: 0.2, perLevel: 4 }
+      effects: [{ slow: 0.4, duration: 1.0 }]
+    lmb: { aim: projectile, range: 10.0, damageType: magic, ap: 0.15 }   # Đom Sao: viên sao nhỏ bay thẳng
+    q:    # Chạc Trời: ba tia sao rẽ nhánh xuyên hàng (creator duyệt đề xuất doc 85, 11-10), trói mọi tướng trúng
+      aim: skillshot
+      width: 0.8        # TEMP mỗi tia, audit 11-10: 1,4 liền khe tới 9 m; 0,8 mở khe từ 6,7 m
+      fan: { count: 3, spread: 30, oncePerTarget: true }   # một thân chỉ trúng/trói một lần
+      speed: 22
+      range: 10.0
+      windup: 0.25
+      pierce: true
+      cooldown: [12, 11.5, 11, 10.5, 10]
+      cost: [60, 65, 70, 75, 80]
+      damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.35 }
+      effects: [{ root: 1.2 }]
+    rmb:  # Sao Trở Về: sao bay ra rồi về, che chắn đồng minh bằng khiên
+      # chưa mô hình: quỹ đạo ra-về và sát thương lượt bay
+      aim: self
+      windup: 0.1
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [60, 60, 60, 60, 60]
+      shield: { base: [60, 85, 110, 135, 160], ap: 0.45, duration: 2.5, allies: true }
+    e:    # Sao Rơi: gieo vùng sao, sau chốc lát kích nổ làm choáng
+      # chưa mô hình: tự chọn thời điểm kích nổ, vùng tồn tại
+      aim: area
+      radius: 3.5
+      range: 10.0
+      delay: 0.9
+      windup: 0.2
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [70, 70, 70, 70, 70]
+      damage: { type: magic, base: [65, 100, 135, 170, 205], ap: 0.45 }
+      effects: [{ stun: 0.75 }]
+    r:    # Đường Mạch Sáng: đường sáng dài xuyên qua, làm chậm
+      # chưa mô hình: tích lực và sát thương tăng theo quãng đường bay
+      aim: skillshot
+      width: 2.2
+      speed: 30
+      range: 20.0
+      windup: 0.6
+      pierce: true
+      cooldown: [90, 80, 70]
+      cost: [100, 100, 100]
+      damage: { type: magic, base: [130, 200, 270], ap: 0.55 }
+      effects: [{ slow: 0.4, duration: 1.5 }]
+builds:
+  lam_nghi: [chuong_may, dang_hoi_am, oathguard_plate, heartforge, buoc_van]

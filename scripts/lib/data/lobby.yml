@@ -1,0 +1,18 @@
+# Luật sảnh Slice 1.5 (docs/co-linh-than-chien/14 §B0). Giây.
+teamSize: 5
+pickSeconds: 30
+loadSeconds: 3
+resultsSeconds: 20
+reconnectSeconds: 60
+# no human connected at all for this long → the room cleans the match up (2026-10-09: no 60 s practice rule)
+abandonSeconds: 900
+modes: [tai_hien, thu_tran, san_tap]
+lockedModes: []
+maps: [mach_giua]
+lockedMaps: [cuu_mach]
+heroes: [moc_lam, kha_tan, mi_dang, hoa_tuy, nham_vu, van_dao, hao_nhat, huong_mai, bach_dien, cot_ben, mac_lien, ngu_dang]
+# Tách sảnh (doc 51): true = trọng tài sảnh ở place `sanh`, trọng tài trận ở place của map. false = bản một place (main) như trước.
+split: true
+lobbyPlace: sanh
+mapPlace:
+  mach_giua: main

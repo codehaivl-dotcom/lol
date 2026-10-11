@@ -1,0 +1,58 @@
+# ỨNG VIÊN · Lộc Thảo · Kẻ Gieo Gai · xạ thủ kiểm soát vùng (doc 03 §9). Chỉ sống trong Lab.
+heroes:
+  loc_thao:
+    role: marksman
+    resource: mana
+    stats: { hp: 600, resource: 320, ad: 61, ap: 0, armor: 26, mr: 30, moveSpeed: 6.0, attackSpeed: 0.68, hpRegen: 1.2, resourceRegen: 1.4 }
+    growth: { hp: 94, resource: 40, ad: 3.3, ap: 0, armor: 4.0, mr: 1.3, moveSpeed: 0, attackSpeed: 0.03, hpRegen: 0.12, resourceRegen: 0.1 }
+    passive:
+      type: bleed                   # Gai Bám: đòn và chiêu cắm gai, mỗi tầng rỉ sát thương mỗi giây
+      perStack: { type: physical, base: 4, bonusAd: 0.05 }
+      maxStacks: 4
+      duration: 3.0
+    lmb: { aim: projectile, range: 10.5 }   # Gai Tên: mũi gai bắn thường (chưa mô hình: giữ để bắn xuyên tầm xa)
+    q:    # Kéo Cành: cành gai quất xuyên, làm chậm, cắm hai tầng gai
+      aim: skillshot
+      width: 1.6
+      speed: 28
+      range: 10.0
+      windup: 0.2
+      pierce: true
+      cooldown: [9, 8.5, 8, 7.5, 7]
+      cost: [45, 50, 55, 60, 65]
+      stacks: 2
+      damage: { type: physical, base: [45, 70, 95, 120, 145], ad: 0.7 }
+      effects: [{ slow: 0.3, duration: 1.5 }]
+    rmb:  # Bứt Nhanh: bung nụ, tăng tốc đánh và tốc chạy
+      aim: self
+      windup: 0
+      cooldown: [16, 15, 14, 13, 12]
+      cost: [40, 40, 40, 40, 40]
+      buff: { moveSpeed: 0.25, attackSpeed: [0.3, 0.35, 0.4, 0.45, 0.5], duration: 4.0 }
+    e:    # Mưa Gai: mưa gai xuống vùng, trúng nhiều nhịp, làm chậm
+      # chưa mô hình: vùng tồn tại và ẩn đồng minh đứng trong
+      aim: area
+      radius: 3.8
+      range: 11.0
+      delay: 0.5
+      windup: 0.2
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [70, 70, 70, 70, 70]
+      hits: 3
+      stacks: 1
+      damage: { type: physical, base: [20, 30, 40, 50, 60], ad: 0.25 }
+      effects: [{ slow: 0.35, duration: 2.0 }]
+    r:    # Rễ Chặn: mũi tên rễ xuyên lính, trói tướng đầu tiên
+      # chưa mô hình: hàng rào gai dựng sau khi trói
+      aim: skillshot
+      width: 1.6
+      speed: 36
+      range: 16.0
+      windup: 0.35
+      passMinions: true
+      cooldown: [75, 65, 55]
+      cost: [100, 100, 100]
+      damage: { type: physical, base: [160, 260, 360], bonusAd: 1.0 }
+      effects: [{ root: 1.5 }]
+builds:
+  loc_thao: [thornseed_quiver, keeneye, nanh_khep, an_tinh, buoc_van]

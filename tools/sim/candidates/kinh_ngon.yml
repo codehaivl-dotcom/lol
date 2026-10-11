@@ -1,0 +1,46 @@
+# ỨNG VIÊN · Kính Ngôn · Người Mượn Phép · hỗ trợ phép thuật (doc 03 §17). Chỉ sống trong Lab, chưa vào game.
+# Số khởi điểm: doc 12 + legacy chỉ là gợi ý; moveSpeed/hpRegen kéo về tầm runtime.
+heroes:
+  kinh_ngon:
+    role: support_control
+    resource: mana
+    stats: { hp: 630, resource: 400, ad: 50, ap: 0, armor: 28, mr: 30, moveSpeed: 6.2, attackSpeed: 0.65, hpRegen: 1.3, resourceRegen: 1.9 }
+    growth: { hp: 94, resource: 45, ad: 2.8, ap: 0, armor: 4.0, mr: 1.4, moveSpeed: 0, attackSpeed: 0.015, hpRegen: 0.13, resourceRegen: 0.14 }
+    passive:
+      type: after_ability           # Học Nhanh: sau mỗi chiêu, đòn đánh kế khúc xạ phép; (chưa mô hình: cường hóa phép sao chép)
+      bonusDamage: { type: magic, base: 35, ap: 0.35, perLevel: 7 }
+    lmb: { aim: projectile, range: 9.5, damageType: magic, ap: 0.2 }   # Mảnh Gương: mảnh pha lê bắn thẳng
+    q:    # Tia Mượn: tia tự tìm mục tiêu, mượn sinh lực: hồi máu theo sát thương (mô hình: target, luôn trúng)
+      aim: target
+      range: 9.0
+      windup: 0.2
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [55, 60, 65, 70, 75]
+      damage: { type: magic, base: [60, 90, 120, 150, 180], ap: 0.5 }
+      heal: { damageShare: 0.5 }
+    rmb:  # Bàn Tay Xa: nhấc mục tiêu lên rồi ném về phía mình, choáng khi rơi
+      aim: skillshot
+      width: 1.3
+      speed: 20
+      range: 9.0
+      windup: 0.3
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [70, 70, 70, 70, 70]
+      pull: 3.5
+      damage: { type: magic, base: [55, 85, 115, 145, 175], ap: 0.45 }
+      effects: [{ stun: 1.0 }]
+    e:    # Phiến Che: dựng phiến gương che bản thân và đồng minh trong vùng
+      aim: self
+      windup: 0
+      cooldown: [16, 15, 14, 13, 12]
+      cost: [70, 70, 70, 70, 70]
+      shield: { base: [75, 110, 145, 180, 215], ap: 0.45, duration: 3.0, allies: true }
+    r:    # Vỏ Vọng: phản chiếu, lặp lại chiêu thường vừa dùng; (chưa mô hình: chép kit tướng địch)
+      aim: target
+      range: 9.0
+      windup: 0.1
+      cooldown: [70, 60, 50]
+      cost: [100, 100, 100]
+      mimic: { scale: [1.0, 1.25, 1.5] }
+builds:
+  kinh_ngon: [chuong_may, phial_of_dawn, an_tinh, heartforge, buoc_van]

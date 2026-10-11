@@ -1,0 +1,53 @@
+# ỨNG VIÊN · Mặc Liên · Người Vẽ Nước Đỏ · pháp sư dọn giao tranh (doc 03 §18). Chỉ sống trong Lab, chưa vào game.
+# Số khởi điểm: doc 12 + legacy chỉ là gợi ý; moveSpeed/hpRegen kéo về tầm runtime.
+heroes:
+  mac_lien:
+    role: mage_burst
+    resource: mana
+    stats: { hp: 565, resource: 420, ad: 50, ap: 0, armor: 22, mr: 30, moveSpeed: 6.1, attackSpeed: 0.64, hpRegen: 1.1, resourceRegen: 1.8 }
+    growth: { hp: 88, resource: 48, ad: 2.8, ap: 0, armor: 3.6, mr: 1.3, moveSpeed: 0, attackSpeed: 0.012, hpRegen: 0.11, resourceRegen: 0.14 }
+    passive:
+      type: after_ability           # Tẩy Trang: sau mỗi chiêu, đòn đánh kế vẩy son cộng sát thương phép; (chưa mô hình: làm mới hồi chiêu khi tham gia hạ gục)
+      bonusDamage: { type: magic, base: 25, ap: 0.3, perLevel: 6 }
+    lmb: { aim: projectile, range: 10.0, damageType: magic, ap: 0.2 }   # Búng Son: búng giọt son
+    q:    # Ba Nét: ba luồng mực xoè quạt (creator duyệt đề xuất doc 85, 11-10), mỗi luồng trúng một lần
+      aim: skillshot
+      width: 0.8        # TEMP mỗi luồng, audit 11-10: 1,4 liền khe tới 9 m (sai chuẩn quạt doc 76); 0,8 mở khe từ 6,7 m
+      fan: { count: 3, spread: 30, oncePerTarget: false }  # chuẩn quạt doc 76; gần thì cả 3 luồng cùng trúng một thân, xa thì né được
+      speed: 22
+      range: 10.0
+      windup: 0.2
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [60, 65, 70, 75, 80]
+      damage: { type: magic, base: [32, 52, 72, 92, 112], ap: 0.3 }
+    rmb:  # Mực Nở: quả cầu mực xuyên, nở to theo quãng bay; (chưa mô hình: lớn dần theo quãng)
+      aim: skillshot
+      width: 2.0
+      speed: 16
+      range: 12.0
+      windup: 0.25
+      pierce: true
+      cooldown: [11, 10.5, 10, 9.5, 9]
+      cost: [70, 70, 70, 70, 70]
+      damage: { type: magic, base: [75, 115, 155, 195, 235], ap: 0.65 }
+      effects: [{ slow: 0.3, duration: 1.5 }]
+    e:    # Lách Nét: lướt ngắn, nổ mực nơi đáp
+      aim: target
+      range: 5.0
+      windup: 0.05
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [60, 60, 60, 60, 60]
+      dash: { distance: 4.5, toward: true }
+      damage: { type: magic, base: [50, 75, 100, 125, 150], ap: 0.4 }
+    r:    # Nét Cuối: nét cọ khổng lồ quét vùng rộng, hất văng
+      aim: area
+      radius: 5.5
+      range: 10.0
+      delay: 0.5
+      windup: 0.3
+      cooldown: [85, 75, 65]
+      cost: [100, 100, 100]
+      knockback: 4.0
+      damage: { type: magic, base: [170, 270, 370], ap: 0.75 }
+builds:
+  mac_lien: [lo_than_ky, kinh_song, buoc_van, dang_hoi_am, an_tinh]

@@ -1,0 +1,58 @@
+# ỨNG VIÊN · Bách Diện · VŨ CÔNG GƯƠNG ĐỒNG · đấu sĩ phép, lướt múa (doc 75; creator 2026-10-10 23:30:
+# "Kit thì làm kiểu dancer. Vừa đánh vừa múa nhảy. Uyển chuyển mềm mại."). Thay kit Người Đổi Bóng cũ. Chỉ sống trong Lab.
+# Nhịp chơi: chiêu → đòn thường cường hoá + tăng tốc → chiêu kế. Không đứng yên: mỗi chiêu là một bước múa.
+heroes:
+  bach_dien:
+    role: fighter_dancer
+    resource: mana
+    stats: { hp: 625, resource: 360, ad: 53, ap: 0, armor: 28, mr: 30, moveSpeed: 6.35, attackSpeed: 0.68, hpRegen: 1.3, resourceRegen: 1.6 }
+    growth: { hp: 92, resource: 40, ad: 2.8, ap: 0, armor: 3.8, mr: 1.4, moveSpeed: 0, attackSpeed: 0.016, hpRegen: 0.13, resourceRegen: 0.13 }
+    passive:
+      type: after_ability           # Nhịp Lụa: chiêu trúng → đòn thường kế cộng sát thương phép + lướt nhanh 20% trong 1,5 s
+      bonusDamage: { type: magic, base: 30, ap: 0.35, perLevel: 7 }
+      buff: { moveSpeed: 0.2, duration: 1.5 }
+    lmb: { aim: projectile, range: 5.0, damageType: magic, ap: 0.2 }   # Vẩy Gương: vẩy gương, một tia sáng ngắn
+    q:    # Gương Xoay: xoay trọn vòng rồi ném gương ngang, lướt qua lính, dừng ở tướng đầu tiên, làm chậm
+      aim: skillshot
+      width: 1.5
+      speed: 22
+      range: 8.5
+      windup: 0.25
+      passMinions: true
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [50, 55, 60, 65, 70]
+      damage: { type: magic, base: [65, 95, 125, 155, 185], ap: 0.5 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
+    rmb:  # Bước Jeté: nhảy jeté lao tới theo hướng ngắm, chém gương vào tướng/lính đầu tiên trên đường
+      aim: skillshot
+      width: 1.6
+      speed: 28
+      range: 5.5
+      windup: 0.1
+      dash: { distance: 5.5, toward: true }
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [55, 55, 55, 55, 55]
+      damage: { type: magic, base: [60, 90, 120, 150, 180], ap: 0.45 }
+    e:    # Xoay Né Lụa: xoay lướt 3,5 m theo hướng ngắm, không bị chọn 0,5 s trong vòng xoay, rồi nhanh 30% 2 s
+      aim: self
+      windup: 0
+      dash: { distance: 3.5, toward: true }
+      untargetable: 0.5
+      buff: { moveSpeed: 0.3, duration: 2.0 }
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [60, 60, 60, 60, 60]
+    r:    # Vũ Khúc Trăm Gương: múa giữa vòng gương 4,5 m, ba nhịp sát thương; nhịp cuối choáng (mê gương). Cô lướt nhanh 30% 2,5 s
+      aim: area
+      radius: 4.5
+      range: 0
+      delay: 0.2
+      windup: 0.2
+      hits: 3
+      cooldown: [80, 70, 60]
+      cost: [100, 100, 100]
+      damage: { type: magic, base: [75, 115, 155], ap: 0.35 }
+      effects: [{ stun: 0.75 }]
+      effectsOn: last                # choáng chỉ ở nhịp thứ 3: trượt một nhịp = không choáng
+      buff: { moveSpeed: 0.3, duration: 2.5 }
+builds:
+  bach_dien: [lo_than_ky, dang_hoi_am, chuong_may, an_tinh, buoc_van]

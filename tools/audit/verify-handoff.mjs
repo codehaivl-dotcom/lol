@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+const root=path.resolve(process.argv[2]??path.resolve(import.meta.dir,'../../../artifacts/production-handoff'));
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const json=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8').replace(/^\uFEFF/,''));
+const manifest=json('handoff-manifest.json');
+let assertions=0;
+const checked=(message,f)=>{f();assertions++;};
+for(const [file,hash]of Object.entries(manifest.files))checked(file,()=>{
+ const resolved=path.resolve(root,file);assert.ok(resolved.startsWith(root+path.sep));
+ assert.equal(sha(fs.readFileSync(resolved)),hash);
+});
+const dir='reports/production-2026-10-09/';
+const closure=json(dir+'production-closure.json');
+checked('27unique',()=>{assert.equal(closure.gaps.length,27);assert.equal(new Set(closure.gaps.map(g=>g.id)).size,27);});
+for(const g of closure.gaps)checked(`gap-artifact-${g.id}`,()=>assert.equal(sha(fs.readFileSync(path.join(root,dir,g.artifact))),g.artifactSha256));
+const contract=json(dir+'item-starter-closure.contract.json'),starter=json(dir+'item-starter-closure.json'),vision=json(dir+'vision-closure.json');
+checked('catalogHash',()=>assert.equal(sha(fs.readFileSync(path.join(root,'tools/balance/items/candidate-v01.json'))),contract.catalog.candidateSha256));
+checked('currentSource',()=>{assert.equal(starter.sourceCommit,manifest.sourceCommit);assert.equal(contract.catalog.sourceCommit,manifest.sourceCommit);assert.equal(vision.currentSourcePin,manifest.sourceCommit);assert.equal(closure.latest,manifest.sourceCommit);});
+console.log(JSON.stringify({status:'PACKAGE_HASH_AND_LINK_PASS_NOT_ENGINE_ACCEPTANCE',assertions,files:Object.keys(manifest.files).length,sourceCommit:manifest.sourceCommit}));

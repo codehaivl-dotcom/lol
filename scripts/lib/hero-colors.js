@@ -1,0 +1,2 @@
+// Each hero's own colour (outline, skill shapes). One table, shared by skillfx.js and the match without pulling skillfx into the boot.
+export const HERO_COL = { moc_lam: '#4dffa0', kha_tan: '#ff5a3c', mi_dang: '#b77bff', hoa_tuy: '#ff8a2a', nham_vu: '#ffc04a', van_dao: '#6fd0ff', hao_nhat: '#ffd36a', huong_mai: '#ffa070', bach_dien: '#e0a868', ngu_dang: '#d4a44c', mac_lien: '#e8463a', cot_ben: '#a8864e' }

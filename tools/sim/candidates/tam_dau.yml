@@ -1,0 +1,59 @@
+# ỨNG VIÊN · Tam Dấu · Người Giữ Ba Điềm · hỗ trợ phép đa dụng (doc 03 §21). Chỉ sống trong Lab, chưa vào game.
+# Ba dấu Sương/Đá/Gió gắn Q/RMB/E; chỉ số đổi khi giữ dấu và R đọc tổ hợp dấu: CHƯA mô hình hóa (Lab không có trạng thái dấu), R mô hình bằng ba nhịp cố định.
+heroes:
+  tam_dau:
+    role: support_control
+    resource: mana
+    stats: { hp: 600, resource: 420, ad: 46, ap: 0, armor: 28, mr: 32, moveSpeed: 6.2, attackSpeed: 0.625, hpRegen: 1.3, resourceRegen: 1.9 }
+    growth: { hp: 92, resource: 45, ad: 2.5, ap: 0, armor: 4.2, mr: 1.4, moveSpeed: 0, attackSpeed: 0.018, hpRegen: 0.13, resourceRegen: 0.14 }
+    passive:
+      type: every_nth_hit           # Nhóm Lửa: mỗi đòn thứ ba thắp một lõi, nổ phép và làm chậm nhẹ
+      n: 3
+      bonusDamage: { type: magic, base: 15, ap: 0.2, perLevel: 5 }
+      effects: [{ slow: 0.2, duration: 1.0 }]
+    lmb: { aim: projectile, range: 9.5, damageType: magic, ap: 0.15 }   # Điềm Báo: lõi tinh thể bắn tia
+    q:    # Dấu Sương: luồng sương đánh dấu kẻ địch đầu tiên, làm chậm; sát thương kế tiếp kích nổ dấu
+      aim: skillshot
+      width: 1.4
+      speed: 22
+      range: 10.0
+      windup: 0.2
+      cooldown: [9, 8.5, 8, 7.5, 7]
+      cost: [55, 60, 65, 70, 75]
+      damage: { type: magic, base: [40, 65, 90, 115, 140], ap: 0.35 }
+      mark: { type: magic, base: [25, 40, 55, 70, 85], ap: 0.2 }
+      effects: [{ slow: 0.3, duration: 1.5 }]
+    rmb:  # Dấu Đá: khối đá rơi trễ xuống vùng, choáng kẻ đứng trong
+      aim: area
+      radius: 2.4
+      range: 9.0
+      delay: 0.8
+      windup: 0.2
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [65, 65, 65, 65, 65]
+      damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.4 }
+      effects: [{ stun: 1.0 }]
+    e:    # Dấu Gió: lốc quanh thân đẩy lùi kẻ áp sát, phủ khiên gió lên đồng minh gần
+      aim: area
+      radius: 4.5
+      range: 0
+      delay: 0
+      windup: 0.1
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [70, 70, 70, 70, 70]
+      damage: { type: magic, base: [20, 35, 50, 65, 80], ap: 0.2 }
+      knockback: 2.5
+      shield: { base: [60, 85, 110, 135, 160], duration: 2.5, allies: true }
+    r:    # Lời Đáp: ba lõi cùng giáng phép xuống vùng, ba nhịp, trói kẻ trúng (tổ hợp dấu chưa mô hình hóa)
+      aim: area
+      radius: 5.0
+      range: 9.0
+      delay: 0.6
+      windup: 0.3
+      cooldown: [90, 80, 70]
+      cost: [100, 100, 100]
+      hits: 3
+      damage: { type: magic, base: [55, 85, 115], ap: 0.2 }
+      effects: [{ root: 1.2 }]
+builds:
+  tam_dau: [chuong_may, dang_hoi_am, oathguard_plate, phial_of_dawn, buoc_van]

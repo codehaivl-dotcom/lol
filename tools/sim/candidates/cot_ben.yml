@@ -1,0 +1,54 @@
+# ỨNG VIÊN · Cốt Bện · Thân Người Vá · đỡ đòn càn lướt (doc 03 §11). Chỉ sống trong Lab.
+heroes:
+  cot_ben:
+    role: tank_engage
+    resource: mana
+    stats: { hp: 730, resource: 300, ad: 60, ap: 0, armor: 38, mr: 32, moveSpeed: 6.05, attackSpeed: 0.63, hpRegen: 1.6, resourceRegen: 1.4 }
+    growth: { hp: 110, resource: 40, ad: 3.2, ap: 0, armor: 4.3, mr: 1.7, moveSpeed: 0, attackSpeed: 0.018, hpRegen: 0.16, resourceRegen: 0.1 }
+    passive:
+      type: burn_on_ability         # Bình Khóc: chiêu trúng tưới dịch ăn mòn, đốt % max HP và giảm hồi máu
+      maxHp: 0.02
+      antiHeal: 0.3
+      duration: 3.0
+    lmb: { aim: melee, range: 2.0 }   # Cưa Xương: cưa xương (chưa mô hình: đòn đôi)
+    q:    # Móc Dài: móc rất xa, bị lính chặn, kéo tướng trúng về sát bên
+      aim: skillshot
+      width: 1.1
+      speed: 24
+      range: 12.0
+      windup: 0.3
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [70, 70, 70, 70, 70]
+      pull: 9.0
+      damage: { type: physical, base: [60, 95, 130, 165, 200], ad: 0.3 }
+    rmb:  # Khạc Mù: khạc nón độc phía trước, làm chậm nặng
+      aim: area
+      radius: 3.5
+      arc: 100          # Audit 11-10: nón (doc 03 §11 'nón độc'; legacy stitches Gut Crush angle 100, kits.yml:298). Tâm ở chân (doc 76), range giữ nguyên số
+      range: 3.0
+      delay: 0.1
+      windup: 0.15
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [50, 50, 50, 50, 50]
+      damage: { type: magic, base: [45, 70, 95, 120, 145], ap: 0.35 }
+      effects: [{ slow: 0.5, duration: 1.5 }]
+    e:    # Hàm Đá: cắn mục tiêu, sát thương theo máu đã mất của nó, hồi máu theo sát thương
+      aim: target
+      range: 2.5
+      windup: 0.2
+      cooldown: [11, 10, 9, 8, 7]
+      cost: [40, 40, 40, 40, 40]
+      damage: { type: physical, base: [40, 65, 90, 115, 140], ad: 0.4, missingHp: 0.08 }
+      heal: { base: [30, 45, 60, 75, 90], self: true, damageShare: 0.5 }
+    r:    # Nuốt Bóng: nuốt một tướng; cả hai không thể bị chọn, nạn nhân bất động rồi bị nhả ra
+      aim: target
+      range: 3.0
+      windup: 0.2
+      cooldown: [100, 85, 70]
+      cost: [100, 100, 100]
+      dash: { distance: 1.5, toward: true }
+      untargetable: 1.75
+      damage: { type: magic, base: [120, 190, 260], ap: 0.5 }
+      effects: [{ stun: 1.75 }]
+builds:
+  cot_ben: [oathguard_plate, heartforge, qua_mach, an_tinh, buoc_van]

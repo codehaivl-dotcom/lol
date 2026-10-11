@@ -1,0 +1,60 @@
+# ỨNG VIÊN · Hàn Chi · Người Giữ Giá · pháp sư khống chế (doc 03 §20). Chỉ sống trong Lab, chưa vào game.
+# Số khởi điểm: doc 12 + legacy chỉ là gợi ý; moveSpeed/hpRegen kéo về tầm runtime.
+heroes:
+  han_chi:
+    role: mage_control
+    resource: mana
+    stats: { hp: 560, resource: 430, ad: 50, ap: 0, armor: 22, mr: 30, moveSpeed: 6.0, attackSpeed: 0.63, hpRegen: 1.1, resourceRegen: 1.9 }
+    growth: { hp: 88, resource: 48, ad: 2.8, ap: 0, armor: 3.6, mr: 1.3, moveSpeed: 0, attackSpeed: 0.012, hpRegen: 0.11, resourceRegen: 0.14 }
+    passive:
+      type: every_nth_hit           # Sương Giá: mỗi đòn thứ ba phủ giá, cộng sát thương phép và làm chậm; (chưa mô hình: khuếch đại lên mục tiêu đã lạnh)
+      n: 3
+      bonusDamage: { type: magic, base: 20, ap: 0.25, perLevel: 4 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
+    lmb: { aim: projectile, range: 10.0, damageType: magic, ap: 0.2 }   # Nanh Sương: mũi băng nhỏ
+    q:    # Rắn Lạnh: rắn băng trườn xuyên hàng, xuyên lính, để dấu lạnh nổ ở đòn kế
+      aim: skillshot
+      width: 1.4
+      speed: 20
+      range: 11.0
+      windup: 0.2
+      pierce: true
+      passMinions: true
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [55, 60, 65, 70, 75]
+      damage: { type: magic, base: [60, 90, 120, 150, 180], ap: 0.5 }
+      mark: { type: magic, base: [25, 40, 55, 70, 85], ap: 0.25 }
+    rmb:  # Mưa Nanh: vùng băng rơi nhiều đợt, làm chậm
+      aim: area
+      radius: 3.5
+      range: 11.0
+      delay: 0.5
+      windup: 0.2
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [70, 70, 70, 70, 70]
+      hits: 3
+      damage: { type: magic, base: [22, 35, 48, 61, 74], ap: 0.2 }
+      effects: [{ slow: 0.35, duration: 2.0 }]
+    e:    # Hơi Giá: nón hơi lạnh trước mặt, trói (mô hình: vùng quanh mình)
+      aim: area
+      radius: 4.5
+      arc: 50           # Audit 11-10: nón (doc 03 §20 'nón hơi lạnh'; legacy jaina Rimebreath cone angle 50, kits.yml:484)
+      range: 0
+      delay: 0.25
+      windup: 0.2
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [70, 70, 70, 70, 70]
+      damage: { type: magic, base: [50, 75, 100, 125, 150], ap: 0.4 }
+      effects: [{ root: 1.25 }]
+    r:    # Vành Phán: vành băng lớn khép lại rồi nổ, choáng cả vùng
+      aim: area
+      radius: 6.0
+      range: 10.0
+      delay: 0.9
+      windup: 0.3
+      cooldown: [90, 80, 70]
+      cost: [100, 100, 100]
+      damage: { type: magic, base: [150, 240, 330], ap: 0.7 }
+      effects: [{ stun: 1.0 }]
+builds:
+  han_chi: [lo_than_ky, kinh_song, an_tinh, buoc_van, dang_hoi_am]

@@ -1,0 +1,54 @@
+# ỨNG VIÊN · Hạo Nhật · Khiên Bình Minh · đỡ đòn mở giao tranh (doc 03 §3). Chỉ sống trong Lab, chưa vào game.
+# Số khởi điểm: doc 12 + legacy chỉ là gợi ý; tự chỉnh qua Lab.
+heroes:
+  hao_nhat:
+    role: tank_engage
+    resource: mana
+    stats: { hp: 700, resource: 300, ad: 58, ap: 0, armor: 42, mr: 34, moveSpeed: 6.1, attackSpeed: 0.625, hpRegen: 1.7, resourceRegen: 1.4 }
+    growth: { hp: 108, resource: 40, ad: 3.0, ap: 0, armor: 4.6, mr: 1.9, moveSpeed: 0, attackSpeed: 0.02, hpRegen: 0.17, resourceRegen: 0.1 }
+    passive:
+      type: shield_strike           # Ánh Thệ: sau khi dựng khiên, đòn đánh kế đốt nắng + chậm
+      bonusDamage: { type: magic, base: 20, ap: 0.2, perLevel: 6 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
+    lmb: { aim: melee, range: 1.8 }   # Lưỡi Rạng
+    q:    # Xông Khiên: xông theo hướng ngắm, tướng đầu tiên chặn lại và bị choáng
+      aim: skillshot
+      width: 1.6
+      speed: 24
+      range: 6.5
+      windup: 0.1
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [40, 45, 50, 55, 60]
+      dash: { distance: 6.5, toward: true }
+      damage: { type: magic, base: [30, 55, 80, 105, 130], ap: 0.3 }
+      effects: [{ stun: 0.9 }]
+    rmb:  # Vỡ Nắng: khiên bản thân, nổ nắng khi vỡ hoặc hết 3 s
+      aim: self
+      windup: 0
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [60, 60, 60, 60, 60]
+      shield: { base: [60, 85, 110, 135, 160], maxHp: 0.06, duration: 3.0, burst: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.4, radius: 4.0 } }
+    e:    # Dây Sáng: dây lửa xuyên lính, dừng ở tướng đầu tiên, làm chậm
+      aim: skillshot
+      width: 1.4
+      speed: 38
+      range: 12.0
+      windup: 0.2
+      passMinions: true
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [60, 60, 60, 60, 60]
+      damage: { type: magic, base: [45, 75, 105, 135, 165], ap: 0.4 }
+      effects: [{ slow: 0.35, duration: 1.5 }]
+    r:    # Hai Nhịp Trời: hai cột nắng giáng xuống vùng, nhịp hai choáng
+      aim: area
+      radius: 4.5
+      range: 8.0
+      delay: 0.7
+      windup: 0.3
+      cooldown: [90, 80, 70]
+      cost: [100, 100, 100]
+      hits: 2
+      damage: { type: magic, base: [90, 140, 190], ap: 0.35 }
+      effects: [{ stun: 1.0 }]
+builds:
+  hao_nhat: [oathguard_plate, heartforge, bastion_stone, an_tinh, buoc_van]

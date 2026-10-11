@@ -1,0 +1,9 @@
+# B: tier prices (basic ≤500, completed 1400–1700 as doc59), stats sized to the price
+quickstring:      { slot: weapon, cost: 450, attackSpeed: 0.12, thirdHit: 12 }
+keeneye:          { slot: weapon, cost: 1500, ad: 28, attackSpeed: 0.22 }
+iron_plate:       { slot: armor, cost: 450, armor: 16, hp: 50 }
+oathguard_plate:  { slot: armor, cost: 1500, armor: 35, hp: 240, mr: 20 }
+thornseed_quiver: { slot: charm, cost: 500, attackSpeed: 0.08, hp: 100 }
+heartforge:       { slot: charm, cost: 1400, hp: 380, hpRegen: 2.5 }
+phial_of_dawn:    { slot: relic, cost: 150, active: { heal: 150, duration: 4, cooldown: 60 } }
+bastion_stone:    { slot: relic, cost: 300, active: { shield: 180, duration: 3, cooldown: 60 } }

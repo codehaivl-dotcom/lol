@@ -1,0 +1,56 @@
+# ỨNG VIÊN · Sắc Nhiên · Người Pha Màu · pháp sư vùng (doc 03 §24). Chỉ sống trong Lab, chưa vào game.
+# Màu lưu trên đất và vùng chồng màu tạo hiệu ứng kết hợp: CHƯA mô hình hóa (Lab không có vùng tồn tại); chồng màu mô hình bằng dấu kích nổ.
+heroes:
+  sac_nhien:
+    role: mage_burst
+    resource: mana
+    stats: { hp: 560, resource: 460, ad: 50, ap: 0, armor: 22, mr: 30, moveSpeed: 6.2, attackSpeed: 0.63, hpRegen: 1.2, resourceRegen: 1.8 }
+    growth: { hp: 90, resource: 42, ad: 2.8, ap: 0, armor: 3.8, mr: 1.3, moveSpeed: 0, attackSpeed: 0.015, hpRegen: 0.12, resourceRegen: 0.14 }
+    passive:
+      type: after_ability           # Ba Dấu: phép trúng phủ màu, đòn đánh kế cộng sát thương phép
+      bonusDamage: { type: magic, base: 25, ap: 0.3, perLevel: 6 }
+    lmb: { aim: projectile, range: 10.0, damageType: magic, ap: 0.2 }   # Búng Màu: búng giọt sắc tố
+    q:    # Vàng Vỡ: vệt vàng vỡ tung tại vùng, để lại dấu màu; sát thương kế tiếp kích nổ dấu
+      aim: area
+      radius: 3.0
+      range: 10.0
+      delay: 0.5
+      windup: 0.2
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [55, 60, 65, 70, 75]
+      damage: { type: magic, base: [55, 85, 115, 145, 175], ap: 0.5 }
+      mark: { type: magic, base: [25, 40, 55, 70, 85], ap: 0.2 }
+    rmb:  # Neo Hồng: neo hồng bắn ra, kéo kẻ trúng về 3 m rồi ghim tại chỗ
+      aim: skillshot
+      width: 1.2
+      speed: 22
+      range: 9.0
+      windup: 0.25
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [70, 70, 70, 70, 70]
+      pull: 3.0
+      damage: { type: magic, base: [40, 65, 90, 115, 140], ap: 0.35 }
+      effects: [{ root: 1.0 }]
+    e:    # Lướt Lục: lướt qua theo vệt lục, xuyên và gây sát thương mọi kẻ trên đường
+      aim: skillshot
+      width: 1.6
+      speed: 30
+      range: 7.0
+      windup: 0.05
+      pierce: true
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [50, 50, 50, 50, 50]
+      dash: { distance: 7.0, toward: true }
+      damage: { type: magic, base: [45, 70, 95, 120, 145], ap: 0.35 }
+    r:    # Tranh Lớn: căng khung tranh lớn, gom màu trong khung rồi kích nổ, làm chậm
+      aim: area
+      radius: 6.0
+      range: 12.0
+      delay: 1.2
+      windup: 0.3
+      cooldown: [80, 70, 60]
+      cost: [100, 100, 100]
+      damage: { type: magic, base: [180, 290, 400], ap: 0.8 }
+      effects: [{ slow: 0.4, duration: 2.0 }]
+builds:
+  sac_nhien: [lo_than_ky, dang_hoi_am, chuong_may, an_tinh, buoc_van]

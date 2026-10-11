@@ -1,0 +1,56 @@
+# ỨNG VIÊN · Tĩnh Lôi · Người Nghe Đá · đấu sĩ cơ động, khiên và phản công (doc 03 §4). Chỉ sống trong Lab.
+# Số khởi điểm: doc 12 + legacy chỉ là gợi ý; tự chỉnh qua Lab. Năng lượng: thanh nhỏ, hồi nhanh.
+heroes:
+  tinh_loi:
+    role: fighter_burst
+    resource: energy
+    stats: { hp: 650, resource: 200, ad: 63, ap: 0, armor: 33, mr: 32, moveSpeed: 6.3, attackSpeed: 0.65, hpRegen: 1.5, resourceRegen: 2.0 }
+    growth: { hp: 102, resource: 0, ad: 4.2, ap: 0, armor: 4.3, mr: 1.7, moveSpeed: 0, attackSpeed: 0.02, hpRegen: 0.15, resourceRegen: 0.05 }
+    passive:
+      type: every_nth_hit           # Lôi Tàng: chưởng thứ ba hiện hai tay năng lượng, nổ sấm phép (không làm chậm)
+      n: 3
+      bonusDamage: { type: magic, base: 18, ad: 0.25, perLevel: 5 }
+      effects: []
+    lmb: { aim: melee, range: 1.8 }   # Chưởng Hồi: chuỗi ba chưởng tay không
+    q:    # Tiếng Vọng: chưởng phong đánh dấu tướng trúng; đòn kế kích nổ dấu
+      # chưa mô hình: tái kích hoạt để lướt tới mục tiêu mang dấu
+      aim: skillshot
+      width: 1.3
+      speed: 26
+      range: 9.0
+      windup: 0.2
+      cooldown: [9, 8.5, 8, 7.5, 7]
+      cost: [40, 40, 40, 40, 40]
+      damage: { type: physical, base: [40, 65, 90, 115, 140], ad: 0.6 }
+      mark: { type: physical, base: [25, 40, 55, 70, 85], ap: 0 }
+    rmb:  # Bước Che: nhảy ngắn và dựng khiên cho bản thân
+      # chưa mô hình: nhảy tới đồng minh và chia khiên cho đồng minh đó (Lab: nhảy về phía địch)
+      aim: self
+      windup: 0
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [50, 50, 50, 50, 50]
+      dash: { distance: 5.0, to: ally }   # Audit 11-10: nhảy tới đồng minh (doc 03 §4; legacy tenzo Sheltering Step guard: ally, kits.yml:135). Khiên chia cho đồng minh: chưa mô hình
+      shield: { base: [60, 90, 120, 150, 180], maxHp: 0.05, duration: 2.5 }
+    e:    # Nện Lôi: bật cao rồi nện xuống vùng chỉ định, làm chậm
+      aim: area
+      radius: 3.0
+      range: 6.0
+      delay: 0.35
+      windup: 0.15
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [50, 50, 50, 50, 50]
+      dash: { distance: 6.0, toward: true }
+      damage: { type: physical, base: [55, 85, 115, 145, 175], ad: 0.7 }
+      effects: [{ slow: 0.35, duration: 1.25 }]
+    r:    # Cước Dội Trời: cú đá hất văng mục tiêu, choáng
+      # chưa mô hình: cách tái kích hoạt thứ hai (đá theo đường hất văng cho cả đội)
+      aim: target
+      range: 3.5
+      windup: 0.25
+      cooldown: [80, 70, 60]
+      cost: [0, 0, 0]
+      knockback: 4.0
+      damage: { type: physical, base: [150, 240, 330], bonusAd: 0.9 }
+      effects: [{ stun: 0.75 }]
+builds:
+  tinh_loi: [qua_mach, oathguard_plate, heartforge, an_tinh, buoc_van]

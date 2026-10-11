@@ -1,0 +1,10 @@
+# Lính theo map (doc53 §10 đợt C): mỗi map có bộ lính riêng; trận chỉ kéo bộ của map đang chơi.
+# Nguồn thật cho thân/clip/âm của lính. tools/assets/bundles.py sinh bundle units.<map> từ đây; lane.js đọc qua resolver.
+# Linh Binh (doc 33): image→3D từ concept đã duyệt. melee/super là humanoid có rig (clip thư viện), attack+die keyed trên rig riêng
+# (art/linh-binh/clips.py); caster/siege mang sẵn Idle/Walk/Attack/Die (art/linh-binh/build.py). Clip tải khi phát lần đầu.
+# red: texture đổi màu đỏ cho đội đỏ (art/minh-uoc/recolor.py). hit/death/step: tên SFX moodboard painterly-fantasy.
+mach_giua:
+  melee: { model: /cdn/value.bb3a856ca16297470170352d8816953b3858fb02c4268e2288e87f57bec5bfd2.png.glb, red: /cdn/value.062f24a4eb32e5b79dc6339cebf2bf726f1867435cab5a6be6f0ddd91ae86777.jpg, h: 1.5, scale: 1, idle: Idle, walk: Walk, attack: cdn/clip-attack.glb, die: cdn/clip-die.glb, hit: sword-clash-shield-thud, death: clay-soldier-crumble }
+  caster: { model: /cdn/value.42edab2e68ecaf3f6183bdd9a91da8bb2551c635a8deaffc97ff8186f4aafeb6.png.glb, red: /cdn/value.ec96655276169267efddc33e2aeb384c28a5bd16ee08b245a763a073b4f5f50a.jpg, h: 1.6, scale: 1, idle: Idle, walk: Walk, attack: cdn/clip-cast.glb, die: cdn/clip-die.glb, hit: crystal-lantern-zap, death: lantern-glass-shatter }
+  siege: { model: /cdn/value.dc883e27c2e5fdc1828116c072d74acae726c6b1cce5c6b94f874264bc1d88bc.glb, scale: 1.15, idle: Idle, walk: Walk, attack: Attack, die: Die, hit: bronze-drum-cannon-boom, death: wooden-cart-collapse }
+  super: { model: /cdn/value.18b81e02b042a34ff0fa05536e80defc3e65824a3f9480a6ed1404076c271dc2.glb, scale: 1.2, idle: Idle, walk: Walk, attack: cdn/clip-linh-super-attack-v1-cbc97f3d.glb, die: cdn/clip-linh-super-die-v1-0d77c064.glb, step: stone-golem-heavy-footstep }

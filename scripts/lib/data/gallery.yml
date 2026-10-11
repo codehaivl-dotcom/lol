@@ -1,0 +1,163 @@
+# Bộ sưu tập Minh Ước (gallery x0z1): giữ tài nguyên, KHÔNG đứng trong cell (lukasai 2026-10-09: "chỉ tải khi mở xem hoặc dùng công cụ dev").
+# Mở: run_script (persist:false) với scripts/lib/gallery.js openGallery(ctx); đóng: closeGallery(ctx). Vị trí giữ nguyên chỗ cũ (z≈100, sau Mạch Giữa).
+rows:
+  mu-03-siege:
+    feetPosition:
+      x: -40
+      y:
+        terrain: 0
+      z: 100
+    id: mu-03-siege
+    layout:
+      maxExtents:
+        y: 2.2
+    mixer:
+      base:
+        clip: Idle
+        loop: loop
+    model: /cdn/value.0109b19d36e781100a2cfdb7e962e44aeb8a1b6a8b9226e78cac78387e79a817.glb
+    rotation: 0
+  mu-03-siege-red:
+    feetPosition:
+      x: -34
+      y:
+        terrain: 0
+      z: 100
+    id: mu-03-siege-red
+    layout:
+      maxExtents:
+        y: 2.2
+    mixer:
+      base:
+        clip: Idle
+        loop: loop
+    model: /cdn/value.df816ab33023baaa1f6469673985a72fd0e4502f2b5658d392732833d764b47c.glb
+    rotation: 0
+  mu-04-hare:
+    feetPosition:
+      x: -26
+      y:
+        terrain: 0
+      z: 100
+    id: mu-04-hare
+    layout:
+      maxExtents:
+        y: 1
+    mixer:
+      base:
+        clip: Idle
+        loop: loop
+    model: /cdn/value.eaf09f9cf884461b615ffabeb2d90fdf64df4c58e809fa70d9ad20f901f7c648.glb
+    rotation: 0
+  mu-05-boar:
+    feetPosition:
+      x: -18
+      y:
+        terrain: 0
+      z: 100
+    id: mu-05-boar
+    layout:
+      maxExtents:
+        y: 1.5
+    mixer:
+      base:
+        clip: Idle
+        loop: loop
+    model: /cdn/value.79ae346db03af8235c22ff7f12ae8df8f2ef0a7eca739bb4089d0d8586d5068c.glb
+    rotation: 0
+  mu-06-monkey:
+    feetPosition:
+      x: -10
+      y:
+        terrain: 0
+      z: 100
+    id: mu-06-monkey
+    layout:
+      maxExtents:
+        y: 1.6
+    mixer:
+      base:
+        clip: Idle
+        loop: loop
+    model: /cdn/value.09abfdcc3430e76b8a9d7f92a37556a8d935a929e2682d2135ba5feb1b197ca5.glb
+    rotation: 0
+  mu-07-turtle:
+    feetPosition:
+      x: 0
+      y:
+        terrain: 0
+      z: 100
+    id: mu-07-turtle
+    layout:
+      maxExtents:
+        y: 2
+    mixer:
+      base:
+        clip: Idle
+        loop: loop
+    model: /cdn/value.bd4121a4626cd74c9e96c2068a69a1f7e085fac6189fb3bd7f7b2700312ae21d.glb
+    rotation: 0
+  mu-08-serpent:
+    feetPosition:
+      x: 10
+      y:
+        terrain: 0
+      z: 100
+    id: mu-08-serpent
+    layout:
+      maxExtents:
+        y: 2.4
+    mixer:
+      base:
+        clip: Idle
+        loop: loop
+    model: /cdn/value.86d047720655630e65910d3a799fb6593bd714a375b5742ee03e2d07ea34694e.glb
+    rotation: 0
+  mu-09-golem:
+    feetPosition:
+      x: 34
+      y:
+        terrain: 0
+      z: 100
+    id: mu-09-golem
+    layout:
+      maxExtents:
+        y: 3.6
+    mixer:
+      base:
+        clip: Idle
+        loop: loop
+    model: /cdn/value.95d5403f854238e9579be4dd8b15ea8d55e20f2c6fd227ad7a627c982d4037b6.glb
+    rotation: 0
+  mu-10-crane:
+    feetPosition:
+      x: 24
+      y:
+        terrain: 0
+      z: 100
+    id: mu-10-crane
+    layout:
+      maxExtents:
+        y: 3.2
+    mixer:
+      base:
+        clip: Idle
+        loop: loop
+    model: /cdn/value.cfcbffd8f319d60fffe7c1a31567654a68f771c4596fc0fe71007dcee2d3d8f3.glb
+    rotation: 0
+  mu-11-whale:
+    feetPosition:
+      x: 44
+      y:
+        terrain: 1.5
+      z: 104
+    id: mu-11-whale
+    layout:
+      maxExtents:
+        y: 4.5
+    mixer:
+      base:
+        clip: Idle
+        loop: loop
+    model: /cdn/value.91f38f5f6239ee23e27d8a93a25365f930de3f4a6619756649ba39e8bf070bec.glb
+    rotation: 0

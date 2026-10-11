@@ -1,0 +1,113 @@
+# Per-hero, per-slot SFX (doc 34 · SFX_PROPOSED, chưa INTEGRATED). Chỉ SFX, không VO.
+# Mỗi tướng một "giọng chất liệu":
+#   moc_lam  đồng thau + khiên đá, nước bờ sông (đoản đao bản rộng, khiên lõi lam)
+#   kha_tan  sắt nặng + xích tinh thể (trường qua lưỡi móc, chảy máu)
+#   mi_dang  đèn kính + lửa ma tím, thì thầm (đèn tím, đoản nhận, ảnh mờ)
+#   hoa_tuy  than/dung nham, thiên thạch (lư hương thiên thạch, mảnh than bay)
+#   nham_vu  dây cung + mũi tên sỏi/hổ phách, chim tinh thể (cung composite)
+#   hao_nhat thép trắng + khiên vàng, ánh bình minh (kiếm một tay, khiên tròn lõi quang)
+#   van_dao  gió/mây/sét (trượng chim rỗng, giông)
+# Khoá: lmb q rmb e r = cast/swing của slot; passive = proc nội tại; hit = đòn trúng; death = gục.
+# Đường dẫn được CDN sinh lần đầu được gọi; tên đã phục vụ là bất biến (đổi âm = tên mới -v2).
+base: /cdn/moodboard-painterly-fantasy/
+heroes:
+  moc_lam:
+    lmb: sfx-broad-bronze-short-blade-chop-against-stone-shield-clang.mp3
+    q: sfx-stone-shield-bash-charge-crashing-into-river-rock.mp3
+    rmb: sfx-quick-stone-shield-raised-jade-crystal-ring-short-v2.mp3
+    e: sfx-broad-blade-spinning-sweep-through-dry-reeds-whoosh.mp3
+    r: sfx-giant-stone-shield-slammed-into-earth-crack-boom.mp3
+    passive: sfx-heavy-bronze-blade-third-strike-cracking-stone-crunch.mp3
+    hit: sfx-bronze-blade-hit-on-stone-armor-thunk.mp3
+    death: sfx-stone-shield-dropping-and-cracking-rubble-crumble.mp3
+  kha_tan:
+    lmb: sfx-hooked-iron-halberd-heavy-swing-whoosh-and-chop.mp3
+    q: sfx-iron-scythe-wide-sweep-ringing-metal-scrape.mp3
+    rmb: sfx-quick-iron-lunge-slash-tearing-sinew.mp3
+    e: sfx-quick-crystal-chain-hook-throw-and-yank-short-v2.mp3
+    r: sfx-massive-iron-cleaver-execution-chop-with-metal-ring.mp3
+    passive: sfx-iron-hook-tearing-flesh-blood-drip-squelch.mp3
+    hit: sfx-iron-halberd-hit-on-armor-clank.mp3
+    death: sfx-heavy-iron-armor-and-chains-collapsing-clatter.mp3
+  mi_dang:
+    lmb: sfx-quick-dagger-stab-with-faint-purple-wisp-hiss.mp3
+    q: sfx-glass-lantern-thrown-spinning-swoosh-ghost-flame.mp3
+    rmb: sfx-shadow-dagger-dash-slash-with-eerie-whisper.mp3
+    e: sfx-quick-hypnotic-glass-chime-ghost-lure-short-v2.mp3
+    r: sfx-veiled-steps-shadow-blink.mp3   # doc 78 R3 #5: lúc bấm chỉ một tiếng lướt; 3 nhát có cue riêng trong skillfx r.land
+    passive: sfx-spirit-flame-ignite-flare-on-dagger.mp3
+    hit: sfx-ghost-flame-hit-crackle-and-glass-tinkle.mp3
+    death: sfx-lantern-glass-shattering-and-flame-snuffed-out.mp3
+  hoa_tuy:
+    lmb: sfx-flying-burning-coal-ember-whoosh.mp3
+    q: sfx-erupting-lava-pillar-roar-from-ground.mp3
+    rmb: sfx-hot-coal-bolt-sizzle-and-spark.mp3
+    e: sfx-blast-of-hot-air-heat-wave-whoosh.mp3
+    r: sfx-falling-meteor-whistle-and-fiery-explosion-impact.mp3
+    passive: sfx-flesh-burn-sizzle-crackling-fire.mp3
+    hit: sfx-molten-ember-impact-hiss.mp3
+    death: sfx-quick-magma-core-cracking-into-rock-hiss-short-v2.mp3
+  nham_vu:
+    lmb: sfx-composite-bow-string-twang-with-stone-arrow-whoosh.mp3
+    q: sfx-three-arrows-loosed-at-once-bowstring-snap.mp3
+    rmb: sfx-bowstring-drawn-creaking-and-heavy-amber-arrow-release.mp3
+    e: sfx-crystal-bird-wings-flapping-and-leap-whoosh.mp3
+    r: sfx-powerful-piercing-arrow-shot-sonic-crack.mp3
+    passive: sfx-heavy-pebble-arrowhead-thud-into-target.mp3
+    hit: sfx-stone-arrow-hitting-armor-thwack.mp3
+    death: sfx-wooden-bow-dropped-on-rocks-clatter-and-string-snap.mp3
+  van_dao:
+    lmb: sfx-forked-lightning-wind-bolt-zap.mp3
+    q: sfx-quick-storm-cloud-thunder-rain-burst-short-v2.mp3
+    rmb: sfx-wind-seal-gust-binding-whoosh.mp3
+    e: sfx-quick-swirling-wind-barrier-whoosh-short-v2.mp3
+    r: sfx-huge-storm-wind-wave-blast-gust.mp3
+    passive: sfx-crackling-lightning-arc-strike.mp3
+    hit: sfx-gust-of-wind-impact-with-electric-snap.mp3
+    death: sfx-quick-wind-gust-fade-and-staff-clatter-short-v2.mp3
+  hao_nhat:
+    lmb: sfx-bright-steel-longsword-swing-with-faint-sunlit-shimmer.mp3
+    q: sfx-gold-round-shield-charge-heavy-rush-and-bash-impact.mp3
+    rmb: sfx-radiant-shield-of-light-raised-warm-hum-rising.mp3
+    e: sfx-tether-of-light-whip-crack-and-burning-hiss.mp3
+    r: sfx-sunlight-gathering-in-sky-rising-shimmer-swell.mp3   # doc 78 R3 #2: lúc bấm là tiếng tụ nắng; 2 nhịp rơi có tiếng riêng trong skillfx r.land
+    passive: sfx-sunlight-shield-shatter-bright-burst-ring.mp3
+    hit: sfx-steel-blade-strike-on-armor-bright-clang.mp3
+    death: sfx-gold-armored-knight-falls-shield-clatter.mp3
+  huong_mai:
+    lmb: sfx-small-lantern-swing-warm-chime-spark.mp3
+    q: sfx-healing-light-beam-soft-choir-swell.mp3
+    rmb: sfx-spinning-incense-ring-whirr-and-return.mp3
+    e: sfx-staff-planted-light-wall-rising-crystal-hum.mp3
+    r: sfx-dawn-breaking-radiant-bloom-with-bird-cry.mp3
+    passive: sfx-tiny-temple-bell-tick.mp3
+    hit: sfx-soft-light-spark-hit-warm-pop.mp3
+    death: sfx-lantern-dropping-glass-tinkle-and-soft-sigh.mp3
+  bach_dien:  # gương đồng + lụa + chuông múa. R1 2026-10-11: r/r_beat/r_flare/r_tail INTEGRATED, phát từ scripts/lib/skillfx.js bach_dien.r (cast/land echo)
+    r: sfx-bronze-mirrors-rising-from-floor-shimmering-glass-chime-swell.mp3
+    r_beat: sfx-hundred-bronze-mirrors-ringing-in-unison-bright-dance-bell-hit.mp3
+    r_flare: sfx-mirror-ring-blinding-flash-crystal-boom-and-high-glass-shriek.mp3
+    r_tail: sfx-bronze-mirrors-shattering-glass-rain-fading-chimes.mp3
+  ngu_dang:  # chuông đồng + xích sắt + gấu nặng. 2026-10-11: phát từ scripts/lib/skillfx.js ngu_dang (NOT_TESTED nghe trên client)
+    lmb: sfx-bronze-bell-on-chain-whipping-hit-clang.mp3
+    q: sfx-heavy-bronze-bell-hurled-on-rattling-chain-whoosh.mp3
+    q_hit: sfx-bronze-bell-slamming-into-armor-loud-ringing-gong-stun.mp3
+    rmb: sfx-bronze-bell-planted-in-earth-deep-resonant-hum.mp3
+    e: sfx-iron-chain-sweeping-circle-rattle-and-small-bells-jingle.mp3
+    r: sfx-three-giant-phantom-bronze-bells-descending-rising-hum.mp3
+    r_close: sfx-bronze-bell-cage-slamming-shut-huge-gong-and-echoing-toll.mp3
+  mac_lien:  # sơn mài: sơn son sệt + cọ lông + vỏ trứng giòn + gỗ then. R2 2026-10-11 (NOT_TESTED nghe trên client)
+    lmb: sfx-wet-lacquer-droplet-flicked-off-brush-tip-small-splat.mp3
+    q: sfx-three-quick-brush-strokes-wet-paint-whip-flick.mp3
+    rmb: sfx-thick-lacquer-ball-thrown-swelling-gloopy-whoosh.mp3
+    e: sfx-quick-brush-swish-slide-and-wet-paint-splash-landing.mp3
+    r: sfx-giant-brush-dipping-in-lacquer-then-long-sweeping-stroke.mp3
+    r_close: sfx-giant-wet-brush-stroke-slamming-shut-heavy-lacquer-boom.mp3
+    hit: sfx-wet-lacquer-splatter-hit-on-armor.mp3
+  cot_ben:  # bùn ruộng + tre + rơm. 2026-10-11: q/rmb/e/r/r_release/hit phát từ scripts/lib/skillfx.js cot_ben (NOT_TESTED nghe trên client)
+    q: sfx-bamboo-harrow-whooshing-throw-and-rope-snap.mp3
+    rmb: sfx-thick-wet-mud-spray-gushing-splatter.mp3
+    e: sfx-two-hands-scooping-heavy-wet-mud-suction-pop.mp3
+    r: sfx-mud-golem-belly-swallowing-victim-deep-gulp-and-squelch.mp3
+    r_release: sfx-mud-golem-spitting-out-victim-wet-burst-and-splash.mp3
+    hit: sfx-wet-mud-slap-hit-heavy-splat.mp3

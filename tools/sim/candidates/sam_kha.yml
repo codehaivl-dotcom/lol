@@ -1,0 +1,51 @@
+# ỨNG VIÊN · Sấm Kha · Người Đập Trời · đấu sĩ mở giao tranh (doc 03 §13). Chỉ sống trong Lab.
+heroes:
+  sam_kha:
+    role: fighter_tank
+    resource: mana
+    stats: { hp: 710, resource: 300, ad: 64, ap: 0, armor: 36, mr: 32, moveSpeed: 6.2, attackSpeed: 0.64, hpRegen: 1.5, resourceRegen: 1.4 }
+    growth: { hp: 104, resource: 30, ad: 4.0, ap: 0, armor: 4.2, mr: 1.6, moveSpeed: 0, attackSpeed: 0.02, hpRegen: 0.15, resourceRegen: 0.1 }
+    passive:
+      type: after_ability           # Tâm Dương: sau chiêu, nhát chùy kế nện sấm vật lý
+      bonusDamage: { type: physical, base: 20, ad: 0.3, perLevel: 5 }
+    lmb: { aim: melee, range: 2.0 }   # Chùy Sấm: nện chùy sấm
+    q:    # Trời Chẻ Nhánh: sét chẻ nhánh đánh mục tiêu rồi nảy
+      # chưa mô hình: nảy sang mục tiêu khác (Lab: trúng mục tiêu chính 2 lần)
+      aim: target
+      range: 7.0
+      windup: 0.2
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [40, 45, 50, 55, 60]
+      hits: 2
+      damage: { type: magic, base: [30, 50, 70, 90, 110], ad: 0.35 }
+    rmb:  # Song Dương: hai linh dương lao thành hai nhánh xuyên hàng, húc lùi
+      aim: skillshot
+      width: 3.2        # TBD: nay là bề rộng MỖI nhánh (legacy Twin Rams width 1.8, chưa đổi số)
+      fan: { count: 2, spread: 12 }   # Audit 11-10: hai nhánh (doc 03 §13; legacy thrall Twin Rams count 2 spread 12, kits.yml:336)
+      speed: 22
+      range: 9.0
+      windup: 0.25
+      pierce: true
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [60, 60, 60, 60, 60]
+      knockback: 2.5
+      damage: { type: physical, base: [55, 85, 115, 145, 175], ad: 0.6 }
+    e:    # Nhịp Bão: gọi nhịp bão, tăng tốc đánh và tốc chạy cho chuỗi đòn
+      aim: self
+      windup: 0
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [50, 50, 50, 50, 50]
+      buff: { moveSpeed: 0.2, attackSpeed: [0.3, 0.35, 0.4, 0.45, 0.5], duration: 4.0 }
+    r:    # Đất Tách: nện đất mở đường nứt dài, xuyên hàng, choáng mọi tướng trên đường
+      aim: skillshot
+      width: 2.6
+      speed: 30
+      range: 13.0
+      windup: 0.45
+      pierce: true
+      cooldown: [90, 80, 70]
+      cost: [100, 100, 100]
+      damage: { type: physical, base: [140, 220, 300], bonusAd: 0.8 }
+      effects: [{ stun: 1.1 }]
+builds:
+  sam_kha: [qua_mach, oathguard_plate, heartforge, iron_plate, buoc_van]

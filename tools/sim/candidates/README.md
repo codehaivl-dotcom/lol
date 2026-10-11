@@ -1,0 +1,1 @@
+Kit ứng viên: mỗi file `<id>.yml` = `{ heroes: { <id>: kit cùng schema scripts/lib/data/heroes.yml }, builds: { <id>: [item ids của catalog, thứ tự mua] } }`. Lab đọc bằng `--cand`; id trùng tướng đang chơi bị từ chối; không bao giờ vào roster chơi được. Quy trình: docs/co-linh-than-chien/73-balance-lab.md §5.

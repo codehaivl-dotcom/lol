@@ -1,0 +1,3255 @@
+{
+ "eco": "economy.yml",
+ "items": {
+  "mach_tinh": {
+   "cost": 250,
+   "value": 250,
+   "eff": 1,
+   "tier": "basic"
+  },
+  "dong_van": {
+   "cost": 240,
+   "value": 240,
+   "eff": 1,
+   "tier": "basic"
+  },
+  "ngoc_am": {
+   "cost": 240,
+   "value": 240,
+   "eff": 1,
+   "tier": "basic"
+  },
+  "nanh_mach": {
+   "cost": 300,
+   "value": 300,
+   "eff": 1,
+   "tier": "basic"
+  },
+  "kinh_luu": {
+   "cost": 300,
+   "value": 300,
+   "eff": 1,
+   "tier": "basic"
+  },
+  "soi_nhip": {
+   "cost": 300,
+   "value": 300,
+   "eff": 1,
+   "tier": "basic"
+  },
+  "hat_sinh": {
+   "cost": 200,
+   "value": 200,
+   "eff": 1,
+   "tier": "basic"
+  },
+  "buoc_van": {
+   "cost": 300,
+   "value": 300,
+   "eff": 1,
+   "tier": "basic"
+  },
+  "iron_plate": {
+   "cost": 550,
+   "value": 480,
+   "eff": 0.87,
+   "tier": "intermediate"
+  },
+  "quickstring": {
+   "cost": 650,
+   "value": 630,
+   "eff": 0.97,
+   "tier": "intermediate"
+  },
+  "kinh_song": {
+   "cost": 700,
+   "value": 850,
+   "eff": 1.21,
+   "tier": "intermediate"
+  },
+  "binh_mach": {
+   "cost": 750,
+   "value": 700,
+   "eff": 0.93,
+   "tier": "intermediate"
+  },
+  "nanh_khep": {
+   "cost": 750,
+   "value": 600,
+   "eff": 0.8,
+   "tier": "intermediate"
+  },
+  "an_tinh": {
+   "cost": 600,
+   "value": 480,
+   "eff": 0.8,
+   "tier": "intermediate"
+  },
+  "oathguard_plate": {
+   "cost": 1600,
+   "value": 1847,
+   "eff": 1.15,
+   "tier": "completed"
+  },
+  "keeneye": {
+   "cost": 1700,
+   "value": 1650,
+   "eff": 0.97,
+   "tier": "completed"
+  },
+  "thornseed_quiver": {
+   "cost": 1400,
+   "value": 1250,
+   "eff": 0.89,
+   "tier": "completed"
+  },
+  "heartforge": {
+   "cost": 1500,
+   "value": 1572,
+   "eff": 1.05,
+   "tier": "completed"
+  },
+  "lo_than_ky": {
+   "cost": 1700,
+   "value": 1750,
+   "eff": 1.03,
+   "tier": "completed"
+  },
+  "dang_hoi_am": {
+   "cost": 1800,
+   "value": 1980,
+   "eff": 1.1,
+   "tier": "completed"
+  },
+  "chuong_may": {
+   "cost": 1600,
+   "value": 1750,
+   "eff": 1.09,
+   "tier": "completed"
+  },
+  "qua_mach": {
+   "cost": 1900,
+   "value": 1880,
+   "eff": 0.99,
+   "tier": "completed"
+  },
+  "phial_of_dawn": {
+   "cost": 150,
+   "value": 75,
+   "eff": 0.5,
+   "tier": "relic"
+  },
+  "bastion_stone": {
+   "cost": 300,
+   "value": 90,
+   "eff": 0.3,
+   "tier": "relic"
+  }
+ },
+ "ehp": {
+  "mach_tinh": {
+   "moc_lam@1": {
+    "phys": 0.109,
+    "mag": 0.109
+   },
+   "moc_lam@6": {
+    "phys": 0.065,
+    "mag": 0.065
+   },
+   "moc_lam@11": {
+    "phys": 0.046,
+    "mag": 0.046
+   },
+   "kha_tan@1": {
+    "phys": 0.124,
+    "mag": 0.124
+   },
+   "kha_tan@6": {
+    "phys": 0.07,
+    "mag": 0.07
+   },
+   "kha_tan@11": {
+    "phys": 0.048,
+    "mag": 0.048
+   },
+   "mi_dang@1": {
+    "phys": 0.117,
+    "mag": 0.117
+   },
+   "mi_dang@6": {
+    "phys": 0.066,
+    "mag": 0.066
+   },
+   "mi_dang@11": {
+    "phys": 0.046,
+    "mag": 0.046
+   },
+   "hoa_tuy@1": {
+    "phys": 0.14,
+    "mag": 0.14
+   },
+   "hoa_tuy@6": {
+    "phys": 0.078,
+    "mag": 0.078
+   },
+   "hoa_tuy@11": {
+    "phys": 0.054,
+    "mag": 0.054
+   },
+   "nham_vu@1": {
+    "phys": 0.179,
+    "mag": 0.179
+   },
+   "nham_vu@6": {
+    "phys": 0.101,
+    "mag": 0.101
+   },
+   "nham_vu@11": {
+    "phys": 0.07,
+    "mag": 0.07
+   },
+   "van_dao@1": {
+    "phys": 0.119,
+    "mag": 0.119
+   },
+   "van_dao@6": {
+    "phys": 0.067,
+    "mag": 0.067
+   },
+   "van_dao@11": {
+    "phys": 0.046,
+    "mag": 0.046
+   }
+  },
+  "dong_van": {
+   "moc_lam@1": {
+    "phys": 0.087,
+    "mag": 0
+   },
+   "moc_lam@6": {
+    "phys": 0.075,
+    "mag": 0
+   },
+   "moc_lam@11": {
+    "phys": 0.067,
+    "mag": 0
+   },
+   "kha_tan@1": {
+    "phys": 0.09,
+    "mag": 0
+   },
+   "kha_tan@6": {
+    "phys": 0.077,
+    "mag": 0
+   },
+   "kha_tan@11": {
+    "phys": 0.067,
+    "mag": 0
+   },
+   "mi_dang@1": {
+    "phys": 0.095,
+    "mag": 0
+   },
+   "mi_dang@6": {
+    "phys": 0.083,
+    "mag": 0
+   },
+   "mi_dang@11": {
+    "phys": 0.073,
+    "mag": 0
+   },
+   "hoa_tuy@1": {
+    "phys": 0.098,
+    "mag": 0
+   },
+   "hoa_tuy@6": {
+    "phys": 0.086,
+    "mag": 0
+   },
+   "hoa_tuy@11": {
+    "phys": 0.076,
+    "mag": 0
+   },
+   "nham_vu@1": {
+    "phys": 0.095,
+    "mag": 0
+   },
+   "nham_vu@6": {
+    "phys": 0.082,
+    "mag": 0
+   },
+   "nham_vu@11": {
+    "phys": 0.072,
+    "mag": 0
+   },
+   "van_dao@1": {
+    "phys": 0.094,
+    "mag": 0
+   },
+   "van_dao@6": {
+    "phys": 0.081,
+    "mag": 0
+   },
+   "van_dao@11": {
+    "phys": 0.071,
+    "mag": 0
+   }
+  },
+  "ngoc_am": {
+   "moc_lam@1": {
+    "phys": 0,
+    "mag": 0.091
+   },
+   "moc_lam@6": {
+    "phys": 0,
+    "mag": 0.086
+   },
+   "moc_lam@11": {
+    "phys": 0,
+    "mag": 0.081
+   },
+   "kha_tan@1": {
+    "phys": 0,
+    "mag": 0.091
+   },
+   "kha_tan@6": {
+    "phys": 0,
+    "mag": 0.085
+   },
+   "kha_tan@11": {
+    "phys": 0,
+    "mag": 0.08
+   },
+   "mi_dang@1": {
+    "phys": 0,
+    "mag": 0.092
+   },
+   "mi_dang@6": {
+    "phys": 0,
+    "mag": 0.088
+   },
+   "mi_dang@11": {
+    "phys": 0,
+    "mag": 0.084
+   },
+   "hoa_tuy@1": {
+    "phys": 0,
+    "mag": 0.092
+   },
+   "hoa_tuy@6": {
+    "phys": 0,
+    "mag": 0.088
+   },
+   "hoa_tuy@11": {
+    "phys": 0,
+    "mag": 0.084
+   },
+   "nham_vu@1": {
+    "phys": 0,
+    "mag": 0.092
+   },
+   "nham_vu@6": {
+    "phys": 0,
+    "mag": 0.088
+   },
+   "nham_vu@11": {
+    "phys": 0,
+    "mag": 0.084
+   },
+   "van_dao@1": {
+    "phys": 0,
+    "mag": 0.091
+   },
+   "van_dao@6": {
+    "phys": 0,
+    "mag": 0.086
+   },
+   "van_dao@11": {
+    "phys": 0,
+    "mag": 0.082
+   }
+  },
+  "nanh_mach": {
+   "moc_lam@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@11": {
+    "phys": 0,
+    "mag": 0
+   }
+  },
+  "kinh_luu": {
+   "moc_lam@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@11": {
+    "phys": 0,
+    "mag": 0
+   }
+  },
+  "soi_nhip": {
+   "moc_lam@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@11": {
+    "phys": 0,
+    "mag": 0
+   }
+  },
+  "hat_sinh": {
+   "moc_lam@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@11": {
+    "phys": 0,
+    "mag": 0
+   }
+  },
+  "buoc_van": {
+   "moc_lam@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@11": {
+    "phys": 0,
+    "mag": 0
+   }
+  },
+  "iron_plate": {
+   "moc_lam@1": {
+    "phys": 0.174,
+    "mag": 0
+   },
+   "moc_lam@6": {
+    "phys": 0.151,
+    "mag": 0
+   },
+   "moc_lam@11": {
+    "phys": 0.133,
+    "mag": 0
+   },
+   "kha_tan@1": {
+    "phys": 0.179,
+    "mag": 0
+   },
+   "kha_tan@6": {
+    "phys": 0.154,
+    "mag": 0
+   },
+   "kha_tan@11": {
+    "phys": 0.135,
+    "mag": 0
+   },
+   "mi_dang@1": {
+    "phys": 0.19,
+    "mag": 0
+   },
+   "mi_dang@6": {
+    "phys": 0.166,
+    "mag": 0
+   },
+   "mi_dang@11": {
+    "phys": 0.146,
+    "mag": 0
+   },
+   "hoa_tuy@1": {
+    "phys": 0.197,
+    "mag": 0
+   },
+   "hoa_tuy@6": {
+    "phys": 0.171,
+    "mag": 0
+   },
+   "hoa_tuy@11": {
+    "phys": 0.152,
+    "mag": 0
+   },
+   "nham_vu@1": {
+    "phys": 0.19,
+    "mag": 0
+   },
+   "nham_vu@6": {
+    "phys": 0.164,
+    "mag": 0
+   },
+   "nham_vu@11": {
+    "phys": 0.145,
+    "mag": 0
+   },
+   "van_dao@1": {
+    "phys": 0.188,
+    "mag": 0
+   },
+   "van_dao@6": {
+    "phys": 0.162,
+    "mag": 0
+   },
+   "van_dao@11": {
+    "phys": 0.143,
+    "mag": 0
+   }
+  },
+  "quickstring": {
+   "moc_lam@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@11": {
+    "phys": 0,
+    "mag": 0
+   }
+  },
+  "kinh_song": {
+   "moc_lam@1": {
+    "phys": 0.109,
+    "mag": 0.109
+   },
+   "moc_lam@6": {
+    "phys": 0.065,
+    "mag": 0.065
+   },
+   "moc_lam@11": {
+    "phys": 0.046,
+    "mag": 0.046
+   },
+   "kha_tan@1": {
+    "phys": 0.124,
+    "mag": 0.124
+   },
+   "kha_tan@6": {
+    "phys": 0.07,
+    "mag": 0.07
+   },
+   "kha_tan@11": {
+    "phys": 0.048,
+    "mag": 0.048
+   },
+   "mi_dang@1": {
+    "phys": 0.117,
+    "mag": 0.117
+   },
+   "mi_dang@6": {
+    "phys": 0.066,
+    "mag": 0.066
+   },
+   "mi_dang@11": {
+    "phys": 0.046,
+    "mag": 0.046
+   },
+   "hoa_tuy@1": {
+    "phys": 0.14,
+    "mag": 0.14
+   },
+   "hoa_tuy@6": {
+    "phys": 0.078,
+    "mag": 0.078
+   },
+   "hoa_tuy@11": {
+    "phys": 0.054,
+    "mag": 0.054
+   },
+   "nham_vu@1": {
+    "phys": 0.179,
+    "mag": 0.179
+   },
+   "nham_vu@6": {
+    "phys": 0.101,
+    "mag": 0.101
+   },
+   "nham_vu@11": {
+    "phys": 0.07,
+    "mag": 0.07
+   },
+   "van_dao@1": {
+    "phys": 0.119,
+    "mag": 0.119
+   },
+   "van_dao@6": {
+    "phys": 0.067,
+    "mag": 0.067
+   },
+   "van_dao@11": {
+    "phys": 0.046,
+    "mag": 0.046
+   }
+  },
+  "binh_mach": {
+   "moc_lam@1": {
+    "phys": 0.217,
+    "mag": 0.217
+   },
+   "moc_lam@6": {
+    "phys": 0.129,
+    "mag": 0.129
+   },
+   "moc_lam@11": {
+    "phys": 0.092,
+    "mag": 0.092
+   },
+   "kha_tan@1": {
+    "phys": 0.247,
+    "mag": 0.247
+   },
+   "kha_tan@6": {
+    "phys": 0.139,
+    "mag": 0.139
+   },
+   "kha_tan@11": {
+    "phys": 0.097,
+    "mag": 0.097
+   },
+   "mi_dang@1": {
+    "phys": 0.235,
+    "mag": 0.235
+   },
+   "mi_dang@6": {
+    "phys": 0.132,
+    "mag": 0.132
+   },
+   "mi_dang@11": {
+    "phys": 0.092,
+    "mag": 0.092
+   },
+   "hoa_tuy@1": {
+    "phys": 0.28,
+    "mag": 0.28
+   },
+   "hoa_tuy@6": {
+    "phys": 0.157,
+    "mag": 0.157
+   },
+   "hoa_tuy@11": {
+    "phys": 0.109,
+    "mag": 0.109
+   },
+   "nham_vu@1": {
+    "phys": 0.358,
+    "mag": 0.358
+   },
+   "nham_vu@6": {
+    "phys": 0.202,
+    "mag": 0.202
+   },
+   "nham_vu@11": {
+    "phys": 0.141,
+    "mag": 0.141
+   },
+   "van_dao@1": {
+    "phys": 0.238,
+    "mag": 0.238
+   },
+   "van_dao@6": {
+    "phys": 0.134,
+    "mag": 0.134
+   },
+   "van_dao@11": {
+    "phys": 0.093,
+    "mag": 0.093
+   }
+  },
+  "nanh_khep": {
+   "moc_lam@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@11": {
+    "phys": 0,
+    "mag": 0
+   }
+  },
+  "an_tinh": {
+   "moc_lam@1": {
+    "phys": 0,
+    "mag": 0.182
+   },
+   "moc_lam@6": {
+    "phys": 0,
+    "mag": 0.171
+   },
+   "moc_lam@11": {
+    "phys": 0,
+    "mag": 0.162
+   },
+   "kha_tan@1": {
+    "phys": 0,
+    "mag": 0.182
+   },
+   "kha_tan@6": {
+    "phys": 0,
+    "mag": 0.17
+   },
+   "kha_tan@11": {
+    "phys": 0,
+    "mag": 0.16
+   },
+   "mi_dang@1": {
+    "phys": 0,
+    "mag": 0.185
+   },
+   "mi_dang@6": {
+    "phys": 0,
+    "mag": 0.176
+   },
+   "mi_dang@11": {
+    "phys": 0,
+    "mag": 0.168
+   },
+   "hoa_tuy@1": {
+    "phys": 0,
+    "mag": 0.185
+   },
+   "hoa_tuy@6": {
+    "phys": 0,
+    "mag": 0.176
+   },
+   "hoa_tuy@11": {
+    "phys": 0,
+    "mag": 0.168
+   },
+   "nham_vu@1": {
+    "phys": 0,
+    "mag": 0.185
+   },
+   "nham_vu@6": {
+    "phys": 0,
+    "mag": 0.176
+   },
+   "nham_vu@11": {
+    "phys": 0,
+    "mag": 0.168
+   },
+   "van_dao@1": {
+    "phys": 0,
+    "mag": 0.182
+   },
+   "van_dao@6": {
+    "phys": 0,
+    "mag": 0.172
+   },
+   "van_dao@11": {
+    "phys": 0,
+    "mag": 0.163
+   }
+  },
+  "oathguard_plate": {
+   "moc_lam@1": {
+    "phys": 0.617,
+    "mag": 0.524
+   },
+   "moc_lam@6": {
+    "phys": 0.43,
+    "mag": 0.373
+   },
+   "moc_lam@11": {
+    "phys": 0.341,
+    "mag": 0.304
+   },
+   "kha_tan@1": {
+    "phys": 0.677,
+    "mag": 0.572
+   },
+   "kha_tan@6": {
+    "phys": 0.451,
+    "mag": 0.387
+   },
+   "kha_tan@11": {
+    "phys": 0.351,
+    "mag": 0.31
+   },
+   "mi_dang@1": {
+    "phys": 0.678,
+    "mag": 0.555
+   },
+   "mi_dang@6": {
+    "phys": 0.46,
+    "mag": 0.383
+   },
+   "mi_dang@11": {
+    "phys": 0.362,
+    "mag": 0.311
+   },
+   "hoa_tuy@1": {
+    "phys": 0.766,
+    "mag": 0.626
+   },
+   "hoa_tuy@6": {
+    "phys": 0.511,
+    "mag": 0.421
+   },
+   "hoa_tuy@11": {
+    "phys": 0.399,
+    "mag": 0.337
+   },
+   "nham_vu@1": {
+    "phys": 0.888,
+    "mag": 0.751
+   },
+   "nham_vu@6": {
+    "phys": 0.574,
+    "mag": 0.493
+   },
+   "nham_vu@11": {
+    "phys": 0.438,
+    "mag": 0.387
+   },
+   "van_dao@1": {
+    "phys": 0.678,
+    "mag": 0.557
+   },
+   "van_dao@6": {
+    "phys": 0.457,
+    "mag": 0.381
+   },
+   "van_dao@11": {
+    "phys": 0.358,
+    "mag": 0.307
+   }
+  },
+  "keeneye": {
+   "moc_lam@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@11": {
+    "phys": 0,
+    "mag": 0
+   }
+  },
+  "thornseed_quiver": {
+   "moc_lam@1": {
+    "phys": 0.217,
+    "mag": 0.217
+   },
+   "moc_lam@6": {
+    "phys": 0.129,
+    "mag": 0.129
+   },
+   "moc_lam@11": {
+    "phys": 0.092,
+    "mag": 0.092
+   },
+   "kha_tan@1": {
+    "phys": 0.247,
+    "mag": 0.247
+   },
+   "kha_tan@6": {
+    "phys": 0.139,
+    "mag": 0.139
+   },
+   "kha_tan@11": {
+    "phys": 0.097,
+    "mag": 0.097
+   },
+   "mi_dang@1": {
+    "phys": 0.235,
+    "mag": 0.235
+   },
+   "mi_dang@6": {
+    "phys": 0.132,
+    "mag": 0.132
+   },
+   "mi_dang@11": {
+    "phys": 0.092,
+    "mag": 0.092
+   },
+   "hoa_tuy@1": {
+    "phys": 0.28,
+    "mag": 0.28
+   },
+   "hoa_tuy@6": {
+    "phys": 0.157,
+    "mag": 0.157
+   },
+   "hoa_tuy@11": {
+    "phys": 0.109,
+    "mag": 0.109
+   },
+   "nham_vu@1": {
+    "phys": 0.358,
+    "mag": 0.358
+   },
+   "nham_vu@6": {
+    "phys": 0.202,
+    "mag": 0.202
+   },
+   "nham_vu@11": {
+    "phys": 0.141,
+    "mag": 0.141
+   },
+   "van_dao@1": {
+    "phys": 0.238,
+    "mag": 0.238
+   },
+   "van_dao@6": {
+    "phys": 0.134,
+    "mag": 0.134
+   },
+   "van_dao@11": {
+    "phys": 0.093,
+    "mag": 0.093
+   }
+  },
+  "heartforge": {
+   "moc_lam@1": {
+    "phys": 0.423,
+    "mag": 0.423
+   },
+   "moc_lam@6": {
+    "phys": 0.251,
+    "mag": 0.251
+   },
+   "moc_lam@11": {
+    "phys": 0.178,
+    "mag": 0.178
+   },
+   "kha_tan@1": {
+    "phys": 0.481,
+    "mag": 0.481
+   },
+   "kha_tan@6": {
+    "phys": 0.27,
+    "mag": 0.27
+   },
+   "kha_tan@11": {
+    "phys": 0.188,
+    "mag": 0.188
+   },
+   "mi_dang@1": {
+    "phys": 0.456,
+    "mag": 0.456
+   },
+   "mi_dang@6": {
+    "phys": 0.256,
+    "mag": 0.256
+   },
+   "mi_dang@11": {
+    "phys": 0.178,
+    "mag": 0.178
+   },
+   "hoa_tuy@1": {
+    "phys": 0.543,
+    "mag": 0.543
+   },
+   "hoa_tuy@6": {
+    "phys": 0.304,
+    "mag": 0.304
+   },
+   "hoa_tuy@11": {
+    "phys": 0.211,
+    "mag": 0.211
+   },
+   "nham_vu@1": {
+    "phys": 0.697,
+    "mag": 0.697
+   },
+   "nham_vu@6": {
+    "phys": 0.393,
+    "mag": 0.393
+   },
+   "nham_vu@11": {
+    "phys": 0.273,
+    "mag": 0.273
+   },
+   "van_dao@1": {
+    "phys": 0.463,
+    "mag": 0.463
+   },
+   "van_dao@6": {
+    "phys": 0.26,
+    "mag": 0.26
+   },
+   "van_dao@11": {
+    "phys": 0.18,
+    "mag": 0.18
+   }
+  },
+  "lo_than_ky": {
+   "moc_lam@1": {
+    "phys": 0.145,
+    "mag": 0.145
+   },
+   "moc_lam@6": {
+    "phys": 0.086,
+    "mag": 0.086
+   },
+   "moc_lam@11": {
+    "phys": 0.061,
+    "mag": 0.061
+   },
+   "kha_tan@1": {
+    "phys": 0.165,
+    "mag": 0.165
+   },
+   "kha_tan@6": {
+    "phys": 0.093,
+    "mag": 0.093
+   },
+   "kha_tan@11": {
+    "phys": 0.064,
+    "mag": 0.064
+   },
+   "mi_dang@1": {
+    "phys": 0.156,
+    "mag": 0.156
+   },
+   "mi_dang@6": {
+    "phys": 0.088,
+    "mag": 0.088
+   },
+   "mi_dang@11": {
+    "phys": 0.061,
+    "mag": 0.061
+   },
+   "hoa_tuy@1": {
+    "phys": 0.186,
+    "mag": 0.186
+   },
+   "hoa_tuy@6": {
+    "phys": 0.104,
+    "mag": 0.104
+   },
+   "hoa_tuy@11": {
+    "phys": 0.072,
+    "mag": 0.072
+   },
+   "nham_vu@1": {
+    "phys": 0.239,
+    "mag": 0.239
+   },
+   "nham_vu@6": {
+    "phys": 0.135,
+    "mag": 0.135
+   },
+   "nham_vu@11": {
+    "phys": 0.094,
+    "mag": 0.094
+   },
+   "van_dao@1": {
+    "phys": 0.159,
+    "mag": 0.159
+   },
+   "van_dao@6": {
+    "phys": 0.089,
+    "mag": 0.089
+   },
+   "van_dao@11": {
+    "phys": 0.062,
+    "mag": 0.062
+   }
+  },
+  "dang_hoi_am": {
+   "moc_lam@1": {
+    "phys": 0.145,
+    "mag": 0.353
+   },
+   "moc_lam@6": {
+    "phys": 0.086,
+    "mag": 0.272
+   },
+   "moc_lam@11": {
+    "phys": 0.061,
+    "mag": 0.233
+   },
+   "kha_tan@1": {
+    "phys": 0.165,
+    "mag": 0.377
+   },
+   "kha_tan@6": {
+    "phys": 0.093,
+    "mag": 0.279
+   },
+   "kha_tan@11": {
+    "phys": 0.064,
+    "mag": 0.235
+   },
+   "mi_dang@1": {
+    "phys": 0.156,
+    "mag": 0.37
+   },
+   "mi_dang@6": {
+    "phys": 0.088,
+    "mag": 0.279
+   },
+   "mi_dang@11": {
+    "phys": 0.061,
+    "mag": 0.239
+   },
+   "hoa_tuy@1": {
+    "phys": 0.186,
+    "mag": 0.405
+   },
+   "hoa_tuy@6": {
+    "phys": 0.104,
+    "mag": 0.299
+   },
+   "hoa_tuy@11": {
+    "phys": 0.072,
+    "mag": 0.252
+   },
+   "nham_vu@1": {
+    "phys": 0.239,
+    "mag": 0.468
+   },
+   "nham_vu@6": {
+    "phys": 0.135,
+    "mag": 0.334
+   },
+   "nham_vu@11": {
+    "phys": 0.094,
+    "mag": 0.277
+   },
+   "van_dao@1": {
+    "phys": 0.159,
+    "mag": 0.369
+   },
+   "van_dao@6": {
+    "phys": 0.089,
+    "mag": 0.276
+   },
+   "van_dao@11": {
+    "phys": 0.062,
+    "mag": 0.235
+   }
+  },
+  "chuong_may": {
+   "moc_lam@1": {
+    "phys": 0.326,
+    "mag": 0.326
+   },
+   "moc_lam@6": {
+    "phys": 0.194,
+    "mag": 0.194
+   },
+   "moc_lam@11": {
+    "phys": 0.138,
+    "mag": 0.138
+   },
+   "kha_tan@1": {
+    "phys": 0.371,
+    "mag": 0.371
+   },
+   "kha_tan@6": {
+    "phys": 0.209,
+    "mag": 0.209
+   },
+   "kha_tan@11": {
+    "phys": 0.145,
+    "mag": 0.145
+   },
+   "mi_dang@1": {
+    "phys": 0.352,
+    "mag": 0.352
+   },
+   "mi_dang@6": {
+    "phys": 0.198,
+    "mag": 0.198
+   },
+   "mi_dang@11": {
+    "phys": 0.138,
+    "mag": 0.138
+   },
+   "hoa_tuy@1": {
+    "phys": 0.419,
+    "mag": 0.419
+   },
+   "hoa_tuy@6": {
+    "phys": 0.235,
+    "mag": 0.235
+   },
+   "hoa_tuy@11": {
+    "phys": 0.163,
+    "mag": 0.163
+   },
+   "nham_vu@1": {
+    "phys": 0.538,
+    "mag": 0.538
+   },
+   "nham_vu@6": {
+    "phys": 0.303,
+    "mag": 0.303
+   },
+   "nham_vu@11": {
+    "phys": 0.211,
+    "mag": 0.211
+   },
+   "van_dao@1": {
+    "phys": 0.357,
+    "mag": 0.357
+   },
+   "van_dao@6": {
+    "phys": 0.2,
+    "mag": 0.2
+   },
+   "van_dao@11": {
+    "phys": 0.139,
+    "mag": 0.139
+   }
+  },
+  "qua_mach": {
+   "moc_lam@1": {
+    "phys": 0.429,
+    "mag": 0.217
+   },
+   "moc_lam@6": {
+    "phys": 0.299,
+    "mag": 0.129
+   },
+   "moc_lam@11": {
+    "phys": 0.237,
+    "mag": 0.092
+   },
+   "kha_tan@1": {
+    "phys": 0.471,
+    "mag": 0.247
+   },
+   "kha_tan@6": {
+    "phys": 0.314,
+    "mag": 0.139
+   },
+   "kha_tan@11": {
+    "phys": 0.245,
+    "mag": 0.097
+   },
+   "mi_dang@1": {
+    "phys": 0.47,
+    "mag": 0.235
+   },
+   "mi_dang@6": {
+    "phys": 0.319,
+    "mag": 0.132
+   },
+   "mi_dang@11": {
+    "phys": 0.251,
+    "mag": 0.092
+   },
+   "hoa_tuy@1": {
+    "phys": 0.531,
+    "mag": 0.28
+   },
+   "hoa_tuy@6": {
+    "phys": 0.355,
+    "mag": 0.157
+   },
+   "hoa_tuy@11": {
+    "phys": 0.277,
+    "mag": 0.109
+   },
+   "nham_vu@1": {
+    "phys": 0.617,
+    "mag": 0.358
+   },
+   "nham_vu@6": {
+    "phys": 0.4,
+    "mag": 0.202
+   },
+   "nham_vu@11": {
+    "phys": 0.306,
+    "mag": 0.141
+   },
+   "van_dao@1": {
+    "phys": 0.47,
+    "mag": 0.238
+   },
+   "van_dao@6": {
+    "phys": 0.317,
+    "mag": 0.134
+   },
+   "van_dao@11": {
+    "phys": 0.249,
+    "mag": 0.093
+   }
+  },
+  "phial_of_dawn": {
+   "moc_lam@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@11": {
+    "phys": 0,
+    "mag": 0
+   }
+  },
+  "bastion_stone": {
+   "moc_lam@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "moc_lam@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "kha_tan@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "mi_dang@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "hoa_tuy@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "nham_vu@11": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@1": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@6": {
+    "phys": 0,
+    "mag": 0
+   },
+   "van_dao@11": {
+    "phys": 0,
+    "mag": 0
+   }
+  }
+ },
+ "ttk": {
+  "L1_none": {
+   "moc_lam>kha_tan": 16.8,
+   "moc_lam>mi_dang": 16.8,
+   "moc_lam>hoa_tuy": 13.19,
+   "moc_lam>nham_vu": 10.65,
+   "moc_lam>van_dao": 16.8,
+   "kha_tan>moc_lam": 13.94,
+   "kha_tan>mi_dang": 11.85,
+   "kha_tan>hoa_tuy": 9.56,
+   "kha_tan>nham_vu": 8.49,
+   "kha_tan>van_dao": 11.86,
+   "mi_dang>moc_lam": 21.9,
+   "mi_dang>kha_tan": 18.56,
+   "mi_dang>hoa_tuy": 15.61,
+   "mi_dang>nham_vu": 13.21,
+   "mi_dang>van_dao": 18.8,
+   "hoa_tuy>moc_lam": 27.13,
+   "hoa_tuy>kha_tan": 24.22,
+   "hoa_tuy>mi_dang": 24.22,
+   "hoa_tuy>nham_vu": 16.15,
+   "hoa_tuy>van_dao": 24.26,
+   "nham_vu>moc_lam": 35.3,
+   "nham_vu>kha_tan": 29.3,
+   "nham_vu>mi_dang": 29.3,
+   "nham_vu>hoa_tuy": 23.3,
+   "nham_vu>van_dao": 29.3,
+   "van_dao>moc_lam": 33.91,
+   "van_dao>kha_tan": 29.85,
+   "van_dao>mi_dang": 30.53,
+   "van_dao>hoa_tuy": 25.69,
+   "van_dao>nham_vu": 20.02
+  },
+  "L1_starter": {
+   "moc_lam>kha_tan": 13.86,
+   "moc_lam>mi_dang": 13.86,
+   "moc_lam>hoa_tuy": 12.05,
+   "moc_lam>nham_vu": 10.19,
+   "moc_lam>van_dao": 13.86,
+   "kha_tan>moc_lam": 12.36,
+   "kha_tan>mi_dang": 10.42,
+   "kha_tan>hoa_tuy": 8.85,
+   "kha_tan>nham_vu": 7.26,
+   "kha_tan>van_dao": 10.43,
+   "mi_dang>moc_lam": 18.87,
+   "mi_dang>kha_tan": 15.93,
+   "mi_dang>hoa_tuy": 15.13,
+   "mi_dang>nham_vu": 12.23,
+   "mi_dang>van_dao": 16.32,
+   "hoa_tuy>moc_lam": 24.3,
+   "hoa_tuy>kha_tan": 21.3,
+   "hoa_tuy>mi_dang": 22.72,
+   "hoa_tuy>nham_vu": 14.57,
+   "hoa_tuy>van_dao": 22.72,
+   "nham_vu>moc_lam": 29.3,
+   "nham_vu>kha_tan": 24.8,
+   "nham_vu>mi_dang": 24.8,
+   "nham_vu>hoa_tuy": 20.3,
+   "nham_vu>van_dao": 24.8,
+   "van_dao>moc_lam": 31.67,
+   "van_dao>kha_tan": 27.64,
+   "van_dao>mi_dang": 28.76,
+   "van_dao>hoa_tuy": 23.75,
+   "van_dao>nham_vu": 18.47
+  },
+  "L1_def_vs_dmg": {
+   "moc_lam>kha_tan": 16.8,
+   "moc_lam>mi_dang": 16.72,
+   "moc_lam>hoa_tuy": 13.66,
+   "moc_lam>nham_vu": 10.7,
+   "moc_lam>van_dao": 16.8,
+   "kha_tan>moc_lam": 13.4,
+   "kha_tan>mi_dang": 11.85,
+   "kha_tan>hoa_tuy": 9.82,
+   "kha_tan>nham_vu": 8.82,
+   "kha_tan>van_dao": 11.85,
+   "mi_dang>moc_lam": 22.13,
+   "mi_dang>kha_tan": 18.8,
+   "mi_dang>hoa_tuy": 15.93,
+   "mi_dang>nham_vu": 14.5,
+   "mi_dang>van_dao": 20.11,
+   "hoa_tuy>moc_lam": 27.19,
+   "hoa_tuy>kha_tan": 24.22,
+   "hoa_tuy>mi_dang": 25.77,
+   "hoa_tuy>nham_vu": 16.81,
+   "hoa_tuy>van_dao": 25.77,
+   "nham_vu>moc_lam": 32.3,
+   "nham_vu>kha_tan": 27.8,
+   "nham_vu>mi_dang": 27.8,
+   "nham_vu>hoa_tuy": 23.3,
+   "nham_vu>van_dao": 27.8,
+   "van_dao>moc_lam": 35.11,
+   "van_dao>kha_tan": 31.53,
+   "van_dao>mi_dang": 31.93,
+   "van_dao>hoa_tuy": 27.19,
+   "van_dao>nham_vu": 21.94
+  },
+  "L4_role": {
+   "moc_lam>kha_tan": 21.67,
+   "moc_lam>mi_dang": 18.88,
+   "moc_lam>hoa_tuy": 15.8,
+   "moc_lam>nham_vu": 12.98,
+   "moc_lam>van_dao": 21.6,
+   "kha_tan>moc_lam": 17.12,
+   "kha_tan>mi_dang": 14.59,
+   "kha_tan>hoa_tuy": 11.94,
+   "kha_tan>nham_vu": 9.97,
+   "kha_tan>van_dao": 15.55,
+   "mi_dang>moc_lam": 18.65,
+   "mi_dang>kha_tan": 16.1,
+   "mi_dang>hoa_tuy": 14.95,
+   "mi_dang>nham_vu": 13.46,
+   "mi_dang>van_dao": 20.9,
+   "hoa_tuy>moc_lam": 28.04,
+   "hoa_tuy>kha_tan": 25.88,
+   "hoa_tuy>mi_dang": 28.12,
+   "hoa_tuy>nham_vu": 19.15,
+   "hoa_tuy>van_dao": 31.06,
+   "nham_vu>moc_lam": 39.1,
+   "nham_vu>kha_tan": 34.81,
+   "nham_vu>mi_dang": 31.57,
+   "nham_vu>hoa_tuy": 26.07,
+   "nham_vu>van_dao": 34.81,
+   "van_dao>moc_lam": 38.49,
+   "van_dao>kha_tan": 36.44,
+   "van_dao>mi_dang": 38.49,
+   "van_dao>hoa_tuy": 34.01,
+   "van_dao>nham_vu": 27.42
+  },
+  "L4_def_vs_dmg": {
+   "moc_lam>kha_tan": 18.26,
+   "moc_lam>mi_dang": 18.24,
+   "moc_lam>hoa_tuy": 14.35,
+   "moc_lam>nham_vu": 12.24,
+   "moc_lam>van_dao": 18.24,
+   "kha_tan>moc_lam": 14.97,
+   "kha_tan>mi_dang": 13.26,
+   "kha_tan>hoa_tuy": 11.2,
+   "kha_tan>nham_vu": 9.11,
+   "kha_tan>van_dao": 13.5,
+   "mi_dang>moc_lam": 22.59,
+   "mi_dang>kha_tan": 21.28,
+   "mi_dang>hoa_tuy": 19.85,
+   "mi_dang>nham_vu": 14.74,
+   "mi_dang>van_dao": 21.47,
+   "hoa_tuy>moc_lam": 34.01,
+   "hoa_tuy>kha_tan": 32.27,
+   "hoa_tuy>mi_dang": 32.73,
+   "hoa_tuy>nham_vu": 23.09,
+   "hoa_tuy>van_dao": 32.89,
+   "nham_vu>moc_lam": 34.61,
+   "nham_vu>kha_tan": 30.19,
+   "nham_vu>mi_dang": 30.06,
+   "nham_vu>hoa_tuy": 24.8,
+   "nham_vu>van_dao": 30.06,
+   "van_dao>moc_lam": 39.45,
+   "van_dao>kha_tan": 38.71,
+   "van_dao>mi_dang": 38.86,
+   "van_dao>hoa_tuy": 36.03,
+   "van_dao>nham_vu": 29.19
+  },
+  "L7_role": {
+   "moc_lam>kha_tan": 28.2,
+   "moc_lam>mi_dang": 19.34,
+   "moc_lam>hoa_tuy": 16.06,
+   "moc_lam>nham_vu": 10.84,
+   "moc_lam>van_dao": 22.93,
+   "kha_tan>moc_lam": 22.25,
+   "kha_tan>mi_dang": 14.87,
+   "kha_tan>hoa_tuy": 11.98,
+   "kha_tan>nham_vu": 8.29,
+   "kha_tan>van_dao": 17.78,
+   "mi_dang>moc_lam": 16.64,
+   "mi_dang>kha_tan": 15.6,
+   "mi_dang>hoa_tuy": 11.24,
+   "mi_dang>nham_vu": 7.39,
+   "mi_dang>van_dao": 14.56,
+   "hoa_tuy>moc_lam": 30.66,
+   "hoa_tuy>kha_tan": 31.78,
+   "hoa_tuy>mi_dang": 24.62,
+   "hoa_tuy>nham_vu": 15.69,
+   "hoa_tuy>van_dao": 29.63,
+   "nham_vu>moc_lam": 34.26,
+   "nham_vu>kha_tan": 32.55,
+   "nham_vu>mi_dang": 22.88,
+   "nham_vu>hoa_tuy": 19.18,
+   "nham_vu>van_dao": 27.03,
+   "van_dao>moc_lam": 37.15,
+   "van_dao>kha_tan": 37.87,
+   "van_dao>mi_dang": 34.13,
+   "van_dao>hoa_tuy": 31.06,
+   "van_dao>nham_vu": 21.52
+  },
+  "L7_maxdef": {
+   "moc_lam>kha_tan": 18.01,
+   "moc_lam>mi_dang": 17.02,
+   "moc_lam>hoa_tuy": 14.96,
+   "moc_lam>nham_vu": 12.36,
+   "moc_lam>van_dao": 17.19,
+   "kha_tan>moc_lam": 14.17,
+   "kha_tan>mi_dang": 12.99,
+   "kha_tan>hoa_tuy": 10.59,
+   "kha_tan>nham_vu": 9.11,
+   "kha_tan>van_dao": 13.23,
+   "mi_dang>moc_lam": 16.64,
+   "mi_dang>kha_tan": 15.6,
+   "mi_dang>hoa_tuy": 12.81,
+   "mi_dang>nham_vu": 11.24,
+   "mi_dang>van_dao": 15.67,
+   "hoa_tuy>moc_lam": 30.66,
+   "hoa_tuy>kha_tan": 31.78,
+   "hoa_tuy>mi_dang": 31.78,
+   "hoa_tuy>nham_vu": 23.14,
+   "hoa_tuy>van_dao": 31.92,
+   "nham_vu>moc_lam": 34.26,
+   "nham_vu>kha_tan": 32.55,
+   "nham_vu>mi_dang": 30.76,
+   "nham_vu>hoa_tuy": 26.32,
+   "nham_vu>van_dao": 31.6,
+   "van_dao>moc_lam": 37.94,
+   "van_dao>kha_tan": 35.98,
+   "van_dao>mi_dang": 35.98,
+   "van_dao>hoa_tuy": 33.5,
+   "van_dao>nham_vu": 30.4
+  },
+  "L7_mixed": {
+   "moc_lam>kha_tan": 19.34,
+   "moc_lam>mi_dang": 16.06,
+   "moc_lam>hoa_tuy": 12.1,
+   "moc_lam>nham_vu": 9.39,
+   "moc_lam>van_dao": 16.06,
+   "kha_tan>moc_lam": 15.77,
+   "kha_tan>mi_dang": 11.65,
+   "kha_tan>hoa_tuy": 9.6,
+   "kha_tan>nham_vu": 6.76,
+   "kha_tan>van_dao": 11.91,
+   "mi_dang>moc_lam": 14.56,
+   "mi_dang>kha_tan": 13.26,
+   "mi_dang>hoa_tuy": 12.81,
+   "mi_dang>nham_vu": 7.84,
+   "mi_dang>van_dao": 17.09,
+   "hoa_tuy>moc_lam": 29.67,
+   "hoa_tuy>kha_tan": 28.15,
+   "hoa_tuy>mi_dang": 32.43,
+   "hoa_tuy>nham_vu": 16.98,
+   "hoa_tuy>van_dao": 30.47,
+   "nham_vu>moc_lam": 30.76,
+   "nham_vu>kha_tan": 28.84,
+   "nham_vu>mi_dang": 22.88,
+   "nham_vu>hoa_tuy": 19.18,
+   "nham_vu>van_dao": 22.88,
+   "van_dao>moc_lam": 35.26,
+   "van_dao>kha_tan": 34.13,
+   "van_dao>mi_dang": 35.98,
+   "van_dao>hoa_tuy": 34.74,
+   "van_dao>nham_vu": 20.94
+  },
+  "L11_role": {
+   "moc_lam>kha_tan": 32.68,
+   "moc_lam>mi_dang": 21.46,
+   "moc_lam>hoa_tuy": 17.5,
+   "moc_lam>nham_vu": 13.68,
+   "moc_lam>van_dao": 22.8,
+   "kha_tan>moc_lam": 23.94,
+   "kha_tan>mi_dang": 16.27,
+   "kha_tan>hoa_tuy": 13.19,
+   "kha_tan>nham_vu": 9.66,
+   "kha_tan>van_dao": 16.93,
+   "mi_dang>moc_lam": 16.95,
+   "mi_dang>kha_tan": 16.68,
+   "mi_dang>hoa_tuy": 11.35,
+   "mi_dang>nham_vu": 9.65,
+   "mi_dang>van_dao": 17.56,
+   "hoa_tuy>moc_lam": 32.47,
+   "hoa_tuy>kha_tan": 31.29,
+   "hoa_tuy>mi_dang": 28,
+   "hoa_tuy>nham_vu": 18.39,
+   "hoa_tuy>van_dao": 31.3,
+   "nham_vu>moc_lam": 35.83,
+   "nham_vu>kha_tan": 34.21,
+   "nham_vu>mi_dang": 23.36,
+   "nham_vu>hoa_tuy": 20.22,
+   "nham_vu>van_dao": 25.23,
+   "van_dao>moc_lam": 37.8,
+   "van_dao>kha_tan": 37.8,
+   "van_dao>mi_dang": 34.5,
+   "van_dao>hoa_tuy": 34.77,
+   "van_dao>nham_vu": 26.92
+  },
+  "L11_maxdef": {
+   "moc_lam>kha_tan": 22.47,
+   "moc_lam>mi_dang": 22.27,
+   "moc_lam>hoa_tuy": 18.45,
+   "moc_lam>nham_vu": 15.74,
+   "moc_lam>van_dao": 22.27,
+   "kha_tan>moc_lam": 17.52,
+   "kha_tan>mi_dang": 16.44,
+   "kha_tan>hoa_tuy": 13.36,
+   "kha_tan>nham_vu": 11.25,
+   "kha_tan>van_dao": 16.52,
+   "mi_dang>moc_lam": 19.34,
+   "mi_dang>kha_tan": 18.2,
+   "mi_dang>hoa_tuy": 16.26,
+   "mi_dang>nham_vu": 12.67,
+   "mi_dang>van_dao": 18.9,
+   "hoa_tuy>moc_lam": 34.6,
+   "hoa_tuy>kha_tan": 33.48,
+   "hoa_tuy>mi_dang": 33.36,
+   "hoa_tuy>nham_vu": 26.93,
+   "hoa_tuy>van_dao": 33.48,
+   "nham_vu>moc_lam": 39.06,
+   "nham_vu>kha_tan": 37.75,
+   "nham_vu>mi_dang": 36.53,
+   "nham_vu>hoa_tuy": 31.07,
+   "nham_vu>van_dao": 37.16,
+   "van_dao>moc_lam": null,
+   "van_dao>kha_tan": null,
+   "van_dao>mi_dang": null,
+   "van_dao>hoa_tuy": 37.8,
+   "van_dao>nham_vu": 35.26
+  }
+ },
+ "duels": {
+  "L1_none": {
+   "moc_lam>kha_tan": 0,
+   "moc_lam>mi_dang": 1,
+   "moc_lam>hoa_tuy": 0.75,
+   "moc_lam>nham_vu": 1,
+   "moc_lam>van_dao": 1,
+   "kha_tan>moc_lam": 0.75,
+   "kha_tan>mi_dang": 1,
+   "kha_tan>hoa_tuy": 0.5,
+   "kha_tan>nham_vu": 0.92,
+   "kha_tan>van_dao": 0.83,
+   "mi_dang>moc_lam": 0,
+   "mi_dang>kha_tan": 0,
+   "mi_dang>hoa_tuy": 0,
+   "mi_dang>nham_vu": 0.5,
+   "mi_dang>van_dao": 0.08,
+   "hoa_tuy>moc_lam": 0.08,
+   "hoa_tuy>kha_tan": 0.33,
+   "hoa_tuy>mi_dang": 1,
+   "hoa_tuy>nham_vu": 1,
+   "hoa_tuy>van_dao": 0.5,
+   "nham_vu>moc_lam": 0,
+   "nham_vu>kha_tan": 0.08,
+   "nham_vu>mi_dang": 0.42,
+   "nham_vu>hoa_tuy": 0,
+   "nham_vu>van_dao": 0,
+   "van_dao>moc_lam": 0,
+   "van_dao>kha_tan": 0.17,
+   "van_dao>mi_dang": 1,
+   "van_dao>hoa_tuy": 0.5,
+   "van_dao>nham_vu": 1
+  },
+  "L1_starter": {
+   "moc_lam>kha_tan": 0.08,
+   "moc_lam>mi_dang": 1,
+   "moc_lam>hoa_tuy": 0.92,
+   "moc_lam>nham_vu": 1,
+   "moc_lam>van_dao": 1,
+   "kha_tan>moc_lam": 0.67,
+   "kha_tan>mi_dang": 1,
+   "kha_tan>hoa_tuy": 0.33,
+   "kha_tan>nham_vu": 0.92,
+   "kha_tan>van_dao": 0.75,
+   "mi_dang>moc_lam": 0,
+   "mi_dang>kha_tan": 0,
+   "mi_dang>hoa_tuy": 0,
+   "mi_dang>nham_vu": 0.33,
+   "mi_dang>van_dao": 0,
+   "hoa_tuy>moc_lam": 0.08,
+   "hoa_tuy>kha_tan": 0.75,
+   "hoa_tuy>mi_dang": 1,
+   "hoa_tuy>nham_vu": 0.83,
+   "hoa_tuy>van_dao": 0.5,
+   "nham_vu>moc_lam": 0,
+   "nham_vu>kha_tan": 0.08,
+   "nham_vu>mi_dang": 0.67,
+   "nham_vu>hoa_tuy": 0.17,
+   "nham_vu>van_dao": 0,
+   "van_dao>moc_lam": 0,
+   "van_dao>kha_tan": 0.33,
+   "van_dao>mi_dang": 1,
+   "van_dao>hoa_tuy": 0.5,
+   "van_dao>nham_vu": 1
+  },
+  "L1_def_vs_dmg": {
+   "moc_lam>kha_tan": 0.08,
+   "moc_lam>mi_dang": 1,
+   "moc_lam>hoa_tuy": 0.75,
+   "moc_lam>nham_vu": 1,
+   "moc_lam>van_dao": 1,
+   "kha_tan>moc_lam": 0.75,
+   "kha_tan>mi_dang": 1,
+   "kha_tan>hoa_tuy": 0.5,
+   "kha_tan>nham_vu": 0.92,
+   "kha_tan>van_dao": 0.83,
+   "mi_dang>moc_lam": 0,
+   "mi_dang>kha_tan": 0,
+   "mi_dang>hoa_tuy": 0,
+   "mi_dang>nham_vu": 0.42,
+   "mi_dang>van_dao": 0,
+   "hoa_tuy>moc_lam": 0.08,
+   "hoa_tuy>kha_tan": 0.33,
+   "hoa_tuy>mi_dang": 1,
+   "hoa_tuy>nham_vu": 0.92,
+   "hoa_tuy>van_dao": 0.42,
+   "nham_vu>moc_lam": 0,
+   "nham_vu>kha_tan": 0.08,
+   "nham_vu>mi_dang": 0.5,
+   "nham_vu>hoa_tuy": 0,
+   "nham_vu>van_dao": 0,
+   "van_dao>moc_lam": 0,
+   "van_dao>kha_tan": 0.17,
+   "van_dao>mi_dang": 1,
+   "van_dao>hoa_tuy": 0.42,
+   "van_dao>nham_vu": 1
+  },
+  "L4_role": {
+   "moc_lam>kha_tan": 0.08,
+   "moc_lam>mi_dang": 0.83,
+   "moc_lam>hoa_tuy": 0.5,
+   "moc_lam>nham_vu": 1,
+   "moc_lam>van_dao": 0.88,
+   "kha_tan>moc_lam": 0.67,
+   "kha_tan>mi_dang": 0.75,
+   "kha_tan>hoa_tuy": 0.08,
+   "kha_tan>nham_vu": 1,
+   "kha_tan>van_dao": 0.75,
+   "mi_dang>moc_lam": 0.25,
+   "mi_dang>kha_tan": 0.25,
+   "mi_dang>hoa_tuy": 0.08,
+   "mi_dang>nham_vu": 0.92,
+   "mi_dang>van_dao": 0,
+   "hoa_tuy>moc_lam": 0.42,
+   "hoa_tuy>kha_tan": 0.92,
+   "hoa_tuy>mi_dang": 0.92,
+   "hoa_tuy>nham_vu": 0.92,
+   "hoa_tuy>van_dao": 0.25,
+   "nham_vu>moc_lam": 0,
+   "nham_vu>kha_tan": 0,
+   "nham_vu>mi_dang": 0,
+   "nham_vu>hoa_tuy": 0.08,
+   "nham_vu>van_dao": 0,
+   "van_dao>moc_lam": 0.29,
+   "van_dao>kha_tan": 0.5,
+   "van_dao>mi_dang": 1,
+   "van_dao>hoa_tuy": 0.75,
+   "van_dao>nham_vu": 1
+  },
+  "L4_def_vs_dmg": {
+   "moc_lam>kha_tan": 0.92,
+   "moc_lam>mi_dang": 1,
+   "moc_lam>hoa_tuy": 0.92,
+   "moc_lam>nham_vu": 1,
+   "moc_lam>van_dao": 1,
+   "kha_tan>moc_lam": 0.67,
+   "kha_tan>mi_dang": 1,
+   "kha_tan>hoa_tuy": 0.75,
+   "kha_tan>nham_vu": 1,
+   "kha_tan>van_dao": 0.67,
+   "mi_dang>moc_lam": 0.08,
+   "mi_dang>kha_tan": 0,
+   "mi_dang>hoa_tuy": 0.08,
+   "mi_dang>nham_vu": 0.67,
+   "mi_dang>van_dao": 0,
+   "hoa_tuy>moc_lam": 0.17,
+   "hoa_tuy>kha_tan": 0.83,
+   "hoa_tuy>mi_dang": 0.92,
+   "hoa_tuy>nham_vu": 0.83,
+   "hoa_tuy>van_dao": 0.13,
+   "nham_vu>moc_lam": 0,
+   "nham_vu>kha_tan": 0.08,
+   "nham_vu>mi_dang": 0.5,
+   "nham_vu>hoa_tuy": 0.25,
+   "nham_vu>van_dao": 0,
+   "van_dao>moc_lam": 0.25,
+   "van_dao>kha_tan": 0.33,
+   "van_dao>mi_dang": 0.92,
+   "van_dao>hoa_tuy": 0.79,
+   "van_dao>nham_vu": 1
+  },
+  "L7_role": {
+   "moc_lam>kha_tan": 0.75,
+   "moc_lam>mi_dang": 0.33,
+   "moc_lam>hoa_tuy": 0.5,
+   "moc_lam>nham_vu": 1,
+   "moc_lam>van_dao": 0.63,
+   "kha_tan>moc_lam": 0.17,
+   "kha_tan>mi_dang": 0.17,
+   "kha_tan>hoa_tuy": 0.25,
+   "kha_tan>nham_vu": 1,
+   "kha_tan>van_dao": 0.83,
+   "mi_dang>moc_lam": 0.75,
+   "mi_dang>kha_tan": 0.83,
+   "mi_dang>hoa_tuy": 0.25,
+   "mi_dang>nham_vu": 1,
+   "mi_dang>van_dao": 0,
+   "hoa_tuy>moc_lam": 0.17,
+   "hoa_tuy>kha_tan": 0.75,
+   "hoa_tuy>mi_dang": 0.75,
+   "hoa_tuy>nham_vu": 1,
+   "hoa_tuy>van_dao": 0,
+   "nham_vu>moc_lam": 0,
+   "nham_vu>kha_tan": 0,
+   "nham_vu>mi_dang": 0,
+   "nham_vu>hoa_tuy": 0,
+   "nham_vu>van_dao": 0,
+   "van_dao>moc_lam": 0.42,
+   "van_dao>kha_tan": 0.21,
+   "van_dao>mi_dang": 1,
+   "van_dao>hoa_tuy": 0.92,
+   "van_dao>nham_vu": 1
+  },
+  "L7_maxdef": {
+   "moc_lam>kha_tan": 0.92,
+   "moc_lam>mi_dang": 0.5,
+   "moc_lam>hoa_tuy": 0.58,
+   "moc_lam>nham_vu": 1,
+   "moc_lam>van_dao": 0.88,
+   "kha_tan>moc_lam": 0.33,
+   "kha_tan>mi_dang": 0.25,
+   "kha_tan>hoa_tuy": 0.17,
+   "kha_tan>nham_vu": 1,
+   "kha_tan>van_dao": 0.58,
+   "mi_dang>moc_lam": 0.75,
+   "mi_dang>kha_tan": 0.83,
+   "mi_dang>hoa_tuy": 0.08,
+   "mi_dang>nham_vu": 1,
+   "mi_dang>van_dao": 0.04,
+   "hoa_tuy>moc_lam": 0.17,
+   "hoa_tuy>kha_tan": 0.75,
+   "hoa_tuy>mi_dang": 1,
+   "hoa_tuy>nham_vu": 0.83,
+   "hoa_tuy>van_dao": 0.13,
+   "nham_vu>moc_lam": 0,
+   "nham_vu>kha_tan": 0,
+   "nham_vu>mi_dang": 0,
+   "nham_vu>hoa_tuy": 0.08,
+   "nham_vu>van_dao": 0,
+   "van_dao>moc_lam": 0.29,
+   "van_dao>kha_tan": 0.5,
+   "van_dao>mi_dang": 1,
+   "van_dao>hoa_tuy": 0.75,
+   "van_dao>nham_vu": 1
+  },
+  "L7_mixed": {
+   "moc_lam>kha_tan": 0.75,
+   "moc_lam>mi_dang": 0.67,
+   "moc_lam>hoa_tuy": 0.75,
+   "moc_lam>nham_vu": 1,
+   "moc_lam>van_dao": 1,
+   "kha_tan>moc_lam": 0.25,
+   "kha_tan>mi_dang": 0.17,
+   "kha_tan>hoa_tuy": 0.5,
+   "kha_tan>nham_vu": 1,
+   "kha_tan>van_dao": 0.58,
+   "mi_dang>moc_lam": 0.33,
+   "mi_dang>kha_tan": 0.83,
+   "mi_dang>hoa_tuy": 0.08,
+   "mi_dang>nham_vu": 0.92,
+   "mi_dang>van_dao": 0,
+   "hoa_tuy>moc_lam": 0.17,
+   "hoa_tuy>kha_tan": 0.42,
+   "hoa_tuy>mi_dang": 1,
+   "hoa_tuy>nham_vu": 0.83,
+   "hoa_tuy>van_dao": 0.04,
+   "nham_vu>moc_lam": 0,
+   "nham_vu>kha_tan": 0,
+   "nham_vu>mi_dang": 0.08,
+   "nham_vu>hoa_tuy": 0.08,
+   "nham_vu>van_dao": 0,
+   "van_dao>moc_lam": 0,
+   "van_dao>kha_tan": 0.67,
+   "van_dao>mi_dang": 1,
+   "van_dao>hoa_tuy": 0.92,
+   "van_dao>nham_vu": 1
+  },
+  "L11_role": {
+   "moc_lam>kha_tan": 0.5,
+   "moc_lam>mi_dang": 0.08,
+   "moc_lam>hoa_tuy": 0.42,
+   "moc_lam>nham_vu": 1,
+   "moc_lam>van_dao": 0.5,
+   "kha_tan>moc_lam": 0.42,
+   "kha_tan>mi_dang": 0.08,
+   "kha_tan>hoa_tuy": 0.08,
+   "kha_tan>nham_vu": 1,
+   "kha_tan>van_dao": 0.46,
+   "mi_dang>moc_lam": 0.83,
+   "mi_dang>kha_tan": 0.92,
+   "mi_dang>hoa_tuy": 0.08,
+   "mi_dang>nham_vu": 1,
+   "mi_dang>van_dao": 0,
+   "hoa_tuy>moc_lam": 0.33,
+   "hoa_tuy>kha_tan": 0.75,
+   "hoa_tuy>mi_dang": 1,
+   "hoa_tuy>nham_vu": 0.75,
+   "hoa_tuy>van_dao": 0.17,
+   "nham_vu>moc_lam": 0,
+   "nham_vu>kha_tan": 0,
+   "nham_vu>mi_dang": 0,
+   "nham_vu>hoa_tuy": 0.25,
+   "nham_vu>van_dao": 0.08,
+   "van_dao>moc_lam": 0.5,
+   "van_dao>kha_tan": 0.46,
+   "van_dao>mi_dang": 1,
+   "van_dao>hoa_tuy": 0.79,
+   "van_dao>nham_vu": 0.83
+  },
+  "L11_maxdef": {
+   "moc_lam>kha_tan": 1,
+   "moc_lam>mi_dang": 0.33,
+   "moc_lam>hoa_tuy": 0.42,
+   "moc_lam>nham_vu": 1,
+   "moc_lam>van_dao": 0.5,
+   "kha_tan>moc_lam": 0.92,
+   "kha_tan>mi_dang": 0.08,
+   "kha_tan>hoa_tuy": 0.08,
+   "kha_tan>nham_vu": 1,
+   "kha_tan>van_dao": 0.29,
+   "mi_dang>moc_lam": 0.67,
+   "mi_dang>kha_tan": 0.92,
+   "mi_dang>hoa_tuy": 0.08,
+   "mi_dang>nham_vu": 1,
+   "mi_dang>van_dao": 0.46,
+   "hoa_tuy>moc_lam": 0.17,
+   "hoa_tuy>kha_tan": 0.67,
+   "hoa_tuy>mi_dang": 1,
+   "hoa_tuy>nham_vu": 0.92,
+   "hoa_tuy>van_dao": 0.42,
+   "nham_vu>moc_lam": 0,
+   "nham_vu>kha_tan": 0,
+   "nham_vu>mi_dang": 0.08,
+   "nham_vu>hoa_tuy": 0.08,
+   "nham_vu>van_dao": 0,
+   "van_dao>moc_lam": 0.5,
+   "van_dao>kha_tan": 0.42,
+   "van_dao>mi_dang": 0.71,
+   "van_dao>hoa_tuy": 0.54,
+   "van_dao>nham_vu": 0.79
+  }
+ },
+ "bags": {
+  "L1_none": {
+   "moc_lam": {
+    "att": [],
+    "def": []
+   },
+   "kha_tan": {
+    "att": [],
+    "def": []
+   },
+   "mi_dang": {
+    "att": [],
+    "def": []
+   },
+   "hoa_tuy": {
+    "att": [],
+    "def": []
+   },
+   "nham_vu": {
+    "att": [],
+    "def": []
+   },
+   "van_dao": {
+    "att": [],
+    "def": []
+   }
+  },
+  "L1_starter": {
+   "moc_lam": {
+    "att": [
+     "nanh_mach"
+    ],
+    "def": [
+     "nanh_mach"
+    ]
+   },
+   "kha_tan": {
+    "att": [
+     "nanh_mach"
+    ],
+    "def": [
+     "nanh_mach"
+    ]
+   },
+   "mi_dang": {
+    "att": [
+     "kinh_luu"
+    ],
+    "def": [
+     "kinh_luu"
+    ]
+   },
+   "hoa_tuy": {
+    "att": [
+     "kinh_luu"
+    ],
+    "def": [
+     "kinh_luu"
+    ]
+   },
+   "nham_vu": {
+    "att": [
+     "nanh_mach"
+    ],
+    "def": [
+     "nanh_mach"
+    ]
+   },
+   "van_dao": {
+    "att": [
+     "kinh_luu"
+    ],
+    "def": [
+     "kinh_luu"
+    ]
+   }
+  },
+  "L1_def_vs_dmg": {
+   "moc_lam": {
+    "att": [
+     "nanh_mach"
+    ],
+    "def": [
+     "mach_tinh"
+    ]
+   },
+   "kha_tan": {
+    "att": [
+     "nanh_mach"
+    ],
+    "def": [
+     "mach_tinh"
+    ]
+   },
+   "mi_dang": {
+    "att": [
+     "kinh_luu"
+    ],
+    "def": [
+     "mach_tinh"
+    ]
+   },
+   "hoa_tuy": {
+    "att": [
+     "kinh_luu"
+    ],
+    "def": [
+     "mach_tinh"
+    ]
+   },
+   "nham_vu": {
+    "att": [
+     "nanh_mach"
+    ],
+    "def": [
+     "mach_tinh"
+    ]
+   },
+   "van_dao": {
+    "att": [
+     "kinh_luu"
+    ],
+    "def": [
+     "mach_tinh"
+    ]
+   }
+  },
+  "L4_role": {
+   "moc_lam": {
+    "att": [
+     "iron_plate",
+     "nanh_mach"
+    ],
+    "def": [
+     "iron_plate",
+     "nanh_mach"
+    ]
+   },
+   "kha_tan": {
+    "att": [
+     "iron_plate",
+     "nanh_mach"
+    ],
+    "def": [
+     "iron_plate",
+     "nanh_mach"
+    ]
+   },
+   "mi_dang": {
+    "att": [
+     "kinh_song"
+    ],
+    "def": [
+     "kinh_song"
+    ]
+   },
+   "hoa_tuy": {
+    "att": [
+     "kinh_song"
+    ],
+    "def": [
+     "kinh_song"
+    ]
+   },
+   "nham_vu": {
+    "att": [
+     "quickstring",
+     "mach_tinh"
+    ],
+    "def": [
+     "quickstring",
+     "mach_tinh"
+    ]
+   },
+   "van_dao": {
+    "att": [
+     "binh_mach"
+    ],
+    "def": [
+     "binh_mach"
+    ]
+   }
+  },
+  "L4_def_vs_dmg": {
+   "moc_lam": {
+    "att": [
+     "nanh_khep"
+    ],
+    "def": [
+     "an_tinh",
+     "mach_tinh"
+    ]
+   },
+   "kha_tan": {
+    "att": [
+     "nanh_khep"
+    ],
+    "def": [
+     "an_tinh",
+     "mach_tinh"
+    ]
+   },
+   "mi_dang": {
+    "att": [
+     "kinh_song"
+    ],
+    "def": [
+     "an_tinh",
+     "mach_tinh"
+    ]
+   },
+   "hoa_tuy": {
+    "att": [
+     "kinh_song"
+    ],
+    "def": [
+     "an_tinh",
+     "mach_tinh"
+    ]
+   },
+   "nham_vu": {
+    "att": [
+     "nanh_khep"
+    ],
+    "def": [
+     "an_tinh",
+     "mach_tinh"
+    ]
+   },
+   "van_dao": {
+    "att": [
+     "kinh_song"
+    ],
+    "def": [
+     "an_tinh",
+     "mach_tinh"
+    ]
+   }
+  },
+  "L7_role": {
+   "moc_lam": {
+    "att": [
+     "heartforge",
+     "mach_tinh",
+     "dong_van"
+    ],
+    "def": [
+     "heartforge",
+     "mach_tinh",
+     "dong_van"
+    ]
+   },
+   "kha_tan": {
+    "att": [
+     "heartforge",
+     "mach_tinh",
+     "dong_van"
+    ],
+    "def": [
+     "heartforge",
+     "mach_tinh",
+     "dong_van"
+    ]
+   },
+   "mi_dang": {
+    "att": [
+     "lo_than_ky",
+     "kinh_luu"
+    ],
+    "def": [
+     "lo_than_ky",
+     "kinh_luu"
+    ]
+   },
+   "hoa_tuy": {
+    "att": [
+     "lo_than_ky",
+     "kinh_luu"
+    ],
+    "def": [
+     "lo_than_ky",
+     "kinh_luu"
+    ]
+   },
+   "nham_vu": {
+    "att": [
+     "keeneye",
+     "nanh_mach"
+    ],
+    "def": [
+     "keeneye",
+     "nanh_mach"
+    ]
+   },
+   "van_dao": {
+    "att": [
+     "binh_mach",
+     "kinh_song",
+     "mach_tinh",
+     "kinh_luu"
+    ],
+    "def": [
+     "binh_mach",
+     "kinh_song",
+     "mach_tinh",
+     "kinh_luu"
+    ]
+   }
+  },
+  "L7_maxdef": {
+   "moc_lam": {
+    "att": [
+     "keeneye",
+     "nanh_mach"
+    ],
+    "def": [
+     "heartforge",
+     "dong_van",
+     "mach_tinh"
+    ]
+   },
+   "kha_tan": {
+    "att": [
+     "keeneye",
+     "nanh_mach"
+    ],
+    "def": [
+     "heartforge",
+     "dong_van",
+     "mach_tinh"
+    ]
+   },
+   "mi_dang": {
+    "att": [
+     "lo_than_ky",
+     "kinh_luu"
+    ],
+    "def": [
+     "heartforge",
+     "dong_van",
+     "mach_tinh"
+    ]
+   },
+   "hoa_tuy": {
+    "att": [
+     "lo_than_ky",
+     "kinh_luu"
+    ],
+    "def": [
+     "heartforge",
+     "dong_van",
+     "mach_tinh"
+    ]
+   },
+   "nham_vu": {
+    "att": [
+     "keeneye",
+     "nanh_mach"
+    ],
+    "def": [
+     "heartforge",
+     "dong_van",
+     "mach_tinh"
+    ]
+   },
+   "van_dao": {
+    "att": [
+     "lo_than_ky",
+     "kinh_luu"
+    ],
+    "def": [
+     "heartforge",
+     "dong_van",
+     "mach_tinh"
+    ]
+   }
+  },
+  "L7_mixed": {
+   "moc_lam": {
+    "att": [
+     "qua_mach"
+    ],
+    "def": [
+     "qua_mach"
+    ]
+   },
+   "kha_tan": {
+    "att": [
+     "qua_mach"
+    ],
+    "def": [
+     "qua_mach"
+    ]
+   },
+   "mi_dang": {
+    "att": [
+     "dang_hoi_am"
+    ],
+    "def": [
+     "dang_hoi_am"
+    ]
+   },
+   "hoa_tuy": {
+    "att": [
+     "dang_hoi_am"
+    ],
+    "def": [
+     "dang_hoi_am"
+    ]
+   },
+   "nham_vu": {
+    "att": [
+     "keeneye",
+     "nanh_mach"
+    ],
+    "def": [
+     "keeneye",
+     "nanh_mach"
+    ]
+   },
+   "van_dao": {
+    "att": [
+     "dang_hoi_am"
+    ],
+    "def": [
+     "dang_hoi_am"
+    ]
+   }
+  },
+  "L11_role": {
+   "moc_lam": {
+    "att": [
+     "qua_mach",
+     "oathguard_plate",
+     "mach_tinh",
+     "dong_van"
+    ],
+    "def": [
+     "qua_mach",
+     "oathguard_plate",
+     "mach_tinh",
+     "dong_van"
+    ]
+   },
+   "kha_tan": {
+    "att": [
+     "qua_mach",
+     "oathguard_plate",
+     "mach_tinh",
+     "dong_van"
+    ],
+    "def": [
+     "qua_mach",
+     "oathguard_plate",
+     "mach_tinh",
+     "dong_van"
+    ]
+   },
+   "mi_dang": {
+    "att": [
+     "lo_than_ky",
+     "chuong_may",
+     "kinh_song"
+    ],
+    "def": [
+     "lo_than_ky",
+     "chuong_may",
+     "kinh_song"
+    ]
+   },
+   "hoa_tuy": {
+    "att": [
+     "lo_than_ky",
+     "chuong_may",
+     "kinh_song"
+    ],
+    "def": [
+     "lo_than_ky",
+     "chuong_may",
+     "kinh_song"
+    ]
+   },
+   "nham_vu": {
+    "att": [
+     "keeneye",
+     "thornseed_quiver",
+     "quickstring",
+     "mach_tinh"
+    ],
+    "def": [
+     "keeneye",
+     "thornseed_quiver",
+     "quickstring",
+     "mach_tinh"
+    ]
+   },
+   "van_dao": {
+    "att": [
+     "heartforge",
+     "dang_hoi_am",
+     "kinh_song"
+    ],
+    "def": [
+     "heartforge",
+     "dang_hoi_am",
+     "kinh_song"
+    ]
+   }
+  },
+  "L11_maxdef": {
+   "moc_lam": {
+    "att": [
+     "qua_mach",
+     "keeneye",
+     "nanh_mach"
+    ],
+    "def": [
+     "oathguard_plate",
+     "iron_plate",
+     "an_tinh",
+     "binh_mach",
+     "dong_van",
+     "mach_tinh"
+    ]
+   },
+   "kha_tan": {
+    "att": [
+     "qua_mach",
+     "keeneye",
+     "nanh_mach"
+    ],
+    "def": [
+     "oathguard_plate",
+     "iron_plate",
+     "an_tinh",
+     "binh_mach",
+     "dong_van",
+     "mach_tinh"
+    ]
+   },
+   "mi_dang": {
+    "att": [
+     "lo_than_ky",
+     "dang_hoi_am",
+     "kinh_luu"
+    ],
+    "def": [
+     "oathguard_plate",
+     "iron_plate",
+     "an_tinh",
+     "binh_mach",
+     "dong_van",
+     "mach_tinh"
+    ]
+   },
+   "hoa_tuy": {
+    "att": [
+     "lo_than_ky",
+     "dang_hoi_am",
+     "kinh_luu"
+    ],
+    "def": [
+     "oathguard_plate",
+     "iron_plate",
+     "an_tinh",
+     "binh_mach",
+     "dong_van",
+     "mach_tinh"
+    ]
+   },
+   "nham_vu": {
+    "att": [
+     "keeneye",
+     "thornseed_quiver",
+     "nanh_khep"
+    ],
+    "def": [
+     "oathguard_plate",
+     "iron_plate",
+     "an_tinh",
+     "binh_mach",
+     "dong_van",
+     "mach_tinh"
+    ]
+   },
+   "van_dao": {
+    "att": [
+     "lo_than_ky",
+     "kinh_song",
+     "kinh_luu"
+    ],
+    "def": [
+     "oathguard_plate",
+     "iron_plate",
+     "an_tinh",
+     "binh_mach",
+     "dong_van",
+     "mach_tinh"
+    ]
+   }
+  }
+ },
+ "ttkByDef": {
+  "L1_none": {
+   "moc_lam": 26.44,
+   "kha_tan": 23.75,
+   "mi_dang": 22.54,
+   "hoa_tuy": 17.47,
+   "nham_vu": 13.7,
+   "van_dao": 20.2
+  },
+  "L1_starter": {
+   "moc_lam": 23.3,
+   "kha_tan": 20.71,
+   "mi_dang": 20.11,
+   "hoa_tuy": 16.02,
+   "nham_vu": 12.54,
+   "van_dao": 17.63
+  },
+  "L1_def_vs_dmg": {
+   "moc_lam": 26.03,
+   "kha_tan": 23.83,
+   "mi_dang": 22.81,
+   "hoa_tuy": 17.98,
+   "nham_vu": 14.55,
+   "van_dao": 20.47
+  },
+  "L4_role": {
+   "moc_lam": 28.28,
+   "kha_tan": 26.98,
+   "mi_dang": 26.33,
+   "hoa_tuy": 20.55,
+   "nham_vu": 16.6,
+   "van_dao": 24.78
+  },
+  "L4_def_vs_dmg": {
+   "moc_lam": 29.13,
+   "kha_tan": 28.14,
+   "mi_dang": 26.63,
+   "hoa_tuy": 21.25,
+   "nham_vu": 17.67,
+   "van_dao": 23.23
+  },
+  "L7_role": {
+   "moc_lam": 28.19,
+   "kha_tan": 29.2,
+   "mi_dang": 23.17,
+   "hoa_tuy": 17.9,
+   "nham_vu": 12.75,
+   "van_dao": 22.39
+  },
+  "L7_maxdef": {
+   "moc_lam": 26.73,
+   "kha_tan": 26.78,
+   "mi_dang": 25.71,
+   "hoa_tuy": 19.64,
+   "nham_vu": 17.25,
+   "van_dao": 21.92
+  },
+  "L7_mixed": {
+   "moc_lam": 25.2,
+   "kha_tan": 24.74,
+   "mi_dang": 23.8,
+   "hoa_tuy": 17.69,
+   "nham_vu": 12.38,
+   "van_dao": 19.68
+  },
+  "L11_role": {
+   "moc_lam": 29.4,
+   "kha_tan": 30.53,
+   "mi_dang": 24.72,
+   "hoa_tuy": 19.41,
+   "nham_vu": 15.66,
+   "van_dao": 22.76
+  },
+  "L11_maxdef": {
+   "moc_lam": 27.63,
+   "kha_tan": 27.98,
+   "mi_dang": 27.15,
+   "hoa_tuy": 23.39,
+   "nham_vu": 20.37,
+   "van_dao": 25.67
+  }
+ }
+}

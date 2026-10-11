@@ -1,0 +1,25 @@
+# Công trình và Linh Binh (doc 08 §5.1, §7.1). Giá trị khởi điểm; đổi số = một dòng balance-log.
+tower:
+  1: { hp: 2800, armor: 40, mr: 40, range: 14, interval: 1.2, damage: 150 }
+  2: { hp: 5400, armor: 65, mr: 65, range: 14, interval: 1.2, damage: 150 }
+towerTelegraph: 0.6
+towerRamp: 0.35      # 2026-10-09 @lukasai: mỗi phát liên tiếp vào cùng một tướng +35%
+towerRampMax: 1.05   # trần +105% (phát thứ 4 trở đi = 307 sát thương gốc); đổi mục tiêu là về 0
+towerOrbSpeed: 30
+towerRadius: 2.4
+nexus: { hp: 4000, armor: 20, mr: 20, shield: 3000, shieldRegenAfter: 12, radius: 5.5, beamRange: 14, beamInterval: 1.0, beamDamage: 120, beamRamp: 0.2 }
+minions:
+  waveInterval: 30
+  firstWave: 15          # 2026-10-09 @lukasai Opening Phase V0.1: 0:00 tướng vào nhà, 0:15 đợt đầu (thử nghiệm)
+  waveWarn: 5            # s: HUD đếm ngược trước đợt lính đầu
+  composition: [melee, melee, melee, caster, caster, siege]
+  laneCap: 14
+  xpRange: 12           # m, XZ: 2026-10-09 @lukasai luật 1v1: lính địch chết vì bất kỳ nguồn nào → mọi tướng địch còn sống trong 12 m nhận 100% XP, một lần (vàng/CS chỉ last-hit). 5v5 chia XP: chưa thiết kế
+  superPerTower: 1      # mỗi trụ địch đã đổ → thêm 1 Siêu Linh Binh mỗi đợt (đi đầu, ngoài laneCap)
+  aggro: 10
+  heroAggroWindow: 3     # s: lính đánh tướng vừa đánh tướng đồng minh
+  kinds:
+    melee:  { hp: 480, range: 2.4, damage: 24, speed: 4.4, interval: 1.25, gold: 25, xp: 45, radius: 0.6 }
+    caster: { hp: 320, range: 8.8, damage: 36, speed: 4.1, interval: 1.5, gold: 18, xp: 35, radius: 0.55, bolt: 17 }  # 2026-10-09 slower shot (was 24)
+    super:  { hp: 2000, range: 3.0, damage: 70, speed: 4.0, interval: 1.7, gold: 80, xp: 110, radius: 1.0, height: 2.7, structMult: 2.0 }
+    siege:  { hp: 880, range: 7.2, damage: 54, speed: 3.8, interval: 2.0, gold: 60, xp: 85, radius: 1.1, bolt: 14 }  # 2026-10-09 slower shot (was 18)

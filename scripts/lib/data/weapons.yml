@@ -1,0 +1,39 @@
+# Each hero's weapons: a list of pieces, each one scripted primitive (scripts/gen/weapons.js, params.kind) riding a hand bone.
+# seat: how the grip lies in the closed fist; tools/rig/grips.py bakes it against each hero's rig into grips.yml (offset + quat
+#   in the hand bone's frame, plus the finger-curl pose). Re-run the tool after editing a seat or curl.
+#   dir: +1 business end out the thumb side, −1 out the little-finger side (reverse grip)
+#   tilt: degrees the shaft leans toward the wrist (− = toward the fingertips) · edge: where the weapon's −Z faces: knuckles | wrist | back | palm
+#   avatar: { … } overrides the seat on the match body's avatar rig (its idle fist hangs turned)
+#   palm / down / slide: cm the grip sits off the knuckle line, out of the palm / back toward the wrist / along the fist
+# scale · light: a glow child at a weapon-local point
+bones: { right: RightHand, left: LeftHand }
+curl: { fingers: [72, 88, 55], thumb: [12, 32, 30] }
+heroes:
+  moc_lam:
+    - { kind: dao, hand: right, seat: { avatar: { tilt: 0 }, dir: 1, tilt: 20, edge: knuckles }, scale: 1 }
+    - { kind: shield, hand: left, seat: { dir: 1, tilt: 0, edge: back }, scale: 1 }
+  kha_tan:
+    - { kind: qua, hand: right, seat: { avatar: { tilt: 0 }, dir: 1, tilt: 40, edge: knuckles }, scale: 1 }
+  mi_dang:
+    - { kind: dagger, hand: right, seat: { dir: -1, tilt: -10, edge: knuckles }, scale: 1 }
+    - { kind: dagger, hand: left, seat: { dir: -1, tilt: -10, edge: knuckles }, scale: 1 }
+  hoa_tuy:
+    - { kind: censer, hand: right, seat: { avatar: { tilt: 0 }, dir: 1, tilt: 40, edge: knuckles }, scale: 1, light: { at: [0, 1.18, 0], color: "oklch(0.78 0.17 50)", intensity: 1, distance: 3 } }
+  nham_vu:
+    - { kind: bow, hand: left, seat: { dir: 1, tilt: 0, edge: wrist }, scale: 1 }
+  van_dao:
+    - { kind: birdstaff, hand: right, seat: { avatar: { tilt: 0 }, dir: 1, tilt: 40, edge: knuckles }, scale: 1 }
+  hao_nhat:
+    - { kind: kiem, hand: right, seat: { avatar: { tilt: 0 }, dir: 1, tilt: 20, edge: knuckles }, scale: 1 }
+    - { kind: sunshield, hand: left, seat: { dir: 1, tilt: 0, edge: back }, scale: 1, light: { at: [0, 0, -0.1], color: "oklch(0.9 0.12 85)", intensity: 0.8, distance: 3 } }
+  huong_mai:
+    - { kind: lantern, hand: right, seat: { avatar: { tilt: 0 }, dir: -1, tilt: 30, edge: knuckles }, scale: 1, light: { at: [0, 1.08, -0.16], color: "oklch(0.82 0.15 65)", intensity: 0.9, distance: 3 } }
+  bach_dien:
+    - { kind: handmirror, hand: right, seat: { avatar: { tilt: 0 }, dir: 1, tilt: 10, edge: knuckles }, scale: 1, light: { at: [0, 0.27, -0.04], color: "oklch(0.88 0.08 190)", intensity: 0.5, distance: 2.5 } }
+  ngu_dang:
+    - { kind: bellchain, hand: right, seat: { avatar: { tilt: 0 }, dir: 1, tilt: 20, edge: knuckles }, scale: 1.25 }
+    - { kind: bellshield, hand: left, seat: { dir: 1, tilt: 0, edge: back }, scale: 1.3 }
+  mac_lien:
+    - { kind: lacquerbrush, hand: right, seat: { avatar: { tilt: 0 }, dir: 1, tilt: 30, edge: knuckles }, scale: 1, light: { at: [0, 1.0, 0], color: "oklch(0.7 0.2 28)", intensity: 0.4, distance: 2.2 } }
+  cot_ben:
+    - { kind: harrow, hand: right, seat: { avatar: { tilt: 0 }, dir: 1, tilt: 15, edge: knuckles }, scale: 1.25 }

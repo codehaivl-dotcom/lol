@@ -1,0 +1,404 @@
+mach_tinh:
+  vi: Mảnh Mạch
+  en: Vein Shard
+  slot: charm
+  tier: basic
+  cost: 250
+  maxCopies: 6
+  hp: 90
+dong_van:
+  vi: Phiến Đồng Vân
+  en: Cloud-Bronze Plate
+  slot: armor
+  tier: basic
+  cost: 240
+  maxCopies: 6
+  armor: 12
+ngoc_am:
+  vi: Ngọc Âm
+  en: Hushed Jade
+  slot: armor
+  tier: basic
+  cost: 240
+  maxCopies: 6
+  mr: 12
+nanh_mach:
+  vi: Nanh Mạch
+  en: Vein Fang
+  slot: weapon
+  tier: basic
+  cost: 300
+  maxCopies: 6
+  ad: 10
+kinh_luu:
+  vi: Kính Lưu Ký
+  en: Memory Lens
+  slot: weapon
+  tier: basic
+  cost: 300
+  maxCopies: 6
+  ap: 18
+soi_nhip:
+  vi: Sợi Nhịp
+  en: Pulse Filament
+  slot: weapon
+  tier: basic
+  cost: 300
+  maxCopies: 6
+  attackSpeed: 0.1
+hat_sinh:
+  vi: Hạt Sinh
+  en: Living Seed
+  slot: charm
+  tier: basic
+  cost: 200
+  maxCopies: 6
+  hpRegen: 1
+buoc_van:
+  vi: Phù Bước Vân
+  en: Cloudstep Token
+  slot: charm
+  tier: basic
+  cost: 300
+  maxCopies: 1
+  moveSpeed: 0.25
+iron_plate:
+  vi: Giáp Thiết Mạch
+  en: Vein-Iron Plate
+  slot: armor
+  tier: intermediate
+  cost: 500
+  maxCopies: 2
+  components:
+  - dong_van
+  - dong_van
+  armor: 24
+quickstring:
+  vi: Dây Cung Nhịp
+  en: Pulse Bowstring
+  slot: weapon
+  tier: intermediate
+  cost: 650
+  maxCopies: 2
+  components:
+  - soi_nhip
+  - soi_nhip
+  attackSpeed: 0.21
+kinh_song:
+  vi: Kính Song Ký
+  en: Twin-Memory Lens
+  slot: weapon
+  tier: intermediate
+  cost: 800
+  maxCopies: 2
+  components:
+  - kinh_luu
+  - mach_tinh
+  ap: 36
+  hp: 90
+binh_mach:
+  vi: Bình Dưỡng Mạch
+  en: Vein-Nurturing Vessel
+  slot: charm
+  tier: intermediate
+  cost: 750
+  maxCopies: 2
+  components:
+  - mach_tinh
+  - mach_tinh
+  - hat_sinh
+  hp: 180
+  hpRegen: 1
+nanh_khep:
+  vi: Nanh Khép
+  en: Joined Fangs
+  slot: weapon
+  tier: intermediate
+  cost: 650
+  maxCopies: 2
+  components:
+  - nanh_mach
+  - nanh_mach
+  ad: 20
+an_tinh:
+  vi: Ấn Tĩnh Mạch
+  en: Stillvein Seal
+  slot: armor
+  tier: intermediate
+  cost: 520
+  maxCopies: 2
+  components:
+  - ngoc_am
+  - ngoc_am
+  mr: 24
+oathguard_plate:
+  vi: Giáp Minh Ước
+  en: Concord Plate
+  slot: armor
+  tier: completed
+  cost: 1600
+  maxCopies: 1
+  components:
+  - iron_plate
+  - mach_tinh
+  - an_tinh
+  hp: 200
+  armor: 30
+  mr: 20
+  passive:
+    id: hoa_mach
+    group: concord_shell
+    trigger:
+      event: hero_shield_expired_or_broken
+      minimumLifetimeSeconds: 0.5
+      excludeItemShields: true
+    effect:
+      kind: shield
+      target: self
+      base: 0
+      maxHpRatio: 0.04
+    durationSeconds: 2
+    cooldownSeconds: 12
+    maxStacks: 1
+    implemented: true
+keeneye:
+  vi: Mắt Sắc
+  en: Farseeing Eye
+  slot: weapon
+  tier: completed
+  cost: 1700
+  maxCopies: 1
+  components:
+  - quickstring
+  - nanh_khep
+  ad: 30
+  attackSpeed: 0.25
+  passive:
+    id: nhin_mach
+    group: farseeing_pulse
+    trigger:
+      event: every_nth_basic_hit
+      n: 4
+      allowedTargets:
+      - hero
+      - minion
+      - neutral
+      counterResetAfterSeconds: 4
+      counterResetOnDeath: true
+    effect:
+      kind: bonus_damage
+      damageType: physical
+      base: 12
+      target: hit_target
+      canProcItemPassives: false
+    durationSeconds: 0
+    cooldownSeconds: 0
+    maxStacks: 1
+    implemented: true
+thornseed_quiver:
+  vi: Ống Tên Gai Ký
+  en: Memory-Thorn Quiver
+  slot: weapon
+  tier: completed
+  cost: 1300
+  maxCopies: 1
+  components:
+  - quickstring
+  - mach_tinh
+  hp: 180
+  attackSpeed: 0.25
+  passive:
+    id: neo_gai
+    group: thorn_anchor
+    trigger:
+      event: nth_basic_hit_same_hero
+      n: 3
+      counterResetAfterSeconds: 4
+      counterResetOnTargetSwitch: true
+      counterResetOnDeath: true
+    effect:
+      kind: slow
+      ratio: 0.15
+      target: hit_target
+      stacking: strongest_only
+    durationSeconds: 1
+    cooldownSeconds: 8
+    maxStacks: 1
+    implemented: true
+heartforge:
+  vi: Tâm Lò Dưỡng Ký
+  en: Memory-Nurturing Heartforge
+  slot: charm
+  tier: completed
+  cost: 1500
+  maxCopies: 1
+  components:
+  - binh_mach
+  - mach_tinh
+  hp: 320
+  hpRegen: 3
+  passive:
+    id: duong_ky
+    group: restoring_memory
+    trigger:
+      event: out_of_hero_combat
+      afterSeconds: 8
+      combatIncludesDamageDealtOrReceived: true
+      shieldDamageCounts: true
+    effect:
+      kind: hp_regen_bonus
+      amountPerSecond: 2
+      target: self
+      affectedByAntiHeal: true
+    durationSeconds: 0
+    cooldownSeconds: 0
+    maxStacks: 1
+    implemented: true
+lo_than_ky:
+  vi: Lò Than Ký
+  en: Ember Archive
+  slot: weapon
+  tier: completed
+  cost: 1700
+  maxCopies: 1
+  components:
+  - kinh_song
+  - kinh_luu
+  - kinh_luu
+  ap: 85
+  hp: 120
+  passive:
+    id: du_than
+    group: archive_ember
+    trigger:
+      event: ability_damage_to_hero
+      excludeDamageOverTime: true
+      firstHitPerCastOnly: true
+      excludeItemDamage: true
+    effect:
+      kind: bonus_damage
+      damageType: magic
+      base: 20
+      apRatio: 0.1
+      target: hit_target
+      canProcItemPassives: false
+    durationSeconds: 0
+    cooldownSeconds: 8
+    maxStacks: 1
+    implemented: true
+dang_hoi_am:
+  vi: Đăng Hồi Âm
+  en: Echo Lantern
+  slot: weapon
+  tier: completed
+  cost: 1800
+  maxCopies: 1
+  components:
+  - kinh_song
+  - kinh_luu
+  - an_tinh
+  ap: 60
+  hp: 120
+  mr: 24
+  passive:
+    id: buoc_hoi_am
+    group: echo_step
+    trigger:
+      event: ability_damage_to_hero
+      excludeDamageOverTime: true
+      excludeItemDamage: true
+    effect:
+      kind: move_speed_bonus_flat
+      amount: 0.3
+      target: self
+    durationSeconds: 2
+    cooldownSeconds: 8
+    maxStacks: 1
+    implemented: true
+chuong_may:
+  vi: Chuông Mây Hợp Ký
+  en: Cloud-Concord Bell
+  slot: weapon
+  tier: completed
+  cost: 1600
+  maxCopies: 1
+  components:
+  - binh_mach
+  - kinh_song
+  ap: 36
+  hp: 230
+  hpRegen: 2
+  passive:
+    id: hop_ky
+    group: concord_blessing
+    trigger:
+      event: ability_heal_or_shield
+      allowedTargets:
+      - self
+      - ally_hero
+      excludeItemEffects: true
+    effect:
+      kind: outgoing_heal_shield_multiplier
+      multiplier: 1.08
+      target: original_target
+      applyBeforeAntiHeal: true
+    durationSeconds: 0
+    cooldownSeconds: 0
+    maxStacks: 1
+    implemented: true
+qua_mach:
+  vi: Qua Khắc Mạch
+  en: Vein-Etched Halberd
+  slot: weapon
+  tier: completed
+  cost: 1900
+  maxCopies: 1
+  components:
+  - nanh_khep
+  - iron_plate
+  - mach_tinh
+  ad: 30
+  hp: 180
+  armor: 24
+  passive:
+    id: khac_mach
+    group: etched_followup
+    trigger:
+      event: basic_hit_after_ability_cast
+      windowSeconds: 3
+      allowedTargets:
+      - hero
+      consumeOnFirstValidHit: true
+      cooldownStartsOnProc: true
+    effect:
+      kind: bonus_damage
+      damageType: physical
+      base: 18
+      target: hit_target
+      canProcItemPassives: false
+    durationSeconds: 0
+    cooldownSeconds: 6
+    maxStacks: 1
+    implemented: true
+phial_of_dawn:
+  vi: Bình Bình Minh
+  en: Dawn Phial
+  slot: relic
+  tier: relic
+  cost: 150
+  maxCopies: 1
+  active:
+    duration: 4
+    cooldown: 60
+    heal: 150
+bastion_stone:
+  vi: Thạch Hộ Thân
+  en: Bastion Stone
+  slot: relic
+  tier: relic
+  cost: 300
+  maxCopies: 1
+  active:
+    duration: 3
+    cooldown: 60
+    shield: 180

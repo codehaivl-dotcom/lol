@@ -1,0 +1,413 @@
+{
+ "profile": "slice",
+ "geo": {
+  "routeLength": 263,
+  "spawnAlong": 16,
+  "leadSpeed": 4.1,
+  "meetSeconds": 28.2,
+  "alongRoute": {
+   "t1.red": 176.6,
+   "t2.red": 213,
+   "nexus.red": 263,
+   "t1.blue": 176.6,
+   "t2.blue": 213,
+   "nexus.blue": 263
+  },
+  "travelSeconds": {
+   "t1.red": 36.4,
+   "t2.red": 45.3,
+   "nexus.red": 56.7,
+   "t1.blue": 36.4,
+   "t2.blue": 45.3,
+   "nexus.blue": 56.7
+  },
+  "earliestSiege": {
+   "t1.red": 41.4,
+   "t2.red": 50.3,
+   "nexus.red": 61.7,
+   "t1.blue": 41.4,
+   "t2.blue": 50.3,
+   "nexus.blue": 61.7
+  }
+ },
+ "data": {
+  "structures": {
+   "t1": {
+    "hp": 2800,
+    "armor": 40,
+    "mr": 40,
+    "range": 14,
+    "interval": 1.2,
+    "damage": 150
+   },
+   "t2": {
+    "hp": 5400,
+    "armor": 65,
+    "mr": 65,
+    "range": 14,
+    "interval": 1.2,
+    "damage": 150
+   },
+   "nexus": {
+    "hp": 4000,
+    "armor": 20,
+    "mr": 20,
+    "shield": 3000,
+    "shieldRegenAfter": 12,
+    "radius": 5.5,
+    "beamRange": 14,
+    "beamInterval": 1,
+    "beamDamage": 120,
+    "beamRamp": 0.2
+   }
+  },
+  "wave": {
+   "dps": 132.6,
+   "gold": 171,
+   "xp": 290
+  },
+  "super": {
+   "dps": 82.3529411764706,
+   "gold": 80,
+   "xp": 110
+  },
+  "economy": {
+   "startGold": 500,
+   "passiveGold": 3,
+   "respawn": 12,
+   "heroKill": {
+    "gold": 300,
+    "xp": 300
+   }
+  }
+ },
+ "assumed": {
+  "reachSeconds": 6,
+  "fightExponent": 1.6,
+  "fightChance": 0.15,
+  "waveTank": 0.75,
+  "defense": {
+   "t1": 0.6,
+   "t2": 0.9,
+   "core": 1.3
+  },
+  "heroSiegeMargin": 2,
+  "window": [
+   12,
+   20
+  ],
+  "travelGate": true,
+  "idleReach": 0
+ },
+ "off": [
+  "call",
+  "titan",
+  "camps",
+  "fortify",
+  "keeps",
+  "boons",
+  "v1_x3.5_hp"
+ ],
+ "results": [
+  {
+   "mode": "waves",
+   "n": 300,
+   "seeds": [
+    1000,
+    1299
+   ],
+   "ended": 0,
+   "timeout60": 300,
+   "inProposedWindow": 0,
+   "p10": "—",
+   "median": "—",
+   "p90": "—",
+   "medianAllCensored": "60.0",
+   "blueWin": 0,
+   "killsPerMatch": 0,
+   "endLevel": 0,
+   "per": {
+    "t1.red": {
+     "n": 0,
+     "downMed": "—",
+     "breakMed": "—"
+    },
+    "t2.red": {
+     "n": 0,
+     "downMed": "—",
+     "breakMed": "—"
+    },
+    "nexus.red": {
+     "n": 0,
+     "downMed": "—",
+     "breakMed": "—"
+    },
+    "t1.blue": {
+     "n": 0,
+     "downMed": "—",
+     "breakMed": "—"
+    },
+    "t2.blue": {
+     "n": 0,
+     "downMed": "—",
+     "breakMed": "—"
+    },
+    "nexus.blue": {
+     "n": 0,
+     "downMed": "—",
+     "breakMed": "—"
+    }
+   }
+  },
+  {
+   "mode": "san_tap",
+   "n": 300,
+   "seeds": [
+    1000,
+    1299
+   ],
+   "ended": 1,
+   "timeout60": 0,
+   "inProposedWindow": 0,
+   "p10": "3.6",
+   "median": "4.6",
+   "p90": "5.4",
+   "medianAllCensored": "4.6",
+   "blueWin": 1,
+   "killsPerMatch": 11.9,
+   "endLevel": 4.6,
+   "per": {
+    "t1.red": {
+     "n": 300,
+     "downMed": "1.3",
+     "breakMed": "0.6"
+    },
+    "t2.red": {
+     "n": 300,
+     "downMed": "2.6",
+     "breakMed": "1.3"
+    },
+    "nexus.red": {
+     "n": 300,
+     "downMed": "4.6",
+     "breakMed": "2.0"
+    },
+    "t1.blue": {
+     "n": 0,
+     "downMed": "—",
+     "breakMed": "—"
+    },
+    "t2.blue": {
+     "n": 0,
+     "downMed": "—",
+     "breakMed": "—"
+    },
+    "nexus.blue": {
+     "n": 0,
+     "downMed": "—",
+     "breakMed": "—"
+    }
+   }
+  },
+  {
+   "mode": "dau_may",
+   "n": 300,
+   "seeds": [
+    1000,
+    1299
+   ],
+   "ended": 0.813,
+   "timeout60": 56,
+   "inProposedWindow": 0.213,
+   "p10": "16.2",
+   "median": "23.1",
+   "p90": "31.3",
+   "medianAllCensored": "25.1",
+   "blueWin": 0.39,
+   "killsPerMatch": 10.6,
+   "endLevel": 13,
+   "per": {
+    "t1.red": {
+     "n": 295,
+     "downMed": "8.2",
+     "breakMed": "6.8"
+    },
+    "t2.red": {
+     "n": 234,
+     "downMed": "16.1",
+     "breakMed": "8.0"
+    },
+    "nexus.red": {
+     "n": 117,
+     "downMed": "22.7",
+     "breakMed": "9.1"
+    },
+    "t1.blue": {
+     "n": 288,
+     "downMed": "8.2",
+     "breakMed": "6.7"
+    },
+    "t2.blue": {
+     "n": 235,
+     "downMed": "16.6",
+     "breakMed": "7.6"
+    },
+    "nexus.blue": {
+     "n": 127,
+     "downMed": "23.1",
+     "breakMed": "8.5"
+    }
+   }
+  },
+  {
+   "mode": "tai_hien:1",
+   "n": 300,
+   "seeds": [
+    1000,
+    1299
+   ],
+   "ended": 0.813,
+   "timeout60": 56,
+   "inProposedWindow": 0.213,
+   "p10": "16.2",
+   "median": "23.1",
+   "p90": "31.3",
+   "medianAllCensored": "25.1",
+   "blueWin": 0.39,
+   "killsPerMatch": 10.6,
+   "endLevel": 13,
+   "per": {
+    "t1.red": {
+     "n": 295,
+     "downMed": "8.2",
+     "breakMed": "6.8"
+    },
+    "t2.red": {
+     "n": 234,
+     "downMed": "16.1",
+     "breakMed": "8.0"
+    },
+    "nexus.red": {
+     "n": 117,
+     "downMed": "22.7",
+     "breakMed": "9.1"
+    },
+    "t1.blue": {
+     "n": 288,
+     "downMed": "8.2",
+     "breakMed": "6.7"
+    },
+    "t2.blue": {
+     "n": 235,
+     "downMed": "16.6",
+     "breakMed": "7.6"
+    },
+    "nexus.blue": {
+     "n": 127,
+     "downMed": "23.1",
+     "breakMed": "8.5"
+    }
+   }
+  },
+  {
+   "mode": "tai_hien:2",
+   "n": 300,
+   "seeds": [
+    1000,
+    1299
+   ],
+   "ended": 0.947,
+   "timeout60": 16,
+   "inProposedWindow": 0.09,
+   "p10": "19.7",
+   "median": "33.1",
+   "p90": "46.3",
+   "medianAllCensored": "33.6",
+   "blueWin": 0.443,
+   "killsPerMatch": 13.3,
+   "endLevel": 11.1,
+   "per": {
+    "t1.red": {
+     "n": 290,
+     "downMed": "8.1",
+     "breakMed": "6.7"
+    },
+    "t2.red": {
+     "n": 220,
+     "downMed": "19.1",
+     "breakMed": "9.5"
+    },
+    "nexus.red": {
+     "n": 133,
+     "downMed": "32.7",
+     "breakMed": "13.5"
+    },
+    "t1.blue": {
+     "n": 288,
+     "downMed": "8.8",
+     "breakMed": "7.5"
+    },
+    "t2.blue": {
+     "n": 228,
+     "downMed": "19.7",
+     "breakMed": "10.0"
+    },
+    "nexus.blue": {
+     "n": 151,
+     "downMed": "33.7",
+     "breakMed": "13.6"
+    }
+   }
+  },
+  {
+   "mode": "tai_hien:5",
+   "n": 300,
+   "seeds": [
+    1000,
+    1299
+   ],
+   "ended": 0.987,
+   "timeout60": 4,
+   "inProposedWindow": 0.163,
+   "p10": "16.2",
+   "median": "27.2",
+   "p90": "43.1",
+   "medianAllCensored": "27.2",
+   "blueWin": 0.52,
+   "killsPerMatch": 32,
+   "endLevel": 7.1,
+   "per": {
+    "t1.red": {
+     "n": 285,
+     "downMed": "7.2",
+     "breakMed": "5.6"
+    },
+    "t2.red": {
+     "n": 231,
+     "downMed": "17.1",
+     "breakMed": "8.0"
+    },
+    "nexus.red": {
+     "n": 156,
+     "downMed": "26.8",
+     "breakMed": "8.1"
+    },
+    "t1.blue": {
+     "n": 282,
+     "downMed": "7.2",
+     "breakMed": "6.1"
+    },
+    "t2.blue": {
+     "n": 233,
+     "downMed": "16.3",
+     "breakMed": "7.3"
+    },
+    "nexus.blue": {
+     "n": 140,
+     "downMed": "27.6",
+     "breakMed": "8.6"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+reports/sim/
+node_modules/
+.spawn/
+__pycache__/
+*.pyc

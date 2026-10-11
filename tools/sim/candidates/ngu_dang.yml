@@ -1,0 +1,55 @@
+# ỨNG VIÊN · Ngư Đăng · Người Soi Đáy · đỡ đòn mở giao tranh, che chở đội (doc 03 §10). Chỉ sống trong Lab.
+heroes:
+  ngu_dang:
+    role: tank_protect
+    resource: mana
+    stats: { hp: 750, resource: 300, ad: 58, ap: 0, armor: 42, mr: 33, moveSpeed: 6.1, attackSpeed: 0.62, hpRegen: 1.7, resourceRegen: 1.5 }
+    growth: { hp: 110, resource: 42, ad: 2.6, ap: 0, armor: 4.4, mr: 1.8, moveSpeed: 0, attackSpeed: 0.02, hpRegen: 0.17, resourceRegen: 0.1 }
+    passive:
+      type: cdr_on_hit              # Đèn Dẫn Lối: mỗi roi xích trúng rút hồi chiêu thường 0,5 s
+      seconds: 0.8      # lệch: comment ghi 0,5 s, số 0.8; audit không đổi số
+      minGap: 0.5       # creator duyệt 11-10 (đề xuất doc 85): tối đa 1 lần mỗi đòn đánh / 0,5 s
+      perCast: 1        # sửa lỗi kit 11-10 (doc 85 §4 "trần số lần mỗi chiêu mỗi lượt"): mỗi chiêu chỉ bị rút 1 lần mỗi lượt hồi
+      ult: false
+    lmb: { aim: melee, range: 3.0 }   # Roi Móc: quất xích, tầm với dài hơn đấu sĩ
+    q:    # Móc Dẫn: ngắm lâu, ném móc kéo tướng đầu tiên về và choáng ngắn
+      aim: skillshot
+      width: 1.2
+      speed: 26
+      range: 11.0
+      windup: 0.5
+      cooldown: [16, 15, 14, 13, 12]
+      cost: [70, 70, 70, 70, 70]
+      pull: 6.0
+      damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.4 }
+      effects: [{ stun: 0.5 }]
+    rmb:  # Đèn Kết Bạn: ném đèn, dựng khiên cho bản thân và đồng minh quanh đèn
+      # chưa mô hình: đèn nằm đất cho đồng minh nhặt
+      aim: self
+      windup: 0.1
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [60, 60, 60, 60, 60]
+      shield: { base: [70, 100, 130, 160, 190], maxHp: 0.04, duration: 3.0, allies: true }
+    e:    # Quét Xích: quét xích ở vùng chỉ định, làm chậm
+      aim: area
+      radius: 3.5
+      range: 6.0
+      delay: 0.3
+      windup: 0.2
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [50, 50, 50, 50, 50]
+      damage: { type: magic, base: [60, 90, 120, 150, 180], ap: 0.35 }
+      effects: [{ slow: 0.4, duration: 1.5 }]
+    r:    # Lồng Vọng: dựng lồng nước quanh mình, kẻ trong lồng bị trói
+      # chưa mô hình: vách lồng chặn đường và chặn đạn nhiều mặt
+      aim: area
+      radius: 5.0
+      range: 0
+      delay: 0.25
+      windup: 0.3
+      cooldown: [90, 80, 70]
+      cost: [100, 100, 100]
+      damage: { type: magic, base: [120, 180, 240], ap: 0.4 }
+      effects: [{ root: 1.5 }]
+builds:
+  ngu_dang: [heartforge, oathguard_plate, chuong_may, an_tinh, buoc_van]

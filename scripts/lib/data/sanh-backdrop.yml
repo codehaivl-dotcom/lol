@@ -1,0 +1,41 @@
+# 2026-10-09: chỉ tải phần cảnh sảnh cần hiện. 3 núi karst (~870 KB) không bao giờ lọt khung camera người chơi,
+# và visibleTo: editors vẫn bắt máy chủ phòng (editor) tải chúng trước hình đầu (đo 12:24, desktop của lukasai).
+# Nên chúng ra khỏi `rows` (sim không dựng nữa) và nằm ở `parked` để dựng lại khi cần. Bản trước: seq 1467.
+rows:
+  # Tranh phông (spawn paint sanh-backdrop-karst): một tấm phẳng unlit xa sau Điện, nhẹ hơn dựng núi thật.
+  - id: sanh-art-panorama
+    tags: [art, backdrop]
+    feetPosition: {x: -40, y: 34, z: -40}
+    rotation: {lookAt: {x: 31.1, y: 34, z: 31.1}}
+    primitive: {kind: plane, width: 250, height: 94}
+    material: {texture: /cdn/value.ce9f2219918c5d631215c9b189e130d1d62c314df0e5e9843eb028d49d1def97.png, unlit: true, side: double}
+    castShadow: false
+    receiveShadow: false
+parked:
+  - castShadow: true
+    feetPosition: {x: 23.908784499961868, y: -6, z: 26.515187296959482}
+    id: sanh-art-karst-1
+    model: /cdn/value.15bf5a33b9c8f0fb794bd8e456bf767e8d26855b4a6bb5ccd45d8c47865583a7.glb
+    receiveShadow: true
+    rotation: {yaw: 83}
+    scale: 0.7323670188432024
+    tags: [art, karst]
+    visibleTo: editors
+  - castShadow: true
+    feetPosition: {x: 24, y: -6, z: 31}
+    id: sanh-art-karst-2
+    model: /cdn/value.98b728fb8be393dde37e75454b12362e94c9b39d7a17cc66a210fdbcce017bd9.glb
+    receiveShadow: true
+    rotation: {yaw: 166}
+    scale: 0.9208212282603614
+    tags: [art, karst]
+    visibleTo: editors
+  - castShadow: true
+    feetPosition: {x: 38, y: -6, z: 40}
+    id: sanh-art-karst-3
+    model: /cdn/value.15bf5a33b9c8f0fb794bd8e456bf767e8d26855b4a6bb5ccd45d8c47865583a7.glb
+    receiveShadow: true
+    rotation: {yaw: 249}
+    scale: 0.8655246586328755
+    tags: [art, karst]
+    visibleTo: editors

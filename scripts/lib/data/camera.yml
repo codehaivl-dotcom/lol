@@ -1,0 +1,12 @@
+# Camera trận (kiểu Arena of Valor / LoL). Mét, độ.
+pitch: 56          # góc nhìn xuống
+distance: 11       # mắt → tướng: tướng to như Liên Quân (lukasai 2026-10-08 "tướng quá nhỏ")
+minDistance: 8     # lăn chuột gần nhất
+maxDistance: 26    # lăn chuột xa nhất
+mobileDistance: 9.5 # màn nhỏ / mobile (lukasai 2026-10-08)
+aimHeight: 1.0     # điểm nhìn trên chân tướng
+lead: 1.0          # đẩy khung lên trước một chút, tướng gần giữa màn (2026-10-08)
+follow: 12         # tốc độ bám theo tướng (1/s)
+fov: 42
+# team yaw: xanh nhìn về -Z (đỏ ở góc trên phải), đỏ xoay 180° để căn cứ mình luôn ở dưới trái
+yaw: { blue: 0, red: 180 }

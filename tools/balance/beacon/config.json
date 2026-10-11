@@ -1,0 +1,8 @@
+{
+  "status": "EXPERIMENTAL_OFFLINE_FIXTURE",
+  "source": "docs/co-linh-than-chien/61-mach-dang-va-cong-tac-phong-thu.md",
+  "remotePin": "dcdbfb3d3cfe83ae65ed91a85dd439dceeb38f90",
+  "parameters": {"tierIAt": 1.2, "tierIIAt": 4, "tierIDuration": 25, "tierIIDuration": 15, "tailDuration": 10, "switchPrice": 180, "switchRange": 10, "switchCooldown": 35, "beaconSwitchCooldown": 35},
+  "fixture": {"visionRadius": 12, "interactionRadius": 2, "hardCC": ["stun", "root", "charm"], "beacons": [{"id": "west", "x": -12, "z": 0, "territory": "blue"}, {"id": "east", "x": 12, "z": 0, "territory": "red"}], "walls": [{"x1": 2, "z1": -3, "x2": 3, "z2": 3}]},
+  "assumptions": ["Coordinates, LOS boxes, radii and CC mapping are fixtures, not shipped map or engine behavior.", "No player movement/pathfinding/combat damage is simulated.", "A successful switch locks that beacon for 35 seconds; this is a doc61 proposal, not a user lock.", "Direct capture switches owner at 1.2 seconds; ordinary damage alone does not interrupt.", "Expiry is resolved before commands and channel milestones at equal timestamps."]
+}

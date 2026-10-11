@@ -1,0 +1,342 @@
+# --- màn chính ---
+menu.play: { vi-VN: "CHƠI", en: "PLAY" }
+menu.heroes: { vi-VN: "TƯỚNG", en: "HEROES" }
+menu.lore: { vi-VN: "TRUYỀN THUYẾT", en: "LORE" }
+menu.tagline: { vi-VN: "Năm 2300. Tinh Thạch Ký Ức mở ra trận chiến của các Cổ Linh.", en: "Year 2300. The Memory Crystals awaken the war of the Ancient Gods." }
+menu.room: { vi-VN: "Phòng của bạn", en: "Your room" }
+menu.back: { vi-VN: "‹ Quay lại", en: "‹ Back" }
+menu.inviteHint: { vi-VN: "Mời bạn bè & trò chuyện: thanh Spawn bên phải (Chat · Mời +)", en: "Invite friends & chat: Spawn's rail on the right (Chat · Invite +)" }
+game.title: { vi-VN: "CỔ LINH THẦN CHIẾN", en: "WAR OF THE ANCIENT GODS" }
+# --- chế độ & bản đồ ---
+mode.tai_hien: { vi-VN: "Trận Tái Hiện 5v5", en: "Memory War 5v5" }
+mode.tai_hien.desc: { vi-VN: "Người thật đối đầu. Phá Tâm Mạch đối phương để thắng.", en: "Players vs players. Destroy the enemy Heart Vein to win." }
+mode.san_tap: { vi-VN: "Sân Tập", en: "Training" }
+mode.san_tap.desc: { vi-VN: "Luyện tướng với lính, trụ và một tướng máy. Không tính thắng thua.", en: "Practise against minions, towers and one bot hero. No win or loss." }
+mode.thu_tran: { vi-VN: "Đấu Với Máy", en: "Trial against Bots" }
+mode.thu_tran.desc: { vi-VN: "1v1 với tướng máy ở Mạch Giữa: nó farm, cấu máu, dùng chiêu và lùi về khi yếu. Phá Tâm Mạch để thắng.", en: "1v1 against a bot hero in the Mid Vein: it farms, trades, casts and backs off when low. Break the Heart Vein to win." }
+map.mach_giua: { vi-VN: "Mạch Giữa", en: "Middle Vein" }
+map.mach_giua.desc: { vi-VN: "Một đường giữa · 2 trụ mỗi phe · Tâm Mạch", en: "One middle lane · 2 towers a side · Heart Vein" }
+map.cuu_mach: { vi-VN: "Cửu Mạch Chiến Trường", en: "Ninefold Veins Battlefield" }
+lock.soon: { vi-VN: "🔒 sắp ra mắt", en: "🔒 coming soon" }
+# --- phòng ---
+team.blue: { vi-VN: "Minh Ước", en: "Minh Ước" }
+team.red: { vi-VN: "Triều Vực", en: "Triều Vực" }
+room.empty: { vi-VN: "Trống", en: "Empty" }
+room.join: { vi-VN: "Vào đội", en: "Join" }
+room.leave: { vi-VN: "Rời đội", en: "Leave team" }
+room.host: { vi-VN: "chủ phòng", en: "host" }
+room.start: { vi-VN: "BẮT ĐẦU", en: "START" }
+room.spectators: { vi-VN: "Người xem", en: "Spectators" }
+room.needBoth: { vi-VN: "Mỗi đội cần ít nhất 1 người", en: "Each team needs at least 1 player" }
+room.waitHost: { vi-VN: "Chờ chủ phòng bắt đầu", en: "Waiting for the host to start" }
+room.practiceSpectate: { vi-VN: "Chủ phòng đang ở Sân Tập. Bạn đang xem.", en: "The host is in Training. You are spectating." }
+room.left: { vi-VN: "đã rời", en: "left" }
+room.reconnecting: { vi-VN: "mất kết nối", en: "reconnecting" }
+room.sending: { vi-VN: "…", en: "…" }
+room.modeMap: { vi-VN: "Chế độ & bản đồ", en: "Mode & map" }
+room.ingameWatch: { vi-VN: "Trận đang diễn ra · {t}", en: "Match in progress · {t}" }
+room.reopen: { vi-VN: "Trận vừa xong · phòng mở lại sau {n}s", en: "Match over · room reopens in {n}s" }
+room.viewResults: { vi-VN: "Xem lại kết quả", en: "View results" }
+# --- chọn tướng ---
+pick.title: { vi-VN: "Chọn tướng", en: "Choose your hero" }
+pick.lock: { vi-VN: "KHOÁ", en: "LOCK IN" }
+pick.locked: { vi-VN: "Đã khoá", en: "Locked" }
+pick.exit: { vi-VN: "THOÁT", en: "EXIT" }
+pick.picking: { vi-VN: "đang chọn…", en: "picking…" }
+pick.taken: { vi-VN: "đồng đội đã khoá", en: "teammate locked" }
+pick.random: { vi-VN: "Hết giờ: giữ tướng đang chọn", en: "Time out: your shown hero is kept" }
+load.vs: { vi-VN: "ĐỐI ĐẦU", en: "VERSUS" }
+# --- kết quả ---
+res.win: { vi-VN: "CHIẾN THẮNG", en: "VICTORY" }
+res.lose: { vi-VN: "THẤT BẠI", en: "DEFEAT" }
+res.practice: { vi-VN: "HOÀN THÀNH SÂN TẬP", en: "TRAINING COMPLETE" }
+res.teamWins: { vi-VN: "{team} phá Tâm Mạch · {t}", en: "{team} destroyed the Heart Vein · {t}" }
+res.back: { vi-VN: "Về phòng", en: "Back to room" }
+res.cols: { vi-VN: "Tướng · Cấp · H/C · Lính · Vàng", en: "Hero · Lv · K/D · CS · Gold" }
+# --- sân tập ---
+prac.reset: { vi-VN: "Làm lại", en: "Restart" }
+prac.end: { vi-VN: "Kết thúc", en: "End" }
+prac.menu: { vi-VN: "Sân Tập", en: "Training" }
+leave.title: { vi-VN: "Rời trận sau {n}s", en: "Leaving in {n}s" }
+leave.sub: { vi-VN: "Đồng đội tiếp tục chơi. Bạn về sảnh, trận này không quay lại được.", en: "Your team plays on. You go back to the hall and cannot rejoin this match." }
+leave.subBot: { vi-VN: "Trận tập với máy sẽ kết thúc khi bạn rời.", en: "This practice match against bots ends when you leave." }
+leave.cancel: { vi-VN: "Ở lại", en: "Stay" }
+leave.now: { vi-VN: "Rời ngay", en: "Leave now" }
+prac.menuBot: { vi-VN: "Đấu Máy", en: "Vs AI" }
+prac.leave: { vi-VN: "Rời trận", en: "Leave match" }
+# --- lỗi ---
+err.not_host: { vi-VN: "Chỉ chủ phòng làm được", en: "Only the host can do that" }
+err.bad_phase: { vi-VN: "Không làm được lúc này", en: "Not possible right now" }
+err.team_full: { vi-VN: "Đội đã đủ 5 người", en: "That team is full" }
+err.hero_taken: { vi-VN: "Đồng đội đã khoá tướng này", en: "A teammate locked that hero" }
+err.spectator: { vi-VN: "Đang Sân Tập: bạn chỉ xem", en: "Training in progress: spectating only" }
+err.no_hero: { vi-VN: "Chọn một tướng trước", en: "Pick a hero first" }
+err.cancelled: { vi-VN: "Đối thủ rời phòng, quay về sảnh", en: "A team emptied, back to the room" }
+err.soloLeft: { vi-VN: "Chủ phòng đã rời trận, trận đã huỷ", en: "The host left the match, it was cancelled" }
+err.practiceLeft: { vi-VN: "Không còn ai trong Sân Tập, trận đã đóng", en: "Nobody stayed in practice, the match closed" }
+err.modelFallback: { vi-VN: "Model tướng không tải được, tạm dùng thân dự phòng", en: "Hero model failed to load, using a stand-in body" }
+# --- HUD trong trận ---
+hud.minions: { vi-VN: "Lính", en: "CS" }
+hud.wave: { vi-VN: "đợt", en: "wave" }
+hud.dead: { vi-VN: "Bạn đã gục", en: "You were slain" }
+hud.respawn: { vi-VN: "hồi sinh sau {n}s", en: "respawn in {n}s" }
+hud.recall: { vi-VN: "Về nhà…", en: "Recalling…" }
+hud.dodge: { vi-VN: "né", en: "dodge" }
+hud.ready: { vi-VN: "sẵn", en: "ready" }
+hud.keys: { vi-VN: "B về nhà · P cửa hiệu · T di vật", en: "B recall · P shop · T relic" }
+hud.hint: { vi-VN: "Chuột phải: đi / đánh · giữ Q W E R để ngắm, nhả để tung · D né · S dừng", en: "Right click: move / attack · hold Q W E R to aim, release to cast · D dodge · S stop" }
+hud.shop: { vi-VN: "Cửa hiệu", en: "Shop" }
+hud.shopNote: { vi-VN: "Về nhà chính để mua", en: "Return to base to buy" }
+hud.shopHere: { vi-VN: "Đang ở nhà chính: mua được", en: "At base: buying open" }
+hud.attack: { vi-VN: "ĐÁNH", en: "ATK" }
+# --- truyền thuyết (01) ---
+lore.title: { vi-VN: "Tinh Thạch Ký Ức", en: "The Memory Crystals" }
+lore.p1: { vi-VN: "Khoảng một triệu năm trước năm 2300, nền văn minh Cổ Linh phát triển rực rỡ trên vùng đất nay là Việt Nam. Đại Tịch cắt đứt chuỗi lịch sử; dấu tích và ký ức về các liên minh gần như biến mất.", en: "About a million years before 2300, the Cổ Linh civilisation flourished on the land that is now Vietnam. The Great Silence severed history; nearly every trace of its alliances vanished." }
+lore.p2: { vi-VN: "Năm 2300, người Việt Nam khai thác được Tinh Thạch Ký Ức và dùng Hồi Tưởng Đồng Bộ để hóa thân vào các Cổ Linh, tái hiện những trận chiến được lưu trong tinh thạch. Đây là mô phỏng ký ức, không phải du hành thời gian.", en: "In 2300, Vietnamese miners unearth the Memory Crystals and use Synchronised Recall to become the Cổ Linh, replaying battles stored in the crystal. It is memory, not time travel." }
+lore.p3: { vi-VN: "Minh Ước đối đầu Triều Vực trên Cửu Mạch Chiến Trường. Đội nào phá được Tâm Mạch của đối phương sẽ viết lại ký ức ấy.", en: "Minh Ước faces Triều Vực on the Ninefold Veins. Whoever breaks the enemy's Heart Vein rewrites that memory." }
+# --- tiểu sử tướng (03-danh-sach-tuong.md) ---
+hero.moc_lam.bio: { vi-VN: "Mộc Lẫm từng dựng cổng chắn cuối cùng cho Minh Ước, nhưng luôn để một lối mở cho người sơ tán. Khi ký ức chiến trường vỡ vụn, anh vẫn nhớ tiếng gọi từ phía bên kia cánh cổng.", en: "Mộc Lẫm raised Minh Ước's last gate, yet always left a way open for those fleeing. As the battlefield's memory shatters, he still remembers a voice calling from beyond the gate." }
+hero.kha_tan.bio: { vi-VN: "Kha Tàn ghi lại mọi món nợ chiến thuật lên chuỗi vảy của mình. Hắn theo Triều Vực vì tin một thế giới chỉ tồn tại bằng cách vay mượn năng lượng sẽ sớm sụp đổ.", en: "Kha Tàn records every tactical debt on his chain of scales. He sides with Triều Vực, convinced a world that lives on borrowed power will soon collapse." }
+hero.mi_dang.bio: { vi-VN: "Mị Đăng quản kho ký ức của những người đã mất. Cô gia nhập chiến trường để lần theo một giọng nói không có trong bất kỳ bản lưu nào.", en: "Mị Đăng keeps the vault of memories of the lost. She joins the battle to follow a voice that exists in no record." }
+hero.hoa_tuy.bio: { vi-VN: "Hỏa Tủy vận hành một lò nhiệt sâu dưới nền Cửu Mạch. Khi lò bắt đầu phát ra ký ức thay vì năng lượng, anh rời vị trí canh giữ để tìm nguyên nhân.", en: "Hỏa Tủy tends a furnace deep beneath the Ninefold Veins. When it began to breathe out memories instead of heat, he left his post to find out why." }
+hero.nham_vu.bio: { vi-VN: "Nham Vũ mở tuyến bay qua vùng nhiễu ký ức. Con chim của cô lưu tọa độ cuối cùng của những nơi mà bản đồ Cổ Linh không còn nhận ra.", en: "Nham Vũ charts flight paths through the memory storms. Her bird keeps the last coordinates of places the Cổ Linh maps no longer know." }
+hero.van_dao.bio: { vi-VN: "Vân Dao từng điều hòa bão plasma quanh các thềm bay. Cô chọn chữa lành thay vì khóa bầu khí quyển khi hai liên minh làm tầng trời rạn nứt.", en: "Vân Dao once calmed the plasma storms around the sky terraces. When the two alliances cracked the heavens, she chose to heal rather than seal the sky." }
+hero.hao_nhat.bio: { vi-VN: "Hạo Nhật là người giữ các gương quỹ đạo của Minh Ước. Anh từng dùng khiên của mình che lối rút khỏi một thành phố đang mất trọng lực.", en: "Hạo Nhật kept the orbital mirrors of the Accord. He once held his shield over the escape route of a city losing its gravity." }
+hero.huong_mai.bio: { vi-VN: "Hương Mai là bác sĩ trường lực của Minh Ước. Cô dùng ánh sáng để nối lại các lớp ký ức bị tổn thương và để lại thông điệp cuối trong một Tinh Thạch.", en: "Hương Mai was the Accord's field physician. She uses light to stitch damaged layers of memory back together, and left her last message inside a Starstone." }
+stat.hp: { vi-VN: "Máu", en: "Health" }
+stat.ad: { vi-VN: "Công vật lý", en: "Attack" }
+stat.armor: { vi-VN: "Giáp", en: "Armor" }
+stat.mr: { vi-VN: "Kháng phép", en: "Magic resist" }
+stat.moveSpeed: { vi-VN: "Tốc chạy", en: "Move speed" }
+stat.attackSpeed: { vi-VN: "Tốc đánh", en: "Attack speed" }
+info.stats: { vi-VN: "Chỉ số", en: "Stats" }
+info.skills: { vi-VN: "Kỹ năng", en: "Skills" }
+info.lore: { vi-VN: "Tiểu sử", en: "Lore" }
+menu.home: { vi-VN: "Điện Vinh Danh", en: "Hall of Honour" }
+room.name: { vi-VN: "Phòng của {n}", en: "{n}'s room" }
+room.rename: { vi-VN: "Đổi tên", en: "Rename" }
+room.save: { vi-VN: "Lưu", en: "Save" }
+room.invite: { vi-VN: "Mời bạn", en: "Invite" }
+room.inviteHow: { vi-VN: "Bấm Invite trên thanh Spawn để gửi lời mời, hoặc gửi link này. Bạn bè vào là tự vào phòng.", en: "Press Invite on Spawn's bar, or send this link. Friends who open it land in this room." }
+room.copied: { vi-VN: "Đã chép link", en: "Link copied" }
+room.copy: { vi-VN: "Chép link", en: "Copy link" }
+room.you: { vi-VN: "Bạn", en: "You" }
+room.players: { vi-VN: "{n} người trong phòng", en: "{n} in the room" }
+map.label: { vi-VN: "Bản đồ", en: "Map" }
+map.mach_giua.lore: { vi-VN: "Một dòng mạch ký ức chảy giữa hai Tâm Mạch. Ai giữ được cầu đá sẽ giữ được nhịp trận.", en: "A vein of memory runs between two Heart Veins. Whoever holds the stone bridge holds the match." }
+map.legend.tower: { vi-VN: "Trụ", en: "Tower" }
+map.legend.nexus: { vi-VN: "Tâm Mạch", en: "Heart Vein" }
+map.legend.brush: { vi-VN: "Bụi lau", en: "Brush" }
+# --- mô tả chiêu (hero.<id>.<slot>.desc) ---
+hero.moc_lam.passive.desc: { vi-VN: "Mỗi đòn đánh thứ ba nện như đá đổ: thêm sát thương vật lý và làm chậm mục tiêu 30% trong 1 giây.", en: "Every third basic attack lands like falling stone: bonus physical damage and a 30% slow for 1s." }
+hero.moc_lam.q.desc: { vi-VN: "Lao thẳng 7,5 m theo hướng ngắm, gây sát thương vật lý và ghim chặt tướng đầu tiên trúng phải.", en: "Charge 7.5 m along your aim, dealing physical damage and rooting the first champion hit." }
+hero.moc_lam.rmb.desc: { vi-VN: "Gồng vai như núi, dựng khiên cho bản thân theo máu tối đa trong 3 giây.", en: "Brace like a mountain: shield yourself, scaling with max HP, for 3s." }
+hero.moc_lam.e.desc: { vi-VN: "Quét kiếm một vòng quanh thân, chém mọi kẻ địch gần bên. Vẫn đi được trong lúc quét.", en: "Sweep the blade in a full circle, striking every enemy nearby. You can keep moving while it spins." }
+hero.moc_lam.r.desc: { vi-VN: "Nhảy tới một kẻ địch, cắm kiếm xuống mạch đất: sát thương tăng theo máu đã mất của mục tiêu, rồi dựng khiên cho cả đồng đội quanh đó.", en: "Leap onto an enemy and drive the blade into the vein: damage grows with their missing HP, then shield yourself and nearby allies." }
+hero.kha_tan.passive.desc: { vi-VN: "Đòn đánh và chiêu ghi một tầng nợ máu lên mục tiêu, chảy máu mỗi giây, cộng dồn tới 5 tầng trong 4 giây.", en: "Attacks and abilities write a debt mark that bleeds every second, stacking up to 5 times over 4s." }
+hero.kha_tan.q.desc: { vi-VN: "Vung liềm rìu quét nửa vòng phía trước. Hồi máu bằng 30% sát thương gây ra và thêm một tầng nợ.", en: "Swing the scythe-axe in a half circle ahead. Heals for 30% of the damage dealt and adds a debt mark." }
+hero.kha_tan.rmb.desc: { vi-VN: "Lướt tới mục tiêu, chém đứt gân: sát thương và làm chậm 40% trong 1,5 giây.", en: "Dash to a target and cut the tendon: damage and a 40% slow for 1.5s." }
+hero.kha_tan.e.desc: { vi-VN: "Ném móc xích theo hướng ngắm, kéo kẻ địch đầu tiên trúng về phía mình 5 m.", en: "Throw a chain hook along your aim, dragging the first enemy hit 5 m toward you." }
+hero.kha_tan.r.desc: { vi-VN: "Đòi nợ cuối: sát thương chuẩn tăng theo mỗi tầng nợ trên mục tiêu. Hạ gục thì chiêu hồi lại ngay.", en: "Call in the last debt: true damage that grows with each debt mark. A takedown refreshes it." }
+hero.mi_dang.passive.desc: { vi-VN: "Sau mỗi lần dùng chiêu, đòn đánh kế tiếp mang theo đốm bóng, thêm sát thương phép tăng theo cấp.", en: "After each ability, the next attack carries a shade ember for bonus magic damage that grows per level." }
+hero.mi_dang.q.desc: { vi-VN: "Thả chiếc đèn bay ra rồi quay về. Kẻ địch có thể trúng hai lần, lượt đi và lượt về.", en: "Send a lantern out and back. Enemies can be hit twice, going and returning." }
+hero.mi_dang.rmb.desc: { vi-VN: "Lướt như trăng rẽ mây tới mục tiêu, chém một nhát sát thương phép.", en: "Slip like the moon through clouds onto a target, slashing for magic damage." }
+hero.mi_dang.e.desc: { vi-VN: "Phóng lời vẫy gọi: kẻ địch đầu tiên trúng bị mê hoặc 1,1 giây và bước về phía Mị Đăng.", en: "Cast a beckoning call: the first enemy hit is charmed for 1.1s and walks toward you." }
+hero.mi_dang.r.desc: { vi-VN: "Ba bước mờ liên tiếp xuyên qua kẻ địch, mỗi bước chém một lần và không thể bị chọn làm mục tiêu.", en: "Three fading steps through the enemy, each one a strike, untargetable while you move." }
+hero.hoa_tuy.passive.desc: { vi-VN: "Chiêu trúng đích đốt mục tiêu 3% máu tối đa trong 3 giây và giảm 40% hồi máu nhận được.", en: "Abilities burn for 3% max HP over 3s and cut the target's healing by 40%." }
+hero.hoa_tuy.q.desc: { vi-VN: "Gọi một cột lửa trồi lên tại điểm chọn sau 0,7 giây, gây sát thương và làm choáng 0,75 giây.", en: "A pillar of fire erupts at the target spot after 0.7s, dealing damage and stunning for 0.75s." }
+hero.hoa_tuy.rmb.desc: { vi-VN: "Bắn viên than đánh dấu kẻ địch. Đòn sát thương kế tiếp lên mục tiêu kích nổ dấu, gây thêm sát thương phép.", en: "Fire a coal that marks the enemy. Your next damage on them detonates the mark for bonus magic damage." }
+hero.hoa_tuy.e.desc: { vi-VN: "Thổi luồng khí nóng quanh thân: sát thương, đẩy lùi 3 m và làm chậm 25%.", en: "Release a heat wave around you: damage, a 3 m knockback and a 25% slow." }
+hero.hoa_tuy.r.desc: { vi-VN: "Gọi thiên thạch than rơi xuống điểm xa tới 18 m sau 1 giây, nổ tung cả vùng.", en: "Call down a coal meteor up to 18 m away; it lands after 1s and blasts the whole area." }
+hero.nham_vu.passive.desc: { vi-VN: "Mỗi mũi tên thứ tư là mũi sỏi nặng, làm chậm mục tiêu 20% trong 1 giây.", en: "Every fourth arrow is a heavy pebble, slowing the target 20% for 1s." }
+hero.nham_vu.q.desc: { vi-VN: "Bắn ba mũi tên xoè hình quạt phía trước.", en: "Loose three arrows in a fan ahead of you." }
+hero.nham_vu.rmb.desc: { vi-VN: "Kéo căng dây hổ phách, bắn phát nạp bay xa 16 m, gây sát thương lớn và làm chậm 40%.", en: "Draw the amber string for a 16 m charged shot: heavy damage and a 40% slow." }
+hero.nham_vu.e.desc: { vi-VN: "Thả chim mở lối, nhảy lùi 4 m, gỡ mọi làm chậm và trói, tăng tốc chạy và tốc đánh trong 3,5 giây.", en: "Release the pathfinder bird: leap back 4 m, shed slows and roots, gain move and attack speed for 3.5s." }
+hero.nham_vu.r.desc: { vi-VN: "Lùi khỏi vách 6 m rồi phóng mũi lao xuyên thẳng 18 m, trúng mọi kẻ địch trên đường.", en: "Kick off the cliff 6 m back, then loose a piercing lance 18 m through every enemy in line." }
+hero.van_dao.passive.desc: { vi-VN: "Sau mỗi lần dùng chiêu, đòn đánh kế tiếp rẽ tia sét, thêm sát thương phép tăng theo cấp.", en: "After each ability, your next attack forks lightning for bonus magic damage that grows per level." }
+hero.van_dao.q.desc: { vi-VN: "Tụ mây giông tại điểm chọn: sát thương kẻ địch trong vùng, hồi máu cho bản thân và đồng minh.", en: "Gather a storm cloud at a spot: damages enemies inside and heals you and allies." }
+hero.van_dao.rmb.desc: { vi-VN: "Phóng ấn gió theo hướng ngắm, trói kẻ địch đầu tiên trúng trong 1,5 giây.", en: "Cast a wind seal along your aim, rooting the first enemy hit for 1.5s." }
+hero.van_dao.e.desc: { vi-VN: "Khoác áo bão: khiên cho bản thân, tăng 20% tốc chạy, gió cuốn sạch chảy máu và đẩy lùi kẻ địch sát bên.", en: "Don the storm cloak: a shield, 20% move speed, wind that clears bleeds and knocks back nearby enemies." }
+hero.van_dao.r.desc: { vi-VN: "Sóng gió lớn toả quanh thân, đẩy lùi kẻ địch 6 m và hồi máu cho mọi đồng minh trong vùng.", en: "A great gale bursts around you, knocking enemies back 6 m and healing every ally inside." }
+hero.hao_nhat.passive.desc: { vi-VN: "Sau mỗi lần dựng khiên, đòn đánh kế tiếp đốt nắng: thêm sát thương phép và làm chậm.", en: "After each shield, your next attack sears with sunlight: bonus magic damage and a slow." }
+hero.hao_nhat.q.desc: { vi-VN: "Xông khiên theo hướng ngắm, choáng tướng địch đầu tiên chặn đường.", en: "Charge with your shield along your aim, stunning the first enemy champion in the way." }
+hero.hao_nhat.rmb.desc: { vi-VN: "Dựng khiên cho bản thân; khi vỡ hoặc hết hạn, nắng nổ quanh thân gây sát thương phép.", en: "Shield yourself; when it breaks or expires, sunlight bursts around you for magic damage." }
+hero.hao_nhat.e.desc: { vi-VN: "Phóng dây sáng xuyên lính, dừng ở tướng địch đầu tiên và làm chậm.", en: "Cast a tether of light that passes through minions, stopping at the first enemy champion and slowing it." }
+hero.hao_nhat.r.desc: { vi-VN: "Hai cột nắng giáng xuống một vùng, cách nhau 0,6 giây; nhịp hai choáng.", en: "Two pillars of sunlight strike an area 0.6 s apart; the second stuns." }
+hero.huong_mai.passive.desc: { vi-VN: "Mỗi đòn đánh trúng rút ngắn hồi chiêu Q, chuột phải và E.", en: "Each basic attack that lands shortens the cooldowns of Q, right-click and E." }
+hero.huong_mai.q.desc: { vi-VN: "Tia sáng gây sát thương kẻ địch đầu tiên trúng và chữa đồng minh yếu nhất trong tầm.", en: "A beam of light that damages the first enemy hit and heals the most wounded ally in range." }
+hero.huong_mai.rmb.desc: { vi-VN: "Ném vòng hương bay ra rồi quay về, trúng hai lượt và làm chậm.", en: "Throw a scented ring that flies out and returns, hitting twice and slowing." }
+hero.huong_mai.e.desc: { vi-VN: "Dựng tường ánh sáng chặn lối: kẻ địch chạm vào bị làm chậm nặng.", en: "Raise a wall of light across the path: enemies who touch it are heavily slowed." }
+hero.huong_mai.r.desc: { vi-VN: "Vùng sáng báo trước 1 giây rồi nổ: sát thương kẻ địch, chữa bản thân và đồng minh trong vùng.", en: "A field of light warns for 1 s, then bursts: damages enemies and heals you and allies inside." }
+sk.passive: { vi-VN: "Nội tại", en: "Passive" }
+sk.cd: { vi-VN: "Hồi", en: "Cooldown" }
+sk.cost: { vi-VN: "Năng lượng", en: "Mana" }
+sk.range: { vi-VN: "Tầm", en: "Range" }
+sk.radius: { vi-VN: "Bán kính", en: "Radius" }
+sk.phys: { vi-VN: "Vật lý", en: "Physical" }
+sk.magic: { vi-VN: "Phép", en: "Magic" }
+sk.true: { vi-VN: "Chuẩn", en: "True" }
+sk.fx.root: { vi-VN: "Trói", en: "Root" }
+sk.fx.slow: { vi-VN: "Làm chậm", en: "Slow" }
+sk.fx.stun: { vi-VN: "Choáng", en: "Stun" }
+sk.fx.charm: { vi-VN: "Mê hoặc", en: "Charm" }
+sk.fx.shield: { vi-VN: "Khiên", en: "Shield" }
+sk.fx.heal: { vi-VN: "Hồi máu", en: "Heal" }
+sk.fx.dash: { vi-VN: "Lướt", en: "Dash" }
+sk.fx.pull: { vi-VN: "Kéo", en: "Pull" }
+sk.fx.knock: { vi-VN: "Đẩy lùi", en: "Knockback" }
+sk.fx.bleed: { vi-VN: "Chảy máu", en: "Bleed" }
+sk.fx.burn: { vi-VN: "Thiêu đốt", en: "Burn" }
+sk.fx.cleanse: { vi-VN: "Thanh tẩy", en: "Cleanse" }
+sk.fx.untarget: { vi-VN: "Không thể chọn", en: "Untargetable" }
+sk.fx.buff: { vi-VN: "Tăng tốc", en: "Haste" }
+sk.fx.reset: { vi-VN: "Làm mới", en: "Reset" }
+rf.all: { vi-VN: "Tất cả", en: "All" }
+rf.tank: { vi-VN: "Đỡ đòn", en: "Tank" }
+rf.fighter: { vi-VN: "Đấu sĩ", en: "Fighter" }
+rf.assassin: { vi-VN: "Sát thủ", en: "Assassin" }
+rf.mage: { vi-VN: "Pháp sư", en: "Mage" }
+rf.marksman: { vi-VN: "Xạ thủ", en: "Marksman" }
+rf.support: { vi-VN: "Trợ thủ", en: "Support" }
+
+sk.hint: { vi-VN: "Bấm vào chiêu để xem tướng thi triển", en: "Click a skill to watch it cast" }
+sk.tryall: { vi-VN: "Thử tất cả", en: "Try all" }
+sk.stop: { vi-VN: "Dừng", en: "Stop" }
+sk.try1: { vi-VN: "Xem chiêu này", en: "Watch this skill" }
+# --- đồng bộ lại với strings.yml (các khoá đã có trong bản sinh nhưng thiếu ở nguồn) ---
+hud.end: { vi-VN: "Kết thúc", en: "Ended" }
+hud.wait: { vi-VN: "Chờ bắt đầu", en: "Waiting" }
+hud.dodgeShort: { vi-VN: "Né", en: "Dodge" }
+hud.relicShort: { vi-VN: "Di vật", en: "Relic" }
+hud.recallShop: { vi-VN: "B: về nhà", en: "B: recall" }
+hud.respawnShop: { vi-VN: "P mở cửa hiệu", en: "P opens the shop" }
+hud.respawnShopTouch: { vi-VN: "chạm CỬA HIỆU bên trái", en: "tap SHOP on the left" }
+msg.rLocked: { vi-VN: "R mở ở cấp 6", en: "R unlocks at level 6" }
+msg.noMana: { vi-VN: "thiếu năng lượng", en: "not enough energy" }
+msg.noTarget: { vi-VN: "không có mục tiêu", en: "no target" }
+msg.baseOnly: { vi-VN: "chỉ mua được ở căn cứ", en: "buy at base only" }
+msg.bagFull: { vi-VN: "túi đầy", en: "inventory full" }
+msg.oneRelic: { vi-VN: "chỉ mang 1 di vật", en: "one relic only" }
+msg.noGold: { vi-VN: "thiếu vàng", en: "not enough gold" }
+feed.died: { vi-VN: "{b} đã bị hạ gục", en: "{b} has been slain" }
+slain.kill: { vi-VN: "HẠ GỤC", en: "SLAIN" }
+slain.first: { vi-VN: "CHIẾN CÔNG ĐẦU", en: "FIRST BLOOD" }
+slain.double: { vi-VN: "SONG SÁT", en: "DOUBLE KILL" }
+slain.triple: { vi-VN: "TAM SÁT", en: "TRIPLE KILL" }
+slain.quadra: { vi-VN: "TỨ SÁT", en: "QUADRA KILL" }
+slain.penta: { vi-VN: "NGŨ SÁT", en: "PENTA KILL" }
+slain.shutdown: { vi-VN: "CHẶN ĐỨNG", en: "SHUT DOWN" }
+slain.spree: { vi-VN: "LIÊN TIẾP HẠ GỤC", en: "KILLING SPREE" }
+slain.unstoppable: { vi-VN: "KHÔNG THỂ CẢN PHÁ", en: "UNSTOPPABLE" }
+slain.legendary: { vi-VN: "HUYỀN THOẠI", en: "LEGENDARY" }
+slain.you_slain: { vi-VN: "BẠN ĐÃ HẠ GỤC", en: "YOU HAVE SLAIN" }
+slain.ally_died: { vi-VN: "ĐỒNG MINH BỊ HẠ", en: "ALLY SLAIN" }
+slain.enemy_died: { vi-VN: "KẺ ĐỊCH BỊ HẠ", en: "ENEMY SLAIN" }
+feed.kill: { vi-VN: "{a} hạ {b}", en: "{a} slew {b}" }
+feed.env: { vi-VN: "Công trình/lính", en: "Structures/minions" }
+feed.super: { vi-VN: "Siêu Linh Binh {team} xuất trận", en: "{team} Super Veinbound march" }
+feed.lost: { vi-VN: "{team} mất {s}", en: "{team} lost a {s}" }
+struct.tower: { vi-VN: "Trụ Mạch", en: "Vein Spire" }
+struct.keep: { vi-VN: "Trấn Mạch", en: "Vein Bastion" }
+# --- HUD cảm ứng (doc 19 §4 Mobile, doc14 B9) ---
+hud.touch.dodge: { vi-VN: "NÉ", en: "DASH" }
+hud.touch.relic: { vi-VN: "DI VẬT", en: "RELIC" }
+hud.touch.recall: { vi-VN: "VỀ", en: "BACK" }
+hud.touch.shop: { vi-VN: "CỬA HIỆU", en: "SHOP" }
+hud.touch.lv: { vi-VN: "Cấp {n}", en: "Lv {n}" }
+hud.touch.noMana: { vi-VN: "thiếu năng lượng", en: "no energy" }
+hud.touch.dead: { vi-VN: "gục", en: "down" }
+
+# --- HUD trận chuẩn (2026-10-08 polish) ---
+hud.kills: { vi-VN: "Hạ", en: "Kills" }
+hud.deaths: { vi-VN: "Gục", en: "Deaths" }
+hud.rank: { vi-VN: "bậc {n}", en: "rank {n}" }
+hud.locked: { vi-VN: "Mở khoá ở cấp {n}", en: "Unlocks at level {n}" }
+hud.passive: { vi-VN: "Nội tại", en: "Passive" }
+hud.dodgeTip: { vi-VN: "Lướt nhanh theo hướng chuột, miễn sát thương trong chớp mắt. Tốn thể lực.", en: "Dash toward the cursor, briefly immune to damage. Costs stamina." }
+hud.relicTip: { vi-VN: "Nhấn F để dùng di vật.", en: "Press F to use your relic." }
+hud.noRelic: { vi-VN: "Chưa có di vật. Mua ở Cửa hiệu (P).", en: "No relic yet. Buy one in the Shop (P)." }
+stat.thirdHit: { vi-VN: "Sát thương đòn thứ ba", en: "Third-hit damage" }
+stat.hpRegen: { vi-VN: "Hồi máu", en: "Health regen" }
+# --- HUD chuẩn (2026-10-08, theo ảnh ý tưởng của creator) ---
+hud.notify: { vi-VN: "Thông báo", en: "Notices" }
+hud.recallName: { vi-VN: "Về nhà", en: "Recall" }
+hud.attackName: { vi-VN: "Tấn công", en: "Attack" }
+hud.towersDown: { vi-VN: "Trụ đã phá", en: "Towers destroyed" }
+hud.teamGold: { vi-VN: "Vàng cả đội", en: "Team gold" }
+hud.recallTip: { vi-VN: "Đứng yên 8 giây để về căn cứ. Bị đánh hoặc di chuyển sẽ huỷ.", en: "Stand still for 8 seconds to return to base. Taking damage or moving cancels it." }
+hud.btn.board: { vi-VN: "Bảng xếp hạng", en: "Scoreboard" }
+hud.btn.stats: { vi-VN: "Chỉ số", en: "Stats" }
+hud.btn.help: { vi-VN: "Cài đặt", en: "Settings" }
+hud.board.hero: { vi-VN: "Tướng", en: "Hero" }
+hud.board.kd: { vi-VN: "Hạ / Gục", en: "K / D" }
+hud.board.cs: { vi-VN: "Lính", en: "Minions" }
+hud.board.gold: { vi-VN: "Vàng", en: "Gold" }
+hud.board.items: { vi-VN: "Trang bị", en: "Items" }
+hud.board.ally: { vi-VN: "Đội ta", en: "Your team" }
+hud.board.enemy: { vi-VN: "Đội địch", en: "Enemy team" }
+hud.board.bot: { vi-VN: "máy", en: "bot" }
+hud.close: { vi-VN: "Đóng", en: "Close" }
+hud.help.keys: { vi-VN: "Phím tắt", en: "Controls" }
+hud.help.lang: { vi-VN: "Ngôn ngữ", en: "Language" }
+hud.key.move: { vi-VN: "Đi / đánh mục tiêu", en: "Move / attack target" }
+hud.key.skills: { vi-VN: "Giữ để ngắm, nhả để tung chiêu", en: "Hold to aim, release to cast" }
+hud.key.dodge: { vi-VN: "Né", en: "Dodge" }
+hud.key.relic: { vi-VN: "Dùng di vật", en: "Use relic" }
+hud.key.recall: { vi-VN: "Về nhà", en: "Recall" }
+hud.key.stop: { vi-VN: "Dừng lại", en: "Stop" }
+hud.key.camera: { vi-VN: "Phóng to / thu nhỏ", en: "Zoom" }
+stat.mana: { vi-VN: "Năng lượng", en: "Energy" }
+stat.level: { vi-VN: "Cấp", en: "Level" }
+stat.manaRegen: { vi-VN: "Hồi năng lượng", en: "Energy regen" }
+stat.range: { vi-VN: "Tầm đánh", en: "Attack range" }
+stat.ap: { vi-VN: "Sức mạnh phép", en: "Ability power" }
+hud.suggest: { vi-VN: "Gợi ý trang bị", en: "Suggested items" }
+hud.attackTip: { vi-VN: "Chuột phải vào kẻ địch để đánh thường.", en: "Right-click an enemy to basic attack." }
+hud.board.title: { vi-VN: "Bảng thống kê", en: "Match stats" }
+ping.title: { vi-VN: "Tín hiệu nhanh", en: "Quick signals" }
+ping.gather: { vi-VN: "Tập hợp!", en: "Group up!" }
+ping.attack: { vi-VN: "Tấn công!", en: "Attack!" }
+ping.danger: { vi-VN: "Cẩn thận!", en: "Careful!" }
+ping.retreat: { vi-VN: "Rút lui!", en: "Fall back!" }
+
+hud.help.scale: { vi-VN: "Cỡ HUD", en: "HUD size" }
+sys.loadfail.title: { vi-VN: "Mất kết nối khi tải.", en: "A part of the game failed to load." }
+sys.loadfail.body: { vi-VN: "Đã thử lại 4 lần.", en: "Tried 4 times." }
+sys.loadfail.retry: { vi-VN: "Thử lại", en: "Retry" }
+hud.rotate.title: { vi-VN: "Xoay ngang máy", en: "Rotate your device" }
+hud.rotate.body: { vi-VN: "Cổ Linh Thần Chiến chỉ chơi ở màn hình ngang.", en: "Cổ Linh Thần Chiến is played in landscape only." }
+hud.help.title: { vi-VN: "Cài đặt · Phím tắt", en: "Settings · Controls" }
+hud.help.match: { vi-VN: "Trận đấu", en: "Match" }
+hud.loading: { vi-VN: "Đang vào trận…", en: "Entering the match…" }
+shop.cat.all: { vi-VN: "Tất cả", en: "All" }
+shop.cat.weapon: { vi-VN: "Vũ khí", en: "Weapons" }
+shop.cat.armor: { vi-VN: "Giáp", en: "Armor" }
+shop.cat.charm: { vi-VN: "Bùa", en: "Charms" }
+shop.cat.relic: { vi-VN: "Di vật", en: "Relics" }
+shop.buy: { vi-VN: "Mua", en: "Buy" }
+shop.sell: { vi-VN: "Bán lại", en: "Sell" }
+shop.bag: { vi-VN: "Túi đồ", en: "Bag" }
+shop.pick: { vi-VN: "Chọn một món để xem chi tiết.", en: "Pick an item to see details." }
+shop.active: { vi-VN: "Kích hoạt", en: "Active" }
+shop.heal: { vi-VN: "hồi {n} máu trong {t}s", en: "heal {n} over {t}s" }
+shop.shield: { vi-VN: "khiên {n} trong {t}s", en: "{n} shield for {t}s" }
+shop.cd: { vi-VN: "hồi chiêu {t}s", en: "{t}s cooldown" }
+
+# trang bị (doc 67): giao dịch + nội tại
+msg.maxCopies: { vi-VN: "đã đủ số bản của món này", en: "you already hold the most of this item" }
+msg.itemVersion: { vi-VN: "món này không thuộc bộ đồ của trận", en: "this item is not in this match's catalog" }
+shop.from: { vi-VN: "Ghép từ", en: "Built from" }
+shop.tier.basic: { vi-VN: "Cơ bản", en: "Basic" }
+shop.tier.intermediate: { vi-VN: "Trung cấp", en: "Intermediate" }
+shop.tier.completed: { vi-VN: "Hoàn chỉnh", en: "Completed" }
+shop.tier.relic: { vi-VN: "Di vật", en: "Relic" }
+shop.passive: { vi-VN: "Nội tại", en: "Passive" }
+passive.hoa_mach: { vi-VN: "khiên từ chiêu hết hoặc vỡ (sau 0,5s) → khiên 4% máu tối đa trong 2s · hồi 12s", en: "when a skill shield expires or breaks (after 0.5s) → shield for 4% max HP for 2s · 12s cooldown" }
+passive.nhin_mach: { vi-VN: "mỗi đòn thường thứ 4 vào tướng/lính +12 sát thương vật lý", en: "every 4th basic attack on a hero/minion deals +12 physical damage" }
+passive.neo_gai: { vi-VN: "3 đòn thường liên tiếp vào cùng một tướng → làm chậm 15% trong 1s · hồi 8s", en: "3 basic attacks in a row on the same hero → 15% slow for 1s · 8s cooldown" }
+passive.duong_ky: { vi-VN: "không giao tranh với tướng 8s → +2 máu/giây", en: "8s without fighting a hero → +2 HP/s" }
+passive.du_than: { vi-VN: "chiêu trúng tướng +20 (+10% sức mạnh phép) sát thương phép · hồi 8s", en: "a skill hitting a hero deals +20 (+10% AP) magic damage · 8s cooldown" }
+passive.buoc_hoi_am: { vi-VN: "chiêu trúng tướng → +0,3 m/s tốc chạy trong 2s · hồi 8s", en: "a skill hitting a hero → +0.3 m/s move speed for 2s · 8s cooldown" }
+passive.hop_ky: { vi-VN: "hồi máu và khiên từ chiêu mạnh hơn 8%", en: "heals and shields from skills are 8% stronger" }
+passive.khac_mach: { vi-VN: "trong 3s sau khi dùng chiêu, đòn thường đầu tiên vào tướng +18 sát thương vật lý · hồi 6s", en: "within 3s after a skill, the first basic attack on a hero deals +18 physical · 6s cooldown" }

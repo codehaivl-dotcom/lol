@@ -1,0 +1,22 @@
+# Ảnh màn sảnh desktop (vẽ 2026-10-09 theo 4 ảnh mẫu #38977). Màn đọc qua file này, không dán URL trong code.
+modes:
+  tai_hien: /cdn/value.e83b72d4934f1fd1eeaa51caf5a845bce3f8c58919227c178a4cd3abd57da1cc.png
+  thu_tran: /cdn/value.81479ddaeddc011a7f1f77599e9a90ff59855d763745996260ea9c7860b7de39.png
+  san_tap: /cdn/value.3ffd1bdf89925408f97a6fd853d43a65871c2c5e9e6e4fe831940c989c932a21.png
+lore:
+  world: /cdn/value.f0b677a6c053828ea393687227412aba5f85e4d280075690bab2c1f2ceeb8cea.png
+  crystal: /cdn/value.0840c7eb0b0e7cd6d25f550a97e4d79473e34f8dd8b52e39caa3b96166805557.png
+  ch1: /cdn/value.0f0263eea2ecbb93f79ae1f8ea42f6bf4dc0a447dd9bd2ca3b03a9c72b37cd66.png
+  ch2: /cdn/value.8b64236a00476fd50d3b126aaffd5173ff1e0c39ffc6448ce54fd03ed72f45a9.png
+  ch3: /cdn/value.85783a2b587bbe666daacf45e5029a138a80643e20c2a4c22f75ea4a6206ff2f.png
+  ch4: /cdn/value.4cd252760db168a207f4c46e6419c9e6cfdb0e9127ebde0bbffe393c0931d3f1.png
+  ch5: /cdn/value.42c5f5b23aceb0f18b41e21b6934ad53388e403a4fb5206c7befb119001009e7.png
+factions:
+  minh_uoc: /cdn/value.2452c9ba6a40a3f6157567cd9c02d1877bff17b7df43f95261798c10cd5dbfe6.png
+  trieu_vuc: /cdn/value.9ba965028f4608631566f5d6eaae5e7b1f6e93a45c348d5ebba1a1f8ce746090.png
+hall:
+  bg: /cdn/value.b61f7911b943f3cbb86424b90484af4aeb1691efaa83e09a5fe316d802d33cdd.png
+
+# Ảnh ý tưởng bản đồ cho thẻ map ở màn Chơi (spawn paint map-mach-giua-concept), 2026-10-09
+mapArt:
+  mach_giua: /cdn/value.4e53987e3a564c71604b84da8ac3c8d463d3dafc0fc17ff130a92cd772125b61.png

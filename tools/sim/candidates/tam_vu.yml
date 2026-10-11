@@ -1,0 +1,48 @@
+# ỨNG VIÊN · Tầm Vũ · Người Ngắm Xa · xạ thủ tầm xa (doc 03 §19). Chỉ sống trong Lab, chưa vào game.
+# Số khởi điểm: doc 12 + legacy chỉ là gợi ý; moveSpeed/hpRegen kéo về tầm runtime.
+heroes:
+  tam_vu:
+    role: marksman
+    resource: mana
+    stats: { hp: 570, resource: 300, ad: 59, ap: 0, armor: 24, mr: 30, moveSpeed: 6.0, attackSpeed: 0.65, hpRegen: 1.2, resourceRegen: 1.3 }
+    growth: { hp: 92, resource: 38, ad: 3.4, ap: 0, armor: 3.8, mr: 1.3, moveSpeed: 0, attackSpeed: 0.03, hpRegen: 0.12, resourceRegen: 0.1 }
+    passive:
+      type: every_nth_hit           # Phát Đạn Nặng: mũi thứ tư nặng, khựng mục tiêu
+      n: 4
+      bonusDamage: { type: physical, base: 25, ad: 0.5, perLevel: 4 }
+      effects: [{ stun: 0.2 }]
+    lmb: { aim: projectile, range: 12.5 }   # Lao Dài: lao tự khóa ở tầm dài
+    q:    # Mưa Đá: gọi vùng đạn đá rơi nhiều lượt
+      aim: area
+      radius: 3.5
+      range: 12.0
+      delay: 0.6
+      windup: 0.2
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [50, 55, 60, 65, 70]
+      hits: 3
+      damage: { type: physical, base: [20, 32, 44, 56, 68], ad: 0.3 }
+      effects: [{ slow: 0.2, duration: 1.0 }]
+    rmb:  # Ngắm Tĩnh: đứng ngắm, tăng tốc đánh; (chưa mô hình: tăng tầm đánh khi ngắm)
+      aim: self
+      windup: 0
+      cooldown: [16, 15, 14, 13, 12]
+      cost: [40, 40, 40, 40, 40]
+      buff: { attackSpeed: [0.25, 0.3, 0.35, 0.4, 0.45], duration: 4.0 }
+    e:    # Bật Lùi: bật lùi 4 m, đẩy kẻ địch sát bên, gỡ chậm/trói
+      aim: self
+      windup: 0
+      cooldown: [17, 16, 15, 14, 13]
+      cost: [50, 50, 50, 50, 50]
+      dash: { distance: 4.0, toward: false }
+      knockback: 2.5
+      cleanse: true
+    r:    # Săn Một Bóng: ngắm rất xa có báo hiệu cho đối phương (windup dài), một phát nặng
+      aim: target
+      range: 25.0
+      windup: 1.1
+      cooldown: [75, 65, 55]
+      cost: [100, 100, 100]
+      damage: { type: physical, base: [200, 330, 460], bonusAd: 1.1 }
+builds:
+  tam_vu: [keeneye, nanh_khep, quickstring, thornseed_quiver, buoc_van]

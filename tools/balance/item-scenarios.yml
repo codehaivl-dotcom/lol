@@ -1,0 +1,24 @@
+# Same-gold scenarios for the item pass (2026-10-09). Each side spends the same budget on its own list,
+# best fit under the budget (knapsack over the list, one copy each, relics excluded). Lists are by hero build.
+lists:
+  role:
+    fighter:  [keeneye, iron_plate, oathguard_plate, heartforge, quickstring, thornseed_quiver]
+    marksman: [quickstring, keeneye, thornseed_quiver, iron_plate, heartforge, oathguard_plate]
+    default:  [heartforge, thornseed_quiver, iron_plate, oathguard_plate]
+  def:
+    default:  [iron_plate, oathguard_plate, heartforge, thornseed_quiver]
+  dmg:
+    default:  [keeneye, quickstring, thornseed_quiver]
+  mixed:
+    default:  [keeneye, iron_plate, heartforge, quickstring]
+scen:
+  L1_none:      { L: 1,  gold: 0,    att: role, def: role }
+  L1_starter:   { L: 1,  gold: 500,  att: role, def: role }
+  L1_def_vs_dmg: { L: 1,  gold: 500,  att: dmg,  def: def }
+  L4_role:      { L: 4,  gold: 1500, att: role, def: role }
+  L4_def_vs_dmg: { L: 4,  gold: 1500, att: dmg,  def: def }
+  L7_role:      { L: 7,  gold: 3800, att: role, def: role }
+  L7_maxdef:    { L: 7,  gold: 3800, att: dmg,  def: def }
+  L7_mixed:     { L: 7,  gold: 3800, att: mixed, def: mixed }
+  L11_role:     { L: 11, gold: 7000, att: role, def: role }
+  L11_maxdef:   { L: 11, gold: 7000, att: dmg,  def: def }

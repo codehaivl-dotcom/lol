@@ -1,0 +1,65 @@
+# ⚠️ TẠM THỜI: chờ hội đồng cân bằng duyệt lại (docs 35 §TODO). Không coi là số chốt.
+# The Call + Cổ Titan (08 §6, D4) với hình dạng boss theo rank (35). TẠM: mọi số là [TBD-SIM], sẽ tune lại bằng mô phỏng.
+provisional: true
+call:
+  hornAt: 120          # s
+  openAfter: 30        # s sau horn
+  captureSeconds: 45
+  contestedPace: 0
+  comebackStart: 0.3
+  maxStepMs: 1000
+  rings:
+    cuu_mach: { radius: 18, pits: { drake: [52, 85], titan: [-52, -85] } }
+    mach_giua: { radius: 9, pits: { a: [-14, -14], b: [14, 14] } }   # TẠM: lòng sông Mạch Giữa
+titan:
+  baseHp: 9000
+  hpPerAvgLevel: 0.06
+  rankHp: [1, 1.15, 1.35, 1.7, 2.1, 2.6, 3.2, 3.9]
+  resist: { base: 40, perRank: 10 }
+  towerShot: 400
+  walkSpeed: 3.2
+  baseHeight: 5.508
+  rankScale: [1.3, 1.45, 1.6, 1.75, 1.9, 2, 2.1, 2.2]
+  rimMargin: 1.2
+  riseSeconds: 2
+  breakFree: 7
+  claim: { radius: 5, window: 20 }
+  drive: { maxSeconds: 70, mountSeconds: 3, afkSeconds: 45, idleSeconds: 60 }
+  structurePct: [3.4, 4, 4.5, 6, 7.5, 9, 10.5, 12]
+  forms:                        # 35 §1: hình dạng theo rank
+    - { from: 1, id: thuong_luong, model: null }
+    - { from: 5, id: co_linh_long, model: null }
+  actions:
+    fist:  { interval: 1.6, reach: 3.4, dmg: [90, 110, 130, 155, 185, 215, 250, 290] }
+    slam:  { fromRank: 1, windup: 0.9, cd: 6, radius: 6.12, dmg: [160, 190, 220, 260, 310, 360, 420, 480], slow: 0.3, slowSeconds: 1 }
+    charge: { fromRank: 1, windup: 0.6, cd: 10, distance: 26, speed: 16, width: 3, dmg: [140, 165, 190, 220, 260, 300, 345, 390], knock: 2 }
+    beam:  { fromRank: 5, windup: 1, cd: 8, range: 7, seconds: 5, tick: 0.25, dmg: [0, 0, 0, 0, 22, 26, 30, 35] }
+  reward: { teamGold: 80, teamGoldPerRank: 40, lastHit: 150, xp: 200, xpPerRank: 100 }
+
+# ── Neutral candidate V0.1 (2026-10-08, hội đồng Codex qua lukasai) ──────────────────────────────
+# PROTOTYPE, CHƯA SHIP. Không code nào đọc khối này; rừng/boss KHÔNG bật ở Mạch Giữa.
+# Nguồn: doc 31 §Candidate V0.1, doc 08 §5.2, balance-log BL-0010. Vẫn provisional.
+neutral_v01:
+  provisional: true
+  shipped: false
+  enabledInMachGiua: false
+  previewGrants: false            # preview/trưng bày tắt mọi gold/xp/buff
+  levels: { min: 1, max: 15 }     # delta = spawnLevel - anchor; snapshot lúc spawn; interval cố định
+  scaling:
+    camp:   { hpPerDelta: 0.06, dmgPerDelta: 0.035, multMin: 0.5, armorPerDelta: 1, mrPerDelta: 0.5, resistMin: 0 }   # 04–10
+    whale:  { hpPerDelta: 0.08, dmgPerDelta: 0.04,  multMin: 0.5, armorPerDelta: 1, mrPerDelta: 1,   resistMin: 0 }   # 11
+  reward:
+    growthPerDelta: 0.03          # nhân reward 1 + 0.03·delta, clamp [0.5, 1.5], làm tròn lúc chết
+    clamp: [0.5, 1.5]
+    roundAt: death
+  # một guardian mỗi camp mẫu; alpha/pup chỉ có trong merc wave (doc 08 §5.2, HP bảng merc ≠ HP neutral)
+  # stat tại cấp neo: hp / physicalDmg / armor / mr / interval(s); reward = tổng camp
+  units:
+    jade_hare:      { concept: "04", anchor: 4,  hp: 600,   dmg: 28,  armor: 10, mr: 10, interval: 1.3,  gold: 55,  xp: 100, merc: true }
+    mountain_boar:  { concept: "05", anchor: 4,  hp: 1000,  dmg: 38,  armor: 20, mr: 15, interval: 1.5,  gold: 75,  xp: 145, merc: true }
+    stone_monkey:   { concept: "06", anchor: 4,  hp: 850,   dmg: 34,  armor: 15, mr: 15, interval: 1.25, gold: 65,  xp: 125, merc: true }
+    mountain_turtle: { concept: "07", anchor: 4, hp: 1300,  dmg: 42,  armor: 35, mr: 20, interval: 1.8,  gold: 90,  xp: 175, merc: true }
+    river_serpent:  { concept: "08", anchor: 4,  hp: 1000,  dmg: 36,  armor: 15, mr: 25, interval: 1.35, gold: 80,  xp: 150, enabled: false, sandboxOnly: true }
+    wood_golem:     { concept: "09", anchor: 6,  hp: 2400,  dmg: 65,  armor: 25, mr: 25, interval: 1.6,  gold: 110, xp: 210, miniboss: true }
+    white_crane:    { concept: "10", anchor: 6,  hp: 2200,  dmg: 60,  armor: 20, mr: 30, interval: 1.5,  gold: 110, xp: 210, miniboss: true }
+    river_whale:    { concept: "11", anchor: 10, hp: 12000, dmg: 100, armor: 35, mr: 35, interval: 1.6,  goldPerClaimer: 100, xpPool: 800, enabled: false, sandboxOnly: true, notTitan: true, noTrialPit: true, noWinBuff: true }

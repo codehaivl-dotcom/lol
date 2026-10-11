@@ -1,0 +1,21 @@
+{
+ "_about": "G2 live evidence used by tools/balance/slice.mjs --compare. Copied, not edited: sources are reports/balance-sim-2026-10-08-slice.md (Live run 1, Live run 2, case b setup) and a readOnly read of dev room place.state.g2Trace at round 45 (2026-10-08, Wisp C). ms are from startedAt. Nothing here is a client PASS.",
+ "runs": [
+  { "id": "run1-a", "case": "a", "who": "Savi helper body at blue fountain, moc_lam lv1, no damage dealt", "round": 18, "build": 580, "logOk": "pre-_round log (seq<584): stale-value issue seen in this session", "stopMin": 6.1,
+    "marks": { "tower-red-t1": { "siege": 170166 } }, "hpAtStop": { "tower-red-t1": 1999 }, "censored": true },
+  { "id": "run1-b-prime", "case": "b'", "who": "host idle at fountain + fixture bot ally g2-ally-1 nham_vu (scripts/bot.js), lv3 [iron_plate] cs21 0 deaths at 7.55 min", "round": 19, "build": 580, "logOk": "siegeAt hand-cleared before the run (not acceptance under the later _round rule)", "stopMin": 7.55,
+    "marks": { "tower-red-t1": { "siege": 103800, "down": 471300 } }, "censored": false },
+  { "id": "run2-a", "case": "a", "who": "Savi helper body at blue fountain, moc_lam lv1, no damage dealt, no bot, no scripted damage", "round": 32, "build": 588, "logOk": true, "stopMin": 25.01, "waveAtStop": 50,
+    "marks": { "tower-red-t1": { "siege": 252800, "down": 1013600 }, "tower-red-t2": { "siege": 1085400, "down": 1393300 }, "tower-blue-t1": { "siege": 528800 } },
+    "hpAtStop": { "tower-blue-t1": 1056 }, "censored": "nexus-red not reached" },
+  { "id": "pilot-r36", "case": "pilot", "who": "Codex on creator body, moc_lam, died once, ended 5.31 min", "round": 36, "logOk": true, "stopMin": 5.31,
+    "marks": { "tower-blue-t1": { "siege": 134200 }, "tower-red-t1": { "siege": 227800 } }, "countsAsCase": false },
+  { "id": "r37", "case": "unknown-input", "who": "creator body, input source unclear (excluded as a (b) run)", "round": 37, "logOk": true, "stopMin": 10.99,
+    "marks": { "tower-red-t1": { "siege": 258300 }, "tower-blue-t1": { "siege": 466800 } }, "hpAtStop": { "tower-red-t1": 1591, "tower-blue-t1": 1206 }, "countsAsCase": false },
+  { "id": "r38", "case": "unknown", "who": "g2Trace only (setup/heroes unknown)", "round": 38, "logOk": true, "marks": { "tower-blue-t1": { "siege": 231066.67 }, "tower-red-t1": { "siege": 375866.67 } }, "countsAsCase": false },
+  { "id": "r39", "case": "unknown", "who": "g2Trace only", "round": 39, "logOk": true, "marks": { "tower-red-t1": { "siege": 168100 }, "tower-blue-t1": { "siege": 257000 } }, "countsAsCase": false },
+  { "id": "r40", "case": "unknown", "who": "g2Trace only", "round": 40, "logOk": true, "marks": { "tower-red-t1": { "siege": 135166.67 }, "tower-blue-t1": { "siege": 229366.67 } }, "countsAsCase": false },
+  { "id": "r41", "case": "unknown", "who": "g2Trace only", "round": 41, "logOk": true, "marks": { "tower-red-t1": { "siege": 260966.67 }, "tower-blue-t1": { "siege": 556666.67 } }, "countsAsCase": false }
+ ],
+ "notRun": ["case b (host hero pushing)", "case c (wave + 2 allies)", "nexus break time (any case)", "Tái Hiện 5v5 / 2v2 real match", "Đấu Máy full match length"]
+}

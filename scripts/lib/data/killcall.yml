@@ -1,0 +1,35 @@
+# Thông báo hạ gục (Slain): một bảng cho mọi map. Đọc bởi scripts/lib/killcall.js (ghi) và scripts/screens/match/widgets/slain.js (vẽ).
+# LoL/AoV: multi-kill trong 10 s giữa hai lần hạ; chuỗi 3/5/7; chặn đứng khi nạn nhân đang chuỗi >= 3. Chiến công đầu: lần hạ tướng đầu tiên của trận.
+multiWindow: 10      # giây giữa hai lần hạ để tính song/tam/tứ/ngũ sát
+shutdownStreak: 3    # nạn nhân đang chuỗi từ mức này thì lần hạ là 'chặn đứng'
+spree: { 3: spree, 5: unstoppable, 7: legendary }   # chuỗi đúng mức này (7: từ 7 trở lên) xướng danh hiệu
+bannerSeconds: 3.2   # banner giữa trên màn hình
+voice:   # giọng xướng (Obsidian), theo ngôn ngữ người nghe
+  vi:
+    first: "/cdn/value.b2ba7e5c73ebcd1485ce274258cfdcae492852f568195c9107cc71508f0cb352.mp3"
+    double: "/cdn/value.7f1358886f392266709af63d6a6cdf2bcc1b82e8debe28809fdd125576585392.mp3"
+    triple: "/cdn/value.ac507d52218f8d4c3c7149eddd397e1f6e01cbe43ecc93d3ef494c5f53237d4a.mp3"
+    quadra: "/cdn/value.481386d673177da5b1b25ca65d1b952d84ba066cd1941d4d0058dba1042f3b55.mp3"
+    penta: "/cdn/value.581528396fbba417311239725aaffef4e8225a2d7f6b0197f586b257d5622edf.mp3"
+    shutdown: "/cdn/value.f901c4731809fd680cb0f04f77b742bbe57666cd7a10f0f31cf6f4ba86c925f7.mp3"
+    spree: "/cdn/value.50c6238ea94df8b8d6c98632a709841fa0cc3b861e71fd19f935a4d4dd9cc41f.mp3"
+    unstoppable: "/cdn/value.856c704d945ef4461909abaa6bb519e08b90dc0ef6916bb6345b719aca94de2e.mp3"
+    legendary: "/cdn/value.8fea2578f5dfc5c7102d60c6197cfbd5b65d7e5a05194dcda3862eae743aaf87.mp3"
+    you_slain: "/cdn/value.d585a19ef2a106df68e90fe3e2aa6a03f3232fe2133d350d829ec4e412e3e096.mp3"
+    you_died: "/cdn/value.a4301a2002ecfd11c6ee85004dfe00cbe47ba34e92758600b2fee8e3ec404cce.mp3"
+    ally_died: "/cdn/value.f371d2b3dc16feaaf7b013567ce7543de126b22b69c070a64c84faa63e62e270.mp3"
+    enemy_died: "/cdn/value.d0b3b61070c15afc4608d14e4280be39c36cef4af06dacc6400bb7e1cc0da4f4.mp3"
+  en:
+    first: "/cdn/value.231e3321aa4a6630242d97101d0c55e1d777f50ec80a5589021e35936d31259a.mp3"
+    double: "/cdn/value.f0ff39f4f14795ff8fd9cb9d84bbd08183b976f1ee1dbcaba8ec6c29d019531f.mp3"
+    triple: "/cdn/value.67dba3de1fcb3959494dfb9bc3459b975ff7c720c773624cc1e6b7168172f5f5.mp3"
+    quadra: "/cdn/value.52ff3e8a37f0f0e131a5ed280fb884583a25d9c0b84c3d555a1a1d929479a80b.mp3"
+    penta: "/cdn/value.88179eca846e69cbff84ec0bd826a0df3b21bd2f0265b35ca7864fd9f58fba84.mp3"
+    shutdown: "/cdn/value.0c08cd579bd8b64a201b558fbde4a4a865267b90f60f79015c6f660cc0a01f8d.mp3"
+    spree: "/cdn/value.2684e513049993058ce3fee4750cfcaaf673018f9d6a84569e3f4d491608d5e3.mp3"
+    unstoppable: "/cdn/value.fe792de54a54d0ce417c85507135694ca6b3a6d992cefcd99224721b5d4c1fca.mp3"
+    legendary: "/cdn/value.88efc68b728283a300a7cdf163bc4ef368a1bf2bcf6e9129d8c5fb6cd840f270.mp3"
+    you_slain: "/cdn/value.4dc6759d31fdaae745af9c877b5af0b1aef041c5840938c30db33ac0f2aefade.mp3"
+    you_died: "/cdn/value.ea142585ae69fc58fd5f916ea0c3d23103198bbc00776d2a40676d29f0a61f13.mp3"
+    ally_died: "/cdn/value.2b128081d29edc8af089af4bea4ff20d5a47a206d19f3f1dee7d96d5bf28c772.mp3"
+    enemy_died: "/cdn/value.19c7bc78433e59dbfc9fe61b393d66aa2ffe649fc5940b928c54035c0242ee50.mp3"

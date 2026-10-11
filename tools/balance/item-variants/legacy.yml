@@ -1,0 +1,9 @@
+# OLD: 8 legacy items as shipped up to 2026-10-09 (economy.yml before the item pass)
+quickstring:      { slot: weapon, cost: 400, attackSpeed: 0.15, thirdHit: 15 }
+keeneye:          { slot: weapon, cost: 950, ad: 35, attackSpeed: 0.25 }
+iron_plate:       { slot: armor, cost: 450, armor: 40, hp: 220 }
+oathguard_plate:  { slot: armor, cost: 1050, armor: 80, hp: 480 }
+thornseed_quiver: { slot: charm, cost: 500, attackSpeed: 0.08, hp: 180 }
+heartforge:       { slot: charm, cost: 1000, hp: 420, hpRegen: 5 }
+phial_of_dawn:    { slot: relic, cost: 150, active: { heal: 300, duration: 4, cooldown: 60 } }
+bastion_stone:    { slot: relic, cost: 300, active: { shield: 350, duration: 5, cooldown: 60 } }

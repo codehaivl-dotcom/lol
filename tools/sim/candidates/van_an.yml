@@ -1,0 +1,54 @@
+# ỨNG VIÊN · Vân Ấn · Người Khắc Mạch · đấu sĩ cận chiến (doc 03 §27). Chỉ sống trong Lab, chưa vào game.
+# Tích dấu từ nhát thứ ba và vùng bảo hộ đứng yên: CHƯA mô hình hóa (Lab không có vùng); vòm mô hình bằng khiên + tăng tốc đánh bản thân.
+heroes:
+  van_an:
+    role: fighter_burst
+    resource: mana
+    stats: { hp: 650, resource: 300, ad: 64, ap: 0, armor: 34, mr: 32, moveSpeed: 6.25, attackSpeed: 0.66, hpRegen: 1.5, resourceRegen: 1.4 }
+    growth: { hp: 104, resource: 45, ad: 4.4, ap: 0, armor: 4.3, mr: 1.7, moveSpeed: 0, attackSpeed: 0.015, hpRegen: 0.15, resourceRegen: 0.1 }
+    passive:
+      type: every_nth_hit           # Bảng Màu: nhát thứ ba của chuỗi chém nặng hơn, khắc ấn
+      n: 3
+      bonusDamage: { type: physical, base: 25, ad: 0.45, perLevel: 4 }
+    lmb: { aim: melee, range: 2.2 }   # Chém Hồi Văn: chuỗi ba nhát đại đao
+    q:    # Liềm Mạch: quét đại đao hình liềm rộng phía trước, xuyên mọi kẻ, làm chậm
+      # Audit 11-10: nón (candidate 'hình liềm rộng phía trước' + doc 76:24 'Chém theo hướng = Hình quạt'). Tầm 4,5 cũ = radius; trước: skillshot width 3.4 range 4.5
+      aim: area
+      radius: 4.5
+      arc: 90           # TEMP: nguồn không có số góc (TBD)
+      range: 0
+      windup: 0.25
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [30, 35, 40, 45, 50]
+      damage: { type: physical, base: [45, 75, 105, 135, 165], ad: 0.7 }
+      effects: [{ slow: 0.3, duration: 1.0 }]
+    rmb:  # Bổ Thiên Thạch: nhảy bổ xuống điểm chọn, nổ vùng, choáng ngắn
+      aim: area
+      radius: 2.5
+      range: 7.0
+      delay: 0.35
+      windup: 0.15
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [50, 50, 50, 50, 50]
+      dash: { distance: 7.0, toward: true }
+      damage: { type: physical, base: [50, 80, 110, 140, 170], bonusAd: 0.6 }
+      effects: [{ stun: 0.5 }]
+    e:    # Lướt Ấn: lướt xuyên mục tiêu, khắc ấn; sát thương kế tiếp kích nổ ấn
+      aim: target
+      range: 6.0
+      windup: 0.05
+      cooldown: [11, 10.5, 10, 9.5, 9]
+      cost: [40, 40, 40, 40, 40]
+      dash: { distance: 6.0, toward: true }
+      untargetable: 0.25
+      damage: { type: physical, base: [35, 60, 85, 110, 135], ad: 0.4 }
+      mark: { type: physical, base: [20, 35, 50, 65, 80], bonusAd: 0.3 }
+    r:    # Vòm Dấu: dựng vòm ấn quanh mình, khiên lớn và tăng tốc đánh (vùng bảo hộ đồng minh chưa mô hình hóa)
+      aim: self
+      windup: 0.2
+      cooldown: [80, 70, 60]
+      cost: [100, 100, 100]
+      shield: { base: [100, 160, 220], maxHp: 0.05, duration: 4.0 }
+      buff: { moveSpeed: 0.15, attackSpeed: [0.2, 0.3, 0.4], duration: 4.0 }
+builds:
+  van_an: [qua_mach, nanh_khep, oathguard_plate, an_tinh, buoc_van]

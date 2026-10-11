@@ -1,0 +1,16 @@
+# COLINH Balance Lab · CHUẨN THEO VAI (creator 2026-10-10: "Các tướng cũ là tạo test. Thông số ko chuẩn. Cần làm lại cũng được")
+# Mục tiêu duel 1v1 cùng cấp/vàng, newbie AI: trung bình mỗi tướng vs nhóm mốc 45–55% (đích 50%).
+# Hệ số sức mạnh P của một tướng chia vào máu và sát thương theo vai: hp = P^hpShare, dmg = P^(1 - hpShare).
+# Tank sửa bằng máu là chính, sát thủ/xạ thủ/pháp sư sửa bằng sát thương là chính.
+target: 0.50
+band: [0.45, 0.55]
+minutes: [6, 10, 15]
+hpShare:
+  tank: 0.8
+  fighter: 0.55
+  support: 0.6
+  mage: 0.35
+  assassin: 0.3
+  marksman: 0.3
+# Sau khi hệ số ổn định: nướng vào số kit (stats/growth/base chiêu) để tuning về 1,0; |log P| > log 1.2 nghĩa là kit phải sửa thiết kế, không chỉ nhân số.
+bakeLimit: 1.2

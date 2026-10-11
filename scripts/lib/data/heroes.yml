@@ -1,0 +1,657 @@
+# Cổ Linh Thần Chiến: kit tướng. Canonical gameplay data (docs 08, 09).
+# Đơn vị: mét, giây, m/s, đòn/s, hồi mỗi giây. Damage dùng công thức 08 §1.1 (100 / (100 + kháng)).
+# Rank (D1): q/rmb/e mảng 5 phần tử (cấp 1/3/5/7/9); r mảng 3 phần tử (cấp 6/11/15).
+# ad = hệ số trên tổng AD; bonusAd = hệ số trên AD từ vật phẩm; ap = hệ số trên AP; maxHp = phần max HP của người dùng.
+# aim: melee | projectile (đánh thường bắn) | skillshot {width, speed} | area {radius, delay} | self | target (chọn mục tiêu, luôn trúng trong tầm)
+# Mọi số đi qua tools/balance (mô phỏng) và docs/co-linh-than-chien/balance-log.md. Đổi số = một dòng log.
+version: 1
+slice: [moc_lam, kha_tan, mi_dang, hoa_tuy, nham_vu, van_dao, hao_nhat, huong_mai, bach_dien, cot_ben, mac_lien, ngu_dang]
+
+heroes:
+  moc_lam:
+    role: fighter_tank
+    tuning: { hp: 1.09, dmg: 0.94 }   # balance-sim 2026-10-07 (tools/balance/out/mults.json); tướng↔tướng
+    resource: none
+    stats: { hp: 760, resource: 0, ad: 66, ap: 0, armor: 38, mr: 32, moveSpeed: 6.1, attackSpeed: 0.66, hpRegen: 1.6, resourceRegen: 0 }
+    growth: { hp: 104, resource: 0, ad: 4.2, ap: 0, armor: 4.2, mr: 1.6, moveSpeed: 0, attackSpeed: 0.016, hpRegen: 0.16, resourceRegen: 0 }
+    build: fighter
+    passive:
+      type: every_nth_hit          # Ba Nhịp Đá: đòn thứ ba nặng hơn và làm chậm
+      n: 3
+      bonusDamage: { type: physical, base: 20, ad: 0.4 }
+      effects: [{ slow: 0.3, duration: 1.0 }]
+    lmb: { aim: melee, range: 1.7 }   # 2026-10-09 doc54: đao với tới thật (tay + lưỡi), đo tới mép
+    q:   # Xuyên Bờ: lao thẳng, ghim (root) tướng đầu tiên
+      aim: skillshot
+      width: 1.6
+      speed: 22
+      range: 7.5
+      windup: 0.15
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [0, 0, 0, 0, 0]
+      dash: { distance: 7.5, toward: true }
+      damage: { type: physical, base: [60, 95, 130, 165, 200], bonusAd: 0.8 }
+      effects: [{ root: 0.5 }]
+    rmb:  # Vai Núi: khiên bản thân
+      aim: self
+      windup: 0
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [0, 0, 0, 0, 0]
+      shield: { base: [80, 120, 160, 200, 240], maxHp: 0.06, duration: 3.0 }
+    e:    # Vòng Lau: quét vòng, đi được trong lúc quét
+      aim: area
+      radius: 3.6
+      delay: 0.1
+      range: 0
+      windup: 0
+      cooldown: [9, 8.5, 8, 7.5, 7]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [50, 80, 110, 140, 170], ad: 0.6 }
+    r:    # Cắm Mạch: nhảy vào kết liễu, rồi dựng khiên vùng
+      aim: target
+      range: 5.0
+      windup: 0.35
+      cooldown: [70, 60, 50]
+      cost: [0, 0, 0]
+      dash: { distance: 5.0, toward: true }
+      damage: { type: physical, base: [150, 250, 350], bonusAd: 1.0, missingHp: 0.15 }
+      shield: { base: [150, 250, 350], maxHp: 0, duration: 3.0, allies: true, radius: 6.0 }   # radius: tầm khiên đồng minh (doc 78 R3 #6, trước viết cứng 6 trong giveShield)
+
+  kha_tan:
+    role: fighter_burst
+    tuning: { hp: 1.07, dmg: 1.15 }   # balance-sim 2026-10-07 (tools/balance/out/mults.json); tướng↔tướng
+    resource: mana
+    stats: { hp: 680, resource: 280, ad: 64, ap: 0, armor: 34, mr: 32, moveSpeed: 6.2, attackSpeed: 0.64, hpRegen: 1.5, resourceRegen: 1.4 }
+    growth: { hp: 106, resource: 50, ad: 4.6, ap: 0, armor: 4.4, mr: 1.8, moveSpeed: 0, attackSpeed: 0.012, hpRegen: 0.15, resourceRegen: 0.1 }
+    build: fighter
+    passive:
+      type: bleed                  # Sổ Nợ Sắt: đòn và chiêu gắn dấu chảy máu cộng dồn
+      perStack: { type: physical, base: 5, bonusAd: 0.06 }   # mỗi giây mỗi tầng
+      maxStacks: 5
+      duration: 4.0
+    lmb: { aim: melee, range: 2.3 }   # 2026-10-09 doc54: qua cán dài, đo tới mép
+    q:    # Liềm Rìu: quét nửa vòng PHÍA TRƯỚC (doc 76: cone AoE, cả hình quạt gây sát thương), rìa đòn hồi máu
+      aim: area
+      radius: 4.5
+      arc: 180          # 2026-10-10 creator duyệt: quạt 180° phía trước, bán kính 4,5 m; phía sau không trúng (trước: tròn 4,5 m)
+      delay: 0.3
+      range: 0
+      windup: 0.3
+      cooldown: [9, 8.5, 8, 7.5, 7]
+      cost: [30, 35, 40, 45, 50]
+      damage: { type: physical, base: [55, 90, 125, 160, 195], ad: 0.9 }
+      heal: { damageShare: 0.3 }
+      stacks: 1
+    rmb:  # Chém Gân: lướt ngắn tới, chém đứt gân, làm chậm
+      aim: target
+      range: 5.5
+      dash: { distance: 4.5, toward: true }
+      windup: 0.1
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [25, 25, 25, 25, 25]
+      damage: { type: physical, base: [30, 55, 80, 105, 130], ad: 0.4 }
+      effects: [{ slow: 0.4, duration: 1.5 }]
+      stacks: 1
+    e:    # Móc Kéo: móc xích kéo về
+      aim: skillshot
+      width: 1.2
+      speed: 20
+      range: 8.0
+      windup: 0.25
+      cooldown: [16, 15, 14, 13, 12]
+      cost: [60, 60, 60, 60, 60]
+      pull: 5.0
+      damage: { type: physical, base: [40, 60, 80, 100, 120], bonusAd: 0.4 }
+    r:    # Nợ Cuối: chém kết liễu theo số tầng; hạ gục hồi lại chiêu
+      aim: target
+      range: 4.0
+      windup: 0.3
+      cooldown: [80, 70, 60]
+      cost: [100, 100, 100]
+      damage: { type: true, base: [100, 175, 250], bonusAd: 0.75, perStack: [0.12, 0.14, 0.16] }   # +% mỗi tầng chảy máu
+      resetOnKill: true
+
+  mi_dang:
+    role: assassin_magic
+    tuning: { hp: 1.30, dmg: 1.02 }   # balance-sim 2026-10-07 (tools/balance/out/mults.json); tướng↔tướng
+    resource: mana
+    stats: { hp: 590, resource: 360, ad: 54, ap: 0, armor: 26, mr: 30, moveSpeed: 6.3, attackSpeed: 0.66, hpRegen: 1.2, resourceRegen: 1.6 }
+    growth: { hp: 92, resource: 45, ad: 3.0, ap: 0, armor: 3.8, mr: 1.3, moveSpeed: 0, attackSpeed: 0.02, hpRegen: 0.12, resourceRegen: 0.12 }
+    build: mage_assassin
+    passive:
+      type: after_ability          # Canh Đèn: trúng chiêu thì đòn đánh kế cộng sát thương phép
+      bonusDamage: { type: magic, base: 25, ap: 0.25, perLevel: 6 }
+    lmb: { aim: melee, range: 1.6, damageType: magic, ap: 0.15 }   # Đốm Dẫn · 2026-10-09 creator: cầm dao thì đánh cận, đâm đoản nhận (tay + lưỡi), đo tới mép
+    q:    # Đèn Đi-Về: đèn bay ra rồi quay về, trúng hai lần
+      aim: skillshot
+      width: 1.4
+      speed: 16
+      range: 9.5
+      windup: 0.25
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [50, 55, 60, 65, 70]
+      damage: { type: magic, base: [45, 70, 95, 120, 145], ap: 0.4 }
+      hits: 2
+    rmb:  # Trăng Rẽ: lướt tới, chém phép
+      aim: target
+      range: 6.0
+      windup: 0.05
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [40, 40, 40, 40, 40]
+      dash: { distance: 6.0, toward: true }
+      damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.5 }
+    e:    # Vẫy Gọi: mê hoặc, mục tiêu bước về phía Mị Đăng
+      aim: skillshot
+      width: 1.2
+      speed: 18
+      range: 9.0
+      windup: 0.25
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [70, 70, 70, 70, 70]
+      damage: { type: magic, base: [40, 60, 80, 100, 120], ap: 0.3 }
+      effects: [{ charm: 1.1 }]
+    r:    # Ba Bước Mờ: ba lần lướt, mỗi lần không thể bị chọn 0,4 s
+      aim: target
+      range: 7.0
+      windup: 0
+      cooldown: [70, 60, 50]
+      cost: [100, 100, 100]
+      dash: { distance: 7.0, toward: true }
+      damage: { type: magic, base: [80, 120, 160], ap: 0.35 }
+      hits: 3
+      untargetable: 1.2
+
+  hoa_tuy:
+    role: mage_burst
+    tuning: { hp: 1.15, dmg: 1.26 }   # balance-sim 2026-10-07 (tools/balance/out/mults.json); tướng↔tướng
+    resource: mana
+    stats: { hp: 560, resource: 400, ad: 50, ap: 0, armor: 22, mr: 30, moveSpeed: 6.0, attackSpeed: 0.63, hpRegen: 1.1, resourceRegen: 1.8 }
+    growth: { hp: 88, resource: 50, ad: 2.8, ap: 0, armor: 3.6, mr: 1.3, moveSpeed: 0, attackSpeed: 0.012, hpRegen: 0.11, resourceRegen: 0.14 }
+    build: mage
+    passive:
+      type: burn_on_ability        # Than Nhật Đài: chiêu trúng đốt % max HP, vết bỏng giảm 40% hồi máu
+      maxHp: 0.03
+      antiHeal: 0.4
+      duration: 3.0
+    lmb: { aim: projectile, range: 10.5, damageType: magic, ap: 0.2 }   # Than Bay
+    q:    # Cột Lửa: cột lửa trễ, hất tung
+      aim: area
+      radius: 2.6
+      delay: 0.7
+      range: 11.0
+      windup: 0.2
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [60, 65, 70, 75, 80]
+      damage: { type: magic, base: [70, 110, 150, 190, 230], ap: 0.7 }
+      effects: [{ stun: 0.75 }]
+    rmb:  # Dấu Than: đạn đánh dấu, sát thương kế tiếp kích nổ
+      aim: skillshot
+      width: 1.2
+      speed: 24
+      range: 11.0
+      windup: 0.2
+      cooldown: [6, 5.5, 5, 4.5, 4]
+      cost: [40, 45, 50, 55, 60]
+      damage: { type: magic, base: [40, 65, 90, 115, 140], ap: 0.45 }
+      mark: { type: magic, base: [30, 50, 70, 90, 110], ap: 0.3 }
+    e:    # Khí Nóng: xung quanh thân, đẩy lùi và làm chậm
+      aim: area
+      radius: 4.0
+      delay: 0
+      range: 0
+      windup: 0.1
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [60, 60, 60, 60, 60]
+      damage: { type: magic, base: [40, 65, 90, 115, 140], ap: 0.4 }
+      knockback: 3.0
+      effects: [{ slow: 0.25, duration: 1.5 }]
+    r:    # Than Rơi: thiên thạch rơi ở xa
+      aim: area
+      radius: 4.0
+      delay: 1.0
+      range: 18.0
+      windup: 0.3
+      cooldown: [75, 65, 55]
+      cost: [100, 100, 100]
+      damage: { type: magic, base: [200, 320, 440], ap: 0.9 }
+
+  nham_vu:
+    role: marksman
+    tuning: { hp: 0.81, dmg: 0.87 }   # balance-sim 2026-10-07 (tools/balance/out/mults.json); tướng↔tướng
+    resource: mana
+    stats: { hp: 620, resource: 300, ad: 60, ap: 0, armor: 26, mr: 30, moveSpeed: 6.0, attackSpeed: 0.68, hpRegen: 1.2, resourceRegen: 1.3 }
+    growth: { hp: 96, resource: 40, ad: 3.4, ap: 0, armor: 4.0, mr: 1.3, moveSpeed: 0, attackSpeed: 0.03, hpRegen: 0.12, resourceRegen: 0.1 }
+    build: marksman
+    passive:
+      type: every_nth_hit          # Sỏi Nặng: mũi thứ tư làm chậm
+      n: 4
+      bonusDamage: { type: physical, base: 0, ad: 0 }
+      effects: [{ slow: 0.2, duration: 1.0 }]
+    lmb: { aim: projectile, range: 11.0 }   # Tên Sỏi
+    q:    # Quạt Đá: ba mũi tên xoè quạt (doc 76: fan projectiles, KHÔNG phải cone AoE: khe giữa các mũi không gây sát thương)
+      aim: skillshot
+      width: 0.5        # bề rộng va chạm MỖI mũi tên (đề xuất, desc không ghi; creator duyệt sau)
+      fan: { count: 3, spread: 30, oncePerTarget: true }  # 3 mũi; xoè 30° (15°/bên, creator duyệt 2026-10-10): gần thì 3 mũi chồng lên thân, từ ~6 m khe giữa mũi rộng hơn một thân → né được ở tầm xa; trúng nhiều mũi chỉ tính 1 lần
+      pierce: true      # "lên mọi kẻ địch trên đường" (tooltip gốc): mỗi mũi xuyên
+      speed: 26
+      range: 10.0
+      windup: 0.2
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [45, 50, 55, 60, 65]
+      damage: { type: physical, base: [45, 75, 105, 135, 165], ad: 0.8 }
+    rmb:  # Kéo Hổ Phách: phát nạp xa, làm chậm
+      aim: skillshot
+      width: 1.0
+      speed: 34
+      range: 16.0
+      windup: 0.6
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [60, 60, 60, 60, 60]
+      damage: { type: physical, base: [70, 115, 160, 205, 250], ad: 1.0 }
+      effects: [{ slow: 0.4, duration: 2.0 }]
+    e:    # Chim Mở Lối: chim mở lối, nhảy lùi 4 m, gỡ chậm/trói, tăng tốc chạy và tốc đánh
+      aim: self
+      windup: 0
+      cooldown: [18, 17, 16, 15, 14]
+      dash: { distance: 4.0, toward: false }
+      cleanse: true
+      cost: [50, 50, 50, 50, 50]
+      buff: { moveSpeed: 0.3, attackSpeed: [0.2, 0.25, 0.3, 0.35, 0.4], duration: 3.5 }
+    r:    # Lao Vách: lùi khỏi vách rồi bắn mũi xuyên
+      aim: skillshot
+      width: 2.0
+      speed: 40
+      range: 18.0
+      windup: 0.25
+      cooldown: [70, 60, 50]
+      cost: [100, 100, 100]
+      dash: { distance: 6.0, toward: false }
+      damage: { type: physical, base: [180, 300, 420], bonusAd: 1.2 }
+
+  van_dao:
+    role: support_heal
+    tuning: { hp: 1.26, dmg: 1.00 }   # balance-sim 2026-10-07 (tools/balance/out/mults.json); tướng↔tướng
+    resource: mana
+    stats: { hp: 600, resource: 380, ad: 50, ap: 0, armor: 28, mr: 32, moveSpeed: 6.25, attackSpeed: 0.63, hpRegen: 1.3, resourceRegen: 2.0 }
+    growth: { hp: 94, resource: 45, ad: 2.8, ap: 0, armor: 4.0, mr: 1.5, moveSpeed: 0, attackSpeed: 0.012, hpRegen: 0.13, resourceRegen: 0.15 }
+    build: support
+    passive:
+      type: after_ability          # Hồi Đáp Của Giông: sau chiêu, đòn đánh kế rẽ sét
+      bonusDamage: { type: magic, base: 20, ap: 0.3, perLevel: 5 }
+    lmb: { aim: projectile, range: 10.0, damageType: magic, ap: 0.15 }   # Tia Rẽ
+    q:    # Mây Tụ: mây vùng, sát thương địch, hồi máu đồng minh
+      aim: area
+      radius: 4.0
+      delay: 0.5
+      range: 10.0
+      windup: 0.2
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [60, 65, 70, 75, 80]
+      damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.5 }
+      heal: { base: [35, 50, 65, 80, 95], ap: 0.25, self: true }
+    rmb:  # Ấn Gió: ấn trói
+      aim: skillshot
+      width: 1.3
+      speed: 20
+      range: 10.0
+      windup: 0.25
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [60, 60, 60, 60, 60]
+      damage: { type: magic, base: [40, 65, 90, 115, 140], ap: 0.4 }
+      effects: [{ root: 1.5 }]
+    e:    # Áo Bão: khiên cho bản thân (chốt 2026-10-08), tăng tốc chạy, gió cuốn sạch làm chậm, trói và chảy máu, đẩy kẻ địch sát bên
+      aim: self
+      cleanse: bleed
+      knockback: 3.0                # gió đẩy kẻ địch trong 4 m lùi 3 m, chậm 30% trong 1 s
+      windup: 0
+      cooldown: [12, 11.5, 11, 10.5, 10]
+      cost: [70, 70, 70, 70, 70]
+      shield: { base: [70, 105, 140, 175, 210], ap: 0.5, duration: 3.0, block: { width: 1.0 } }  # block: thân chắn đạn bắn vào đồng minh phía sau (doc 39, đề xuất, TBD-SIM)
+      buff: { moveSpeed: 0.2, duration: 2.0 }
+    r:    # Gió Đẩy: sóng gió đẩy lùi kẻ địch, hồi máu đồng minh
+      aim: area
+      radius: 6.0
+      delay: 0
+      range: 0
+      windup: 0.3
+      cooldown: [80, 70, 60]
+      cost: [100, 100, 100]
+      damage: { type: magic, base: [100, 160, 220], ap: 0.4 }
+      knockback: 6.0
+      heal: { base: [150, 225, 300], ap: 0.5, self: true, allies: true }
+
+
+  hao_nhat:
+    role: tank_engage
+    # H1 · 2026-10-10 @lukasai: READY_FOR_ENGINE_IMPLEMENTATION — BALANCE_PROVISIONAL. Chỉ số = Lab ×0,9 (HP/giáp/kháng phép), sát thương giữ kit.
+    # Baseline ×1,0 để A/B: tools/sim/candidates/hao_nhat.yml (hp 700 / armor 42 / mr 34; growth 108 / 4.6 / 1.9). Không phải số khoá.
+    resource: mana
+    build: support
+    stats: { hp: 630, resource: 300, ad: 58, ap: 0, armor: 37.8, mr: 30.6, moveSpeed: 6.1, attackSpeed: 0.625, hpRegen: 1.7, resourceRegen: 1.4 }
+    growth: { hp: 97.2, resource: 40, ad: 3.0, ap: 0, armor: 4.14, mr: 1.71, moveSpeed: 0, attackSpeed: 0.02, hpRegen: 0.17, resourceRegen: 0.1 }
+    passive:
+      type: shield_strike           # Ánh Thệ: sau khi dựng khiên, đòn đánh kế đốt nắng + chậm
+      bonusDamage: { type: magic, base: 20, ap: 0.2, perLevel: 6 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
+    lmb: { aim: melee, range: 1.8 }   # Lưỡi Rạng
+    q:    # Xông Khiên: xông theo hướng ngắm, tướng đầu tiên chặn lại và bị choáng
+      aim: skillshot
+      width: 1.6
+      speed: 24
+      range: 6.5
+      windup: 0.1
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [40, 45, 50, 55, 60]
+      dash: { distance: 6.5, toward: true }
+      damage: { type: magic, base: [30, 55, 80, 105, 130], ap: 0.3 }
+      effects: [{ stun: 0.9 }]
+    rmb:  # Vỡ Nắng: khiên bản thân, nổ nắng khi vỡ hoặc hết 3 s
+      aim: self
+      windup: 0
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [60, 60, 60, 60, 60]
+      shield: { base: [60, 85, 110, 135, 160], maxHp: 0.06, duration: 3.0, burst: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.4, radius: 4.0 } }
+    e:    # Dây Sáng: dây lửa xuyên lính, dừng ở tướng đầu tiên, làm chậm
+      aim: skillshot
+      width: 1.4
+      speed: 38
+      range: 12.0
+      windup: 0.2
+      passMinions: true
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [60, 60, 60, 60, 60]
+      damage: { type: magic, base: [45, 75, 105, 135, 165], ap: 0.4 }
+      effects: [{ slow: 0.35, duration: 1.5 }]
+    r:    # Hai Nhịp Trời: hai cột nắng giáng xuống vùng, nhịp hai choáng
+      aim: area
+      radius: 4.5
+      range: 8.0
+      delay: 0.7
+      windup: 0.3
+      cooldown: [90, 80, 70]
+      cost: [100, 100, 100]
+      hits: 2
+      damage: { type: magic, base: [90, 140, 190], ap: 0.35 }
+      effects: [{ stun: 1.0 }]
+
+  huong_mai:
+    role: support_heal
+    # H1b · 2026-10-10 @lukasai "bạn tự quyết. Nếu sau này có vấn đề khi test thì tunned lại" → BALANCE_PROVISIONAL.
+    # Lab (reports/sim/2026-10-10-hm-d110-h130): độ trâu ×1,1 (HP/giáp/kháng phép + tăng trưởng), hồi máu Q ×1,3. Δ so Vân Dao −13, thay carry +9, 10/24 ô >+15 (dưới nửa).
+    # Baseline ×1,0 để A/B: tools/sim/candidates/huong_mai.yml.
+    resource: mana
+    build: support
+    stats: { hp: 682, resource: 400, ad: 48, ap: 0, armor: 33, mr: 35.2, moveSpeed: 6.2, attackSpeed: 0.64, hpRegen: 1.3, resourceRegen: 2.0 }
+    growth: { hp: 105.6, resource: 45, ad: 2.6, ap: 0, armor: 4.4, mr: 1.65, moveSpeed: 0, attackSpeed: 0.015, hpRegen: 0.13, resourceRegen: 0.15 }
+    passive:
+      type: cdr_on_hit              # Cổng Khép: mỗi đòn đánh trúng rút hồi chiêu thường (Q/RMB/E) 0,6 s; không rút R
+      seconds: 0.6
+      ult: false
+    lmb: { aim: projectile, range: 9.5, damageType: magic, ap: 0.15 }   # Tia Sớm
+    q:    # Mạch Lành: tia sáng gây sát thương địch đầu tiên, chữa đồng minh yếu nhất trong tầm
+      aim: skillshot
+      width: 1.2
+      speed: 30
+      range: 10.0
+      windup: 0.25
+      cooldown: [9, 8.5, 8, 7.5, 7]
+      cost: [60, 65, 70, 75, 80]
+      damage: { type: magic, base: [40, 65, 90, 115, 140], ap: 0.35 }
+      heal: { base: [72, 104, 137, 169, 202], ap: 0.45, ally: true }
+    rmb:  # Vòng Hương: vòng móc bay ra rồi quay về, trúng hai lượt, làm chậm
+      aim: skillshot
+      width: 1.6
+      speed: 16
+      range: 8.5
+      windup: 0.2
+      cooldown: [11, 10.5, 10, 9.5, 9]
+      cost: [55, 55, 55, 55, 55]
+      hits: 2
+      damage: { type: magic, base: [30, 50, 70, 90, 110], ap: 0.25 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
+    e:    # Chặn Lối: tường ánh sáng chặn đường, kẻ chạm vào bị chậm nặng
+      aim: area
+      radius: 3.0
+      mark: { kind: wall, width: 0.9, hold: 2, look: energy }   # look energy = tường ánh sáng (VFX); stone/ice = lưới vật lý mang texture. hình ngắm/báo trước: dải tường ngang hướng ngắm, dài 2×radius (không vẽ vòng tròn)
+      range: 8.0
+      delay: 0.35
+      windup: 0.2
+      cooldown: [16, 15, 14, 13, 12]
+      cost: [70, 70, 70, 70, 70]
+      damage: { type: magic, base: [20, 35, 50, 65, 80], ap: 0.2 }
+      effects: [{ slow: 0.6, duration: 1.5 }]
+    r:    # Ánh Đầu Ngày: vùng báo trước 1 s, nổ sáng: sát thương địch, chữa bản thân và đồng minh trong vùng
+      aim: area
+      radius: 6.0
+      range: 10.0
+      delay: 1.0
+      windup: 0.3
+      cooldown: [90, 80, 70]
+      cost: [100, 100, 100]
+      damage: { type: magic, base: [100, 150, 200], ap: 0.4 }
+      heal: { base: [140, 210, 280], ap: 0.5, self: true, allies: true }
+
+  bach_dien:
+    role: fighter_dancer
+    # R1 · 2026-10-11: kích hoạt từ Lab (tools/sim/candidates/bach_dien.yml), số kit chép nguyên. Fit P×1,15 → 49,6% PASS_MODEL (tools/sim/standard/tuning.yml).
+    tuning: { hp: 1.081, dmg: 1.066 }   # Lab tuning.yml bach_dien (P 1.153); tướng↔tướng
+    build: fighter
+    resource: mana
+    stats: { hp: 625, resource: 360, ad: 53, ap: 0, armor: 28, mr: 30, moveSpeed: 6.35, attackSpeed: 0.68, hpRegen: 1.3, resourceRegen: 1.6 }
+    growth: { hp: 92, resource: 40, ad: 2.8, ap: 0, armor: 3.8, mr: 1.4, moveSpeed: 0, attackSpeed: 0.016, hpRegen: 0.13, resourceRegen: 0.13 }
+    passive:
+      type: after_ability           # Nhịp Lụa: chiêu trúng → đòn thường kế cộng sát thương phép + lướt nhanh 20% trong 1,5 s
+      bonusDamage: { type: magic, base: 30, ap: 0.35, perLevel: 7 }
+      buff: { moveSpeed: 0.2, duration: 1.5 }
+    lmb: { aim: projectile, range: 5.0, damageType: magic, ap: 0.2 }   # Vẩy Gương: vẩy gương, một tia sáng ngắn
+    q:    # Gương Xoay: xoay trọn vòng rồi ném gương ngang, lướt qua lính, dừng ở tướng đầu tiên, làm chậm
+      aim: skillshot
+      width: 1.5
+      speed: 22
+      range: 8.5
+      windup: 0.25
+      passMinions: true
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [50, 55, 60, 65, 70]
+      damage: { type: magic, base: [65, 95, 125, 155, 185], ap: 0.5 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
+    rmb:  # Bước Jeté: nhảy jeté lao tới theo hướng ngắm, chém gương vào tướng/lính đầu tiên trên đường
+      aim: skillshot
+      width: 1.6
+      speed: 28
+      range: 5.5
+      windup: 0.1
+      dash: { distance: 5.5, toward: true }
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [55, 55, 55, 55, 55]
+      damage: { type: magic, base: [60, 90, 120, 150, 180], ap: 0.45 }
+    e:    # Xoay Né Lụa: xoay lướt 3,5 m theo hướng ngắm, không bị chọn 0,5 s trong vòng xoay, rồi nhanh 30% 2 s
+      aim: self
+      windup: 0
+      dash: { distance: 3.5, toward: true }
+      untargetable: 0.5
+      buff: { moveSpeed: 0.3, duration: 2.0 }
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [60, 60, 60, 60, 60]
+    r:    # Vũ Khúc Trăm Gương: múa giữa vòng gương 4,5 m, ba nhịp sát thương; nhịp cuối choáng (mê gương). Cô lướt nhanh 30% 2,5 s
+      aim: area
+      radius: 4.5
+      range: 0
+      delay: 0.2
+      windup: 0.2
+      hits: 3
+      cooldown: [80, 70, 60]
+      cost: [100, 100, 100]
+      damage: { type: magic, base: [75, 115, 155], ap: 0.35 }
+      effects: [{ stun: 0.75 }]
+      effectsOn: last                # choáng chỉ ở nhịp thứ 3: trượt một nhịp = không choáng
+      buff: { moveSpeed: 0.3, duration: 2.5 }
+
+  mac_lien:
+    role: mage_burst
+    # R2 · 2026-10-11 · Người Sơn Mài (doc 85 #10, chính 052): kích hoạt từ Lab (tools/sim/candidates/mac_lien.yml), số kit chép nguyên.
+    # Sửa theo doc 85: RMB Mực Nở → Sơn Nở (đạn lớn dần: hình lớn dần, hitbox vẫn width 2,0 cả đường: TEMP). Q là QUẠT 3 ĐẠN (doc 76), không phải nón.
+    build: mage
+    resource: mana
+    stats: { hp: 565, resource: 420, ad: 50, ap: 0, armor: 22, mr: 30, moveSpeed: 6.1, attackSpeed: 0.64, hpRegen: 1.1, resourceRegen: 1.8 }
+    growth: { hp: 88, resource: 48, ad: 2.8, ap: 0, armor: 3.6, mr: 1.3, moveSpeed: 0, attackSpeed: 0.012, hpRegen: 0.11, resourceRegen: 0.14 }
+    passive:
+      type: after_ability           # Tẩy Trang: sau mỗi chiêu, đòn đánh kế vẩy son cộng sát thương phép
+      bonusDamage: { type: magic, base: 25, ap: 0.3, perLevel: 6 }
+    lmb: { aim: projectile, range: 10.0, damageType: magic, ap: 0.2 }   # Búng Son: búng giọt son bay thật
+    q:    # Ba Nét: QUẠT 3 ĐẠN (shotLanes/fanStruck kitmech.js), ba nét sơn son bay thật; preview 3 đường, không vẽ nón
+      aim: skillshot
+      width: 0.8        # TEMP mỗi luồng (audit 11-10: 1,4 liền khe tới 9 m; 0,8 mở khe từ 6,7 m)
+      fan: { count: 3, spread: 30, oncePerTarget: false }  # TEMP: gần thì cả 3 luồng cùng trúng một thân
+      speed: 22
+      range: 10.0
+      windup: 0.2
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [60, 65, 70, 75, 80]
+      damage: { type: magic, base: [32, 52, 72, 92, 112], ap: 0.3 }
+    rmb:  # Sơn Nở: quả sơn son xuyên, nở to theo quãng bay (hình lớn dần; hitbox width 2,0 cả đường, TEMP)
+      aim: skillshot
+      width: 2.0
+      speed: 16
+      range: 12.0
+      windup: 0.25
+      pierce: true
+      cooldown: [11, 10.5, 10, 9.5, 9]
+      cost: [70, 70, 70, 70, 70]
+      damage: { type: magic, base: [75, 115, 155, 195, 235], ap: 0.65 }
+      effects: [{ slow: 0.3, duration: 1.5 }]
+    e:    # Lách Nét: lướt ngắn tới mục tiêu, nổ sơn nơi đáp
+      aim: target
+      range: 5.0
+      windup: 0.05
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [60, 60, 60, 60, 60]
+      dash: { distance: 4.5, toward: true }
+      damage: { type: magic, base: [50, 75, 100, 125, 150], ap: 0.4 }
+    r:    # Nét Cuối: một nhát cọ sơn son khổng lồ vẽ vòng 5,5 m rồi khép, hất văng
+      aim: area
+      radius: 5.5
+      range: 10.0
+      delay: 0.5
+      windup: 0.3
+      cooldown: [85, 75, 65]
+      cost: [100, 100, 100]
+      knockback: 4.0
+      damage: { type: magic, base: [170, 270, 370], ap: 0.75 }
+
+  ngu_dang:
+    role: tank_protect
+    # 2026-10-11 · Gấu Ngựa Đeo Chuông (doc 85 §4, chính 025): kích hoạt từ Lab (tools/sim/candidates/ngu_dang.yml), số kit chép nguyên.
+    # Sửa theo doc 85: tên chiêu mới; nội tại thêm perCast 1 (sửa lỗi kit "8 lần/combo"); RMB khiên đồng minh quanh chuông bán kính 6 (= Lab engine 6 m).
+    tuning: { hp: 1.312, dmg: 1.07 }   # Lab tuning.yml ngu_dang (P 1.404); tướng↔tướng
+    build: fighter
+    resource: mana
+    stats: { hp: 750, resource: 300, ad: 58, ap: 0, armor: 42, mr: 33, moveSpeed: 6.1, attackSpeed: 0.62, hpRegen: 1.7, resourceRegen: 1.5 }
+    growth: { hp: 110, resource: 42, ad: 2.6, ap: 0, armor: 4.4, mr: 1.8, moveSpeed: 0, attackSpeed: 0.02, hpRegen: 0.17, resourceRegen: 0.1 }
+    passive:
+      type: cdr_on_hit              # Chuông Dồn: mỗi roi chuông trúng rút hồi chiêu thường 0,8 s; mỗi chiêu tối đa 1 lần mỗi lượt hồi
+      seconds: 0.8
+      minGap: 0.5
+      perCast: 1
+      ult: false
+    lmb: { aim: melee, range: 3.0 }   # Roi Chuông: quất xích chuông, tầm với dài hơn đấu sĩ
+    q:    # Ném Chuông: ngắm 0,5 s (đường xích dày), ném quả chuông đồng trên xích, kéo tướng đầu tiên về và choáng ngắn
+      aim: skillshot
+      width: 1.2
+      speed: 26
+      range: 11.0
+      windup: 0.5
+      cooldown: [16, 15, 14, 13, 12]
+      cost: [70, 70, 70, 70, 70]
+      pull: 6.0
+      damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.4 }
+      effects: [{ stun: 0.5 }]
+    rmb:  # Chuông Kết Bạn: cắm chuông xuống đất dưới chân, khiên cho bản thân và đồng minh trong vòng 6 m quanh chuông
+      aim: self
+      windup: 0.1
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [60, 60, 60, 60, 60]
+      shield: { base: [70, 100, 130, 160, 190], maxHp: 0.04, duration: 3.0, allies: true, radius: 6.0 }
+    e:    # Quét Xích: quét vòng xích chuông ở vùng chỉ định, làm chậm
+      aim: area
+      radius: 3.5
+      range: 6.0
+      delay: 0.3
+      windup: 0.2
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [50, 50, 50, 50, 50]
+      damage: { type: magic, base: [60, 90, 120, 150, 180], ap: 0.35 }
+      effects: [{ slow: 0.4, duration: 1.5 }]
+    r:    # Lồng Vọng: ba vòng chuông đồng ảo hạ quanh mình thành lồng 5 m, ngân dội, kẻ trong lồng bị trói (vách chặn: chưa mô hình)
+      aim: area
+      radius: 5.0
+      range: 0
+      delay: 0.25
+      windup: 0.3
+      cooldown: [90, 80, 70]
+      cost: [100, 100, 100]
+      damage: { type: magic, base: [120, 180, 240], ap: 0.4 }
+      effects: [{ root: 1.5 }]
+
+  cot_ben:
+    role: tank_engage
+    # 2026-10-11 · Người Bùn Ruộng (doc 85 §5, chính 008): kích hoạt từ Lab (tools/sim/candidates/cot_ben.yml), số kit chép nguyên.
+    # Sửa theo doc 85: tên chiêu mới; RMB là NÓN 100° tâm ở chân (doc 76) nên range 0 ở runtime (Lab range 3,0 không dùng cho nón tâm chân).
+    tuning: { hp: 1.046, dmg: 1.011 }   # Lab tuning.yml cot_ben (P 1.057); tướng↔tướng
+    build: fighter
+    resource: mana
+    stats: { hp: 730, resource: 300, ad: 60, ap: 0, armor: 38, mr: 32, moveSpeed: 6.05, attackSpeed: 0.63, hpRegen: 1.6, resourceRegen: 1.4 }
+    growth: { hp: 110, resource: 40, ad: 3.2, ap: 0, armor: 4.3, mr: 1.7, moveSpeed: 0, attackSpeed: 0.018, hpRegen: 0.16, resourceRegen: 0.1 }
+    passive:
+      type: burn_on_ability         # Bùn Ăn Mòn: chiêu trúng trát bùn chua, đốt 2% máu tối đa trong 3 s, giảm hồi máu 30%
+      maxHp: 0.02
+      antiHeal: 0.3
+      duration: 3.0
+    lmb: { aim: melee, range: 2.0 }   # Vả Bùn: vả hai tay bùn (đòn đôi chỉ ở động tác; số = một đòn như Lab)
+    q:    # Bừa Tre: ném cái bừa tre bay thật, bị lính chặn, kéo tướng trúng về sát bên
+      aim: skillshot
+      width: 1.1
+      speed: 24
+      range: 12.0
+      windup: 0.3
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [70, 70, 70, 70, 70]
+      pull: 9.0
+      damage: { type: physical, base: [60, 95, 130, 165, 200], ad: 0.3 }
+    rmb:  # Phun Bùn: phun nón bùn 100° bán kính 3,5 m phía trước, làm chậm nặng
+      aim: area
+      radius: 3.5
+      arc: 100
+      range: 0
+      delay: 0.1
+      windup: 0.15
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [50, 50, 50, 50, 50]
+      damage: { type: magic, base: [45, 70, 95, 120, 145], ap: 0.35 }
+      effects: [{ slow: 0.5, duration: 1.5 }]
+    e:    # Vục Bùn: vục hai tay xuống bùn hất mục tiêu, sát thương theo máu đã mất, hồi máu theo sát thương
+      aim: target
+      range: 2.5
+      windup: 0.2
+      cooldown: [11, 10, 9, 8, 7]
+      cost: [40, 40, 40, 40, 40]
+      damage: { type: physical, base: [40, 65, 90, 115, 140], ad: 0.4, missingHp: 0.08 }
+      heal: { base: [30, 45, 60, 75, 90], self: true, damageShare: 0.5 }
+    r:    # Vùi Bùn: vùi một tướng vào bụng bùn; cả hai không thể bị chọn, nạn nhân bất động rồi bị nhả ra giữa vũng chậm
+      aim: target
+      range: 3.0
+      windup: 0.2
+      cooldown: [100, 85, 70]
+      cost: [100, 100, 100]
+      dash: { distance: 1.5, toward: true }
+      untargetable: 1.75
+      damage: { type: magic, base: [120, 190, 260], ap: 0.5 }
+      effects: [{ stun: 1.75, engulf: 1.75 }]   # engulf: the victim vanishes into the belly for the same 1.75 s (lib/engulf.js), presentation of the stun
+
+# Bộ build vật phẩm dùng trong mô phỏng: stat mỗi 1000 vàng tiêu. Thay bằng items.yml khi catalog ra đời (D10).
+builds:
+  fighter:       { ad: 18, hp: 160, armor: 8, mr: 5, attackSpeed: 0.05 }
+  mage_assassin: { ap: 70, hp: 80, armor: 4, mr: 4, magicPenFlat: 6 }
+  mage:          { ap: 80, hp: 80, armor: 3, mr: 4, magicPenFlat: 4 }
+  marksman:      { ad: 28, attackSpeed: 0.16, hp: 60, armorPenPct: 0.035 }
+  support:       { ap: 40, hp: 150, armor: 8, mr: 8 }

@@ -1,0 +1,35 @@
+# Same-gold scenarios for catalog candidate-0.1.0 (24 items), 2026-10-09. Gold budgets are TOTAL SPENT by the
+# match minute under profile mach_giua-1v1 (300 start, 1 g/s, minion ×0.7): L1 = start, L4≈4:30, L7≈8:30, L11≈14:00.
+# Lists include basics + intermediates so a small budget buys real starter items; AP lists for mages/support.
+lists:
+  role:
+    fighter:       [qua_mach, oathguard_plate, heartforge, nanh_khep, iron_plate, mach_tinh, nanh_mach, dong_van]
+    marksman:      [keeneye, thornseed_quiver, qua_mach, quickstring, nanh_khep, nanh_mach, soi_nhip, mach_tinh]
+    mage:          [lo_than_ky, dang_hoi_am, chuong_may, kinh_song, kinh_luu, mach_tinh]
+    mage_assassin: [dang_hoi_am, lo_than_ky, chuong_may, kinh_song, kinh_luu, mach_tinh]
+    support:       [chuong_may, heartforge, dang_hoi_am, binh_mach, kinh_song, mach_tinh, kinh_luu]
+    default:       [heartforge, oathguard_plate, iron_plate, mach_tinh, dong_van]
+  def:
+    default:       [oathguard_plate, heartforge, iron_plate, an_tinh, binh_mach, dong_van, mach_tinh]
+  dmg:
+    fighter:       [qua_mach, keeneye, nanh_khep, nanh_mach, soi_nhip]
+    marksman:      [keeneye, thornseed_quiver, quickstring, nanh_khep, nanh_mach, soi_nhip]
+    mage:          [lo_than_ky, dang_hoi_am, kinh_song, kinh_luu]
+    mage_assassin: [lo_than_ky, dang_hoi_am, kinh_song, kinh_luu]
+    support:       [lo_than_ky, kinh_song, kinh_luu]
+    default:       [keeneye, nanh_khep, nanh_mach]
+  mixed:
+    fighter:       [qua_mach, heartforge, an_tinh, nanh_mach, mach_tinh]
+    marksman:      [keeneye, an_tinh, mach_tinh, nanh_mach, soi_nhip]
+    default:       [dang_hoi_am, heartforge, kinh_luu, mach_tinh, an_tinh]
+scen:
+  L1_none:       { L: 1,  gold: 0,    att: role, def: role }
+  L1_starter:    { L: 1,  gold: 300,  att: role, def: role }
+  L1_def_vs_dmg: { L: 1,  gold: 300,  att: dmg,  def: def }
+  L4_role:       { L: 4,  gold: 900,  att: role, def: role }
+  L4_def_vs_dmg: { L: 4,  gold: 900,  att: dmg,  def: def }
+  L7_role:       { L: 7,  gold: 2000, att: role, def: role }
+  L7_maxdef:     { L: 7,  gold: 2000, att: dmg,  def: def }
+  L7_mixed:      { L: 7,  gold: 2000, att: mixed, def: mixed }
+  L11_role:      { L: 11, gold: 4000, att: role, def: role }
+  L11_maxdef:    { L: 11, gold: 4000, att: dmg,  def: def }

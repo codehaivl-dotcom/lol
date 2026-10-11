@@ -1,0 +1,54 @@
+# Bộ giả lập chuẩn · người chơi mô phỏng + ngưỡng nghiệm thu (doc 73). Đổi số ở đây = một dòng balance-log.
+# status: proposal = Savi đề xuất, chờ @lukasai chốt. Không có ngưỡng nào là "đã duyệt" cho tới khi đổi thành approved.
+
+# hồ sơ người chơi: newbie = "không tính kĩ năng điều khiển". Hai bên luôn cùng hồ sơ khi đo tỉ lệ thắng.
+players:
+  newbie:  { dodge: 0.05, sidestep: 0.4, castOrder: [q, rmb, e, r], saveUlt: false, kite: 0.4,   focusLow: false, farm: 0.45, xpShare: 0.85, ultOnUnits: false, react: 0.4 }
+  average: { dodge: 0.18, sidestep: 0.7, castOrder: [e, q, rmb, r], saveUlt: true,  kite: 0.7,  focusLow: false, farm: 0.65, xpShare: 0.95, ultOnUnits: false, react: 0.3 }
+  dummy:   { dodge: 0,    sidestep: 0,   castOrder: [],          saveUlt: false, kite: 0,    focusLow: false, farm: 0.45, xpShare: 0.85, ultOnUnits: false, react: 9 }   # bia đứng yên (combo lý thuyết)
+  skilled: { dodge: 0.35, sidestep: 1.0, castOrder: [r, e, rmb, q], saveUlt: true,  kite: 1,    focusLow: true,  farm: 0.85, xpShare: 1.0,  ultOnUnits: true,  react: 0.25 }
+
+minutes: [3, 6, 10, 15, 20]     # các mốc chụp trận (cấp + vàng + đồ theo progress.mjs)
+
+gates:
+  duel:            # 1v1 cùng phút, cùng hồ sơ newbie
+    status: proposal
+    heroAvg: [0.40, 0.60]        # tỉ lệ thắng trung bình mỗi tướng (doc 04 §3 V1 là 45–55% cho người giỏi; newbie nới ±10)
+    pairMax: 0.70                # không cặp nào vượt 70/30 (doc 04 §3)
+    byMinute: true               # kiểm từng phút, không chỉ trung bình
+  solo_vs_2:       # 1 tướng đấu 2 tướng ngang cấp/đồ
+    status: proposal
+    winMax: 0.15                 # 1 newbie thắng 2 newbie: tối đa 15% (sát thủ/đấu sĩ mạnh nhất cũng không được gánh 1v2 thường xuyên)
+    aheadWinMax: 0.45            # khi đi trước +2 cấp và +1500 vàng: tối đa 45%
+  team:            # 2v2, 3v3, 5v5 đội hình ngẫu nhiên. TRẦN 5v5: game tối đa 10 người (creator 2026-10-10), không suite nào vượt 5 tướng mỗi phe
+    status: proposal
+    heroPresence: [0.42, 0.58]   # tỉ lệ thắng của đội có tướng X (trung bình)
+    fightSeconds: [6, 30]        # giao tranh tổng không quá chớp nhoáng, không kéo lê
+  tower:           # đánh trụ một mình
+    status: proposal
+    noWaveMustLose: true         # không lính, trụ cấp 1 đầy máu: tướng newbie không được phá trụ mà sống (mọi phút ≤ 15)
+    withWaveSeconds: [25, 90]    # có 1 đợt lính đồng minh đỡ đòn: thời gian phá trụ cấp 1 ở phút 10
+  wave:            # dọn một đợt lính địch (6 con)
+    status: proposal
+    clearSeconds: [6, 25]        # phút 6
+    hpLostMax: 0.45
+  jungle:          # quái rừng một mình, cấp quái = cấp neo của nó, tướng ở phút tương ứng
+    status: proposal
+    campSeconds: [8, 45]
+    campHpLeftMin: 0.25          # quái nhỏ: còn ≥ 25% máu
+    minibossSoloMin: 0.25        # quái lớn (miniboss) một mình phải tốn ≥ 25% máu tướng
+  boss:            # Cổ Titan rank 1 (Thuồng Luồng)
+    status: proposal
+    soloMustFail: true           # một tướng phút 10 không hạ được trong 120 s mà sống
+    teamSeconds: [25, 100]       # 3 tướng phút 10 hạ boss trong khoảng này
+    teamDeathsMax: 1
+  combo:           # One-Combo Kill Test (doc 73 §combo, @lukasai 2026-10-10): % máu tối đa mục tiêu mất sau MỘT lượt combo
+    status: proposal             # ngưỡng cảnh báo ban đầu của @lukasai, chưa phải giới hạn cân bằng
+    bands: [0.70, 0.90, 1.00]    # <70 theo dõi · 70–89 burst cao · 90–99 cảnh báo · ≥100 review bắt buộc
+    reactMin: 1.0                # s: combo 100–0 xong trong < 1 s từ đòn đầu = gần như không có cơ hội phản ứng
+    suspicious:                  # vai trò kẻ tung → mục tiêu: hạ từ 100% ở cùng cấp/vàng là đáng nghi
+      - { from: [fighter, support, marksman], to: [fighter] , note: "đấu sĩ/hỗ trợ/xạ thủ một combo hạ đấu sĩ" }
+      - { from: [assassin, mage, fighter, support, marksman], to: [tank], note: "một combo hạ tank đầy máu" }
+    itemSpike: 0.15              # một món làm % combo tăng ≥ 15 điểm ở ≥ 3 tướng = món nghi OP
+    itemSpikeHeroes: 3
+    tankBuild: [oathguard_plate, heartforge, an_tinh, iron_plate, dong_van, ngoc_am]   # "tank full phòng thủ"

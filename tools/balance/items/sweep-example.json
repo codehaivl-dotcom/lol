@@ -1,0 +1,5 @@
+[
+  {"name":"iron_armor_minus_4","overrides":[{"id":"iron_plate","stats":{"armor":20}}]},
+  {"name":"oath_hp_minus_60","overrides":[{"id":"oathguard_plate","stats":{"hp":180}}]},
+  {"name":"mage_ap_minus_10","overrides":[{"id":"lo_than_ky","stats":{"ap":75}}]}
+]

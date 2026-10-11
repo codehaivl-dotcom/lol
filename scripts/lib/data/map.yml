@@ -1,0 +1,54 @@
+# Cửu Mạch Chiến Trường, Mạch Giữa — GREYBOX 50% (doc14 §M, 2026-10-08). Metres. First test sample, NOT balance-accepted.
+# Structures are placed by reach (tower 14, nexus beam 14), not scaled: T1–T1 50 m (22 m no-fire), T1–T2 33 m (5 m gap).
+extent: 88           # minimap / map-click half-size (world ±extent)
+lane: [[-49.7,49.7],[-47.0,47.0],[-41.0,41.0],[-27.4,19.0],[-18.6,10.1],[18.6,-10.1],[27.4,-19.0],[41.0,-41.0],[47.0,-47.0],[49.7,-49.7]]
+laneWidth: 10
+corridorHalf: 12      # flat walkable half-width each side of the lane centre (road 5 + bank 7)
+cliffRise: 5          # metres over which the corridor wall climbs
+cliffHeight: 7        # low enough that the 56° camera never sees over-the-shoulder wall
+cliffNoise: { ridged: 3.5, detail: 1.2, wobble: 2.5, scale: 0.5 }   # amplitudes (m) and wavelength factor of the wall noise
+baseRadius: 20
+bases: { blue: [-62.0, 62.0], red: [62.0, -62.0] }
+fountains: { blue: [-65.8, 65.8], red: [65.8, -65.8] }
+nexus: { blue: [-54.4, 54.4], red: [54.4, -54.4] }
+riverHalf: 6.5
+riverEdge: [2, 3]     # full depth until riverHalf-2, dry ground from riverHalf+3; banks walled, the bridge is the only crossing
+riverFloor: -3.2
+gorgeHalf: 6            # art: river gorge half-width through the karst past the corridor (lip ≤ 8.2 m, inside bankWall)
+bankWall: 9.2           # balustrade line each side of the river centre (m): heroes never enter the water
+waterLevel: -2.0
+# hốc nấp: pockets cut into the canyon wall either side of the river, each holding one brush
+alcoves:
+  - { at: [-26.0, -3.3], r: 6 }
+  - { at: [-3.3, 19.3], r: 6 }
+  - { at: [26.0, 3.3], r: 6 }
+  - { at: [3.3, -19.3], r: 6 }
+# pockets (2026-10-09 @lukasai "vài chỗ đường đi mở rộng lấn ra + bãi cỏ để ẩn nấp và combat"): the corridor bulges
+# out beside the flank brushes between T1 and T2, 15 m off the lane centre, r 6 (walkable to ~21 m); grass floor, a brush deep inside
+pockets:
+  - { at: [-43.9, 17.1], r: 6 }
+  - { at: [-20.3, 36.0], r: 6 }
+  - { at: [43.9, -17.1], r: 6 }
+  - { at: [20.3, -36.0], r: 6 }
+# brushes: centre, radii, rotation (deg). Standing inside hides you from enemies outside. Point-symmetric pairs.
+brushes:
+  # 2026-10-09 @lukasai "bỏ dám cỏ trên cầu": the four river brushes stood on the bridge deck; they now sit deep in the pockets
+  river-top-blue: { at: [-46.0, 15.8], rx: 2.4, rz: 3.6, rot: 45, seed: 11 }
+  river-top-red: { at: [46.0, -15.8], rx: 2.4, rz: 3.6, rot: 45, seed: 13 }
+  river-bot-blue: { at: [-18.2, 37.3], rx: 2.4, rz: 3.6, rot: 45, seed: 12 }
+  river-bot-red: { at: [18.2, -37.3], rx: 2.4, rz: 3.6, rot: 45, seed: 14 }
+  flank-top-blue: { at: [-37.8, 20.9], rx: 2.0, rz: 3.6, rot: 45, seed: 15 }
+  flank-top-red: { at: [37.8, -20.9], rx: 2.0, rz: 3.6, rot: 45, seed: 17 }
+  flank-bot-blue: { at: [-26.5, 32.2], rx: 2.0, rz: 3.6, rot: 45, seed: 16 }
+  flank-bot-red: { at: [26.5, -32.2], rx: 2.0, rz: 3.6, rot: 45, seed: 18 }
+  alcove-top-blue: { at: [-25.6, -3.0], rx: 2.6, rz: 3.2, rot: 45, seed: 19 }
+  alcove-top-red: { at: [25.6, 3.0], rx: 2.6, rz: 3.2, rot: 45, seed: 21 }
+  alcove-bot-blue: { at: [-3.7, 18.9], rx: 2.6, rz: 3.2, rot: 45, seed: 20 }
+  alcove-bot-red: { at: [3.7, -18.9], rx: 2.6, rz: 3.2, rot: 45, seed: 22 }
+towers:
+  tower-blue-t1: { team: blue, tier: 1, at: [-17.7, 17.7], hp: 2800, muzzle: 8.4 }
+  tower-blue-t2: { team: blue, tier: 2, at: [-41.0, 41.0], hp: 5400, muzzle: 10 }
+  tower-red-t1: { team: red, tier: 1, at: [17.7, -17.7], hp: 2800, muzzle: 8.4 }
+  tower-red-t2: { team: red, tier: 2, at: [41.0, -41.0], hp: 5400, muzzle: 10 }
+bridgeYaw: -61.5
+bridgeScale: { x: 0.5, y: 0.5, z: 0.5 }   # deck 17 × 39 m

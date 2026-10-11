@@ -1,0 +1,137 @@
+note: Lab-only tuning theo chuẩn vai (roles.yml). Chưa vào runtime; PASS_MODEL only.
+heroes:
+  moc_lam:
+    P: 0.809
+    hp: 0.844
+    dmg: 0.958
+    win: 0.483
+  kha_tan:
+    P: 1.049
+    hp: 1.026
+    dmg: 1.022
+    win: 0.494
+  mi_dang:
+    P: 1.073
+    hp: 1.021
+    dmg: 1.051
+    win: 0.528
+  hoa_tuy:
+    P: 0.957
+    hp: 0.985
+    dmg: 0.972
+    win: 0.509
+  nham_vu:
+    P: 1.119
+    hp: 1.034
+    dmg: 1.082
+    win: 0.498
+  van_dao:
+    P: 1.132
+    hp: 1.077
+    dmg: 1.051
+    win: 0.486
+  hao_nhat:
+    P: 1.091
+    hp: 1.072
+    dmg: 1.018
+    win: 0.486
+  huong_mai:
+    P: 1.778
+    hp: 1.412
+    dmg: 1.259
+    win: 0.504
+  bach_dien:
+    P: 1.153
+    hp: 1.081
+    dmg: 1.066
+    win: 0.496
+  tinh_loi:
+    P: 1.199
+    hp: 1.105
+    dmg: 1.085
+    win: 0.513
+  lam_nghi:
+    P: 1.415
+    hp: 1.231
+    dmg: 1.149
+    win: 0.508
+  loc_thao:
+    P: 1.083
+    hp: 1.024
+    dmg: 1.057
+    win: 0.502
+  ngu_dang:
+    P: 1.404
+    hp: 1.312
+    dmg: 1.07
+    win: 0.507
+  cot_ben:
+    P: 1.057
+    hp: 1.046
+    dmg: 1.011
+    win: 0.498
+  sam_kha:
+    P: 0.97
+    hp: 0.976
+    dmg: 0.994
+    win: 0.508
+  duc_nham:
+    P: 1.074
+    hp: 1.022
+    dmg: 1.051
+    win: 0.497
+  nanh_nui:
+    P: 1.318
+    hp: 1.247
+    dmg: 1.057
+    win: 0.477
+  kinh_ngon:
+    P: 1.415
+    hp: 1.231
+    dmg: 1.149
+    win: 0.499
+  mac_lien:
+    P: 1.057
+    hp: 1.02
+    dmg: 1.037
+    win: 0.512
+  tam_vu:
+    P: 1.144
+    hp: 1.041
+    dmg: 1.099
+    win: 0.494
+  han_chi:
+    P: 1.171
+    hp: 1.057
+    dmg: 1.108
+    win: 0.511
+  tam_dau:
+    P: 1.36
+    hp: 1.203
+    dmg: 1.131
+    win: 0.502
+  thach_ho:
+    P: 0.954
+    hp: 0.963
+    dmg: 0.991
+    win: 0.491
+  trac_nham:
+    P: 1.1
+    hp: 1.034
+    dmg: 1.064
+    win: 0.488
+  sac_nhien:
+    P: 1.277
+    hp: 1.089
+    dmg: 1.172
+    win: 0.497
+  sa_tan:
+    P: 1.277
+    hp: 1.158
+    dmg: 1.103
+    win: 0.512
+  van_an:
+    P: 0.896
+    hp: 0.942
+    dmg: 0.952
+    win: 0.5

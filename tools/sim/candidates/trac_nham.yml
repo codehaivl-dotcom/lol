@@ -1,0 +1,57 @@
+# ỨNG VIÊN · Trắc Nham · Người Đọc Vết Nứt · pháp sư chiến trường (doc 03 §23). Chỉ sống trong Lab, chưa vào game.
+# Đường nứt lưu lại trên đất và giao điểm kẹp: CHƯA mô hình hóa (Lab không có vùng tồn tại); mô hình bằng xuyên + hai nhịp.
+heroes:
+  trac_nham:
+    role: mage_control
+    resource: mana
+    stats: { hp: 640, resource: 320, ad: 54, ap: 0, armor: 32, mr: 32, moveSpeed: 6.1, attackSpeed: 0.625, hpRegen: 1.4, resourceRegen: 1.6 }
+    growth: { hp: 100, resource: 42, ad: 3.0, ap: 0, armor: 4.2, mr: 1.5, moveSpeed: 0, attackSpeed: 0.015, hpRegen: 0.14, resourceRegen: 0.12 }
+    passive:
+      type: burn_on_ability         # Khắc Văn: phép trúng khắc văn lên thân địch, rạn dần % máu tối đa
+      maxHp: 0.025
+      duration: 3.0
+    lmb: { aim: projectile, range: 8.5, damageType: magic, ap: 0.18 }   # Mảnh Vôi: tay đá ném mảnh vôi
+    q:    # Đường Rạn: xé một đường nứt thẳng, xuyên mọi kẻ trúng, làm chậm
+      aim: skillshot
+      width: 1.6
+      speed: 30
+      range: 11.0
+      windup: 0.25
+      pierce: true
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [50, 55, 60, 65, 70]
+      damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.45 }
+      effects: [{ slow: 0.25, duration: 1.5 }]
+    rmb:  # Kẹp Chéo: hai vết nứt chéo khép lại tại điểm chọn, hai nhịp, trói kẻ ở giao điểm
+      aim: area
+      radius: 2.8
+      lines: [{ angle: 45, width: 1.6, length: 5.6 }, { angle: -45, width: 1.6, length: 5.6 }]   # Audit 11-10: hai vết nứt chéo giao tại điểm chọn (doc 03 §23). TEMP: góc ±45, width = Q 1.6, length = 2×radius (nguồn không có số)
+      range: 9.0
+      delay: 0.5
+      windup: 0.2
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [65, 65, 65, 65, 65]
+      hits: 2
+      damage: { type: magic, base: [35, 55, 75, 95, 115], ap: 0.3 }
+      effects: [{ root: 0.9 }]
+    e:    # Chống Vách: bốn tay đá ghép thành vách, khiên bản thân và tăng tốc chạy
+      aim: self
+      windup: 0
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [60, 60, 60, 60, 60]
+      shield: { base: [70, 110, 150, 190, 230], ap: 0.5, duration: 3.0 }
+      buff: { moveSpeed: 0.25, duration: 2.0 }
+    r:    # Ba Đường Đứt: vẽ ba đường nứt trì hoãn rồi nổ lần lượt, làm chậm nặng
+      aim: area
+      radius: 4.5
+      lines: [{ angle: 0, width: 1.6, length: 9 }, { angle: 60, width: 1.6, length: 9 }, { angle: -60, width: 1.6, length: 9 }]   # Audit 11-10: ba đường nứt (doc 03 §23). TEMP: bố cục 0/±60, width = Q 1.6, length = 2×radius (nguồn không có số)
+      range: 12.0
+      delay: 1.2
+      windup: 0.3
+      cooldown: [85, 75, 65]
+      cost: [100, 100, 100]
+      hits: 3
+      damage: { type: magic, base: [80, 125, 170], ap: 0.3 }
+      effects: [{ slow: 0.4, duration: 2.0 }]
+builds:
+  trac_nham: [lo_than_ky, dang_hoi_am, heartforge, iron_plate, buoc_van]

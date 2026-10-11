@@ -1,0 +1,35 @@
+# Bot heroes (Đấu Với Máy). Seconds, metres, fractions of max HP.
+think: 0.2            # one decision every 0.2 s
+skillGap: 1.1         # at least this long between two of the bot's skills (reaction, not a machine gun)
+retreatAt: 0.3        # HP share that sends it home
+returnAt: 0.92        # HP share it leaves the fountain at
+shopTripMin: 400      # về nhà mua khi đủ vàng cho món kế tiếp có giá ≥ này (cùng luật người chơi: chỉ mua ở nhà)
+shopBank: 900         # … hoặc khi ví ≥ này và mua được món kế (không giữ vàng chết)
+# --- FARM / TRADE / RETREAT (docs/co-linh-than-chien/00-bible-moba.md §6; 2026-10-09 creator: risk-aware, không quá hăng, không quá nhát)
+tradeEdge: 0.08       # trades a hero when the advantage score is at least this (or the hero is killable)
+fleeBelow: -0.3       # advantage under this with the hero in reach → steps back
+holdMode: 1.5         # s a trade or an outmatched retreat holds before it can flip (no flicker)
+hysteresis: 0.1       # the advantage must clear the line by this much to leave the mode
+lowAt: 0.45           # HP share + no skill ready + little mana → goes home
+skillWeight: 0.08     # each skill ready more than the enemy hero
+levelWeight: 0.06     # each level above
+minionPenalty: 0.06   # each enemy minion within minionThreatR of us (they turn on us when we hit their hero)
+minionBonus: 0.04     # each of our minions near the enemy hero (they turn on it)
+minionThreatR: 7
+myTowerBonus: 0.25    # the enemy hero stands in our tower's reach
+killMargin: 1.1       # burst (after armour/MR) + basics in the window left after windups >= hero HP × this = killable
+killWindow: 2.5       # s a kill attempt counts on
+diveSeconds: 3        # how long a dive stands under their tower (its shots ramp: 150 → 203 → 255 → 307)
+tradeBack: 1.6        # s it steps back after a skill lands on a hero, unless it is a kill
+kiteGap: 3            # metres beyond the enemy hero's own reach it steps back to
+chaseHero: 11         # metres it will step toward an enemy hero
+lastHitMult: 1.0      # a minion at or under one basic of ours is a last hit
+recallSafeHero: 16    # recalls in place only when no enemy hero is this close
+recallSafeMinion: 12  # … and no enemy minion (caster reach 8.8 m + walk)
+recallQuiet: 2.5      # … and nothing hit it for this long, no DOT ticking
+farmRange: 10         # enemy minions it looks for
+towerMargin: 2        # metres outside an enemy tower's reach it holds when no ally minion tanks
+holdBehind: 3.5       # metres behind its front minion while nothing is in reach
+# buildOrder: KHÔNG còn đọc ở runtime (2026-10-09). Bot + gợi ý dùng economy.yml itemCatalogs.<v>.builds theo tướng.
+buildOrder: [iron_plate, quickstring, phial_of_dawn, keeneye, oathguard_plate, heartforge]
+names: { vi: Máy, en: Bot }

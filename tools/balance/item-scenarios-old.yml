@@ -1,0 +1,8 @@
+# same-gold scenarios on the LEGACY prices (economy.yml before 2026-10-09). att = attacker's bag, def = defender's bag.
+L1_none:        { L: 1, att: [], def: [] }
+L1_plate450:    { L: 1, att: [], def: [iron_plate] }
+L1_trade450:    { L: 1, att: [quickstring], def: [iron_plate] }
+L4_def1050:     { L: 4, att: [quickstring, thornseed_quiver], def: [oathguard_plate] }
+L7_2100:        { L: 7, att: [keeneye, quickstring, thornseed_quiver], def: [oathguard_plate, heartforge] }
+L7_role2100:    { L: 7, att: { fighter: [keeneye, iron_plate, phial_of_dawn], marksman: [keeneye, quickstring, thornseed_quiver], default: [heartforge, iron_plate, phial_of_dawn] }, def: { fighter: [oathguard_plate, iron_plate, phial_of_dawn], marksman: [keeneye, quickstring, thornseed_quiver], default: [heartforge, iron_plate, phial_of_dawn] } }
+L11_maxdef:     { L: 11, att: [keeneye, quickstring, thornseed_quiver, heartforge], def: [oathguard_plate, iron_plate, heartforge, thornseed_quiver] }

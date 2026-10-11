@@ -1,0 +1,57 @@
+# ỨNG VIÊN · Thạch Hộ · Người Chắn Lối · đỡ đòn bảo kê (doc 03 §22). Chỉ sống trong Lab, chưa vào game.
+# Chắn đạn theo hướng ngắm và ram băng chạy xa: CHƯA mô hình hóa (Lab không có tường/đạn chặn); RMB thật lướt tới đồng minh, Lab lướt về phía địch + khiên đồng minh gần.
+heroes:
+  thach_ho:
+    role: tank_protect
+    resource: mana
+    stats: { hp: 720, resource: 350, ad: 56, ap: 0, armor: 42, mr: 34, moveSpeed: 6.05, attackSpeed: 0.63, hpRegen: 1.7, resourceRegen: 1.4 }
+    growth: { hp: 106, resource: 42, ad: 2.8, ap: 0, armor: 4.6, mr: 1.9, moveSpeed: 0, attackSpeed: 0.02, hpRegen: 0.17, resourceRegen: 0.1 }
+    passive:
+      type: cdr_on_hit              # Nhịp Được Ghi: mỗi đòn đánh trúng rút hồi chiêu thường 0,5 s
+      seconds: 0.5
+      minGap: 0.5       # creator duyệt 11-10 (đề xuất doc 85): tối đa 1 lần mỗi đòn đánh / 0,5 s
+      ult: false
+    lmb: { aim: melee, range: 1.8 }   # Quyền Giá: đấm mai đá
+    q:    # Mảnh Lạnh: phóng mảnh băng xuyên đường thẳng, hất lùi và làm chậm mọi kẻ trúng
+      aim: skillshot
+      width: 1.8
+      speed: 26
+      range: 8.0
+      windup: 0.2
+      pierce: true
+      cooldown: [11, 10.5, 10, 9.5, 9]
+      cost: [50, 55, 60, 65, 70]
+      damage: { type: magic, base: [45, 75, 105, 135, 165], ad: 0.3 }
+      knockback: 2.0
+      effects: [{ slow: 0.3, duration: 1.5 }]
+    rmb:  # Lướt Bảo Hộ: lướt tới che chắn, phủ khiên mai cho đồng minh quanh mình
+      aim: target
+      range: 7.0
+      windup: 0.05
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [60, 60, 60, 60, 60]
+      dash: { distance: 7.0, to: ally }   # Audit 11-10: lao đến đồng minh (doc 03 §22 + comment dòng 2 của file này)
+      damage: { type: physical, base: [30, 50, 70, 90, 110], ad: 0.3 }
+      shield: { base: [70, 100, 130, 160, 190], duration: 3.0, allies: true }
+    e:    # Vách Chắn: dựng mai sống thành khiên trước mặt, gỡ chậm/trói (chắn đạn chưa mô hình hóa)
+      aim: self
+      windup: 0
+      cooldown: [16, 15, 14, 13, 12]
+      cost: [60, 60, 60, 60, 60]
+      cleanse: true
+      shield: { base: [80, 120, 160, 200, 240], maxHp: 0.05, duration: 2.5 }
+    r:    # Sừng Băng: húc sừng băng lao xa, xuyên mọi kẻ trên đường, hất và choáng
+      aim: skillshot
+      width: 2.4
+      speed: 18
+      range: 12.0
+      windup: 0.3
+      pierce: true
+      cooldown: [100, 85, 70]
+      cost: [100, 100, 100]
+      dash: { distance: 12.0, toward: true }
+      damage: { type: magic, base: [110, 170, 230], ad: 0.4 }
+      knockback: 3.0
+      effects: [{ stun: 1.0 }]
+builds:
+  thach_ho: [oathguard_plate, heartforge, an_tinh, bastion_stone, buoc_van]
