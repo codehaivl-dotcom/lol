@@ -227,6 +227,8 @@ Chốt danh sách 5 tướng nhập môn đã đủ độ chín để chuẩn b�
 > - Phù Dong không phải một kỵ sĩ thông thường ngồi trên lưng ngựa rồi xuống ngựa. Ngựa sắt và Chủ tướng kết hợp thành một **Thực thể chiến đấu cơ khí thần thoại thống nhất (Unified War Centaur/Cavalry Entity)**: Vó ngựa dập ra lốc xoáy lôi hỏa, tay cầm thanh Thần Kiếm Tinh Thạch đâm chém dũng mãnh ở giai đoạn đầu.  
 > - **Khoảnh khắc biến thành Huyền Thoại:** Khi thanh Thần Kiếm bị gãy vụn trong giao tranh ác liệt $\rightarrow$ Phù Dong nhổ bật cây **Thiên Lôi Cổ Trúc (Cụm tre Tinh Thạch sấm sét cao 4.5m)** từ lòng đất, chuyển hóa toàn bộ phong cách chiến đấu sang quét càn quét diện rộng cực kỳ hoành tráng!
 
+*Hồ sơ thiết kế chi tiết toàn diện của Bộ Ngũ Thần Thoại: Xem [103 · Bộ Ngũ Thần Thoại Cổ Linh — Master Concept Bible](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/103-mythic-quintet-concept-bible.md).*
+
 ---
 
 ## 6. Kế Hoạch Chuẩn Bị Cho First Gameplay Gate
