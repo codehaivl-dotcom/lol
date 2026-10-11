@@ -64,11 +64,11 @@ Hội đồng đưa các cặp concept có điểm tương đồng lên bàn câ
 ### Cặp 4: Pháp Sư Tác Động Không Gian — Gravi vs Mira vs Vorta
 - **Bản chất:** Cả 3 đều muốn can thiệp vào đường bay kỹ năng hoặc không gian trận đấu.
 - **Bắt bẫy phức tạp hóa hệ thống (System Bloat):**
-  - *Vorta (Cặp cổng gia tốc):* Mở cổng cho mọi kỹ năng đồng minh bay qua đòi hỏi tính toán va chạm chéo cực kỳ rủi ro cho engine $\rightarrow$ **CẮT / TẠM LOẠI (Cut)**.
+  - *Vorta (Cặp cổng gia tốc):* Mở cổng cho mọi kỹ năng đồng minh bay qua đòi hỏi tính toán va chạm chéo cực kỳ rủi ro cho engine $\rightarrow$ **CẮT / LOẠI BỎ (Cut)**.
   - *Mira (Gương phản xạ đạn):* Phản xạ kỹ năng bất kỳ gặp các ca phức tạp về chủ sở hữu đạn, va chạm và chủng loại đạn $\rightarrow$ **RESERVE để nghiên cứu thêm**.
-  - *Gravi (Trọng thạch):* Bẻ cong cả hero lẫn mọi projectile là quá rộng.
+  - *Gravi (Trọng thạch):* Bẻ cong cả hero lẫn mọi projectile là quá rộng và rủi ro tính toán va chạm cao.
 - **Phán quyết phân xử:**
-  - **Rút gọn Gravi:** Gravi chỉ tạo một **Vùng Đòn Bẩy Trọng Lực (Gravitational Slingshot)** cục bộ trên mặt đất `[HYPOTHESIS]`, kéo dạt vị trí hero địch theo 1 vector duy nhất; không can thiệp vào đạn đạo của tướng khác. Giữ Gravi ở nhóm **Keep / Needs Rewrite**.
+  - **Chuyển Gravi vào RESERVE:** Dù có thể rút gọn thành giếng kéo dạt đơn vector `[HYPOTHESIS]`, nhưng can thiệp dịch chuyển địa hình/trọng lực vẫn tiềm ẩn rủi ro lỗi engine ở giai đoạn này. Xếp Gravi vào nhóm **RESERVE (Dự bị để nghiên cứu thêm)**, không vội đưa vào shortlist chính.
 
 ---
 
@@ -102,7 +102,8 @@ Dưới đây là bản trả lời ngắn gọn, rạch ròi cho từng concept
 ### 3. Phi Công Cổ Khí / Aero (#15 — Xạ thủ)
 - **Pick vì điều gì?** Lái phi cơ cổ lượn quanh rìa giao tranh, rải thảm bom plasma tầm trung chia cắt đội hình.
 - **Quyết định liên tục?** Chọn góc bay rải bom cắt ngang đội hình địch hay bay vòng lùi giữ khoảng cách an toàn?
-- **Phản chế của địch?** Tung khống chế đón đầu đường bay thẳng; áp sát cận chiến khi Aero hết đường lượn.
+- **Khác biệt cốt lõi (Không biến thành xạ thủ đi bộ):** Bỏ quán tính trôi dạt của phi cơ nhưng **giữ trọn vẹn Core Toy: Oanh Tạc Rải Thảm Tuyến Tính (Linear Strafing Bomb Run)**. Aero luôn di chuyển liên tục, xả đạn và thả thảm bom thành vệt dọc theo hướng di chuyển, buộc người chơi phải giữ tư duy "vẽ đường bay chia cắt combat" thay vì đứng một chỗ bắn từng phát như xạ thủ thông thường.
+- **Phản chế của địch?** Tung khống chế đón đầu đường bay thẳng; áp sát cận chiến khi Aero hết khoảng trống lượn.
 - **Hình thể AI dựng?** Phi cơ cổ khí một chỗ ngồi bằng đồng thau và đá nhẹ, phi công ngồi lộ diện buồng lái.
 - **Vì sao đáng tồn tại?** Xạ thủ di động diện rộng duy nhất, giải tỏa tình trạng toàn bộ xạ thủ là người đi bộ bắn súng.
 
@@ -130,7 +131,8 @@ Dưới đây là bản trả lời ngắn gọn, rạch ròi cho từng concept
 ### 7. Ảnh Hầu / Kiko (#01 — Sát thủ)
 - **Pick vì điều gì?** Kẻ tinh quái tạo dấu chân giả và ảo ảnh thị giác đánh lừa hướng nhìn, khiến địch tung hết chiêu vào hư không rồi trừng phạt.
 - **Quyết định liên tục?** Điều khiển ảo ảnh chạy theo hướng nào để dụ đối thủ dùng chiêu khống chế quan trọng?
-- **Phản chế của địch?** Bình tĩnh quan sát hướng dấu chân thật; tung đòn đánh thường phá tan ảo ảnh quang học ngay lập tức.
+- **Quy chuẩn kỹ thuật về Ảo Ảnh:** Ảo ảnh quang học được định nghĩa là **Chiếu Chiếu Quang Học Có Thể Chọn Mục Tiêu (Targetable Holographic Decoy)** với ngưỡng 1 đòn đánh `[HYPOTHESIS]`: Địch có thể click chọn hoặc tung kỹ năng vào ảo ảnh; ảo ảnh biến mất ngay sau khi nhận **đúng 1 đòn đánh thường hoặc 1 kỹ năng bất kỳ**; ảo ảnh không có thanh máu, không nhận hiệu ứng khống chế, không gây sát thương và không có AI tự hành.
+- **Phản chế của địch?** Bình tĩnh quan sát hướng dấu chân thật; chỉ cần quẹt 1 đòn đánh thường là phá tan ảo ảnh ngay lập tức.
 - **Hình thể AI dựng?** Võ thú linh vượn cổ đại nhanh nhẹn, mang song trảo vuốt cơ khí, không cầm gậy dài.
 - **Vì sao đáng tồn tại?** Sát thủ outplay tâm lý bậc nhất, thắng nhờ bắt bài và ép đối thủ phán đoán sai lầm.
 
@@ -199,13 +201,18 @@ Dưới đây là bản trả lời ngắn gọn, rạch ròi cho từng concept
 
 ### 17. Thanh Âm Cổ Thạch / Kymos (Hỗ trợ — Discovery Mới)
 - **Pick vì điều gì?** Tạo vùng triệt tiêu âm thanh cắt giảm phần lớn sát thương bộc phát tức thời, cứu chủ lực khỏi combo 1 nốt nhạc của sát thủ.
-- **Quyết định liên tục?** Bật vùng cắt áp đúng mili-giây sát thủ đối phương vừa lao vào tung đòn hay giữ lại cho pha combat lớn?
-- **Phản chế của địch?** Giả vờ câu chiêu ép Kymos bật vùng trước, hoặc lùi lại chờ vùng sóng âm kết thúc rồi mới dồn sát thương dứt điểm.
+- **Chiều sâu quyết định vị trí & thời điểm (Không phải auto-panic button):** Kymos phải **cắm Điểm Rung Hạ Âm (Acoustic Node Anchor)** tại một tọa độ cụ thể trên sàn đấu `[HYPOTHESIS]`. Sóng hạ âm lan tỏa từ tâm điểm này và **suy giảm theo khoảng cách** (càng gần tâm điểm cắm, lượng giảm sát thương sốc càng cao). Kymos phải có tầm nhìn phán đoán trước khu vực giao tranh sẽ nổ ra để cắm cọc, dụ đồng minh đứng gần và ép sát thủ phải giao tranh trong vùng suy giảm.
+- **Quyết định liên tục?** Cắm cọc sớm để bảo vệ xạ thủ hay giữ cọc phản ứng khi sát thủ vừa lộ diện?
+- **Phản chế của địch?** Đẩy giao tranh ra khỏi bán kính của Điểm Rung, hoặc chờ vùng rung tắt (kéo dài ~3.5s) rồi mới dồn sát thương dứt điểm.
 - **Hình thể AI dựng?** Khánh đá Tinh Thạch Cổ Linh lơ lửng rung động phát ra sóng hạ âm, không trùng hình ảnh chuông của Jeli.
 - **Vì sao đáng tồn tại?** Khắc tinh diện rộng chuyên trị đội hình dồn sát thương bộc phát (Anti-Burst Dive-Saver).
 
 ### 18. Mộng Thể / Oneira (Hỗ trợ — Discovery Mới)
 - **Pick vì điều gì?** Hút lấy hiệu ứng khống chế cứng từ đồng minh vào mặt nạ của mình rồi chuyển hóa nó thành làn sóng hồi phục diện rộng.
+- **Điều kiện kỹ thuật ngặt nghèo (Tránh phá vỡ cân bằng):**
+  - **Trạng thái bản thân:** Oneira **KHÔNG THỂ** kích hoạt hút khống chế nếu chính bản thân Oneira đang chịu khống chế cứng (Choáng, Câm lặng, Áp chế).
+  - **Loại khống chế được phép chuyển:** Chỉ áp dụng cho **Choáng (Stun), Trói chân (Root), Làm chậm (Slow), Câm lặng (Silence)**. Tuyệt đối **KHÔNG HÚT** Áp chế (Suppression) và Hất tung/Đẩy lùi (Displacement/Airborne).
+  - **Hạn mức:** Chỉ hút 1 hiệu ứng khống chế có thời gian tồn tại lâu nhất tại thời điểm bấm chiêu `[HYPOTHESIS]`.
 - **Quyết định liên tục?** Chọn thời điểm hút khống chế quan trọng nhất để giải phóng cho xạ thủ, đồng thời chấp nhận gánh chịu bất lợi trong thoáng chốc.
 - **Phản chế của địch?** Tung khống chế bồi vào chính Oneira khi Oneira đang giữ hiệu ứng chuyển hóa để ngắt quãng kỹ năng.
 - **Hình thể AI dựng?** Mộng thể dạng làn khói ngưng tụ mang chiếc mặt nạ gốm Cổ Linh hai mặt (cười / khóc).
@@ -215,7 +222,7 @@ Dưới đây là bản trả lời ngắn gọn, rạch ròi cho từng concept
 
 ## 3. Bảng Phân Hạng Shortlist Mới (Sau Vòng 4 Tuyển Chọn Cạnh Tranh)
 
-Hội đồng phân chia rạch ròi 36 concept gốc + 10 concept Discovery theo giá trị thực tế:
+Hội đồng rà soát và đối chiếu toàn bộ **49 concept** (36 gốc + Aero/Iro/Mok + 10 Discovery). Không có concept nào bị bỏ sót hay xếp trùng lặp:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -224,11 +231,11 @@ Hội đồng phân chia rạch ròi 36 concept gốc + 10 concept Discovery the
 │ NHÓM 1: STRONG KEEP (10 Hạt Nhân Độc Bản Xuất Sắc Nhất)                │
 │   1. Kora (#32 - Đỡ đòn chắn hướng)                                    │
 │   2. Forge (#17 - Đỡ đòn lò nhiệt lao vào)                             │
-│   3. Aero (#15 - Xạ thủ phi công cơ giới)                              │
+│   3. Aero (#15 - Xạ thủ phi công oanh tạc thảm bom)                    │
 │   4. Iro (#30 - Xạ thủ sniper ngắm tĩnh)                               │
 │   5. Nera (#07 - Xạ thủ neo hai chiều)                                 │
 │   6. Vero (#03 - Sát thủ chém trễ)                                     │
-│   7. Kiko (#01 - Sát thủ ảo ảnh thị giác)                              │
+│   7. Kiko (#01 - Sát thủ ảo ảnh quang học chọn mục tiêu)               │
 │   8. Moka (#31 - Sát thủ hổ nấm phục kích)                             │
 │   9. Brak (#02 - Đấu sĩ parry piston)                                  │
 │   10. Rolo (#36 - Đấu sĩ tê tê tách vảy)                              │
@@ -239,24 +246,27 @@ Hội đồng phân chia rạch ròi 36 concept gốc + 10 concept Discovery the
 │   13. Jeli (#34 - Hỗ trợ sứa sóng chuông nước)                         │
 │   14. Pavo (#35 - Pháp sư quạt mắt dọa sợ)                             │
 │   15. Mok (#37 - Hỗ trợ / Trinh sát Cổ Đăng - Bản V2 tinh giản)        │
-│   16. Kymos (Hỗ trợ khánh đá cắt sốc sát thương - Đổi tạo hình)        │
+│   16. Kymos (Hỗ trợ khánh đá cắm mốc cắt sốc sát thương)               │
 ├────────────────────────────────────────────────────────────────────────┤
 │ NHÓM 3: CANDIDATE UNDER SPIKE (2 Tướng Đang Thử Nghiệm Kỹ Thuật)       │
 │   17. Eelix (#33 - Sát thủ lươn bóng tối: Chờ Locomotion Spike)        │
-│   18. Oneira (Hỗ trợ hút khống chế: Cần giới hạn loại CC)              │
+│   18. Oneira (Hỗ trợ hút khống chế: Giới hạn loại CC và trạng thái)    │
 ├────────────────────────────────────────────────────────────────────────┤
-│ NHÓM 4: RESERVE (18 Tướng Dự Bị / Cần Nghiên Cứu Thêm Cơ Học)          │
-│   - Nhóm cũ hạ: Dron (#26), Soma (#25), Liora (#10), Rana (#21),       │
+│ NHÓM 4: RESERVE (22 Tướng Dự Bị — Đầy Đủ 100% Ứng Cử Viên)             │
+│   - Nhóm cũ (16): Dron (#26), Soma (#25), Liora (#10), Rana (#21),     │
 │     Boto (#29), Sira (#22), Rava (#04), Namo (#11), Taxa (#23),        │
 │     Loko (#16), Marduk (#14), Vark (#09), Vika (#12), Rako (#13),       │
-│     Erran (#05)                                                        │
-│   - Discovery hạ: Gravi (Rút gọn), Mira (Gương), Tethys (Đường nước)   │
+│     Erran (#05), Garo (#08 - Móc Quỷ)                                  │
+│   - Discovery (6): Gravi (Trọng lực), Mira (Gương phản xạ),            │
+│     Spora (Bào tử nấm), Tethys (Đường nước),                           │
+│     Magneto (Lực từ phân cực), Chrona (Đồng hồ cát đảo ngược)          │
 ├────────────────────────────────────────────────────────────────────────┤
-│ NHÓM 5: CUT LIST (10 Tướng Bị Loại Thẳng Cánh)                         │
-│   - Cũ: Oren (#18 - Garen), Mora (#24 - Summon rác), Cala (#27),       │
-│     Mono (#06 - <55đ), Brak cũ (#15-OLD), Kipa (#30-OLD), Teko (#20)   │
-│   - Discovery: Vorta (Cổng đa kỹ năng quá tải), Plasm (Kim loại lỏng), │
-│     Spora (Trùng Moka/Mok)                                             │
+│ NHÓM 5: CUT LIST (9 Tướng Bị Loại Thẳng Cánh)                          │
+│   - Cũ (7): Oren (#18 - Garen), Mora (#24 - Zyra), Cala (#27),         │
+│     Mono (#06 - <55đ), Brak cũ (#15-OLD), Kipa (#30-OLD),              │
+│     Teko (#20 - Bãi mìn cắm trại toxic)                                │
+│   - Discovery (2): Vorta (Cổng đa kỹ năng quá tải logic va chạm),      │
+│     Plasm (Kim loại lỏng bọc thể khó đọc visual và bất nhất hitbox)    │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
