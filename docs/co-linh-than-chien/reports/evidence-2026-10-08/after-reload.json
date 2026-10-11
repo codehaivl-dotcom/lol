@@ -1,0 +1,26 @@
+{
+  "phase": "ingame",
+  "host": "pa_67cb45098b95c730ec62194b5bd11e5e",
+  "disconnected": {
+    "pa_64a9fbc7b746f8b26c82ab3974be5384": 63393133.333333336
+  },
+  "roster": {
+    "pa_64a9fbc7b746f8b26c82ab3974be5384": {
+      "team": "blue",
+      "slot": 0,
+      "hero": "kha_tan",
+      "name": "lukasai"
+    }
+  },
+  "players": [
+    {
+      "name": "fluxby",
+      "userId": "pa_67cb45098b95c730ec62194b5bd11e5e",
+      "locale": "vi-VN"
+    },
+    {
+      "name": "livelyforestfd0a9",
+      "userId": "pa_cba891da3ac947ba4c74abc070f6a774"
+    }
+  ]
+}

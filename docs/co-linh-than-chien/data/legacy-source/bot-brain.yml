@@ -1,0 +1,267 @@
+# Jev's playbook — the framing every League of Spawn bot carries into each decision.
+# scripts/bot.js hands Jev the card for its role, its champion and the game phase, beside the live facts.
+# Two minds read this: the MAP plan (per bot, where it goes and why) and the FIGHT read (per bot, when enemy champions
+# are close). The COACH (one per team, the shot-caller) is asked with live facts only and reads none of it.
+# Plain words; Jev reads them as instructions.
+
+game: >-
+  League of Spawn is a 5v5 lane game in third person, played on a clock. Win = the enemy core falls. The path: kill a lane's tower
+  (tier 1), then its keep (tier 2: a tower with far more health, locked until its tower falls), then the core itself. Nothing
+  rebuilds. A fallen keep opens the core for good and its lane's minions march with super minions to the end.
+  The core has no towers: it defends itself with a beam that ramps on one target and hits harder for every keep
+  still standing. It is locked until one keep falls, then wears a shield (bigger per standing keep) that
+  regenerates if nobody hits it for 12 s; its health never regenerates. Break it with the whole team and a wave, never alone. Gold and xp come from last-hitting minions, kills, assists, towers and camps; gold buys
+  your gear by itself in your own base, or while you are dead, out of combat: never out on the map. Every basic ability casts from level 1 and grows with levels; the ultimate (R) has no cooldown: it casts when its bar is full, and the bar fills by fighting (hitting heroes most, minions and camps a little, shields, heals and control too; what your gear does fills nothing). Dying gives the enemy gold and time. A numbers
+  advantage wins fights; a team that fights 4v5 loses. Towers hurt champions hard unless your minions are under
+  them first. THE CLOCK: a horn sounds and 30 s later a Call opens at a river pit. The Calls never run out: the next horn
+  sounds once what the last Call set marching has fallen. What a Call is fought for, and what it sets marching on the
+  structures, is the map's own: theCall says it.
+  From a horn until its Call is over the Call gate in front of your fountain is open: it sets you down on your road to the pit where your team answers, short of the ring.
+  A camp that is no buff camp is a mercenary camp: beat it and its monsters walk the nearest lane for your team.
+  No match ends on a clock: it ends when a core falls. What a won Call sets marching grows stronger Call by Call: walk with ours, kill theirs.
+
+phases:
+  early: >-
+    Laning (first ~8 min). Stay in your own lane and farm; every last hit matters. Trade only when your abilities
+    are up and theirs are not, or the enemy is low. Don't chase under their tower. Recall when low. Gear is bought
+    only in your own base (or while you are dead): a laner goes home on a safe wave once its gold buys its next piece. Junglers clear camps and gank lanes where an enemy is pushed up and low.
+  mid: >-
+    Skirmishing (~8-18 min, or after the first towers fall). Be at the lit pit when a Call opens,
+    turn kills into towers, push your wave before the horn. Between Calls take what the last one opened.
+    Don't wander alone into the enemy jungle.
+  late: >-
+    Teamfighting (18+ min, or once a keep falls). Death timers are long: a lost fight can lose the game. Move
+    as five, fight for the Call and around keeps, protect the carries, walk with what a won Call set marching for you.
+    Never face-check alone. After an ace, push to the core.
+
+# the match pace (the referee's match.pace.stage, from the match clock: lib/clock.js). A match ends by itself by 20:00.
+# timeline is the clock in words (numbers from tuning.yml clock / pace); no mind is handed it today. What a Call is fought for and
+# what its winner gets is the map's objective's to say (lib/bot-objective.js words.game: the minds read it as theCall).
+timeline: >-
+  The first Call opens at 2:30 at one river pit, after a horn 30 s before; each later Call's horn sounds once what the
+  Call before it set marching has fallen. The Calls never run out, and each one's reward is stronger than the last.
+  Camps are closed while a Call's reward walks. Structures never rebuild.
+  Towers drop gold plates until 10:00. Streaking champions carry a kill bounty. Death timers grow after
+  15:00. No match ends on a clock: it ends when a core falls.
+stages:
+  laning: >-
+    0-8 min (or until a tier-1 tower falls). Farm, trade, take plates. Laners stay in their own lane until 7:00;
+    before that only the jungler roams, and a shoved mid or support may gank a side lane and return. A Call
+    is the one thing every laner leaves its lane for: at the horn, go.
+  skirmish: >-
+    8 min to 12:30. Look for 2v2 and 3v3 fights in the river when we have the numbers. Be healed and at the lit pit
+    when a Call opens. After taking one, push behind what it set marching for us; after losing one, meet theirs at our structures.
+  late: >-
+    From the fourth Call's horn. The team ahead in gold groups four or five in one lane and sieges toward the keep, then the
+    nexus. The team behind groups to defend and collapses on any enemy caught alone (a split pusher); it does not
+    split itself. A split push is only an option when the team is clearly winning elsewhere or can't fight.
+roles:
+  top:
+    job: "Solo top laner. Farm the wave, win the 1v1, pressure top towers, join every Call."
+    early: "Farm top all laning phase. Trade when the enemy walks up to last hit. Back off when their jungler is missing."
+    mid: "Shove top before the horn and be at the lit pit when the Call opens. Split-push if the team gives the Call away."
+    late: "Front line or split-push. Engage onto carries or peel your own carry."
+    never: "Leave top early to roam aimlessly; die under their tower."
+  jungle:
+    job: "Jungler. Clear your own camps for gold/xp, send mercenary waves down a lane, gank lanes, be first at every Call."
+    early: "Clear camps in a loop; gank a lane where an enemy is pushed past the middle and low on hp. Be at the lit pit when the Call opens."
+    mid: "Play the clock: a mercenary camp before the horn sends a wave while the teams fight for the Call; gank to open towers."
+    late: "Stay with the team; stand at the Call with it. Lead the engage or protect the carries."
+    never: "Sit in a lane farming minions; walk into their jungle alone when behind."
+  mid:
+    job: "Mid laner. Farm the short lane, bully the enemy mid, roam to side lanes and the river when the wave is pushed."
+    early: "Farm mid; push the wave then look to help a side lane."
+    mid: "Go with the jungler to every Call; burst priority targets."
+    late: "Stay with the group; burst the enemy carry from range; don't face-check."
+    never: "Roam while the wave crashes into your tower."
+  bot:
+    job: "Bot lane carry (ADC). The team's damage. Farm safely, scale with gear, deal damage from max range in fights."
+    early: "Farm bot with your support, last hit everything, trade only with support nearby. Never walk ahead of the minions."
+    mid: "Push bot, take tower plates, group for the Call. Stay behind your front line."
+    late: "Stand behind your tanks and hit whatever is in range; kite back while attacking. Your life is the team's damage."
+    never: "Face-check, walk up first, fight alone, chase deep."
+  support:
+    job: "Support. Protect the carry, set up kills with crowd control, shield/heal, stand at the Call with the team."
+    early: "Stay with your bot carry. Poke or engage when the enemy steps up. Save your crowd control to stop an enemy all-in."
+    mid: "Move with your carry to the Call, protect your carries in fights."
+    late: "Peel for the carry or engage for the team; stay close to your ADC."
+    never: "Take last hits from the carry; leave the carry alone in lane early."
+
+champions:
+  stitches:
+    role: "flex bruiser-mage; hook catcher: mid, jungle or support"
+    style: "Mid: walk up behind the wave, hook a hero with a clear line (minions block the Chain Gaff), then Gut Crush and Iron Maw at his feet. Jungle: clear camps with the slam and the bite for sustain, gank from brush with the gaff into a lane where the enemy has pushed up. Support: stand beside your carry, eat no wave, hunt hooks on the enemy carry and swallow divers off your own."
+    combo: "q when no minion stands on the line, rmb (slam + murk) as they land, e (bite: heal + shield), lmb between; r swallows a hero within 5 m and spits them toward his own towers: the spat hero stuns every enemy it flies through."
+    spikes: "Swallow Whole on a full bar."
+    beware: "Kiting mages, hooking into a full wave, fighting with the gaff down; swallowing in the middle of their team: damage worth 15% of his health rips the belly open and frees the victim."
+  liming:
+    role: "mid / bot burst mage; resets on takedowns"
+    style: "Poke with Wild Blot from its full range (it hits hardest far away), throw Three Strokes at a target close enough for all three to land and follow with the Full Stop. Slipstep in for Last Word when a target is low; Slipstep out when dived. A spell that hits a hero within 3 s of a Slipstep gives its cooldown back."
+    combo: "rmb from max range, q then lmb (Full Volley, then the Full Stop), e in and r (Last Word lands 0.35 s after the press and knocks them 7 m); a takedown resets everything, so chain the next target."
+    spikes: "Last Word on a full bar; a Slipstep that a spell hit has given back."
+    beware: "Burning Slipstep to engage while hurt with no spell to follow (4.5 s cooldown, refunded only by a spell hit on a hero); fighting inside melee range."
+  vespera:
+    role: "mid assassin; mask-break burst"
+    style: "Poke with Laughing Mask, then Vanishing Act onto the masked target to break the mask and blink home to the mask left behind; chain a target that cannot outrun you. Second Face repeats the last ability; on a masked hero it bursts the mask in wrath (half the break to every other enemy within 3.5 m). A broken mask gives back the stamina of one roll."
+    combo: "q then rmb (breaks the mask) then r (Second Face) then e (stay within 19 m for 1.5 s to root; e again hauls them to the chain's halfway point, half the way to you, and gives up the root and its damage); rmb again returns to the mask left behind."
+    spikes: "Second Face on a full bar; Q-RMB-R burst kills a squishy at 60% HP; Q then R on a masked hero who stands among his team."
+    beware: "Dashing in without the way back ready; hauling a target the root would have held; a haul is for dragging a far target into your team or off its tower."
+  axe:
+    role: "top/jungle main tank and initiator; stores the damage he takes, pays it back, executes"
+    style: "Walk into them and be hit: a quarter of the damage he takes is stored for 5 s (Blood Debt). Pit Roar taunts everything in a 7 m cone down his aim for 1.8 s, so they swing into him; Reckoning then spins the whole debt onto everyone within 4 m. Blood Feud the champion who runs. The damage he stores and the taunts he lands fill his ultimate's bar: he fills it by standing in the fight."
+    combo: "rmb (Blood Feud slows 20%) to close, q (Pit Roar, aimed at them) to be hit, then e (Reckoning) with the debt stored, and lmb; r (Pit's Verdict) only on a champion below 250/350/450 + 10% max HP: an execute readies Pit Roar and speeds the team. The bar it spent does not come back."
+    spikes: "a full bar with a champion under the line; the first execute chains into the next Pit Roar with team speed."
+    beware: "Roaring with no one in the cone; Reckoning with no debt (a plain spin); Pit's Verdict on a healthy target (it only hits and the bar is spent); diving towers alone."
+  thrall:
+    role: "top/jungle bruiser; Stormbeat duelist"
+    style: "Walk up behind the Twin Rams; once a ram roots, pop Stormbeat (E) and club three fast swings; Forked Sky into grouped enemies. Every Stormbeat hit takes 1 s off Stormbeat."
+    combo: "rmb (Twin Rams: two rams in a V that run through every hero on their line; the first hero a ram meets is rooted 1.2 s, both rams on it 2 s, heroes behind it half as long; aimed AT a hero within 25 m both rams meet it, aimed short the V opens wide) then e (Stormbeat) and lmb x3, q (Forked Sky: 0.4 s wind-up, then it forks 3x) in between; r (Earthsplitter) down a line through two or more heroes or onto a rooted one."
+    spikes: "Earthsplitter on a full bar; a rooted hero with Stormbeat up."
+    beware: "Kiting ranged heroes when the rams are down; a cast aimed dead centre past 25 m (the V opens: aim one ram at them); wasting Earthsplitter on one mobile target."
+  rubick:
+    role: "support/mid control mage; kit thief"
+    style: "Sapping Bolt the enemy line (it bounces through heroes, weakens them and gives him spell damage for each hero hit); lift the diver with Unseen Hand and throw them back into your team or under your tower (with no hero to lift, throw a minion at them: the landing stuns 1 s); Arcane Aegis the ally being focused. Borrowed Mantle takes an enemy hero's whole kit for 30 s: the take needs his full ultimate bar and empties it, the borrowed ultimate needs no bar and goes once, and his own bar fills again only after the kit goes back."
+    combo: "q (Sapping Bolt bounces) then rmb (lift) and rmb again to throw into allies; r (Borrowed Mantle) on the enemy whose kit wins this fight, then play that kit with its ultimate once; e (Aegis) when an ally is jumped."
+    spikes: "Borrowed Mantle on a full bar; any fight where the enemy carry's kit is better than his own."
+    beware: "Taking a kit that needs a body he does not have (a tank's kit on a mage's health); walking into range before Unseen Hand is up."
+  rook:
+    role: "bot/mid ranged caster; poke and kite"
+    style: "Stay at the edge of 24 m and spam Hot Rivet through gaps in the wave; every hit takes 0.5 s off his attack and basic cooldowns, up to 1.75 s at five Momentum stacks, and adds a little to his ultimate's bar, so keep hitting. Tag the hero with Salvage Tag, then pop the tag with an auto or Hot Rivet for mana back; a tagged hero can be shot from 22 m. Skyvault away from a dive (its burst is the old blink's distance in half a second), and forward only to finish."
+    combo: "rmb (Salvage Tag) then q (Hot Rivet pops it) and lmb; e (Skyvault: 2.5 s of flight, a dash at lift-off, no attacks in it) to escape or to finish; press it again to come down once the target is inside 12 m or the spot it was pressed toward is reached: the bolt leaves as he lands, for the tagged hero or the one aimed at; r (Relic Surge, held up to 1.4 s for a wider, harder surge) on a low or fleeing hero at any range, or through a whole wave line."
+    spikes: "a full ultimate bar (Relic Surge); 5 Momentum stacks (+50% attack speed, the biggest Hot Rivet refund) after a spell rotation."
+    beware: "Hard engage with Skyvault on cooldown; flying under towers; a stun or a root brings him down with no bolt; drawing Relic Surge next to an enemy (the press spends the bar, he is slowed while he draws, and a stun or a hold past 3 s loses the surge for half the bar back)."
+  kaelthas:
+    role: "mid burst mage; Sunflare stacker"
+    style: "Stand behind the wave and Sunflare the enemy hero every few seconds: it is small and weak by itself, and large and strong on a charged coal (every third spell charges one), so cast two cheap spells and keep the coal for the Sunflare that matters. Cinder Brand into a group; save Sunfall for a lifted or rooted target."
+    combo: "e (Updraft lifts 1.2 s and drifts them 3 m away) then q (Sunflare under the floating body, best on a charged coal) then rmb (Cinder Brand: one burst, it never spreads) and r (Sunfall, 1.2 s cast: it flies from over his head at the hero under the aim and bursts in 4 m where it comes down; only on a target that cannot dodge); lmb between."
+    spikes: "Sunfall on a full bar; a charged coal before a fight."
+    beware: "Divers who reach him (no dash); spending the charged coal on a spell other than Sunflare; casting Sunfall at a hero with a dash up."
+  veyran:
+    role: "duelist bruiser, a melee sorcerer; top or jungle, can mid"
+    style: "He lives by a rhythm: a spell, two swings, a spell. Three rings ride his blade; a basic attack that lands lights one and so does an ability that strikes. With all three lit his next ability is Inscribed (it strikes 70% harder and gains a second effect) and spends them. An ability cast on one or two rings takes them for nothing, so he casts on three, or on none. He closes with the leap or the blink and stays on one target."
+    combo: "rmb leaps up to 7 m onto a target (its slam lights a ring), lmb twice, then on three rings the spell the enemy asks for: q on one who stands and fights (Inscribed: the crescent from 2 m to 6.5 m burns 1.2 s, slows 20% and bursts: whoever fights him in his reach stands on it), rmb on one who walks away (Inscribed: the slam slows 40% for 1.5 s and the scar for 2 s), e when neither is up or to finish (Inscribed: a second thrust inside 3 s for 70%); r on a full bar when the duel is his: for 5 s no hero walks in or out of 8 m, his rings relight every second, and it ends in a blast."
+    spikes: "three lit rings; a full bar with one or two enemy heroes in reach and his own health over 40%; a target with its dash spent."
+    beware: "Casting on one or two rings (they are lost); the Ward shuts his own allies out and shuts him in with everyone inside: never on three or more, never while low; being kited before the rings are lit; if he dies the Ward falls with no blast; a cleanse or a relic's freedom walks out of it. A ring wall holds every hero: a goal across one waits until it falls."
+  aldric:
+    role: "bruiser-tank banner knight; best top, can mid"
+    style: "Walk up and sweep. No dash, no range: he wins close, loses when kited, so he pins first (a pinned champion cannot roll or sprint for 1.5 s). Banner Sweep hits harder in front of him than behind: face the target."
+    combo: "q (speed + pin) to close, e (sweep) on them, lmb between, rmb shield when he or the ally within 8 m is hit (the ally gets half), r to execute below ~40% hp (true damage, grows with missing hp): its banner shields allies within 8 m."
+    spikes: "a full bar with a champion under ~40% hp; a pinned champion with his team near. Strong all game in melee range."
+    beware: "Ranged champions poking him, slows and roots, fighting at low hp with an empty bar, executing far from his team (the banner shields no one)."
+  varkas:
+    role: "juggernaut; top or bot-lane bruiser"
+    style: "Lane bully; hang Tally tags (a stacking bleed) with lmb and q, stay on target; he snowballs from kills."
+    combo: "e (pull; the nearest hero stays chained 2 s and is pulled back if it runs past 8 m) to bring them in, rmb slow, q is a half circle toward the aim: hit with its outer edge to heal, r on a hero in 7 m when its Tally tags are many or the target is low: it drags them to him, then executes; a kill gives the whole ultimate bar back."
+    spikes: "a full ultimate bar (the execute; a kill fills it again); every kill."
+    beware: "Being kited; a lost trade when q misses. Weak retreating: no escape."
+  solvar:
+    role: "engage tank support; can top"
+    style: "Starts fights, and makes the enemy choose. Dawnline plants a blade under the first champion it hits and ties them to it for 3 s: if they leave its 7 m ring the line snaps (a burst and a slow); if they stay, his team has 3 s to reach them."
+    combo: "e (Dawnline) first to tie one down, walk in while it holds; q charges 6 m and stuns the first champion in its way, rmb shield that bursts when it is broken, r stuns a group from range (best on two or more) and lights them: no hiding in brush for 4 s."
+    spikes: "an all-in in lane from the first minutes; a full bar in a teamfight (Daybreak on two or more)."
+    beware: "Walking in when his team can't follow; the line pulls nobody and his only dash is the 6 m charge of q (a miss leaves him deep with no stun); a tied champion can still fight from inside the ring; his damage is low alone."
+  tenzo:
+    role: "skirmisher fighter; jungle best, can top/mid"
+    style: "Early pressure. Ganks and outplays; falls off late, so he must make plays early."
+    combo: "q marks then press again to fly in, e (a leap: the slam lands 0.4 s after the press) slows, lmb strikes step him toward his aim and plant him, rmb shields and a second press (Stormguard) turns 4 s of strikes into more shield; while any shield is on him his strikes carry lightning (Storm Within). r locks a hero within 6 m: a tap kicks them 11 m away, a second press throws them 9 m toward his team."
+    spikes: "early ganks; Turn of the Storm on a full bar with his team behind him; strongest before 15 min."
+    beware: "Going in when q misses; long fights late; his shield broken early shuts his lightning off; a stun in the air stops Stormfall."
+  seris:
+    role: "burst mage; mid"
+    style: "Pick-off assassin. Land Beckon, then everything. Mobile with 3 ult dashes. The beckoned enemy walks to the lantern left where she cast, not to her. That lantern stands 6 s and keeps watch: each spell she casts makes it throw a mote at an enemy within 7 m of it, and Veilstep's bolts fly from it too, so fight beside it."
+    combo: "e Beckon first; on hit q + rmb motes + lmb; press q again once it has passed the target to call it back early (while Beckon walks an enemy to her lantern the lantern stays where it is and the light only turns; with no Beckon holding, her lantern is then set down where the light turned, behind the target); r dashes toward the target (its bolts strike what stood inside a cone ahead of her at the press, passed or not; a dash away is only an escape), three charges; poke with q in lane."
+    spikes: "a full bar: the first dash of Veilstep empties it and the other two are free; her weapon's first rank."
+    beware: "Missing Beckon then going in; hard crowd control; dashing away and expecting the bolts."
+  lysara:
+    role: "artillery mage; mid or support"
+    style: "Long-range poke and pick. Stay far back."
+    combo: "q roots the first enemy and forks: two bolts fly on 14 m to each side and root who they meet, so aim it into a group. e on them, r (a 70 m line of light, harder far away) while rooted; q or r through her own e bursts it harder. Where e bursts a fixed star hangs 9 s: your darts strike 30% harder at a hero who stands in its dial, and r aimed through it strikes 10% harder (each star, three at most), so dart who stays on the star and fire r down the line you just burst on. rmb shields allies and lifts slows on its way back; pressed again it bursts where it is and shields every ally within 6 m. Poke from max range."
+    spikes: "a full ultimate bar (Meridian); her shields on allies raise her charm."
+    beware: "Divers and assassins — very fragile, no escape. Keep distance."
+  zephira:
+    role: "enchanter support; heals through her shield"
+    style: "Disengage and protect. Shield the ally who is fighting, then HIT the enemy: while an ally wears her shield, half of her damage to heroes heals them, and while her own shell stands a quarter of it heals her. Peel divers."
+    combo: "q thunderhead knocks up (slow, aim ahead; the second press sends it where she aims then); rmb rune stone slows; e shields her and the ally being hit or the carry who is attacking, then lmb and rmb the enemy to heal that ally; r is a held cone of storm wind that keeps pushing enemies away while she walks slowly: aim it at the diver."
+    spikes: "always useful; Headwind on a full bar turns a dive."
+    beware: "Standing in front; leaving the carry; shielding and then not attacking (the shield heals only through her damage, her own health too)."
+  ansel:
+    role: "healer; support"
+    style: "Stand 10-16 m behind your front line with a clear line to the ally under fire, and never stop throwing Morning Bolts: every bolt that strikes an enemy brings your heal back sooner (a second on a hero, half a second on a minion), and with the heal ready the same bolts bank up to a second and a half for its next cooldown. Healing an ally is what fills your ultimate's bar."
+    combo: "q is an aimed heal: throw it at the hurt ally, never through an enemy hero (he blocks it); it heals 30% more under 40% health, so the one in danger first. rmb swings the censer 10 m out and back: out it burns and slows enemies, coming home it heals allies, half again more (and you too) when it struck an enemy hero: swing it down a line that holds an enemy hero and your hurt ally. e shoves back whoever dives you. r raises the sun: after 0.9 s a wave heals every ally in a wide 20 m fan in front of you and burns enemies: face your team and press it when two are hurt; a stun on you in its wind-up stops it."
+    spikes: "from the first minute; strongest in long fights around a Call, where every bolt lands; First Light on a full bar with two hurt allies in front of you."
+    beware: "A diver on you after e is spent: you cannot heal yourself with q. An enemy hero standing between you and your carry. Standing so far back that no bolt lands: the heal then comes back slowly. A withered ally heals far less."
+  ysolde:
+    role: "healer; support"
+    style: "You set clocks and choose when they turn. Stay 10-16 m behind your front line with your carry in sight. Between a mark and its turn, throw Sand Darts at enemy heroes: each keeps a grain, and a clock that turns takes them all and gives 10% more a grain."
+    combo: "q marks a HERO for 4 s: on the ally being focused it gives back 60% of what they lose when it turns, on an enemy it deals a quarter of what they lose again; press q again to turn it early, when the ally is in danger or the enemy has taken its fill. rmb turns ground to sand for 3 s: lay it under the fight or the way out; whoever is still in it when it drains is rooted, and a second press sets it early for a shorter root. e stands your hour: press it when you are dived, run, then press again to return to it with half the health you lost. r marks every ally within 12 m for 3 s: press it as the enemy commits, and again to turn it when someone is in danger."
+    spikes: "from the first minute; a fight where the enemy bursts one target; The Unturned Glass on a full bar as they commit."
+    beware: "A mark heals no old wound and a hero who dies under it gets nothing: turn it before the killing blow. A silence or a stun on you leaves your clocks to run out by themselves. An enemy standing on your hour."
+  jaina:
+    role: "control mage; mid, sometimes support"
+    style: "Chill, break, chill again: a spell on a Chilled enemy deals 60% more and spends the Chill, so alternate. Stay 18-24 m back behind the wave."
+    combo: "q Serpent Lance to Chill, then e Rimebreath at close range to root the Chilled target (that spends the Chill), rmb Fangfall on clumps or a rooted target, r The Sentence with its centre ON a Chilled hero: one blow 0.9 s after the press, full damage within 4 m of the centre and 80% in the rest of the 7.5 m circle, a 1.5 s root in the heart and a 0.5 s root in the rest of the circle, 60% more on the Chilled."
+    spikes: "The Sentence on a full bar with a Chilled hero in reach; her weapon's first rank."
+    beware: "Being engaged on with Rimebreath down; passing The Sentence on a hero who is not Chilled, or with its centre off the hero."
+  invoker:
+    role: "mage of the three Signs; mid"
+    style: "Three Signs spell a spell: Stone (rmb) for damage, Storm (e) for speed, Frost (q) for regeneration. A cast SPENDS the three Signs and their gifts, so each spell is three calls and a cast. Gyre, then Boulder, then Monolith is the teamfight; Brittle and Cairn Golems duel."
+    combo: "three Signs then r: two Storm and a Frost is Gyre and lifts, two Stone and a Storm is Boulder where they land, three Stone is Monolith on the landing spot, one of each is Avalanche to peel, three Frost is Brittle on the diver, two Frost and a Storm is Whiteout to escape. The Sign called last adds a finish: Frost a slow, Storm reach, Stone damage."
+    spikes: "no ultimate bar: R is ready whenever the spelled spell is off its own cooldown; levels 6 and 11 shorten the gap between two casts and every spell's cooldown; his Signs grow at levels 3, 5, 7, 9; his weapon's first rank."
+    beware: "Calling Signs in a fight without a plan; standing with no Signs after a cast; no escape when Whiteout is down."
+  thordan:
+    role: "protector support; bot"
+    style: "Stand between the enemy and your carry. Rimeshard and his punches mark a champion: each mark slows more, your carry's autos add marks, the fourth roots."
+    combo: "q to slow and mark, lmb jab-jab-hook for the 4th mark's root, rmb slide to an ally in danger (enemies on the way are bumped aside), e Bulwark toward incoming shots (it stores them; e again shoves 6 m, harder for each), r Glacier Ram down a line: it carries the first champion 14 m away and throws up the rest."
+    spikes: "q + passive from the first minute; a full bar (Glacier Ram takes one champion out of the fight)."
+    beware: "Raising the shield the wrong way; sliding away from the carry; Glacier Ram carries the FIRST champion it meets."
+  sniper:
+    role: "long-range marksman; bot, sometimes mid"
+    style: "Stand at the very back and shoot from 21 m (30 m under Steady Aim). Every 3rd shot is a Heavy Round that shoves and slows, whether he stands or walks. Drop Iron Rain on clumps, fleeing targets and waves; keep one charge for fights."
+    combo: "rmb (Steady Aim) before poking or sieging, lmb from max range, q on the target's path, e only to escape (aim it at the threat: the blast throws him backward), r on a low or fleeing hero 20-55 m away when nobody is near you; when that hero dies to it or within 3 s, r is open for 3 s at no charge: fire it again at another hero."
+    spikes: "a full ultimate bar (Called Shot; a kill with it opens a second shot); a Longwatch for his shots from 15 m or more."
+    beware: "Anyone within 6 m of him: he has one escape. Bracing Called Shot with an enemy close (a stun in the brace loses the shot; 70% of the bar comes back). Walking ahead of his wave."
+  ylva:
+    role: "utility marksman; bot"
+    style: "Kite with slows from max range. Starts fights with a stone lance that stuns across the whole map."
+    combo: "lmb at max range: stay on ONE target, the grit slow builds 10, 20, 30% over three arrows; rmb in fights, just before a string of basic attacks (five stones: 60% attack speed, each arrow takes one stone with it for extra damage and 12% of the speed; the first shots are the fast ones), e (the granite falcon: a scout that flies the whole map; brought down on enemies its strike now deals damage, double at its heart, and slows) to see a fight coming or to poke a clump, q fan of arrows for burst/waves, r (the stone lance, a stun, huge range) to start a fight or catch a fleeing enemy."
+    spikes: "the stone lance on a full bar; the third arrow on one target (the 30% slow); her weapon's ranks."
+    beware: "Being dived; standing in front of her team."
+  vaelor:
+    role: "poke marksman; bot"
+    style: "Long-range poke and siege. Charged q hits very far."
+    combo: "q charged from max range, through minions when it can (each body it passes adds 10%, up to 30%); e slows a zone and hides his team inside it like brush while it falls; r roots the first hero and raises a hedge across the shot through them that roots whoever touches it, so fire it at a hero with others beside it; then lmb with rmb up."
+    spikes: "the root and its hedge on a full bar; a full draw through a wave; his weapon's ranks."
+    beware: "Being dived; charging q while someone runs at him."
+
+  orren:
+    role: "setup mage; mid (duel-only)"
+    style: "Keep about 12-18 m when trading. A seam is not a wall: value a pin only when the enemy's predicted feet at RMB impact lie inside it. Farm between cooldowns."
+    combo: "q Scoreline through the enemy or wave at 6-24 m, led on projectile speed; rmb Crosscut across the laid seam near the enemy's predicted position (a plain crosscut for CS or a good trade); e Brace before the hit lands; r Final Measure when the fixed rails meet the enemy's route or after a pin."
+    spikes: "Final Measure on a full bar; his weapon's first rank."
+    beware: "Spending q into a wall; rmb on an empty or expired seam; r when they can step into a gap; e after the damage (it does not heal); weaving basics during the R charge."
+  vessa:
+    role: "painter mage; mid (duel-only)"
+    style: "Trade with q and basics at 16-20 m. Full Palette (all three colours wet) Signs the next cast; never let Signed time out unused. Back off when e is down and the enemy is within 10 m."
+    combo: "rmb Rose Stroke 1-2 m ahead of the enemy along their path at 12-22 m, q Gold Splash on a clear line (best after the stroke sets), e Green Streak sideways to finish the palette, then the Signed basic or r Masterpiece on a slowed, rooted, low or Signed target."
+    spikes: "Masterpiece on a full bar; her weapon's first rank."
+    beware: "e is defensive first (away under 40% hp while hit, or slowed with the enemy within 6 m); r on a full-hp un-slowed walker; dashing into tower range."
+
+rotations: >-
+  Numbers win. When 2+ enemies group on one of our towers, the team answers with equal numbers or does not
+  answer at all. Who moves: the lane owner and the jungler first, then mid (mid rotates to both side lanes and the
+  river). The support follows the carry early and joins any fight after laning. The bot carry and top only leave their
+  lane after laning phase, and never alone. If we can't match their numbers, don't feed: the lane farthest from their
+  group pushes its own wave and takes a tower in trade. "threats" lists what the team sees right now and who is
+  already rotating; don't pull away from a rotation you are part of.
+
+map: >-
+  The Rift is a square mesa. Our base is one corner, theirs the opposite; the river runs corner to corner between
+  the halves and is open, wadeable duelling ground. Three lanes join the bases: top runs up our side edge and turns
+  at the top lane corner, bot runs along our bottom edge and turns at the bot lane corner, mid runs straight through
+  the centre. Each lane has our tower (tier 1), then our keep (tier 2) on the road to our base gate. A hero who leaves our base through a gate out of combat is set down behind that lane's outermost standing structure. Our jungle fills the
+  two wedges between lanes on our side of the river: Templeshell, Sentinel and Wolves on the top half; Raptors,
+  Ember Basilisk and Shardbacks on the bot half. Two river entrances lead out of our jungle: the top-side entrance (near
+  Templeshell, toward the top pit) and the bot-side entrance (near Shardbacks, toward the bottom pit). A Call lights one of the two pits. A gank
+  from our jungle comes through a river entrance into the side of a lane; a gank on mid comes from Wolves or Raptors.
+  walkSeconds tells you how long the walk to each place is from where you stand, around living enemy towers:
+  a plan that takes 30+ seconds of walking must be worth it when you arrive; the wave and the fight will have moved.

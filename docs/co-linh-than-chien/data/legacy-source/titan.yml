@@ -1,0 +1,134 @@
+# The Titan a team wins at a Call: every number of it. Read by scripts/lib/titan-drive.js (the referee's side), scripts/titan-driven.js
+# (the body) and scripts/lib/ui-titan.js (the HUD). A list is one value per rank, rank = the Call's number (a map may name its own
+# ranks: lib/maps.js titanRankOf); a rank past a list's end reads its last value. A TITAN WALKS UNTIL IT IS SLAIN: nothing here
+# is a clock on its life, so its health bar is the whole truth of when it falls (the owners, 2026-10-02: "it'll have like 70%
+# health and then it'll just fall over dead"). The Calls never run out and each one's Titan is a rank over the last: the ranks
+# are what ends a match that the heroes alone do not.
+# the offer: seconds a person has to answer; a bot answers after botAnswerMs
+offer: { seconds: 10, botAnswerMs: 1200 } # (retired by claim below: no player is asked from afar any more)
+# THE CLAIM (izkimar 2026-10-05): the Titan rises at its pit and stands waiting. A person of its team who walks within `reach`
+# m of its rim presses F (or the HUD's DRIVE button) and takes it; no one does in `seconds`, a bot of the team drives it. A
+# person who steps out (F again) or loses it hands it to a bot. No teleport, no cross-map ask (lib/titan-drive.js titanPass)
+claim: { seconds: 20, reach: 5 } # 10 s: a person answers before a bot takes it (izkimar audit sweep, was 5)
+# the drive: its length, shown to the driver as a dial; when it is over the driver's hero steps out and the Titan walks its lane on
+# by itself. A mount that has not landed after mountSeconds (twice that for a driver whose body has parked itself in the Titan:
+# its machine is taking the controls), or a body whose script is silent stallMs, gives the Titan back to its own walk sooner. A
+# lost mount is the machine's doing: the drive is offered again, once, to that player first (lib/titan-drive.js titanPass).
+# safeMs of no damage and no control for the hero that steps out, exit metres past the Titan's rim on its own base's side
+# afkSeconds: a PERSON who gives the controls no input (no move, no turn, no press) for this long has left them like a leave: a bot
+# takes the Titan (lib/titan-drive.js titanPass). A driver who is there keeps it until F (izkimar 2026-10-05); an away one held the next Call.
+drive: { seconds: 70, mountSeconds: 3, stallMs: 4000, safeMs: 1500, exit: 1.5, afkSeconds: 45 }
+# A TITAN THAT STANDS OUT OF THE FIGHT DOES NOT HOLD THE MATCH. The next Call's horn waits for the Titan's fall (one Titan at a
+# time), and a Titan walks until it is slain: so a Titan that neither falls nor fights would freeze a whole match. The referee
+# looks every `every` s. A Titan is IN the fight while it comes nearer the enemy's stone (`move` m nearer the enemy's nearest
+# standing structure), breaks that stone, is struck (its health moves by `hurt` of the whole), or a person drives it; one that
+# has done none of those for `seconds` is IDLE (match.titan.idle: lib/titan-rules.js outStep): the horn waits for it no more
+# (lib/trial.js rewardWalks) and the camps open. NOTHING ELSE HAPPENS TO IT: it stands on the board with its plate until it is
+# slain, and if the other team's next Titan breaks free meanwhile it is left out (state.out) and pays when slain; its own
+# team's next Titan calls it back. (For one round the referee felled it as the next broke free: a Titan with health on its bar
+# fell with nobody striking it, the owners' own sentence. Gone.) The Toll's Stormwalkers are the same body under the same rule.
+# WHY ONE STOOD, AND THE CURE: the walk by itself headed for the nearest point of its lane's line and steered round every
+# standing stone, its own too; every tower and keep stands ON that line, so a Titan let go beside its own tower had a goal
+# under the tower and walked circles round it (critic 3 found it: six minutes in a live room; seed 716 of the rig, three plays
+# of three). No goal of the walk lies under a stone any more (lib/titan-rules.js pastStone, laneGoal), and the idle rule
+# measures what a Titan gets done, never whether its feet move (a circling Titan moved 60 m a minute and the first rule,
+# "has it moved 8 m", never spoke). Seed 716 on this tree: no idle line. So this rule is a net for a cause not yet met.
+idle: { seconds: 60, every: 10, move: 8, hurt: 0.02, cap: 120 } # cap: chip damage alone keeps it in the fight at most this long past its last real progress
+# A BOUND TITAN (a map whose row says titanBound: the Brawl; lib/seals.js titanSpent, titanWork): it is for ONE structure and
+# falls with it. Its drive has no clock (the structure's health is its clock). leash: a PERSON at its controls is held this
+# near its structure, in metres: from farther off every step must bring it nearer, and inside it does not leave (a tower's
+# reach is 16, a charge is 26). kneel: when its structure has fallen its health drains over this many seconds while it goes
+# down, so no bar jumps from 60 to 0. safeMs: the grace of a driver who is set down when the Titan falls that way (the
+# drive's own safeMs is for a step out; here the driver did not choose the moment, and stands at the ruin among their team).
+# idle: a PERSON's drive ends (the Titan walks at its structure by itself) when for this many seconds it has neither come
+# nearer its structure nor wounded it: no clock ends that drive, and the next horn waits for the Titan. A bot's drive keeps drive.seconds.
+# clear: on a map whose floor is not all walled by colliders (lib/layouts.js stepOn: the Span) its feet keep this far inside the floor's edge
+# kneel 3 s since the flow lane's fix round 5 (it was 1.2): on the Rift a bound Titan falls with two thirds of its health on its
+# bar (two of two in a live match: 66% and 74%), and a bar that drains in one second beside a tower that has just burst reads
+# as the owners' own bug. Three seconds is a body going down that an eye can follow; the referee's own net stands at 4.5 s
+bound: { leash: 30, kneel: 3, safeMs: 3000, clear: 2.2, idle: 25 }
+# SIZE 0.85× (izkimar 2026-10-05: "15% smaller"): height 8.1→6.885, rim 1.76→1.5, stride/stomp/fist/slam/charge width with it
+# SIZE 0.8× again (izkimar 2026-10-06: "20% smaller, he can get stuck on so much stuff"): height 6.885→5.508, rim 1.5→1.2, walk strideMps 2.11→1.69, stomp, fist reach, slam radius, charge width with it
+# the body: the model's height at scale 1, its scale and rim per rank (radius is the rim at scale 1), the rise before it moves;
+# riseBack: it breaks free this far behind (negative: in FRONT, toward the river: izkimar 2026-10-05 "spawn him in front of it", it rose on the pillar) (9 stood it in the pit's back wall on Highrift: 1 keeps it on the objective) the pit's centre, on the side away from the river (the Trial's pillar stands on the centre)
+body: { height: 5.508, scaleByRank: [1.3, 1.45, 1.6, 1.75, 1.9, 2, 2.1, 2.2], radius: 1.2, riseMs: 2000, riseBack: -7 }
+# THE MOSSWICK TITAN'S CLIPS (hero-lab mw-titan, izkimar 2026-10-05), read off its GLB at 24 fps: len = each clip's seconds,
+# impact = the second its blow lands (Crush: the right fist down; Slam: both fists on the ground; Hurl: both hands planted, held
+# for the beam's channel). strideMps = the metres a second its Walk carries it at clip speed 1 and scale 1 (feet measured in
+# stance), so the Walk plays at speed / (strideMps x scale) and its feet stay planted. hitEvery: s between masked Hit flinches
+# when struck; hitWeight: that overlay's share over the base clip; roar: s a fresh driver's Roar holds the body
+clips: { strideMps: 1.69, walkMin: 0.5, walkMax: 3, len: { Rise: 2, Idle: 4, Walk: 1.67, Crush: 1.5, Slam: 1.5, Hurl: 6, Roar: 2.17, Hit: 0.58, Death: 3.38 }, impact: { Crush: 0.8, Slam: 0.56, Hurl: 0.42 }, hitEvery: 2.5, hitWeight: 1.5, roar: 1.6 }
+# health = hp x (1 + hpPerLevel x (the champions' average level - 1)) x rankHp; armor and magic resist = resist + resistPerRank a rank.
+# towerShot: what a tower's shot takes from it (true damage, the same at every rank: a rank-1 Titan stands about 22 shots, a
+# higher one longer, so its rank is time under the guns; the core's lance is tuning.yml nexus.beamTitan).
+# A TITAN IS WORTH A TOWER FROM THE FIRST CALL, AND THE FIRST TWO NO MORE THAN ONE STRUCTURE (the owners, 2026-10-02: "the other team has gotten the Titan twice and they've
+# only taken one tower. The objectives don't seem strong enough"). The first two ranks were 0.7 and 1 of this health with a
+# fist of 2% and 3% (and a beam of 2.5% and 5%, a slam of 120 and 200, a charge of 200 and 320 on a structure): in live rooms
+# the first Titan of a match broke its tower in 2 matches of 6 and the second in 3 of 6 (it left the tower at 27 to 69%), and
+# the ladder's whole weight lay on Calls III and IV. They are 1 and 1.15 now with a fist of 3.4% and 4% (the other three rows
+# raised with them), and the ranks from III on are as they were. Live, seven matches: the first Titan broke its tower in 5 (the
+# other two left it at 10% and at 64%), the second took a structure in 6 (two in 2 of them; in the seventh match it left its
+# tower at 17%): most matches, not every one. AND THE FIRST TWO TITANS ARE FOR ONE STRUCTURE EACH (lib/data/maps.js
+# rift.titanBound: 2): with these ranks and no bound, the second Titan took a tower AND a keep in six of six even live matches
+# (critic 3), so a Titan of Call I or II is bound to the enemy's outermost standing structure of its lane, harms no other
+# stone, and falls with it. MEASURE THE FIRST TWO TITANS IN LIVE ROOMS, never
+# on the rig (heroes/lanes/gp-flow/fix2: the `titan` op of f2-kit.js read every 4 s, titans.py): the rig has no bodies in
+# each other's way and said 72% where the room said 33%. slowShare: how much of a slow reaches it. A stun, knock-up, charm, taunt or
+# silence staggers it (stops its move, holds it staggerMs), at most once every staggerEveryMs
+toughness: { hp: 9000, hpPerLevel: 0.06, rankHp: [1, 1.15, 1.35, 1.7, 2.1, 2.6, 3.2, 3.9], resist: 40, resistPerRank: 10, towerShot: 400, slowShare: 0.5, staggerMs: 600, staggerEveryMs: 3000 }
+# with no driver it walks its lane: speed, reach of a fist past its rim, seconds between fists, the share of a structure's health a fist takes
+walk: { speed: 3.2, strike: 3.4, rate: 1.6, fistLand: 0.55, fistPct: [0.034, 0.04, 0.045, 0.06, 0.075, 0.09, 0.105, 0.12] }
+# driven: top speed, m/s2 up and down, degrees a second it turns (walking / standing), walkArc = degrees off its facing past which it
+# only turns, clipRate = its walk clip's speed at full stride, climb and drop = m/s its feet follow the ground, edge and edgeCut = the mesa
+# it stays on, floor = ground it will not step below
+steer: { speed: 5.6, accel: 7, brake: 12, turn: 75, turnStill: 110, walkArc: 70, clipRate: 1.4, climb: 9, drop: 16, edge: 172, edgeCut: 40, floor: -12 }
+# every footfall (one per stride metres) crushes enemy minions within radius of its rim for pct of their health, at least min
+stomp: { stride: 1.84, radius: 4.08, pct: 0.12, min: 40 }
+# SLAM: after windup s every enemy unit and structure within radius of its rim is struck (the jungle's camps are left alone). Minions lose
+# minionPct of their health (a super superPct), heroes take hero (physical) and are shoved shove metres, a structure takes structure (physical)
+# the driver's fist (left click; slam is Q): seconds between fists, reach past its rim, the aim cone in degrees, when it lands,
+# how long it holds the body, and a unit's share of what the slam row would deal it (a structure takes the walk's fistPct)
+fist: { rate: 1.6, reach: 2.32, cone: 40, land: 0.45, busy: 0.6, share: 0.35 }
+slam: { windup: 0.9, cooldown: 6, radius: 6.12, minionPct: 0.6, minionMin: 200, superPct: 0.25, hero: [140, 200, 260, 320, 380, 440, 500, 560], shove: 6, structure: [200, 240, 280, 360, 460, 560, 660, 760] }
+# CHARGE: after windup s it runs distance metres at speed along its aim (at most arc degrees off its facing), striking what stands within
+# width / 2 of its rim once: minions minionPct, heroes hero and a shove aside; a structure in the way stops it and takes structure
+charge: { windup: 0.6, cooldown: 10, distance: 26, speed: 16, width: 3.04, arc: 60, turn: 240, minionPct: 0.8, minionMin: 250, superPct: 0.3, hero: [110, 160, 210, 260, 310, 360, 410, 460], shove: 5, structure: [320, 380, 440, 560, 700, 840, 980, 1120] }
+# BEAM: an enemy structure within range of its rim (rim to rim: short enough that it stands inside a tower's own reach to burn it, so
+# the tower answers); after windup s it burns pctPerSec of the structure's health a second (true) for seconds, in ticks of tick s;
+# the cooldown starts when the beam ends
+beam: { windup: 1.0, cooldown: 8, range: 7, seconds: 5, tick: 0.25, pctPerSec: [0.05, 0.06, 0.07, 0.09, 0.12, 0.15, 0.18, 0.21] }
+# killing it pays every hero of the other team teamGold + teamGoldPerRank a rank, the last hitter lastHitGold more, and xp + xpPerRank a
+# rank shared by those near it
+reward: { teamGold: 80, teamGoldPerRank: 40, lastHitGold: 150, xp: 200, xpPerRank: 100 }
+# a bot at the controls (scripts/lib/bot-titan.js): think every think ms. It goes for the structure it takes the most of in the plan
+# seconds ahead of it, weighed by worth (a slam and a charge beside the beam count as sideDmg of the beam; one it fells counts whole and fellBonus more;
+# the one it heads for keeps sticky more pull). It slams slamAt minions in its ring (or one hero); charges at its structure from closeAt
+# m or more, through chargeAt minions or a hero in its road, or down chargeRoad m of open road, when it faces within lineDeg degrees of
+# the way. It stands under a tower's shots only while tankN of its minions stand in that tower's reach, or its health is beamHp or
+# more (each hero on it counts as heroPct of its health a second). Else it waits for its wave outside: it walks no nearer than
+# waitAt m of that tower's reach, charges under none, and from inside walks out to waitIn m past the line. Under leaveHp, with a
+# tower's shots or focusN heroes on it, it leaves at once (a charge out): the Titan walks on after the drive, so a driver keeps it alive.
+# ONE PUSH: the heroes of its side that walk with it and stand within comeS seconds of walk are its crew, and it wants teamN of
+# them (or all, when they are fewer) within lead m of it. Without them it walks no further, charges nowhere that ends out of
+# their reach, and goes under no tower nothing tanks; when one of them is held by an enemy hero within fightR it turns into
+# that fight. With them it goes under the shots at any health while the stone falls first: each of them beside it counts as
+# heroStone of a structure's health a second, beside its own beam. Under the shots already, "beside it" is withR (also how near
+# a person stands to count as walking with it). BESIDE IT is also a hero within its own basic reach and reachPad
+# of the stone the Titan goes for. A person counts as crew only while he has moved or struck in the last idleS seconds.
+# WHAT IT GOES FOR counts its crew: what they take from a stone is their own blows through its armor (heroStone stands in for
+# a hero whose blows the hand does not know), over the time it lives under the shots. A stone it stands at (within finishAt
+# of its beam's reach) that falls inside finishS at that pace is finished before anything else; a structure whose road leads
+# through another standing structure's reach is not gone for; the core is worth only its fall (its shield comes back).
+# THE CORE ONLY WHEN IT CAN PAY FOR IT: with its own lane broken it starts on the core at beamHp of its health or more with
+# coreN of its crew fit (each at beamHp of its own); else it takes the outermost standing stone of another lane. One that
+# stands under the lance already stays.
+# patience: ONE CLOCK, ONE END. Every thought that keeps it from its stone (its crew behind, their fight, a tower it does not
+# dare, a step out of the shots) counts on one clock, cleared only by a blow of its own on a stone. After this many seconds
+# (half a wave's interval: the wave that is on its way arrives in that time, or the next is as far off again) it goes in and
+# spends itself on the stone: it waits for nobody and does not leave (the next Call's horn waits for a Titan's fall). Its
+# own walk is in for good from its first fist on a stone.
+# hurtS: a DYING Titan's patience (under leaveHp of its health): the wave it would wait for arrives after it has fallen. (32
+# whole matches at 15, 5 and 0 s: seconds a match a Titan stood hurt and undriven 130, 81 and 97; from a verdict to the next
+# horn 125, 103 and 100 s; structures a walker's life took 1.72, 1.68 and 1.75: nothing is lost by going in.)
+# roadMs: the road it leans along (the one its team can walk) is asked for again after this long at the latest; never on a short clock.
+bot: { think: 300, plan: 90, slamAt: 2, chargeAt: 3, chargeRoad: 45, closeAt: 12, lineDeg: 20, tankN: 2, beamHp: 0.35, leaveHp: 0.3, waitIn: 2, waitAt: 6, heroPct: 0.01, focusN: 2, sideDmg: 0.35, fellBonus: 0.5, sticky: 0.25, worth: { core: 3, keep: 1.5, tower: 1 }, teamN: 2, lead: 12, withR: 25, comeS: 8, fightR: 12, heroStone: 0.02, reachPad: 2, idleS: 3, finishAt: 14, finishS: 25, patience: 15, hurtS: 5, coreN: 3, roadMs: 15000 }

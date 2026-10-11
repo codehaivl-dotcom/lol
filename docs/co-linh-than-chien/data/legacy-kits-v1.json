@@ -1,0 +1,6599 @@
+{
+  "aldric": {
+    "id": "aldric",
+    "name": "Aldric",
+    "title": "The Oathsworn",
+    "story": "First knight of the Oathsworn, who swore at the mesa's edge that no ally of his would fall alone. The blue cloth on his back is his house's last banner, and where he plants its light the line holds.",
+    "role": "bruiser",
+    "class": "fighter",
+    "weapon": "greatsword",
+    "resource": "none",
+    "color": [
+      0.8,
+      1.4,
+      1.8
+    ],
+    "stats": {
+      "hp": 720,
+      "mana": 0,
+      "ad": 69,
+      "ap": 0,
+      "armor": 40,
+      "mr": 32,
+      "moveSpeed": 6.8,
+      "attackSpeed": 0.625,
+      "hpRegen": 8,
+      "manaRegen": 0
+    },
+    "growth": {
+      "hp": 104,
+      "mana": 30,
+      "ad": 4.5,
+      "armor": 4.4,
+      "mr": 1.55,
+      "attackSpeed": 0.0365,
+      "hpRegen": 0.5,
+      "manaRegen": 0.5
+    },
+    "lmb": {
+      "name": "Oathblade",
+      "type": "melee",
+      "range": 3.6,
+      "angle": 120,
+      "combo": 3,
+      "hitFrame": 0.35,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "Three greatsword cuts in a chain. The third is a wide cleave for 40% more."
+    },
+    "rmb": {
+      "name": "Hold the Line",
+      "type": "self",
+      "guard": "both",
+      "allyRange": 8,
+      "share": {
+        "radius": 8,
+        "ratio": 0.5
+      },
+      "cooldown": [
+        23,
+        21,
+        19,
+        17,
+        15
+      ],
+      "cost": 0,
+      "clip": "cast",
+      "self": [
+        {
+          "kind": "shield",
+          "base": [
+            65,
+            85,
+            105,
+            125,
+            145
+          ],
+          "hpRatio": 0.07,
+          "duration": 4
+        }
+      ],
+      "short": "A shield for 4 s. The nearest ally gets half of it.",
+      "desc": "Braces behind a shield of 65/85/105/125/145 (+7% max HP) for 4 s. The nearest allied hero within 8 m gets a shield of 50% of that."
+    },
+    "q": {
+      "name": "Marching Order",
+      "type": "melee",
+      "heavy": true,
+      "single": true,
+      "range": 4,
+      "angle": 90,
+      "cc": {
+        "kind": "pin",
+        "away": true
+      },
+      "pin": {
+        "duration": 1.5
+      },
+      "cooldown": 8,
+      "cost": 0,
+      "damage": {
+        "base": [
+          30,
+          60,
+          90,
+          120,
+          150
+        ],
+        "ad": 0.5
+      },
+      "self": [
+        {
+          "kind": "speed",
+          "amount": 0.35,
+          "duration": 1.5
+        }
+      ],
+      "clip": "q",
+      "short": "A burst of speed and a heavy blow that pins: no roll and no sprint for 1.5 s.",
+      "desc": "Runs 35% faster for 1.5 s and strikes. The enemy hero it hits is PINNED for 1.5 s: it cannot roll and cannot sprint."
+    },
+    "e": {
+      "name": "Banner Sweep",
+      "type": "area",
+      "at": "self",
+      "follow": true,
+      "radius": 4.5,
+      "duration": 3,
+      "tick": 0.5,
+      "sweep": {
+        "front": 1.25,
+        "back": 0.5
+      },
+      "damage": {
+        "base": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "ad": 0.45
+      },
+      "tickDamage": {
+        "base": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "ad": 0.45
+      },
+      "cooldown": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "cost": 0,
+      "clip": "e",
+      "short": "Sweeps the greatsword for 3 s; enemies in front of you take 25% more.",
+      "desc": "Sweeps the greatsword around him for 3 s while he walks, the banner's cloth streaming after the blade: a cut every 0.5 s. Enemies in front of him (the half toward your crosshair) take 125% of each cut; enemies behind him take 50%."
+    },
+    "r": {
+      "name": "Last Oath",
+      "type": "melee",
+      "single": true,
+      "range": 9,
+      "angle": 40,
+      "windup": 0.4,
+      "fxRide": true,
+      "missingHp": 0.3,
+      "ult": {
+        "use": "execute"
+      },
+      "banner": {
+        "duration": 4,
+        "radius": 8,
+        "shield": {
+          "base": [
+            90,
+            150,
+            210
+          ],
+          "hpRatio": 0.05,
+          "duration": 4
+        }
+      },
+      "damage": {
+        "base": [
+          150,
+          250,
+          350
+        ],
+        "type": true
+      },
+      "cost": 0,
+      "clip": "r",
+      "short": "A finishing blow of true damage. It plants his banner: allies within 8 m gain a shield.",
+      "desc": "A finishing blow: true damage that grows with the target's missing health. Where it lands he plants his banner for 4 s: Aldric and every allied hero who stands within 8 m of it gains a shield of 90/150/210 (+5% of his max HP)."
+    },
+    "passive": {},
+    "ult": {
+      "cost": 1100
+    }
+  },
+  "varkas": {
+    "id": "varkas",
+    "name": "Varkas",
+    "title": "The Red Reaver",
+    "story": "Varkas leads the reaver host of the ember lowlands. From every soldier he cuts down he takes one iron tag; they hang from him by the hundred and sing when he walks. Hear them: the reaping has begun.",
+    "role": "bruiser",
+    "class": "juggernaut",
+    "weapon": "reaping axe",
+    "resource": "mana",
+    "color": [
+      2.0,
+      0.66,
+      0.16
+    ],
+    "stats": {
+      "hp": 652,
+      "mana": 263,
+      "ad": 64,
+      "ap": 0,
+      "armor": 37,
+      "mr": 32,
+      "moveSpeed": 6.8,
+      "attackSpeed": 0.625,
+      "hpRegen": 10,
+      "manaRegen": 6.6
+    },
+    "growth": {
+      "hp": 114,
+      "mana": 58,
+      "ad": 5,
+      "armor": 5.2,
+      "mr": 2.05,
+      "attackSpeed": 0.01,
+      "hpRegen": 0.95,
+      "manaRegen": 0.35
+    },
+    "lmb": {
+      "name": "Reaver's Axe",
+      "type": "melee",
+      "range": 3.8,
+      "angle": 100,
+      "damage": {
+        "ad": 1
+      },
+      "effects": [
+        {
+          "kind": "bleed"
+        }
+      ],
+      "clip": "attack",
+      "desc": "Heavy strikes of the reaping axe; each one hangs a Tally tag, a stacking bleed."
+    },
+    "rmb": {
+      "name": "Hamstring",
+      "type": "melee",
+      "single": true,
+      "range": 4,
+      "angle": 80,
+      "cc": {
+        "kind": "slow",
+        "away": true
+      },
+      "cooldown": [
+        7,
+        6.5,
+        6,
+        5.5,
+        5
+      ],
+      "cost": 30,
+      "damage": {
+        "ad": [
+          1.4,
+          1.45,
+          1.5,
+          1.55,
+          1.6
+        ]
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.9,
+          "duration": 1
+        },
+        {
+          "kind": "bleed"
+        }
+      ],
+      "clip": "attack3",
+      "desc": "A low cut that nearly stops its target for 1 s and hangs a Tally tag."
+    },
+    "q": {
+      "name": "Reaping Arc",
+      "type": "area",
+      "at": "self",
+      "arc": 180,
+      "radius": 8.5,
+      "delay": 0.75,
+      "fxTail": 1.2,
+      "botTell": {
+        "shape": "circle",
+        "tag": "varkas-arc"
+      },
+      "damage": {
+        "base": [
+          50,
+          80,
+          110,
+          140,
+          170
+        ],
+        "ad": [
+          1.0,
+          1.1,
+          1.2,
+          1.3,
+          1.4
+        ]
+      },
+      "inner": {
+        "radius": 3.8,
+        "mult": 0.35
+      },
+      "outerHeal": 0.12,
+      "effects": [
+        {
+          "kind": "bleed"
+        }
+      ],
+      "cooldown": [
+        9,
+        8,
+        7,
+        6,
+        5
+      ],
+      "cost": [
+        25,
+        30,
+        35,
+        40,
+        45
+      ],
+      "clip": "q",
+      "desc": "Swings the axe through the half circle in front of him, 8.5 m out, toward your aim. The blade's edge bites hard and heals him for each hero it meets; inside 3.8 m only the haft lands, for 35%."
+    },
+    "e": {
+      "name": "Iron Leash",
+      "type": "cone",
+      "castTime": 0.25,
+      "range": 8,
+      "angle": 50,
+      "cc": {
+        "kind": "pull",
+        "away": false
+      },
+      "displace": {
+        "dir": "toMe",
+        "dist": 5.5
+      },
+      "chained": {
+        "duration": 2,
+        "range": 8,
+        "yank": 3
+      },
+      "cooldown": [
+        24,
+        21,
+        18,
+        15,
+        12
+      ],
+      "cost": 45,
+      "damage": {
+        "base": 0
+      },
+      "effects": [
+        {
+          "kind": "pull",
+          "distance": 5.5
+        },
+        {
+          "kind": "slow",
+          "amount": 0.4,
+          "duration": 1
+        }
+      ],
+      "clip": "e",
+      "desc": "Hooks everything in front of him and drags it in. The nearest hero stays on his chain for 2 s: more than 8 m from him, the chain pulls that hero back 3 m and breaks."
+    },
+    "r": {
+      "name": "Final Tally",
+      "type": "melee",
+      "targeted": true,
+      "heavy": true,
+      "single": true,
+      "range": 7,
+      "lockSlack": 1,
+      "lockAngle": 60,
+      "windup": 0.35,
+      "drag": {
+        "fall": 0.3,
+        "stop": 1.8,
+        "reach": 4,
+        "slack": 4
+      },
+      "bonusPerBleed": 0.2,
+      "resetOnKill": true,
+      "ult": {
+        "use": "execute"
+      },
+      "botTell": {
+        "shape": "lock",
+        "tag": "varkas-due"
+      },
+      "damage": {
+        "base": [
+          125,
+          250,
+          375
+        ],
+        "ad": 0.75,
+        "type": true
+      },
+      "cost": [
+        100,
+        100,
+        0
+      ],
+      "clip": "r",
+      "desc": "Marks the hero under your crosshair (7 m), drags them to his feet, then the axe falls: true damage, 20% more for each Tally tag on them. A kill gives the whole ultimate back. No hero in reach, no cast."
+    },
+    "passive": {
+      "name": "Iron Tally",
+      "bleed": {
+        "dps": 5,
+        "perLevel": 0.2,
+        "bonusAd": 0.06,
+        "duration": 5
+      },
+      "desc": "His axe hangs an iron tag on what it cuts: a Tally, a bleed that stacks 5 times (5 +0.2 per level +6% bonus AD each second, for 5 s). Final Tally hits 20% harder for each tag on its victim."
+    },
+    "ult": {
+      "cost": 1300
+    }
+  },
+  "solvar": {
+    "id": "solvar",
+    "name": "Solvar",
+    "title": "The Blazing Oath",
+    "story": "When the Dawn Throne sealed its gates against the dark, one knight rode out before the bolts fell: Solvar, sworn to carry the first light of the sun wherever the night had gone deepest. His crest burns at the hour of dawn whether he wills it or not, and every enemy on the mesa has learned to fear the morning.",
+    "role": "tank",
+    "class": "tank",
+    "weapon": "sword and sun shield",
+    "resource": "mana",
+    "color": [
+      1.9,
+      1.35,
+      0.4
+    ],
+    "stats": {
+      "hp": 700,
+      "mana": 302,
+      "ad": 58,
+      "ap": 0,
+      "armor": 46,
+      "mr": 34,
+      "moveSpeed": 6.7,
+      "attackSpeed": 0.625,
+      "hpRegen": 8.5,
+      "manaRegen": 6
+    },
+    "growth": {
+      "hp": 110,
+      "mana": 40,
+      "ad": 3,
+      "armor": 5,
+      "mr": 2.05,
+      "attackSpeed": 0.029,
+      "hpRegen": 0.85,
+      "manaRegen": 0.8
+    },
+    "lmb": {
+      "name": "Dawn Edge",
+      "type": "melee",
+      "range": 3.4,
+      "angle": 100,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "Cuts with the burning flamberge from behind the sun shield."
+    },
+    "rmb": {
+      "name": "Gathering Dawn",
+      "type": "area",
+      "clear": false,
+      "at": "self",
+      "follow": true,
+      "radius": 4.5,
+      "delay": 3,
+      "guard": "self",
+      "breakBurst": true,
+      "shield": {
+        "base": [
+          60,
+          85,
+          110,
+          135,
+          160
+        ],
+        "hpRatio": 0.06,
+        "duration": 3
+      },
+      "damage": {
+        "base": [
+          55,
+          90,
+          125,
+          160,
+          195
+        ],
+        "ap": 0.4,
+        "type": "magic"
+      },
+      "cooldown": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "cost": 60,
+      "fxRide": true,
+      "clip": "cast",
+      "short": "A shield for 3 s. It bursts in sunfire when it is broken, or after 3 s.",
+      "desc": "Raises a shield of 60/85/110/135/160 (+6% max HP) for 3 s. The moment the shield is broken it bursts in sunfire around him; a shield nobody breaks bursts after 3 s. The enemy chooses when."
+    },
+    "q": {
+      "name": "Throne's Rebuke",
+      "type": "melee",
+      "heavy": true,
+      "single": true,
+      "range": 6.5,
+      "angle": 90,
+      "rush": {
+        "range": 6,
+        "speed": 24,
+        "reach": 1.25,
+        "strike": 3
+      },
+      "mobility": "engage",
+      "cc": {
+        "kind": "stun",
+        "away": true
+      },
+      "cooldown": [
+        12,
+        11,
+        10,
+        9,
+        8
+      ],
+      "cost": [
+        35,
+        40,
+        45,
+        50,
+        55
+      ],
+      "damage": {
+        "base": [
+          10,
+          35,
+          60,
+          85,
+          110
+        ],
+        "ap": 0.2,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "stun",
+          "duration": 1
+        }
+      ],
+      "fxRide": true,
+      "clip": "q",
+      "short": "Charges 6 m behind the sun shield and bashes the first enemy hero in his way: a 1 s stun.",
+      "desc": "Charges up to 6 m behind the sun shield, along his aim. The first enemy hero in his way stops him and takes the bash: a 1 s stun. A charge that meets no hero ends in a bash at whatever stands in front of him. Rooted, he bashes where he stands."
+    },
+    "e": {
+      "name": "Dawnline",
+      "type": "skillshot",
+      "clear": false,
+      "castTime": 0.2,
+      "range": 18,
+      "speed": 42,
+      "width": 1.4,
+      "pierce": 99,
+      "blade": true,
+      "line": {
+        "duration": 3,
+        "leash": 7,
+        "side": 3,
+        "stand": 0.6,
+        "burst": {
+          "base": [
+            40,
+            70,
+            100,
+            130,
+            160
+          ],
+          "ap": 0.3,
+          "type": "magic"
+        },
+        "slow": {
+          "amount": 0.4,
+          "duration": 1.5
+        }
+      },
+      "cc": {
+        "kind": "stun",
+        "away": true
+      },
+      "damage": {
+        "base": [
+          50,
+          90,
+          130,
+          170,
+          210
+        ],
+        "ap": 0.4,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "stun",
+          "duration": 0.5
+        }
+      ],
+      "cooldown": [
+        12,
+        10.5,
+        9,
+        7.5,
+        6
+      ],
+      "cost": 60,
+      "fxRide": true,
+      "clip": "e",
+      "short": "Ties the first hero it hits to a blade for 3 s. Leave its 7 m ring: a burst and a slow.",
+      "desc": "Hurls a blade of sunfire through minions. It stops at the first enemy hero it hits, stuns them 0.5 s and stands in the ground beside them: a burning line ties them to it for 3 s, and a ring of gold on the ground shows its 7 m reach. A hero who leaves the ring before the line burns out snaps it: 40/70/100/130/160 (+30% AP) magic damage and a 40% slow for 1.5 s. A hero who stays is not harmed. The enemy chooses."
+    },
+    "r": {
+      "name": "Daybreak",
+      "type": "area",
+      "heavy": true,
+      "at": "aim",
+      "range": 26,
+      "radius": 6,
+      "delay": 0.65,
+      "ult": {
+        "use": "area",
+        "n": 2
+      },
+      "cc": {
+        "kind": "stun",
+        "away": true
+      },
+      "lit": {
+        "duration": 4
+      },
+      "fxTail": 1.9,
+      "damage": {
+        "base": [
+          90,
+          155,
+          220
+        ],
+        "ap": 0.7,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.8,
+          "duration": 1.75
+        }
+      ],
+      "inner": {
+        "radius": 3,
+        "mult": 1,
+        "effects": [
+          {
+            "kind": "stun",
+            "duration": 1.25
+          }
+        ]
+      },
+      "second": {
+        "delay": 1.2,
+        "radius": 5,
+        "mult": 0.5,
+        "effects": [
+          {
+            "kind": "slow",
+            "amount": 0.4,
+            "duration": 1.25
+          }
+        ]
+      },
+      "cost": 100,
+      "fxRide": true,
+      "clip": "r",
+      "short": "The sun falls twice: where he aims (heart stuns, rim slows), then on Solvar himself.",
+      "desc": "Calls down a column of the sun where he aims: the heart stuns 1.25 s, the rim slows 80%. 1.2 s after it lands a second, smaller sun falls on Solvar himself, wherever he stands by then: half the damage and a 40% slow for every enemy within 5 m of him. Every enemy hero either sun hits is LIT for 4 s: brush does not hide them and they show on your team's map."
+    },
+    "passive": {
+      "name": "Oathlight",
+      "ward": {
+        "base": 25,
+        "perLevel": 5,
+        "hpRatio": 0.03,
+        "duration": 2.5
+      },
+      "radius": 9,
+      "cooldown": 10,
+      "short": "Stun an enemy hero near him: he and allies within 9 m are shielded 2.5 s. Once every 10 s.",
+      "desc": "His oath answers his blows. When Solvar stuns an enemy hero within 9 m of him, he and every allied hero within 9 m are warded by the sun for 2.5 s: a shield of 25 (+5 per level) +3% of his max health. Once every 10 s. His crest burns while it is ready."
+    },
+    "ult": {
+      "cost": 950
+    }
+  },
+  "tenzo": {
+    "id": "tenzo",
+    "name": "Tenzo",
+    "title": "The Sightless Storm",
+    "story": "He hears a heartbeat through stone, and has needed no eyes since the cliff monasteries taught him to listen. When the mesa began to shake he left their silence, and the storm he carries came with him.",
+    "role": "bruiser",
+    "class": "fighter",
+    "weapon": "bare hands",
+    "resource": "energy",
+    "color": [
+      0.75,
+      1.5,
+      2.6
+    ],
+    "stats": {
+      "hp": 645,
+      "mana": 200,
+      "ad": 69,
+      "ap": 0,
+      "armor": 36,
+      "mr": 32,
+      "moveSpeed": 6.9,
+      "attackSpeed": 0.651,
+      "hpRegen": 7.5,
+      "manaRegen": 10
+    },
+    "growth": {
+      "hp": 108,
+      "mana": 0,
+      "ad": 3.7,
+      "armor": 4.9,
+      "mr": 2.05,
+      "attackSpeed": 0.03,
+      "hpRegen": 0.7,
+      "manaRegen": 0.5
+    },
+    "lmb": {
+      "name": "Open Palm",
+      "type": "melee",
+      "range": 3.2,
+      "angle": 90,
+      "combo": 3,
+      "step": 1.4,
+      "gaps": [
+        0.65,
+        0.65,
+        1.1
+      ],
+      "hitFrame": 0.3,
+      "damage": {
+        "ad": 0.85
+      },
+      "clip": "attack",
+      "desc": "A chain of three fast open-hand strikes: two quick palms and a heavier third (+40%), then a breath. Each strike carries him one short step toward your crosshair and plants him as it lands: he never walks through what he strikes."
+    },
+    "rmb": {
+      "name": "Sheltering Step",
+      "type": "dash",
+      "range": 8,
+      "allyRange": 14,
+      "speed": 30,
+      "mobility": "escape",
+      "guard": "ally",
+      "cooldown": 12,
+      "cost": 50,
+      "self": [
+        {
+          "kind": "shield",
+          "base": [
+            55,
+            100,
+            145,
+            190,
+            235
+          ],
+          "ap": 0.8,
+          "duration": 2
+        }
+      ],
+      "toAlly": true,
+      "stormguard": {
+        "window": 3,
+        "duration": 4,
+        "share": [
+          0.25,
+          0.3,
+          0.35,
+          0.4,
+          0.45
+        ],
+        "cap": [
+          80,
+          120,
+          160,
+          200,
+          240
+        ],
+        "hold": 2.5
+      },
+      "clip": "dash",
+      "short": "Leaps to an ally (or forward) and shields himself and them. Press again within 3 s: for 4 s each of his strikes adds to his shield.",
+      "desc": "Leaps to the ally under your reticle (or forward): shields himself and them. Press again within 3 s: Stormguard. For 4 s each of his basic attacks adds a shield worth 25/30/35/40/45% of the damage it deals, up to 80/120/160/200/240 of it at once; it stands 2.5 s after his last strike."
+    },
+    "q": {
+      "name": "Echo Strike",
+      "type": "skillshot",
+      "ground": true,
+      "castTime": 0.2,
+      "range": 24,
+      "speed": 38,
+      "width": 1.1,
+      "pierce": 0,
+      "damage": {
+        "base": [
+          55,
+          80,
+          105,
+          130,
+          155
+        ],
+        "bonusAd": 1.15
+      },
+      "effects": [
+        {
+          "kind": "mark",
+          "duration": 3
+        }
+      ],
+      "recast": {
+        "window": 3,
+        "damage": {
+          "base": [
+            55,
+            80,
+            105,
+            130,
+            155
+          ],
+          "bonusAd": 1.15
+        },
+        "missingAmp": 1,
+        "when": "safe"
+      },
+      "cooldown": [
+        10,
+        9,
+        8,
+        7,
+        6
+      ],
+      "cost": 50,
+      "clip": "q",
+      "desc": "A wave of sound marks the first enemy hit; press again to fly to it and strike."
+    },
+    "e": {
+      "name": "Stormfall",
+      "type": "area",
+      "at": "self",
+      "radius": 5,
+      "windup": 0.4,
+      "castAt": "blow",
+      "cc": {
+        "kind": "slow",
+        "away": true
+      },
+      "damage": {
+        "base": [
+          35,
+          65,
+          95,
+          125,
+          155
+        ],
+        "ad": 1,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.5,
+          "duration": 2
+        }
+      ],
+      "cooldown": 8,
+      "cost": 50,
+      "clip": "e",
+      "short": "He leaps and slams the ground: lightning strikes and slows everything within 5 m as he lands.",
+      "desc": "He leaps and slams the ground. As his fist lands, 0.4 s after the press, lightning strikes everything within 5 m of where he stands then and slows it by half for 2 s. A stun, a knock-up, a charm or a silence that catches him in the air stops the slam."
+    },
+    "r": {
+      "name": "Turn of the Storm",
+      "type": "melee",
+      "heavy": true,
+      "single": true,
+      "targeted": true,
+      "range": 4.5,
+      "lockSlack": 1.5,
+      "lockAngle": 100,
+      "leash": 4,
+      "angle": 70,
+      "windup": 0.2,
+      "grip": {
+        "max": 0.6,
+        "tap": 0.18,
+        "throw": 9
+      },
+      "botTell": {
+        "shape": "lock",
+        "piece": "grip"
+      },
+      "recast": {
+        "when": "toAllies"
+      },
+      "ult": {
+        "use": "execute",
+        "hp": 0.3
+      },
+      "displace": {
+        "dir": "aim",
+        "dist": 9
+      },
+      "cc": {
+        "kind": "knockback",
+        "away": true
+      },
+      "damage": {
+        "base": [
+          175,
+          400,
+          625
+        ],
+        "bonusAd": 2
+      },
+      "effects": [
+        {
+          "kind": "knockback",
+          "distance": 11
+        },
+        {
+          "kind": "knockup",
+          "duration": 1
+        }
+      ],
+      "cost": 0,
+      "clip": "r",
+      "desc": "Locks the enemy hero you aim at (6 m). Tap R: a spinning kick sends them flying 11 m away from you. Hold R (up to 0.6 s): you grip them instead, and letting go throws them 9 m along your crosshair. No hero in reach, no cast."
+    },
+    "passive": {
+      "name": "Storm Within",
+      "bolt": {
+        "base": 6,
+        "perLevel": 1.5,
+        "ad": 0.08,
+        "type": "magic"
+      },
+      "short": "While a shield is on him, each of his strikes also strikes with lightning.",
+      "desc": "While any shield stands on Tenzo, each of his basic attacks calls a spark of lightning onto what it strikes: 6 (+1.5 per level) +8% AD magic damage. His own Sheltering Step opens it, Stormguard keeps it open strike after strike, and a shield an ally or a piece of gear gives him opens it too. Break his shield and the storm is shut in again."
+    },
+    "ult": {
+      "cost": 800
+    }
+  },
+  "seris": {
+    "id": "seris",
+    "name": "Seris",
+    "title": "The Moonveil Enchantress",
+    "story": "The Moonveil is the spirit Seris bargained with at court: nine pale veils of light that trail behind her and stir when she lies. She carries its silver lantern down to the mesa to learn which house will break its oath first, and she has not yet been bored.",
+    "role": "assassin",
+    "class": "mage",
+    "weapon": "silver lantern",
+    "resource": "mana",
+    "color": [
+      1.45,
+      1.3,
+      2.1
+    ],
+    "stats": {
+      "hp": 590,
+      "mana": 418,
+      "ad": 53,
+      "ap": 0,
+      "armor": 21,
+      "mr": 30,
+      "moveSpeed": 6.6,
+      "attackSpeed": 0.668,
+      "hpRegen": 2.5,
+      "manaRegen": 8
+    },
+    "growth": {
+      "hp": 104,
+      "mana": 25,
+      "ad": 3,
+      "armor": 4.2,
+      "mr": 1.3,
+      "attackSpeed": 0.022,
+      "hpRegen": 0.6,
+      "manaRegen": 0.8
+    },
+    "lmb": {
+      "name": "Lantern Spark",
+      "type": "projectile",
+      "range": 15,
+      "speed": 32,
+      "width": 0.6,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "A darting spark from her lantern."
+    },
+    "rmb": {
+      "name": "Moonmotes",
+      "type": "bolts",
+      "radius": 11,
+      "count": 3,
+      "speed": 26,
+      "damage": {
+        "base": [
+          40,
+          65,
+          90,
+          115,
+          140
+        ],
+        "ap": 0.3,
+        "type": "magic"
+      },
+      "cooldown": [
+        9,
+        8,
+        7,
+        6,
+        5
+      ],
+      "cost": 30,
+      "clip": "cast",
+      "short": "One mote of moonlight to each of the 3 nearest enemies. One enemy takes one mote.",
+      "desc": "Up to three motes of moonlight fly out, one to each of the three nearest enemies within 11 m, heroes first. They never stack on one enemy: against a lone enemy she looses a single mote."
+    },
+    "q": {
+      "name": "Lantern Cast",
+      "type": "skillshot",
+      "castTime": 0.25,
+      "fxRide": true,
+      "range": 18,
+      "speed": 26,
+      "width": 1.5,
+      "pierce": 99,
+      "returns": true,
+      "recall": {
+        "after": 0.2,
+        "leaves": 6
+      },
+      "recast": {
+        "when": "passed"
+      },
+      "after": "held",
+      "damage": {
+        "base": [
+          40,
+          65,
+          90,
+          115,
+          140
+        ],
+        "ap": 0.45,
+        "type": "magic"
+      },
+      "returnDamage": {
+        "base": [
+          40,
+          65,
+          90,
+          115,
+          140
+        ],
+        "ap": 0.45,
+        "type": true
+      },
+      "cooldown": 7,
+      "cost": [
+        55,
+        60,
+        65,
+        70,
+        75
+      ],
+      "clip": "q",
+      "short": "Her lantern's light goes out and comes back. Press again: it turns there and her lantern is set down.",
+      "desc": "Casts her lantern's light out and draws it back: magic going, true damage returning. Press again while it flies out to call it back early: the light turns where it is, and her lantern is set down there for 6 s to keep her watch. While Beckon walks an enemy to her lantern, the lantern stays where it is and the light only turns."
+    },
+    "e": {
+      "name": "Beckon",
+      "type": "skillshot",
+      "castTime": 0.25,
+      "fxRide": true,
+      "range": 18,
+      "speed": 30,
+      "width": 1.1,
+      "pierce": 0,
+      "cc": {
+        "kind": "charm",
+        "away": true
+      },
+      "damage": {
+        "base": [
+          70,
+          100,
+          130,
+          160,
+          190
+        ],
+        "ap": 0.85,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "charm",
+          "duration": 1.4,
+          "to": "lantern"
+        }
+      ],
+      "leaveLantern": {
+        "life": 6
+      },
+      "cooldown": 12,
+      "cost": 85,
+      "clip": "e",
+      "desc": "A whisper that beckons the first enemy for 1.4 s. Helpless, it walks to the lantern she leaves where she cast, not to her: step aside and your team has a path to shoot at. The lantern stands 6 s and keeps her watch."
+    },
+    "r": {
+      "name": "Veilstep",
+      "type": "dash",
+      "unstoppable": true,
+      "range": 9,
+      "speed": 34,
+      "charges": 3,
+      "chargeWindow": 25,
+      "takedownCharge": true,
+      "mobility": "both",
+      "recast": {
+        "when": "spaced",
+        "gap": 1.2
+      },
+      "fxColor": [
+        1.3,
+        1.05,
+        2.5
+      ],
+      "bolts": {
+        "radius": 12,
+        "count": 3,
+        "speed": 28,
+        "cone": 60,
+        "damage": {
+          "base": [
+            60,
+            90,
+            120
+          ],
+          "ap": 0.35,
+          "type": "magic"
+        }
+      },
+      "cost": 100,
+      "clip": "r",
+      "desc": "Dash up to three times within 25 s. After each dash three bolts strike the enemies that stood ahead of her, inside a 60° cone along the dash: a step toward them bites, even past them, and a step away is only an escape. Every takedown while it is active grants another dash (up to 3 stored) and refreshes the window. While her lantern stands, each dash's bolts fly from it too: at enemies within 7 m of the lantern that her own bolts did not strike, for 70% damage. Unstoppable: a Veilstep crosses a ring wall, in or out."
+    },
+    "passive": {
+      "name": "Lantern's Watch",
+      "watch": {
+        "radius": 7,
+        "speed": 24,
+        "bolts": 0.7,
+        "true": [
+          "q",
+          "rmb",
+          "e"
+        ],
+        "wait": 0.12,
+        "ring": "#6a3fe0"
+      },
+      "damage": {
+        "base": 15,
+        "perLevel": 4,
+        "ap": 0.15,
+        "type": "magic"
+      },
+      "short": "Her lantern keeps watch where she leaves it. Each spell she casts makes it throw a mote at an enemy within 7 m of it.",
+      "desc": "Her lantern keeps watch where she leaves it: Beckon leaves it where she cast, and calling Lantern Cast back early sets it down where the light turned (not while Beckon walks an enemy to it). One lantern stands, for 6 s. While it stands, every Lantern Cast, Moonmotes and Beckon she casts makes it throw a mote at the nearest enemy within 7 m of it, heroes first (15 +4 per level +15% AP, magic). Each Veilstep, her bolts fly from it too: at enemies near it that her own bolts did not strike, for 70% damage."
+    },
+    "ult": {
+      "cost": 1100
+    }
+  },
+  "lysara": {
+    "id": "lysara",
+    "name": "Lysara",
+    "title": "Starcaller of the Conclave",
+    "story": "Lysara reads the night for the Conclave, the star-mages who chart the sky over the mesa. The others write down what the stars do. She calls them down.",
+    "role": "support",
+    "class": "mage",
+    "weapon": "light staff",
+    "resource": "mana",
+    "color": [
+      0.55,
+      1.0,
+      2.2
+    ],
+    "stats": {
+      "hp": 580,
+      "mana": 480,
+      "ad": 54,
+      "ap": 0,
+      "armor": 21,
+      "mr": 30,
+      "moveSpeed": 6.6,
+      "attackSpeed": 0.669,
+      "hpRegen": 5.5,
+      "manaRegen": 8
+    },
+    "growth": {
+      "hp": 99,
+      "mana": 23.5,
+      "ad": 3.3,
+      "armor": 5.2,
+      "mr": 1.3,
+      "attackSpeed": 0.03,
+      "hpRegen": 0.55,
+      "manaRegen": 0.8
+    },
+    "lmb": {
+      "name": "Star Dart",
+      "type": "projectile",
+      "range": 17,
+      "speed": 34,
+      "width": 0.6,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "A dart of starlight."
+    },
+    "rmb": {
+      "name": "Wandering Star",
+      "type": "skillshot",
+      "ground": true,
+      "allies": true,
+      "returns": true,
+      "pulse": {
+        "radius": 6,
+        "after": 0.15
+      },
+      "recast": {
+        "when": "huddle"
+      },
+      "guard": "both",
+      "range": 22,
+      "speed": 26,
+      "width": 2.4,
+      "pierce": 99,
+      "damage": {
+        "base": 0
+      },
+      "effects": [
+        {
+          "kind": "shield",
+          "base": [
+            40,
+            65,
+            90,
+            115,
+            140
+          ],
+          "ap": 0.35,
+          "duration": 2.5
+        }
+      ],
+      "returnEffects": [
+        {
+          "kind": "cleanse",
+          "of": [
+            "slow"
+          ]
+        }
+      ],
+      "self": [
+        {
+          "kind": "shield",
+          "base": [
+            40,
+            65,
+            90,
+            115,
+            140
+          ],
+          "ap": 0.35,
+          "duration": 2.5
+        }
+      ],
+      "cooldown": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "cost": 60,
+      "clip": "cast",
+      "short": "Sends her star out and calls it home: allies it touches are shielded. Press again to burst it where it is: every ally within 6 m is shielded.",
+      "desc": "Sends her star out and calls it home. Allies it touches are shielded both ways; on its way back it also lifts slows off them, and off her when it arrives. Press again while it flies: the star bursts where it is, shields every ally within 6 m of it (her too), and a fixed star hangs there."
+    },
+    "q": {
+      "name": "Starfork",
+      "type": "skillshot",
+      "castTime": 0.25,
+      "range": 26,
+      "speed": 32,
+      "width": 1.3,
+      "pierce": 0,
+      "fork": {
+        "angle": 25,
+        "range": 14,
+        "mult": 0.5,
+        "effects": [
+          {
+            "kind": "root",
+            "duration": 1,
+            "fx": "bind"
+          }
+        ]
+      },
+      "pops": "e",
+      "cc": {
+        "kind": "root",
+        "away": true
+      },
+      "damage": {
+        "base": [
+          80,
+          120,
+          160,
+          200,
+          240
+        ],
+        "ap": 0.6,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "root",
+          "duration": 2,
+          "fx": "bind"
+        }
+      ],
+      "cooldown": [
+        11,
+        10.5,
+        10,
+        9.5,
+        9
+      ],
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "clip": "q",
+      "desc": "A binding of starlight roots the first enemy for 2 s and forks there: two bolts fly on 14 m to each side, each rooting the first enemy it meets for 1 s at half damage. Through her Fallen Star, it bursts the star."
+    },
+    "e": {
+      "name": "Fallen Star",
+      "type": "area",
+      "clear": true,
+      "at": "aim",
+      "travel": 36,
+      "range": 22,
+      "radius": 5,
+      "delay": 0.45,
+      "duration": 5,
+      "tick": 0.25,
+      "damage": {
+        "base": 0
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.3,
+          "duration": 0.5
+        }
+      ],
+      "tickEffects": [
+        {
+          "kind": "slow",
+          "amount": 0.3,
+          "duration": 0.5
+        }
+      ],
+      "burst": {
+        "base": [
+          65,
+          115,
+          165,
+          215,
+          265
+        ],
+        "ap": 0.8,
+        "type": "magic"
+      },
+      "burstFx": "starburst",
+      "pop": {
+        "mult": 1.25
+      },
+      "recast": {
+        "window": 5,
+        "when": "landed"
+      },
+      "cc": {
+        "kind": "slow",
+        "away": true
+      },
+      "cooldown": [
+        10,
+        9.5,
+        9,
+        8.5,
+        8
+      ],
+      "cost": [
+        70,
+        80,
+        90,
+        100,
+        110
+      ],
+      "clip": "e",
+      "desc": "Throws a star that sails to the spot and slows; recast (or wait 5 s) to burst it. Her own Starfork or Meridian through it bursts it at once, 25% harder. A fixed star hangs where it burst."
+    },
+    "r": {
+      "name": "Meridian",
+      "type": "line",
+      "longAim": true,
+      "tellLane": "scripts/material-lysara-lane.js",
+      "botTell": {
+        "shape": "line",
+        "tag": "lysara-light"
+      },
+      "range": 70,
+      "width": 2.6,
+      "delay": 1,
+      "speed": 120,
+      "far": 1.3,
+      "pops": "e",
+      "stars": {
+        "per": 0.1,
+        "cap": 3,
+        "reach": 1.7
+      },
+      "after": "held",
+      "ult": {
+        "use": "held",
+        "hp": 0.3
+      },
+      "damage": {
+        "base": [
+          300,
+          400,
+          500
+        ],
+        "ap": 1.2,
+        "type": "magic"
+      },
+      "cost": 100,
+      "clip": "r",
+      "desc": "After a 1 s charge a line of light runs out from her across 70 m. It strikes each enemy as it reaches them, harder the farther it has run: up to 30% more at its far end, and 10% harder for each fixed star its light passes through (a Fallen Star it bursts on its way counts)."
+    },
+    "passive": {
+      "name": "Fixed Stars",
+      "max": 3,
+      "life": 9,
+      "apart": 2.5,
+      "radius": 3,
+      "dart": 0.3,
+      "ready": 90,
+      "drop": 10,
+      "short": "A star hangs 9 s where her spells burst. Her darts and Meridian hit harder through it.",
+      "desc": "Where her Fallen Star or her Wandering Star bursts, a fixed star hangs 9 s (three at most). Her darts strike 30% harder at an enemy hero who stands in its dial, and Meridian 10% harder for each star its light passes through."
+    },
+    "ult": {
+      "cost": 1400
+    }
+  },
+  "zephira": {
+    "id": "zephira",
+    "name": "Zephira",
+    "title": "The Storm Oracle",
+    "story": "The last priestess of a sky temple the storm took a thousand years ago, Zephira has not aged a day since. She speaks for the thunderheads now: the gale that shields, the lightning that answers.",
+    "role": "healer",
+    "class": "enchanter",
+    "weapon": "storm staff",
+    "resource": "mana",
+    "color": [
+      1.9,
+      1.5,
+      2.9
+    ],
+    "stats": {
+      "hp": 570,
+      "mana": 360,
+      "ad": 46,
+      "ap": 0,
+      "armor": 28,
+      "mr": 28,
+      "moveSpeed": 6.5,
+      "attackSpeed": 0.625,
+      "hpRegen": 5.5,
+      "manaRegen": 11.5
+    },
+    "growth": {
+      "hp": 90,
+      "mana": 50,
+      "ad": 2.5,
+      "armor": 4.5,
+      "mr": 1.3,
+      "attackSpeed": 0.03,
+      "hpRegen": 0.55,
+      "manaRegen": 0.4
+    },
+    "lmb": {
+      "name": "Fork Bolt",
+      "type": "projectile",
+      "range": 16,
+      "speed": 30,
+      "width": 0.6,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "A fork of lightning from the thunderhead in her staff."
+    },
+    "rmb": {
+      "name": "Squall Rune",
+      "type": "skillshot",
+      "castTime": 0.2,
+      "range": 17,
+      "speed": 36,
+      "width": 1.1,
+      "pierce": 0,
+      "cc": {
+        "kind": "slow",
+        "away": true
+      },
+      "damage": {
+        "base": [
+          70,
+          100,
+          130,
+          160,
+          190
+        ],
+        "ap": 0.5,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.3,
+          "duration": 2
+        }
+      ],
+      "self": [
+        {
+          "kind": "speed",
+          "amount": 0.15,
+          "duration": 3
+        }
+      ],
+      "cooldown": 8,
+      "cost": [
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "clip": "cast",
+      "desc": "Hurls a rune stone wrapped in storm at the first enemy: it slows them, and the squall quickens her."
+    },
+    "q": {
+      "name": "Gathering Storm",
+      "type": "skillshot",
+      "range": 22,
+      "speed": 16,
+      "width": 2.4,
+      "pierce": 99,
+      "cc": {
+        "kind": "knockup",
+        "away": true
+      },
+      "recast": {
+        "when": "charged",
+        "share": 0.5
+      },
+      "damage": {
+        "base": [
+          55,
+          90,
+          125,
+          160,
+          195
+        ],
+        "ap": 0.5,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "knockup",
+          "duration": 0.5
+        }
+      ],
+      "gale": {
+        "chargeTime": 3,
+        "rangeMax": 35,
+        "speedMax": 26,
+        "damageMax": 1.55,
+        "knockMin": 0.5,
+        "knockMax": 1.25
+      },
+      "cooldown": 14,
+      "cost": [
+        90,
+        95,
+        100,
+        105,
+        110
+      ],
+      "clip": "q",
+      "short": "Calls a thunderhead that gathers for 3 s. Press again to send it.",
+      "desc": "Calls a thunderhead where she stands that gathers strength for 3 s: more range, speed, damage and knock-up each second. Press again to send it where you are aiming at that moment. Left alone, at full strength it rolls the way you first aimed."
+    },
+    "e": {
+      "name": "Stormward",
+      "type": "self",
+      "ally": true,
+      "range": 16,
+      "guard": "both",
+      "cooldown": [
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "cost": [
+        70,
+        75,
+        80,
+        85,
+        90
+      ],
+      "self": [
+        {
+          "kind": "shield",
+          "base": 100,
+          "perLevel": 15,
+          "ap": 0.3,
+          "duration": 5
+        },
+        {
+          "kind": "attackSpeed",
+          "amount": 0.25,
+          "duration": 5
+        }
+      ],
+      "clip": "e",
+      "desc": "Wraps Zephira and the ally nearest her aim in a storm shell: a shield that grows with every level of hers, and quicker strikes. While a shell stands, Storm's Answer heals its wearer with the damage she deals: an ally in full, Zephira for half."
+    },
+    "r": {
+      "name": "Headwind",
+      "type": "cone",
+      "channel": true,
+      "range": 16,
+      "angle": 60,
+      "duration": 3,
+      "tick": 0.5,
+      "walk": 0.25,
+      "botTell": {
+        "shape": "cone",
+        "piece": "wind"
+      },
+      "ult": {
+        "use": "peel",
+        "hp": 0.5,
+        "r": 8
+      },
+      "displace": {
+        "dir": "away",
+        "dist": 7
+      },
+      "cc": {
+        "kind": "knockback",
+        "away": true
+      },
+      "damage": {
+        "base": 0
+      },
+      "effects": [
+        {
+          "kind": "knockback",
+          "distance": 7
+        }
+      ],
+      "tickEffects": [
+        {
+          "kind": "knockback",
+          "distance": 3.5
+        },
+        {
+          "kind": "slow",
+          "amount": 0.3,
+          "duration": 1
+        }
+      ],
+      "cost": 100,
+      "clip": "r",
+      "short": "Hold: a cone of storm wind blasts enemies back and keeps pushing.",
+      "desc": "Hold to channel a cone of storm wind (16 m) for up to 3 s: the first thunderclap blasts enemies 7 m back, and the gale keeps pushing everyone in the cone away and slowing them 30% while you hold. You can walk, very slowly, and the storm turns with your aim. Let go, roll or jump and it ends."
+    },
+    "passive": {
+      "name": "Storm's Answer",
+      "short": "While her storm shell stands on a hero, the damage Zephira deals heals that hero: an ally in full, herself for half.",
+      "desc": "While an ally wears Zephira's storm shell, the damage she deals heals that ally: 50% of her damage to heroes, 15% of her damage to anything else. While her own shell stands on her it heals Zephira too, for half as much. Her basic attacks count."
+    },
+    "ult": {
+      "cost": 1050
+    }
+  },
+  "ylva": {
+    "id": "ylva",
+    "name": "Ylva Stonearrow",
+    "title": "Warden of the Deep Canyons",
+    "story": "Ylva grew up in the red canyons under the mesa, where the rock still remembers how to move. She carves every arrowhead from stone that wants to be thrown, and her granite falcon was a ledge until the day she called to it.",
+    "role": "marksman",
+    "class": "marksman",
+    "weapon": "a dark-wood recurve with jade tips, stone-headed arrows",
+    "resource": "mana",
+    "color": [
+      2.7,
+      1.55,
+      0.42
+    ],
+    "stats": {
+      "hp": 610,
+      "mana": 280,
+      "ad": 59,
+      "ap": 0,
+      "armor": 26,
+      "mr": 30,
+      "moveSpeed": 6.5,
+      "attackSpeed": 0.658,
+      "hpRegen": 3.5,
+      "manaRegen": 7
+    },
+    "growth": {
+      "hp": 101,
+      "mana": 35,
+      "ad": 2.95,
+      "armor": 4.6,
+      "mr": 1.3,
+      "attackSpeed": 0.0333,
+      "hpRegen": 0.55,
+      "manaRegen": 0.65
+    },
+    "lmb": {
+      "name": "Gritstone Arrow",
+      "type": "projectile",
+      "range": 19,
+      "speed": 40,
+      "width": 0.5,
+      "damage": {
+        "ad": 1
+      },
+      "rime": {
+        "slow": [
+          0.1,
+          0.2,
+          0.3
+        ],
+        "window": 2.5,
+        "duration": 1,
+        "word": "Grit",
+        "color": "#f0b45a",
+        "look": "grit"
+      },
+      "clip": "attack",
+      "desc": "Every arrowhead bursts into grit. Arrows on one target build the slow: 10%, 20%, then 30% for 1 s. Another target, or 2.5 s without a hit, starts again."
+    },
+    "rmb": {
+      "name": "Amber Draw",
+      "type": "self",
+      "useAt": "attack",
+      "cooldown": 14,
+      "cost": 50,
+      "self": [
+        {
+          "kind": "attackSpeed",
+          "amount": 0.6,
+          "duration": 8,
+          "look": "amber",
+          "word": "Amber Draw"
+        }
+      ],
+      "stones": {
+        "count": 5,
+        "by": "lmb",
+        "ring": {
+          "radius": 1.3,
+          "y": 0.72,
+          "rps": 0.3
+        }
+      },
+      "stone": {
+        "type": "projectile",
+        "speed": 30,
+        "width": 0.6,
+        "damage": {
+          "base": [
+            4,
+            8,
+            12,
+            16,
+            20
+          ],
+          "ad": 0.2
+        }
+      },
+      "clip": "cast",
+      "desc": "The amber in her bow wakes five stones off the canyon floor: 60% attack speed, for up to 8 s. Each basic attack sends one stone with its arrow, point first, for 4–20 + 20% AD physical damage, and the stone takes 12% of the speed with it. When the last stone has left, the draw is over."
+    },
+    "q": {
+      "name": "Shale Fan",
+      "type": "projectile",
+      "castTime": 0.2,
+      "count": 7,
+      "spread": 50,
+      "range": 18,
+      "speed": 36,
+      "width": 0.6,
+      "cc": {
+        "kind": "slow",
+        "away": true
+      },
+      "damage": {
+        "base": [
+          20,
+          35,
+          50,
+          65,
+          80
+        ],
+        "ad": 1
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.3,
+          "duration": 2,
+          "look": "grit"
+        }
+      ],
+      "cooldown": [
+        18,
+        14.5,
+        11,
+        7.5,
+        4
+      ],
+      "cost": 75,
+      "clip": "q",
+      "desc": "Seven shale-headed arrows fan out in a cone."
+    },
+    "e": {
+      "name": "Stonewing",
+      "type": "projectile",
+      "scout": true,
+      "longAim": true,
+      "range": 300,
+      "speed": 55,
+      "width": 0,
+      "pierce": 99,
+      "damage": {
+        "base": 0
+      },
+      "flightReveal": 12,
+      "flyHeight": 1.4,
+      "detonate": {
+        "window": 7
+      },
+      "recast": {
+        "when": "landed"
+      },
+      "endArea": {
+        "radius": 26,
+        "duration": 20,
+        "frost": {
+          "radius": 7,
+          "duration": 3,
+          "damage": {
+            "base": [
+              30,
+              45,
+              60,
+              75,
+              90
+            ],
+            "ad": 0.3
+          },
+          "core": {
+            "radius": 2.5,
+            "mult": 2
+          },
+          "burst": 0.45,
+          "burstFor": 1.5,
+          "amount": 0.3,
+          "linger": 1,
+          "tick": 0.25,
+          "look": "grit",
+          "fx": "scripts/fx/ylva-e-field.fx.js",
+          "sound": [
+            "/cdn/moodboard-painterly-fantasy/sfx-ground-slam-shockwave-thump-dust.mp3",
+            {
+              "clip": "/cdn/moodboard-painterly-fantasy/sfx-chalk-line-impact-stone-crack.mp3",
+              "pitch": 0.7
+            }
+          ]
+        },
+        "sightFx": "scripts/fx/ylva-e-sight.fx.js",
+        "strikeFx": "scripts/fx/ylva-e-strike.fx.js",
+        "perch": {
+          "y": 1.6,
+          "near": {
+            "within": 8,
+            "y": 0.4
+          },
+          "body": {
+            "pose": "perch"
+          }
+        }
+      },
+      "cooldown": [
+        30,
+        27,
+        24,
+        21,
+        18
+      ],
+      "cost": 40,
+      "clip": "cast",
+      "desc": "Her granite falcon soars across the map, revealing what it passes over (brush too). Recast to bring it down, or it strikes at max range: the area stays revealed on your minimap for 20 s and the ground at its heart breaks to rubble. The strike deals 30–90 + 30% AD physical damage, twice that within 2.5 m of its heart, and slows enemies 45% on the impact, then 30% for 3 s, lingering 1 s after they leave."
+    },
+    "r": {
+      "name": "Bedrock Lance",
+      "type": "skillshot",
+      "heavy": true,
+      "longAim": true,
+      "stunScale": {
+        "min": 1,
+        "max": 3.5,
+        "over": 90
+      },
+      "cc": {
+        "kind": "stun",
+        "away": true
+      },
+      "range": 400,
+      "speed": 52,
+      "ramp": {
+        "from": 0.4,
+        "over": 0.7
+      },
+      "castShake": 0.3,
+      "width": 3.2,
+      "pierce": 0,
+      "championsOnly": true,
+      "damage": {
+        "base": [
+          200,
+          400,
+          600
+        ],
+        "ap": 1.2,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "stun",
+          "duration": 2.5,
+          "look": "stone"
+        }
+      ],
+      "splash": {
+        "radius": 5,
+        "mult": 0.5,
+        "effects": [
+          {
+            "kind": "slow",
+            "amount": 0.5,
+            "duration": 3,
+            "look": "grit"
+          }
+        ]
+      },
+      "blast": {
+        "radius": 5,
+        "sound": "/cdn/moodboard-painterly-fantasy/sfx-sundering-earth-rupture-rock-slabs-erupt-deep-rumble.mp3"
+      },
+      "cost": 100,
+      "clip": "r",
+      "desc": "Hold to aim, release to loose (a tap looses at once): a great spear-arrow of canyon stone breaks out of the ground, gathers speed, flies the whole map and shatters on the first hero it meets, stunning them: longer the farther it flew."
+    },
+    "passive": {},
+    "ult": {
+      "cost": 900
+    }
+  },
+  "vaelor": {
+    "id": "vaelor",
+    "name": "Vaelor",
+    "title": "The Thornbound",
+    "story": "Vaelor swore his bow arm to the old briar under the mesa, and the briar keeps what is sworn: thorn has grown through him to the shoulder, and it aches when he misses. He looses for whichever house feeds the root, and the root is always hungry.",
+    "role": "marksman",
+    "class": "marksman",
+    "weapon": "briar bow",
+    "resource": "mana",
+    "color": [
+      0.36,
+      1.3,
+      0.05
+    ],
+    "stats": {
+      "hp": 600,
+      "mana": 320,
+      "ad": 59,
+      "ap": 0,
+      "armor": 24,
+      "mr": 30,
+      "moveSpeed": 6.6,
+      "attackSpeed": 0.658,
+      "hpRegen": 3.5,
+      "manaRegen": 7.5
+    },
+    "growth": {
+      "hp": 105,
+      "mana": 40,
+      "ad": 3.4,
+      "armor": 4.4,
+      "mr": 1.3,
+      "attackSpeed": 0.04,
+      "hpRegen": 0.55,
+      "manaRegen": 0.8
+    },
+    "lmb": {
+      "name": "Thorn Arrow",
+      "type": "projectile",
+      "aim3d": true,
+      "range": 18,
+      "speed": 38,
+      "width": 0.5,
+      "damage": {
+        "ad": 1,
+        "ap": 0.2
+      },
+      "clip": "attack",
+      "desc": "Arrows of living briar, each tipped with a rust-red thorn."
+    },
+    "rmb": {
+      "name": "Quickthorn",
+      "type": "self",
+      "useAt": "attack",
+      "cooldown": 16,
+      "cost": 40,
+      "self": [
+        {
+          "kind": "attackSpeed",
+          "amount": 0.5,
+          "duration": 5,
+          "word": "Quickthorn"
+        },
+        {
+          "kind": "speed",
+          "amount": 0.15,
+          "duration": 5
+        }
+      ],
+      "clip": "cast",
+      "desc": "The briar quickens his draw and his stride: 50% attack speed and 15% move speed for 5 s."
+    },
+    "q": {
+      "name": "Heartwood Arrow",
+      "type": "skillshot",
+      "aim3d": true,
+      "charge": {
+        "max": 1.5,
+        "damageSeconds": 1.25,
+        "timeout": 4,
+        "rangeMin": 16,
+        "rangeMax": 34,
+        "damageMax": 1.5,
+        "slowSelf": 0.2,
+        "hue": 118
+      },
+      "range": 34,
+      "speed": 36,
+      "width": 1.3,
+      "pierce": 99,
+      "pierceGain": {
+        "per": 0.1,
+        "max": 0.3
+      },
+      "damage": {
+        "base": [
+          40,
+          67,
+          93,
+          120,
+          147
+        ],
+        "ad": [
+          0.83,
+          0.9,
+          0.97,
+          1.03,
+          1.1
+        ]
+      },
+      "cooldown": [
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "cost": [
+        65,
+        70,
+        75,
+        80,
+        85
+      ],
+      "clip": "shot",
+      "desc": "Hold to draw (slowed 20%) — range grows 16→34 m over 1.5 s, damage up to +50% at 1.25 s; release to loose an arrow that pierces everything and hits 10% harder for each enemy it has passed through (up to +30%): shoot through the wave. Held past 4 s it slips: no shot, half the mana back."
+    },
+    "e": {
+      "name": "Thorn Rain",
+      "type": "area",
+      "at": "aim",
+      "range": 22,
+      "radius": 4.8,
+      "delay": 0.5,
+      "duration": 4,
+      "tick": 0.5,
+      "cc": {
+        "kind": "slow",
+        "away": true
+      },
+      "damage": {
+        "base": [
+          60,
+          100,
+          140,
+          180,
+          220
+        ],
+        "ad": 0.9
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.3,
+          "duration": 0.6
+        }
+      ],
+      "tickEffects": [
+        {
+          "kind": "slow",
+          "amount": 0.3,
+          "duration": 0.6
+        }
+      ],
+      "tickFx": 0.3,
+      "brush": "team",
+      "cooldown": [
+        18,
+        16,
+        14,
+        12,
+        10
+      ],
+      "cost": 80,
+      "clip": "e",
+      "desc": "Thorns rain from the sky for 4 s and the ground slows. While it falls the circle is brush for his team: allies inside are hidden unless an enemy hero stands in it."
+    },
+    "r": {
+      "name": "Strangleroot",
+      "type": "skillshot",
+      "range": 24,
+      "speed": 32,
+      "width": 1.5,
+      "pierce": 0,
+      "championsOnly": true,
+      "ult": {
+        "use": "area",
+        "n": 2,
+        "r": 6,
+        "hp": 0.5
+      },
+      "cc": {
+        "kind": "root",
+        "away": true
+      },
+      "damage": {
+        "base": [
+          150,
+          250,
+          350
+        ],
+        "ap": 1,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "root",
+          "duration": 2
+        }
+      ],
+      "longAim": true,
+      "hedge": {
+        "length": 12,
+        "width": 1.6,
+        "rise": 0.3,
+        "duration": 2,
+        "effects": [
+          {
+            "kind": "root",
+            "duration": 1
+          }
+        ],
+        "cage": {
+          "script": "scripts/gen/vaelor-body.js",
+          "kind": "briarCage"
+        },
+        "clump": {
+          "script": "scripts/gen/vaelor-body.js",
+          "kind": "hedgeClump",
+          "fx": "clump",
+          "seeds": 3
+        }
+      },
+      "botTell": {
+        "shape": "line",
+        "piece": "hedge",
+        "blow": "hedge"
+      },
+      "cost": 100,
+      "clip": "r",
+      "desc": "A root-arrow roots the first hero it hits for 2 s, and a hedge of thorns 12 m long rises across the shot through them for 2 s. An enemy hero who touches the hedge is rooted 1 s, once."
+    },
+    "passive": {},
+    "ult": {
+      "cost": 1200
+    }
+  },
+  "mordrake": {
+    "id": "mordrake",
+    "name": "Mordrake",
+    "title": "The Lantern Warden",
+    "story": "Keeper of the lamp that lights the road under the mesa. The lost follow Mordrake's lantern home; the ones he hooks are not given the choice.",
+    "role": "tank",
+    "class": "tank",
+    "weapon": "a barbed boathook on a chain and an iron cage-lantern",
+    "resource": "mana",
+    "color": [
+      2.6,
+      1.0,
+      0.12
+    ],
+    "stats": {
+      "hp": 690,
+      "mana": 274,
+      "ad": 56,
+      "ap": 0,
+      "armor": 40,
+      "mr": 32,
+      "moveSpeed": 6.7,
+      "attackSpeed": 0.625,
+      "hpRegen": 8,
+      "manaRegen": 6
+    },
+    "growth": {
+      "hp": 120,
+      "mana": 44,
+      "ad": 2.2,
+      "armor": 0,
+      "mr": 1.55,
+      "attackSpeed": 0.035,
+      "hpRegen": 0.55,
+      "manaRegen": 0.8
+    },
+    "lmb": {
+      "name": "Chain Lash",
+      "type": "melee",
+      "chainLash": true,
+      "single": true,
+      "range": 9,
+      "angle": 34,
+      "leash": 2,
+      "hitFrame": 0.55,
+      "damage": {
+        "ad": 1
+      },
+      "flayCharge": {
+        "secs": 8,
+        "adMin": 0.8,
+        "adMax": 2.0
+      },
+      "clip": "attack",
+      "short": "Whips the boathook out on its chain (9 m). Each waylight you carry adds 1 damage.",
+      "desc": "Whips the boathook out on its chain (9 m) at the enemy under the crosshair: longer than a blade, shorter than a bolt. Every blow stings for one extra damage per waylight you carry."
+    },
+    "rmb": {
+      "name": "Wayfinder Lantern",
+      "type": "area",
+      "at": "aim",
+      "longAim": true,
+      "guard": "both",
+      "lantern": {
+        "travel": 34,
+        "life": 6,
+        "grab": 1.7,
+        "shieldR": 3.5,
+        "ride": 30,
+        "light": 8
+      },
+      "range": 19,
+      "radius": 1.7,
+      "damage": {
+        "base": 0
+      },
+      "self": [
+        {
+          "kind": "shield",
+          "base": [
+            75,
+            110,
+            145,
+            180,
+            215
+          ],
+          "ap": 0.4,
+          "hpRatio": 0.04,
+          "duration": 6
+        }
+      ],
+      "allyShield": {
+        "base": [
+          75,
+          110,
+          145,
+          180,
+          215
+        ],
+        "ap": 0.4,
+        "hpRatio": 0.04,
+        "duration": 6
+      },
+      "cooldown": [
+        21,
+        19.5,
+        18,
+        16.5,
+        15
+      ],
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "clip": "cast",
+      "short": "Throw the lantern: it shields you and allies beside it. An ally who steps in is carried to you.",
+      "desc": "Hold to aim at the ground, release to throw the lantern. You and allies it lands beside are shielded (75–215 + 40% AP + 4% of your max HP). An ally who walks into the lantern is carried through the dark to your side. The lantern gathers waylights within 5 m, and it lights the brush within 8 m while it stands: enemies there cannot hide."
+    },
+    "q": {
+      "name": "Warden's Hook",
+      "type": "skillshot",
+      "longAim": true,
+      "tell": "mordrakeQ",
+      "botTell": {
+        "shape": "line",
+        "kind": "hook"
+      },
+      "castTime": 0.5,
+      "range": 22,
+      "speed": 40,
+      "width": 1.4,
+      "pierce": 0,
+      "damage": {
+        "base": [
+          100,
+          140,
+          180,
+          220,
+          260
+        ],
+        "ap": 0.9,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "stun",
+          "duration": 1.5
+        }
+      ],
+      "hook": {
+        "hold": 1.5,
+        "tugs": [
+          0.2,
+          0.45,
+          0.7,
+          0.95,
+          1.2
+        ],
+        "pull": 0.7,
+        "retract": 60
+      },
+      "recast": {
+        "window": 1.5,
+        "leap": true,
+        "when": "safe"
+      },
+      "cc": {
+        "kind": "stun",
+        "away": false
+      },
+      "cooldown": [
+        19,
+        16.5,
+        14,
+        11.5,
+        9
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "clip": "q",
+      "short": "Hooks the first enemy: a stun, and the chain drags them in. Q again carries you to them.",
+      "desc": "Hold to aim, release to throw: after a half-second wind-up the boathook flies out on its chain and hooks the first enemy — a 1.5 s stun while the chain yanks them about 70% of the way toward you in five quick tugs. The throw goes where you're aiming the instant it leaves your hand. Press Q again while the chain holds: Chain Walk, the dark carries you down the chain to them."
+    },
+    "e": {
+      "name": "Sweep",
+      "type": "flay",
+      "flayMode": true,
+      "range": 9,
+      "angle": 150,
+      "shove": 5,
+      "past": 3,
+      "sweep": 0.34,
+      "after": "held",
+      "cc": {
+        "kind": "slow",
+        "away": true
+      },
+      "displace": {
+        "dir": "aim",
+        "dist": 5
+      },
+      "damage": {
+        "base": [
+          75,
+          110,
+          145,
+          180,
+          215
+        ],
+        "ap": 0.4,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.3,
+          "duration": 1
+        }
+      ],
+      "cooldown": [
+        13,
+        12.25,
+        11.5,
+        10.75,
+        10
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "clip": "e",
+      "short": "A fan before you. LMB throws everyone in it away; RMB rakes them to you and past you.",
+      "desc": "Press E: a fan stands on the ground before you, as far as your chain reaches (9 m) — turn to aim it. LMB swings the boathook through it and THROWS everything in it 5 m away from you; RMB RAKES everything in it to you and past you. Enemies it strikes are hurt and slowed 30% for 1 s. E again puts it away; your mouse buttons return the moment it fires."
+    },
+    "r": {
+      "name": "The Cage",
+      "type": "box",
+      "heavy": true,
+      "radius": 4.5,
+      "walls": 5,
+      "duration": 5,
+      "ult": {
+        "use": "area",
+        "n": 2
+      },
+      "cc": {
+        "kind": "slow",
+        "away": true
+      },
+      "damage": {
+        "base": [
+          250,
+          400,
+          550
+        ],
+        "ap": 1,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "stun",
+          "duration": 0.5
+        },
+        {
+          "kind": "slow",
+          "amount": 0.99,
+          "duration": 1.75
+        }
+      ],
+      "again": {
+        "mult": 0.5,
+        "effects": [
+          {
+            "kind": "slow",
+            "amount": 0.99,
+            "duration": 1
+          }
+        ]
+      },
+      "cost": 100,
+      "clip": "r",
+      "short": "A ring of lantern-posts. An enemy who breaks a wall of light is hurt, stunned and slowed.",
+      "desc": "Raises five iron lantern-posts in a ring around you for 5 s, with a wall of amber light between each two. The first wall an enemy hero breaks through deals full damage, STUNS them for 0.5 s and slows them 99% for 1.75 s in all; every further wall they break deals half and slows for 1 s (one stun a hero a Cage)."
+    },
+    "passive": {
+      "name": "Waylights",
+      "short": "Enemies that fall near him can leave a waylight. Each one gathered is armor and ability power for the match.",
+      "desc": "Enemies that fall near Mordrake sometimes leave a waylight, a small amber flame worth armor and ability power (heroes always leave one). Walk over it, or stand your lantern near it, to gather it: every waylight is +0.75 armor and +0.75 ability power, for the rest of the match."
+    },
+    "ult": {
+      "cost": 800
+    }
+  },
+  "stitches": {
+    "id": "stitches",
+    "name": "Gorm",
+    "title": "The Sewn Giant",
+    "story": "A surgeon sewed Gorm from the dead of three armies and fled before the last stitch was tied. The faces in his shoulders still whisper, and the mouth in his belly has never once been full.",
+    "role": "tank",
+    "class": "fighter",
+    "weapon": "a bone-saw arm and a rusted hook on a chain",
+    "resource": "mana",
+    "color": [
+      1.5,
+      0.14,
+      0.1
+    ],
+    "stats": {
+      "hp": 660,
+      "mana": 300,
+      "ad": 62,
+      "ap": 0,
+      "armor": 35,
+      "mr": 32,
+      "moveSpeed": 6.6,
+      "attackSpeed": 0.64,
+      "hpRegen": 8,
+      "manaRegen": 7
+    },
+    "growth": {
+      "hp": 110,
+      "mana": 42,
+      "ad": 3.2,
+      "armor": 4.2,
+      "mr": 1.6,
+      "attackSpeed": 0.025,
+      "hpRegen": 0.7,
+      "manaRegen": 0.7
+    },
+    "lmb": {
+      "name": "Bone Saw",
+      "type": "melee",
+      "range": 3.2,
+      "angle": 80,
+      "combo": 2,
+      "hitFrame": 0.45,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "Two heavy chops of the bone saw (3.2 m); the second hits harder."
+    },
+    "rmb": {
+      "name": "Gut Crush",
+      "type": "melee",
+      "windup": 0.4,
+      "range": 9,
+      "angle": 100,
+      "heavy": true,
+      "fxRide": true,
+      "cc": {
+        "kind": "slow",
+        "away": true
+      },
+      "sweet": {
+        "range": 4,
+        "mult": 1.25
+      },
+      "damage": {
+        "base": [
+          50,
+          80,
+          110,
+          140,
+          170
+        ],
+        "ad": 0.4,
+        "ap": 0.2,
+        "type": "physical"
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.4,
+          "duration": 1.5
+        }
+      ],
+      "cooldown": [
+        9,
+        8.5,
+        8,
+        7.5,
+        7
+      ],
+      "cost": [
+        40,
+        45,
+        50,
+        55,
+        60
+      ],
+      "clip": "slam",
+      "short": "Slams the ground: a 9 m cone of murk that hurts and slows. The near 4 m is crushed harder.",
+      "desc": "Slams the ground and the tank on his back bursts over it: a 9 m cone of embalming murk, damage and 40% slow for 1.5 s; the near 4 m is crushed for 25% more. Leaves a 3 s pool of murk that slows 20%."
+    },
+    "q": {
+      "name": "Chain Gaff",
+      "type": "skillshot",
+      "longAim": true,
+      "botTell": {
+        "shape": "line",
+        "kind": "hook",
+        "hold": 1
+      },
+      "castTime": 0.15,
+      "range": 33,
+      "speed": 62,
+      "width": 1.3,
+      "reel": 26,
+      "hook": {},
+      "cc": {
+        "kind": "pull",
+        "away": false
+      },
+      "displace": {
+        "dir": "toMe",
+        "dist": 33
+      },
+      "damage": {
+        "base": [
+          60,
+          95,
+          130,
+          165,
+          200
+        ],
+        "ap": 0.4,
+        "type": "magic"
+      },
+      "cooldown": [
+        18,
+        17,
+        16,
+        15,
+        14
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "clip": "q",
+      "short": "Fling the rusted hook 33 m. The first enemy it catches is dragged to his feet.",
+      "desc": "Hold to aim, release to fling the rusted hook 33 m on its chain. The FIRST unit it hits — minions block it — is dragged all the way to his feet."
+    },
+    "e": {
+      "name": "Iron Maw",
+      "type": "melee",
+      "lastHit": true,
+      "targeted": true,
+      "anyUnit": true,
+      "windup": 0.25,
+      "range": 3,
+      "resetOnKill": true,
+      "damage": {
+        "base": [
+          60,
+          95,
+          130,
+          165,
+          200
+        ],
+        "ad": 0.3,
+        "ap": 0.3,
+        "type": "magic"
+      },
+      "self": [
+        {
+          "kind": "shield",
+          "base": [
+            60,
+            90,
+            120,
+            150,
+            180
+          ],
+          "ap": 0.3,
+          "duration": 3
+        }
+      ],
+      "cooldown": [
+        11,
+        10.5,
+        10,
+        9.5,
+        9
+      ],
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "clip": "e",
+      "short": "The maw in his belly bites the enemy under the crosshair: it heals and shields him.",
+      "desc": "The iron-toothed maw in his belly bites the enemy hero, minion or monster under the crosshair (3 m): heavy damage, heals 20% of his missing HP and shields him 3 s. A kill resets it."
+    },
+    "r": {
+      "name": "Swallow Whole",
+      "type": "gorge",
+      "targeted": true,
+      "heavy": true,
+      "range": 5,
+      "duration": 4,
+      "rip": 0.15,
+      "spit": {
+        "dist": 6,
+        "width": 2.2,
+        "time": 0.38
+      },
+      "ult": {
+        "use": "execute",
+        "hp": 0.5
+      },
+      "recast": {
+        "when": "hold"
+      },
+      "cc": {
+        "kind": "stun",
+        "away": false
+      },
+      "damage": {
+        "base": [
+          150,
+          250,
+          350
+        ],
+        "ap": 0.5,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "stun",
+          "duration": 1
+        }
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "clip": "r",
+      "short": "The maw swallows an enemy hero for 4 s. R again spits them out along your aim.",
+      "desc": "The maw in his belly swallows the enemy hero under the crosshair (5 m) for 4 s: hidden, untargetable, helpless; he is slowed 20%. Enemies can rip his stitches open: damage equal to 15% of his max health frees the victim unharmed. Press R again to spit them 6 m along your aim (left alone, the way he faces): damage and a 1 s stun, and a 1 s stun on every other enemy they fly through."
+    },
+    "passive": {
+      "name": "Weeping Tank",
+      "short": "Hit by a hero, his tank weeps a cloud of fumes where he stands; it hurts enemies in it.",
+      "desc": "Taking damage from a hero cracks the tank on his back: it weeps a 3 m cloud of embalming fumes where he stands (magic damage each second to enemies in it). Each new wound brings the cloud to him."
+    },
+    "ult": {
+      "cost": 950
+    }
+  },
+  "kaelthas": {
+    "id": "kaelthas",
+    "name": "Pyrion",
+    "title": "Heir of the Sunspire",
+    "story": "Last prince of a tower that burned with the sun inside it. Pyrion carries three of its coals, and means to light the whole mesa before he lets them go out.",
+    "role": "mage",
+    "class": "mage",
+    "weapon": "an ember censer on a staff, three coals in a brass sun-halo",
+    "resource": "mana",
+    "color": [
+      2.6,
+      0.7,
+      0.1
+    ],
+    "stats": {
+      "hp": 560,
+      "mana": 460,
+      "ad": 52,
+      "ap": 0,
+      "armor": 20,
+      "mr": 30,
+      "moveSpeed": 6.6,
+      "attackSpeed": 0.65,
+      "hpRegen": 5.5,
+      "manaRegen": 8
+    },
+    "growth": {
+      "hp": 96,
+      "mana": 26,
+      "ad": 3,
+      "armor": 4.4,
+      "mr": 1.3,
+      "attackSpeed": 0.025,
+      "hpRegen": 0.55,
+      "manaRegen": 0.8
+    },
+    "lmb": {
+      "name": "Ember",
+      "type": "projectile",
+      "range": 18,
+      "speed": 36,
+      "width": 0.6,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "A bolt of sunfire."
+    },
+    "rmb": {
+      "name": "Cinder Brand",
+      "type": "skillshot",
+      "clear": true,
+      "castTime": 0.2,
+      "fxRide": true,
+      "range": 20,
+      "speed": 30,
+      "width": 1.0,
+      "pierce": 0,
+      "fxColor": [
+        2.6,
+        0.6,
+        0.08
+      ],
+      "damage": {
+        "base": [
+          20,
+          30,
+          40,
+          50,
+          60
+        ],
+        "ap": 0.2,
+        "type": "magic"
+      },
+      "bomb": {
+        "base": [
+          80,
+          120,
+          160,
+          200,
+          240
+        ],
+        "ap": 0.55,
+        "type": "magic"
+      },
+      "burst": 5,
+      "fuse": 2.5,
+      "twice": 0.6,
+      "cooldown": [
+        9,
+        8.5,
+        8,
+        7.5,
+        7
+      ],
+      "cost": [
+        65,
+        70,
+        75,
+        80,
+        85
+      ],
+      "clip": "bomb",
+      "desc": "A bolt plants a coal on the first enemy; 2.5 s later it bursts in 5 m. It never spreads. Cast with a charged coal it costs nothing and bursts twice, 0.6 s apart."
+    },
+    "q": {
+      "name": "Sunflare",
+      "type": "area",
+      "at": "aim",
+      "longAim": true,
+      "range": 28,
+      "radius": 3.6,
+      "delay": 0.65,
+      "after": "held",
+      "fxRide": true,
+      "fxColor": [
+        1.5,
+        0.3,
+        0.03
+      ],
+      "coal": {
+        "radius": 6.5,
+        "mult": 2.1
+      },
+      "damage": {
+        "base": [
+          80,
+          115,
+          150,
+          185,
+          220
+        ],
+        "ap": 0.45,
+        "type": "magic"
+      },
+      "cooldown": [
+        7,
+        6.5,
+        6,
+        5.5,
+        5
+      ],
+      "cost": [
+        40,
+        45,
+        50,
+        55,
+        60
+      ],
+      "clip": "q",
+      "desc": "Hold to aim a circle 3.6 m in radius up to 28 m; 0.65 s later a pillar of fire erupts. Cast with a charged coal it is 6.5 m in radius and hits more than twice as hard."
+    },
+    "e": {
+      "name": "Updraft",
+      "type": "skillshot",
+      "range": 18.9,
+      "speed": 30,
+      "width": 1.8,
+      "pierce": 0,
+      "cc": {
+        "kind": "knockup",
+        "away": true
+      },
+      "fxRide": true,
+      "fxColor": [
+        2.2,
+        0.7,
+        0.18
+      ],
+      "damage": {
+        "base": [
+          60,
+          95,
+          130,
+          165,
+          200
+        ],
+        "ap": 0.5,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "knockup",
+          "duration": 1.2
+        }
+      ],
+      "drift": 3,
+      "cooldown": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "cost": 70,
+      "clip": "e",
+      "desc": "A 19 m line that lifts the first enemy into the air for 1.2 s; the hot air carries a lifted hero 3 m away from him."
+    },
+    "r": {
+      "name": "Sunfall",
+      "type": "skillshot",
+      "longAim": true,
+      "groundAim": true,
+      "tellRadius": 4,
+      "castTime": 1.2,
+      "fxRide": true,
+      "range": 40,
+      "speed": 14,
+      "width": 2.6,
+      "ult": {
+        "use": "held",
+        "hp": 0.4
+      },
+      "homing": {
+        "lock": 2.2,
+        "centre": 1.2
+      },
+      "land": {
+        "radius": 4,
+        "mult": 0.5
+      },
+      "pierce": 0,
+      "championsOnly": true,
+      "damage": {
+        "base": [
+          350,
+          500,
+          650
+        ],
+        "ap": 1.0,
+        "type": "magic"
+      },
+      "cost": 100,
+      "clip": "r",
+      "desc": "Hold to aim; a 1.2 s cast gathers a great coal over his head, then it flies straight at the hero in your crosshair (40 m) and follows them; with no hero there it comes down where you aimed. It bursts on the first hero it meets, 50% splash in 4 m; where it lands on the ground, everyone within 4 m takes that splash."
+    },
+    "passive": {
+      "name": "Sunspire Coals",
+      "desc": "Every 3rd spell charges a coal; the next spell is stronger: Sunflare is large and strong (6.5 m in radius, more than twice the damage), Cinder Brand costs nothing and bursts twice, Updraft hits up to 3."
+    },
+    "ult": {
+      "cost": 1500
+    }
+  },
+  "thrall": {
+    "id": "thrall",
+    "name": "Halla",
+    "title": "The Stormcaller",
+    "story": "Shaman of the ram clans of the north face, who split a black stone with a storm and kept both. Halla does not ask the storm for help; he tells it where to stand.",
+    "role": "bruiser",
+    "class": "fighter",
+    "weapon": "a black-stone club lashed to a root and split with live lightning",
+    "resource": "mana",
+    "color": [
+      1.0,
+      0.85,
+      3.4
+    ],
+    "stats": {
+      "hp": 650,
+      "mana": 320,
+      "ad": 66,
+      "ap": 0,
+      "armor": 34,
+      "mr": 32,
+      "moveSpeed": 6.8,
+      "attackSpeed": 0.64,
+      "hpRegen": 8,
+      "manaRegen": 7
+    },
+    "growth": {
+      "hp": 100,
+      "mana": 22,
+      "ad": 4,
+      "armor": 4.3,
+      "mr": 1.4,
+      "attackSpeed": 0.03,
+      "hpRegen": 0.6,
+      "manaRegen": 0.6
+    },
+    "lmb": {
+      "name": "Thunderstone",
+      "type": "melee",
+      "range": 3.8,
+      "angle": 110,
+      "combo": 3,
+      "hitFrame": 0.4,
+      "damage": {
+        "ad": 1,
+        "ap": 0.3
+      },
+      "clip": "attack",
+      "desc": "Two-handed swings of his black-stone club (100% AD + 30% AP); under Stormbeat they come two and a half times as fast."
+    },
+    "rmb": {
+      "name": "Twin Rams",
+      "type": "skillshot",
+      "longAim": true,
+      "tellLane": "scripts/material-halla-ramlane.js",
+      "ground": true,
+      "range": 36,
+      "speed": 34,
+      "count": 2,
+      "spread": 12,
+      "twin": {
+        "one": 1.2,
+        "both": 2,
+        "through": 0.5,
+        "throughDamage": 0.75,
+        "fan": {
+          "tight": 8,
+          "wide": 30,
+          "cover": 1.44
+        }
+      },
+      "width": 1.8,
+      "pierce": 9,
+      "championsOnly": true,
+      "cc": {
+        "kind": "root",
+        "away": true
+      },
+      "damage": {
+        "base": [
+          50,
+          80,
+          110,
+          140,
+          170
+        ],
+        "ad": 0.4,
+        "ap": 0.4
+      },
+      "effects": [
+        {
+          "kind": "root",
+          "duration": 1.2
+        }
+      ],
+      "cooldown": [
+        12,
+        11,
+        10,
+        9,
+        8
+      ],
+      "cost": 55,
+      "clip": "rmb",
+      "short": "Hold to aim two rams. They run through everyone on their line; aim far for a tight V, near for a wide one.",
+      "desc": "Hold to aim: two spirit rams charge 36 m in a V, along the ground, through minions and through every hero on their line. Aim far and the V is tight, aim near your feet and it opens wide: a hero at the aimed spot is met by both. The first hero each ram meets takes the full damage and is rooted 1.2 s (2 s if both rams meet it); every hero behind it takes 75% and is rooted half as long. Each hero takes the damage once."
+    },
+    "q": {
+      "name": "Forked Sky",
+      "type": "melee",
+      "clear": true,
+      "targeted": true,
+      "anyUnit": true,
+      "champFirst": {
+        "slack": 1.6
+      },
+      "range": 20,
+      "lockSlack": 3,
+      "lockAngle": 50,
+      "windup": 0.4,
+      "damage": {
+        "base": [
+          60,
+          95,
+          130,
+          165,
+          200
+        ],
+        "ad": 0.3,
+        "ap": 0.5,
+        "type": "magic"
+      },
+      "cooldown": [
+        8,
+        7.5,
+        7,
+        6.5,
+        6
+      ],
+      "cost": [
+        45,
+        50,
+        55,
+        60,
+        65
+      ],
+      "clip": "q",
+      "desc": "Targeted: he raises his club and 0.4 s later lightning leaps from it to the enemy under the crosshair (20 m), then chains to 3 more enemies within 8 m of each other (chains deal 80%)."
+    },
+    "e": {
+      "name": "Stormbeat",
+      "type": "self",
+      "useAt": "attack",
+      "cooldown": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "cost": 40,
+      "clip": "e",
+      "self": [
+        {
+          "kind": "speed",
+          "amount": [
+            0.3,
+            0.35,
+            0.4,
+            0.45,
+            0.5
+          ],
+          "duration": 2
+        }
+      ],
+      "desc": "+30/35/40/45/50% move speed (it grows with your level) for 2 s and the next 3 basics come fast (attack speed x2.5). Each Stormbeat hit takes 1 s off this cooldown."
+    },
+    "r": {
+      "name": "Earthsplitter",
+      "type": "line",
+      "longAim": true,
+      "tellLane": "scripts/material-halla-rift.js",
+      "delay": 0.5,
+      "range": 49,
+      "width": 6,
+      "ult": {
+        "use": "area",
+        "n": 2
+      },
+      "cc": {
+        "kind": "stun",
+        "away": true
+      },
+      "damage": {
+        "base": [
+          200,
+          300,
+          400
+        ],
+        "ad": 0.8,
+        "ap": 0.6
+      },
+      "effects": [
+        {
+          "kind": "stun",
+          "duration": 1.5
+        }
+      ],
+      "cost": 100,
+      "clip": "r",
+      "desc": "Hold to aim a 49 m x 6 m line; 0.5 s later the earth splits, flinging enemies to its edges and stunning them 1.5 s."
+    },
+    "passive": {
+      "name": "Ram's Heart",
+      "desc": "Every 5th Ram's Heart stack (an ability or a Stormbeat hit on a hero) heals 8% max HP."
+    },
+    "ult": {
+      "cost": 1000
+    }
+  },
+  "rook": {
+    "id": "rook",
+    "name": "Rook",
+    "title": "The Skywreck Diver",
+    "story": "When a sky-isle tears loose, Rook jumps onto it, not off. He has ridden eleven down and stripped each one before it struck. The sunmetal gauntlet on his arm is what the twelfth gave him to let it go.",
+    "role": "marksman",
+    "class": "marksman",
+    "weapon": "none",
+    "resource": "mana",
+    "color": [
+      3.0,
+      2.2,
+      0.8
+    ],
+    "stats": {
+      "hp": 600,
+      "mana": 375,
+      "ad": 60,
+      "ap": 0,
+      "armor": 24,
+      "mr": 30,
+      "moveSpeed": 6.8,
+      "attackSpeed": 0.625,
+      "hpRegen": 4,
+      "manaRegen": 8.5
+    },
+    "growth": {
+      "hp": 102,
+      "mana": 25,
+      "ad": 2.6,
+      "armor": 4.7,
+      "mr": 1.3,
+      "attackSpeed": 0.025,
+      "hpRegen": 0.65,
+      "manaRegen": 0.65
+    },
+    "lmb": {
+      "name": "Ringbolt",
+      "type": "projectile",
+      "range": 18,
+      "speed": 42,
+      "width": 0.6,
+      "tagReach": 4,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "A bolt of sunmetal off the gauntlet's rings; pops a Salvage Tag. A hero wearing the tag is in reach from 4 m farther (22 m)."
+    },
+    "rmb": {
+      "name": "Salvage Tag",
+      "type": "skillshot",
+      "range": 22,
+      "speed": 30,
+      "width": 1.4,
+      "pierce": 0,
+      "championsOnly": true,
+      "damage": {
+        "base": 0
+      },
+      "cooldown": [
+        12,
+        11,
+        10,
+        9,
+        8
+      ],
+      "cost": [
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "clip": "rmb",
+      "desc": "A ring of sunmetal thrown 22 m through minions: it clamps onto the first hero and tags them for 4 s. His attack or ability on the tag pops it for damage and 45 mana back; while it holds, his basic attacks reach that hero from 22 m."
+    },
+    "q": {
+      "name": "Hot Rivet",
+      "type": "skillshot",
+      "lastHit": true,
+      "range": 24,
+      "speed": 62,
+      "width": 1.0,
+      "pierce": 0,
+      "after": "hit",
+      "refund": {
+        "base": 0.5,
+        "perStack": 0.25,
+        "bar": 0.01
+      },
+      "damage": {
+        "base": [
+          20,
+          45,
+          70,
+          95,
+          120
+        ],
+        "ad": 1.3,
+        "ap": 0.15
+      },
+      "cooldown": [
+        5.5,
+        5.25,
+        5,
+        4.75,
+        4.5
+      ],
+      "cost": [
+        28,
+        31,
+        34,
+        37,
+        40
+      ],
+      "clip": "q",
+      "desc": "A fast 24 m rivet of white-hot sunmetal; a hit applies on-hit and cuts his cooldowns by 0.5 s, plus 0.25 s for each Momentum stack he holds: 1.75 s at five. Each second it cuts also fills 1% of his ultimate's bar."
+    },
+    "e": {
+      "name": "Skyvault",
+      "type": "self",
+      "flight": {
+        "secs": 2.5,
+        "speed": 1,
+        "burst": 2,
+        "burstSecs": 0.45,
+        "ease": 0.35,
+        "lift": 1.2
+      },
+      "range": 12,
+      "boltRange": 12,
+      "airBolt": {
+        "every": 0.5,
+        "range": 12,
+        "damage": {
+          "base": [
+            10,
+            15,
+            20,
+            25,
+            30
+          ],
+          "ad": 0.15,
+          "ap": 0.15,
+          "type": "magic"
+        }
+      },
+      "mobility": "both",
+      "recast": {
+        "when": "bolt"
+      },
+      "damage": {
+        "base": [
+          80,
+          130,
+          180,
+          230,
+          280
+        ],
+        "ad": 0.5,
+        "ap": 0.75,
+        "type": "magic"
+      },
+      "cooldown": [
+        19,
+        17.5,
+        16,
+        14.5,
+        13
+      ],
+      "cost": 90,
+      "clip": "dash",
+      "short": "Burst off the ground and fly for 2.5 s, steering freely, loosing a small bolt every 0.5 s. A big homing bolt leaves as he lands.",
+      "desc": "The glider wing takes the air and throws Rook off the ground at three times his walk; within a second he settles to twice his walk, and for 2.5 s in all he flies wherever you steer, through heroes and minions, and can neither attack nor cast, but every 0.5 s the gauntlet looses a small homing bolt at the nearest enemy hero within 12 m (a tagged one first); each lights a Momentum ring. Press again to come down early. As he lands, a homing bolt strikes a tagged hero within 12 m, else the enemy nearest your crosshair there. A stun, a root, a knock-up or a shove brings him down with no bolt; rooted, he cannot lift off."
+    },
+    "r": {
+      "name": "Relic Surge",
+      "type": "line",
+      "longAim": true,
+      "botTell": {
+        "shape": "line",
+        "tag": "rook-wave",
+        "speed": 65,
+        "at": 0
+      },
+      "range": 150,
+      "width": 4,
+      "aimTime": 0.6,
+      "charge": {
+        "min": 0.6,
+        "max": 1.4,
+        "even": 1,
+        "damageSeconds": 1.4,
+        "timeout": 3,
+        "rangeMin": 150,
+        "rangeMax": 150,
+        "widthMin": 3,
+        "widthMax": 6,
+        "damageMin": 0.85,
+        "damageMax": 1.15,
+        "slowSelf": 0.3
+      },
+      "ult": {
+        "use": "snipe",
+        "hp": 0.35
+      },
+      "damage": {
+        "base": [
+          350,
+          500,
+          650
+        ],
+        "ad": 1.0,
+        "ap": 0.9,
+        "type": "magic"
+      },
+      "cost": 100,
+      "clip": "q",
+      "desc": "Hold to spin up the gauntlet's rings (slowed 30%), release to loose a surge of gold-white sunmetal light across the whole map. The press spends the ultimate's charge. It leaves no sooner than 0.6 s in; held to 1.4 s it grows from 3 m wide at 85% damage to 6 m at 115%. Minions take half. Held past 3 s, or stunned or silenced while you hold, it slips: no surge, and half the ultimate's charge comes back."
+    },
+    "passive": {
+      "name": "Momentum",
+      "max": 5,
+      "desc": "Each ability hit lights one more ring of the gauntlet: +10% attack speed for 6 s, stacking 5 times. Hot Rivet's refund grows with every stack."
+    },
+    "ult": {
+      "cost": 1250
+    }
+  },
+  "vespera": {
+    "id": "vespera",
+    "name": "Vespera",
+    "title": "The Many-Faced",
+    "story": "A sorceress of the Conclave who has worn a hundred faces and kept none of them. Whole courts have fallen to a guest they were certain they knew.",
+    "role": "assassin",
+    "class": "assassin",
+    "weapon": "a slim crescent scepter; five porcelain masks on a gold chain circle her shoulders",
+    "resource": "mana",
+    "color": [
+      0.2,
+      2.2,
+      2.05
+    ],
+    "stats": {
+      "hp": 598,
+      "mana": 400,
+      "ad": 55,
+      "ap": 0,
+      "armor": 22,
+      "mr": 30,
+      "moveSpeed": 6.9,
+      "attackSpeed": 0.658,
+      "hpRegen": 7,
+      "manaRegen": 8
+    },
+    "growth": {
+      "hp": 93,
+      "mana": 25,
+      "ad": 3.5,
+      "armor": 4.2,
+      "mr": 1.3,
+      "attackSpeed": 0.014,
+      "hpRegen": 0.55,
+      "manaRegen": 0.7
+    },
+    "lmb": {
+      "name": "Porcelain Shard",
+      "type": "projectile",
+      "range": 15,
+      "speed": 34,
+      "width": 0.6,
+      "damage": {
+        "ad": 1,
+        "type": "magic"
+      },
+      "clip": "attack",
+      "desc": "A shard of porcelain flicked from the scepter: ranged magic basic attack."
+    },
+    "rmb": {
+      "name": "Vanishing Act",
+      "type": "dash",
+      "groundAim": true,
+      "longAim": true,
+      "range": 14.3,
+      "dashRange": 14.3,
+      "dashSpeed": 50,
+      "radius": 4.05,
+      "returnWindow": 5,
+      "when": {
+        "field": "lbMark",
+        "by": "q"
+      },
+      "damage": {
+        "base": [
+          110,
+          165,
+          220,
+          275,
+          330
+        ],
+        "ap": 0.8,
+        "type": "magic"
+      },
+      "mimicDamage": {
+        "base": [
+          160,
+          320,
+          480
+        ],
+        "ap": 0.8,
+        "type": "magic"
+      },
+      "cooldown": [
+        14,
+        12.75,
+        11.5,
+        10.25,
+        9
+      ],
+      "cost": [
+        70,
+        75,
+        80,
+        85,
+        90
+      ],
+      "clip": "rmb",
+      "desc": "Hold RMB to aim a ground circle up to 14.3 m away (the circle is the burst); release to blink there and blast everything inside. Press RMB again within 5 s to return to the mask you left behind."
+    },
+    "q": {
+      "name": "Laughing Mask",
+      "type": "skillshot",
+      "range": 17,
+      "speed": 34,
+      "width": 0.9,
+      "pierce": 99,
+      "homeTurn": 200,
+      "lockRadius": 4,
+      "markDuration": 3.5,
+      "damage": {
+        "base": [
+          75,
+          105,
+          135,
+          165,
+          195
+        ],
+        "ap": 0.45,
+        "type": "magic"
+      },
+      "pop": {
+        "base": [
+          75,
+          105,
+          135,
+          165,
+          195
+        ],
+        "ap": 0.45,
+        "type": "magic"
+      },
+      "cooldown": [
+        6,
+        5.5,
+        5,
+        4.5,
+        4
+      ],
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "clip": "q",
+      "desc": "A laughing mask that curves toward the hero under your reticle (else the minion there), passing through every enemy and hanging over each for 3.5 s. Vanishing Act, Gilded Fetters or Second Face hitting a masked enemy breaks the mask for the damage again."
+    },
+    "e": {
+      "name": "Gilded Fetters",
+      "type": "skillshot",
+      "range": 16,
+      "speed": 30,
+      "width": 1.0,
+      "pierce": 0,
+      "cc": {
+        "kind": "root",
+        "away": true
+      },
+      "recast": {
+        "when": "hold"
+      },
+      "tether": {
+        "range": 19,
+        "time": 1.5,
+        "root": 1.5,
+        "haul": 0.5
+      },
+      "damage": {
+        "base": [
+          50,
+          70,
+          90,
+          110,
+          130
+        ],
+        "ap": 0.3,
+        "type": "magic"
+      },
+      "rootDamage": {
+        "base": [
+          80,
+          120,
+          160,
+          200,
+          240
+        ],
+        "ap": 0.7,
+        "type": "magic"
+      },
+      "cooldown": [
+        14,
+        13.25,
+        12.5,
+        11.75,
+        11
+      ],
+      "cost": [
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "clip": "e",
+      "short": "A chain that latches on. After 1.5 s it roots; E again hauls them halfway to you instead.",
+      "desc": "A 16 m gold chain that latches onto the first enemy it hits. If neither of you breaks it (19 m) for 1.5 s, it detonates: more damage and a 1.5 s root. Press E again while it holds to haul them to the chain's halfway point instead (half the way to you from where they stand at the press): the chain ends there, with no root and no detonation. A ring on the ground under the chain's middle shows where they will be set down."
+    },
+    "r": {
+      "name": "Second Face",
+      "type": "skillshot",
+      "range": 17,
+      "speed": 36,
+      "width": 1.0,
+      "pierce": 0,
+      "radius": 4.86,
+      "when": {
+        "field": "lbMark",
+        "by": "q"
+      },
+      "damage": {
+        "base": [
+          120,
+          220,
+          320
+        ],
+        "ap": 0.6,
+        "type": "magic"
+      },
+      "pop": {
+        "base": [
+          110,
+          200,
+          290
+        ],
+        "ap": 0.55,
+        "type": "magic"
+      },
+      "wrath": {
+        "radius": 3.5,
+        "share": 0.5
+      },
+      "cost": [
+        0,
+        0,
+        0
+      ],
+      "clip": "r",
+      "short": "Casts your last basic ability again, stronger. A masked hero's mask bursts on all near it.",
+      "desc": "She changes faces: your last basic ability (Laughing Mask, Vanishing Act or Gilded Fetters) is cast again as a stronger copy, in the gold and crimson of her wrathful mask. A copied Laughing Mask homes like the first. When the copy breaks a Laughing Mask on a hero, the mask bursts in wrath: every other enemy within 3.5 m takes half the break's damage (once a cast each)."
+    },
+    "passive": {
+      "name": "Faceless",
+      "desc": "Breaking a Laughing Mask on its victim gives back the stamina of one roll. Dropping under 40% health, once a minute, she vanishes for 0.75 s and her stamina refills."
+    },
+    "ult": {
+      "cost": 900
+    }
+  },
+  "axe": {
+    "id": "axe",
+    "name": "Ragnar Bloodhorn",
+    "title": "Champion of the Pit",
+    "story": "No chain of the pit ever held Ragnar: he stayed for the roar. He takes every blow his enemies can give, counts each one on his horn-bladed axe, and pays the whole debt back in one turn.",
+    "role": "tank",
+    "class": "tank",
+    "weapon": "a horn-bladed great-axe notched with tallies",
+    "resource": "mana",
+    "color": [
+      2.1,
+      0.2,
+      0.34
+    ],
+    "stats": {
+      "hp": 740,
+      "mana": 300,
+      "ad": 60,
+      "ap": 0,
+      "armor": 42,
+      "mr": 34,
+      "moveSpeed": 6.9,
+      "attackSpeed": 0.63,
+      "hpRegen": 9,
+      "manaRegen": 7
+    },
+    "growth": {
+      "hp": 116,
+      "mana": 20,
+      "ad": 3.4,
+      "armor": 4.8,
+      "mr": 1.8,
+      "attackSpeed": 0.028,
+      "hpRegen": 0.8,
+      "manaRegen": 0.55
+    },
+    "lmb": {
+      "name": "Horn Cleave",
+      "type": "melee",
+      "range": 3.8,
+      "angle": 120,
+      "combo": 3,
+      "hitFrame": 0.4,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "Wide two-handed cleaves of the horn-bladed axe."
+    },
+    "rmb": {
+      "name": "Blood Feud",
+      "type": "melee",
+      "targeted": true,
+      "range": 9,
+      "lockSlack": 2,
+      "lockAngle": 110,
+      "cc": {
+        "kind": "slow",
+        "away": true
+      },
+      "feud": {
+        "duration": 8
+      },
+      "damage": {
+        "base": [
+          16,
+          22,
+          28,
+          34,
+          40
+        ],
+        "ad": 0.1,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.2,
+          "duration": 8
+        }
+      ],
+      "self": [
+        {
+          "kind": "speed",
+          "amount": 0.1,
+          "duration": 8
+        }
+      ],
+      "cooldown": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "cost": 50,
+      "clip": "rmb",
+      "short": "Marks the enemy hero under your crosshair: damage each second and a 20% slow for 8 s, until they strike him.",
+      "desc": "Calls out the enemy hero under your crosshair (9 m): magic damage every second and a 20% slow for 8 s. The feud ends the moment they damage Ragnar. He runs 10% faster while it lasts."
+    },
+    "q": {
+      "name": "Pit Roar",
+      "type": "cone",
+      "range": 7,
+      "angle": 100,
+      "cc": {
+        "kind": "taunt",
+        "away": false
+      },
+      "ward": {
+        "reduce": 0.25
+      },
+      "effects": [
+        {
+          "kind": "taunt",
+          "duration": 1.8
+        }
+      ],
+      "cooldown": [
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "clip": "q",
+      "short": "A roar down your aim: enemies in the cone must attack him for 1.8 s, and enemy heroes deal 25% less damage to him.",
+      "desc": "Roars in a cone 7 m long along your aim. Every enemy hero and minion in it is taunted for 1.8 s: it walks at Ragnar and can only swing at him. For those 1.8 s the attacks and abilities of enemy heroes deal 25% less damage to him."
+    },
+    "e": {
+      "name": "Reckoning",
+      "type": "self",
+      "radius": 4,
+      "when": {
+        "field": "axStore",
+        "on": "self",
+        "min": 40,
+        "by": "q"
+      },
+      "damage": {
+        "base": [
+          60,
+          90,
+          120,
+          150,
+          180
+        ],
+        "ad": 0.5
+      },
+      "cooldown": [
+        10,
+        9,
+        8,
+        7,
+        6
+      ],
+      "cost": 40,
+      "clip": "e",
+      "short": "Spins the axe: every enemy within 4 m takes its damage plus his whole Blood Debt.",
+      "desc": "Spins the axe through every enemy within 4 m. Each one takes the spin's damage plus the whole of his stored Blood Debt. The debt is then paid: it starts again from nothing."
+    },
+    "r": {
+      "name": "Pit's Verdict",
+      "type": "melee",
+      "heavy": true,
+      "targeted": true,
+      "range": 4,
+      "lockSlack": 1.5,
+      "lockAngle": 100,
+      "ult": {
+        "use": "execute",
+        "line": {
+          "base": [
+            250,
+            350,
+            450
+          ],
+          "maxHp": 0.1
+        }
+      },
+      "cull": {
+        "delay": 0.45,
+        "speed": 0.3,
+        "speedSecs": 4,
+        "aura": 12
+      },
+      "damage": {
+        "base": [
+          150,
+          250,
+          350
+        ],
+        "ad": 0.6
+      },
+      "cost": 100,
+      "clip": "r",
+      "short": "An overhead chop. On a hero under the line it executes: his team runs 30% faster and Pit Roar is ready again.",
+      "desc": "A huge overhead chop on the enemy hero under your crosshair. Below 250/350/450 + 10% of their max HP it EXECUTES: allies within 12 m run 30% faster for 4 s and Pit Roar is ready again at once. Above the line it just hits."
+    },
+    "passive": {
+      "name": "Blood Debt",
+      "debt": {
+        "share": 0.25,
+        "window": 5,
+        "cap": [
+          50,
+          80,
+          110,
+          140,
+          170
+        ],
+        "loud": 0.5
+      },
+      "short": "A quarter of the damage he takes is stored for 5 s. Reckoning pays it all back.",
+      "desc": "25% of the damage Ragnar takes is stored as a debt, up to 50/80/110/140/170 (by Reckoning's rank). The debt is lost 5 s after the last blow. Reckoning adds the whole debt to its damage on every enemy it hits."
+    },
+    "ult": {
+      "cost": 900
+    }
+  },
+  "rubick": {
+    "id": "rubick",
+    "name": "Oberic",
+    "title": "The Arch-Mimic",
+    "story": "Court magus to three thrones and loyal to none. Oberic has never written a spell of his own: he only needs to see yours once.",
+    "role": "support",
+    "class": "mage",
+    "weapon": "mirror staff",
+    "resource": "mana",
+    "color": [
+      1.0,
+      1.25,
+      2.5
+    ],
+    "stats": {
+      "hp": 580,
+      "mana": 480,
+      "ad": 54,
+      "ap": 0,
+      "armor": 21,
+      "mr": 30,
+      "moveSpeed": 6.6,
+      "attackSpeed": 0.669,
+      "hpRegen": 5.5,
+      "manaRegen": 8
+    },
+    "growth": {
+      "hp": 99,
+      "mana": 23.5,
+      "ad": 3.3,
+      "armor": 5.2,
+      "mr": 1.3,
+      "attackSpeed": 0.03,
+      "hpRegen": 0.55,
+      "manaRegen": 0.8
+    },
+    "lmb": {
+      "name": "Staff Bolt",
+      "type": "projectile",
+      "range": 20,
+      "speed": 34,
+      "width": 0.5,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "A flick of the staff throws a shard of mirror glass."
+    },
+    "rmb": {
+      "name": "Unseen Hand",
+      "type": "projectile",
+      "targeted": true,
+      "anyUnit": true,
+      "champFirst": {
+        "slack": 1.6
+      },
+      "range": 14,
+      "lockSlack": 2,
+      "lockAngle": 70,
+      "lift": 1.5,
+      "throwRange": 8,
+      "toss": {
+        "range": 14,
+        "time": 0.4
+      },
+      "landRadius": 3,
+      "landStun": 1,
+      "cc": {
+        "kind": "stun",
+        "away": true
+      },
+      "recast": {
+        "when": "toAllies"
+      },
+      "displace": {
+        "dir": "aim",
+        "dist": 8
+      },
+      "damage": {
+        "base": [
+          60,
+          95,
+          130,
+          165,
+          200
+        ],
+        "ap": 0.45,
+        "type": "magic"
+      },
+      "cooldown": [
+        18,
+        17,
+        16,
+        15,
+        14
+      ],
+      "cost": [
+        80,
+        85,
+        90,
+        95,
+        100
+      ],
+      "clip": "rmb",
+      "short": "A hand of mirror shards lifts an enemy hero; press again to throw them.",
+      "desc": "A hand of mirror shards lifts an enemy hero for 1.5 s; press again to throw them to the aimed point within 8 m. The landing stuns everyone within 3 m for 1 s. With no hero under the crosshair it takes the minion there and throws it at once, up to 14 m, with the same landing. A hero under the crosshair is always taken first.",
+      "none": "No one to lift"
+    },
+    "q": {
+      "name": "Sapping Bolt",
+      "type": "projectile",
+      "targeted": true,
+      "champFirst": {
+        "slack": 1.6
+      },
+      "minionFallback": true,
+      "range": 16,
+      "lockSlack": 2,
+      "lockAngle": 70,
+      "bounces": 4,
+      "falloff": 0.08,
+      "bounceRange": 8,
+      "weaken": {
+        "amount": 0.15,
+        "duration": 5
+      },
+      "amp": {
+        "per": 0.05,
+        "duration": 5
+      },
+      "damage": {
+        "base": [
+          70,
+          110,
+          150,
+          190,
+          230
+        ],
+        "ap": 0.55,
+        "type": "magic"
+      },
+      "cooldown": [
+        9,
+        8.5,
+        8,
+        7.5,
+        7
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "clip": "q",
+      "short": "Light from his mirror glances between up to 4 enemies and saps them.",
+      "desc": "Locks the hero under your crosshair, else the nearest enemy minion. A bolt of light from the staff's mirror that glances between up to 4 enemies, 8% less each bounce; struck enemies deal 15% less damage for 5 s (a small mirror hangs over a sapped hero), and every hero it hits gives Oberic +5% spell damage for 5 s.",
+      "none": "No one in the glass"
+    },
+    "e": {
+      "name": "Arcane Aegis",
+      "type": "self",
+      "range": 20,
+      "guard": "both",
+      "shield": {
+        "base": [
+          60,
+          90,
+          120,
+          150,
+          180
+        ],
+        "ap": 0.4,
+        "duration": 2
+      },
+      "allyRadius": 8,
+      "pulse": {
+        "radius": 4,
+        "distance": 4
+      },
+      "cooldown": [
+        18,
+        17,
+        16,
+        15,
+        14
+      ],
+      "cost": 70,
+      "clip": "e",
+      "short": "Panes of mirror shield you and the allies near you, then burst outward.",
+      "desc": "Shield yourself, every ally within 8 m of you, and the ally nearest the cursor in panes of mirror for 2 s; each shield ends in a pulse that pushes enemies away as its panes fly off."
+    },
+    "r": {
+      "name": "Borrowed Mantle",
+      "type": "projectile",
+      "targeted": true,
+      "range": 18,
+      "lockSlack": 2,
+      "lockAngle": 80,
+      "hold": 30,
+      "cost": 50,
+      "clip": "r",
+      "short": "Take an enemy hero's whole kit for 30 s.",
+      "desc": "Your mirror takes the reflection of an enemy hero within 18 m, and their whole kit with it: for 30 s your basic attack, your three abilities, your ultimate and your passive are theirs, cast from your own body. The drop key (C, or the button over your bar) gives the kit back at once. The borrowed ultimate needs no charge and can be cast once. Your own cooldowns keep running while you wear it. Your own ultimate stays empty under the kit and starts to charge again when the kit goes back.",
+      "none": "No hero in the glass"
+    },
+    "passive": {
+      "name": "Quick Study",
+      "own": 0.12,
+      "worn": 0.2,
+      "desc": "He only needs to see a spell once. Oberic's own spells deal 12% more damage; the spells of a kit he has borrowed deal 20% more."
+    },
+    "ult": {
+      "cost": 900
+    }
+  },
+  "liming": {
+    "id": "liming",
+    "name": "Liora",
+    "title": "The Wild Arcanist",
+    "story": "The Conclave's finest student, until she walked out with its locked books chained to her belt. Liora writes her spells in red ink the way she argues: fast, loud, and already somewhere else.",
+    "role": "mage",
+    "class": "mage",
+    "weapon": "none",
+    "resource": "mana",
+    "color": [
+      3.2,
+      0.8,
+      0.62
+    ],
+    "stats": {
+      "hp": 545,
+      "mana": 460,
+      "ad": 52,
+      "ap": 0,
+      "armor": 19,
+      "mr": 30,
+      "moveSpeed": 6.7,
+      "attackSpeed": 0.65,
+      "hpRegen": 5.5,
+      "manaRegen": 8
+    },
+    "growth": {
+      "hp": 92,
+      "mana": 26,
+      "ad": 3,
+      "armor": 4.2,
+      "mr": 1.3,
+      "attackSpeed": 0.025,
+      "hpRegen": 0.55,
+      "manaRegen": 0.8
+    },
+    "lmb": {
+      "name": "Ink Flick",
+      "type": "projectile",
+      "range": 14,
+      "speed": 34,
+      "width": 0.6,
+      "damage": {
+        "ad": 1,
+        "type": "magic"
+      },
+      "clip": "attack",
+      "desc": "A flick of vermilion ink from her writing hand; after a Full Volley the next one is a Full Stop."
+    },
+    "rmb": {
+      "name": "Wild Blot",
+      "type": "skillshot",
+      "range": 20.4,
+      "speed": 12.3,
+      "width": 1.1,
+      "pierce": 0,
+      "useAt": "far",
+      "damage": {
+        "base": [
+          80,
+          120,
+          160,
+          200,
+          240
+        ],
+        "ap": 0.5,
+        "type": "magic"
+      },
+      "cooldown": [
+        7,
+        6.5,
+        6,
+        5.5,
+        5
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "clip": "rmb",
+      "short": "A slow orb of ink that swells as it flies and bursts on the first enemy. Strongest far.",
+      "desc": "A slow, heavy orb of ink that swells as it flies and bursts on the first enemy it meets, splashing those beside them. Weak up close (55%), it only peaks at its full 20.4 m: 225% damage."
+    },
+    "q": {
+      "name": "Three Strokes",
+      "type": "skillshot",
+      "lastHit": true,
+      "range": 12.3,
+      "speed": 40,
+      "width": 0.7,
+      "pierce": 0,
+      "damage": {
+        "base": [
+          40,
+          55,
+          70,
+          85,
+          100
+        ],
+        "ap": 0.25,
+        "type": "magic"
+      },
+      "cooldown": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "cost": [
+        40,
+        45,
+        50,
+        55,
+        60
+      ],
+      "clip": "q",
+      "short": "Three strokes of ink at your aim. All three on one enemy load a Full Stop.",
+      "desc": "Three strokes of ink from alternating hands, 0.12 s apart, all steered at the reticle: aim close for a wide fan, far to converge. All three on one enemy is a Full Volley: your next Ink Flick within 3 s is a Full Stop, +150% damage."
+    },
+    "e": {
+      "name": "Slipstep",
+      "type": "self",
+      "range": 11,
+      "radius": 3,
+      "mobility": "both",
+      "refund": {
+        "window": 3,
+        "spell": 1,
+        "basic": 0.5
+      },
+      "damage": {
+        "base": [
+          60,
+          85,
+          110,
+          135,
+          160
+        ],
+        "ap": 0.4,
+        "type": "magic"
+      },
+      "cooldown": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "cost": 0,
+      "clip": "e",
+      "desc": "Blink up to 11 m to the aim; 0.15 s later her seal bursts in ink 3 m around where you land. 4.5 s cooldown. Hit an enemy hero with another spell within 3 s of the blink and the cooldown is refunded in full; a basic attack refunds half the cooldown."
+    },
+    "r": {
+      "name": "Last Word",
+      "type": "area",
+      "at": "aim",
+      "longAim": true,
+      "range": 12,
+      "radius": 5.5,
+      "delay": 0.35,
+      "arc": {
+        "height": 4.5
+      },
+      "ult": {
+        "use": "area",
+        "n": 2,
+        "hp": 0.35
+      },
+      "displace": {
+        "dir": "out",
+        "dist": 7
+      },
+      "cc": {
+        "kind": "knockback",
+        "away": true
+      },
+      "damage": {
+        "base": [
+          180,
+          280,
+          380
+        ],
+        "ap": 0.8,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "knockback",
+          "distance": 7
+        }
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "clip": "r",
+      "desc": "Lob her inkwell overhead to a spot within 12 m. It lands 0.35 s later, bursts over every enemy within 5.5 m and hurls them 7 m out from its centre."
+    },
+    "passive": {
+      "name": "Clean Slate",
+      "desc": "A hero takedown she took part in (damage in the last 3 s, or within 14 m) resets every cooldown and fills her ultimate."
+    },
+    "ult": {
+      "cost": 1000
+    }
+  },
+  "sniper": {
+    "id": "sniper",
+    "name": "Garrick",
+    "title": "The Deadeye",
+    "story": "For thirty years Garrick hunted the mesa's rim behind a vulture's skull, a brass token on his belt for every mark. He does not shoot twice at one: when it falls, his rifle is already on the next.",
+    "role": "marksman",
+    "class": "marksman",
+    "weapon": "a bone-stocked long rifle with a beak muzzle and a red crystal scope (two-handed)",
+    "resource": "mana",
+    "color": [
+      1.9,
+      1.25,
+      0.45
+    ],
+    "stats": {
+      "hp": 560,
+      "mana": 300,
+      "ad": 58,
+      "ap": 0,
+      "armor": 22,
+      "mr": 30,
+      "moveSpeed": 6.4,
+      "attackSpeed": 0.66,
+      "hpRegen": 3.5,
+      "manaRegen": 7
+    },
+    "growth": {
+      "hp": 96,
+      "mana": 36,
+      "ad": 3.3,
+      "armor": 4.2,
+      "mr": 1.3,
+      "attackSpeed": 0.035,
+      "hpRegen": 0.5,
+      "manaRegen": 0.7
+    },
+    "lmb": {
+      "name": "Rifle Shot",
+      "type": "projectile",
+      "range": 21,
+      "speed": 110,
+      "width": 0.35,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "A rifle round that homes to the enemy under the crosshair: the longest basic attack in the game (21 m)."
+    },
+    "rmb": {
+      "name": "Steady Aim",
+      "type": "self",
+      "cooldown": [
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "cost": 40,
+      "aim": {
+        "duration": 5,
+        "range": 9,
+        "attackSpeed": 0.15
+      },
+      "self": [
+        {
+          "kind": "slow",
+          "amount": 0.25,
+          "duration": 5
+        }
+      ],
+      "clip": "rmb",
+      "desc": "Shoulders the rifle for 5 s: +9 m rifle range (21 → 30 m) and +15% attack speed, but he moves 25% slower."
+    },
+    "q": {
+      "name": "Iron Rain",
+      "type": "area",
+      "at": "aim",
+      "longAim": true,
+      "ownRing": true,
+      "range": 32,
+      "radius": 5,
+      "delay": 0.9,
+      "duration": 5,
+      "tick": 0.5,
+      "charges": 3,
+      "recharge": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "tickDamage": {
+        "base": [
+          12,
+          18,
+          24,
+          30,
+          36
+        ],
+        "ad": 0.12
+      },
+      "tickEffects": [
+        {
+          "kind": "slow",
+          "amount": 0.22,
+          "duration": 0.7
+        }
+      ],
+      "cooldown": 0.6,
+      "cost": 35,
+      "clip": "q",
+      "desc": "3 charges. Hold to aim a 5 m circle up to 32 m, release to fire a flare over it: 0.9 s later iron rains on a 5 m circle for 5 s, damaging every 0.5 s and slowing 22%. A charge returns every 10.5/9.75/9/8.25/7.5 s."
+    },
+    "e": {
+      "name": "Powder Kick",
+      "type": "self",
+      "cooldown": [
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "cost": 50,
+      "radius": 4.5,
+      "launch": 8,
+      "damage": {
+        "base": [
+          60,
+          95,
+          130,
+          165,
+          200
+        ],
+        "ad": 0.4
+      },
+      "effects": [
+        {
+          "kind": "knockback",
+          "distance": 4
+        },
+        {
+          "kind": "slow",
+          "amount": 0.4,
+          "duration": 2
+        }
+      ],
+      "clip": "e",
+      "desc": "Fires a charge at his own feet: enemies within 4.5 m take damage, are knocked 4 m away and slowed 40% for 2 s, and the blast throws Garrick 8 m backward, away from where he aims."
+    },
+    "r": {
+      "name": "Called Shot",
+      "type": "melee",
+      "targeted": true,
+      "botTell": {
+        "shape": "lock",
+        "tag": "sniper-assassinate"
+      },
+      "range": 55,
+      "lockSlack": 3,
+      "lockAngle": 12,
+      "aimTime": 1.2,
+      "again": {
+        "kill": 5,
+        "window": 6
+      },
+      "refund": 0.7,
+      "speed": 140,
+      "width": 0.5,
+      "damage": {
+        "base": [
+          400,
+          600,
+          800
+        ],
+        "ad": 1.3
+      },
+      "effects": [
+        {
+          "kind": "stun",
+          "duration": 1
+        }
+      ],
+      "self": [
+        {
+          "kind": "slow",
+          "amount": 0.85,
+          "duration": 1.2
+        }
+      ],
+      "cost": 100,
+      "clip": "r",
+      "desc": "Put an enemy hero under the crosshair (55 m) and press: the vulture's talons close on them in red, for everyone to see, while Garrick braces for 1.2 s, then a heavy round homes into them for massive damage and a 1 s stun. If that hero dies to the round, or within 5 s of it, he has 6 s to press again and call the shot on another hero, at no charge. Stunned, knocked up or silenced during the brace, or the round dodged, and 70% of the ultimate's charge comes back."
+    },
+    "passive": {
+      "name": "Heavy Round",
+      "every": 3,
+      "damage": {
+        "base": 20,
+        "perLevel": 4,
+        "ad": 0.25
+      },
+      "effects": [
+        {
+          "kind": "knockback",
+          "distance": 1
+        },
+        {
+          "kind": "slow",
+          "amount": 0.5,
+          "duration": 0.5
+        }
+      ],
+      "desc": "Every 3rd rifle shot is a Heavy Round, whether he stands or walks: +20 (+4 per level) +25% AD physical damage, knocks the target back 1 m and slows it 50% for 0.5 s."
+    },
+    "ult": {
+      "cost": 1150
+    }
+  },
+  "jaina": {
+    "id": "jaina",
+    "name": "Isra",
+    "title": "High Priestess of the Rime Court",
+    "story": "Isra took the high seat of the Rime Court, the ice halls under the north face, by freezing the three who sat above her. She passes a sentence once; her serpents of living ice carry it out.",
+    "role": "mage",
+    "class": "mage",
+    "weapon": "serpent-lash ice spear (two-handed; it casts with the staff clips)",
+    "resource": "mana",
+    "color": [
+      0.75,
+      1.9,
+      2.9
+    ],
+    "stats": {
+      "hp": 540,
+      "mana": 500,
+      "ad": 50,
+      "ap": 0,
+      "armor": 18,
+      "mr": 30,
+      "moveSpeed": 6.6,
+      "attackSpeed": 0.65,
+      "hpRegen": 5.5,
+      "manaRegen": 8
+    },
+    "growth": {
+      "hp": 90,
+      "mana": 28,
+      "ad": 3,
+      "armor": 4,
+      "mr": 1.3,
+      "attackSpeed": 0.02,
+      "hpRegen": 0.55,
+      "manaRegen": 0.8
+    },
+    "lmb": {
+      "name": "Rime Fang",
+      "type": "projectile",
+      "range": 17,
+      "speed": 38,
+      "width": 0.6,
+      "damage": {
+        "ad": 1,
+        "type": "magic"
+      },
+      "clip": "attack",
+      "desc": "A fang of ice from the spear's head; Chills for 2 s."
+    },
+    "rmb": {
+      "name": "Fangfall",
+      "short": "Aim a circle: three volleys of black fangs fall on it, slowing and Chilling.",
+      "type": "area",
+      "at": "aim",
+      "longAim": true,
+      "botTell": {
+        "shape": "circle",
+        "piece": "blizzard",
+        "stay": 1.6
+      },
+      "range": 26,
+      "radius": 5.5,
+      "delay": 0.9,
+      "waves": 3,
+      "waveGap": 0.8,
+      "damage": {
+        "base": [
+          45,
+          65,
+          85,
+          105,
+          125
+        ],
+        "ap": 0.3,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.4,
+          "duration": 1.5
+        }
+      ],
+      "cooldown": [
+        16,
+        15.25,
+        14.5,
+        13.75,
+        13
+      ],
+      "cost": [
+        80,
+        85,
+        90,
+        95,
+        100
+      ],
+      "clip": "rmb",
+      "desc": "Hold to aim a 5.5 m circle up to 26 m. Black ice gathers over it for 0.9 s, then three volleys of fangs slam down 0.8 s apart, each damaging, slowing 40% and Chilling."
+    },
+    "q": {
+      "name": "Serpent Lance",
+      "short": "A serpent of living ice strikes down the line at the first enemy. It Chills.",
+      "type": "skillshot",
+      "botTell": {
+        "at": 0
+      },
+      "castTime": 0.2,
+      "range": 26,
+      "speed": 42,
+      "width": 0.9,
+      "pierce": 0,
+      "damage": {
+        "base": [
+          80,
+          110,
+          140,
+          170,
+          200
+        ],
+        "ap": 0.6,
+        "type": "magic"
+      },
+      "cooldown": [
+        5,
+        4.75,
+        4.5,
+        4.25,
+        4
+      ],
+      "cost": [
+        45,
+        50,
+        55,
+        60,
+        65
+      ],
+      "clip": "q",
+      "desc": "A serpent of living ice strikes down the line at the first enemy. Chills. On an enemy already Chilled it deals 60% more and spends the Chill (Rime)."
+    },
+    "e": {
+      "name": "Rimebreath",
+      "short": "A fan of freezing air ahead. It Chills; an enemy already Chilled is frozen in place.",
+      "type": "cone",
+      "botTell": {
+        "shape": "cone",
+        "piece": "cone"
+      },
+      "range": 11,
+      "angle": 50,
+      "windup": 0.25,
+      "damage": {
+        "base": [
+          110,
+          140,
+          170,
+          200,
+          230
+        ],
+        "ap": 0.7,
+        "type": "magic"
+      },
+      "chilledRoot": 0.75,
+      "cooldown": [
+        11,
+        10.5,
+        10,
+        9.5,
+        9
+      ],
+      "cost": [
+        70,
+        75,
+        80,
+        85,
+        90
+      ],
+      "clip": "e",
+      "desc": "Her serpents breathe a fan of freezing air 11 m ahead. Chills; an enemy that was already Chilled is frozen in place (rooted) for 0.75 s."
+    },
+    "r": {
+      "name": "The Sentence",
+      "short": "Her serpents strike a circle: its heart roots 1.5 s, its rim 0.5 s. Bursts the Chilled.",
+      "type": "area",
+      "at": "aim",
+      "longAim": true,
+      "heavy": true,
+      "botTell": {
+        "shape": "circle",
+        "piece": "sentence"
+      },
+      "range": 28,
+      "radius": 7.5,
+      "heart": 4,
+      "tellCore": 4,
+      "rim": 0.8,
+      "delay": 0.9,
+      "damage": {
+        "base": [
+          240,
+          345,
+          455
+        ],
+        "ap": 0.9,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "root",
+          "duration": 1.5
+        }
+      ],
+      "rimRoot": 0.5,
+      "cost": 100,
+      "clip": "r",
+      "desc": "Hold to aim a 7.5 m circle up to 28 m: her serpents rise round its rim. 0.9 s later they strike its heart. Enemies within 4 m of the centre take the full blow and are rooted 1.5 s; the rest of the circle takes 80% of it and is rooted 0.5 s. A Chilled enemy takes 60% more (Rime): Chill with the lance, then pass the sentence. A quick tap lands it on the nearest enemy hero ahead of her. The sentence is passed once: nothing lingers."
+    },
+    "passive": {
+      "name": "Rime",
+      "short": "Her abilities Chill (a slow). An ability on a Chilled enemy deals 60% more and spends the Chill.",
+      "desc": "Every Isra ability Chills what it hits for 4 s (25% slow). An ability that hits an enemy already Chilled deals 60% more damage and spends the Chill. Her spear's fangs Chill for 2 s at 15%."
+    },
+    "ult": {
+      "cost": 1100
+    }
+  },
+  "invoker": {
+    "id": "invoker",
+    "name": "Auron",
+    "title": "Keeper of the Three Signs",
+    "story": "Auron keeps the three Signs of the first oath, Frost, Storm and Stone, and reads in their turning what the mesa will do next. He has been right for so long that the houses stopped asking whether he also makes it happen.",
+    "role": "support",
+    "class": "mage",
+    "weapon": "none",
+    "resource": "mana",
+    "color": [
+      2.6,
+      1.6,
+      0.6
+    ],
+    "stats": {
+      "hp": 560,
+      "mana": 480,
+      "ad": 52,
+      "ap": 0,
+      "armor": 19,
+      "mr": 30,
+      "moveSpeed": 6.6,
+      "attackSpeed": 0.65,
+      "hpRegen": 5.5,
+      "manaRegen": 8
+    },
+    "growth": {
+      "hp": 92,
+      "mana": 30,
+      "ad": 3,
+      "armor": 4.2,
+      "mr": 1.3,
+      "attackSpeed": 0.02,
+      "hpRegen": 0.55,
+      "manaRegen": 0.85
+    },
+    "lmb": {
+      "name": "Omen",
+      "type": "projectile",
+      "range": 17,
+      "speed": 36,
+      "width": 0.6,
+      "damage": {
+        "ad": 1,
+        "type": "magic"
+      },
+      "clip": "attack",
+      "desc": "A splinter of white-gold omen thrown from his open hand."
+    },
+    "rmb": {
+      "name": "Stone",
+      "type": "self",
+      "orb": "exort",
+      "cooldown": 0,
+      "cost": 0,
+      "clip": "orb",
+      "desc": "Calls a Sign of Stone: attack damage while he holds it. His level strengthens every stone number."
+    },
+    "q": {
+      "name": "Frost",
+      "type": "self",
+      "orb": "quas",
+      "cooldown": 0,
+      "cost": 0,
+      "clip": "orb",
+      "desc": "Calls a Sign of Frost: life regeneration while he holds it. His level strengthens every frost number."
+    },
+    "e": {
+      "name": "Storm",
+      "type": "self",
+      "orb": "wex",
+      "cooldown": 0,
+      "cost": 0,
+      "clip": "orb",
+      "desc": "Calls a Sign of Storm: movement and attack speed while he holds it. His level strengthens every storm number."
+    },
+    "r": {
+      "name": "Foretell",
+      "type": "invoke",
+      "invoke": true,
+      "cost": 0,
+      "clip": "invoke",
+      "short": "Casts the spell his three Signs spell; the Signs stay, so R again recasts it once it cools. Its emblem is dark while it cools.",
+      "desc": "Reads the spell his three Signs spell out and casts it at once, spending the three: tap to fire at the reticle, hold to aim, release to fire. The Signs, in any order: three Frost, Brittle · two Frost and a Storm, Whiteout · two Frost and a Stone, Frost Ridge · three Storm, Stormdrain · two Storm and a Frost, Gyre · two Storm and a Stone, Whetstone · three Stone, Monolith · two Stone and a Frost, Cairn Golems · two Stone and a Storm, Boulder · one of each, Avalanche. The last Sign called adds its finish. Tier 2 / 3 at levels 6 / 11: shorter lockout, spell haste."
+    },
+    "passive": {
+      "name": "The Three Signs",
+      "desc": "Q calls Frost, E calls Storm, RMB calls Stone — instant, even mid-stride or mid-attack: the Signs he holds ride in his hands, three at most (the last called in his right hand), and a fourth replaces the oldest. Each Sign he holds grants its gift, and the gift grows with his level: Frost life regeneration, Storm movement and attack speed, Stone attack damage. R FORETELLS the spell his three Signs spell out and casts it; the Signs STAY (kits.yml invoke.spend false, 2026-10-05), so R again recasts the same spell once it cools. Before: the gifts end until he calls three more. The last Sign called adds a finish: Frost chills what the spell hits (20% for 1 s), Storm carries it 15% farther and faster, Stone makes it hit 10% harder."
+    },
+    "ult": {
+      "none": true
+    }
+  },
+  "thordan": {
+    "id": "thordan",
+    "name": "Thordan",
+    "title": "The Shieldfather",
+    "story": "Thordan carried the gate of his fallen hall down from the Frostreach and has not set it down since. Whoever stands behind that door is his to keep, and he has never lost one.",
+    "role": "tank",
+    "class": "tank",
+    "weapon": "vault-door shield on the right arm; punches with the left fist",
+    "resource": "mana",
+    "color": [
+      0.8,
+      1.9,
+      2.8
+    ],
+    "stats": {
+      "hp": 690,
+      "mana": 311,
+      "ad": 55,
+      "ap": 0,
+      "armor": 50,
+      "mr": 34,
+      "moveSpeed": 6.7,
+      "attackSpeed": 0.644,
+      "hpRegen": 8.5,
+      "manaRegen": 7
+    },
+    "growth": {
+      "hp": 116,
+      "mana": 45,
+      "ad": 3.2,
+      "armor": 5.2,
+      "mr": 2.05,
+      "attackSpeed": 0.035,
+      "hpRegen": 1,
+      "manaRegen": 0.8
+    },
+    "lmb": {
+      "name": "Frostfist",
+      "type": "melee",
+      "range": 3.6,
+      "angle": 100,
+      "combo": 3,
+      "hitFrame": 0.4,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "Jab, jab, hook with the left fist. Every blow on an enemy hero adds a Closing Gate mark."
+    },
+    "rmb": {
+      "name": "Shieldrun",
+      "type": "dash",
+      "range": 14,
+      "speed": 34,
+      "ahead": 1.8,
+      "allyOnly": true,
+      "duration": 3,
+      "bump": {
+        "radius": 1.8,
+        "side": 2.5,
+        "slow": 0.3,
+        "slowFor": 0.5
+      },
+      "resist": {
+        "base": [
+          10,
+          14,
+          18,
+          22,
+          26
+        ],
+        "bonusArmorRatio": 0.36
+      },
+      "cooldown": [
+        12,
+        11,
+        10,
+        9,
+        8
+      ],
+      "cost": 50,
+      "clip": "rmb",
+      "short": "Slides along the ground to an ally and stands in front of them. Enemies on his way are bumped aside.",
+      "desc": "Slides along the ground to the allied hero or minion under your crosshair (14 m) and stands between them and the nearest enemy. Enemies on his way are bumped 2.5 m aside and slowed 30% for 0.5 s. He and the ally gain armor and magic resist for 3 s."
+    },
+    "q": {
+      "name": "Rimeshard",
+      "type": "skillshot",
+      "castTime": 0.25,
+      "range": 24,
+      "speed": 42,
+      "width": 1.2,
+      "pierce": 0,
+      "damage": {
+        "base": [
+          75,
+          125,
+          175,
+          225,
+          275
+        ],
+        "hpRatio": 0.025,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.7,
+          "duration": 2,
+          "decay": true
+        }
+      ],
+      "cooldown": [
+        10,
+        9,
+        8,
+        7,
+        6
+      ],
+      "cost": [
+        30,
+        35,
+        40,
+        45,
+        50
+      ],
+      "clip": "q",
+      "desc": "Swings the shield and hurls a wedge of ice at the first enemy on the line: damage (+2.5% of his max HP), a 70% slow that thaws over 2 s, and a Closing Gate mark."
+    },
+    "e": {
+      "name": "Bulwark",
+      "type": "self",
+      "guard": {
+        "secs": [
+          3,
+          3.25,
+          3.5,
+          3.75,
+          4
+        ],
+        "arc": 110,
+        "wall": {
+          "width": 3.2,
+          "height": 3,
+          "ahead": 1.3
+        },
+        "firstBlock": true,
+        "reduce": [
+          0.3,
+          0.325,
+          0.35,
+          0.375,
+          0.4
+        ]
+      },
+      "shove": {
+        "range": 6,
+        "width": 3.2,
+        "max": 3,
+        "perCharge": 0.3,
+        "knock": 2.5,
+        "damage": {
+          "base": [
+            50,
+            70,
+            90,
+            110,
+            130
+          ],
+          "type": "magic"
+        }
+      },
+      "recast": {
+        "window": 4,
+        "when": "hold"
+      },
+      "self": [
+        {
+          "kind": "speed",
+          "amount": 0.1,
+          "duration": 3
+        }
+      ],
+      "cooldown": [
+        18,
+        16,
+        14,
+        12,
+        10
+      ],
+      "cost": 30,
+      "clip": "e",
+      "short": "Raises the shield toward your aim. It stops shots and stores them. When it comes down, or when you press again, he shoves: more damage for each shot stored.",
+      "desc": "Raises the shield toward your aim for 3–4 s (it turns with your view). Enemy shots that meet it break on it; an enemy hero's first blow from the front is ignored, later ones are cut 30–40%. Each shot or blow it stops is stored, up to 3. When the shield comes down, or on a second press, he shoves 6 m forward: 50/70/90/110/130 magic damage, +30% for each one stored, and a 2.5 m knockback. He walks 10% faster behind it."
+    },
+    "r": {
+      "name": "Glacier Ram",
+      "type": "line",
+      "longAim": true,
+      "heavy": true,
+      "botTell": {
+        "shape": "line",
+        "piece": "thordan-fissure",
+        "hold": 1.5
+      },
+      "castTime": 0.5,
+      "range": 45,
+      "width": 3,
+      "speed": 36,
+      "damage": {
+        "base": [
+          150,
+          300,
+          450
+        ],
+        "ap": 0.6,
+        "type": "magic"
+      },
+      "carry": {
+        "max": 14,
+        "stun": 1
+      },
+      "lift": {
+        "rest": 0.5
+      },
+      "zone": {
+        "secs": 4,
+        "slow": [
+          0.4,
+          0.5,
+          0.6
+        ]
+      },
+      "cost": 100,
+      "clip": "r",
+      "short": "Hold to aim. A ram of ice runs 45 m down the line and carries the first enemy hero 14 m with it.",
+      "desc": "Hold to aim; slams the shield into the earth and a ram of ice runs 45 m down the line. The first enemy hero it meets is carried up to 14 m with it (a wall stops them sooner) and set down stunned for 1 s. Every other enemy on the line is thrown up 0.5 s. The crack stays 4 s and slows 40–60% whoever crosses it."
+    },
+    "passive": {
+      "name": "Closing Gate",
+      "mark": {
+        "stacks": 4,
+        "window": 4,
+        "slow": [
+          0.15,
+          0.3,
+          0.45
+        ],
+        "root": 1.25,
+        "immune": 8,
+        "damage": {
+          "base": 26,
+          "perLevel": 14,
+          "type": "magic"
+        }
+      },
+      "short": "His blows mark an enemy hero. Each mark slows them more; the fourth roots them.",
+      "desc": "Thordan's punches and Rimeshard mark an enemy hero, and his allies' basic attacks add to the mark. One, two and three marks slow them 15/30/45% while the mark lasts (4 s). The fourth mark roots them 1.25 s and deals magic damage; that hero cannot be marked again for 8 s."
+    },
+    "ult": {
+      "cost": 1050
+    }
+  },
+  "orren": {
+    "id": "orren",
+    "name": "Orren",
+    "title": "the Faultwright",
+    "story": "",
+    "role": "mage",
+    "class": "mage",
+    "weapon": "a 2.35 m two-handed surveyor's staff with an open rectangular measuring frame, upper-left corner missing (2H staff clips)",
+    "resource": "mana",
+    "color": [
+      2.4,
+      1.5,
+      0.8
+    ],
+    "stats": {
+      "hp": 570,
+      "mana": 460,
+      "ad": 52,
+      "ap": 0,
+      "armor": 20,
+      "mr": 30,
+      "moveSpeed": 6.6,
+      "attackSpeed": 0.65,
+      "hpRegen": 5.5,
+      "manaRegen": 8
+    },
+    "growth": {
+      "hp": 96,
+      "mana": 26,
+      "ad": 3,
+      "armor": 4.2,
+      "mr": 1.3,
+      "attackSpeed": 0.025,
+      "hpRegen": 0.55,
+      "manaRegen": 0.8
+    },
+    "lmb": {
+      "short": "Fire a chalk shard. With a Keystone ready, it becomes a heavy slab that hits harder.",
+      "name": "Chalk Bolt",
+      "type": "projectile",
+      "range": 18,
+      "speed": 34,
+      "width": 0.6,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "Fire an aimed ivory chip. A ready Keystone becomes a heavier slab with 40 (+10% AP) bonus magic damage. Normal reticle assistance; can hit airborne enemies."
+    },
+    "rmb": {
+      "short": "Throw a 14 m-wide clamp forward that damages and slows 25%. Champions standing on a fault take 50% more and are rooted.",
+      "name": "Crosscut",
+      "type": "crosscut",
+      "longAim": true,
+      "botTell": {
+        "shape": "line",
+        "state": "orren.w"
+      },
+      "castTime": 0.25,
+      "range": 22,
+      "speed": 40,
+      "length": 14,
+      "width": 14,
+      "damage": {
+        "base": [
+          50,
+          75,
+          100,
+          125,
+          150
+        ],
+        "ap": 0.3,
+        "type": "magic"
+      },
+      "cooldown": [
+        12,
+        11,
+        10,
+        9,
+        8
+      ],
+      "cost": [
+        55,
+        60,
+        65,
+        70,
+        75
+      ],
+      "clip": "rmb",
+      "desc": "Send an open 14 m-wide clamp forward along your aim. Hits once and slows 25% for 1 s. Champions on Scoreline take 50% bonus damage and are rooted 1.25 s. Final Measure faults widen to 6 m when activated and root 1.5 s. Contacted faults are consumed at flight end. High jumps clear it."
+    },
+    "q": {
+      "short": "Crack the ground in a 3.5 m-wide line, damaging every enemy it passes. The crack stays as a fault for 6 s.",
+      "name": "Scoreline",
+      "type": "skillshot",
+      "longAim": true,
+      "botTell": {
+        "shape": "line",
+        "state": "orren.q"
+      },
+      "castTime": 0.2,
+      "range": 24,
+      "speed": 48,
+      "width": 3.5,
+      "pierce": 99,
+      "seam": true,
+      "ground": true,
+      "damage": {
+        "base": [
+          80,
+          100,
+          120,
+          140,
+          160
+        ],
+        "ap": 0.45,
+        "type": "magic"
+      },
+      "cooldown": [
+        8,
+        7.5,
+        7,
+        6.5,
+        6
+      ],
+      "cost": [
+        45,
+        50,
+        55,
+        60,
+        65
+      ],
+      "clip": "q",
+      "desc": "Send a 3.5 m-wide ground fracture along your aim, piercing enemies once. Leaves a broad fault for 6 s; Crosscut catches champions on it. A new Scoreline replaces the old fault. High jumps clear the wave."
+    },
+    "e": {
+      "short": "Shield yourself for 3 s and gain 20% speed. Spend a Keystone for a bigger shield, 35% speed and half the cooldown.",
+      "name": "Brace",
+      "type": "self",
+      "castTime": 0.1,
+      "shield": {
+        "base": [
+          90,
+          118,
+          146,
+          174,
+          202
+        ],
+        "ap": 0.5
+      },
+      "cooldown": [
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "clip": "e",
+      "desc": "Gain 90/118/146/174/202 (+50% AP) shield for 3 s and 20% speed for 1.5 s. Spend Keystone for 40 (+15% AP) extra shield, 35% speed instead, and halve THIS cast's cooldown: 6/5.6/5.25/4.9/4.5 s before haste."
+    },
+    "r": {
+      "short": "Crack three lines ahead. After 0.8 s, bronze beams blast down them, damaging and slowing 40%. The lines stay as faults for Crosscut to root on.",
+      "name": "Final Measure",
+      "type": "rails",
+      "longAim": true,
+      "heavy": true,
+      "botTell": {
+        "shape": "line",
+        "state": "orren.r"
+      },
+      "castTime": 0.2,
+      "delay": 0.6,
+      "range": 30,
+      "width": 2.5,
+      "rails": [
+        -6,
+        0,
+        6
+      ],
+      "damage": {
+        "base": [
+          160,
+          290,
+          420
+        ],
+        "ap": 0.8,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.4,
+          "duration": 1.5
+        }
+      ],
+      "cost": 100,
+      "clip": "r",
+      "desc": "Release three fracture lanes after 0.2 s; bronze beams strike them at 0.8 s for 128/232/336 (+64% AP), slowing 40% for 1.5 s. They remain as faults for 6 s. Crosscut activates 6 m-wide root strips on them. Initial gaps are safe from the strike, not the enhanced clamp. Move, attack or Brace after release. High jumps clear the ground strike."
+    },
+    "passive": {
+      "short": "Hit an enemy champion with a spell to forge a Keystone. Spend it on your next LMB for bonus damage, or on E for a bigger shield and half cooldown. Spending locks new Keystones for 6 s.",
+      "name": "Keystone",
+      "desc": "A damaging spell hit on an enemy champion forges one Keystone for 6 s. Spend it on LMB for 40 (+10% AP) bonus magic damage, or E for 40 (+15% AP) extra shield, 35% speed and HALF that cast's cooldown. Spending starts a shared 6 s lockout. Basics and items cannot forge stones."
+    },
+    "ult": {
+      "cost": 800
+    }
+  },
+  "vessa": {
+    "id": "vessa",
+    "name": "Vessa",
+    "title": "the Painted Dawn",
+    "story": "",
+    "role": "mage",
+    "class": "mage",
+    "weapon": "a 2.4 m birch brush-staff with a glowing teardrop bristle head (2H staff clips)",
+    "resource": "mana",
+    "color": [
+      2.6,
+      1.2,
+      1.0
+    ],
+    "stats": {
+      "hp": 590,
+      "mana": 450,
+      "ad": 52,
+      "ap": 0,
+      "armor": 20,
+      "mr": 30,
+      "moveSpeed": 6.7,
+      "attackSpeed": 0.65,
+      "hpRegen": 5.5,
+      "manaRegen": 8
+    },
+    "growth": {
+      "hp": 95,
+      "mana": 26,
+      "ad": 3,
+      "armor": 4.4,
+      "mr": 1.3,
+      "attackSpeed": 0.022,
+      "hpRegen": 0.55,
+      "manaRegen": 0.8
+    },
+    "lmb": {
+      "short": "Flick a glob of paint. After a spell, it deals 40% more, refunds 15 mana and splats that spell's colour.",
+      "name": "Brush Flick",
+      "type": "projectile",
+      "range": 17,
+      "speed": 34,
+      "width": 0.6,
+      "damage": {
+        "ad": 1,
+        "type": "magic"
+      },
+      "clip": "attack",
+      "desc": "Flicks a glob of living paint. After a spell it carries that spell's colour: +40% damage, 15 mana back, and a splat that can mix."
+    },
+    "rmb": {
+      "short": "Click two points to paint a Rose line between them. Enemies in it are slowed 60% and burn for 4 s.",
+      "name": "Rose Stroke",
+      "type": "stroke",
+      "longAim": true,
+      "castTime": 0.15,
+      "range": 22,
+      "length": 16,
+      "width": 3.2,
+      "anchorWindow": 2.5,
+      "segReach": 18,
+      "delay": 0.4,
+      "duration": 4,
+      "tick": 0.5,
+      "damage": {
+        "base": [
+          69,
+          109,
+          150,
+          190,
+          230
+        ],
+        "ap": 0.5,
+        "type": "magic"
+      },
+      "tickDamage": {
+        "base": 15,
+        "ap": 0.08,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.6,
+          "duration": 0.6
+        }
+      ],
+      "cooldown": [
+        11,
+        10.5,
+        10,
+        9.5,
+        9
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "clip": "rmb",
+      "desc": "Aim and release to drop a paint anchor, then aim and release again within 2.5 s (up to 18 m away) for the second: the stroke paints straight between them. One anchor alone paints a straight stroke across your aim. Sets after 0.4 s, then slows 60% and burns while they stand in it."
+    },
+    "q": {
+      "short": "Throw a Gold glob that bursts on the first enemy and leaves a pool. Enemies in the pool take 10% more from you. Press Q again to burst it early.",
+      "name": "Gold Splash",
+      "type": "skillshot",
+      "botTell": {
+        "shape": "line",
+        "state": "vessa.q"
+      },
+      "castTime": 0.2,
+      "range": 24,
+      "speed": 36,
+      "width": 1.2,
+      "pierce": 0,
+      "splash": {
+        "radius": 5.5,
+        "inner": 2.5,
+        "edge": 0.7
+      },
+      "puddle": {
+        "radius": 5.5
+      },
+      "damage": {
+        "base": [
+          81,
+          121,
+          161,
+          201,
+          242
+        ],
+        "ap": 0.6,
+        "type": "magic"
+      },
+      "cooldown": [
+        6,
+        5.5,
+        5,
+        4.25,
+        3.5
+      ],
+      "cost": [
+        45,
+        50,
+        55,
+        60,
+        65
+      ],
+      "clip": "q",
+      "desc": "Flings a glob of gold that bursts on the first enemy or at max range: 5.5 m splash and a gold pool for 5 s (enemies in it take 10% more from her). Press Q again while it flies to pop it right there, free: drop it on your own paint to mix."
+    },
+    "e": {
+      "short": "Dash 10 m, damaging enemies and leaving a Green streak that speeds allies. Dash into your paint for a free second dash.",
+      "name": "Green Streak",
+      "type": "dash",
+      "range": 10,
+      "speed": 30,
+      "width": 1.5,
+      "passThrough": true,
+      "strokeWidth": 3,
+      "redashWindow": 3,
+      "damage": {
+        "base": [
+          58,
+          92,
+          127,
+          161,
+          196
+        ],
+        "ap": 0.4,
+        "type": "magic"
+      },
+      "cooldown": [
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "cost": 65,
+      "clip": "dash",
+      "desc": "Rides her brush 10 m, striking all she passes and painting a 3 m green streak for 5 s that hastes allies. Lay it across Gold paint to mix Sunlit and shield her. Streak into or through her own paint and she gets one free recast within 3 s: the same streak again, a second dash."
+    },
+    "r": {
+      "short": "Throw an 8 m frame. After 1 s, every colour inside mixes and enemies inside take heavy damage and are rooted 1.5 s.",
+      "name": "Masterpiece",
+      "type": "area",
+      "at": "aim",
+      "longAim": true,
+      "vesselHold": true,
+      "heavy": true,
+      "botTell": {
+        "shape": "circle",
+        "state": "vessa.r"
+      },
+      "castTime": 0.25,
+      "range": 26,
+      "radius": 8,
+      "delay": 1,
+      "linger": 4,
+      "damage": {
+        "base": [
+          230,
+          345,
+          460
+        ],
+        "ap": 0.8,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "root",
+          "duration": 1.5
+        }
+      ],
+      "cost": 100,
+      "clip": "r",
+      "desc": "Throws an 8 m frame. After 1 s every colour inside mixes at once, and everyone inside takes 184/276/368 (+64% AP) and is rooted 1.5 s. The frame stands 4 s more: inside it, every spell she casts lays all three colours."
+    },
+    "passive": {
+      "short": "Your paint lasts 5 s and you run 20% faster on it. Overlapping colours mix instantly: Rose+Gold erupts and knocks up, Gold+Green shields you, Rose+Green roots. Each spell empowers your next Flick.",
+      "name": "Palette",
+      "desc": "Her paint lasts 5 s and she runs 20% faster on it. Colours that overlap MIX at once: Rose+Gold = Coral (erupts for 80 +40% AP, knocks up 0.85 s), Gold+Green = Sunlit (she gains a 60 +30% AP shield, allies on it are hasted), Rose+Green = Thorn (roots 1.5 s). Each spell arms her next Flick with its colour: +40% damage, 15 mana back, and a splat of that colour on the target that can mix."
+    },
+    "ult": {
+      "cost": 1300
+    }
+  },
+  "ansel": {
+    "id": "ansel",
+    "name": "Ansel",
+    "title": "Chaplain of the Dawn Throne",
+    "story": "When the banners of the Dawn Throne fell on the Sunspire stair, Ansel walked the dead ground and left no knight unanswered. He carries the first light of morning in his hands, and he throws it to whoever still stands.",
+    "role": "healer",
+    "class": "enchanter",
+    "weapon": "a tall processional staff with an amber crystal in a sun ring, and a gold censer on a chain (2H staff clips)",
+    "resource": "mana",
+    "color": [
+      2.3,
+      1.45,
+      0.55
+    ],
+    "stats": {
+      "hp": 560,
+      "mana": 420,
+      "ad": 46,
+      "ap": 0,
+      "armor": 26,
+      "mr": 30,
+      "moveSpeed": 6.5,
+      "attackSpeed": 0.625,
+      "hpRegen": 5.5,
+      "manaRegen": 11
+    },
+    "growth": {
+      "hp": 88,
+      "mana": 45,
+      "ad": 2.4,
+      "armor": 4.4,
+      "mr": 1.3,
+      "attackSpeed": 0.02,
+      "hpRegen": 0.55,
+      "manaRegen": 0.6
+    },
+    "lmb": {
+      "short": "A bolt of light. Each one that strikes brings Mending Light back sooner.",
+      "name": "Morning Bolt",
+      "type": "projectile",
+      "range": 16,
+      "speed": 32,
+      "width": 0.6,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "A bolt of first light. Kindle: each bolt that strikes an enemy hero takes 1 s off Mending Light's cooldown (0.5 s on anything else)."
+    },
+    "rmb": {
+      "short": "Swing your censer out and back. Out it burns, home it heals: you too, if it hit a hero.",
+      "name": "Thurible",
+      "type": "skillshot",
+      "pierce": 99,
+      "clear": false,
+      "range": 10,
+      "speed": 24,
+      "width": 2.4,
+      "cc": {
+        "kind": "slow",
+        "away": true
+      },
+      "censer": {
+        "back": 28,
+        "strike": 1.6,
+        "heal": {
+          "base": [
+            45,
+            60,
+            75,
+            90,
+            105
+          ],
+          "ap": 0.25
+        },
+        "lit": 1.5,
+        "self": 2
+      },
+      "damage": {
+        "base": [
+          50,
+          75,
+          100,
+          125,
+          150
+        ],
+        "ap": 0.3,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "slow",
+          "amount": 0.2,
+          "duration": 1
+        }
+      ],
+      "cooldown": [
+        10,
+        9.5,
+        9,
+        8.5,
+        8
+      ],
+      "cost": 55,
+      "clip": "rmb",
+      "desc": "Ansel swings his censer out on its chain: 10 m along his aim, then home to his hand. On its way out it deals 50/75/100/125/150 (+30% AP) magic damage to every enemy it passes and slows them 20% for 1 s. On its way home it heals every allied hero it passes for 45/60/75/90/105 (+25% AP). A censer that struck an enemy hero comes home LIT: it heals 50% more, and when Ansel catches it it heals him for twice that (it is the one way he mends himself, and he must stand within its reach of an enemy hero to do it). Stand where your friends and your enemy are on one line. Dived? Swing it through the diver: it comes home lit and mends you as you catch it."
+    },
+    "q": {
+      "short": "Throw a heal down your aim: more on the badly hurt, and 40% to allies within 3 m. An enemy hero blocks it.",
+      "name": "Mending Light",
+      "type": "skillshot",
+      "assist": "ally",
+      "allies": true,
+      "guard": "ally",
+      "guardHurt": 0.7,
+      "clear": false,
+      "range": 24,
+      "speed": 36,
+      "width": 2,
+      "mend": {
+        "heal": {
+          "base": [
+            70,
+            95,
+            120,
+            145,
+            170
+          ],
+          "ap": 0.4
+        },
+        "low": 0.4,
+        "lowMult": 1.3,
+        "refund": 0,
+        "chain": 0,
+        "splash": {
+          "radius": 3,
+          "share": 0.4
+        },
+        "block": {
+          "base": [
+            30,
+            40,
+            50,
+            60,
+            70
+          ],
+          "ap": 0.2,
+          "type": "magic"
+        }
+      },
+      "cooldown": [
+        8,
+        7.5,
+        7,
+        6.5,
+        6
+      ],
+      "cost": [
+        45,
+        50,
+        55,
+        60,
+        65
+      ],
+      "clip": "q",
+      "desc": "A shaft of light flies 24 m along your aim and heals the first hurt allied hero it meets for 70/95/120/145/170 (+40% AP), and 30% more if that hero is under 40% of their health. Every other allied hero within 3 m of where it lands is healed for 40% of that. It passes minions and allies at full health. The first enemy hero in its way blocks it and takes 30/40/50/60/70 magic damage (a blocked light heals no one). A wall stops it. It cannot heal Ansel, not even by its splash. Kindle: every Morning Bolt that strikes brings it back sooner."
+    },
+    "e": {
+      "short": "Throw enemies before you back 5 m and slow them 40% for 2 s. You run 30% faster for 1.5 s.",
+      "name": "Forbid",
+      "type": "cone",
+      "clear": false,
+      "range": 7,
+      "angle": 70,
+      "cc": {
+        "kind": "knockback",
+        "away": true
+      },
+      "displace": {
+        "dir": "away",
+        "dist": 5
+      },
+      "damage": {
+        "base": [
+          40,
+          60,
+          80,
+          100,
+          120
+        ],
+        "ap": 0.3,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "knockback",
+          "distance": 5
+        },
+        {
+          "kind": "slow",
+          "amount": 0.4,
+          "duration": 2
+        }
+      ],
+      "self": [
+        {
+          "kind": "speed",
+          "amount": 0.3,
+          "duration": 1.5
+        }
+      ],
+      "cooldown": [
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "cost": 60,
+      "clip": "e",
+      "desc": "Ansel forbids the way: a wall of light goes out from him, and every enemy in a 7 m cone in front of him takes 40/60/80/100/120 (+30% AP) magic damage, is thrown back 5 m and slowed 40% for 2 s. The way he forbade is his: Ansel runs 30% faster for 1.5 s. It is his one answer to a hero who dives him, and it is down for a long time after: shove, step away, and swing the Thurible through them as they come."
+    },
+    "r": {
+      "short": "After 0.9 s a wave of light heals allies in a wide fan, you too, and burns enemies.",
+      "name": "First Light",
+      "type": "cone",
+      "assist": "ally",
+      "allies": true,
+      "heavy": true,
+      "clear": false,
+      "fxRide": true,
+      "range": 20,
+      "angle": 60,
+      "delay": 0.9,
+      "rise": {
+        "speed": 40,
+        "rays": 5,
+        "low": 0.4,
+        "heal": {
+          "base": [
+            260,
+            400,
+            540
+          ],
+          "ap": 0.6
+        },
+        "shield": {
+          "base": [
+            0,
+            0,
+            0
+          ],
+          "ap": 0
+        }
+      },
+      "damage": {
+        "base": [
+          90,
+          140,
+          190
+        ],
+        "ap": 0.3,
+        "type": "magic"
+      },
+      "effects": [],
+      "ult": {
+        "use": "peel",
+        "hp": 0.45,
+        "r": 14,
+        "dying": 0.2
+      },
+      "cost": 100,
+      "clip": "r",
+      "desc": "Ansel raises his staff, and the rays of a rising sun show on the ground in front of him for both teams: a fan 20 m long. After 0.9 s first light runs out along it: every allied hero it reaches, Ansel too, is healed 260/400/540 (+60% AP), and every enemy takes 90/140/190 (+30% AP) magic damage. A stun, a knock-up, a charm or a silence on Ansel before it rises stops it, and half his bar comes back."
+    },
+    "passive": {
+      "name": "Kindle",
+      "hero": 1,
+      "other": 0.5,
+      "bank": 1.5,
+      "short": "Each bolt that hits takes 1 s off Mending Light (0.5 s on a minion), or banks up to 1.5 s.",
+      "desc": "Ansel's light is kindled by the fight. Each Morning Bolt that strikes an enemy hero takes 1 s off Mending Light's cooldown; a bolt on a minion or a monster takes 0.5 s. While Mending Light is ready the same bolts bank embers instead, up to 1.5 s (the three pips on this slot and by your crosshair): your next Mending Light starts its cooldown that much shorter. Keep firing and the heal comes back in half the time."
+    },
+    "ult": {
+      "cost": 900
+    }
+  },
+  "ysolde": {
+    "id": "ysolde",
+    "name": "Ysolde",
+    "title": "the Hourglass Sage",
+    "story": "The Conclave keeps one glass that was never turned, and Ysolde is the only sage it lets near it. She does not stop a wound: she sets a clock on it, and at the moment she chooses she takes the hour back.",
+    "role": "healer",
+    "class": "enchanter",
+    "weapon": "a tall dark-bronze staff whose armillary cage holds an hourglass of lit sand (2H staff clips)",
+    "resource": "mana",
+    "color": [
+      0.25,
+      1.9,
+      2.1
+    ],
+    "stats": {
+      "hp": 550,
+      "mana": 400,
+      "ad": 47,
+      "ap": 0,
+      "armor": 25,
+      "mr": 30,
+      "moveSpeed": 6.6,
+      "attackSpeed": 0.64,
+      "hpRegen": 5.5,
+      "manaRegen": 11.5
+    },
+    "growth": {
+      "hp": 86,
+      "mana": 48,
+      "ad": 2.5,
+      "armor": 4.3,
+      "mr": 1.3,
+      "attackSpeed": 0.022,
+      "hpRegen": 0.55,
+      "manaRegen": 0.5
+    },
+    "lmb": {
+      "short": "Throw a dart of sand at the enemy under your crosshair. On an enemy hero it keeps a grain.",
+      "name": "Sand Dart",
+      "type": "projectile",
+      "range": 16,
+      "speed": 34,
+      "width": 0.6,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "A dart of bright sand. It is weak, but each one that strikes an enemy hero keeps a grain for her next clock (Kept Time)."
+    },
+    "rmb": {
+      "short": "Turn a 5 m circle to sand for 3 s. Enemies in it slow more and more; when the last grain falls, those still in it are rooted. Press again to set it early.",
+      "name": "Last Grain",
+      "type": "area",
+      "at": "aim",
+      "clear": false,
+      "range": 20,
+      "radius": 5,
+      "delay": 0.5,
+      "duration": 3,
+      "tick": 1,
+      "cc": {
+        "kind": "root",
+        "away": true
+      },
+      "botTell": {
+        "shape": "circle",
+        "tag": "ysolde-piece",
+        "piece": "sand",
+        "stay": 3,
+        "hold": 1,
+        "at": 0.5
+      },
+      "sand": {
+        "slow": [
+          0.2,
+          0.5
+        ],
+        "pace": 0.5,
+        "root": 1,
+        "rootMin": 0.4,
+        "after": 0.5,
+        "set": {
+          "base": [
+            50,
+            75,
+            100,
+            125,
+            150
+          ],
+          "ap": 0.4,
+          "type": "magic"
+        }
+      },
+      "tickDamage": {
+        "base": [
+          16,
+          24,
+          32,
+          40,
+          48
+        ],
+        "ap": 0.12,
+        "type": "magic"
+      },
+      "recast": {
+        "when": "due"
+      },
+      "cooldown": [
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "cost": [
+        70,
+        75,
+        80,
+        85,
+        90
+      ],
+      "clip": "e",
+      "desc": "After 0.5 s a 5 m circle at your aim turns to sand for 3 s, and a dial round it drains for both teams to read. Enemies in it are slowed 20%, rising to 50% as it drains, and take 16/24/32/40/48 (+12% AP) magic damage each second. When the last grain falls the sand sets: every enemy still inside takes 50/75/100/125/150 (+40% AP) and is rooted 1 s. Press again to set it at once: the root is shorter the less of the dial had drained (0.4 s at the least)."
+    },
+    "q": {
+      "short": "Throw a mark at a hero. An ally gets back 60% of the health lost in the next 4 s; an enemy takes 25% of it again. Press again to turn it: a turn that pays returns 3 s.",
+      "name": "Mark the Hour",
+      "type": "skillshot",
+      "assist": "ally",
+      "allies": true,
+      "guard": "both",
+      "clear": false,
+      "range": 22,
+      "speed": 32,
+      "width": 2,
+      "mark": {
+        "time": 4,
+        "share": 0.6,
+        "cap": {
+          "base": [
+            130,
+            180,
+            230,
+            280,
+            330
+          ],
+          "ap": 0.7
+        },
+        "glass": {
+          "base": [
+            30,
+            45,
+            60,
+            75,
+            90
+          ],
+          "ap": 0.2
+        },
+        "self": true,
+        "after": 0.4,
+        "refund": 3,
+        "mend": {
+          "share": 0.5,
+          "secs": 4
+        },
+        "foe": {
+          "share": 0.25,
+          "cap": {
+            "base": [
+              60,
+              90,
+              120,
+              150,
+              180
+            ],
+            "ap": 0.35,
+            "type": "magic"
+          },
+          "slow": 0.3,
+          "secs": 1.5
+        }
+      },
+      "recast": {
+        "when": "due"
+      },
+      "cooldown": [
+        12,
+        11.5,
+        11,
+        10.5,
+        10
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "clip": "q",
+      "desc": "A glass of sand flies 22 m along your aim and marks the first hero it meets for 4 s: a clock at their feet that both teams read. An ALLY wears a thin glass (a 30/45/60/75/90 (+20% AP) shield) while marked; when the clock turns they get back 60% of the health lost since the mark, up to 130/180/230/280/330 (+70% AP), and what is left of the thin glass as health. An ENEMY, when the clock turns, takes again 25% of the health lost since the mark (up to 60/90/120/150/180 (+35% AP) magic damage) and is slowed 30% for 1.5 s. Press Q again to turn the clock now; it turns by itself when its time is up. A turn you press that gives health back (or repeats an enemy's hour) returns 3 s of this cooldown. If the turn gave an ally less than half of what it could, the rest of that half runs back into them over 4 s. A hero who dies under it gets nothing. A wall stops it. A glass that meets no hero breaks at the end of its flight, and its mark then falls on Ysolde herself."
+    },
+    "e": {
+      "short": "Stand your hour where you are and run 30% faster for 1.5 s. Press again within 4 s to return to it, with half the health you lost since.",
+      "name": "Turn Back",
+      "type": "self",
+      "clear": false,
+      "guard": "self",
+      "anchor": {
+        "time": 4,
+        "back": 0.5,
+        "cap": {
+          "base": [
+            80,
+            120,
+            160,
+            200,
+            240
+          ],
+          "ap": 0.4
+        },
+        "after": 0.4,
+        "leave": {
+          "radius": 3.5,
+          "slow": 0.4,
+          "secs": 1.25
+        }
+      },
+      "self": [
+        {
+          "kind": "speed",
+          "amount": 0.3,
+          "duration": 1.5
+        }
+      ],
+      "recast": {
+        "when": "due"
+      },
+      "cooldown": [
+        18,
+        17,
+        16,
+        15,
+        14
+      ],
+      "cost": 70,
+      "clip": "cast",
+      "desc": "Ysolde stands a small hourglass where she is, for 4 s, in plain sight of both teams, and runs 30% faster for 1.5 s. Press E again to return to it at once: she gets back 50% of the health she lost since (up to 80/120/160/200/240 (+40% AP)), and the sand she leaves behind slows enemies within 3.5 m of where she left by 40% for 1.25 s. A root, a stun or a silence stops the return."
+    },
+    "r": {
+      "short": "Mark every allied hero within 12 m, yourself too. When the Glass turns, each gets back 80% of the health lost since, and in the 3 s before it. Press again to turn it now.",
+      "name": "The Unturned Glass",
+      "type": "area",
+      "at": "self",
+      "radius": 12,
+      "allies": true,
+      "heavy": true,
+      "clear": false,
+      "dial": {
+        "time": 3,
+        "share": 0.8,
+        "cap": {
+          "base": [
+            400,
+            600,
+            800
+          ],
+          "ap": 1.0
+        },
+        "brink": 0.3,
+        "back": 3,
+        "after": 0.7,
+        "drag": {
+          "slow": 0.4,
+          "secs": 1.5
+        }
+      },
+      "recast": {
+        "when": "due"
+      },
+      "ult": {
+        "use": "peel",
+        "hp": 0.5,
+        "r": 8
+      },
+      "cost": 100,
+      "clip": "r",
+      "desc": "Ysolde stops the sand: her great glass hangs over a dial where she stands, and every allied hero within 12 m, herself too, is marked for 3 s. When the Glass turns each gets back 80% of the health they lost since the cast and in the 3 s before it, up to 400/600/800 (+100% AP), and every enemy standing on the dial is slowed 40% for 1.5 s. Press R again to turn it now (it opens 0.7 s after the cast). A mark of the Glass also turns by itself if its hero falls under 30% of the health they had when marked. A hero who dies before the Glass turns gets nothing: kill one of them fast, or stop her press."
+    },
+    "passive": {
+      "short": "Sand Darts that hit enemy heroes keep grains (up to 4). A clock that turns takes them: each makes it 10% stronger.",
+      "name": "Kept Time",
+      "grains": 4,
+      "hold": 6,
+      "per": 0.1,
+      "desc": "Each Sand Dart that strikes an enemy hero keeps a grain of sand in her staff's glass, up to 4; they run out 6 s after her last hit. When one of her clocks turns (Mark the Hour, Last Grain, Turn Back, The Unturned Glass) it takes every grain she holds, and each makes what the clock gives 10% larger. Mark, shoot, then turn."
+    },
+    "ult": {
+      "cost": 800
+    }
+  },
+  "veyran": {
+    "id": "veyran",
+    "name": "Veyran",
+    "title": "The Sigilblade",
+    "story": "A duelist of the archon courts who found spells too slow and carved them into steel. Every sigil on his black greatsword is a spell he beat out of its owner. He is here for the three he lacks.",
+    "role": "bruiser",
+    "class": "fighter",
+    "weapon": "a black greatsword etched with white-gold sigils",
+    "resource": "mana",
+    "color": [
+      2.3,
+      1.85,
+      1.05
+    ],
+    "stats": {
+      "hp": 650,
+      "mana": 300,
+      "ad": 66,
+      "ap": 0,
+      "armor": 36,
+      "mr": 32,
+      "moveSpeed": 6.8,
+      "attackSpeed": 0.625,
+      "hpRegen": 7.5,
+      "manaRegen": 7
+    },
+    "growth": {
+      "hp": 104,
+      "mana": 40,
+      "ad": 4.2,
+      "armor": 4.4,
+      "mr": 1.6,
+      "attackSpeed": 0.028,
+      "hpRegen": 0.6,
+      "manaRegen": 0.5
+    },
+    "lmb": {
+      "name": "Graven Edge",
+      "type": "melee",
+      "range": 4.4,
+      "angle": 150,
+      "combo": 3,
+      "hitFrame": 0.4,
+      "overhead": 1,
+      "damage": {
+        "ad": 1
+      },
+      "clip": "attack",
+      "desc": "Heavy two-handed cuts: two sweeps, then an overhead blow for 40% more. Each swing that lands lights one sigil ring."
+    },
+    "rmb": {
+      "name": "Sigil Descent",
+      "type": "dash",
+      "groundAim": true,
+      "longAim": true,
+      "range": 9.1,
+      "radius": 3,
+      "leap": {
+        "base": 0.42,
+        "per": 0.03
+      },
+      "mobility": "both",
+      "heavy": true,
+      "cc": {
+        "kind": "slow",
+        "away": true
+      },
+      "botTell": {
+        "shape": "circle",
+        "kind": "windup",
+        "tag": "veyran-scar",
+        "at": 0.6
+      },
+      "damage": {
+        "base": [
+          60,
+          90,
+          120,
+          150,
+          180
+        ],
+        "ad": 0.42,
+        "type": "magic"
+      },
+      "inscribed": {
+        "duration": 2,
+        "radius": 3.5,
+        "slow": 0.4,
+        "grip": 1.5
+      },
+      "cooldown": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "cost": 45,
+      "clip": "rmb",
+      "short": "Leap up to 9 m and slam the ground. Inscribed: the slam and its scar slow.",
+      "desc": "Hold to aim a spot up to 9 m away, release to leap there and drive the blade into the ground: everything within 3 m is struck. INSCRIBED: it strikes twice as hard and slows everyone it strikes by 40% for 1.5 s, and the scar stays for 2 s and slows enemies that stand in it by 40%. The spell for an enemy who walks away."
+    },
+    "q": {
+      "name": "Sigil Cleave",
+      "type": "cone",
+      "heavy": true,
+      "range": 6.5,
+      "angle": 110,
+      "windup": 0.3,
+      "when": {
+        "field": "vyRings",
+        "on": "self",
+        "min": 3
+      },
+      "botTell": {
+        "shape": "cone",
+        "kind": "windup",
+        "tag": "veyran-cleave"
+      },
+      "damage": {
+        "base": [
+          45,
+          70,
+          95,
+          120,
+          145
+        ],
+        "ad": 0.47
+      },
+      "inscribed": {
+        "linger": 1.2,
+        "inner": 2,
+        "slow": 0.2,
+        "damage": {
+          "base": [
+            45,
+            75,
+            105,
+            135,
+            165
+          ],
+          "ad": 0.38,
+          "type": "magic"
+        }
+      },
+      "cooldown": [
+        8,
+        7.5,
+        7,
+        6.5,
+        6
+      ],
+      "cost": 30,
+      "clip": "q",
+      "short": "A heavy 6.5 m sweep. Inscribed: its crescent burns the ground, then bursts.",
+      "desc": "A heavy two-handed sweep writes a crescent of script through the 110° in front of him, 6.5 m out. INSCRIBED: it strikes twice as hard, and the crescent past his feet (2 m to 6.5 m) stays as a burning band for 1.2 s: enemies on it are slowed 20%, and then it bursts: magic damage to every enemy still standing on it. An enemy in his sword's reach stands on it. The spell for an enemy who stands and fights."
+    },
+    "e": {
+      "name": "Blink Thrust",
+      "type": "dash",
+      "range": 6,
+      "reach": 2.5,
+      "width": 2.2,
+      "lunge": 0.12,
+      "mobility": "both",
+      "when": {
+        "field": "vyRings",
+        "on": "self",
+        "min": 3
+      },
+      "damage": {
+        "base": [
+          50,
+          75,
+          100,
+          125,
+          150
+        ],
+        "ad": 0.55
+      },
+      "inscribed": {
+        "window": 3,
+        "again": 0.7,
+        "back": 60
+      },
+      "follow": {
+        "window": 8,
+        "turn": 60
+      },
+      "cooldown": [
+        11,
+        10.5,
+        10,
+        9.5,
+        9
+      ],
+      "cost": 40,
+      "clip": "e",
+      "short": "Blink 6 m, tip first, through every enemy on the line. Inscribed: thrust twice.",
+      "desc": "He comes apart into script and reappears up to 6 m ahead in a lunge: every enemy on the line he crossed, and within the blade's reach past it, is struck. He never blinks through a wall. After it runs a hero through, your basic attacks with no hero before them turn back on that hero (for 8 s, until you turn your look). INSCRIBED: it strikes twice as hard, and for 3 s E thrusts a second time, at no cost, for 70% of the first: back through the hero he ran through, or where you look once you have turned."
+    },
+    "r": {
+      "name": "Rune Ward",
+      "type": "area",
+      "at": "self",
+      "heavy": true,
+      "radius": 8,
+      "windup": 0.4,
+      "duration": 5,
+      "relight": 1,
+      "wall": {
+        "heroes": true
+      },
+      "ult": {
+        "use": "area",
+        "n": 1,
+        "r": 6,
+        "own": 0.4,
+        "most": 2
+      },
+      "cc": {
+        "kind": "knockback",
+        "away": true
+      },
+      "botTell": {
+        "shape": "circle",
+        "kind": "windup",
+        "tag": "veyran-ward"
+      },
+      "damage": {
+        "base": [
+          150,
+          250,
+          350
+        ],
+        "ad": 0.6,
+        "type": "magic"
+      },
+      "effects": [
+        {
+          "kind": "knockback",
+          "distance": 4
+        }
+      ],
+      "cost": 100,
+      "clip": "r",
+      "short": "A dome 8 m around you, 5 s. No hero walks in or out. Inside, your rings relight.",
+      "desc": "The Duelist's Circle. He drives the blade into the ground and a dome of script rises 8 m around it for 5 s. No hero can walk, dash or be thrown across its wall, in or out, him and his allies too; shots and spells pass. While he stands inside, his rings relight every second: every ability is INSCRIBED. When it ends the dome shatters: magic damage to every enemy inside, thrown 4 m outward. The dome blinks three times in its last second. A cleanse, a relic's freedom or an unstoppable dash crosses the wall. If he dies, it falls with no blast."
+    },
+    "passive": {
+      "name": "Inscription",
+      "rings": 3,
+      "hold": 8,
+      "waste": true,
+      "spell": 1,
+      "amp": 1,
+      "short": "Three basic hits light his rings. On three, his next ability is INSCRIBED: twice as hard, with a second effect. Cast early and the rings are lost.",
+      "desc": "Three sigil rings ride his blade. A basic attack that lands lights one, and so does an ability that strikes; they stay lit for 8 s after his last hit. With all three lit his next ability is INSCRIBED: it spends the rings, strikes twice as hard and gains a second effect. An ability cast on one or two rings takes them and gains nothing. The rhythm: a spell, two swings, a spell."
+    },
+    "ult": {
+      "cost": 1100
+    }
+  }
+}

@@ -1,0 +1,120 @@
+# Minions + towers + structure life — the presentation numbers (combat numbers live in tuning.yml).
+cap: 90                # live minions, all lanes
+laneCap: 14            # live minions per team per lane; a new wave's extras are dropped past this
+hover: 0.45            # metres the feet float over the ground
+bob: 0.12              # hover bob amplitude
+spawnSpacing: 1        # one minion per group per tick (0.1 s) — a column leaving the base
+laneJitter: 3          # lateral spread when spawned
+separation: 1.7        # minions push apart inside this
+retargetEvery: 3       # ticks between aggro scans per minion (staggered)
+leash: 4               # a chased target escapes past aggro + this
+boltSpeed: { caster: 24, siege: 18 }
+towerOrbSpeed: 30
+towerChargeSeconds: 0.6    # (HUD audit 2026-10-05) long enough to read the lock beam and step out
+towerCrystalY: 13.8     # crystal centre over a tower's feet (8.95 local × scale 1.4 + half the crystal)
+keepCrystalY: 16.3      # the same on a keep (its central tower's crown stands where a tower's does, at scale 1.6, under a taller crystal)
+# a keep is a tower to what fights (state.kind "tower", tier 2) and a fort to what walks: its walls are 5.1 m from its centre and its
+# turrets reach 6.8 m (scripts/gen/rift-structure.js KPG at the rows' scale 1.6), so it has its own row beside the tower's (lib/structures.js sizeOf)
+radius: { guardian: 2.2, minion: 0.5, super: 0.9, siege: 0.8, champion: 0.5, tower: 4.3, keep: 5.9, nexus: 9.5, monster: 1 }
+# the solid disc a minion walks around (the drawn base plus a step of air); separate from attack reach above
+avoid: { tower: 5.4, keep: 7.2, nexus: 10.5 }
+armor: { tower: 40, nexus: 20 }
+sfx:
+  melee: /cdn/moodboard-painterly-fantasy/sfx-crystal-blade-clang.mp3
+  caster: /cdn/moodboard-painterly-fantasy/sfx-crystal-caster-zap.mp3
+  siege: /cdn/moodboard-painterly-fantasy/sfx-stone-cannon-thump.mp3
+  bolt: /cdn/moodboard-painterly-fantasy/sfx-crystal-bolt-impact.mp3
+  minionDie: /cdn/moodboard-painterly-fantasy/sfx-minion-crystal-shatter.mp3
+  towerCharge: /cdn/moodboard-painterly-fantasy/sfx-crystal-tower-charge.mp3
+  towerShot: /cdn/moodboard-painterly-fantasy/sfx-crystal-tower-orb-launch.mp3
+  towerHit: /cdn/moodboard-painterly-fantasy/sfx-tower-orb-impact-heavy.mp3
+  collapse: /cdn/moodboard-painterly-fantasy/sfx-tower-collapse-crystal-shatter.mp3
+  restore: /cdn/moodboard-painterly-fantasy/sfx-crystal-restore-chime.mp3
+
+# creep block (izkimar 2026-09-26): a minion marching into an allied champion slows up to maxSlow and sidesteps round; gentle, never a wall
+creepBlock: { on: true, reach: 1.9, width: 1.15, maxSlow: 0.6, sidestep: 0.55 }
+
+# ── model bodies (izkimar 2026-10-05): the lane minions wear Hero Lab creatures. hover/bob above stay for the mercs;
+# a kind listed here stands on the ground (no hover, no bob). Read by scripts/minions.js (spawnMinion, bodyAct, loose, die).
+# model/forward/skin are copied from @izkimar/hero-lab rows mw-footman(-red), bestiary-archer(-red), bestiary-mortarbrute(-red);
+# skin: the model field the team set goes in (materials by slot, or parts by mesh). clips: only clips the model owns (its GLB's names).
+# height: layout extents in m (a champion is ~1.8). len: each clip's own seconds. rate: playback speed. release: s from the swing's
+# start to the blow / the shot leaving (the clip's peak, measured off the GLB, at that rate). muzzle: where a shot leaves, m from the
+# feet (up, forward toward the target, side to its right). hitEvery/hitChance: the masked Hit flinch, rare. hold: s the corpse lies
+# after Death ends before it is taken (the last 0.5 s it sinks).
+bodies:
+  melee:
+    model: /cdn/value.d6994430fc5aa571dfec7c849b500f7d742ee845df98bcc800153d7c0a15e10f.glb
+    forward: "+z"
+    skin: materials
+    height: 1.9
+    clips: { spawn: Spawn, idle: Idle, walk: Walk, attack: Attack, hit: Hit, death: Death }
+    len: { spawn: 0.6, attack: 1.0, hit: 0.5, death: 1.6 }
+    rate: { spawn: 1, walk: 1.5, attack: 1, death: 1.2 }
+    release: 0.45
+    hitEvery: 3
+    hitChance: 0.35
+    hold: 1.2
+    teams:
+      blue:
+        footman: { kind: scripted, script: scripts/cel/cel-ember.js, outline: { lightness: 0.15, warm: 0, width: 1.2 }, params: { map: /cdn/value.4215d25cdfcc56e59ca204507a559bb3f06d486e76152fbfacc2f32fbe78b25c.jpg, tune: '{"neutral":1,"nLo":0.1,"nHi":0.75,"midTint":[0.88,0.68,0.58],"nMid":[0.82,0.82,0.9],"shadow":[0.5,0.3,0.3],"nShadow":[0.42,0.42,0.58],"glowK":0.1,"goldSpec":0.12,"baseSpec":0.0,"rimK":0.2}' } }
+        team: { kind: scripted, script: scripts/cel/cel-ember.js, outline: { lightness: 0.15, warm: 0, width: 1.2 }, params: { map: /cdn/value.01b0eb57339f96e35826e1eadf9ed073bd13381512d5ee1a25ae644a140b2341.jpg, tune: '{"neutral":1,"nLo":0.1,"nHi":0.75,"midTint":[0.88,0.68,0.58],"nMid":[0.82,0.82,0.9],"shadow":[0.5,0.3,0.3],"nShadow":[0.42,0.42,0.58],"glowK":0.1,"goldSpec":0.12,"baseSpec":0.0,"rimK":0.2}' } }
+      red:
+        footman: { kind: scripted, script: scripts/cel/cel-ember.js, outline: { lightness: 0.15, warm: 0, width: 1.2 }, params: { map: /cdn/value.4215d25cdfcc56e59ca204507a559bb3f06d486e76152fbfacc2f32fbe78b25c.jpg, tune: '{"neutral":1,"nLo":0.1,"nHi":0.75,"midTint":[0.88,0.68,0.58],"nMid":[0.82,0.82,0.9],"shadow":[0.5,0.3,0.3],"nShadow":[0.42,0.42,0.58],"glowK":0.1,"goldSpec":0.12,"baseSpec":0.0,"rimK":0.2}' } }
+        team: { kind: scripted, script: scripts/cel/cel-ember.js, outline: { lightness: 0.15, warm: 0, width: 1.2 }, params: { map: /cdn/value.65c43fbf474353d1b69cd0b42c7a1e51f205ba9de30ad1795c3cc15d913f1652.jpg, tune: '{"neutral":1,"nLo":0.1,"nHi":0.75,"midTint":[0.88,0.68,0.58],"nMid":[0.82,0.82,0.9],"shadow":[0.5,0.3,0.3],"nShadow":[0.42,0.42,0.58],"glowK":0.1,"goldSpec":0.12,"baseSpec":0.0,"rimK":0.2}' } }
+  caster:
+    model: /cdn/value.53c9a5eaea4821174f29bbe2a8b50e70207b828d05de19693127c2837fa45536.glb
+    forward: "+z"
+    skin: materials
+    height: 1.9
+    clips: { spawn: Spawn, idle: Idle, walk: Walk, run: Run, attack: Attack, hit: Hit, death: Death }
+    len: { spawn: 1.0, attack: 0.8, hit: 0.5, death: 1.067 }
+    rate: { spawn: 1, walk: 1.4, run: 1, attack: 1, death: 1 }
+    release: 0.5
+    muzzle: { up: 1.3, fwd: 0.45, side: 0 }
+    hitEvery: 3
+    hitChance: 0.35
+    hold: 1.2
+    teams:
+      blue:
+        archer2: { kind: scripted, script: scripts/cel/cel-ember.js, outline: { lightness: 0.15, warm: 0, width: 1.2 }, params: { emit: /cdn/value.d490fb221130306b47700bf006d480cb478c6e100e5b08aed17a506d333d21c1.png, map: /cdn/value.d6afb5dade6089ac64c6e0c4490e26544fc0631ebe234d3a05299e851ee7b03b.png, tune: '{"neutral":1,"nHi":0.78,"midTint":[0.86,0.84,0.88],"shadow":[0.36,0.22,0.36],"glow":[1,0.42,0.12],"glowK":0.1,"rim":[1,0.9,0.78],"rimMix":0.45}' } }
+      red:
+        archer2: { kind: scripted, script: scripts/cel/cel-ember.js, outline: { lightness: 0.15, warm: 0, width: 1.2 }, params: { emit: /cdn/value.d490fb221130306b47700bf006d480cb478c6e100e5b08aed17a506d333d21c1.png, map: /cdn/value.03b79ea7ec9e6b11f84c96f63cb31e8fd29a78c6b00ffc037d322cd4b02808ea.png, tune: '{"neutral":1,"nHi":0.78,"midTint":[0.86,0.84,0.88],"shadow":[0.36,0.22,0.36],"glow":[1,0.42,0.12],"glowK":0.1,"rim":[1,0.9,0.78],"rimMix":0.45}' } }
+  siege:
+    model: /cdn/value.4b3fdbe4fa97d8614054ac2e7be8db8c7500ebd8c2061697c50727c77eb230c3.glb
+    forward: "+z"
+    skin: parts
+    height: 2.6
+    clips: { spawn: Spawn, idle: Idle, walk: Walk, attack: Attack, hit: Hit, death: Death }
+    len: { spawn: 2.0, attack: 3.0, hit: 0.75, death: 3.125 }
+    rate: { spawn: 1.5, walk: 1.3, attack: 1.6, death: 1.8 }
+    release: 0.86
+    muzzle: { up: 2.45, fwd: -0.25, side: 0.37 }
+    hitEvery: 4
+    hitChance: 0.3
+    hold: 1.2
+    teams:
+      blue:
+        mortarbrute: { kind: scripted, script: scripts/cel/cel-ember.js, outline: { lightness: 0.15, warm: 0, width: 1.2 }, params: { emit: /cdn/value.3655ce1866f178ce525ee7b0ba105600b8341ce610af897462af4e0726a62715.png, map: /cdn/value.e4baef0f443ed2b60881be5dee2fcc84d17f083397cd141f8b720568b7abf514.png, tune: '{"neutral":1,"nHi":0.78,"midTint":[0.86,0.84,0.88],"shadow":[0.36,0.22,0.36],"glow":[1,0.42,0.12],"glowK":0.1,"rim":[1,0.9,0.78],"rimMix":0.45}' } }
+      red:
+        mortarbrute: { kind: scripted, script: scripts/cel/cel-ember.js, outline: { lightness: 0.15, warm: 0, width: 1.2 }, params: { emit: /cdn/value.3655ce1866f178ce525ee7b0ba105600b8341ce610af897462af4e0726a62715.png, map: /cdn/value.dc4654c4487426ca2e0f125f436e9bd9efbad7a1e4e85ee5f332ae055318ffc5.png, tune: '{"neutral":1,"nHi":0.78,"midTint":[0.86,0.84,0.88],"shadow":[0.36,0.22,0.36],"glow":[1,0.42,0.12],"glowK":0.1,"rim":[1,0.9,0.78],"rimMix":0.45}' } }
+
+  super:
+    # the super is hero-lab's bestiary-champion (izkimar 2026-10-05: replaces the crystal knight); rows bestiary-champion(-red). Attack's blow
+    # peaks at 1.1 s of its 2.4 s, played at 2.7 so a swing fits the super's 0.9 s rate. Stats and radius 0.9 are the super's as before.
+    model: /cdn/value.c417c34f9522222efe78decdf561901d9d21929d230deaba9523412f3a184d22.glb
+    forward: "+z"
+    skin: parts
+    height: 3.0
+    clips: { spawn: Spawn, idle: Idle, walk: Walk, attack: Attack, hit: Hit, death: Death }
+    len: { spawn: 1.2, attack: 2.4, hit: 0.6, death: 2.4 }
+    rate: { spawn: 1, walk: 1.1, attack: 2.7, death: 1.2 }
+    release: 0.41
+    hitEvery: 3
+    hitChance: 0.35
+    hold: 1.2
+    teams:
+      blue:
+        champion: {"kind": "scripted", "outline": {"lightness": 0.15, "warm": 0, "width": 1.2}, "params": {"emit": "/cdn/value.f35df4fa0a1ca242f78efaa2811017ebb30e1084f501b0b870f5c2cbea59ac03.png", "map": "/cdn/value.223a2bcf296484a47c60068c61f1245d4dc7a3d591cdbbea5599d513cfb7188d.png", "tune": "{\"neutral\":1,\"nHi\":0.78,\"midTint\":[0.86,0.84,0.88],\"shadow\":[0.32,0.28,0.42],\"glow\":[0.35,0.7,1],\"glowK\":0.08,\"rim\":[1,0.92,0.8],\"rimMix\":0.45}"}, "script": "scripts/cel/cel-ember.js"}
+      red:
+        champion: {"kind": "scripted", "script": "scripts/cel/cel-ember.js", "outline": {"lightness": 0.15, "warm": 0, "width": 1.2}, "params": {"emit": "/cdn/value.ffc235ab992ba1f899a9e94c7839b101f076962257332fbdc0e61b4a2c3b8351.png", "map": "/cdn/value.a2c42521b800f7d0af6a5aafe104f01953d3c745edb88a6c74336c0b7928921d.png", "tune": "{\"neutral\":1,\"nHi\":0.78,\"midTint\":[0.86,0.84,0.88],\"shadow\":[0.36,0.22,0.3],\"glow\":[1,0.45,0.15],\"glowK\":0.08,\"rim\":[1,0.92,0.8],\"rimMix\":0.45}"}}

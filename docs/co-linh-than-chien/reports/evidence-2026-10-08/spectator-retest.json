@@ -1,0 +1,96 @@
+{
+  "lobby": {
+    "ack": {
+      "pa_64a9fbc7b746f8b26c82ab3974be5384": 42
+    },
+    "disconnected": {},
+    "err": {},
+    "host": "pa_64a9fbc7b746f8b26c82ab3974be5384",
+    "joinOrder": [
+      "pa_64a9fbc7b746f8b26c82ab3974be5384",
+      "pa_cba891da3ac947ba4c74abc070f6a774",
+      "pa_67cb45098b95c730ec62194b5bd11e5e"
+    ],
+    "map": "mach_giua",
+    "matchId": 9,
+    "mode": "san_tap",
+    "names": {
+      "pa_64a9fbc7b746f8b26c82ab3974be5384": "lukasai",
+      "bot-red-1": "Máy",
+      "pa_cba891da3ac947ba4c74abc070f6a774": "livelyforestfd0a9",
+      "pa_67cb45098b95c730ec62194b5bd11e5e": "fluxby"
+    },
+    "notice": null,
+    "phase": "ingame",
+    "phaseEndsAt": null,
+    "pick": {
+      "pa_64a9fbc7b746f8b26c82ab3974be5384": {
+        "hero": "van_dao",
+        "locked": true
+      }
+    },
+    "teams": {
+      "blue": [
+        "pa_64a9fbc7b746f8b26c82ab3974be5384"
+      ],
+      "red": []
+    }
+  },
+  "roster": {
+    "pa_64a9fbc7b746f8b26c82ab3974be5384": {
+      "hero": "van_dao",
+      "name": "lukasai",
+      "slot": 0,
+      "team": "blue"
+    }
+  },
+  "players": [
+    {
+      "name": "lukasai",
+      "id": "player/c_actor:pa_64a9fbc7b746f8b26c82ab3974be5384",
+      "visible": true,
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "feetPosition": {
+        "x": -111.73837049549176,
+        "y": 0.27991423325139264,
+        "z": 113.08162950450823
+      },
+      "hero": "van_dao"
+    },
+    {
+      "name": "fluxby",
+      "id": "player/c_actor:pa_67cb45098b95c730ec62194b5bd11e5e",
+      "visible": false,
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "feetPosition": {
+        "x": -106.5,
+        "y": 0.2799142301082611,
+        "z": 108
+      }
+    },
+    {
+      "name": "livelyforestfd0a9",
+      "id": "player/c_actor:pa_cba891da3ac947ba4c74abc070f6a774",
+      "visible": true,
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "feetPosition": {
+        "x": -152.0006870810379,
+        "y": 25.699539184570312,
+        "z": 152.0006870810379
+      }
+    }
+  ],
+  "objects": []
+}

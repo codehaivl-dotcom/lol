@@ -1,0 +1,50 @@
+# The Twin Seals: the Brawl's objective on the Span (scripts/lib/seals.js is the rule, scripts/lib/seals-stage.js what the room
+# sees and hears, scripts/lib/ui-seals.js the HUD). Where the two seals stand is the Span's own layout (scripts/lib/brawl-layout.js).
+# When a Call opens is the clock's (lib/data/maps.js, the brawl row's clock).
+
+# ---- the capture ----
+# At a Call BOTH seals wake. A team holds a seal while one of its living heroes stands in its ring and no living enemy hero does.
+# Each team has one bar. It rises while the team holds a seal, and `both` times as fast while it holds the two; it never falls;
+# the first bar at 100 takes the Call and its Titan breaks free. No clock closes a Call: the seals stay awake until a bar is full.
+capture:
+  ring: 10          # metres from a seal's centre: the band on its dais
+  fullSeconds: 64   # a team that holds ONE seal, 0 to 100; one hero holds it as well as five. (It was 80 while one team often came late: once the
+                    # base's gate took both teams to a lit Call (lib/gates.js laneLanding) a seal was fought over for half a Call's seconds, where it
+                    # had been a quarter, a Call took 65 s where it had taken 47, and a Brawl ran to ten minutes. At 64 a Call is about 50 s)
+  both: 3           # the pace of a team that holds BOTH seals, in single-seal paces: 0 to 100 in 21 s
+  contested: 0      # the share of its pace a seal gives each team while both stand in its ring: a contested seal fills nobody
+  # THE TEAM THAT IS BEHIND ON THE LANE STARTS AHEAD AT THE SEALS (lib/seals.js startProg): by structures, never by who lost
+  # the last Call. Teams that are level on the lane start level.
+  comeback: 35      # where a team starts a Call when it is ONE structure behind on the lane (more of its towers and keeps fallen) ...
+  comebackPer: 10   # ... and this much further for each structure past the first
+  comebackMax: 45   # ... up to this: a Call is at least 35 s of one seal, never a gift (at 70 one body that stood still took a Call in 26 s: seen live).
+                    # (40 and 50 while a seal took 80 s: the same seconds left to win. 96 mirror matches a row at 30, 35 and 40 told no difference:
+                    # one team took every Call in 26 to 35 of 100 and the team that took Call I won 67 to 77.)
+  maxStepMs: 1000   # the most one referee pass may count: a pause or a stalled room pays no progress
+
+# ---- the Titan a Call gives: bound to ONE structure by its work (lib/seals.js titanWork; the map's row says titanBound) ----
+bound:
+  whole: 0.34       # a structure under this share of its health when the Titan is bound to it is not a Call's worth: when it falls the Titan goes on to the next one, at the rank it has
+  quick: 15         # ... and so is one that falls inside the Titan's first seconds at it
+  # THE SAME LINE THE OTHER WAY (lib/seals.js fallBreaks): a bound Titan that is SLAIN at its structure (within titan.yml bound.leash of it) while
+  # that structure stands under `whole` breaks it as it falls. So no structure stands all but broken after a Titan has been at it (a keep
+  # at 4% stood 5:47 of a live even match and its team won), and a Titan slain at a healthy structure still gives nothing.
+  fall: [tower, keep]   # the kinds it holds for. NEVER THE CORE (the lead's ruling of 2026-10-04 02:05Z): five defenders who slay the Titan at their core must not lose by it. A core is only broken by blows
+# (how a bound Titan is held to its structure and how it falls with it: lib/data/titan.yml `bound`)
+
+# ---- what the room sees and hears (scripts/lib/seals-stage.js) ----
+stage:
+  lingerSeconds: 5  # a taken seal stays lit in the winner's colour this long
+  ringEveryMs: 400  # a ring changes colour at most this often (heroes stepping in and out)
+  # the held body colour of each reading (r, g, b) and its light (lr, lg, lb); blue and red are minion-fx TEAM_RGB / TEAM_LIGHT
+  colours:
+    blue: { r: 0.04, g: 0.24, b: 0.95, lr: 0.45, lg: 0.75, lb: 1, paint: "oklch(0.78 0.13 235)" }
+    red: { r: 0.85, g: 0.04, b: 0.02, lr: 1, lg: 0.45, lb: 0.25, paint: "oklch(0.72 0.17 25)" }
+    open: { r: 0.1, g: 0.75, b: 0.85, lr: 0.5, lg: 0.95, lb: 1, paint: "oklch(0.85 0.1 205)" }      # awake, nobody in it
+    both: { r: 0.9, g: 0.9, b: 0.9, lr: 1, lg: 1, lb: 1, paint: "oklch(0.95 0.01 90)" }             # contested
+  sound:
+    lit: /cdn/moodboard-painterly-fantasy/sfx-titan-sigil-rune-ignite-choir.mp3                       # at each seal, when it wakes
+    taken: /cdn/moodboard-painterly-fantasy/sfx-objective-alert-deep-war-drum-horn-titan-awakened.mp3 # every player, when a Call is taken
+    won: /cdn/moodboard-painterly-fantasy/sfx-drake-soul-claimed-choir-roar.mp3                       # the team that took it
+    lost: /cdn/moodboard-painterly-fantasy/sfx-allied-turret-lost-low-warning-toll.mp3                # the team that lost it
+    both: /cdn/moodboard-painterly-fantasy/sfx-capture-ring-last-stand-tense-rising-war-drum-roll.mp3 # both teams, when one team comes to hold both seals

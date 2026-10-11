@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "capturedOn": "2026-10-07",
+  "product": "Cổ Linh Thần Chiến",
+  "legacyGame": "League of Spawn",
+  "sourceArchive": "data/legacy-source/ (snapshot included in this documentation bundle)",
+  "sourceRevision": "Not recoverable from the supplied data archive",
+  "snapshotFiles": [
+    {
+      "path": "boons.yml",
+      "sha256": "32d54bfe3b5ce5e85049858d8e632fbe1a88962b4e58dc12f86ade81d725b543",
+      "origin": "data/legacy-source/boons.yml"
+    },
+    {
+      "path": "bot-brain.yml",
+      "sha256": "391c5831f77e2f82720f553af162cb1c806c0b0aabd8295314e0527bc8ddc8a1",
+      "origin": "data/legacy-source/bot-brain.yml"
+    },
+    {
+      "path": "bot-clock.yml",
+      "sha256": "723dfb05e4dc3a8034e616964bb306dce366a903d98f7cf119a265a0b2b10ca3",
+      "origin": "data/legacy-source/bot-clock.yml"
+    },
+    {
+      "path": "deeproad.yml",
+      "sha256": "1bea172dbb548347e6cf6108691f9d0d156c2a4f5ef2c63db5ed29f695c05db5",
+      "origin": "data/legacy-source/deeproad.yml"
+    },
+    {
+      "path": "kits.yml",
+      "sha256": "32459b87bbc18e6c3d08565cf546561c71205b5811990adc0529def37ecb857f",
+      "origin": "data/legacy-source/kits.yml"
+    },
+    {
+      "path": "minions.yml",
+      "sha256": "dfa96cdceeed99b619f50f48c959ef012421d6e60bac27afe955c3934b738d92",
+      "origin": "data/legacy-source/minions.yml"
+    },
+    {
+      "path": "seals.yml",
+      "sha256": "972672de9eb0dcf85c8a820c4529f9e4496f1e1a11a3fd492831932770d62f76",
+      "origin": "data/legacy-source/seals.yml"
+    },
+    {
+      "path": "titan.yml",
+      "sha256": "ef8353444da8dbba39f4070dadfde77f3f1672f638f8a90b7ef3500fcf7af89b",
+      "origin": "data/legacy-source/titan.yml"
+    },
+    {
+      "path": "toll.yml",
+      "sha256": "343ba4d3da11c62cb685fac90d7c0a348e26d110357816c66f07bfa6459a8ff0",
+      "origin": "data/legacy-source/toll.yml"
+    },
+    {
+      "path": "trial.yml",
+      "sha256": "1d713e82c09cf33a19a1d4eb36eddfc4203e382fa15753c20eb707c6c614001f",
+      "origin": "data/legacy-source/trial.yml"
+    }
+  ],
+  "projectData": [
+    {
+      "path": "data/legacy-kits-v1.json",
+      "sha256": "ea9a3cbba4dbcd432de0c96d8dbeaa27938bdfb7cfdf4b5ad706bf27289e5fce",
+      "origin": "Derived review snapshot; see docs/04 and docs/09"
+    },
+    {
+      "path": "data/roster-display-map.csv",
+      "sha256": "888d4950dcb1caa514dc9e9f30b646a71b45a402f08f380100bb5fc3dba000f7",
+      "origin": "Authored presentation/localization map; no gameplay numbers"
+    }
+  ],
+  "missingOrUnrecovered": [
+    "scripts/lib/data/tuning.yml",
+    "scripts/lib/data/gear.yml",
+    "scripts/lib/gear-rules.js",
+    "scripts/lib/data/monster-data.js",
+    "scripts/lib/trial.js",
+    "scripts/lib/titan-drive.js",
+    "scripts/lib/mercs.js",
+    "scripts/lib/unit.js",
+    "scripts/lib/ranks.js",
+    "scripts/lib/charge.js",
+    "scripts/lib/abilities.js",
+    "scripts/lib/boons.js"
+  ],
+  "notes": [
+    "YAML/JSON snapshots are immutable source evidence; display names/localization are authored separately.",
+    "Hashes are SHA-256 of the copied bytes.",
+    "This bundle includes the listed snapshots; no sibling extraction directory is required.",
+    "Referenced missing resolver/tuning files may be recoverable from another original build; do not infer their numeric contents from runtime."
+  ]
+}

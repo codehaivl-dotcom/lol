@@ -1,0 +1,864 @@
+{
+  "format": "colinh-docs-bridge-v1",
+  "exportedAt": "2026-10-11T18:27:58.757Z",
+  "source": {
+    "repository": "https://git.spawn.co/@lukasai/c-linh-th-n-chi-n.git",
+    "commit": "9fa6e041d5793c8ae061b4db4be6afb732b5d61f",
+    "branch": "main"
+  },
+  "destination": {
+    "repository": "https://github.com/codehaivl-dotcom/lol",
+    "branch": "main"
+  },
+  "scope": "Game documentation and documentation datasets only",
+  "excluded": {
+    "paths": [
+      "docs/AGENTS.md",
+      "docs/co-linh-than-chien/72-luat-handoff.md",
+      "docs/co-linh-than-chien/handoff-luu-2026-10-11.md"
+    ],
+    "categories": [
+      "game source",
+      "assets",
+      "engine checkout",
+      "agent operating instructions",
+      "local credentials"
+    ]
+  },
+  "files": [
+    {
+      "path": "AUDIT-TAO-HINH.md",
+      "bytes": 2959,
+      "sha256": "5a91433efa8694076a0847c5655ccab6b7ecec30d625be3e282e90d5674da955",
+      "blobSha": "9b8a448e88cb9e62d7bddd0adfb9b49b8dc1250e"
+    },
+    {
+      "path": "DUYET-TAO-HINH-18.md",
+      "bytes": 5060,
+      "sha256": "4eceea288679c2492dcfece12614390435ae151946b5fce58e97098aeaf98891",
+      "blobSha": "da68c9d3e97e92ebfce92473507863216242fa73"
+    },
+    {
+      "path": "NO-TON.md",
+      "bytes": 5079,
+      "sha256": "a5499661e063781aa618fe7230c999686275633dd9c68ba1b02b0fcbc910fe63",
+      "blobSha": "9bddaa3604be93d55e4c1f4ee135b23455a5aa48"
+    },
+    {
+      "path": "design.md",
+      "bytes": 20261,
+      "sha256": "3499a75bbb1bd9570ac8a6a5403cef1e1a75587f05ec077f23a8d0e474bc9eb4",
+      "blobSha": "7528a00e775be69ecb61ca343a27d615d64cd2c6"
+    },
+    {
+      "path": "docs/co-linh-than-chien/00-bible-moba.md",
+      "bytes": 20255,
+      "sha256": "9d3c3b5b58521a5abccbe6e2a5c9be5349804c47da3ad3a1cf3396990eb2bc14",
+      "blobSha": "57d5ad71f9735705a3c7dc49426453473851c0fc"
+    },
+    {
+      "path": "docs/co-linh-than-chien/01-the-gioi-va-cot-truyen.md",
+      "bytes": 8566,
+      "sha256": "f60bfb897b08aa5c9efde41bb66225c77f8b97584b9b1718c26a9b6658e016aa",
+      "blobSha": "24db0c4b57e260e5d63a10c11034df781a37b64e"
+    },
+    {
+      "path": "docs/co-linh-than-chien/02-ban-do-va-my-thuat.md",
+      "bytes": 8792,
+      "sha256": "f16441a43c77c12d92b92c14cf243c81c539bd1f59b2ba31c2a4fb1855cf646d",
+      "blobSha": "446ba808930e3e3fa5c7e8953311548b937ce76b"
+    },
+    {
+      "path": "docs/co-linh-than-chien/03-danh-sach-tuong.md",
+      "bytes": 44552,
+      "sha256": "cbe5d5e10f9d4ba88b1aac41563655c94d425385122eb5cab317bbecf09be9c7",
+      "blobSha": "ae6d7eabf7d7bce6b1d5673402079b729b9e1c95"
+    },
+    {
+      "path": "docs/co-linh-than-chien/04-bao-toan-gameplay.md",
+      "bytes": 3407,
+      "sha256": "d3c9593af96113d051de747070468910b637ff78df0e544e9804bbe7059c711f",
+      "blobSha": "fcbe3772b5759117a6f55259359fff4e037f72db"
+    },
+    {
+      "path": "docs/co-linh-than-chien/05-tu-dien-viet-hoa.md",
+      "bytes": 7648,
+      "sha256": "52a0bfc90f6fac448e907bd8516222a5bee236ac75932f8025bffd51feae954f",
+      "blobSha": "3c4b0bfb06b0a6679d17f40fce0b79e89d3794fa"
+    },
+    {
+      "path": "docs/co-linh-than-chien/06-gdd-san-xuat-v1.md",
+      "bytes": 11481,
+      "sha256": "7caa2cab35aba3dcb1e3b2427fe5b0d8f4248c885ff54278cf0fade623da8f4c",
+      "blobSha": "3bb438dfc02210659bfa4029197ac900a1b2a615"
+    },
+    {
+      "path": "docs/co-linh-than-chien/07-layout-ban-do-v1.md",
+      "bytes": 10526,
+      "sha256": "e9390d6f0f6d88d8e1668f2c9ff15824d4c57d8be4f5efb1db3953f930424f01",
+      "blobSha": "9e6b2efe5e08269338467d95c890506474f300a7"
+    },
+    {
+      "path": "docs/co-linh-than-chien/08-combat-kinh-te-v1.md",
+      "bytes": 21613,
+      "sha256": "3be455675146a272099a60aefe3df31753d69b039b3dbb537d3561be4e503210",
+      "blobSha": "a569bc9f87131e29c5d9a79cfd06a18e71ab59ab"
+    },
+    {
+      "path": "docs/co-linh-than-chien/09-data-contract-va-roster.md",
+      "bytes": 9266,
+      "sha256": "20627c4d738c9129de78d268221a12c43b0383cd68666d712e59125e4d4c456d",
+      "blobSha": "602dfa8581c9b47c294add364845c98c879e174e"
+    },
+    {
+      "path": "docs/co-linh-than-chien/10-doi-soat-runtime.md",
+      "bytes": 4759,
+      "sha256": "73603ff21c9fb064ddd22eae332bf849a6a75596ece220911e6fff4ef73346f5",
+      "blobSha": "4ad0ebbc4d312aa9de0d7264c07d7eee183510da"
+    },
+    {
+      "path": "docs/co-linh-than-chien/11-acceptance-ban-giao.md",
+      "bytes": 21592,
+      "sha256": "e1490bbb3bfb56a5a421c6db38a101aa699c0c9755d01c8593975eb57530f875",
+      "blobSha": "38adfcf7673f2140192a599f9c983ba259adef3b"
+    },
+    {
+      "path": "docs/co-linh-than-chien/12-bang-chi-so-tuong.md",
+      "bytes": 4571,
+      "sha256": "8ade33ab9b4e49e0266bc12d4017666931dcf270029308dc5178e7a0f11c3107",
+      "blobSha": "65958303aa6a8929340e43caa621e3e7d8eac9fc"
+    },
+    {
+      "path": "docs/co-linh-than-chien/13-playtest-slice-1.md",
+      "bytes": 5862,
+      "sha256": "4fbdc75d273fd5a303efd0ada1ef32aa70385df8f3c691127bd52fd8f98847ae",
+      "blobSha": "5cac7725d90a932ca893631bd0c8bc2fde5961b4"
+    },
+    {
+      "path": "docs/co-linh-than-chien/14-todo-lobby-va-playtest.md",
+      "bytes": 58994,
+      "sha256": "15f49187576952ad771f42900a06753f6f17d5d31af610955cf386ea75570275",
+      "blobSha": "bbdeaa5fe1ffb35edb032c14a4e59cbd4c5a5fa6"
+    },
+    {
+      "path": "docs/co-linh-than-chien/15-todo-thu-tran-1v1.md",
+      "bytes": 5592,
+      "sha256": "5a801386e74466029c1b56dfbac18ee4f4f0cc05b739826ba48247a76faf443b",
+      "blobSha": "607760bf9c8503222eff60034b791bab0ff90f79"
+    },
+    {
+      "path": "docs/co-linh-than-chien/16-gap-gameplay.md",
+      "bytes": 8113,
+      "sha256": "e974ffed20ab9aa8972313500fbac22195552cd0916eb13ccf8d045e8d09aab2",
+      "blobSha": "d2fef31ec3ffef5fc33c0e2ee4d267f437934b5b"
+    },
+    {
+      "path": "docs/co-linh-than-chien/17-thiet-ke-map-mach-giua.md",
+      "bytes": 10535,
+      "sha256": "83d3c0c4acbab4ced5e7efae4964be856994b9dd9edf037cf21d556d810f34c3",
+      "blobSha": "3c443b05195c075c0d3ff6da3d238424215aca9b"
+    },
+    {
+      "path": "docs/co-linh-than-chien/18-research-map-moba.md",
+      "bytes": 3601,
+      "sha256": "2691ec61bf76ca40f8adc0e6100c1b5f64d6f1cf331e3ff69ef9158613a87952",
+      "blobSha": "2abe569d4abe06eb080e95dbc294fcb3bec740c7"
+    },
+    {
+      "path": "docs/co-linh-than-chien/19-research-hud-gameplay.md",
+      "bytes": 8737,
+      "sha256": "cbe7ea6feef47dd60ac26703a62ecbe408637bafe41368214fbeb91139859f23",
+      "blobSha": "8cc9b10e4ae06da494294a2051827850660c25c5"
+    },
+    {
+      "path": "docs/co-linh-than-chien/20-gap-skill-vfx-target.md",
+      "bytes": 8181,
+      "sha256": "1756e7992be79f5d30a96ed1c73df9f4cd6b823cd34fb8c704d14bbec4de4bf5",
+      "blobSha": "5f1132ed808b2f1934076b2d72134b5e1760dadf"
+    },
+    {
+      "path": "docs/co-linh-than-chien/21-audit-balance-va-plan-vfx.md",
+      "bytes": 7061,
+      "sha256": "03f76f7f6b5ced6d25597df5c9a1c5a4aa769aa12e523c4d4b52f147a79296eb",
+      "blobSha": "c812632e31aee73ac4ad41f25c891c45bafde7fb"
+    },
+    {
+      "path": "docs/co-linh-than-chien/22-tai-nguyen-27-tuong.md",
+      "bytes": 5098,
+      "sha256": "2365164b1d036e651764dc8e391ccdaf618ba90729caf453e1c9a1f12aa51708",
+      "blobSha": "ad227b3c1e6cbd3fb41eb43bf1cd01b4f5f48e2c"
+    },
+    {
+      "path": "docs/co-linh-than-chien/23-giao-viec-21-tuong.md",
+      "bytes": 28349,
+      "sha256": "871427e9567e7a2d8552ef94acd28020a1b346e921d97929991c8755d1e32177",
+      "blobSha": "d5eabb84b9bd0e5fb0d3d773f3fcfb81609e58f5"
+    },
+    {
+      "path": "docs/co-linh-than-chien/24-todo-hoan-thien-6-tuong.md",
+      "bytes": 23069,
+      "sha256": "cf63a45985186f40253fbe3371082b1366785dce124f86ab56dd5264f63b4b9b",
+      "blobSha": "516f8bbd2c19e34e599f21287550afb08a39adc1"
+    },
+    {
+      "path": "docs/co-linh-than-chien/25-dong-tac-theo-tuong.md",
+      "bytes": 30179,
+      "sha256": "65785084aa6a9a1353e286e6c78dd6b265607861357a6ca85877925377cfc3ac",
+      "blobSha": "498d8bdfc319515fbcc094a6048b15cbfe0a364e"
+    },
+    {
+      "path": "docs/co-linh-than-chien/26-video-lore-intro.md",
+      "bytes": 47008,
+      "sha256": "af8534a6ead23100b371b9d807c48d2098ed03bfdd068b362046223b688d3ac8",
+      "blobSha": "481b1e998b759e04f449f0a9aa4ae6174a2c01b4"
+    },
+    {
+      "path": "docs/co-linh-than-chien/27-handoff-map-5v5-ba-duong.md",
+      "bytes": 16933,
+      "sha256": "fc9202304dba0c682ce0d3329438f7c1d09ff789304f3abaddf684199ab995c9",
+      "blobSha": "ca32d4365353ea3c0e967a71b10f3ad8effce56f"
+    },
+    {
+      "path": "docs/co-linh-than-chien/28-workflow-animation-skill.md",
+      "bytes": 4963,
+      "sha256": "e0b4a461e55ac74ff1c7a5235f0b282521fbd4ee38001c8656e35d443d97b897",
+      "blobSha": "05eb8f16f8248504eb368d7033207381289fe1ce"
+    },
+    {
+      "path": "docs/co-linh-than-chien/29-todo-vfx-trong-suot.md",
+      "bytes": 4429,
+      "sha256": "ea05d004d06eaf00aab8e83f29d0053599aa3d6c4cc8f1c995c0eea5dbc35529",
+      "blobSha": "410da33c90162eb86384b9d93bdea17e737fa808"
+    },
+    {
+      "path": "docs/co-linh-than-chien/30-workflow-vfx-skill.md",
+      "bytes": 6426,
+      "sha256": "a3c8a2a0adb84123395931f0ca47ece37cd0d5b2e37b88278803ccbbed4ad8be",
+      "blobSha": "efb15308b3c55de63d706c203c74c185ec17c509"
+    },
+    {
+      "path": "docs/co-linh-than-chien/31-concept-linh-va-boss.md",
+      "bytes": 8414,
+      "sha256": "ee43a833b142ae9f577333485a18969db7e6bc7a77969b561e68f8396575b00d",
+      "blobSha": "d57fc06bd7778c123bbeed305d5b8e484ffbb7b9"
+    },
+    {
+      "path": "docs/co-linh-than-chien/32-todo-sieu-linh-binh.md",
+      "bytes": 1297,
+      "sha256": "ba3ad63c62ca12f63dd2bcbc5168ba6120dd9040128156151f3944bc673cebe0",
+      "blobSha": "7ca4b3164d0cdc917797748c5e6b933bc29f42f7"
+    },
+    {
+      "path": "docs/co-linh-than-chien/33-todo-linh-binh-3d.md",
+      "bytes": 4177,
+      "sha256": "5dd8157a366217e8b97ba1b12098d076e7fc3754b6b3458cadcc29912ebe1607",
+      "blobSha": "3a61623e0cdafbe06d59eae8cf981b7fd720ebdd"
+    },
+    {
+      "path": "docs/co-linh-than-chien/34-ma-tran-vo-sfx-roster-27.md",
+      "bytes": 23938,
+      "sha256": "1953b71958c3715b88d278d1233eba5327c01fd185dff41757c3b57cae713190",
+      "blobSha": "2eaa2cf8de9f3f9ff7fee50dfdc0d51255f15f7f"
+    },
+    {
+      "path": "docs/co-linh-than-chien/35-spec-boss-thuong-luong-co-linh-long.md",
+      "bytes": 7070,
+      "sha256": "e1c755c6a2ee05b192c14aa64e06e5136d2362aa3b7272429f2f847172bd51ed",
+      "blobSha": "41ff2e6f10d7d6cfade535014d2de93291dbcf52"
+    },
+    {
+      "path": "docs/co-linh-than-chien/36-todo-thuong-luong-3d.md",
+      "bytes": 9926,
+      "sha256": "e352fba69fced5692f19392fbdf63e0a8dea3aefa9e393bcf3946a58f8ac4971",
+      "blobSha": "ee4202fc5489781268d8726ee66d630167706dcd"
+    },
+    {
+      "path": "docs/co-linh-than-chien/37-skill-thuong-luong.md",
+      "bytes": 2159,
+      "sha256": "e4087cb0e1dd34b156b6a13d8947542999ec8dee299405aaef38467ea002b227",
+      "blobSha": "af583a65a68f69fb8b0a5157a1f76d9d27362216"
+    },
+    {
+      "path": "docs/co-linh-than-chien/38-brief-map-mau-mach-giua.md",
+      "bytes": 15705,
+      "sha256": "5a035d2fc6be1a68a1df70dec2ad6d85a405a6df6a9b26f61c91c6da595da0e2",
+      "blobSha": "70736eb824a73bdef6a81c74238a990a8b2b296c"
+    },
+    {
+      "path": "docs/co-linh-than-chien/39-spec-ao-bao-chan-dan.md",
+      "bytes": 2539,
+      "sha256": "bd6310e60bdaecbfda01491b6e67a4f9d31a41d2aa269db3c5f57e965bdb84c8",
+      "blobSha": "ec638be47fb9f43c2e532571df68bf242b559591"
+    },
+    {
+      "path": "docs/co-linh-than-chien/40-audit-kien-truc-ui.md",
+      "bytes": 9192,
+      "sha256": "bb8417d355fc74830377d06bf0d185965748197992315f4d8aa4da88c95934cd",
+      "blobSha": "70e9bca90c107fc7cb62bc7ac3bc70e8d76eb985"
+    },
+    {
+      "path": "docs/co-linh-than-chien/41-thu-vien-vfx.md",
+      "bytes": 15307,
+      "sha256": "0dc7ef3f8e35d7cb1dddc43927bc72bfa5e8063f6cc426b5298b2a037593bea8",
+      "blobSha": "a1f06473db73d2c93400a7705eb707e4d3754477"
+    },
+    {
+      "path": "docs/co-linh-than-chien/42-quan-ly-asset.md",
+      "bytes": 6173,
+      "sha256": "51da1b82bbf552ad5832783e9be438d3389a733a33c1cc500ab8817d32a22fd1",
+      "blobSha": "77a048f7b93cac8721793a2cb3b9334516aaf157"
+    },
+    {
+      "path": "docs/co-linh-than-chien/43-nghien-cuu-toi-uu-sanh-tran-tuong.md",
+      "bytes": 8156,
+      "sha256": "bc0fca489fe3d993bcfadc1192678cc2678b4470363fa9e98d5f53a1c654e049",
+      "blobSha": "dd8465def0859c23aa6a963702e3e07499cb4acf"
+    },
+    {
+      "path": "docs/co-linh-than-chien/44-ke-hoach-tach-place-module.md",
+      "bytes": 21846,
+      "sha256": "28d76a0e2a8479efc7566b1de580054a0f9ea0bbf510b0473c3382a868e099ca",
+      "blobSha": "e374b388ea09dd69e42b31220a0a2292cbbe7bde"
+    },
+    {
+      "path": "docs/co-linh-than-chien/45-ke-hoach-phan-phoi-asset-va-tach-map.md",
+      "bytes": 7043,
+      "sha256": "2d2446f1d5fb0178bddcd6a8a32e8e67242ed171d101e00a2d9dcaf57fe0e6d7",
+      "blobSha": "d1b376eaeb49b6e81787471df46428eacfde85ba"
+    },
+    {
+      "path": "docs/co-linh-than-chien/46-tong-hop-kien-truc-audit.md",
+      "bytes": 10198,
+      "sha256": "f97f82fb1e29c0b24f775e1f8018ec37ab84b1c832c8054d919e55897a686e4b",
+      "blobSha": "873a176bce4889388e2f47421c15a9e0d5361da4"
+    },
+    {
+      "path": "docs/co-linh-than-chien/47-review-doc-lap.md",
+      "bytes": 10518,
+      "sha256": "93dda2569cb3db7f039312d409390866a9657dab7a37fc3175bc5362abbf92e7",
+      "blobSha": "51b72063fa59c1782f869a33c310281418536b9e"
+    },
+    {
+      "path": "docs/co-linh-than-chien/48-quyet-dinh-kien-truc-v1.md",
+      "bytes": 5832,
+      "sha256": "2f99db062b5c7bb27c9671f2fe6f30894f2b793f9cde138373bd60f2143609d0",
+      "blobSha": "8a766db3bc78aa0c049c26f8f79c325a14d85de5"
+    },
+    {
+      "path": "docs/co-linh-than-chien/49-roadmap-tach-place-spike.md",
+      "bytes": 26559,
+      "sha256": "af400911eb559337c473f89340e10cb02b82bb7670f95fc18f346975b35257a0",
+      "blobSha": "66a54e4e7b37126499919b24d42768c447553948"
+    },
+    {
+      "path": "docs/co-linh-than-chien/50-yeu-cau-danh-gia-tach-sanh-tuong-map.md",
+      "bytes": 8625,
+      "sha256": "201ed1664d9d733e75a6949258bf3078173b935a55bb77f56aaae48a45c8392f",
+      "blobSha": "d4ae18f7b56ef64dd94ff5f7ca86d3e5f2a131a8"
+    },
+    {
+      "path": "docs/co-linh-than-chien/51-tach-sanh-ban-giao.md",
+      "bytes": 4633,
+      "sha256": "3533ff0b17f9ddf5d92c66cd5dd2d77d2133bc8f742a5617770882c5aff8824d",
+      "blobSha": "1a8903e725c926a3811ff96079ad34957d8c4cb3"
+    },
+    {
+      "path": "docs/co-linh-than-chien/52-quy-hoach-ui-hud-module.md",
+      "bytes": 15125,
+      "sha256": "546dfaa4a4cecc9638394316285b79bb7da6c4d7fd851d5a4350dc5727db3d8d",
+      "blobSha": "69d17e04732c08278924d660dda9b7ba3534a298"
+    },
+    {
+      "path": "docs/co-linh-than-chien/53-dai-quy-hoach-layer-module.md",
+      "bytes": 28574,
+      "sha256": "5225e63776fb3d35ef4789b9a8f8e070757be1e5cc9b0a3018206edaa5564944",
+      "blobSha": "6c995c99259fec584ef82cc96222c7df5e5b6f1e"
+    },
+    {
+      "path": "docs/co-linh-than-chien/54-sanh-mobile.md",
+      "bytes": 2058,
+      "sha256": "c2b67a5a6d2dbe9f196887d10003a355c539ca4e4654fec2b64c8e4b8da0e6cd",
+      "blobSha": "152f519e8517627e860855c55d191fcb7ad32109"
+    },
+    {
+      "path": "docs/co-linh-than-chien/54-vfx-doc-duoc.md",
+      "bytes": 2955,
+      "sha256": "6374b48be49115dc158783dd03f8bfcb45089e935152b17d3e87e0b164e68057",
+      "blobSha": "8766e253916654183ed791f7f9503cd6b186aee5"
+    },
+    {
+      "path": "docs/co-linh-than-chien/55-vfx-thu-vien-tuong-moi.md",
+      "bytes": 2989,
+      "sha256": "7046cc40174b91f01a33811bcbe88492aadacb8f94f14cf60ed3138d64e8f2f8",
+      "blobSha": "ff9ef3d8f18211e8c0bbe7f34f0a6571845b574f"
+    },
+    {
+      "path": "docs/co-linh-than-chien/56-vfx-audit-toan-bo.md",
+      "bytes": 5217,
+      "sha256": "e1dcdcf8fd40f4f64338c2e8400b4099b00b4456e19af404f32c6ddce6109969",
+      "blobSha": "b463d1296d0c107c86606009f45b6b04a7d033af"
+    },
+    {
+      "path": "docs/co-linh-than-chien/57-no-ton-dong.md",
+      "bytes": 23803,
+      "sha256": "fa5d1c7a17c6f99ff35bac769443eb5c28006ee96d516ee380a77a73aca45ccf",
+      "blobSha": "2dff04256ba85735a3e5b5a0ba6f584515839dbb"
+    },
+    {
+      "path": "docs/co-linh-than-chien/58-nghien-cuu-va-thiet-ke-he-item.md",
+      "bytes": 13251,
+      "sha256": "d3c4ef254bd3931f34be892e04dd5622d65c09ffc338671d8e7e94fbb9d266ff",
+      "blobSha": "c76039b264b3f9575c688b1b0756be2ee0a1a47d"
+    },
+    {
+      "path": "docs/co-linh-than-chien/59-he-trang-bi-de-xuat.md",
+      "bytes": 19807,
+      "sha256": "a2c2d6def950ea8ec58374aadc7aa049074697b6450c7c3edd131b92852f2983",
+      "blobSha": "da6f38c6cf7d5fb1c8b3b872eb34b4aac761b1b8"
+    },
+    {
+      "path": "docs/co-linh-than-chien/60-nghien-cuu-moba-chien-thuat-va-luat.md",
+      "bytes": 25150,
+      "sha256": "50f3c87c5c3ece9b8d6c9c5b323e35b1d8fe3fdb4a994f929e9cde6b6afa5768",
+      "blobSha": "7992617383c94c92a3ff89e980eb7a08aba5e615"
+    },
+    {
+      "path": "docs/co-linh-than-chien/61-mach-dang-va-cong-tac-phong-thu.md",
+      "bytes": 15436,
+      "sha256": "bb0d7cf2d8cd1e4fb78906f908e5683e18d852d29d35b4d2ff763109a937eaf4",
+      "blobSha": "954f9f9abf7ec8062eb1ecb1232b99b455f64e33"
+    },
+    {
+      "path": "docs/co-linh-than-chien/62-production-bible-va-bo-mo-phong.md",
+      "bytes": 12996,
+      "sha256": "e19475523a020b9466909075bfa8606b4fa0f22d50f6bb3fd1df3540e78f355b",
+      "blobSha": "27e8055ab8847a8cf001129a5f607be7ac609ad7"
+    },
+    {
+      "path": "docs/co-linh-than-chien/63-item-integration-handoff.md",
+      "bytes": 16615,
+      "sha256": "bcfafde7f7924f558e13a57f309724f333bbc81a02de78b9c87f7ca5a541811d",
+      "blobSha": "d8e6613ee55b8a03e9bae4597ac56e13c58d0a6d"
+    },
+    {
+      "path": "docs/co-linh-than-chien/64-slice-authoritative-handoff.md",
+      "bytes": 14170,
+      "sha256": "f88fc78726111a3a2a8f63ddaa1ce7e3e9694dca13ad76bda84f5f3a5faa4352",
+      "blobSha": "14a4cd11f2f2b4825495d385e658b569c37babf9"
+    },
+    {
+      "path": "docs/co-linh-than-chien/65-vision-map-acceptance.md",
+      "bytes": 13997,
+      "sha256": "11768f4090427abe43d736611e55764e4ad4d78f243c0094ad747ce05eb6fd8f",
+      "blobSha": "1e901293916b6198a4957e3c70fe7059913db778"
+    },
+    {
+      "path": "docs/co-linh-than-chien/66-ban-giao-cho-savi.md",
+      "bytes": 2867,
+      "sha256": "87173d450cd7db8edc94a170f383338d6ff9cc66cca36526a335d45e4c1160c6",
+      "blobSha": "1ecf17de73b14b6cbd2f5d3321e30cc73dc6d995"
+    },
+    {
+      "path": "docs/co-linh-than-chien/67-item-pass-runtime.md",
+      "bytes": 2767,
+      "sha256": "48aa46334b1561a249037590e6a2cc2296e56dab212ae9a7e23ef72c867a9e17",
+      "blobSha": "9d60777fbfa79caf51f81f197fa29cce24abfd85"
+    },
+    {
+      "path": "docs/co-linh-than-chien/68-economy-pacing.md",
+      "bytes": 10645,
+      "sha256": "19f231a6f74785983c5243fc4e108f95caf76c53d908770e1a01c7ce99b1d53e",
+      "blobSha": "ff33aa9d14e4f755e4ae86cea2befb7869795273"
+    },
+    {
+      "path": "docs/co-linh-than-chien/69-item24-balance.md",
+      "bytes": 8812,
+      "sha256": "f0813f09c72e354658188ce4ebe9ae14547dd82b5230b06f53f149aa8a352b89",
+      "blobSha": "1e6223f57fd08809877c568496cd5107e11a3207"
+    },
+    {
+      "path": "docs/co-linh-than-chien/70-combat-ttk-audit.md",
+      "bytes": 12818,
+      "sha256": "1888baa0ac995a7214459a2f7536f3083df55d9eb942b3794e522a469f84e9ea",
+      "blobSha": "fe975dd555f88ae4629c59f6c02c99936feea339"
+    },
+    {
+      "path": "docs/co-linh-than-chien/71-so-do-he-thong.md",
+      "bytes": 8518,
+      "sha256": "a9e351a6b350cb929c4fe36d0f2633056c58fe1f0cdda75f460781c222417559",
+      "blobSha": "b91430bf967db99f51e1c25b8a5f166d23f689c9"
+    },
+    {
+      "path": "docs/co-linh-than-chien/73-balance-lab.md",
+      "bytes": 5869,
+      "sha256": "800f0facc61ed079656d57a84d33f1d4368fda307ac881b8395d504b310eabaf",
+      "blobSha": "bf7867380b980e52a348b00f3eb02850c67ffc53"
+    },
+    {
+      "path": "docs/co-linh-than-chien/74-thu-vien-tao-hinh.md",
+      "bytes": 67632,
+      "sha256": "bbc5f50e7c61eaded22e2bd074bfc21054ea662f7a3ef60ed9abb57419d257b2",
+      "blobSha": "5c1a1222358354613370ad323fc03dabe931e395"
+    },
+    {
+      "path": "docs/co-linh-than-chien/75-prototype-tao-hinh.md",
+      "bytes": 17589,
+      "sha256": "0ac23f76e037bfa5b718cc974ac0071b8e54a940af43b7734f590c723ff329ae",
+      "blobSha": "2d4278200e9b7c6eaf1adc7f64b0536e855b59a9"
+    },
+    {
+      "path": "docs/co-linh-than-chien/76-chuan-hinh-hoc-skill.md",
+      "bytes": 6359,
+      "sha256": "8c99aaefd811c85da166963e7bacdcadd8b84d24ca69fb9062dd77846538ecd9",
+      "blobSha": "033830239092f001f2651774c8a0b4c3288324c9"
+    },
+    {
+      "path": "docs/co-linh-than-chien/77-audit-vfx-skill-2026-10-10.md",
+      "bytes": 18351,
+      "sha256": "7cc73cb468dc242f0af781b7a1e2df7ec003011e4d41e458c1544f4201f040b2",
+      "blobSha": "d8b3f3850defac0e4cb00971295ab3504f568a38"
+    },
+    {
+      "path": "docs/co-linh-than-chien/78-audit-skill-2026-10-11.md",
+      "bytes": 17557,
+      "sha256": "67285457c5bb1648e6098150c248b14dcdcdde88ce612ccace2977323e0bd27f",
+      "blobSha": "e89e6d0c009f93746d9db1dfb42b6428b2d20d6d"
+    },
+    {
+      "path": "docs/co-linh-than-chien/79-chuan-ultimate.md",
+      "bytes": 4829,
+      "sha256": "ec322aed0fb21c411d70e3fbf967c6599f19a7948743f945d2d5ce3973f1094b",
+      "blobSha": "e3c669e9eeb1993c327553e0d10a824e188fb9f4"
+    },
+    {
+      "path": "docs/co-linh-than-chien/80-cuu-mach-gate.md",
+      "bytes": 9986,
+      "sha256": "fcc3d447fa15dc0e8fb62af76d6118de9bad17a4e44fad60d482cb08c1141116",
+      "blobSha": "a3a3bc0d2d7ae67a60bb251b109f213acca1ce63"
+    },
+    {
+      "path": "docs/co-linh-than-chien/81-map-hai-tam.md",
+      "bytes": 9260,
+      "sha256": "5f321f3187b7f55770691787a15892b7576412e8ca02fedee70cafe532510cb6",
+      "blobSha": "d192c3bf4661313c468af07b35c65e37e3b4cce8"
+    },
+    {
+      "path": "docs/co-linh-than-chien/82-spec-asset-thuong-luong.md",
+      "bytes": 5339,
+      "sha256": "cb325f1e700623a1beacd04ce54df16043d323d04a91eb1e18eb45985612ba61",
+      "blobSha": "f873393c67496c91064a8b5dc883f705fa29bce1"
+    },
+    {
+      "path": "docs/co-linh-than-chien/83-goi-review-tao-hinh-18-cuu-mach.md",
+      "bytes": 1716,
+      "sha256": "168b61423596344260c963898ccccc8fc4ae2ffb19b13d8783dd376582c1a10e",
+      "blobSha": "7f979a6d08f0256fc3771dfe494ec8d1e90fa898"
+    },
+    {
+      "path": "docs/co-linh-than-chien/84-brief-review-tao-hinh-18-cuu-mach.md",
+      "bytes": 2990,
+      "sha256": "a0c6a9799fc7e5ffd37d26f921ce1bdbe99ee18049e89cfdc666d1716f36fa88",
+      "blobSha": "5fcfb195f0cfe939bcadb86ae3d3673ab2aa90bb"
+    },
+    {
+      "path": "docs/co-linh-than-chien/85-de-xuat-18-tuong.md",
+      "bytes": 49039,
+      "sha256": "72e037067af75ecff2685033b6860c444e859f72f95d1c34ba8543bee38a9684",
+      "blobSha": "7dfb4f60810bdfc427ac5445420b46852bba7fc7"
+    },
+    {
+      "path": "docs/co-linh-than-chien/86-concept-cuu-mach.md",
+      "bytes": 27500,
+      "sha256": "ef0b1fa4d412945700df2df4e7dbbe0efadc1a0b6098bb9765e23df0f4930acc",
+      "blobSha": "77c4a2d80fb4efa6deedd6b374cb918dd8288c5b"
+    },
+    {
+      "path": "docs/co-linh-than-chien/AUDIT-2026-10-07.md",
+      "bytes": 14628,
+      "sha256": "ca541868c194b9638c79450b1bd604bd6161e5766e49f1fb5dc40b3528c34879",
+      "blobSha": "eef9bc847ea290e0709215ee2d3c47a754bc69cb"
+    },
+    {
+      "path": "docs/co-linh-than-chien/JOURNAL.md",
+      "bytes": 2307,
+      "sha256": "d20699729a160172dc4394686bfbff3aa06dc41f4b23e11f134a2e3f12bc80b0",
+      "blobSha": "759351f402bd5a55770b8467cd875c4d4649380d"
+    },
+    {
+      "path": "docs/co-linh-than-chien/README.md",
+      "bytes": 7389,
+      "sha256": "d95a157cf521f2b0d8e3dc8ca783ba40f065aaacec3dbd2c8869395facd252cf",
+      "blobSha": "5f9d8a0ae117cf8de532105602b149930d286497"
+    },
+    {
+      "path": "docs/co-linh-than-chien/audit-18/a.md",
+      "bytes": 24758,
+      "sha256": "79766847947670f2c81489a3250b509e1d02b301595085765ab4645dfebf0b9b",
+      "blobSha": "59d200e9cc35793c59b9a8e2758ba384f1be2bd9"
+    },
+    {
+      "path": "docs/co-linh-than-chien/audit-18/b.md",
+      "bytes": 20244,
+      "sha256": "069350f3786cdfccdbe5080e824e76aaaeeaa8a9e51470fabeadb73cefd75d8b",
+      "blobSha": "a52aefafef1e9432e0c9d52959d68f557ec9eac4"
+    },
+    {
+      "path": "docs/co-linh-than-chien/audit-18/c.md",
+      "bytes": 17241,
+      "sha256": "e99edc05d5178b8130c40756d7ecf85e343098f65828e99383031117929c4425",
+      "blobSha": "cb79a0f700f8ef01ea2c44880d9459fbdb827915"
+    },
+    {
+      "path": "docs/co-linh-than-chien/balance-log.md",
+      "bytes": 13902,
+      "sha256": "2d4c5e5f39c1126e82d16c859abe36f1e9115789e7094a6892cf61d093b1b129",
+      "blobSha": "db8c279ad5b16d58eebedefa641b2f69f278f7a3"
+    },
+    {
+      "path": "docs/co-linh-than-chien/balance-sim-2026-10-07.md",
+      "bytes": 3790,
+      "sha256": "29d0065d7f87d3f1b0755fde784670c558d19924db58d5f697234f52ee1762b0",
+      "blobSha": "244eb964f4f00edbee64508ea34273fb8185eb11"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/cuu-mach-manifest.yml",
+      "bytes": 8105,
+      "sha256": "358761917a0c532afd2c4c737bd731152da55110591b82d38fc3830a4f00a867",
+      "blobSha": "6b681e5f672cdb69e74d9c27305b008cef8076ff"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/legacy-kits-v1.json",
+      "bytes": 166273,
+      "sha256": "99846d0c34ea4b6160e6324b095e06d7bbeac595dd4a0fbea91ac3740fddcf16",
+      "blobSha": "0dd69cb1a8f71d3f6b2dbf4b9d4c1214c1fe5b1c"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/legacy-source/boons.yml",
+      "bytes": 69103,
+      "sha256": "841c03881b6852a74fe8061e19a5f326a4c96044b2d704a7d3e0dcb12eaeaccd",
+      "blobSha": "af85acc1db458d4865fe77dcf5fbeafe4ef458ab"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/legacy-source/bot-brain.yml",
+      "bytes": 35291,
+      "sha256": "9327ca1902cdd04682154832a03c638141eebeac8e2255d0671687632b6eef34",
+      "blobSha": "2c775d65eff47e69f8e186f93c8f1166c572ccf0"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/legacy-source/bot-clock.yml",
+      "bytes": 38998,
+      "sha256": "d30b2d103029e7ecd989683d77119dbce4040522ef2634f33ec00ee7d7db07b9",
+      "blobSha": "6e860bca9e36f2dfebee7a7a68dc3051ef6aa33f"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/legacy-source/deeproad.yml",
+      "bytes": 7050,
+      "sha256": "384a4ae652929baef1d3fc26003c3ca9aed15a79c36880ab94af25fd0a57f550",
+      "blobSha": "456aacccc4c78bbca1ee28d6461bb978ef8a0503"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/legacy-source/kits.yml",
+      "bytes": 163849,
+      "sha256": "866f964e7cbedee2e0348535e07064fe5a606ca46f3bd8a18cea39e191b6d2fe",
+      "blobSha": "1e405574f26095a90400fa40450ce04cca6d0339"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/legacy-source/minions.yml",
+      "bytes": 10400,
+      "sha256": "d43530c14d7a759d21f79a1bec29fae2558fa9dce3824eaf8ee8252e2ae3f6d7",
+      "blobSha": "89fe95ddb114ef05095e82889e6f0d33f6e7b295"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/legacy-source/seals.yml",
+      "bytes": 5054,
+      "sha256": "88c40e96801544548e396a70e2ba591477abc16c539617cf6f648a6dd8ddbf11",
+      "blobSha": "ab824be2a4d6affcbaa419701ae005a06750bbbf"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/legacy-source/source-manifest.json",
+      "bytes": 3320,
+      "sha256": "691fcbb9f7e3ba2de9a89d82c2e37eddf0c6ec107777371564e937e69dc11fd0",
+      "blobSha": "954fd80456296977ac35c56684789840d40dfcf6"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/legacy-source/titan.yml",
+      "bytes": 17234,
+      "sha256": "0f7d42679ce2baa7f5998103b5afb7d06a693121d3d4266a596d25d36a10b637",
+      "blobSha": "bf32cbf8cd6252bb2e8d461eac89ef7adc53ba0b"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/legacy-source/toll.yml",
+      "bytes": 8937,
+      "sha256": "a761c886a944db28cb97f9eac2bec30358de9758a6dc125c3b4c4bd8c9e65f54",
+      "blobSha": "c9ceff955a1b47aadfca6ba753bebf49852cd697"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/legacy-source/trial.yml",
+      "bytes": 7300,
+      "sha256": "5979ceaa0372fecbb06f180c5467b2454dfeafecee29452348f68c7a401751c5",
+      "blobSha": "cf00ef5453a3a8052ee97a460f13bc67cff14392"
+    },
+    {
+      "path": "docs/co-linh-than-chien/data/roster-display-map.csv",
+      "bytes": 8991,
+      "sha256": "4616f7a87782d04a531c8089b6087689e4870a5dfb43c9419745786e742657e9",
+      "blobSha": "a272bdf5094ea8ba69a78516a08d97eb24c38390"
+    },
+    {
+      "path": "docs/co-linh-than-chien/lobby-review-2026-10-07.md",
+      "bytes": 2046,
+      "sha256": "c703cf5cb825e0a1bbddaa61457d706c12cbba8a722d7646bd0e6f5ad6fdf1e5",
+      "blobSha": "0bfe43e1ad60d46dc9c1d458728812d8e38a1726"
+    },
+    {
+      "path": "docs/co-linh-than-chien/qa/map-stuck-audit-2026-10-08.md",
+      "bytes": 3105,
+      "sha256": "847ec458badbcae8ff9082ef0e9d7a518cb02ace39adcd305d1e2b2b53853560",
+      "blobSha": "59ac76678713b1c87c23752fd1debac69c78b074"
+    },
+    {
+      "path": "docs/co-linh-than-chien/qa/visual-audit-2026-10-08-actions.md",
+      "bytes": 985,
+      "sha256": "573889ef82291d931c7760bf29c6f39e376d5ed4f85a50c81f8747b562818fb2",
+      "blobSha": "ba53f5cd8104bee7b005583cb146c5c2e17824ce"
+    },
+    {
+      "path": "docs/co-linh-than-chien/qa/visual-audit-2026-10-08-characters-hud.md",
+      "bytes": 9416,
+      "sha256": "831c89d56f4d4b25c7d96a1dd4c18f6794dd4e163b5e8e8680813ae2086b8cd9",
+      "blobSha": "46016176ab5257b4333d169833390578c9b24c2b"
+    },
+    {
+      "path": "docs/co-linh-than-chien/qa/visual-audit-2026-10-08-environment.md",
+      "bytes": 12230,
+      "sha256": "6df71d4f56540d1f7492de02387f572235bb70dcd2c21cbb58074eabef615305",
+      "blobSha": "e226581f6cce5e8341a571d760f894c652f9e94d"
+    },
+    {
+      "path": "docs/co-linh-than-chien/qa/visual-audit-2026-10-08-structures-light.md",
+      "bytes": 7744,
+      "sha256": "b7c701edc00cdb05b3184772783fba28fb63a364d1fbfffa713e35d88cfbc973",
+      "blobSha": "e095ab7713f27e9037c71fac5aa390c0abcf5113"
+    },
+    {
+      "path": "docs/co-linh-than-chien/references/gameplay/README.md",
+      "bytes": 9031,
+      "sha256": "6a25aaac6b54e3d619c896cfe30b7a1ebf8e2ab9e9d552125f5ce512da70f78a",
+      "blobSha": "119b2a7d9ce1ef018464d23c149c0089651ec5b7"
+    },
+    {
+      "path": "docs/co-linh-than-chien/references/gameplay/sources.json",
+      "bytes": 4811,
+      "sha256": "87df4934c92503a7b83d9b1e18c3cdbde9e0153756b2c8864b7369737122f2bf",
+      "blobSha": "9c9fb977e869f3ca5c28de87a143454ecd05f72d"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/2026-10-08-playtest-codex.md",
+      "bytes": 14798,
+      "sha256": "a3da21d1eb30cee323dad86fb42dcc6d5ff93acb3aed76a7ce986922bb1dfa4c",
+      "blobSha": "bf816269e5a2aa27e1ab3644c1ff07df71fdc04d"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/2026-10-09-docs-items-audit.md",
+      "bytes": 6072,
+      "sha256": "914ab90601f2edc6f64bbb320da4521ec3ec31e0d87f8603fe973fcae2fb388e",
+      "blobSha": "0820c53082128ff87d7d8cd57e89ac529512f426"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/2026-10-09-item-council-review.md",
+      "bytes": 6297,
+      "sha256": "80db26270fb666b7cea8cb62a92ee0d5c32857b07149c8cb397ceed5feb801cd",
+      "blobSha": "d50e3b15254f034ce11d07ff05d35c5af5eb2dce"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/balance-sim-2026-10-08-slice.json",
+      "bytes": 5218,
+      "sha256": "72427544b12142fba2540e0eaa59d39f2b01cbf83f6040479eef97a95a778310",
+      "blobSha": "296708fba77fc1f3621af07360c07c1b3f04d925"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/balance-sim-2026-10-08-slice.md",
+      "bytes": 18269,
+      "sha256": "187448ff96abed11685dca3b7b04b09c8673e1eb8b7016d4fdca332e28531299",
+      "blobSha": "c9dedcc53a72737f2ce48722e11cd77d6f1a183c"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/doc-status-2026-10-08.md",
+      "bytes": 13269,
+      "sha256": "e58a607309d60ab087112a8569acea506f13f7ae669c290e5e94e7cf1ea1864b",
+      "blobSha": "01c66fbf24a5b85310dc251b0785537e8a5ae321"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/evidence-2026-10-08/README.md",
+      "bytes": 1022,
+      "sha256": "e69dafc852706f3fe6282fedad7e9ef40d021b4d273e5a38f4d63863080e13fa",
+      "blobSha": "6cc8d557af06f5a40c6568bdb89ad26fb35001a7"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/evidence-2026-10-08/after-reload.json",
+      "bytes": 555,
+      "sha256": "c80245938fd9c4bcbff00d43297155895d980ab9d7a14605effaf7707c1a3178",
+      "blobSha": "d1e045a115e47537971f4cbaad774199bfd58e1f"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/evidence-2026-10-08/before-reload.json",
+      "bytes": 492,
+      "sha256": "4b2261c3de6d87c7f6084bbda4ffa00fe34c86ffb4cff9efc5e1881a6a648728",
+      "blobSha": "a513ce806c74a54cb09d1a8877e60d8bcdd890d0"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/evidence-2026-10-08/practice-reset.json",
+      "bytes": 1280,
+      "sha256": "3edc50e1d9c8622ecd02edf7e546233f3cb94fe7ed6b4e9d8e384061918dbf52",
+      "blobSha": "8c95f91312f3db88a0a635674d221fbc2d446a3c"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/evidence-2026-10-08/recovered.json",
+      "bytes": 4630,
+      "sha256": "13f8a604f374d1b50a7bd5a536ba37ea016655dc1e88c115cd72eb9dd3113970",
+      "blobSha": "58cbd01accd79f39df064c0cc8e901feecccf1db"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/evidence-2026-10-08/spectator-retest.json",
+      "bytes": 2124,
+      "sha256": "d5f2a0b6ad2ac15c43bd2986acf3bf944ea62b80886488bb6eaa20dff56a1d9e",
+      "blobSha": "696f17e899bac1caf1f57e85932ee679ee0dd3a1"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/referee-bot-2026-10-08.md",
+      "bytes": 4889,
+      "sha256": "0a0fc836fecbd41a0769e5758f73f2b83674854392216b982b0dbc6b18f28ed8",
+      "blobSha": "ca74135c30d8c237d5fb787e6cacc32e6e51d8ba"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/tooltip-2026-10-08.md",
+      "bytes": 18765,
+      "sha256": "cf2fa5c91e0389d33f418c6f2ba18a0884d01f6eb17e9c726ad3246c917e52d6",
+      "blobSha": "fdfdb814c68b2ebf07c59f91e63e1962d01a1f11"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/wisp-A-2026-10-08.md",
+      "bytes": 5846,
+      "sha256": "5d5d899b2a48a3bb577e7ffdc499541c5245861dad26c2149e24afbb8312971b",
+      "blobSha": "b54f0ce077c0a373317d495383c247a92ab6d001"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/wisp-B-2026-10-08.md",
+      "bytes": 9193,
+      "sha256": "deeab5d94219b802bdbbf922903af568c97dece0df4f8aa5e6193178f9cc3b5a",
+      "blobSha": "8c5e5985fa3b141d0b8a2b418539c4808a171acd"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/wisp-B2-2026-10-08.md",
+      "bytes": 12419,
+      "sha256": "8f18ece905afacb0cfcac467cf26f0e87260ba0662a1091f7a235297cba1761c",
+      "blobSha": "ed56c59ffcc7e6ce0601ec46ec2dc240be0f2497"
+    },
+    {
+      "path": "docs/co-linh-than-chien/reports/wisp-C-2026-10-08.md",
+      "bytes": 11145,
+      "sha256": "d2debefb6f6eb7cac871e48f000e5d869283322adde18bf640d419c638eec194",
+      "blobSha": "b8fbc26bd50efda79bd84777223cf5188801ee9e"
+    }
+  ]
+}

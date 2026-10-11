@@ -1,0 +1,117 @@
+# Cửu Mạch Chiến Trường — geometry manifest BẢN NHÁP (doc 80 §2).
+# Nguồn DUY NHẤT: docs/co-linh-than-chien/07-layout-ban-do-v1.md (V1 SPEC, chưa ký G2).
+# Luật: mỗi giá trị có source: doc07 | TBD. Số tính ra (độ dài lane…) không ghi ở đây; xem doc 80.
+# Không nội suy tọa độ. Không runtime nào đọc file này (chưa có consumer). Đơn vị mét, trục X/Z, Y cao độ.
+manifest:
+  id: cuu_mach
+  status: DRAFT_UNSIGNED        # → SIGNED khi G2 chốt (doc 80)
+  version: 0.1.0
+  source_doc: docs/co-linh-than-chien/07-layout-ban-do-v1.md
+  symmetry: { rule: "(x,z) -> (-x,-z)", source: doc07 }
+  units: { value: metres, scale: 1, source: doc07 }
+
+bounds:
+  center: { value: [0, 0], source: doc07 }
+  ground_blockout: { value: [-192, 192], source: doc07 }
+  config_half_extent: { value: 182, source: doc07 }
+  hero_clamp: { value: [-180, 180], source: doc07 }
+  minimap_extent: { value: TBD, source: TBD, note: "G5; map.yml Mạch Giữa dùng extent 88, Cửu Mạch chưa có" }
+
+river:
+  size: { value: [420, 32], source: doc07 }
+  center: { value: [0, 0], source: doc07 }
+  yaw_deg: { value: 45, source: doc07 }
+  floor_y: { value: -3.2, source: doc07 }
+  water_level_y: { value: TBD, source: TBD }
+  bridge:
+    center: { value: [0, 0], source: doc07 }
+    yaw_deg: { value: 135, source: doc07 }
+    deck_y: { value: 0, source: doc07 }
+    width: { value: 34, source: doc07 }
+    span: { value: 78, source: doc07 }
+    thickness: { value: 1.6, source: doc07 }
+  extra_crossings: { value: TBD, source: TBD, note: "doc07 chỉ nêu 1 cầu tâm; lối qua sông ở lane biên chưa có" }
+
+bases:
+  blue:
+    faction: { value: minh_uoc, source: doc07 }
+    fountain: { value: [-159, 159], source: doc07 }
+    fountain_radius: { value: 13, source: doc07 }
+    nexus: { value: [-132, 132], source: doc07 }
+    nexus_hp: { value: 4000, source: doc07, tag: THAM_KHAO }
+    nexus_shield: { value: 3000, source: doc07, tag: THAM_KHAO }
+    nexus_armor_mr: { value: [20, 20], source: doc07, tag: THAM_KHAO }
+    gates: { top: { value: [-144, 84.3], source: doc07 }, mid: { value: [-103.3, 103.3], source: doc07 }, bot: { value: [-84.3, 144], source: doc07 } }
+    spawn_point: { value: TBD, source: TBD, note: "doc07 không tách điểm spawn khỏi fountain" }
+  red:
+    faction: { value: trieu_vuc, source: doc07 }
+    fountain: { value: [159, -159], source: doc07 }
+    fountain_radius: { value: 13, source: doc07 }
+    nexus: { value: [132, -132], source: doc07 }
+    nexus_hp: { value: 4000, source: doc07, tag: THAM_KHAO }
+    nexus_shield: { value: 3000, source: doc07, tag: THAM_KHAO }
+    nexus_armor_mr: { value: [20, 20], source: doc07, tag: THAM_KHAO }
+    gates: { top: { value: [84.3, -144], source: doc07 }, mid: { value: [103.3, -103.3], source: doc07 }, bot: { value: [144, -84.3], source: doc07 } }
+    spawn_point: { value: TBD, source: TBD }
+
+lanes:   # điểm từ gate Blue tới gate Red (doc07 §7); route lính ≠ đường vẽ
+  top:
+    width: { value: 14, source: doc07 }
+    points: { source: doc07, value: [[-144,105],[-144,84.3],[-144,33],[-134.5,-45],[-134.5,-69],[-144,-108],[-108,-144],[-69,-134.5],[-45,-134.5],[33,-144],[84.3,-144],[105,-144]] }
+    length_m: { value: TBD, source: TBD, note: "doc07 không ghi; tính từ điểm lane ≈ 480.3 m (PASS_MODEL, doc 80), chờ G2 ký" }
+  mid:
+    width: { value: 18, source: doc07 }
+    points: { source: doc07, value: [[-114,114],[-103.3,103.3],[-81,81],[-60.2,46.8],[-43.2,29.8],[43.2,-29.8],[60.2,-46.8],[81,-81],[103.3,-103.3],[114,-114]] }
+    length_m: { value: TBD, source: TBD, note: "doc07 không ghi; tính từ điểm lane ≈ 326.4 m (PASS_MODEL, doc 80), chờ G2 ký" }
+  bot:
+    width: { value: 14, source: doc07 }
+    points: { source: doc07, value: [[-105,144],[-84.3,144],[-33,144],[45,134.5],[69,134.5],[108,144],[144,108],[134.5,69],[134.5,45],[144,-33],[144,-84.3],[144,-105]] }
+    length_m: { value: TBD, source: TBD, note: "doc07 không ghi; tính từ điểm lane ≈ 480.3 m (PASS_MODEL, doc 80), chờ G2 ký" }
+  nav_polygons: { value: TBD, source: TBD }
+
+towers:  # HP/armor/MR/shot là [THAM KHẢO] trong doc07 — tọa độ là V1 SPEC
+  stats:
+    t1: { hp: 2800, armor: 40, mr: 40, range: 16, fire_interval_s: 1.2, shot_damage: 150, source: doc07, tag: THAM_KHAO }
+    t2: { hp: 5400, armor: 65, mr: 65, range: 16, fire_interval_s: 1.2, shot_damage: 150, slow: 0.3, well_range: 14, well_heal_pct_s: 3, source: doc07, tag: THAM_KHAO }
+  list:
+    - { id: blue-top-t1, team: blue, lane: top, tier: 1, pos: [-144, -57], source: doc07 }
+    - { id: blue-top-t2, team: blue, lane: top, tier: 2, pos: [-144, 33], source: doc07 }
+    - { id: blue-mid-t1, team: blue, lane: mid, tier: 1, pos: [-45, 45], source: doc07 }
+    - { id: blue-mid-t2, team: blue, lane: mid, tier: 2, pos: [-81, 81], source: doc07 }
+    - { id: blue-bot-t1, team: blue, lane: bot, tier: 1, pos: [57, 144], source: doc07 }
+    - { id: blue-bot-t2, team: blue, lane: bot, tier: 2, pos: [-33, 144], source: doc07 }
+    - { id: red-top-t1, team: red, lane: top, tier: 1, pos: [-57, -144], source: doc07 }
+    - { id: red-top-t2, team: red, lane: top, tier: 2, pos: [33, -144], source: doc07 }
+    - { id: red-mid-t1, team: red, lane: mid, tier: 1, pos: [45, -45], source: doc07 }
+    - { id: red-mid-t2, team: red, lane: mid, tier: 2, pos: [81, -81], source: doc07 }
+    - { id: red-bot-t1, team: red, lane: bot, tier: 1, pos: [144, 57], source: doc07 }
+    - { id: red-bot-t2, team: red, lane: bot, tier: 2, pos: [144, -33], source: doc07 }
+
+objectives:  # The Call / Trial Pit; không quái farm trong pit (doc07 §4)
+  pits:
+    - { id: drake, name_vi: "Hõm Long Mạch", center: [52, 85], radius: 24, floor_y: -3.2, source: doc07 }
+    - { id: titan, name_vi: "Hõm Quy Mạch", center: [-52, -85], radius: 24, floor_y: -3.2, source: doc07 }
+  trial_ring_radius: { value: 18, source: doc07 }
+  first_call_pit: { value: "matchSeed mod 2, sau đó luân phiên", source: doc07 }
+  titan_rise_offset: { value: TBD, source: TBD, note: "doc35 §3 chỉ có cho Mạch Giữa (7 m), Cửu Mạch chưa có" }
+  call_lane_binding: { value: TBD, source: TBD, note: "doc07 §9: Titan đi lane gắn với Call — lane nào cho pit nào chưa ghi" }
+
+jungle:
+  aggro_radius: { value: 8.5, source: doc07 }
+  camps:
+    - { id: sentinel-blue, team: blue, type: buff_cdr, center: [-84, -9], radius: 16, leash: 18, source: doc07 }
+    - { id: emberscale-blue, team: blue, type: buff_burn, center: [-16.5, 94.5], radius: 16, leash: 18, source: doc07 }
+    - { id: wolves-blue, team: blue, type: merc_wolves, center: [-85.5, 25.5], radius: 13, leash: 15, source: doc07 }
+    - { id: shellwarden-blue, team: blue, type: merc_shellwarden, center: [-115.5, -22.5], radius: 13, leash: 15, source: doc07 }
+    - { id: raptors-blue, team: blue, type: merc_raptors, center: [-7.5, 58.5], radius: 13, leash: 15, source: doc07 }
+    - { id: shardpack-blue, team: blue, type: merc_shardpack, center: [10.5, 114], radius: 13, leash: 15, source: doc07 }
+    - { id: sentinel-red, team: red, type: buff_cdr, center: [84, 9], radius: 16, leash: 18, source: doc07 }
+    - { id: emberscale-red, team: red, type: buff_burn, center: [16.5, -94.5], radius: 16, leash: 18, source: doc07 }
+    - { id: wolves-red, team: red, type: merc_wolves, center: [85.5, -25.5], radius: 13, leash: 15, source: doc07 }
+    - { id: shellwarden-red, team: red, type: merc_shellwarden, center: [115.5, 22.5], radius: 13, leash: 15, source: doc07 }
+    - { id: raptors-red, team: red, type: merc_raptors, center: [7.5, -58.5], radius: 13, leash: 15, source: doc07 }
+    - { id: shardpack-red, team: red, type: merc_shardpack, center: [-10.5, -114], radius: 13, leash: 15, source: doc07 }
+  respawn_s: { value: TBD, source: TBD, note: "không có trong doc07; xem doc08 khi ký" }
+
+brush: { value: "24 ellipse, xem doc07 §6", source: doc07, note: "chưa chép vào manifest nháp này (ngoài phạm vi brief)" }
+layers: { value: [gameplay_ground, gameplay_points, art_shell, art_fx], source: doc07 }

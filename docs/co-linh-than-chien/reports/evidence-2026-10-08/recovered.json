@@ -1,0 +1,180 @@
+{
+  "phase": "playing",
+  "round": 10,
+  "lobby": {
+    "ack": {
+      "pa_64a9fbc7b746f8b26c82ab3974be5384": 37
+    },
+    "disconnected": {},
+    "err": {},
+    "host": "pa_64a9fbc7b746f8b26c82ab3974be5384",
+    "joinOrder": [
+      "pa_64a9fbc7b746f8b26c82ab3974be5384",
+      "pa_67cb45098b95c730ec62194b5bd11e5e",
+      "pa_cba891da3ac947ba4c74abc070f6a774"
+    ],
+    "map": "mach_giua",
+    "matchId": 8,
+    "mode": "san_tap",
+    "names": {
+      "pa_64a9fbc7b746f8b26c82ab3974be5384": "lukasai",
+      "bot-red-1": "Máy",
+      "pa_cba891da3ac947ba4c74abc070f6a774": "livelyforestfd0a9",
+      "pa_67cb45098b95c730ec62194b5bd11e5e": "fluxby"
+    },
+    "notice": null,
+    "phase": "ingame",
+    "phaseEndsAt": null,
+    "pick": {
+      "pa_64a9fbc7b746f8b26c82ab3974be5384": {
+        "hero": "kha_tan",
+        "locked": true
+      }
+    },
+    "teams": {
+      "blue": [
+        "pa_64a9fbc7b746f8b26c82ab3974be5384"
+      ],
+      "red": []
+    }
+  },
+  "match": {
+    "roster": {
+      "pa_64a9fbc7b746f8b26c82ab3974be5384": {
+        "team": "blue",
+        "slot": 0,
+        "hero": "kha_tan",
+        "name": "lukasai"
+      }
+    },
+    "startedAt": 63269633.333333336,
+    "saved": {}
+  },
+  "players": [
+    {
+      "id": "player/c_actor:pa_64a9fbc7b746f8b26c82ab3974be5384",
+      "name": "lukasai",
+      "state": {
+        "hero": "kha_tan",
+        "team": "blue",
+        "level": 1,
+        "xp": 0,
+        "gold": 1222,
+        "items": [
+          "phial_of_dawn"
+        ],
+        "kills": 0,
+        "deaths": 0,
+        "cs": 0,
+        "cd": {},
+        "hits": 0,
+        "empowered": false,
+        "dead": false,
+        "round": 10,
+        "stunUntil": null,
+        "rootUntil": null,
+        "slowUntil": null,
+        "charmUntil": null,
+        "knock": null,
+        "dots": null,
+        "recallAt": null,
+        "shield": null,
+        "giftShield": null,
+        "lastHitBy": null,
+        "lastHeroHitBy": null,
+        "relicReadyAt": null,
+        "regenBuff": null,
+        "maxHp": 728,
+        "maxMana": 280,
+        "ad": 64,
+        "baseAd": 64,
+        "ap": 0,
+        "armor": 34,
+        "mr": 32,
+        "ms": 6.2,
+        "as": 0.64,
+        "hpRegen": 1.5,
+        "manaRegen": 1.4,
+        "hp": 728,
+        "mana": 280,
+        "stamina": 100,
+        "goldF": 0.5999999999999999,
+        "cdLen": {
+          "q": 7,
+          "e": 14,
+          "rmb": 10
+        },
+        "castLockUntil": null,
+        "matchId": 8,
+        "shopOpen": true,
+        "locale": "en",
+        "view": "room",
+        "infoTab": "skills",
+        "browse": "van_dao",
+        "lobbyReq": {
+          "seq": 37,
+          "op": "start"
+        },
+        "infoSkill": "passive",
+        "renaming": true,
+        "msg": {
+          "until": 61873000,
+          "key": "msg.noTarget"
+        },
+        "dodgeReadyAt": 61829466.666666664,
+        "iframeUntil": 61828386.666666664,
+        "lastHitAt": 32417633.333333332,
+        "slowPct": 0.2,
+        "respawnAt": 22052700,
+        "aiming": null,
+        "hitHeroAt": 32421500,
+        "avatarModel": "/cdn/neutral-default-avatar.glb",
+        "demo": null,
+        "displayName": "lukasai",
+        "portraitUrl": "https://spawnfile.io/trellis-testing/hunyuan-models/neutral-default-pfp.png",
+        "avatarUrl": "/cdn/neutral-default-avatar.glb",
+        "__dressed": "/cdn/neutral-default-avatar.glb",
+        "__wornTemplate": "c3f8e7482bb267e2",
+        "__arrival": {
+          "kind": "rejoin"
+        }
+      }
+    },
+    {
+      "id": "player/c_actor:pa_67cb45098b95c730ec62194b5bd11e5e",
+      "name": "fluxby",
+      "state": {
+        "presence": {
+          "intent": "idle",
+          "target": null,
+          "seq": 3,
+          "done": null
+        },
+        "view": "room",
+        "locale": "vi-VN",
+        "displayName": "fluxby",
+        "portraitUrl": "https://www.spawn.co/api/agent/v1/pfp/e8da7427-d45a-4c3e-95e2-fbd35d3d605f",
+        "avatarUrl": "/cdn/neutral-default-avatar.glb",
+        "__dressed": "/cdn/neutral-default-avatar.glb",
+        "__wornTemplate": "c3f8e7482bb267e2",
+        "__arrival": {
+          "kind": "rejoin"
+        }
+      }
+    },
+    {
+      "id": "player/c_actor:pa_cba891da3ac947ba4c74abc070f6a774",
+      "name": "livelyforestfd0a9",
+      "state": {
+        "__arrival": {
+          "kind": "rejoin"
+        },
+        "__dressed": "/cdn/neutral-default-avatar.glb",
+        "__wornTemplate": "c3f8e7482bb267e2",
+        "avatarUrl": "/cdn/neutral-default-avatar.glb",
+        "displayName": "livelyforestfd0a9",
+        "view": "heroes"
+      }
+    }
+  ]
+}

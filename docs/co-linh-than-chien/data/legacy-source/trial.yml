@@ -1,0 +1,83 @@
+# The Titan Trial and the camps between Calls. Read by scripts/lib/match.js (which hands the rows to scripts/lib/trial.js),
+# scripts/lib/trial-stage.js, scripts/jungle.js and scripts/minions.js (which hand theirs to scripts/lib/mercs.js) and the HUD.
+# When a Call opens and which pit is lit is the clock's; jungle timing (first spawn, respawn) stays in tuning.yml `jungle`.
+
+# ---- the capture ----
+capture:
+  ring: 18          # metres from the pit's centre: its flat floor (rift-layout PITS r 24 less the 6 m bank)
+  fullSeconds: 46   # one team alone in the ring, 0 to 100; one hero fills it as fast as five
+  holdAt: 99        # a bar here waits (match.call.hold) while a living enemy hero stands in the ring
+  contested: 0      # izkimar 2026-10-06: an enemy on the point neutralizes it, nobody fills while both stand there (was 0.3). The share of its pace a bar keeps while BOTH teams stand in the ring: both bars keep rising in a contest and
+                    # each waits at 99 until the ring is clear of the other team. No clock closes a Call, so the fight in the
+                    # ring itself must move it toward its end: a ring both teams hold reaches 99 to 99 after about two and a
+                    # half minutes, and then the first team to clear it takes the Call. (At 0, the frame's first rule, a
+                    # contested ring filled nobody: with no clock a Call of two even teams ran up to four minutes in the lab.)
+  contestedBy: heads  # WHO keeps that share: the team with MORE living heroes in the ring; the team with fewer earns nothing
+                    # (its bodies slow the other bar and hold it at 99: that is what they are there for); as many on each side,
+                    # both keep it, so an even fight still moves the Call to its end. Before this word both bars rose alike
+                    # however many stood there: one hero alone against five filled his bar beside theirs (seen live, 62 to 68
+                    # for the one, 8 to 14 for the five), and a bar that climbs for the side that is losing the ring is a lie.
+  comeback: 30      # where the team that lost the last Call starts the next. Measured on the rig (64 whole matches of ten
+                    # even bots, a setting): at 15 one team took EVERY Call of a match in 35 of 64; at 30 in 27, at the same
+                    # length (mean 16:58 against 17:10). A third of the way is a real start and still a fight to finish.
+                    # Measured again in fix round 2 with the first two Titans raised (titan.yml): at 40 nothing moved (one
+                    # team took every Call in 63 of 128 against 64 to 67 at 30; with the same five heroes on both sides 14
+                    # of 64 against 18, inside what two sets differ by). A start by STRUCTURES standing (the Brawl's rule)
+                    # was built, gave nothing on three lanes and was taken out. So 30 stays.
+  maxStepMs: 1000   # the most one referee pass may count: a pause or a stalled room pays no progress
+
+# ---- how a Call is told to a hero who is somewhere else ----
+# The owners: "it's very clear that the objective was going, but we need to keep anti-tunnel vision in mind somehow because I
+# didn't even notice it." The horn, the herald's line, the bar and the beam were all there; a player in a fight looks at the
+# crosshair and hears the fight. So the Call is also told where that eye is, for as long as it is lit, and told again, louder,
+# each time the other team's bar passes a mark.
+tell:
+  away: 45            # metres from the ring's centre: farther than this, the Call's pointer stands by the crosshair (lib/ui-call.js)
+  warnAt: [50, 80]    # the other team's bar passing each of these is told once: a bell and a herald line to the team it threatens
+  warnVolume: 0.75
+  sound: /cdn/value.70c78eaef0d75c745bc51d64602e66e0fb6de108f62fa2375ffd5a20d1c44f0d.mp3   # the danger ping's bell (a clip the game already plays)
+
+# ---- what the room sees and hears (scripts/lib/trial-stage.js) ----
+stage:
+  lingerSeconds: 5  # the taken ring stays lit in the winner's colour this long
+  ringEveryMs: 400  # the ring changes colour at most this often (heroes stepping in and out)
+  markStep: 2       # the beacon's collar moves once per this many points of the leading bar
+  # the held body colour of each reading (r, g, b) and its light (lr, lg, lb); blue and red are minion-fx TEAM_RGB / TEAM_LIGHT
+  colours:
+    blue: { r: 0.04, g: 0.24, b: 0.95, lr: 0.45, lg: 0.75, lb: 1, paint: "oklch(0.78 0.13 235)" }
+    red: { r: 0.85, g: 0.04, b: 0.02, lr: 1, lg: 0.45, lb: 0.25, paint: "oklch(0.72 0.17 25)" }
+    open: { r: 0.95, g: 0.62, b: 0.08, lr: 1, lg: 0.8, lb: 0.4, paint: "oklch(0.85 0.15 85)" }      # lit, nobody in it
+    both: { r: 0.9, g: 0.9, b: 0.9, lr: 1, lg: 1, lb: 1, paint: "oklch(0.95 0.01 90)" }             # contested
+  sound:
+    lit: /cdn/moodboard-painterly-fantasy/sfx-titan-sigil-rune-ignite-choir.mp3                       # at the pit, when its ring lights
+    hold: /cdn/moodboard-painterly-fantasy/sfx-capture-ring-last-stand-tense-rising-war-drum-roll.mp3 # both teams, when a bar starts to wait at 99
+    taken: /cdn/moodboard-painterly-fantasy/sfx-objective-alert-deep-war-drum-horn-titan-awakened.mp3 # every player, when a Call is taken
+    won: /cdn/moodboard-painterly-fantasy/sfx-drake-soul-claimed-choir-roar.mp3                       # the team that took it
+    lost: /cdn/moodboard-painterly-fantasy/sfx-allied-turret-lost-low-warning-toll.mp3                # the team that lost it
+
+# ---- camps ----
+# The two buff camps (sentinel, emberscale) stay buffs. Every other camp is a mercenary camp: the team that lands the last
+# blow on its last monster gets a small wave of that camp's monsters in the nearest lane. Each unit is a lane minion row; `role`
+# is the minion kind whose rules it fights by (reach, swing, what a tower shot takes, what its last hit pays: tuning.yml minion).
+# hp and dmg grow a minute like a lane minion's (tuning.yml minionCurve). A camp is worth less than a Call: each wave below
+# hits for at most 46 a second where a lane wave (3 melee, 3 casters) hits for 72, and a tower shot takes it like any minion;
+# the first Call's Titan hits a structure for about 110 a second and a tower shot takes a flat 400 of it (lib/data/titan.yml towerShot).
+mercs:
+  wolves:
+    - { kind: wolf-alpha, role: melee, hp: 900, dmg: 30 }
+    - { kind: wolf, role: melee, hp: 420, dmg: 14 }
+    - { kind: wolf, role: melee, hp: 420, dmg: 14 }
+  raptors:
+    - { kind: raptor-alpha, role: melee, hp: 800, dmg: 26 }
+    - { kind: raptor, role: melee, hp: 300, dmg: 10 }
+    - { kind: raptor, role: melee, hp: 300, dmg: 10 }
+    - { kind: raptor, role: melee, hp: 300, dmg: 10 }
+  shardpack:
+    - { kind: shard-elder, role: melee, hp: 1300, dmg: 36 }
+    - { kind: shardpup, role: melee, hp: 650, dmg: 20 }
+  shellwarden:   # the big camp: one siege giant that out-ranges a tower's guards
+    - { kind: shellwarden, role: siege, hp: 1500, dmg: 55 }
+mercRules:
+  spacing: 2.2      # metres between the wave's units where they rise in the lane
+  keep: 6           # the last calls kept on place.state.mercs (the minion manager serves each once)
+  sound: /cdn/moodboard-painterly-fantasy/sfx-super-minion-arrives-war-horn-heavy-stone-stomp.mp3

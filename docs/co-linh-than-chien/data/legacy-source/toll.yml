@@ -1,0 +1,108 @@
+# The Weaver's Toll: the main objective of the Rift in Storm (lib/data/maps.js storm). Read by scripts/lib/match.js, which hands
+# the rows to scripts/lib/toll.js (the rule) and scripts/lib/toll-stage.js (what the room sees), and by scripts/lib/ui-toll.js.
+# When a Call opens and which pit the horn names is the clock's (tuning.yml clock); the Stormwalker's body is the Titan's
+# (data/titan.yml), scaled by the shares below.
+
+# ---- shards ----
+shards:
+  # an enemy lane minion, by its kind. The casters carry the shards: three a wave a lane, about 12 a minute for a team that
+  # stands in all three lanes, so a toll of 30 is most of what a team gathers between two Calls and every carrier counts.
+  # (Every minion at 1 was 36 a minute: by the first Call each team held two tolls and the purse never mattered.)
+  minion: { melee: 0, caster: 1, siege: 2, super: 2 }
+  merc: 1           # an enemy mercenary (a camp's wave walking a lane: 1 to 4 of them)
+  # a camp, on its big monster, by the gold of that monster's own bounty (monster-data.js KINDS): [at least this much gold, shards],
+  # the first row that fits. The two buff monsters 5, Templeshell 4, the big one of wolves, raptors and shardpack 3; a small one nothing
+  monster: [[100, 5], [85, 4], [50, 3], [0, 0]]
+  hero: 3           # an enemy hero's own, to the hero that killed him; what he carried falls where he died
+  gather: 14        # metres: a shard no hero struck loose goes to the nearest living enemy hero this near, else it is lost
+  carryMax: 99      # the most one hero holds
+  beacon: 15        # a hero carrying this many shows on both teams' minimaps (brush still hides him)
+  tiers: [1, 10, 20] # the glow a carrier wears grows at these counts
+
+# ---- what a dead hero drops ----
+pile:
+  seconds: 12       # the fallen shards lie this long, then they are gone
+  reach: 2.6        # metres: a living ally this near takes them all; an enemy cannot
+
+# ---- the altars ----
+# A Call opens the altar in the pit its horn named (where the Call gate lands) and it stays open until a toll is paid: no clock
+# closes it (lib/data/maps.js storm names no longest Call; a map that named one would close its altars then). On the Calls
+# `both` names, the altar in the other pit is open too, the same in every way: two places to pay at, two places to guard.
+# A hero pays by a CHANNEL. He stands in an open altar's circle with shards on him and starts it himself (the recall key: on an
+# open altar it pays). It runs `channel` seconds, and what breaks a recall breaks it: a hit, a step, a roll, a cast, his death;
+# so do a stun, a knock-up or a charm, and a pull or a shove that carries him out of the circle. A channel that ends pays in ALL
+# the shards he carries, never more than his team still owes. Standing there pays nothing IN (it is paid shards: `shed` below).
+altar:
+  circle: 10        # metres from the pit's centre: the pay-in circle, drawn on the pit's own floor (flat to 18 m: data/trial.yml ring).
+                    # Ten heroes stand in it 2 m apart with room to spare, and the floor round it is as wide again
+  channel: 4        # seconds a pay-in channel runs. An enemy who sees it start has time for one aimed shot; a team that won the
+                    # fight pays before the losers are back (the shortest death timer is 5 s)
+  both: [2, 4, 5]   # the Calls that open both altars. Call I and Call III open the horn's altar alone: one fight in one place
+  fresh: 2          # seconds: a channel that ended longer ago than this and is not yet banked pays nothing (a room that stalled)
+  # THE ALTAR SHEDS (lib/toll.js shedOf). No clock closes a Call of the Toll (the owners, 2026-10-02: "There should not be a
+  # timer to it"), so the Call itself must reach a payment by play: an open altar gives a shard each `shed` seconds to the team
+  # whose living heroes stand in its circle with no living enemy hero in it, `shedContested` of that pace to each team while
+  # both stand there, to the hero there who carries the most, and never more than the team still owes less what its heroes in
+  # the circle carry. A deposit is still a channel a hero starts, and a hit still breaks it (the owner, 2026-10-01: "I like
+  # having something you intentionally have to channel to deposit in"): the altar hands out shards to carry, it pays nothing in.
+  # 1.5 s a shard: a first toll of 30 is 45 s of the circle held alone from nothing (the Trial's ring is 46 s), and every shard
+  # gathered on the map before the horn is a second and a half less.
+  shed: 1.5
+  shedContested: 0.3
+  # WHO keeps that share in a circle both teams stand in: the team with MORE living heroes there; the team with fewer is paid
+  # nothing; as many on each side, both. The Trial's ring is counted the same way (data/trial.yml capture.contestedBy): one
+  # rule for the same sight on both battlegrounds (critic 3: here both teams were paid alike however many stood there)
+  shedBy: heads
+
+# ---- how a Call is told to a hero who is somewhere else (lib/ui-call.js: the pointer by the crosshair, a phone's plate) ----
+# The owners: "we need to keep anti-tunnel vision in mind somehow because I didn't even notice it." away: metres from the altar's
+# centre past which the pointer stands. warnAt: a team's bank passing this share of its toll (in hundredths), while it is not
+# behind the other's, rings the bell for the team it threatens and is said by the herald; past the last mark the pointer is red
+# and beats. A channel of the other team is the alarm at any bank: a hit breaks it.
+tell:
+  away: 45
+  warnAt: [67]
+  warnVolume: 0.75
+  sound: /cdn/value.70c78eaef0d75c745bc51d64602e66e0fb6de108f62fa2375ffd5a20d1c44f0d.mp3   # the danger ping's bell: the Trial's own (data/trial.yml tell)
+
+# ---- the toll ----
+# The first team whose paid-in shards reach its toll ends the Call and takes it. What a team paid in is kept from Call to Call
+# until its own summon spends the toll; each summon a team makes raises its next toll by step.
+toll:
+  first: 30
+  step: 10
+
+# ---- the reward: three Stormwalkers, one a lane ----
+# Each is the walking Titan's body at the Call's rank (data/titan.yml), with these shares of its numbers: three of them together
+# press about as hard as one Titan, in three places at once. ahead: metres in front of the team's outermost standing structure
+# of the lane where it rises (a lane with nothing standing: its own base gate). pay: its share of a Titan's kill pay.
+walker:
+  hp: 0.4
+  fist: 0.6
+  scale: 0.62
+  ahead: 10
+  pay: 0.34
+
+# ---- what the room sees and hears (scripts/lib/toll-stage.js) ----
+stage:
+  ringEveryMs: 400  # an altar's light changes colour at most this often
+  glowSteps: 4      # an altar's light grows in this many steps as the leading team nears its toll
+  lingerSeconds: 5  # the altars stay lit this long after a Call is taken
+  colours:
+    blue: { r: 0.04, g: 0.24, b: 0.95, lr: 0.45, lg: 0.75, lb: 1 }
+    red: { r: 0.85, g: 0.04, b: 0.02, lr: 1, lg: 0.45, lb: 0.25 }
+    open: { r: 0.62, g: 0.3, b: 0.95, lr: 0.75, lg: 0.6, lb: 1 }      # an altar awake, nobody channels there: the Weaver's violet (blue, red: a hero of that team channels)
+    both: { r: 0.9, g: 0.9, b: 0.9, lr: 1, lg: 1, lb: 1 }              # heroes of both teams channel there at once
+  sound:
+    wake: /cdn/moodboard-painterly-fantasy/sfx-titan-sigil-rune-ignite-choir.mp3                        # at each altar, when it opens
+    # the channel's two sounds are sounds the game already plays (the recall's own hum, a shield's break): a name the CDN has
+    # not made yet is made on its first fetch, and that first channel would be silent
+    channel: /cdn/moodboard-painterly-fantasy/sfx-teleport-channel-humming-crystal-whoosh.mp3           # at a hero, when his pay-in channel starts: an enemy near hears it
+    broke: /cdn/moodboard-painterly-fantasy/sfx-magic-barrier-shatter-glass-burst.mp3                   # at a hero whose channel a hit broke
+    pay: /cdn/moodboard-painterly-fantasy/sfx-crystal-shards-poured-into-stone-bowl-chime-tick.mp3      # at an altar, when a channel ends and its shards go in
+    drop: /cdn/moodboard-painterly-fantasy/sfx-crystal-shards-scatter-on-stone.mp3                      # where a carrier's shards fall
+    take: /cdn/moodboard-painterly-fantasy/sfx-crystal-shards-gathered-bright-chime.mp3                 # to the hero who picks shards up
+    summon: /cdn/moodboard-painterly-fantasy/sfx-objective-alert-deep-war-drum-horn-titan-awakened.mp3  # every player, when a toll is paid
+    won: /cdn/moodboard-painterly-fantasy/sfx-drake-soul-claimed-choir-roar.mp3                         # the team that paid it
+    lost: /cdn/moodboard-painterly-fantasy/sfx-allied-turret-lost-low-warning-toll.mp3                  # the team that did not
+    shut: /cdn/moodboard-painterly-fantasy/sfx-chime-soft-fade-shimmer-down.mp3                         # every player, when the altars close with no toll paid

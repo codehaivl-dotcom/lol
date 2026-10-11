@@ -1,0 +1,660 @@
+# League of Spawn's boons: the talent picks a hero earns at levels. scripts/lib/boons.js is the rule; this file is the cards.
+#
+# rules      the system's own numbers and names. Every other top-level key is a hero id (a key of kits.yml):
+#              <hero>: { <level>: [ card, card, card ] }
+# A CARD     { id, name, slot, text, rec?, mods?, row?, more?, hp?, quest?, hook? }
+#   id       unique inside its hero. state.boons stores it: a shipped id is never renamed.
+#   name     the card's title.
+#   slot     the button it changes: lmb | rmb | q | e | r | passive. The card is headed by that button's key and name.
+#   text     one line with one number: what the button does now. The number is the one the player meets in play: an
+#            ultimate's damage after tuning.yml fight.ultDamage, a cooldown's seconds after fight.basicCooldown (a card
+#            that takes 3 s off a cooldown in play takes 4 s off its row).
+#   rec      true on ONE card a tier: the mark a new player sees, and the card a bot takes.
+#   mods     a patch of that slot's row in kits.yml, as THIS caster has it. field: value, where the value is
+#              a number, a word, true, a list, a map     the field becomes it            pierce: 2 · returns: true
+#              "*1.4"                                    the number (each rank of a list) times 1.4
+#              "+2" / "-0.5"                             the number (each rank of a list) plus / minus
+#            and the field is
+#              a name                                    range · cooldown · pierce
+#              a dotted name                             a field inside the row          damage.base · effects.0.duration · charge.rangeMax
+#              a name ending in +                        the list gains the items        effects+: [{ kind: slow, amount: 0.3, duration: 2 }]
+#            "*" and "+" change a number the row already holds; a field the row lacks is given its value outright.
+#   row      the kit key the patch lands on when it is not the slot: a hero's own table (jaina: frostbite · invoker: invoke,
+#            spells), or the button's row for a card headed by the passive (slot: passive, row: rmb). A passive card with
+#            no row lands on the hero's passive row.
+#   more     { <row>: patch }: a second row the same card changes.
+#   hp       max health the card gives.
+#   quest    { count, slot?, need, goal, then: { mods?, more?, hp? }, every?, step? }: the card counts first, then `then` turns on.
+#              count: hit       enemy heroes struck by `slot` (one slot or a list; a struck body counts once a beat; any: true counts every
+#                               enemy; on: <name> counts only a blow its hero's own module marked with that name, as Halla's marks a Stormbeat strike)
+#                     takedown  kills and assists since the pick · cs: last hits since the pick
+#              goal             the quest in the player's words (the HUD adds the count) · fx, sfx, flash: its own finish (an effect
+#                               named in boon-hooks.js LOOKS or an effect file's path, a sound, a screen flash's colour)
+#              every + step     each `every` counted, the patch `step` is laid once more (a number that grows on the way)
+#            `mods` beside a quest hold from the pick.
+#   hook     a name in scripts/lib/boon-hooks.js HOOKS, when neither a patch nor a rider says it.
+# TWO RIDERS any row understands once a card patches them in (scripts/lib/boon-hooks.js reads them on a hit):
+#   amp:   [{ when, value?, amount }]   the hit deals x (1 + amount) while `when` holds for its target:
+#          any | slowed | rooted | held | chilled | marked | hero | minion | below (health share <= value) | above | far (>= value m away) | near
+#   onHit: [{ kind, ..., hero?, kill?, every? }]   after a hit that dealt damage to an enemy (hero: heroes only · kill: it
+#          killed · every: at most once in that many seconds):
+#          heal { share of the damage | base, ap, hpRatio } · shield { base, ap, hpRatio, duration } · speed / attackSpeed { amount, duration }
+#          refund { slot?, seconds } off a cooldown · mana { amount }
+#
+# TO ADD A HERO'S CARDS (data alone):
+#   1. Add the hero's id as a key here, with one list per level of rules.tiers.
+#   2. Write three cards a level. Give each an id, a name, the slot it changes and one line of text with one number.
+#   3. Put the change in `mods`, in the words of that slot's row in kits.yml. Read the row first: a patch moves a field the
+#      hero's code reads. A field no code reads changes nothing: scripts/test/boons.test.mjs lists every field a card
+#      patches that its row does not hold.
+#   4. Mark one card a level `rec: true`: the plainest one, a number a new player and a bot can use at once.
+#   5. Make the three cards three ways to play the button, and keep them fair: a card that is right in every match is a stat.
+#   6. A quest card says its goal in `quest.goal` (no count: the HUD adds it) and its prize in `text`, which opens
+#      "When the quest is done, ".
+#   7. Run node scripts/test/boons.test.mjs: it checks every hero has every tier, three cards, one recommended, unique ids,
+#      a real slot, a patch that lands, and a line of text that is short.
+#   8. A level added to rules.tiers (18, 21) needs only cards under that level and a row in rules.look.
+rules:
+  tiers: [3, 6, 9, 12, 15]   # a boon every 3 levels; 15 is the APEX capstone (izkimar 2026-10-05)
+  offer: 3            # cards a tier shows
+  rerolls: 1          # a match
+  botDelay: 1.5       # s a bot waits before it takes the recommended card
+  autoAfter: 30       # s OUT OF COMBAT a player's boon may wait unpicked before the recommended card is taken for them and the herald says so (their switch: settings.autoBoon; 0: never). Seconds in a fight, and seconds while the guide's boon lesson stands, do not count
+  chimeDelay: 0.6     # s after the level's own sound
+  questGap: 0.4       # s: one struck body counts once for a quest in this long
+  look:               # a tier's word and colour on its cards
+    3: { name: "BOON", color: "oklch(.78 .13 165)" }
+    6: { name: "KEEN BOON", color: "oklch(.76 .14 220)" }
+    9: { name: "ULTIMATE BOON", color: "oklch(.74 .17 305)" }
+    12: { name: "GREAT BOON", color: "oklch(.84 .15 85)" }
+    15: { name: "APEX", color: "oklch(.68 .22 28)" }
+  sfx:
+    ready: /cdn/moodboard-painterly-fantasy/sfx-boon-ready-soft-golden-chime-two-notes.mp3
+    pick: /cdn/moodboard-painterly-fantasy/sfx-boon-card-chosen-warm-harp-pluck-shimmer.mp3
+    quest: /cdn/moodboard-painterly-fantasy/sfx-boon-quest-complete-bright-bell-rise-chord.mp3
+    reroll: /cdn/moodboard-painterly-fantasy/sfx-cards-shuffled-soft-paper-riffle.mp3
+
+liming:
+  3:
+    - { id: cannoneer, name: Follow-Through, slot: lmb, rec: true, text: "After each ability, your next Ink Flick deals 75% more damage.", mods: { cannon: 0.75 } }
+    - { id: diamond-skin, name: Page Ward, slot: e, text: "When the quest is done, each Slipstep shields you for 18% of your max health.", quest: { count: hit, slot: q, need: 10, goal: "Land Three Strokes on heroes", fx: scripts/fx/liming-quest-done.fx.js, sfx: /cdn/moodboard-painterly-fantasy/sfx-quest-complete-diamond-skin-crystal-fanfare.mp3, then: { mods: { diamond: 0.18, diamondSecs: 3 } } } }
+    - { id: seeker, name: Longhand, slot: q, text: "Three Strokes fly 30% farther.", mods: { range: "*1.3" } }
+  6:
+    - { id: ink-surge, name: Heavy Ink, slot: q, rec: true, text: "Three Strokes deal 25% more damage.", mods: { "damage.base": "*1.25" } }
+    - { id: blot-speed, name: Swift Blot, slot: rmb, text: "Wild Blot flies 40% faster.", mods: { speed: "*1.4" } }
+    - { id: slip-heal, name: Drinking Step, slot: e, text: "Slipstep heals you for 30% of the damage it deals.", mods: { "onHit+": [{ kind: heal, share: 0.3 }] } }
+  9:
+    - { id: epicentre, name: Epicentre, slot: r, rec: true, text: "Enemies in the heart of Last Word take 50% more damage.", mods: { inner: { radius: 2.5, mult: 1.5 } } }
+    - { id: repulsion, name: Shockfront, slot: r, text: "Last Word hurls enemies 50% farther.", mods: { "effects.0.distance": "*1.5" } }
+    - { id: implosion, name: Implosion, slot: r, text: "Last Word pulls enemies 5 m toward its centre in place of the push.", mods: { effects: [{ kind: pull, distance: 5 }] } }
+  12:
+    - { id: mirrorball, name: Five Strokes, slot: q, rec: true, text: "Three Strokes throws 5 strokes.", mods: { count: 5 } }
+    - { id: illusionist, name: Long Slip, slot: e, text: "Slipstep reaches 50% farther.", mods: { range: "*1.5" } }
+    - { id: swift-orb, name: Swift Blot, slot: rmb, text: "Wild Blot flies 40% faster.", mods: { speed: "*1.4" } }
+  15:
+    - { id: final-word, name: The Final Word, slot: r, rec: true, text: "Last Word deals 50% more damage in a blast 30% wider.", mods: { "damage.base": "*1.5", radius: "*1.3" } }
+    - { id: endless-ink, name: Endless Ink, slot: q, text: "Three Strokes take 1.5 s off Slipstep for each hero they hit.", mods: { "onHit+": [{ kind: refund, slot: e, seconds: 1.5, hero: true }] } }
+    - { id: master-stroke, name: Master Stroke, slot: rmb, text: "Wild Blot deals 80% more damage to a hero below 40% health.", mods: { "amp+": [{ when: below, value: 0.4, amount: 0.8 }] } }
+
+# the brand never spreads and a Sunflare plants none on the shared rows: Ignite and Chain Brand are the only ways it does (scripts/lib/kaelthas.js)
+kaelthas:
+  3:
+    - { id: convection, name: Kindling, slot: q, text: "When the quest is done, Sunflare is 30% larger.", quest: { count: hit, slot: q, need: 12, goal: "Burn heroes with Sunflare", fx: scripts/fx/kaelthas-kindled.fx.js, sfx: /cdn/moodboard-painterly-fantasy/sfx-roaring-pillar-of-fire-eruption-blast.mp3, flash: "#ff7a2e", then: { mods: { radius: "*1.3" } } } }
+    - { id: ignite, name: Ignite, slot: q, text: "Sunflare plants a Cinder Brand on the first hero it burns.", mods: { ignite: true } }
+    - { id: gravity-crush, name: Thermal, slot: e, rec: true, text: "Updraft holds its target in the air 0.5 s longer.", mods: { "effects.0.duration": "+0.5" } }
+  6:
+    - { id: hot-flare, name: White Flare, slot: q, rec: true, text: "Sunflare deals 25% more damage.", mods: { "damage.base": "*1.25" } }
+    - { id: long-lift, name: High Updraft, slot: e, text: "Updraft holds enemies aloft 0.4 s longer.", mods: { "effects.0.duration": "+0.4" } }
+    - { id: fast-brand, name: Quick Brand, slot: rmb, text: "Cinder Brand recharges 20% sooner.", mods: { cooldown: "*0.8" } }
+  9:
+    - { id: quickfire, name: Quickfire, slot: r, rec: true, text: "Sunfall casts 0.5 s sooner.", mods: { castTime: "-0.5" } }
+    - { id: inferno, name: Inferno, slot: r, text: "Sunfall's blast is 60% larger.", mods: { burstRadius: 6.4, tellRadius: 6.4 } }
+    - { id: chain-reaction, name: Chain Reaction, slot: r, text: "Sunfall plants a Cinder Brand on every enemy its blast burns.", mods: { bombs: true } }
+  12:
+    - { id: flash-fire, name: Flash Fire, slot: q, rec: true, text: "Sunflare erupts in half the time.", mods: { delay: "*0.5" } }
+    - { id: chain-bomb, name: Chain Brand, slot: rmb, text: "Cinder Brand spreads 1 time: its burst brands every enemy it burns.", mods: { spread: 1 } }
+    - { id: gravity-well, name: Wide Draft, slot: e, text: "Updraft lifts the first 3 enemies it meets.", mods: { pierce: 2 } }
+  15:
+    - { id: solar-crown, name: Solar Crown, slot: r, rec: true, text: "Sunfall deals 50% more damage and lands 40% wider.", mods: { "damage.base": "*1.5", "land.radius": "*1.4", tellRadius: "*1.4" } }
+    - { id: wildfire, name: Wildfire, slot: q, text: "Sunflare and its coals burn 40% wider.", mods: { radius: "*1.4", "coal.radius": "*1.4" } }
+    - { id: skyfire, name: Skyfire, slot: e, text: "Updraft takes 4 s off Sunflare when it lifts a hero.", mods: { "onHit+": [{ kind: refund, slot: q, seconds: 4, hero: true }] } }
+
+# ---- tenzo ----
+# the ultimate has two ends, the tap's kick and the hold's throw: a card on it holds for both
+tenzo:
+  3:
+    - { id: crippling-tempest, name: Crippling Fall, slot: e, rec: true, text: "Stormfall slows for 1 s longer.", mods: { "effects.0.duration": "+1" } }
+    - { id: piercing-wave, name: Piercing Echo, slot: q, text: "Echo Strike passes through the first enemy it hits.", mods: { pierce: 1 } }
+    - { id: long-guard, name: Far Shelter, slot: rmb, text: "Sheltering Step reaches an ally 40% farther away.", mods: { allyRange: "*1.4" } }
+  6:
+    - { id: hard-echo, name: Hard Echo, slot: q, rec: true, text: "Echo Strike deals 25% more damage.", mods: { "damage.base": "*1.25" } }
+    - { id: calm-step, name: Calm Step, slot: rmb, text: "Sheltering Step's shield is 40% stronger.", mods: { "self.0.base": "*1.4" } }
+    - { id: storm-breath, name: Storm Breath, slot: e, text: "Stormfall restores 15 energy when it hits.", mods: { "onHit+": [{ kind: energy, amount: 15, every: 1 }] } }
+  9:
+    - { id: roundhouse, name: Roundhouse, slot: r, rec: true, text: "Turn of the Storm kicks and throws its target 40% farther.", mods: { "effects.0.distance": "*1.4", "grip.throw": "*1.4" } }
+    - { id: finishing-kick, name: Finishing Kick, slot: r, text: "Turn of the Storm adds 15% of the target's missing health to its damage.", mods: { missingHp: 0.15 } }
+    - { id: follow-through, name: Echoing Storm, slot: r, text: "Turn of the Storm readies Echo Strike at once and restores 50 energy.", mods: { "onHit+": [{ kind: refund, slot: q, seconds: 60 }, { kind: energy, amount: 50, every: 5 }] } }
+  12:
+    - { id: long-wave, name: Long Echo, slot: q, rec: true, text: "Echo Strike flies 30% farther.", mods: { range: "*1.3" } }
+    - { id: thunderclap, name: Thunderclap, slot: e, text: "Stormfall deals 60% more damage to an enemy marked by Echo Strike.", mods: { "amp+": [{ when: marked, amount: 0.6 }] } }
+    - { id: wind-step, name: Wind Step, slot: rmb, text: "Sheltering Step's cooldown is 40% shorter.", mods: { cooldown: "*0.6" } }
+  15:
+    - { id: dragons-turn, name: Dragon's Turn, slot: r, rec: true, text: "Turn of the Storm deals 40% more damage and kicks 40% farther.", mods: { "damage.base": "*1.4", "effects.0.distance": "*1.4", "grip.throw": "*1.4", "displace.dist": "*1.4" } }
+    - { id: endless-palm, name: Endless Palm, slot: lmb, text: "Each Open Palm hit restores 6 energy.", mods: { "onHit+": [{ kind: energy, amount: 6 }] } }
+    - { id: eye-of-storm, name: Widening Gale, slot: e, text: "Stormfall strikes 50% wider.", mods: { radius: "*1.5" } }
+
+# ---- zephira ----
+zephira:
+  3:
+    - { id: storms-eye, name: Lasting Ward, slot: e, rec: true, text: "Stormward's shell lasts 2 s longer.", mods: { "self.0.duration": "+2" } }
+    - { id: tailwind, name: Swift Squall, slot: rmb, text: "Squall Rune speeds you up by 15% more.", mods: { "self.0.amount": "+0.15" } }
+    - { id: quick-gale, name: Sudden Storm, slot: q, text: "Gathering Storm gathers its full strength 1 s sooner.", mods: { "gale.chargeTime": "-1" } }
+  6:
+    - { id: gale-ward, name: Gale Ward, slot: e, rec: true, text: "Stormward also wraps 2 allies within 6 m at 50% strength.", mods: { wrap: { count: 2, radius: 6, share: 0.5 } } }
+    - { id: sharp-squall, name: Sharp Squall, slot: rmb, text: "Squall Rune deals 25% more damage.", mods: { "damage.base": "*1.25" } }
+    - { id: high-gust, name: High Gust, slot: q, text: "Gathering Storm holds enemies aloft 0.3 s longer.", mods: { "effects.0.duration": "+0.3", "gale.knockMin": "+0.3", "gale.knockMax": "+0.3" } }
+  9:
+    - { id: hurricane, name: Hurricane, slot: r, rec: true, text: "Headwind throws enemies 40% farther.", mods: { "effects.0.distance": "*1.4", "tickEffects.0.distance": "*1.4" } }
+    - { id: windwalk, name: Stormstride, slot: r, text: "You walk 2 times as fast while you hold Headwind.", mods: { walk: "*2" } }
+    - { id: long-storm, name: Long Storm, slot: r, text: "Headwind lasts 1.5 s longer.", mods: { duration: "+1.5" } }
+  12:
+    - { id: safe-harbour, name: Safe Harbour, slot: e, rec: true, text: "Stormward also speeds its wearers up by 30%.", mods: { "self+": [{ kind: speed, amount: 0.3, duration: 4 }] } }
+    - { id: squall, name: Rolling Thunder, slot: rmb, text: "Squall Rune passes through every enemy in its path.", mods: { pierce: 99 } }
+    - { id: stormcaller, name: Rainsoaked, slot: lmb, text: "Fork Bolt deals 60% more damage to a slowed enemy.", mods: { "amp+": [{ when: slowed, amount: 0.6 }] } }
+  15:
+    - { id: eye-of-heaven, name: Eye of Heaven, slot: r, rec: true, text: "Headwind reaches 30% farther and blows 40% wider.", mods: { range: "*1.3", angle: "*1.4" } }
+    - { id: tempest-shell, name: Tempest Shell, slot: e, text: "Stormward's shell is 50% stronger.", mods: { "self.0.base": "*1.5", "self.0.perLevel": "*1.5" } }
+    - { id: storm-surge, name: Storm Surge, slot: q, text: "Gathering Storm deals 50% more damage on a path 30% wider.", mods: { "damage.base": "*1.5", width: "*1.3" } }
+
+# ---- Seris ---- 2: hold them longer · poke on rhythm · clear and scatter   8: aim less · kite with it · move more   14: pick through a wave · set up the team · burst with the recall
+seris:
+  3:
+    - { id: long-beckon, name: Long Beckon, slot: e, rec: true, text: "Beckon holds its target 0.4 s longer.", mods: { "effects.0.duration": "+0.4", "leaveLantern.life": "+0.4" } }
+    - { id: bright-return, name: Bright Return, slot: q, text: "Each hit of Lantern Cast on a hero takes 1 s off its cooldown.", mods: { "onHit+": [{ kind: refund, slot: q, seconds: 1, hero: true }] } }
+    - { id: mote-swarm, name: Mote Swarm, slot: rmb, text: "Moonmotes seeks the 5 nearest enemies, one mote each.", mods: { count: 5 } }
+  6:
+    - { id: bright-lantern, name: Bright Lantern, slot: q, rec: true, text: "Lantern Cast deals 20% more damage.", mods: { "damage.base": "*1.2" } }
+    - { id: long-charm, name: Long Beckon, slot: e, text: "Beckon charms 0.4 s longer.", mods: { "effects.0.duration": "+0.4" } }
+    - { id: quick-motes, name: Quick Motes, slot: rmb, text: "Moonmotes recharge 25% sooner.", mods: { cooldown: "*0.75" } }
+  9:
+    - { id: wide-veil, name: Wide Veil, slot: r, rec: true, text: "Veilstep's bolts strike inside a 120° cone.", mods: { "bolts.cone": 120 } }
+    - { id: parting-light, name: Parting Light, slot: r, text: "Veilstep's bolts strike all round her, for 30% less damage.", mods: { "bolts.cone": 360, "bolts.damage.base": "*0.7", "bolts.damage.ap": "*0.7" } }
+    - { id: fourth-step, name: Fourth Step, slot: r, text: "Veilstep holds 4 dashes.", mods: { charges: 4 } }
+  12:
+    - { id: heartseeker, name: Veilseeker, slot: e, rec: true, text: "Beckon passes through minions and beckons the first hero within 18 m.", mods: { championsOnly: true } }
+    - { id: afterglow, name: Afterglow, slot: e, text: "Beckon also slows its target for 2.9 s: the slow outlasts the hold.", mods: { "effects+": [{ kind: slow, amount: 0.4, duration: 2.9 }] } }
+    - { id: homing-light, name: Homing Light, slot: q, text: "The light's return deals 50% more damage.", mods: { "returnDamage.base": "*1.5", "returnDamage.ap": "*1.5" } }
+  15:
+    - { id: spirit-queen, name: Moon Queen, slot: r, rec: true, text: "Veilstep fires 2 more bolts.", mods: { "bolts.count": "+2" } }
+    - { id: soul-feast, name: Soul Feast, slot: q, text: "Lantern Cast heals you for 25% of the damage it deals.", mods: { "onHit+": [{ kind: heal, share: 0.25 }] } }
+    - { id: fatal-charm, name: Fatal Beckon, slot: e, text: "Beckon deals 60% more damage and flies 30% farther.", mods: { "damage.base": "*1.6", range: "*1.3" } }
+
+# ---- Ylva ---- 2: poke from farther · stay on one target · kite   8: snipe across the map · stun up close · break a group   14: stay on one hero · burst the slowed · hold ground with the falcon
+ylva:
+  3:
+    - { id: long-draw, name: Long Draw, slot: lmb, rec: true, text: "Gritstone Arrow reaches 3 m farther.", mods: { range: "+3" } }
+    - { id: deep-rime, name: Deep Grit, slot: lmb, text: "The third arrow on one target slows it 45%.", mods: { "rime.slow": [0.1, 0.2, 0.45] } }
+    - { id: fleet-draw, name: Fleet Draw, slot: rmb, text: "Amber Draw also quickens your stride by 20%.", mods: { "self+": [{ kind: speed, amount: 0.2, duration: 4 }] } }
+  6:
+    - { id: sharp-shale, name: Sharp Shale, slot: q, rec: true, text: "Shale Fan deals 25% more damage.", mods: { "damage.base": "*1.25" } }
+    - { id: amber-rush, name: Amber Rush, slot: rmb, text: "Amber Draw grants 20% more attack speed.", mods: { "self.0.amount": "+0.2" } }
+    - { id: grit-heal, name: Gritblood, slot: lmb, text: "Gritstone Arrow heals you for 10% of the damage it deals.", mods: { "onHit+": [{ kind: heal, share: 0.1 }] } }
+  9:
+    - { id: swift-lance, name: Swift Lance, slot: r, rec: true, text: "Bedrock Lance flies 40% faster.", mods: { speed: "*1.4" } }
+    - { id: deep-freeze, name: Dead Weight, slot: r, text: "Bedrock Lance stuns for 2 s or more, however short its flight.", mods: { "stunScale.min": 2 } }
+    - { id: shatter, name: Rockfall, slot: r, text: "Bedrock Lance's rockfall is 60% wider.", mods: { "splash.radius": "*1.6", "blast.radius": "*1.6" } }
+  12:
+    - { id: long-hunt, name: Long Hunt, slot: rmb, rec: true, text: "Amber Draw wakes seven stones.", mods: { "stones.count": 7 } }
+    - { id: cold-quarry, name: Hobbled Quarry, slot: lmb, text: "Gritstone Arrow deals 25% more damage to a slowed enemy.", mods: { "amp+": [{ when: slowed, amount: 0.25 }] } }
+    - { id: wide-frost, name: Wide Rubble, slot: e, text: "Stonewing's rubble field is 40% wider.", mods: { "endArea.frost.radius": "*1.4" } }
+  15:
+    - { id: mountain-lance, name: Mountain Lance, slot: r, rec: true, text: "Bedrock Lance deals 40% more damage on a path 30% wider.", mods: { "damage.base": "*1.4", width: "*1.3" } }
+    - { id: rockslide, name: Rockslide, slot: q, text: "Shale Fan throws 4 more shards.", mods: { count: "+4" } }
+    - { id: quarry-queen, name: Quarry Queen, slot: lmb, text: "Gritstone Arrow deals 30% more damage to a slowed enemy.", mods: { "amp+": [{ when: slowed, amount: 0.3 }] } }
+
+# ---- Vaelor ---- 2: shoot from farther · shoot through the wave · draw fast in a skirmish   8: catch more heroes · hold a road · lock one hero down   14: hide the team longer · catch them in the rain · out-shoot them
+vaelor:
+  3:
+    - { id: long-bow, name: Long Bow, slot: q, rec: true, text: "A full draw of Heartwood Arrow flies 6 m farther.", mods: { "charge.rangeMax": "+6", range: "+6" } }
+    - { id: threading, name: Threading, slot: q, text: "Heartwood Arrow hits 15% harder for each enemy it has passed, up to four.", mods: { "pierceGain.per": 0.15, "pierceGain.max": 0.6 } }
+    - { id: quick-draw, name: Quick Draw, slot: q, text: "Heartwood Arrow reaches its full draw 0.5 s sooner.", mods: { "charge.max": "-0.5", "charge.damageSeconds": "-0.5" } }
+  6:
+    - { id: heartwood-edge, name: Heartwood Edge, slot: q, rec: true, text: "Heartwood Arrow deals 20% more damage.", mods: { "damage.base": "*1.2" } }
+    - { id: briar-rush, name: Briar Rush, slot: rmb, text: "Quickthorn grants 20% more attack speed.", mods: { "self.0.amount": "+0.2" } }
+    - { id: thorn-tide, name: Thorn Tide, slot: e, text: "Thorn Rain falls 25% wider.", mods: { radius: "*1.25" } }
+  9:
+    - { id: long-hedge, name: Long Hedge, slot: r, rec: true, text: "Strangleroot's hedge is 18 m long.", mods: { "hedge.length": 18 } }
+    - { id: old-growth, name: Old Growth, slot: r, text: "Strangleroot's hedge stands 4 s.", mods: { "hedge.duration": 4 } }
+    - { id: iron-root, name: Iron Root, slot: r, text: "Strangleroot roots the hero it strikes 0.75 s longer.", mods: { "effects.0.duration": "+0.75" } }
+  12:
+    - { id: deep-thicket, name: Deep Thicket, slot: e, rec: true, text: "Thorn Rain falls, and hides his team, for 6 s.", mods: { duration: "+2" } }
+    - { id: thorn-snare, name: Thorn Snare, slot: e, text: "Thorn Rain roots for 1 s where it first lands.", mods: { "effects+": [{ kind: root, duration: 1 }] } }
+    - { id: fevered-thorn, name: Fevered Thorn, slot: rmb, text: "Quickthorn quickens your shots by 80%.", mods: { "self.0.amount": "+0.3" } }
+  15:
+    - { id: world-root, name: World Root, slot: r, rec: true, text: "Strangleroot roots 1 s longer and deals 40% more damage.", mods: { "effects.0.duration": "+1", "damage.base": "*1.4" } }
+    - { id: hundred-thorns, name: Hundred Thorns, slot: lmb, text: "Each Thorn Arrow hit takes 0.5 s off Heartwood Arrow.", mods: { "onHit+": [{ kind: refund, slot: q, seconds: 0.5 }] } }
+    - { id: green-volley, name: Full Draw, slot: q, text: "A full draw of Heartwood Arrow hits 2x instead of 1.5x.", mods: { "charge.damageMax": "+0.5" } }
+
+# ---- jaina ----
+# Rime: an ability on a Chilled enemy deals more and spends the Chill, and the next one Chills again. A card that names "a Chilled
+# enemy" fires on the hit that spends the Chill.
+jaina:
+  3:
+    - { id: winters-reach, name: Long Lance, slot: q, rec: true, text: "Serpent Lance flies 30% farther.", mods: { range: "*1.3" } }
+    - { id: ice-lance, name: Quick Lance, slot: q, text: "Serpent Lance on a Chilled hero takes 1.5 s off its own cooldown.", mods: { lance: 2 } }
+    - { id: lingering-cold, name: Lingering Cold, slot: passive, row: frostbite, text: "An ability's Chill lasts 2 s longer.", mods: { "chill.duration": "+2" } }
+  6:
+    - { id: keen-lance, name: Keen Lance, slot: q, rec: true, text: "Serpent Lance deals 20% more damage.", mods: { "damage.base": "*1.2" } }
+    - { id: fourth-wave, name: Fourth Wave, slot: rmb, text: "Fangfall drops 1 more wave.", mods: { waves: "+1" } }
+    - { id: wide-breath, name: Wide Breath, slot: e, text: "Rimebreath sweeps 30% wider.", mods: { angle: "*1.3" } }
+  9:
+    - { id: permafrost, name: Permafrost, slot: r, rec: true, text: "The Sentence's heart roots for 1 s longer.", mods: { "effects.0.duration": "+1" } }
+    - { id: flash-freeze, name: Flash Freeze, slot: r, text: "The Sentence strikes 0.3 s sooner.", mods: { delay: "-0.3" } }
+    - { id: glacier, name: Wide Heart, slot: r, text: "The Sentence's heart is 1.5 m wider.", mods: { heart: "+1.5", tellCore: "+1.5" } }
+  12:
+    - { id: snow-crash, name: Snow Crash, slot: rmb, rec: true, text: "Fangfall falls in 1 more volley.", mods: { waves: "+1" } }
+    - { id: shatter, name: Shatter, slot: e, text: "Rimebreath freezes Chilled enemies for 1.5 s.", mods: { chilledRoot: 1.5 } }
+    - { id: frost-shards, name: Piercing Lance, slot: q, text: "Serpent Lance flies on through the first 2 enemies it hits.", mods: { pierce: 2 } }
+  15:
+    - { id: final-sentence, name: The Final Sentence, slot: r, rec: true, text: "The Sentence deals 50% more damage in a field 20% wider.", mods: { "damage.base": "*1.5", radius: "*1.2" } }
+    - { id: winters-heart, name: Winter's Heart, slot: e, text: "Rimebreath roots a chilled enemy 0.75 s longer.", mods: { chilledRoot: "+0.75" } }
+    - { id: frozen-blood, name: Frozen Blood, slot: lmb, text: "Rime Fang deals 40% more damage to a chilled enemy.", mods: { "amp+": [{ when: chilled, amount: 0.4 }] } }
+
+# ---- Auron ---- 2: which Sign you call last   8: chain spells · hold a Sign for its gift · cast each more often   14: wall a road · hold them in the air · roll the boulder through them
+# His finishes and his cast are the kit's `invoke` row, his ten spells the `spells` table (a field is <spell key>.<field>). A card is
+# headed by the Sign it speaks of (q Frost, e Storm, rmb Stone), or by Foretell.
+invoker:
+  3:
+    - { id: deep-frost, name: Deep Frost, slot: q, row: invoke, text: "Frost called last slows what the spell hits 35%.", mods: { "finish.quas.slow": 0.35 } }
+    - { id: long-storm, name: Long Storm, slot: e, row: invoke, text: "Storm called last carries the spell 25% farther and faster.", mods: { "finish.wex.reach": 0.25 } }
+    - { id: heavy-stone, name: Heavy Stone, slot: rmb, row: invoke, rec: true, text: "Stone called last makes the spell hit 18% harder.", mods: { "finish.exort.damage": 0.18 } }
+  6:
+    - { id: sharp-strike, name: Bright Strike, slot: rmb, row: spells, rec: true, text: "Sun Strike deals 25% more damage.", mods: { "eee.damage.base": "*1.25" } }
+    - { id: cold-snap-long, name: Long Snap, slot: q, row: spells, text: "Cold Snap lasts 1 s longer.", mods: { "qqq.duration": "+1" } }
+    - { id: quick-gale, name: Far Gale, slot: e, row: spells, text: "Tornado flies 30% farther.", mods: { "wwq.range": "*1.3" } }
+  9:
+    - { id: quick-tongue, name: Quick Tongue, slot: r, row: invoke, rec: true, text: "The wait between two casts is 0.3 s shorter.", mods: { lockout: "-0.3" } }
+    - { id: kept-sign, name: Kept Sign, slot: r, row: invoke, text: "A cast spends 2 Signs: the first one you called stays, with its gift.", mods: { spend: 2 } }
+    # his spells' haste is a list by Foretell's tier, and a cooldown runs 100 / (100 + haste) of its row: times 1.25 and then plus 25 is the same 20% off at every tier (25, 37.5, 50)
+    - { id: old-patience, name: Old Patience, slot: r, row: invoke, text: "Every spell recharges 20% sooner.", mods: { spellHaste: "*1.25" }, more: { invoke: { spellHaste: "+25" } } }
+  12:
+    - { id: glacier, name: Glacier, slot: q, row: spells, text: "Frost Ridge stands 3 s longer.", mods: { "qqe.duration": "+3" } }
+    - { id: high-gyre, name: High Gyre, slot: e, row: spells, text: "Gyre holds enemies in the air 0.5 s longer.", mods: { "wwq.lift.secs": "+0.5" } }
+    - { id: landslide, name: Landslide, slot: rmb, row: spells, rec: true, text: "Boulder rolls 50% farther.", mods: { "eew.roll.dist": "*1.5" } }
+  15:
+    - { id: grand-invoker, name: Grand Invocation, slot: rmb, row: spells, rec: true, text: "Sun Strike and Deafening Blast deal 40% more damage.", mods: { "eee.damage.base": "*1.4", "qwe.damage.base": "*1.4" } }
+    - { id: tempest-mind, name: Tempest Mind, slot: e, row: spells, text: "EMP burns 50% more.", mods: { "www.burn": "*1.5" } }
+    - { id: frozen-age, name: Frozen Age, slot: q, row: spells, text: "Cold Snap stuns 0.4 s longer and lasts 1.5 s longer.", mods: { "qqq.stun": "+0.4", "qqq.duration": "+1.5" } }
+
+# ---- mordrake ----
+mordrake:
+  3:
+    - { id: long-chain, name: Long Chain, slot: q, rec: true, text: "Warden's Hook flies 25% farther.", mods: { range: "*1.25" } }
+    - { id: shackles, name: Shackles, slot: q, text: "A hooked enemy stays slowed for 2 s after the chain lets go.", mods: { "effects+": [{ kind: slow, amount: 0.4, duration: 3.5 }] } }
+    - { id: wardens-light, name: "Warden's Light", slot: rmb, text: "Wayfinder Lantern's shields are 40% stronger.", mods: { "self.0.base": "*1.4", "self.0.ap": "*1.4", "self.0.hpRatio": "*1.4", "allyShield.base": "*1.4", "allyShield.ap": "*1.4", "allyShield.hpRatio": "*1.4" } }
+  6:
+    - { id: iron-hook, name: Iron Hook, slot: q, rec: true, text: "Warden's Hook deals 25% more damage.", mods: { "damage.base": "*1.25" } }
+    - { id: lantern-wall, name: Lantern Wall, slot: rmb, text: "The lantern's shield is 40% stronger.", mods: { "self.0.base": "*1.4" } }
+    - { id: wide-sweep, name: Hard Sweep, slot: e, text: "Sweep throws enemies 40% farther.", mods: { "displace.dist": "*1.4", shove: "*1.4" } }
+  9:
+    - { id: wide-cage, name: Wide Cage, slot: r, rec: true, text: "The Cage is 30% wider.", mods: { radius: "*1.3" } }
+    - { id: long-vigil, name: Long Vigil, slot: r, text: "The Cage stands 3 s longer.", mods: { duration: "+3" } }
+    - { id: iron-walls, name: Iron Walls, slot: r, text: "Every wall an enemy breaks deals full damage, not half.", mods: { "again.mult": 1 } }
+  12:
+    - { id: quick-flay, name: Quick Sweep, slot: e, rec: true, text: "Sweep comes back 35% sooner.", mods: { cooldown: "*0.65" } }
+    - { id: reel-in, name: Reel In, slot: q, text: "Warden's Hook drags its target the whole way to you.", mods: { "hook.pull": 1 } }
+    - { id: far-passage, name: Far Lantern, slot: rmb, text: "Wayfinder Lantern reaches 50% farther.", mods: { range: "*1.5" } }
+  15:
+    - { id: soul-prison, name: Soul Prison, slot: r, rec: true, text: "The Cage deals 50% more damage and stands 2 s longer.", mods: { "damage.base": "*1.5", duration: "+2" } }
+    - { id: deathgrip, name: Deathgrip, slot: q, text: "Warden's Hook stuns 0.5 s longer and flies 25% farther.", mods: { "effects.0.duration": "+0.5", range: "*1.25" } }
+    - { id: reaper-lash, name: Reaper's Lash, slot: lmb, text: "Chain Lash heals you for 20% of the damage it deals.", mods: { "onHit+": [{ kind: heal, share: 0.2 }] } }
+
+# ---- vespera ----
+# Second Face casts her last basic ability again: a card on it holds for whichever it copies. A haul (E again) gives up the root,
+# so a card on the root gives nothing to a haul, and Tight Chains leaves 1 s to press it in.
+vespera:
+  3:
+    - { id: malice, name: Cruel Smile, slot: q, rec: true, text: "Breaking a Laughing Mask deals 30% more damage.", mods: { "pop.base": "*1.3", "pop.ap": "*1.3" } }
+    - { id: tight-chains, name: Tight Chains, slot: e, text: "Gilded Fetters roots 0.5 s sooner.", mods: { "tether.time": "-0.5" } }
+    - { id: far-step, name: Far Step, slot: rmb, text: "Vanishing Act reaches 20% farther.", mods: { range: "*1.2", dashRange: "*1.2" } }
+  6:
+    - { id: sharp-mask, name: Sharp Mask, slot: q, rec: true, text: "Laughing Mask deals 20% more damage.", mods: { "damage.base": "*1.2" } }
+    - { id: long-vanish, name: Long Vanish, slot: rmb, text: "Vanishing Act's return stays open 2 s longer.", mods: { returnWindow: "+2" } }
+    - { id: gilded-cage, name: Gilded Fetters, slot: e, text: "Fetters root 0.5 s longer.", mods: { "tether.root": "+0.5" } }
+  9:
+    - { id: shattered-mirror, name: Shattered Mask, slot: r, rec: true, text: "Second Face's copy deals 25% more damage.", mods: { "amp+": [{ when: any, amount: 0.25 }] } }
+    - { id: encore, name: Encore, slot: r, text: "Second Face readies the ability it copies.", mods: { echo: true } }
+    - { id: snare, name: Snare, slot: r, text: "Second Face's copy slows what it hits for 2 s.", mods: { effects: [{ kind: slow, amount: 0.4, duration: 2 }] } }
+  12:
+    - { id: quick-sigil, name: Quick Laugh, slot: q, rec: true, text: "Laughing Mask comes back 35% sooner.", mods: { cooldown: "*0.65" } }
+    - { id: long-root, name: Long Root, slot: e, text: "Gilded Fetters roots for 1 s longer.", mods: { "tether.root": "+1" } }
+    - { id: wide-burst, name: Wide Burst, slot: rmb, text: "Vanishing Act bursts in a circle 30% wider.", mods: { radius: "*1.3" } }
+  15:
+    - { id: thousand-faces, name: Thousand Faces, slot: r, rec: true, text: "Second Face deals 50% more damage in a burst 25% wider.", mods: { "damage.base": "*1.5", radius: "*1.25", "wrath.radius": "*1.25" } }
+    - { id: mask-of-ruin, name: Mask of Ruin, slot: q, text: "Laughing Mask deals 60% more damage to a hero below 50% health.", mods: { "amp+": [{ when: below, value: 0.5, amount: 0.6 }] } }
+    - { id: phantom-step, name: Phantom Step, slot: rmb, text: "Vanishing Act reaches 30% farther.", mods: { range: "*1.3", dashRange: "*1.3" } }
+
+# ---- rubick ----
+# His cards are his own under any kit, and the kit he borrows comes with its owner's picks (scripts/lib/rubick.js). The three
+# level-8 cards are fields of the take: its reach, how long the kit is worn, and wornAmp, laid on every slot of the worn kit.
+rubick:
+  3:
+    - { id: arc-bolt, name: Arc Bolt, slot: q, rec: true, text: "Sapping Bolt bounces to 2 more enemies.", mods: { bounces: "+2" } }
+    - { id: heavy-hand, name: Heavy Hand, slot: rmb, text: "Unseen Hand throws its target 50% farther.", mods: { throwRange: "*1.5" } }
+    - { id: bulwark, name: Bulwark, slot: e, text: "Arcane Aegis absorbs 30% more.", mods: { "shield.base": "*1.3", "shield.ap": "*1.3" } }
+  6:
+    - { id: deep-sap, name: Deep Sap, slot: q, rec: true, text: "Sapping Bolt deals 20% more damage.", mods: { "damage.base": "*1.2" } }
+    - { id: firm-aegis, name: Firm Aegis, slot: e, text: "Arcane Aegis shields 30% more.", mods: { "shield.base": "*1.3" } }
+    - { id: far-toss, name: Hard Landing, slot: rmb, text: "Unseen Hand stuns 0.5 s longer where it lands.", mods: { landStun: "+0.5" } }
+  9:
+    - { id: long-fingers, name: Long Fingers, slot: r, rec: true, text: "Borrowed Mantle reaches 40% farther.", mods: { range: "*1.4" } }
+    - { id: master-thief, name: Master Thief, slot: r, text: "A kit you borrowed deals 25% more damage.", mods: { wornAmp: 0.25 } }
+    - { id: keepsake, name: Keepsake, slot: r, text: "You wear a borrowed kit 30 s longer.", mods: { hold: "+30" } }
+  12:
+    - { id: enfeeble, name: Enfeeble, slot: q, rec: true, text: "Enemies struck by Sapping Bolt deal 30% less damage.", mods: { "weaken.amount": 0.3 } }
+    - { id: crash-landing, name: Crash Landing, slot: rmb, text: "Unseen Hand's landing stuns in a circle 60% wider.", mods: { landRadius: "*1.6" } }
+    - { id: repulse, name: Repulse, slot: e, text: "Arcane Aegis's pulse pushes enemies 2 times as far.", mods: { "pulse.distance": "*2" } }
+  15:
+    - { id: chain-sap, name: Endless Sap, slot: q, rec: true, text: "Sapping Bolt bounces 3 more times.", mods: { bounces: "+3" } }
+    - { id: grand-thief, name: Grand Thief, slot: r, text: "Borrowed Mantle keeps a stolen spell twice as long.", mods: { hold: "*2" } }
+    - { id: wide-aegis, name: Wide Aegis, slot: e, text: "Arcane Aegis reaches allies 50% farther and shields 30% more.", mods: { allyRadius: "*1.5", "shield.base": "*1.3" } }
+
+# ---- stitches ----
+stitches:
+  3:
+    - { id: hungry, name: Bottomless, slot: q, text: "When the quest is done: 350 more max health, and Chain Gaff and Iron Maw reach farther.", quest: { count: hit, slot: [q, e], need: 8, goal: "Gaff or bite heroes", fx: gorged, sfx: /cdn/moodboard-painterly-fantasy/sfx-monstrous-belly-roar-gorging-satisfied-growl.mp3, flash: "#ff5a3a", then: { hp: 350, mods: { range: "*1.15" }, more: { e: { range: "*1.5" } } } } }
+    - { id: barbed-hook, name: Barbed Gaff, slot: q, rec: true, text: "A hooked enemy is slowed 40% while it is dragged and for a moment after.", mods: { "effects+": [{ kind: slow, amount: 0.4, duration: 3 }] } }
+    - { id: crusher, name: Crusher, slot: rmb, text: "Gut Crush hits enemies close to him for 2 times the damage.", mods: { sweet.mult: 2 } }
+  6:
+    - { id: rusty-gaff, name: Rusty Gaff, slot: q, rec: true, text: "Chain Gaff deals 20% more damage.", mods: { "damage.base": "*1.2" } }
+    - { id: deep-crush, name: Deep Crush, slot: rmb, text: "Gut Crush slows 20% more.", mods: { "effects.0.amount": "+0.2" } }
+    - { id: thick-maw, name: Thick Maw, slot: e, text: "Iron Maw's shield is 40% bigger.", mods: { "self.0.base": "*1.4" } }
+  9:
+    - { id: long-lunch, name: Sewn Shut, slot: r, rec: true, text: "Swallow Whole holds its victim 2 s longer.", mods: { duration: "+2" } }
+    - { id: digest, name: Rot Within, slot: r, text: "A swallowed hero loses 4% of its max health each second.", mods: { digest: 0.04 } }
+    - { id: far-spit, name: Far Spit, slot: r, text: "Swallow Whole spits its victim 12 m.", mods: { "spit.dist": 12 } }
+  12:
+    - { id: chew, name: Never Full, slot: e, rec: true, text: "Iron Maw heals 40% of your missing health.", mods: { healMissing: 0.4 } }
+    - { id: quick-hook, name: Quick Gaff, slot: q, text: "Chain Gaff comes back 30% sooner.", mods: { cooldown: "*0.7" } }
+    - { id: toxic-gas, name: Cracked Tank, slot: passive, text: "Weeping Tank reaches 5 m.", mods: { gasRadius: 5 } }
+  15:
+    - { id: bottomless, name: Endless Gullet, slot: r, rec: true, text: "Swallow Whole deals 50% more damage and holds 1 s longer.", mods: { "damage.base": "*1.5", duration: "+1" } }
+    - { id: abattoir, name: Abattoir, slot: e, text: "Iron Maw heals you for 40% of the damage it deals.", mods: { "onHit+": [{ kind: heal, share: 0.4 }] } }
+    - { id: meat-hook, name: Meat Hook, slot: q, text: "Chain Gaff flies and reels 30% farther.", mods: { range: "*1.3", reel: "*1.3" } }
+
+# ---- thrall ----
+# no card stands on the Twin Rams
+thrall:
+  3:
+    - { id: forked, name: Wide Fork, slot: q, rec: true, text: "Forked Sky leaps 2 more times.", mods: { hops: 5 } }
+    - { id: overload, name: Overload, slot: q, text: "Forked Sky strikes one enemy for 40% more and leaps no more.", mods: { hops: 0, "amp+": [{ when: any, amount: 0.4 }] } }
+    - { id: tempest-fury, name: Thunderhead, slot: e, text: "When the quest is done, the last strike of each Stormbeat lands 3 times.", quest: { count: hit, slot: lmb, "on": stormbeat, any: true, need: 30, goal: "Land Stormbeat strikes", fx: tempest, sfx: /cdn/moodboard-painterly-fantasy/sfx-thunderclap-storm-roar-wind-surge-war-drum-hit.mp3, flash: "#b9a8ff", then: { mods: { tempest: true, swing: 1.75 } } } }
+  6:
+    - { id: sky-split, name: Split Sky, slot: q, rec: true, text: "Forked Sky deals 25% more damage.", mods: { "damage.base": "*1.25" } }
+    - { id: ram-charge, name: Running Rams, slot: rmb, text: "Twin Rams run 30% faster.", mods: { speed: "*1.3" } }
+    - { id: war-drum, name: War Drum, slot: e, text: "Stormbeat recharges 25% sooner.", mods: { cooldown: "*0.75" } }
+  9:
+    - { id: earthshaker, name: Long Quake, slot: r, rec: true, text: "Earthsplitter stuns for 0.5 s longer.", mods: { effects.0.duration: "+0.5" } }
+    - { id: worldbreaker, name: Wide Split, slot: r, text: "Earthsplitter is 40% wider.", mods: { width: "*1.4" } }
+    - { id: earthen-vigor, name: Earthen Vigor, slot: r, text: "Earthsplitter heals you 8% of your max health for each hero it strikes.", mods: { "onHit+": [{ kind: heal, hpRatio: 0.08, hero: true }] } }
+  12:
+    - { id: maelstrom, name: Maelstrom, slot: e, rec: true, text: "Stormbeat gives 5 fast strikes.", mods: { strikes: 5, window: 8 } }
+    - { id: frostwolf-pack, name: Quick Heart, slot: passive, text: "Ram's Heart heals on every 3rd stack.", mods: { every: 3 } }
+    - { id: crash-lightning, name: Full Fork, slot: q, text: "Forked Sky's leaps strike as hard as its first bolt.", mods: { hopMult: 1 } }
+  15:
+    - { id: mountain-split, name: Mountain Splitter, slot: r, rec: true, text: "Earthsplitter deals 40% more damage and stuns 0.5 s longer.", mods: { "damage.base": "*1.4", "effects.0.duration": "+0.5" } }
+    - { id: thunder-heart, name: Thunder Heart, slot: lmb, text: "Thunderstone heals you for 12% of the damage it deals.", mods: { "onHit+": [{ kind: heal, share: 0.12 }] } }
+    - { id: forked-storm, name: Forked Storm, slot: q, text: "Forked Sky comes back 2 s sooner after it hits a hero.", mods: { "onHit+": [{ kind: refund, slot: q, seconds: 2, hero: true, every: 1 }] } }
+
+# ---- Varkas ---- 2: hold ground with the arc · stay on one hero · stack the Tally for the axe   8: reach · sustain · stick   14: tempo · anti-kite · bleed
+varkas:
+  3:
+    - { id: wide-arc, name: Wide Arc, slot: q, rec: true, text: "Reaping Arc reaches 1.5 m farther.", mods: { radius: "+1.5" } }
+    - { id: long-chain, name: Long Chain, slot: e, text: "Iron Leash's chain holds 1.5 s longer.", mods: { "chained.duration": "+1.5" } }
+    - { id: deep-cuts, name: Deep Cuts, slot: rmb, text: "Hamstring hangs 2 Tally tags.", mods: { "effects+": [{ kind: bleed }] } }
+  6:
+    - { id: keen-arc, name: Keen Arc, slot: q, rec: true, text: "Reaping Arc deals 20% more damage.", mods: { "damage.base": "*1.2" } }
+    - { id: hamstring-heal, name: Bloodied Hamstring, slot: rmb, text: "Hamstring heals you for 25% of the damage it deals.", mods: { "onHit+": [{ kind: heal, share: 0.25 }] } }
+    - { id: iron-reach, name: Iron Reach, slot: e, text: "Iron Leash reaches 25% farther.", mods: { range: "*1.25" } }
+  9:
+    - { id: long-drag, name: Long Drag, slot: r, rec: true, text: "Final Tally reaches a hero 3 m farther away.", mods: { range: "+3" } }
+    - { id: red-harvest, name: Red Harvest, slot: r, text: "Final Tally heals him for 30% of the damage it deals.", mods: { "onHit+": [{ kind: heal, share: 0.3, hero: true }] } }
+    - { id: no-quarter, name: No Quarter, slot: r, text: "A hero who survives Final Tally is slowed by 60%.", mods: { "effects+": [{ kind: slow, amount: 0.6, duration: 2 }] } }
+  12:
+    - { id: quick-reap, name: Quick Reap, slot: q, rec: true, text: "Reaping Arc lands 0.25 s sooner.", mods: { delay: "-0.25" } }
+    - { id: iron-grip, name: Iron Grip, slot: e, text: "The chain pulls a fleeing hero back 6 m.", mods: { "chained.yank": "+3" } }
+    - { id: war-tally, name: War Tally, slot: passive, text: "Every Tally tag bleeds 50% harder.", mods: { "bleed.dps": "*1.5", "bleed.perLevel": "*1.5", "bleed.bonusAd": "*1.5" } }
+  15:
+    - { id: headsman-toll, name: Headsman's Toll, slot: r, rec: true, text: "Final Tally gains 10% more damage for every bleed.", mods: { bonusPerBleed: "+0.1" } }
+    - { id: bloodbath, name: Bloodbath, slot: q, text: "Reaping Arc's outer edge heals twice as much.", mods: { outerHeal: "*2" } }
+    - { id: deep-bleed, name: Deep Wounds, slot: passive, text: "Your bleed deals twice the damage.", mods: { "bleed.dps": "*2" } }
+
+# ---- Lysara ---- 2: keep allies up · catch the group · one long binding (it gives up the fork)   8: the far shot · the quick shot · sight   14: zone · the combo · reach
+lysara:
+  3:
+    - { id: guiding-star, name: Guiding Star, slot: rmb, rec: true, text: "Wandering Star's shield lasts 2 s longer.", mods: { "effects.0.duration": "+2", "self.0.duration": "+2" } }
+    - { id: wide-fork, name: Wide Fork, slot: q, text: "Starfork's side bolts fly 5 m farther.", mods: { "fork.range": "+5" } }
+    - { id: true-line, name: True Line, slot: q, text: "Starfork flies 40% farther and no longer forks.", mods: { range: "*1.4", fork: false } }
+  6:
+    - { id: bright-fork, name: Bright Fork, slot: q, rec: true, text: "Starfork deals 20% more damage.", mods: { "damage.base": "*1.2" } }
+    - { id: warm-star, name: Warm Star, slot: rmb, text: "Wandering Star shields 30% more.", mods: { "effects.0.base": "*1.3" } }
+    - { id: deep-fall, name: Heavy Fall, slot: e, text: "Fallen Star slows 20% more.", mods: { "effects.0.amount": "+0.2", "tickEffects.0.amount": "+0.2" } }
+  9:
+    - { id: far-light, name: Far Light, slot: r, rec: true, text: "Meridian hits up to 60% harder at its far end.", mods: { far: "+0.3" } }
+    - { id: first-light, name: First Light, slot: r, text: "Meridian charges 0.4 s sooner.", mods: { delay: "-0.4" } }
+    - { id: unveiling, name: Unveiling, slot: r, text: "Heroes Meridian strikes are seen for 4 s.", mods: { reveal: 4 } }
+  12:
+    - { id: supernova, name: Supernova, slot: e, rec: true, text: "Fallen Star is 30% larger.", mods: { radius: "*1.3" } }
+    - { id: starbreaker, name: Starbreaker, slot: e, text: "A star burst by Starfork or Meridian hits 60% harder.", mods: { "pop.mult": "+0.35" } }
+    - { id: long-road, name: Long Road, slot: rmb, text: "Wandering Star flies 40% farther.", mods: { range: "*1.4" } }
+  15:
+    - { id: meridian, name: Zenith Lance, slot: r, rec: true, text: "Meridian deals 40% more damage on a beam 40% wider.", mods: { "damage.base": "*1.4", width: "*1.4" } }
+    - { id: prism, name: Prism, slot: q, text: "Starfork roots 1 s longer.", mods: { "fork.effects.0.duration": "+1" } }
+    - { id: shining, name: Shining Fall, slot: e, text: "Fallen Star lands 40% wider.", mods: { radius: "*1.4" } }
+
+# ---- Rook ---- 2: keep the rhythm · hunt the tagged · a quest for a piercing rivet   8: the full draw · the snap shot · the wide surge   14: more flights · longer flights · tag a team
+rook:
+  3:
+    - { id: runners-pace, name: "Runner's Pace", slot: q, rec: true, text: "Hot Rivet's refund gains 0.1 s more for each Momentum stack.", mods: { "refund.perStack": "+0.1" } }
+    - { id: long-tag, name: Long Tag, slot: lmb, text: "A hero wearing your tag is in reach from 3 m farther.", mods: { tagReach: "+3" } }
+    - { id: threading, name: Threading, slot: q, text: "When the quest is done, Hot Rivet passes through 1 enemy.", quest: { count: hit, slot: q, need: 20, goal: "Hit heroes with Hot Rivet", then: { mods: { pierce: 1 } } } }
+  6:
+    - { id: hot-rivet-dmg, name: White-Hot Rivet, slot: q, rec: true, text: "Hot Rivet deals 20% more damage.", mods: { "damage.base": "*1.2" } }
+    - { id: tag-quick, name: Quick Tag, slot: rmb, text: "Salvage Tag recharges 25% sooner.", mods: { cooldown: "*0.75" } }
+    - { id: vault-bolt, name: Vault Bolt, slot: e, text: "Skyvault's bolt deals 30% more damage.", mods: { "damage.base": "*1.3" } }
+  9:
+    - { id: full-surge, name: Full Surge, slot: r, rec: true, text: "A fully drawn Relic Surge deals 135% damage.", mods: { "charge.damageMax": "+0.2" } }
+    - { id: snap-surge, name: Snap Surge, slot: r, text: "Relic Surge can leave after 0.3 s.", mods: { "charge.min": "-0.3", aimTime: "-0.3" } }
+    - { id: wide-surge, name: Wide Surge, slot: r, text: "A fully drawn Relic Surge is 8 m wide.", mods: { "charge.widthMax": "+2" } }
+  12:
+    - { id: second-step, name: Ready Wing, slot: e, rec: true, text: "Skyvault's cooldown is 35% shorter.", mods: { cooldown: "*0.65" } }
+    - { id: long-vault, name: Long Glide, slot: e, text: "Skyvault's flight lasts 1 s longer.", mods: { "flight.secs": "+1" } }
+    - { id: many-tags, name: Many Tags, slot: rmb, text: "Salvage Tag passes through heroes and tags up to 5.", mods: { pierce: 4 } }
+  15:
+    - { id: relicsurge, name: RelicSurge, slot: r, rec: true, text: "Relic Surge deals 40% more damage.", mods: { "damage.base": "*1.4" } }
+    - { id: rivet-storm, name: Rivet Storm, slot: q, text: "Each Hot Rivet hit takes 1 s off Skyvault.", mods: { "onHit+": [{ kind: refund, slot: e, seconds: 1 }] } }
+    - { id: relic-legs, name: Relic Legs, slot: passive, text: "Momentum stacks 3 more times.", mods: { max: "+3" } }
+
+# ---- Garrick ---- 2: the heavy round · the long siege · more rain   8: more kills count · a faster second shot · a longer stun   14: slow · escape · reach
+sniper:
+  3:
+    - { id: heavy-powder, name: Heavy Powder, slot: passive, rec: true, text: "The Heavy Round's bonus damage is 60% higher.", mods: { "damage.base": "*1.6", "damage.perLevel": "*1.6", "damage.ad": "*1.6" } }
+    - { id: long-watch, name: Long Watch, slot: rmb, text: "Steady Aim lasts 3 s longer.", mods: { "aim.duration": "+3", "self.0.duration": "+3" } }
+    - { id: fourth-flare, name: Fourth Flare, slot: q, text: "Iron Rain holds 4 charges.", mods: { charges: 4 } }
+  6:
+    - { id: hot-rain, name: Hot Rain, slot: q, rec: true, text: "Iron Rain burns 25% harder.", mods: { "tickDamage.base": "*1.25" } }
+    - { id: big-kick, name: Big Kick, slot: e, text: "Powder Kick deals 25% more damage.", mods: { "damage.base": "*1.25" } }
+    - { id: steady-hand, name: Steady Hand, slot: rmb, text: "Steady Aim grants 15% more attack speed.", mods: { "aim.attackSpeed": "+0.15" } }
+  9:
+    - { id: long-vigil, name: Long Vigil, slot: r, rec: true, text: "Called Shot opens again when its mark dies within 5 s.", mods: { "again.kill": "+2" } }
+    - { id: quick-hands, name: Quick Hands, slot: r, text: "A Called Shot fired again braces for only 0.7 s.", mods: { "again.aimTime": 0.7 } }
+    - { id: stopping-power, name: Stopping Power, slot: r, text: "Called Shot stuns 0.75 s longer.", mods: { "effects.0.duration": "+0.75" } }
+  12:
+    - { id: clinging-iron, name: Clinging Iron, slot: q, rec: true, text: "Iron Rain slows 15% more.", mods: { "tickEffects.0.amount": "+0.15" } }
+    - { id: far-kick, name: Far Kick, slot: e, text: "Powder Kick throws him 4 m farther.", mods: { launch: "+4" } }
+    - { id: long-rifle, name: Long Rifle, slot: lmb, text: "Rifle Shot reaches 3 m farther.", mods: { range: "+3" } }
+  15:
+    - { id: dead-eye, name: Dead Eye, slot: r, rec: true, text: "Called Shot deals 40% more damage.", mods: { "damage.base": "*1.4" } }
+    - { id: carpet-fire, name: Carpet Fire, slot: q, text: "Iron Rain holds 1 more charge.", mods: { charges: "+1" } }
+    - { id: heavy-calibre, name: Heavy Calibre, slot: passive, text: "Heavy Round comes every 2nd shot instead of every 3rd.", mods: { every: "-1" } }
+
+# ---- Veyran ---- 2: reach · hold them · chase   8: a wider circle · a longer duel · a harder end   14: keep the script · the edge · the burn
+veyran:
+  3:
+    - { id: long-script, name: Long Script, slot: q, rec: true, text: "Sigil Cleave reaches 1.5 m farther.", mods: { range: "+1.5" } }
+    - { id: deep-scar, name: Deep Scar, slot: rmb, text: "An inscribed Descent's scar lasts 3.5 s.", mods: { "inscribed.duration": 3.5 } }
+    - { id: second-thought, name: Second Thought, slot: e, text: "An inscribed Blink Thrust keeps its second thrust open for 6 s.", mods: { "inscribed.window": 6 } }
+  6:
+    - { id: keen-cleave, name: Keen Cleave, slot: q, rec: true, text: "Sigil Cleave deals 20% more damage.", mods: { "damage.base": "*1.2" } }
+    - { id: deep-descent, name: Deep Descent, slot: rmb, text: "Sigil Descent deals 25% more damage.", mods: { "damage.base": "*1.25" } }
+    - { id: long-thrust, name: Long Thrust, slot: e, text: "Blink Thrust reaches 25% farther.", mods: { range: "*1.25" } }
+  9:
+    - { id: wide-circle, name: Wide Circle, slot: r, text: "The Rune Ward reaches 10 m.", mods: { radius: "+2" } }
+    - { id: long-duel, name: Long Duel, slot: r, rec: true, text: "The Rune Ward stands for 7 s.", mods: { duration: "+2" } }
+    - { id: last-word, name: Last Word, slot: r, text: "The Ward's shatter also stuns for 1 s.", mods: { "effects+": [{ kind: stun, duration: 1 }] } }
+  12:
+    - { id: kept-script, name: Kept Script, slot: passive, text: "His lit rings stay lit for 16 s.", mods: { hold: 16 } }
+    - { id: heavy-edge, name: Heavy Edge, slot: lmb, rec: true, text: "The overhead blow of Graven Edge lights 2 rings.", mods: { overhead: 2 } }
+    - { id: twin-crescent, name: Twin Crescent, slot: q, text: "An inscribed Cleave's band bursts 60% harder.", mods: { "inscribed.damage.base": "*1.6", "inscribed.damage.ad": "*1.6" } }
+  15:
+    - { id: sanctum, name: Sanctum, slot: r, rec: true, text: "Rune Ward deals 50% more damage and stands 2 s longer.", mods: { "damage.base": "*1.5", duration: "+2" } }
+    - { id: blood-sigil, name: Blood Sigil, slot: lmb, text: "Graven Edge heals you for 12% of the damage it deals.", mods: { "onHit+": [{ kind: heal, share: 0.12 }] } }
+    - { id: sigil-haste, name: Sigil Haste, slot: q, text: "Sigil Cleave recharges 30% sooner.", mods: { cooldown: "*0.7" } }
+
+# ---- Aldric ---- 2: guard one ally · hunt one enemy · fight in the middle   8: hold ground · finish · trap   14: guard from afar · run them down · stay in the middle
+aldric:
+  3:
+    - { id: shield-brother, name: Shield-Brother, slot: rmb, text: "The ally beside you gets 100% of Hold the Line's shield.", mods: { "share.ratio": 1 } }
+    - { id: forced-march, name: Forced March, slot: q, rec: true, text: "Marching Order pins for 2.5 s.", mods: { "pin.duration": 2.5 } }
+    - { id: full-circle, name: Full Circle, slot: e, text: "Banner Sweep cuts as hard behind him as in front: 125% all round.", mods: { "sweep.back": 1.25 } }
+  6:
+    - { id: sharp-order, name: Sharp Order, slot: q, rec: true, text: "Marching Order deals 25% more damage.", mods: { "damage.base": "*1.25" } }
+    - { id: broad-banner, name: Broad Banner, slot: e, text: "Banner Sweep spins 20% wider.", mods: { radius: "*1.2" } }
+    - { id: shield-wall, name: Shield Wall, slot: rmb, text: "Hold the Line shields 30% more.", mods: { "self.0.base": "*1.3" } }
+  9:
+    - { id: long-vigil, name: Long Vigil, slot: r, rec: true, text: "The banner stands for 8 s: an ally who reaches it late still gets its shield.", mods: { "banner.duration": 8 } }
+    - { id: headsman, name: Headsman, slot: r, text: "Last Oath grows 50% more with its target's missing health.", mods: { missingHp: "*1.5" } }
+    - { id: no-retreat, name: No Retreat, slot: r, text: "Enemy heroes inside the banner's ring when it is planted are pinned for 2 s.", mods: { "banner.pin": 2 } }
+  12:
+    - { id: oathbound, name: Oathbound, slot: rmb, text: "Hold the Line reaches an ally 14 m away.", mods: { "share.radius": 14, allyRange: 14 } }
+    - { id: iron-stride, name: Iron Stride, slot: q, text: "Marching Order makes him run 60% faster.", mods: { "self.0.amount": 0.6 } }
+    - { id: long-sweep, name: Heavy Sweep, slot: e, rec: true, text: "Banner Sweep cuts 25% harder.", mods: { "damage.base": "*1.25", "tickDamage.base": "*1.25" } }
+  15:
+    - { id: kingsoath, name: Kingsoath, slot: r, rec: true, text: "Last Oath deals 40% more damage.", mods: { "damage.base": "*1.4" } }
+    - { id: whirlwind, name: Whirlwind, slot: e, text: "Banner Sweep cuts every 0.4 s instead of 0.5 s.", mods: { tick: 0.4 } }
+    - { id: oath-blood, name: Oathblood, slot: lmb, text: "Oathblade heals you for 15% of the damage it deals.", mods: { "onHit+": [{ kind: heal, share: 0.15 }] } }
+
+# ---- Solvar ---- 2: a tighter ring · a line that costs more to leave · bait the blow   8: lock down · hunt · protect   14: take the hit · strike first · hold one hero
+solvar:
+  3:
+    - { id: short-leash, name: Short Leash, slot: e, text: "Dawnline's ring is tighter: 5.5 m.", mods: { "line.leash": 5.5 } }
+    - { id: searing-line, name: Searing Line, slot: e, text: "A snapped Dawnline slows for 3 s.", mods: { "line.slow.duration": 3 } }
+    - { id: burning-dawn, name: Burning Dawn, slot: rmb, rec: true, text: "Gathering Dawn's burst deals 30% more damage.", mods: { "damage.base": "*1.3", "damage.ap": "*1.3" } }
+  6:
+    - { id: bright-rebuke, name: Bright Rebuke, slot: q, rec: true, text: "Rebuke deals 30% more damage.", mods: { "damage.base": "*1.3" } }
+    - { id: dawn-shield, name: Dawn Shield, slot: rmb, text: "Gathering Dawn shields 30% more.", mods: { "shield.base": "*1.3" } }
+    - { id: long-dawnline, name: Long Dawnline, slot: e, text: "Dawnline reaches 25% farther.", mods: { range: "*1.25" } }
+  9:
+    - { id: high-noon, name: High Noon, slot: r, rec: true, text: "Daybreak's heart stuns for 2 s.", mods: { "inner.effects.0.duration": 2 } }
+    - { id: long-day, name: Long Day, slot: r, text: "Daybreak lights its targets for 8 s.", mods: { "lit.duration": 8 } }
+    - { id: sun-shelter, name: Sun Shelter, slot: r, text: "Allied heroes inside Daybreak gain a shield of 10% of his max health.", mods: { shelter: { hpRatio: 0.1, duration: 3 } } }
+  12:
+    - { id: unbroken, name: Unbroken, slot: rmb, text: "Gathering Dawn's shield adds 12% of his max health to its base.", mods: { "shield.hpRatio": 0.12 } }
+    - { id: quick-dawn, name: Quick Dawn, slot: rmb, text: "A shield nobody breaks bursts after 1.5 s.", mods: { delay: 1.5, "shield.duration": 1.5 } }
+    - { id: throne-law, name: "Throne's Law", slot: q, rec: true, text: "Throne's Rebuke stuns for 1.5 s.", mods: { "effects.0.duration": 1.5 } }
+  15:
+    - { id: daybreak, name: High Noon, slot: r, rec: true, text: "Daybreak deals 40% more damage in a blast 30% wider.", mods: { "damage.base": "*1.4", radius: "*1.3" } }
+    - { id: zenith, name: Zenith, slot: q, text: "Rebuke's rush reaches 50% farther.", mods: { "rush.range": "*1.5" } }
+    - { id: radiant-oath, name: Radiant Oath, slot: passive, text: "Oathlight's ward is 50% stronger.", mods: { "ward.base": "*1.5" } }
+
+# ---- Ragnar ---- 2: store more · hold them longer · chase one   8: execute sooner after he tanked · make the team chase · stay alive in the middle   14: stand in more · pay back later · pay back more
+axe:
+  3:
+    - { id: deep-debt, name: Deep Debt, slot: passive, rec: true, text: "Blood Debt stores 40% of the damage he takes.", mods: { "debt.share": 0.4 } }
+    - { id: long-roar, name: Long Roar, slot: q, text: "Pit Roar holds its targets for 2.5 s.", mods: { "effects.0.duration": 2.5 } }
+    - { id: hounding, name: Hounding, slot: rmb, text: "Blood Feud slows its target 40%.", mods: { "effects.0.amount": 0.4 } }
+  6:
+    - { id: loud-roar, name: Loud Roar, slot: q, rec: true, text: "Pit Roar taunts 0.4 s longer.", mods: { "effects.0.duration": "+0.4" } }
+    - { id: feud-bite, name: Feud Bite, slot: rmb, text: "Blood Feud deals 30% more damage.", mods: { "damage.base": "*1.3" } }
+    - { id: quick-reckoning, name: Quick Reckoning, slot: e, text: "Reckoning recharges 25% sooner.", mods: { cooldown: "*0.75" } }
+  9:
+    - { id: blood-price, name: Blood Price, slot: r, text: "The line of Pit's Verdict rises by 100% of his Blood Debt.", mods: { "cull.debt": true } }
+    - { id: war-leader, name: War Leader, slot: r, rec: true, text: "An execution makes his team run 60% faster.", mods: { "cull.speed": 0.6 } }
+    - { id: pit-feast, name: Pit Feast, slot: r, text: "An execution heals him for 25% of his max health.", mods: { "cull.heal": 0.25 } }
+  12:
+    - { id: iron-hide, name: Iron Hide, slot: q, text: "While Pit Roar holds, enemy heroes deal 40% less damage to him.", mods: { "ward.reduce": 0.4 } }
+    - { id: long-memory, name: Long Memory, slot: passive, text: "When the quest is done, Blood Debt is kept for 10 s after the last blow.", quest: { count: hit, slot: e, need: 12, goal: "Strike heroes with Reckoning", then: { mods: { "debt.window": 10 } } } }
+    - { id: heavy-debt, name: Heavy Debt, slot: passive, rec: true, text: "Blood Debt holds 50% more.", mods: { "debt.cap": "*1.5" } }
+  15:
+    - { id: culling-blade, name: Culling Blade, slot: r, rec: true, text: "Pit's Verdict deals 40% more damage.", mods: { "damage.base": "*1.4" } }
+    - { id: berserker-call, name: Berserker's Call, slot: q, text: "Pit Roar reaches 30% farther.", mods: { range: "*1.3" } }
+    - { id: bloodlust, name: Bloodlust, slot: e, text: "Reckoning heals you for 30% of the damage it deals.", mods: { "onHit+": [{ kind: heal, share: 0.3 }] } }
+
+# ---- Thordan (off the roster: his cards wait with his kit) ---- 2: lock one hero · reach the ally · punish what they throw   8: take one away · stop them all · close the road   14: store more · push them off · guard longer
+thordan:
+  3:
+    - { id: third-knock, name: Third Knock, slot: passive, rec: true, text: "Closing Gate roots on mark 3.", mods: { "mark.stacks": 3 } }
+    - { id: long-run, name: Long Run, slot: rmb, text: "Shieldrun reaches an ally 20 m away.", mods: { range: 20 } }
+    - { id: stored-force, name: Stored Force, slot: e, text: "Bulwark's shove hits 50% harder for each shot stored.", mods: { "shove.perCharge": 0.5 } }
+  6:
+    - { id: cold-shard, name: Cold Shard, slot: q, rec: true, text: "Rimeshard deals 25% more damage.", mods: { "damage.base": "*1.25" } }
+    - { id: long-ward, name: Long Ward, slot: rmb, text: "Shieldrun's guard is 30% stronger.", mods: { "resist.base": "*1.3" } }
+    - { id: heavy-shove, name: Heavy Shove, slot: e, text: "Bulwark's shove deals 30% more damage.", mods: { "shove.damage.base": "*1.3" } }
+  9:
+    - { id: long-haul, name: Long Haul, slot: r, rec: true, text: "Glacier Ram carries its hero up to 22 m.", mods: { "carry.max": 22 } }
+    - { id: avalanche, name: Avalanche, slot: r, text: "Glacier Ram carries nobody: it throws every enemy on the line up for 1.25 s.", mods: { carry: false, "lift.rest": 1.25 } }
+    - { id: frozen-road, name: Frozen Road, slot: r, text: "The crack of Glacier Ram stays for 8 s.", mods: { "zone.secs": 8 } }
+  12:
+    - { id: stonewall, name: Stonewall, slot: e, rec: true, text: "Bulwark stores up to 5 shots.", mods: { "shove.max": 5 } }
+    - { id: battering-ram, name: Battering Ram, slot: e, text: "Bulwark's shove knocks enemies back 5 m.", mods: { "shove.knock": 5 } }
+    - { id: house-guard, name: House Guard, slot: rmb, text: "When the quest is done, Shieldrun's armor and magic resist last 6 s.", quest: { count: takedown, need: 6, goal: "Take part in takedowns", then: { mods: { duration: 6 } } } }
+  15:
+    - { id: glacier-ram, name: Rimebreaker, slot: r, rec: true, text: "Glacier Ram deals 40% more damage and stuns 0.5 s longer.", mods: { "damage.base": "*1.4", "carry.stun": "+0.5" } }
+    - { id: unbreakable, name: Unbreakable, slot: e, text: "Bulwark shoves 2 more enemies.", mods: { "shove.max": "+2" } }
+    - { id: frost-heart, name: Frost Heart, slot: passive, text: "Closing Gate needs 1 fewer hit.", mods: { "mark.stacks": "-1" } }
+
+# ---- Ansel ---- 2: reach · a wider splash · a quest for more   8: a wider fan · a shield with the heal · a root on the enemy   14: a hotter kindle · a longer chain · a richer splash
+ansel:
+  3:
+    - { id: ansel-long-light, name: Long Light, slot: q, rec: true, text: "Mending Light flies 8 m farther.", mods: { range: "+8" } }
+    - { id: ansel-wide-mercy, name: Wide Mercy, slot: q, text: "Mending Light's splash reaches 1.5 m farther (4.5 m).", mods: { mend.splash.radius: "+1.5" } }
+    - { id: ansel-shepherd, name: Shepherd, slot: q, text: "When the quest is done, Mending Light heals 20% more.", quest: { count: takedown, need: 6, goal: "Take part in takedowns", then: { mods: { mend.heal.base: "*1.2" } } } }
+  6:
+    - { id: ansel-warm-mend, name: Warm Mending, slot: q, rec: true, text: "Mending Light heals 25% more.", mods: { "mend.heal.base": "*1.25" } }
+    - { id: ansel-heavy-censer, name: Heavy Censer, slot: rmb, text: "Thurible deals 25% more damage.", mods: { "damage.base": "*1.25" } }
+    - { id: ansel-far-forbid, name: Far Forbid, slot: e, text: "Forbid throws enemies 40% farther.", mods: { "displace.dist": "*1.4" } }
+  9:
+    - { id: ansel-wide-morning, name: Wide Morning, slot: r, rec: true, text: "First Light's fan is 20 degrees wider.", mods: { angle: "+20" } }
+    - { id: ansel-dawn-aegis, name: Aegis of Dawn, slot: r, text: "First Light also shields each ally it heals for 150.", mods: { rise.shield.base: 150 } }
+    - { id: ansel-binding-light, name: Binding Light, slot: r, text: "First Light roots every enemy it reaches for 1 s.", mods: { effects+: [{ kind: root, duration: 1 }] } }
+  12:
+    - { id: ansel-bright-kindling, name: Bright Kindling, slot: passive, row: passive, rec: true, text: "A Morning Bolt on an enemy hero takes 1.5 s off Mending Light's cooldown.", mods: { hero: 1.5 } }
+    - { id: ansel-long-chain, name: Long Chain, slot: rmb, text: "The Thurible swings 3 m farther.", mods: { range: "+3" } }
+    - { id: ansel-stern-word, name: Stern Word, slot: e, text: "Forbid throws enemies 3 m farther.", mods: { effects.0.distance: "+3", displace.dist: "+3" } }
+  15:
+    - { id: ansel-high-noon, name: High Noon, slot: r, rec: true, text: "First Light heals 40% more.", mods: { "rise.heal.base": "*1.4" } }
+    - { id: ansel-shared-dawn, name: Shared Dawn, slot: q, text: "Mending Light's splash heals allies for 70% of its heal.", mods: { mend.splash.share: 0.7 } }
+    - { id: ansel-iron-censer, name: Iron Censer, slot: rmb, text: "Thurible's censer heals 50% more.", mods: { "censer.heal.base": "*1.5" } }
+
+# ---- Ysolde ---- 2: a thicker glass · grains that last · a deeper sand   8: reach · a longer Glass · an earlier turn   14: more given back · a mark more often · a quest for a higher cap
+ysolde:
+  3:
+    - { id: ysolde-thick-glass, name: Thick Glass, slot: q, rec: true, text: "The glass a marked ally wears is 50% thicker.", mods: { mark.glass.base: "*1.5" } }
+    - { id: ysolde-full-glass, name: Full Glass, slot: passive, row: passive, text: "Her grains last 4 s longer.", mods: { hold: "+4" } }
+    - { id: ysolde-deep-sand, name: Deep Sand, slot: rmb, text: "Last Grain's slow rises to 65%.", mods: { sand.slow.1: 0.65 } }
+  6:
+    - { id: ysolde-heavy-sand, name: Heavy Sand, slot: rmb, rec: true, text: "Last Grain sets 30% more sand.", mods: { "sand.set.base": "*1.3" } }
+    - { id: ysolde-long-anchor, name: Long Anchor, slot: e, text: "Turn Back holds 30% more.", mods: { "anchor.cap.base": "*1.3" } }
+    - { id: ysolde-fast-mark, name: Deep Mark, slot: q, text: "Mark the Hour holds 25% more.", mods: { "mark.cap.base": "*1.25" } }
+  9:
+    - { id: ysolde-whole-field, name: The Whole Field, slot: r, rec: true, text: "The Unturned Glass reaches 6 m farther.", mods: { radius: "+6" } }
+    - { id: ysolde-long-hour, name: The Long Hour, slot: r, text: "The Unturned Glass runs for 5 s.", mods: { dial.time: 5 } }
+    - { id: ysolde-at-the-brink, name: At the Brink, slot: r, text: "A mark of The Unturned Glass turns by itself under 50% of the health its hero had.", mods: { dial.brink: 0.5 } }
+  12:
+    - { id: ysolde-every-grain, name: Every Grain, slot: q, rec: true, text: "Mark the Hour gives an ally back 80% of the health lost.", mods: { mark.share: 0.8 } }
+    - { id: ysolde-second-glass, name: Second Glass, slot: q, text: "Mark the Hour's cooldown is 3 s shorter.", mods: { cooldown: "-4" } }
+    - { id: ysolde-sand-remembers, name: Sand Remembers, slot: q, text: "When the quest is done, Mark the Hour gives back up to 50% more.", quest: { count: takedown, need: 8, goal: "Take part in takedowns", then: { mods: { mark.cap.base: "*1.5" } } } }
+  15:
+    - { id: ysolde-stopped-clock, name: Stopped Clock, slot: r, rec: true, text: "Unturned Glass holds 40% more in a dial 25% wider.", mods: { "dial.cap.base": "*1.4", radius: "*1.25" } }
+    - { id: ysolde-deep-hour, name: Deep Hour, slot: q, text: "Mark the Hour returns 20% more of what it took.", mods: { "mark.share": "+0.2" } }
+    - { id: ysolde-iron-grain, name: Iron Grain, slot: rmb, text: "Last Grain roots 0.5 s longer.", mods: { "sand.root": "+0.5" } }

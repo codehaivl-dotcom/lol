@@ -1,0 +1,354 @@
+# The bots and the match clock: every number of how the shot-caller's team plays a Call, a reward and the Last Stand, and of when
+# he is asked. scripts/bot.js reads this file and hands the rows to scripts/lib/bot-clock.js (the rules, which import no number).
+# The clock's own numbers are tuning.yml clock, the capture's are trial.yml capture, the Titan's are titan.yml (its `bot` row is the
+# bot at its controls), the gates' are tuning.yml gates. One group a line; seconds and metres unless a name says ms.
+# WHEN THE SHOT-CALLER IS ASKED. gapMs: the floor between two asks; quietMs: with a choice open he is asked at least this often.
+# While a play is live (its bots have gone in) the pace is the fast one, fastGapMs and fastQuietMs, and the question is the small one:
+# commit, hold or back off on the standing call. A team the match eases (a first match's bots) keeps the slow pace throughout.
+# perMin: THE CAP, the one dial of what the callers cost: a team's caller is asked no more than this many times in any minute
+# (an ask it holds back goes out when the minute has room). As written it stands above a bot match's busiest minute and holds
+# nothing back: lower it to spend less.
+ask: { gapMs: 4000, quietMs: 30000, fastGapMs: 2500, fastQuietMs: 8000, perMin: 20 }
+# THE WAVE EVENTS that start an ask, in every stage of the match. A wave is the minions within span of its lane's leading one (a
+# lane holds several waves at once). A wave of minN or more within reach of a structure (ours of theirs, theirs of ours); and a
+# wave that counted wipeN or more at its most and is gone (nothing of that side left on the lane, or its front fell back by more
+# than span) while the other side's still stands. One lane tells one kind of event once in restMs.
+wave: { minN: 3, reach: 22, wipeN: 3, span: 16, restMs: 20000 }
+# GATHERING FOR A CALL. A bot takes the Call gate when it stands in its base (baseR of the fountain) or is dead, when the call is a
+# reset, or when the gate (a recall, calm seconds first when it is being hit, then pad seconds from the fountain to the landing) beats
+# its walk by gain; a hurt bot takes it when that lands it no later than lateOk past the opening. It leaves its lane so it stands at
+# the rally (its team's landing) early seconds before the Call opens, steps on the pad land seconds before it, and the team walks
+# into the ring enter seconds before it. need: the bodies a gather waits for at the rally once the Call is open. A bot that came
+# home hurt stands at the fountain until it is healed, then waits by the pad. (The landing stands about 70 m of road short of the
+# pit, lib/rift-layout.js CALL_SETDOWN: about six seconds more of walk than the old one, 30 m out. land and enter moved with it,
+# from 8 and 3, so a team still stands in the ring as its Call opens.)
+# early IS 5 AGAIN SINCE FIX ROUND 8 (fix round 7 made it 10; the eighth critic measured what that cost and asked for 5).
+# WHAT 10 CURED: on a map with a Call gate the far team takes the gate and the near team walks, and a walker stood at the rally
+# 5 s before the opening, still on its way when the others went in (a team two or more short in 22 and 23% of its openings on
+# the first map, 4 to 7% with 10). WHAT 10 COST, which fix round 7's pages did not say: both teams stand at the ring before it
+# opens, so the first hero falls in the horn or in the Call's first seconds, and an objective is over sooner. THAT is why Calls
+# got shorter in fix round 7, far more than the leave of a given Call (`give`, below: the critic took the leave alone out and
+# Calls over inside 55 s stayed at 63 and 69%; the leave itself costs 2.6 s of both teams in the ring among even bots).
+# 10 beside 5 on this round's tree, the same seeds in one batch, dense rows (lanes/gp-bots/fix8/tables-*.txt, box/r8.py):
+#   Highrift, two sets of 32: heroes down in the horn 0.48 to 0.30 and 0.63 to 0.23 a Call; both teams in the ring 14.7 to
+#     17.4 s and 14.9 to 16.3 s; Calls over inside 55 s 77 to 65% and 75 to 69%; a give in the Call's first 8 s 5 to 4% and 11
+#     to 5%; a team two or more short at its opening 14 and 14% beside 14 and 11%: on a map of portals every body of a team
+#     takes the same road (lib/bot-roads.js), so nobody is the walker this number was raised for.
+#   The first map (24, the critic's seeds; it is on the shelf): both teams in the ring 16.8 to 21.1 s, the loser's bar earned
+#     nothing in 61 to 48% of Calls, the loser's heroes down 3.54 to 3.28; AND a team two or more short half a second after
+#     its opening 10 to 47%: there the walker is late again (it comes in the Call's first seconds, and the fight is longer for
+#     it, not shorter). If the first map comes back to the queue, read that number again before anything else.
+# The readers that show the gather's price: lanes/gp-bots/critic8/rig/sec8.py, lanes/gp-bots/fix7/box/early7.py and
+# lanes/gp-bots/fix8/box/r8.py (IN THE HORN). The near team's share of the Calls is not this number's proof (37 to 50% in
+# six sets of the first map whatever it was; 55 to 62% on Highrift, where the pit lies nearer one base's portal landing).
+# enter 5 was tried beside it (the team walks in 5 s before the opening): among even bots no move past a set's wander (heroes
+# down in the horn 0.30 to 0.19 and 0.23 to 0.23), and a person's side with four bots took 20% of the Calls beside 28%.
+# earlyLane: the same moment on a map with ONE lane (the Brawl: nobody takes a gate, every body walks the same 75 m). It
+# stays 5: the Brawl's lane measured an earlier leave twice (five and ten seconds) and took neither (Calls over inside
+# thirty seconds 15% to 19% and 23%). With 5 a Brawl of even bots reads as the joined game's on the same seeds (8:52 beside
+# 8:30, 34.9 kills and 3.84 Calls a match in both); with 10 it read 7:42 (another day's box).
+# THE PRICE OF TEN BODIES AT A RING (fix round 8's roads, lib/bot-roads.js; counted by the ninth critic, named here in fix round 9): with
+# every bot on its base's road a team is two or more bodies short at 12 to 13% of its openings on Highrift (53% before),
+# and the win is bigger for it: the loser of a Call loses 3.3 and 3.7 heroes (2.5 and 2.6), a match of even bots has 52
+# kills (45), Call I's winner wins 44 matches of 64 (37). Read lanes/gp-bots/critic9/rig/batch1-r8.txt and fix8/box/r8.py's
+# CALLS line ("the loser lost") whenever a number of this row moves; what a bigger win is worth is the purse's and the
+# ring's pace (tuning.yml xp, gold; trial.yml capture), the flow lane's.
+# padWait, padOff: THE GUARD OF A BASE'S ROAD (lib/bot-roads.js roadStep): a body the road has not taken padWait seconds past the
+# pad's own hold (it is being struck: the road takes nobody in combat) goes on foot for padOff seconds, so nothing stands in an
+# arch and waits. (They were two bare numbers in scripts/bot.js until fix round 9.)
+gather: { early: 5, earlyLane: 5, land: 14, enter: 9, pad: 4, calm: 2, gain: 3, lateOk: 6, baseR: 45, need: 3, padWait: 3, padOff: 12, tellS: 10 } # tellS: the caller's ping at the horn says "We enter in N s" only with this many seconds or more to go; later it names the place alone (lib/bot-clock.js gatherWords)
+# IN THE RING. area: the play's place is the pit's radius and this (the team read counts the bodies there). A body stands inside the
+# ring by `in` at least: melee on front, ranged on back (metres from the centre, never nearer than heart: the beacon stands there),
+# fanned over arc degrees on its team's side, two neighbours apart degrees from each other at most; each body breathes sway metres
+# in and out over swayMs. deny: with this few seconds left to hold a lead, the team stays in the ring whatever
+# the read. lost: a Call whose winning needs more than the seconds left and this is lost. weak: under this read nobody stays even to deny.
+# A CALL IS FOUGHT FOR, HELD FROM ITS LINE, OR GIVEN (lib/bot-clock.js ringSay: fight, hold, and back_off for a Call that is
+# given). The one way a team is not at a Call from its horn is a trade called there (`horn`, below).
+# A FIGHT LOST AT THIS CALL (scripts/bot.js playStep; the Call's own row cm.beatAt; lib/bot-clock.js leavesFight, beatenAt,
+# givesCall): a fight for the open ring is left when it has cost beatBy heroes more than it took and the read no longer holds
+# (or the read is under the play's off line). STEPPING OUT IS NOT BEING BEATEN: after the play's rest the team is at the
+# ring's line, where every body has a job (`skirmish`, below). BEATEN IS BLOOD: beatBy heroes more lost than taken, with a read
+# that does not hold, or every body of the fight down. beatRead: a team that was IN and reads under this is beaten with no
+# blood (0: never. Round 5's rule was the off line, 0.75: with it a ring was given seven to nineteen seconds after it
+# opened with no hero lost on either side. It is the lead's dial: fewer deaths, and objectives nobody fought for).
+# BEATEN, THE CALL IS GIVEN AT ONCE, one rule for both teams, unless the team's own bar is the nearer one (it keeps the line,
+# its staller on it; whole again, wholeN fit bodies or nobody else coming, with a read that is near it goes in, once) or its
+# bodies hold the circle with none of theirs in it. A GIVEN CALL OF THE TRIAL IS A FALL-BACK OF FIVE to the stone their Titan
+# will come for; at the Toll it is the one lane of a Call that was left.
+# THE LATE CONTEST: once their bar has passed lateAt and lateN fit bodies of ours stand there, the staller of a beaten team
+# that is still at its Call takes the ring's line (one body, with its way out; lateAt 0: none). Nobody charges in for it.
+# A CALL NOBODY STANDS AT: after `spare` seconds with no body of either team at an open Call's place, the team whose bar is
+# the nearer one (level: the first team) comes back to it, whatever it had called.
+# THE GIVE IS THE CREATOR'S, ALONE (beatBy, outFor, below). Three rules of this lane once stood on that line and each was
+# measured and taken out: firstS 12 (fix round 8: for a Call's first twelve seconds a first pick was no lost fight: it moved
+# the give from a Call's first 8 s to its 12th to 16th and bought 2.4 to 3.1 s of ring: a clock), the kill hold (three fit
+# bots round a hurt enemy: a team of four with one down never has three; taken out, no count moved), and THE FIELD (fix
+# round 9, `field: 0.7`: no lost fight and no give while the health that stood at the Call's place was the team's own).
+# The field's own page read ONE batch (28 matches a row: both teams in the ring 19.3 s a Call for 14.9 s, the loser's bar
+# 12.3 points for 5.4). The tenth critic played three fresh sets of 32 a row on the same seeds, Highrift, even bots:
+#   the creator's game alone      both teams in the ring 16.9, 17.4, 15.9 s a Call | the loser 4.60 and 4.50 heroes down, the winner 1.48 and 1.43 | 65 kills a match
+#   this tree with the field off  16.7, 16.5, 15.6 s | the loser's bar 8.7, 7.3, 8.5 points
+#   the field at 0.7              17.2, 19.9, 17.9 s | 11.8, 11.4, 11.3 points | 4.84 and 4.67, 1.66 and 1.75 | 69 kills
+# 1.6 s more of both teams in the ring (a batch's wander is two) and 3.3 points of bar, for a third of a hero more on each
+# side at every Call; a Call with no give at all 16% for 5%; a give in a Call's first 8 s 6 to 16% for 2 to 4%; and in the
+# owners' seat her side won 11 matches of 48 with it and 15 without. No rule of the give buys the half minute one team
+# stands in the ring alone (three rounds showed it): the ring's pace and the purse are the flow lane's and the creator's.
+# join: the caller's read of an open Call counts every body, ours and theirs, that can stand at the pit within this many seconds.
+# comeV: a PERSON of ours who is not at the pit is counted among them only while she walks toward it at this pace (m/s) or
+# better: the caller can send no person, and one who stands elsewhere made her bots read a Call a body stronger than it was.
+# SPARE BODIES (one hero fills a bar as fast as five): when for spare seconds nobody of theirs is known at the pit and spareSeen or
+# more of them are seen elsewhere (further than away past the pit's area, out of their base), the ring keeps `keep` bots and one more
+# for each of them not seen away; the others are free until one of theirs is known at the pit. runner: under a call that is not the
+# Call's own play (a defend of our base, the lanes) so many of the kept bots still go and stand in that ring.
+# beatBy 2 + outFor 4 (fix round 9, izkimar match 2): a Call is given only two bodies down AND with the circle outmatched
+# (people of ours counted as bodies) for outFor seconds unbroken: bot-clock.js ringOutAt / ringGives.
+ring: { area: 16, in: 2.5, front: 7, back: 12.5, heart: 4, arc: 110, apart: 34.4, sway: 0.6, swayMs: 2300, deny: 10, lost: 3, weak: 0.5, join: 12, keep: 2, spare: 6, spareSeen: 3, away: 30, runner: 1, beatBy: 2, outFor: 4, beatRead: 0, wholeN: 4, lateAt: 75, lateN: 3, comeV: 2 }
+# A GIVEN CALL IS LEFT BY THE HARD RULE (scripts/bot.js updateBody: `gaveAt`; fix round 7). While the caller's row says `gave`
+# for the open Call, a body that stands within `pad` of the Call's place with an enemy hero in its fight range, and not
+# under one of its own towers, LEAVES: its stance is no longer asked (a body's stance kept its feet in a fight its team had
+# given: in 9 of 16 live gives a body fell after the give), its roll is spent on an enemy within rollR, its leaving presses
+# are the kit brain's own, and a ranged body does not stop to shoot. One thing is still taken: a kill in reach (an enemy at
+# killHp of its health or less inside its basic reach and a step, or the fight read's free kill).
+# TRIED AND NOT TAKEN (fix round 7, the seventh critic's trial "one body on the line after a give, while their bar is under 90";
+# his bar: keep it only if it buys ten seconds a hero): on the rig it bought 2.8 s of a Call and cost 0.54 heroes among even
+# bots (24 Warfronts, rows two seconds apart), 1.7 s and 0.53 heroes in the owners' seat: five seconds a hero. The body stood
+# on the line 8 s a give and their five came for it. Do not build it again without a way out for that body.
+give: { pad: 30, killHp: 0.25, rollR: 7 }
+# POSTURE (lib/bot-posture.js): where a body stands in the ring while its team holds and nobody of theirs is in sight yet, faced
+# toward their way in, by its role's job (izkimar 2026-10-06: "posture for position ... move based on their role within their comp").
+# anchorR: the anchor this far from the heart, on our side. frontArc: the fronts fan this many degrees across their way in.
+# flankDeg: a flanker this far round from their way in. backArc, backMin, backMax, backK: the back line fans backArc degrees,
+# backK of its reach (backMax at most) inside the rim, never nearer the heart than backMin. scoutArc, scoutMs: the scout sweeps
+# this many degrees each side of their way in over scoutMs. shuffleMs, shuffleDeg, shuffleM: every body re-plants about every
+# shuffleMs, up to shuffleDeg round the rim and shuffleM in or out.
+posture: { anchorR: 3, frontArc: 70, flankDeg: 70, backArc: 60, backMin: 5, backMax: 9, backK: 0.6, scoutArc: 55, scoutMs: 3200, shuffleMs: 4500, shuffleDeg: 14, shuffleM: 2 }
+# THE RESCUE (lib/bot-rescue.js; izkimar 2026-10-06: "humans ... scrap and do what they can to help rescue their teammate"). A
+# teammate is JUMPED when under allyHp, struck by a hero within hitMs, with one of theirs within foeR. A body within seeR decides
+# ONCE an incident whether it goes: goTank (a tank, support or enchanter), goFighter, goAssassin, goCarry (mage, marksman). It
+# commits all in when our strength there, it counted, reads turnP of theirs or better (strength: health share × class toughness
+# within fightR of the teammate); else it helps from range and peels. A commit that reads under dropP steps down to help. Under
+# myHp of its own health a body is in danger itself and does not go. The incident ends when the teammate is clear for calmMs, dead,
+# out of sight, or after maxMs; the same teammate is not a fresh decision for restMs.
+rescue: { allyHp: 0.75, hitMs: 1500, foeR: 9, seeR: 30, fightR: 18, goTank: 0.9, goFighter: 0.75, goAssassin: 0.65, goCarry: 0.7, turnP: 0.9, dropP: 0.6, myHp: 0.3, calmMs: 3000, maxMs: 12000, restMs: 6000 }
+# THE FLIGHT THAT FIGHTS (lib/bot-fight.js retreatCall): a body that broke off keeps its retreat, and its swings and controls on
+# whoever chases, until no enemy hero has been within its reach and clearPad metres for clearMs: a flight ends when it is won.
+flee: { clearMs: 3000, clearPad: 4 }
+# THE SKIRMISH AT A CALL (lib/bot-skirmish.js): what the bodies do while both teams stand at the pit and nobody has gone in.
+# Two groups. THE DIALS are the numbers a tuner turns: each changes how a fight at a Call plays, and each was measured in whole
+# matches (the line beside it). THE SHAPE is the geometry of the five jobs: change it only to redraw a job, and look at the
+# job in a live room after.
+skirmish:
+  # ---- THE DIALS ----
+  # PATIENCE: both teams there for patienceMs with no moment, and a team goes in: one that waiting does not win it for at a read
+  # of patienceP, one that leads at patienceLeadP. Longer: fewer forced fights, more standing (18 s for 12 s moved neither much).
+  patienceMs: 12000
+  patienceP: 0.95
+  patienceLeadP: 1.1
+  # A PICK: one of theirs at pickHp or less with two of ours within pickR and no more of theirs within helpR of it than ours
+  # within pickR, the read at pickP or better. A CATCH: one of theirs held for catchMs more within catchR of one of ours, the
+  # read at catchP or better. pickP and catchP stand at about the play's hold line: a team whose read does not hold goes in on
+  # no moment (at 0.8 and 0.6 the weaker side of a Call lost a hero more in it and took nothing for it).
+  pickHp: 0.45
+  pickP: 0.9
+  catchP: 0.85
+  # THE PROD: every prodMs (each body on its own beat) a fit front steps inside their reach and out. Shorter: a busier front.
+  prodMs: 5200
+  # THE BODY ON THE LINE needs stallHp of its health to take it (it slows their bar and holds it at 99: trial.yml capture).
+  stallHp: 0.55
+  # ---- THE SHAPE ----
+  # sense: an enemy this far past the pit's area still counts as there. stepIn: under `hold` a body leaves the skirmish for an
+  # enemy inside its own basic reach and this (it was six metres: every poke became a trade). offHp: pushed off, a body with this
+  # much health and nobody on it keeps them busy from range instead of walking away.
+  # pad: a back-line body stands this far outside every enemy's reach (offPad more while pushed off); frontPad: a front body this
+  # far outside the nearest enemy's and never further from him than frontMax (a fit front takes ground under their archers'
+  # fire; a hurt one stands outside every reach), frontGap apart from the next; the prod steps prodIn inside their reach for
+  # prodOnMs, with prodHp of its health and a mate within prodMateR.
+  # A POKE goes at pokeAt of its spell's reach; after a cast the body steps back for backMs to backPad outside the target's reach.
+  # Its target: the nearest, a whole health bar weighing hurtW metres, an enemy it out-ranges outrange metres nearer.
+  # flankDeg, flankPad: the flanker stands this far round their group, this far outside their longest reach. guardBack: a guard
+  # stands this far behind the mate they can reach first. near: a goal this near is stood on. spread: a poker, a flanker and a
+  # guard stand this far to the side for each step of their seat (two with one target do not take one spot). outside: a play that
+  # has not gone in keeps this far outside the circle's line; while a Call is open it waits there, its melee at `outside` and
+  # its ranged at lineBack past the line: in sight of the circle, and never at the rally (scripts/bot.js ringAt).
+  # The body that buys time stands stallIn inside the line; an enemy within its reach (counted as stallMelee at most: an
+  # archer's reach covers the whole line) and stallNear of that spot turns it stallTurn degrees round the line; one that has
+  # come within that reach and stallOut of the body while the body is under stallHp, or two of them within stallCrowdR, send
+  # it stallBack off the line; it keeps the job down to stallKeepHp. fitHp: a body under this is not counted for a moment.
+  # The moment stands windowMs.
+  sense: 20 # (14 until 2026-10-06: the poke and the posture start as they come into sight, not once they are at the ring)
+  stepIn: 1.5
+  offHp: 0.45
+  pad: 1.5
+  offPad: 2
+  frontPad: 0.5
+  frontMax: 9
+  frontGap: 4
+  prodOnMs: 1300
+  prodIn: 2
+  prodHp: 0.6
+  prodMateR: 12
+  pokeAt: 0.92
+  backMs: 1400
+  backPad: 2.5
+  hurtW: 10
+  outrange: 4
+  flankDeg: 70
+  flankPad: 4
+  guardBack: 3.5
+  near: 1
+  spread: 1.2
+  outside: 2
+  lineBack: 3.5
+  stallIn: 2
+  stallNear: 4
+  stallTurn: 40
+  stallMelee: 6
+  stallOut: 1
+  stallBack: 6
+  stallCrowdR: 8
+  stallKeepHp: 0.4
+  fitHp: 0.35
+  catchMs: 600
+  catchR: 14
+  pickR: 16
+  helpR: 10
+  windowMs: 5000
+# THE FOCUS CAP (lib/bot-clock.js focusFull, lib/bot-fight.js): no more bodies of a team than its tier's focusMax
+# (lib/data/difficulty.yml) take one enemy as their focus while another enemy stands in reach; an enemy at capHp of its health
+# or less, and the target of the team's moment, are never capped. "In reach" counts an enemy who will be within soonS seconds
+# at the pace the two close on each other (the first body of a team onto a line is otherwise the only one there).
+focus: { capHp: 0.3, soonS: 2 }
+# THE RING'S RULE AS RANKS (lib/bot-clock.js ringSay): for each case of the rule, how its three answers rank. The rules that answer
+# for the caller take the highest; an answer a case leaves out ranks base. A rank is an order, never a test: the rule itself is
+# decided by the bars, by the lines of `ring` above and by the play's read lines (bot.js BOT.play: off, hold, start). The cases:
+# nobody of ours can stand there · lost (they cannot be passed in the time left) · ours99 (our bar waits at 99; Weak: they are far
+# stronger) · theirs99 (their bar waits: Fight when the read holds, Hold under it, Lost when the ring cannot be taken in time) ·
+# safe (ours at the close whatever they do; Strong: we are the stronger; Weak: no need to die for it) · lead (ahead or level: Alone
+# in the ring, Strong, plain, Deny = a few seconds decide it, Help = step out for the body on its way, Weak) · trail (the read
+# holds; Help = hold for the body on its way; Late = the time is nearly gone; Even = between the lines; Weak).
+# trailStall = they are the stronger there: the team stays at the circle's line, pokes, and one body stands on the line.
+# (The Trial's own rule, ringSay, answers fight or hold and reads only ours99, leadAlone, theirs99, trail and trailStall; the
+# other rows are the Toll's, the Road's and the Seals' rules, which answer on the same ranks.)
+say: { base: 2, nobody: { back_off: 9 }, lost: { back_off: 9, hold: 1, fight: 1 }, ours99: { fight: 9.5, hold: 6 }, ours99Weak: { hold: 7, fight: 5, back_off: 4 }, theirs99Fight: { fight: 9, hold: 8 }, theirs99Hold: { hold: 9, fight: 5 }, theirs99Lost: { back_off: 8.5, hold: 3 }, safe: { hold: 8, fight: 4, back_off: 5 }, safeStrong: { hold: 8, fight: 7, back_off: 5 }, safeWeak: { back_off: 8, hold: 5 }, leadAlone: { hold: 9, fight: 5 }, leadStrong: { fight: 8.5, hold: 7.5 }, lead: { hold: 9, fight: 5, back_off: 3 }, leadDeny: { hold: 8.5, back_off: 5 }, leadHelp: { back_off: 7, hold: 5.5 }, leadWeak: { back_off: 8, hold: 4 }, trail: { fight: 9, hold: 5, back_off: 2 }, trailStall: { hold: 8, back_off: 6.5, fight: 2 }, trailHelp: { hold: 8, fight: 5, back_off: 4 }, trailLate: { fight: 7.5, hold: 5, back_off: 5 }, trailEven: { hold: 7, fight: 6, back_off: 4 }, trailWeak: { back_off: 8.5, hold: 3, fight: 2 } }
+# THE WEAVER'S TOLL as a Call's objective (lib/bot-objective.js `toll`: the map whose objective it is plays by these). stand: the
+# pay-in circle is 10 m (the Trial's ring is 18), so where a body stands in it is its own row of the `ring` fields above; a fight
+# for it follows an enemy as far past the circle's line as any ring's does (the play's own chase: the circle lies on the pit's flat
+# floor). loot: a bot this near a pile of shards its own team dropped walks onto it.
+# pay: THE CHANNEL. A bot in an open altar's circle with shards on it starts its pay-in (the recall's key) when no enemy hero in
+# its sight stands within clear metres and nothing has hit it for quietMs; once the channel runs it stands still to its end. A hit
+# breaks a channel, so an enemy hero who channels within `break` metres is a bot's target before any other: it walks into reach
+# and strikes. split: on a Call that opens both altars, the bots of these seat roles answer it at the second altar (to pay there,
+# and to break what theirs channel there); the rest of the team answers it at the horn's.
+# way: the walk map does not know the altar's six posts: a walk keeps `clear` of a post's stone, by a point `side` past that, and
+# the posts of a pit are asked about within reach metres past their ring.
+toll: { stand: { front: 4, back: 7.5, heart: 1.5, in: 1.5, arc: 120, apart: 40 }, loot: 16, pay: { clear: 12, quietMs: 1500, break: 16, split: [jungle] }, way: { clear: 1, side: 1, reach: 12 }, play: { near: 14, alone: 3, peel: 10, safe: 12, wait: 8 } }
+# THE TWIN SEALS as a Call's objective (lib/bot-objective.js `seals`: the Brawl, on the Span). stand: where a body stands in a
+# seal's ring (the ring is 10 m and the standing stone is at its centre). split: the seats of a team, counted from its first
+# (0 to 4), that answer a Call at the seal its horn did not name: two of five, so each seal has bodies from the first second
+# play: THE SEALS' OWN STEP (lib/bot-objective.js sealsPlan, sealsPlay). zone: an enemy known within this of a seal is at it. near:
+# an enemy this near a seal we hold alone calls a second body to it. in: a body in a ring stands this far inside its line. line:
+# the body that stops their bar stands this far inside the line, on our side. door: the others of a group that is outnumbered
+# stand this far outside the line. arc: degrees between two bodies of a group on their circle. stallHp: under this share of its
+# health the body on the line steps back to the door, and a body whose place is in a ring may leave it for a stance that flees
+# (at or over it, it stays: its place is the Call). finish: while their front structure stands under this share of its health, one
+# body that holds no seal and stands within finishNear m of that structure is given to the lane to break it with the wave. dive: that body strikes the stone with no wave to tank it when
+# the stone stands at or under `tower` / `keep` of its health (it falls in a few blows) and the body has `hp` of its own; the dive is one
+# decision of `seconds` (scripts/bot.js commitDive: it is out when the shots have cost it its budget).
+# room: the isle, as a circle about the lane's middle: a body on the Call's play takes no fight with an enemy outside it (the hands' tether).
+seals: { stand: { front: 4, back: 7, heart: 2.4, in: 1.5, arc: 120, apart: 40 }, split: [1, 3], room: 70, play: { zone: 24, near: 34, in: 3, line: 1.2, door: 7, arc: 40, stallHp: 0.45, finish: 0.25, finishNear: 40, dive: { tower: 0.25, keep: 0.12, hp: 0.6, seconds: 3 } } }
+# THE DEEP ROAD as a Call's objective (lib/bot-objective.js `deeproad`: the map whose objective it is plays by these). loot: a bot
+# this near a drop of skulls walks onto it. wait: on the surface a body waits this far from its gate, on the arch's line. queue:
+# the bodies of a team go through the arch onto the pad one at a time: the nearest goes, the others wait their turn on the
+# arch's line this far apart (more than a body steps off another: lib/bot-motion.js). alone:
+# with this many of theirs below, a body with none of ours there (or beside it to go with) does not go down, and one below
+# leaves by its own door. thin: the guardian is the target once this few miners are left that the body may take, and a teammate
+# is below with it. half: under `hold` a body takes what stands up to this far past the room's middle. hitPad, mana: it strikes a
+# monster within its reach and hitPad, and spends spells on it while its mana is above this share (a camp's rule). approach: it
+# stops at this share of its reach from the monster. way: how a body walks where the walk map knows nothing: a line to a gate's
+# or a door's pad that has an arch post within `post` of it goes first to the arch's own line, `out` from the pad's centre; in the
+# room a goal is kept `wall` inside the floor's edge and a walk keeps `clear` of a stump's stone, by a point `side` past that; a
+# body that leaves the room takes the door on its way, or the other door when that one is more than `near` nearer.
+# THE HOLLOW YARD (Highrift Deep's room, lib/bot-objective.js yardPlay). yard.roles: the zones (lib/hrdeep-layout.js ZONES ids;
+# own / far = a team's own gate yard / theirs; crypt = eye the Crypt Circle) each role clears in order once below; order: the role
+# a seat plays by its place in its team where its lane names none. take: bodies of ours in the crypt before we start the guardian;
+# crypt: theirs in it that say THEY start it (or one, with its health under hurt and none of ours there); bellS: seconds to the bell
+# under which a team that leads by more than the guardian has left plays safe; snipe: a share of the guardian's health over its
+# next drop under which a stealing body swings; rally: metres outside the crypt's edge a contest regroups at, together the bodies
+# that go in from there against three; eye: how far from the crypt the crypt-eyer helps a pack; strafe/strafeMs: its sway in degrees.
+deep: { loot: 14, wait: 8, queue: 3, alone: 3, thin: 3, half: 3, hitPad: 1.4, mana: 0.3, approach: 0.8, way: { post: 1.3, out: 5, clear: 0.9, side: 0.6, wall: 1, near: 12 }, yard: { take: 2, crypt: 2, hurt: 0.97, bellS: 25, snipe: 0.05, rally: 6, together: 2, eye: 18, strafe: 25, strafeMs: 1700, roles: { top: [own, near, belltower], mid: [belltower, near, flank], jungle: [crypt, belltower, near], bot: [own, flank, far], support: [near, own, flank] }, order: [top, mid, jungle, bot, support] } }
+# SEND AS MANY AS THEY BRING (scripts/bot.js coachCalls). absent: ON A MAP WITH ONE LANE (the map's seatLane: the Brawl) a team of
+# bots alone names this many bodies fewer for a Call for each PERSON of the other team who was no body in the last Call (she
+# neither stood at it nor walked to it), `max` at most; 0: off. wide: the same number on a map of several lanes. It is 0
+# (fix round 7): there the ease made the seat of a person who is AWAY better than the seat of one who plays (her side won
+# 15 of 32 Warfronts away and 9 of 32 walking to every Call, the same five against her; with wide 0: FOR THE LEAD in the
+# lane's report), and the lead's bar is "a side with an absent body still loses most". 1 brings the old rule back. The body that stays keeps to its lane (on a map whose Call is fought in a room: to its own front structure). The
+# moment she stands at a Call or walks to one, all five are named again.
+# idleS: IN THE LANE TOO, ON A MAP WITH ONE LANE (the map's seatLane: the Brawl). A person of the other team who lives and has not left her own base for this many seconds is away
+# from her keys: for each (`max` at most) one body of ours keeps to its own front structure, between the Calls and through
+# them, until the beat she is out of her base (0: off). Four bots whose fifth is away meet four, not five, from the first minute.
+# HER HAND (lib/bot-clock.js personHand): she is at her keys while she walks at handV m/s or more, or has cast or struck in the
+# last handS seconds. Away is no hand, at home, for idleS seconds, and never while one of ours or our walker stands at her base.
+ease: { absent: 1, wide: 0, max: 2, idleS: 20, handV: 1, handS: 3 }
+# AT THE HORN. The team trades the Call for a structure when it is SHORT for it: tradeDown bodies under theirs, or under tradeRead
+# of their strength, with every body counted, ours and theirs, that can stand there tradeLate seconds into the Call (no clock
+# closes a Call: a body that lands a few seconds late is not missing from it). It resets first when resetWant of its bots want
+# a recall or its average health is under resetHp.
+# A TRADE IS REAL only where a wave of ours stands in the structure's reach within tradeWave seconds of the bodies' own walk
+# there (a structure is struck only while a wave takes its shots). ONE DECISION AT THE HORN: a team that would stand short
+# trades the Call only for such a structure, all five, from the horn; with none it gathers and plays the Call from its line.
+# Once a Call is open no trade is begun (the Toll and the Road, whose Calls a clock closes, still leave when their own rule says).
+horn: { tradeDown: 2, tradeRead: 0.6, tradeLate: 20, resetHp: 0.6, resetWant: 2, tradeWave: 12 }
+# BACKING OFF. The team walks to its nearest structure; the call is over when no enemy is known within clear of a named bot and none
+# of them stands at the lit pit any more, or after seconds.
+back: { clear: 30, seconds: 12 }
+# A MERCENARY CAMP as a team play: on the menu while the next horn is further off than the walk, the clear and lead; the nearest
+# loose laner within help seconds of walk joins after the lane phase. far: the lane away from the next Call's pit is worth this much more.
+camp: { lead: 8, help: 20, far: 1.5, place: 25 }
+# A GANK as a team play: the jungler within walk seconds, prey under hp of its health or pushed past `pushed` of the lane toward our
+# side. The lane's own bots go in when the jungler stands within near of the prey; the play is dead after its walk and seconds.
+gank: { walk: 30, hp: 0.5, pushed: 0.45, near: 25, seconds: 20, place: 35 }
+# THEIR TITAN in a team read: it weighs as body bodies of the average champion and perRank more for each rank past the first.
+titanDefend: { body: 1.2, perRank: 0.3 }
+# THE LAST STAND. The team is ahead on the clock when its core is left with margin more of its health than theirs at the end (or
+# theirs falls first by margin seconds).
+stand: { margin: 0.02, marginS: 3 }
+# WALKING WITH OUR TITAN: nobody stands ahead of it where a standing enemy tower or core (its reach and pad) covers him; a bot stays
+# behind m behind it there. laneR: how far off the Titan's lane the rule still holds. (A tower's and the core's reach: tuning.yml.)
+# ONE PUSH: a body on the walk stands in its SEAT beside the Titan (seats: degrees off the Titan's heading, one a role; seat:
+# metres outside its rim) and takes no fight further than fightR from the Titan (a hero that struck it within its own reach
+# excepted: it answers). joinS, useS: a body groups with the Titan when its walk there is joinS or less and leaves it this much
+# of the Titan's time; else it splits: it keeps the push its call names, or pushes its own lane, or with no lane of its own
+# the one whose outer structure is weakest. hornLate: beside a Titan that stands under an enemy structure's shots, a body
+# leaves for the next Call this many seconds later than the gather's own rule says (it reaches the Call that much late).
+# THE DELIBERATE SPLIT: when splitFoes of theirs have come to meet our Titan and another lane's outermost structure stands at
+# splitHp % or less with none of theirs known within splitClear of it, one body of the walk goes and takes it.
+escort: { behind: 3, pad: 2, laneR: 26, seats: [135, -135, 95, -95, 180], seat: 4, fightR: 14, joinS: 16, useS: 12, hornLate: 6, splitFoes: 4, splitHp: 60, splitClear: 45 }
+# FINISHING (the owners: "when a bot team has the objective, they don't actually seek to press their map advantage" / "it needs
+# to be a push"). AT THEIR CORE (scripts/bot.js, the core read): while a walker of ours or tankN of our minions stand in its
+# lance's reach and the lance is on no hero, a body on a push within corePad of that reach strikes the core and nothing else
+# (a kill in reach excepted: an enemy at killHp of its health or less, inside its basic reach and a step). A body the lance
+# has turned on, with nothing of ours to take it, leaves unless what stands of the core is under burstS seconds of what the
+# bodies there deal. As the weaker side (its team's read of the play under the play's off line, or its own fight says
+# disengage) a body strikes the core only when it falls inside weakS seconds of what they deal. SPELLS ON A STONE: a body that strikes a tanked structure spends its damage spells on it from the mana
+# above its reserve (all of it on a stone at `low` of its health or less, and on the core), none while an enemy hero stands
+# within clear metres of the stone.
+# HURT: a body under fitHp of its health stays behind its walker and does not walk to the core's wall, unless the core falls
+# inside weakS (seen live on the Span: two heroes at a third of their health went to the core beside a dying Titan and fell there).
+# THE CALLER'S SIDE (scripts/bot.js coachCalls, playStep): a standing push or play on the core whose stone has fallen by its
+# measured pace over logS seconds so that it is down inside s seconds, with `near` of ours at it, is FINISHED FIRST: it stays on
+# the menu through a horn and an open Call and outranks them. THE CORE is offered in every phase: at a horn and in an open
+# Call it outranks the Call only when it is being finished, when its shield is broken, or on an ACE (aceDown or more of
+# theirs are down for longer than our walk to it and aceS seconds).
+finish: { tankN: 2, corePad: 8, killHp: 0.25, burstS: 4, weakS: 8, low: 0.3, clear: 6, logS: 8, s: 20, near: 2, aceDown: 3, aceS: 10, fitHp: 0.35 }
+# THEIR FOUNTAIN: while their core stands, no bot takes a hero inside this many metres of it for a target (lib/bot-fight.js `shun`): a
+# fountain is 13 m and heroes stand up in it every few seconds, so a body that hunts there never leaves.
+fountShun: 26
+# THE SHOP (izkimar 2026-10-04: "i want you to have to buy in base"; gear.yml THE PLACE). Gear is bought at home or while dead, so
+# a bot out of a fight with a hero or a tower goes home once one stay there is worth the walk (lib/bot-tactics.js shopWorth): a
+# laner in its back window (lib/bot-lane.js backWindow: its laner gone or low, its wave safe), and a recall the bot's state is handed
+# with (lib/bot-tactics.js recallWorth). Its auto-buy buys the second it lands, up to four steps a second (lib/gear-shop.js
+# gearSlow). minGold: a trip home costs the lane half a minute, so a stay must buy this much (the plan's next steps while the gold
+# lasts, up to those four, and a seed's bloom at its charm's price: lib/gear-rules.js visitOf), or finish what the plan can buy now:
+# the weapon's forge (950) or its awakening (900) is a trip alone; a base (300 to 350), the relic (500), an armor's or a charm's
+# forge (800, 700) only with what comes after it (items stage P2-4: a bot walked home for a lone 325-gold base once its purse held 900).
+shop: { minGold: 900 }

@@ -1,0 +1,91 @@
+# The Deep Road: the main objective of the Underrift (lib/data/maps.js underrift). Read by scripts/lib/deeproad.js (the rule and the
+# body's step), scripts/lib/deeproad-stage.js (what the room sees and hears), scripts/lib/ui-deeproad.js (the HUD), scripts/jungle.js
+# and scripts/monster-data.js (the bone packs and the guardian are camps of the cave). When a Call opens is the clock's (tuning.yml
+# clock); where the room, its doors and the pit gates stand is scripts/lib/underrift-layout.js; a golem's body is the Titan's
+# (data/titan.yml), with the shares below.
+
+# ---- the road ----
+# How long the gates stay open is not a number of this file: the bell rings when the Call's own time is up, and a Call's length on
+# this map is the map row's (lib/data/maps.js underrift tuning.clock.callMax), the one second the clock strip, the bar and the bell all count to.
+road:
+  rise: 3           # seconds after the bell before the golems rise
+  carry: 3          # seconds after the bell a body may still be below before the room carries it up itself
+  settleMs: 600     # after a gate has taken a body it takes it again no sooner than this
+
+# ---- the gates ----
+gate:
+  view: true        # the glass in an open gate shows the far side (a material view of the gate it leads to). false: a veil of light
+  preset: engine/portal-ember   # the glass's frame when it shows the far side
+  spread: 1.6       # metres between the seats where a team is set down
+  overMs: 4000      # a body that stood below this short a time ago and now stands on the room's rock left over the wall: it is set back down
+  still: 2          # a bot is taken by a pad only while it stands on it: its speed at or under this, in m/s (one that walks across keeps its feet)
+
+# ---- the bone packs: six, three miners each, where underrift-layout PACK_SPOTS says ----
+# A miner and the guardian are jungle monsters: their bodies and numbers are the bestiary's rows (scripts/monster-data.js KINDS
+# bone-miner, bone-guardian). Passive until struck, the pack answers a blow together, they leash to their spot; health and blows
+# grow with the heroes' average level as a camp's do.
+pack:
+  units: 3
+  ring: 2.3         # metres from the pack's middle to each miner
+
+# ---- the skulls ----
+# A miner drops `miner` skulls where it falls. The guardian drops `each` when its health first passes each share in `at`, and
+# `death` when it falls. A drop lies on the floor until the bell; the first living hero within reach of it takes it for his team.
+# The pool is what these give in all (six packs of pack.units miners and the guardian: 72 + 28 = 100 as written); no row states
+# it a second time, and a team's share is its count out of it.
+skulls:
+  miner: 4
+  guardian: { at: [0.75, 0.5, 0.25], each: 6, death: 10 }
+  reach: 2.4        # metres from a hero's feet to a drop
+  scatter: 2.6      # metres from the guardian's feet where its health drops land
+  early: true       # the bell rings early once every skull of the Call has been taken
+
+# ---- the golems ----
+# Each team gets one at every bell, the Titan's walking body at the Call's rank: a team that took no skull gets the smallest. Its
+# share is its team's skulls out of the pool. hp, fist and scale are [at no skulls, at every skull]: the share of the Titan's health,
+# of its blow on a structure and of its size, in a straight line between. Two golems of an even split press about as hard together
+# as 1.7 Titans, in two lanes.
+# lanes: the two lanes they walk. On the first Call the match's seed says which team takes lanes[0]; each Call after swaps them.
+# ahead: metres in front of the team's outermost standing structure of its lane where it rises (a lane with nothing standing: 40 m
+# out from the base along the lane). pay: the share of a Titan's kill pay a slain golem pays, times its own share.
+golem:
+  hp: [0.25, 1.5]
+  fist: [0.3, 1.4]
+  scale: [0.62, 1.1]
+  lanes: [bot, top]
+  ahead: 10
+  pay: 1.2
+
+# ---- below: the room's own air, laid on a player's screen while that player stands in it (a player's own atmosphere rows) ----
+# A low, nearly grey base: the room's colour is its lights' (warm at the doors and the walls, the Road's green on the floor), and
+# a hero's own colours are not drowned in one tint.
+# No row here names the moon. A hero's body is painted by its own material (scripts/cel/cel-core.js), and every band of that
+# paint is the moon's light times the hero's colour: no lamp and no shading of the place reaches it. A dimmed moon here is a
+# black hero. So the moon stays the place's own, and the room is dark because its roof casts a shadow: the floor, the walls and
+# the monsters lose the moon to it, and a hero stands as he does in a tower's shadow on the surface.
+below:
+  fog: { kind: exp2, color: "oklch(0.1 0.02 230)", density: 0.011 }
+  hemisphere: { skyColor: "oklch(0.5 0.025 230)", groundColor: "oklch(0.3 0.03 70)", intensity: 0.7 }
+  ambient: { light: { color: "oklch(0.72 0.02 230)", intensity: 0.35 } }
+# Highrift Deep's Hollow Yard is open ground under the map's dusk, so its air is not the mine's: violet-blue dusk, a bone-green
+# fill from the graves, fog closer than the plateau's (near 140) so the far rim melts and the yard reads as its own place
+yard:
+  fog: { kind: linear, color: "oklch(0.3 0.07 288)", near: 55, far: 320 }
+  hemisphere: { skyColor: "oklch(0.6 0.09 285)", groundColor: "oklch(0.42 0.08 162)", intensity: 0.85 }
+  ambient: { light: { color: "oklch(0.72 0.05 210)", intensity: 0.42 } }
+
+# ---- what the room sees and hears (scripts/lib/deeproad-stage.js) ----
+stage:
+  colours:
+    blue: { r: 0.04, g: 0.24, b: 0.95, lr: 0.45, lg: 0.75, lb: 1, paint: "oklch(0.78 0.13 235)" }
+    red: { r: 0.85, g: 0.04, b: 0.02, lr: 1, lg: 0.45, lb: 0.25, paint: "oklch(0.72 0.17 25)" }
+    road: { r: 0.35, g: 0.95, b: 0.7, lr: 0.6, lg: 1, lb: 0.85, paint: "oklch(0.86 0.13 165)" }   # the Road's own colour: pale bone-green
+    warm: { r: 0.5, g: 0.5, b: 0.42, lr: 0.8, lg: 0.8, lb: 0.7, paint: "oklch(0.7 0.03 100)" }    # a gate through the horn: not yet open
+  sound:
+    open: /cdn/moodboard-painterly-fantasy/sfx-titan-sigil-rune-ignite-choir.mp3                  # at each pit and for every player, when the gates open
+    bell: /cdn/moodboard-painterly-fantasy/sfx-deep-gate-closing-great-iron-bell-toll-long-echo.mp3 # every player, wherever they stand, when the gates shut
+    skull: /cdn/moodboard-painterly-fantasy/sfx-bone-skull-pickup-hollow-clack-with-soft-chime.mp3  # at the drop, when a hero takes it
+    drop: /cdn/moodboard-painterly-fantasy/sfx-monster-death-collapse.mp3                           # at the guardian, when its health sheds skulls
+    won: /cdn/moodboard-painterly-fantasy/sfx-drake-soul-claimed-choir-roar.mp3                     # the team with more skulls
+    lost: /cdn/moodboard-painterly-fantasy/sfx-allied-turret-lost-low-warning-toll.mp3              # the team with fewer
+    hum: /cdn/moodboard-painterly-fantasy/sfx-titan-violet-energy-charge-hum.mp3                    # at a pit while its gate warms through the horn

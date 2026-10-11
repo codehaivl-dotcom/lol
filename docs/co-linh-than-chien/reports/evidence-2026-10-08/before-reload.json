@@ -1,0 +1,30 @@
+{
+  "phase": "ingame",
+  "round": 10,
+  "player": {
+    "hero": "kha_tan",
+    "team": "blue",
+    "level": 1,
+    "xp": 0,
+    "gold": 505,
+    "items": [
+      "phial_of_dawn"
+    ],
+    "k": 0,
+    "d": 0,
+    "cs": 0,
+    "locale": "en"
+  },
+  "match": {
+    "roster": {
+      "pa_64a9fbc7b746f8b26c82ab3974be5384": {
+        "team": "blue",
+        "slot": 0,
+        "hero": "kha_tan",
+        "name": "lukasai"
+      }
+    },
+    "startedAt": 63269633.333333336,
+    "saved": {}
+  }
+}
