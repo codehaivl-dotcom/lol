@@ -1,5 +1,7 @@
 # 28 · Workflow: animation skill cho tướng (chuẩn, không làm mò)
 
+> **CURRENT ROUTING (2026-10-12):** [105 · Hero Factory](105-hero-factory-multi-agent-workflow.md) controls sequencing, multi-agent ownership and sign-off. This file is the **animation specialist checklist only**. Old 21-hero gating and LMB/RMB input references are historical; follow [91 QWER/D](91-khoa-input-qwer-d.md), [79 R standard](79-chuan-ultimate.md) and Owner Gate 4 before costly final production.
+
 Chuẩn của creator: mỗi skill một động tác riêng, hợp với tướng + class (đâm lao, nhảy chém, phi thân, giật lùi khi bắn cung…).
 Toàn thân phải chuyển động: gối khuỵu, lưng gập/xoắn, hông lên xuống, tay theo vũ khí. **Đẩy cả người từ A→B không phải animation.**
 
