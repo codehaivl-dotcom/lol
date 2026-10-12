@@ -20,7 +20,8 @@ function unit(kind, team, pos, extra) {
   return { uid: `${kind}-${++UID}`, kind, team, pos: { x: pos.x, z: pos.z ?? 0 }, r: 0.5, shields: [], slows: [], buffs: [], burns: [],
     stunUntil: 0, rootUntil: 0, charmUntil: 0, charmBy: null, untargetUntil: 0, pendingRoot: null, cds: {}, lockUntil: 0, pending: null,
     atkReady: 0, hitN: 0, bleed: { n: 0, until: 0 }, mark: null, lastHurt: -99, dead: false, aggro: {}, armorPen: 0, magicPen: 0,
-    by: {}, procs: {}, casts: {}, m: { dealt: 0, heroDealt: 0, taken: 0, healed: 0, allyHealed: 0, absorbed: 0, cc: 0, kills: 0, deaths: 0, diedAt: null }, ...extra };
+    heat: 0, cuongNhip: null, staffUntil: 0, chimeTimer: 0,
+    by: {}, procs: {}, casts: {}, m: { dealt: 0, heroDealt: 0, taken: 0, healed: 0, allyHealed: 0, absorbed: 0, shieldGiven: 0, cc: 0, kills: 0, deaths: 0, diedAt: null }, ...extra };
 }
 
 // ── đơn vị ───────────────────────────────────────────────────────────────────────────────────────────────
@@ -63,16 +64,38 @@ export function titanUnit(rank, avgLevel, team = "neutral", pos = { x: 0, z: 0 }
 
 // ── thế giới ────────────────────────────────────────────────────────────────────────────────────────────
 export function world(units, { seed = 1, maxT = 60, end = "teamWipe", objective = null } = {}) {
-  return { units, t: 0, R: rng(seed), maxT, end, objective, log: [] };
+  const W = { units, t: 0, R: rng(seed), maxT, end, objective, log: [], zones: [] };
+  for (const u of units) u._world = W;
+  return W;
 }
 const alive = (W, f) => W.units.filter((u) => !u.dead && f(u));
 const enemiesOf = (W, u) => alive(W, (o) => o.team !== u.team && (u.team !== "neutral" || o.kind === "hero") && !(o.team === "neutral" && u.kind === "minion"));
 const alliesOf = (W, u) => alive(W, (o) => o.team === u.team && o.kind === "hero");
 const ms = (u, t) => {
   let m = u.s.moveSpeed * (1 + u.buffs.filter((b) => b.until > t).reduce((a, b) => a + (b.moveSpeed ?? 0), 0)) + u.buffs.filter((b) => b.until > t).reduce((a, b) => a + (b.flatMs ?? 0), 0);
+  if (u._world?.zones) {
+    for (const z of u._world.zones) {
+      if (z.until > t && d2(u.pos, z.pos) <= z.r + u.r) {
+        if (z.type === "frost_trail") {
+          if (z.team === u.team) m *= 1 + (z.speedBoost ?? 0.20);
+          else m *= 1 - (z.slowRatio ?? 0.25);
+        }
+      }
+    }
+  }
   return m * (1 - u.slows.filter((x) => x.until > t).reduce((a, x) => Math.max(a, x.pct), 0));
 };
-const aspd = (u, t) => u.s.attackSpeed * (1 + u.buffs.filter((b) => b.until > t).reduce((a, b) => a + (b.attackSpeed ?? 0), 0));
+const aspd = (u, t) => {
+  let a = u.s.attackSpeed * (1 + u.buffs.filter((b) => b.until > t).reduce((a, b) => a + (b.attackSpeed ?? 0), 0));
+  if (u.cuongNhip && u.cuongNhip.stacks > 0) {
+    const p = u.k?.passive;
+    a *= 1 + Math.floor(u.cuongNhip.stacks) * (p?.aspdPerStack ?? 0.08);
+  }
+  if (u.k?.passive?.type === "staff_reach" && (u.staffUntil ?? 0) <= t) {
+    a *= 1 + (u.k.passive.shortAspdBonus ?? 0.15);
+  }
+  return a;
+};
 const targetable = (u, t) => !u.dead && u.untargetUntil <= t;
 
 function raw(src, d, r, tgt) {
@@ -88,8 +111,16 @@ export function hurt(W, src, tgt, amount, type, opt = {}) {
   if (!(amount > 0) || tgt.dead) return 0;
   if (tgt.kind === "hero" && src.kind === "hero") amount *= src.dmgM ?? 1; // combat.js: tuning.dmg chỉ tướng↔tướng
   const pre = amount;
-  if (type === "physical") amount *= 100 / (100 + Math.max(0, tgt.s.armor * (1 - (src.armorPen ?? 0))));
-  else if (type === "magic") amount *= 100 / (100 + Math.max(0, tgt.s.mr - (src.magicPen ?? 0)));
+  let tgtArmor = tgt.s.armor;
+  let tgtMr = tgt.s.mr;
+  // Forge: Quá nhiệt tăng sức chống chịu
+  if (tgt.k?.passive?.type === "heat_gauge" && (tgt.heat ?? 0) >= 50) {
+    const bonusRes = (tgt.heat - 50) * 0.3;
+    tgtArmor += bonusRes;
+    tgtMr += bonusRes;
+  }
+  if (type === "physical") amount *= 100 / (100 + Math.max(0, tgtArmor * (1 - (src.armorPen ?? 0))));
+  else if (type === "magic") amount *= 100 / (100 + Math.max(0, tgtMr - (src.magicPen ?? 0)));
   if (tgt.mark && tgt.mark.until > W.t && !opt.mark) { const m = tgt.mark; tgt.mark = null; hurt(W, m.src, tgt, m.amount, m.type, { mark: true, tag: "skill:mark" }); if (tgt.dead) return amount; }
   tgt.m.mitigated = (tgt.m.mitigated ?? 0) + (pre - amount);
   let left = amount;
@@ -99,6 +130,11 @@ export function hurt(W, src, tgt, amount, type, opt = {}) {
     if (sh.amt <= 0) sh.brokeAt = W.t;
   }
   tgt.hp -= left; tgt.lastHurt = W.t;
+  // Forge: Tích nhiệt khi nhận sát thương
+  if (tgt.k?.passive?.type === "heat_gauge") {
+    const p = tgt.k.passive;
+    tgt.heat = Math.min(100, (tgt.heat ?? 0) + amount * (p.heatPerDmgTaken ?? 0.04));
+  }
   if (src.uid) (tgt.hitBy ??= new Set()).add(src.uid);
   src.m.dealt += amount; tgt.m.taken += amount;
   const tag = opt.tag ?? "other"; src.by[tag] = (src.by[tag] ?? 0) + amount;
@@ -130,6 +166,17 @@ function applyEffects(W, src, tgt, list) {
     const cc = (e.stun ?? 0) + (e.root ?? 0) + (e.charm ?? 0) + (e.slow ? (e.duration ?? 1) * e.slow : 0);
     if (e.after) { if (d2(tgt.pos, src.pos) + ms(tgt, W.t) * e.after * (tgt.prof?.sidestep ?? 0) * 0.5 <= e.holdRange) { tgt.pendingRoot = { at: W.t + e.after, dur: e.root }; src.m.cc += e.root; } continue; }
     src.m.cc += cc;
+    if (e.heal) {
+      const amt = typeof e.heal === "number" ? e.heal : raw(src, e.heal, 1, tgt);
+      if (e.heal.ally || e.ally) {
+        const a = alliesOf(W, src).filter((x) => x !== src && !x.dead).sort((p, q) => p.hp / p.s.hp - q.hp / q.s.hp)[0];
+        if (a) heal(W, src, a, amt); else heal(W, src, src, amt);
+      } else if (e.heal.allies || e.allies) {
+        for (const a of alliesOf(W, src)) if (d2(a.pos, src.pos) <= (e.radius ?? 6)) heal(W, src, a, amt);
+      } else {
+        heal(W, src, tgt.team === src.team ? tgt : src, amt);
+      }
+    }
     if (tgt.kind === "titan" || tgt.kind === "tower") continue; // boss/trụ không nhận khống chế
     if (e.stun) tgt.stunUntil = Math.max(tgt.stunUntil, W.t + e.stun);
     if (e.root) tgt.rootUntil = Math.max(tgt.rootUntil, W.t + e.root);
@@ -245,7 +292,16 @@ function resolve(W, h) {
   const { ab, rank, tgt, slot } = h.pending; h.pending = null; h._slot = slot;
   const t = W.t, e = tgt;
   if (ab.aim === "self") {
-    if (ab.shield) shieldOn(W, h, h, raw(h, { base: ab.shield.base, ap: ab.shield.ap, ad: ab.shield.ad }, rank) + (ab.shield.maxHp ?? 0) * h.s.hp, ab.shield.duration, { burst: ab.shield.burst, rank, kit: true });
+    let shieldAmt = ab.shield ? raw(h, { base: ab.shield.base, ap: ab.shield.ap, ad: ab.shield.ad }, rank) + (ab.shield.maxHp ?? 0) * h.s.hp : 0;
+    if (h.k.passive?.type === "heat_gauge" && (h.heat ?? 0) > 0 && (slot === "rmb" || ab.ventHeat)) {
+      const heatSpent = h.heat; h.heat = 0;
+      shieldAmt += heatSpent * (h.k.passive.shieldPerHeat ?? 1.5);
+      const ventDmg = heatSpent * (h.k.passive.ventDmgPerHeat ?? 1.2);
+      for (const o of enemiesOf(W, h)) if (d2(o.pos, h.pos) <= 4.0 + o.r && targetable(o, t)) hurt(W, h, o, ventDmg, "magic", { tag: "passive:heat_vent" });
+      proc(h, "passive:heat_vent");
+    }
+    if (ab.shield) shieldOn(W, h, h, shieldAmt, ab.shield.duration, { burst: ab.shield.burst, rank, kit: true });
+    if (ab.shield?.allies) for (const a of alliesOf(W, h)) if (a !== h && d2(a.pos, h.pos) <= (ab.shield.radius ?? 6)) shieldOn(W, h, a, raw(h, { base: ab.shield.base, ap: ab.shield.ap }, rank), ab.shield.duration, { kit: true });
     if (ab.shield && h.k.passive?.type === "shield_strike") h.empowered = true;
     if (ab.buff) h.buffs.push({ moveSpeed: ab.buff.moveSpeed ?? 0, attackSpeed: at(ab.buff.attackSpeed ?? 0, rank), until: t + ab.buff.duration });
     if (ab.dash?.to === "ally") dashAlly(W, h, e, ab);
@@ -254,17 +310,31 @@ function resolve(W, h) {
     passiveBuff(W, h);
     if (ab.knockback) for (const o of enemiesOf(W, h)) if (d2(o.pos, h.pos) <= 4 && o.kind !== "titan" && o.kind !== "tower") { step(o, toward(h.pos, o.pos), ab.knockback); o.slows.push({ pct: 0.3, until: t + 1 }); }
     if (ab.cleanse) { h.slows = []; h.rootUntil = Math.min(h.rootUntil, t); if (ab.cleanse === "bleed") h.bleed = { n: 0, until: 0 }; }
-    if (ab.heal?.allies) for (const a of alliesOf(W, h)) if (d2(a.pos, h.pos) <= (ab.radius ?? 6)) heal(W, h, a, raw(h, { base: ab.heal.base, ap: ab.heal.ap }, rank));
+    if (ab.heal?.self) heal(W, h, h, raw(h, { base: ab.heal.base, ap: ab.heal.ap }, rank));
+    if (ab.heal?.allies) for (const a of alliesOf(W, h)) if (d2(a.pos, h.pos) <= (ab.heal.radius ?? ab.radius ?? 6)) heal(W, h, a, raw(h, { base: ab.heal.base, ap: ab.heal.ap }, rank));
+    if (ab.heal?.ally) { const a = alliesOf(W, h).filter((x) => x !== h && d2(x.pos, h.pos) <= (ab.heal.range ?? ab.range ?? 8) + 1).sort((p, q) => p.hp / p.s.hp - q.hp / q.s.hp)[0]; if (a) heal(W, h, a, raw(h, { base: ab.heal.base, ap: ab.heal.ap }, rank)); }
+    if (h.k.passive?.type === "frost_trail" && slot === "rmb") {
+      W.zones ??= [];
+      W.zones.push({ type: "frost_trail", team: h.team, pos: { x: h.pos.x, z: h.pos.z }, r: 2.5, until: t + 3.5, speedBoost: 0.25, slowRatio: 0.30 });
+      proc(h, "passive:frost_trail");
+    }
     return;
   }
   if (ab.dash?.to === "ally") dashAlly(W, h, e, ab);
   if (ab.dash && ab.dash.toward === false) step(h, toward(e.pos, h.pos), ab.dash.distance);
+  if (h.k.passive?.type === "staff_reach" && slot === "q") {
+    h.staffUntil = t + (h.k.passive.extendDuration ?? 4.0);
+    proc(h, "passive:staff_extend");
+  }
+  if (h.k.passive?.type === "heat_gauge") {
+    h.heat = Math.min(100, (h.heat ?? 0) + (h.k.passive.heatPerCast ?? 15));
+  }
   const hitList = struck(W, h, e, ab);
   if (ab.dash && ab.dash.toward) { const go = Math.min(ab.dash.distance, Math.max(0, d2(h.pos, e.pos) - 1.2 - e.r)); step(h, toward(h.pos, e.pos), go); }
   if (ab.heal?.self && !ab.heal.damageShare) heal(W, h, h, raw(h, { base: ab.heal.base, ap: ab.heal.ap }, rank));
-  if (ab.heal?.allies) for (const a of alliesOf(W, h)) if (a !== h && d2(a.pos, h.pos) <= (ab.radius ?? 6) + 2) heal(W, h, a, raw(h, { base: ab.heal.base, ap: ab.heal.ap }, rank));
-  if (ab.heal?.ally) { const a = alliesOf(W, h).filter((x) => x !== h && d2(x.pos, h.pos) <= (ab.range ?? 8) + 1).sort((p, q) => p.hp / p.s.hp - q.hp / q.s.hp)[0]; if (a) heal(W, h, a, raw(h, { base: ab.heal.base, ap: ab.heal.ap }, rank)); }
-  if (ab.shield?.allies) for (const a of alliesOf(W, h)) if (d2(a.pos, h.pos) <= 6) shieldOn(W, h, a, raw(h, { base: ab.shield.base }, rank), ab.shield.duration, { kit: true });
+  if (ab.heal?.allies) for (const a of alliesOf(W, h)) if (a !== h && d2(a.pos, h.pos) <= (ab.heal.radius ?? ab.radius ?? 6) + 2) heal(W, h, a, raw(h, { base: ab.heal.base, ap: ab.heal.ap }, rank));
+  if (ab.heal?.ally) { const a = alliesOf(W, h).filter((x) => x !== h && d2(x.pos, h.pos) <= (ab.heal.range ?? ab.range ?? 8) + 1).sort((p, q) => p.hp / p.s.hp - q.hp / q.s.hp)[0]; if (a) heal(W, h, a, raw(h, { base: ab.heal.base, ap: ab.heal.ap }, rank)); }
+  if (ab.shield?.allies) for (const a of alliesOf(W, h)) if (d2(a.pos, h.pos) <= (ab.shield.radius ?? 6)) shieldOn(W, h, a, raw(h, { base: ab.shield.base, ap: ab.shield.ap }, rank), ab.shield.duration, { kit: true });
   let dealt = 0, heroHit = false;
   for (const o of hitList) {
     const dist = d2(h.pos, o.pos);
@@ -314,7 +384,8 @@ function itemOnAbilityHero(W, h, o) {
 const proc = (u, k) => { u.procs[k] = (u.procs[k] ?? 0) + 1; };
 function autoAttack(W, h, e) {
   const t = W.t, lmb = h.k.lmb, dist = d2(h.pos, e.pos);
-  if (dist > (lmb.range ?? 2) + e.r + 0.3 || !targetable(e, t)) return false;
+  const reach = (h.k.passive?.type === "staff_reach" && (h.staffUntil ?? 0) > t ? (h.k.passive.extendedRange ?? 4.5) : (lmb.range ?? 2));
+  if (dist > reach + e.r + 0.3 || !targetable(e, t)) return false;
   const iv = 1 / aspd(h, t);
   h.atkReady = t + iv; h.lockUntil = t + Math.min(0.35, iv * 0.3); h.hitN++; h._now = t;
   let amt = h.s.ad, type = "physical";
@@ -323,6 +394,29 @@ function autoAttack(W, h, e) {
   if (projectile) return true;
   hurt(W, h, e, amt, type, { tag: "aa" });
   const p = h.k.passive;
+  if (p?.type === "staff_reach" && (h.staffUntil ?? 0) > t) {
+    if (dist >= (p.sweetspotMin ?? 2.8)) {
+      const bonus = amt * (p.sweetspotBonus ?? 0.25);
+      hurt(W, h, e, bonus, "physical", { tag: "passive:staff_sweetspot" });
+      applyEffects(W, h, e, [{ slow: 0.2, duration: 0.8 }]);
+      proc(h, "passive:staff_sweetspot");
+    }
+  }
+  if (p?.type === "cuong_nhip") {
+    h.cuongNhip ??= { stacks: 0, lastHit: -99 };
+    const gain = e.kind === "hero" ? (p.stackPerHit ?? 1) : (p.stackPerMinion ?? 0.5);
+    const max = p.maxStacks ?? 6;
+    h.cuongNhip.stacks = Math.min(max, (h.cuongNhip.stacks ?? 0) + gain);
+    h.cuongNhip.lastHit = t;
+    if (h.cuongNhip.stacks >= max && !h.cuongNhip._maxLogged) { proc(h, "passive:cuong_nhip_max"); h.cuongNhip._maxLogged = true; }
+  }
+  if (p?.type === "frost_trail" && h.hitN % (p.shotsPerTrail ?? 4) === 0) {
+    W.zones ??= [];
+    W.zones.push({ type: "frost_trail", team: h.team, pos: { x: h.pos.x, z: h.pos.z }, r: p.trailRadius ?? 2.2, until: t + (p.trailDuration ?? 3.0), speedBoost: p.trailSpeedBoost ?? 0.20, slowRatio: p.trailSlowRatio ?? 0.25 });
+  }
+  if (p?.type === "heat_gauge") {
+    h.heat = Math.min(100, (h.heat ?? 0) + (p.heatPerHit ?? 10));
+  }
   if (p?.type === "every_nth_hit" && h.hitN % p.n === 0) { hurt(W, h, e, raw(h, p.bonusDamage, 1), p.bonusDamage.type, { tag: "passive" }); proc(h, "passive"); applyEffects(W, h, e, p.effects); }
   if (p?.type === "bleed") addBleed(W, h, e, 1);
   if (p?.type === "cdr_on_hit" && !(p.minGap && t - (h.cdrAt ?? -1e9) < p.minGap)) {
@@ -382,11 +476,20 @@ function heroThink(W, h) {
   }
   if (t >= h.atkReady && autoAttack(W, h, e)) return;
   if (h.rootUntil > t) return;
-  const range = (h.k.lmb.range ?? 2) + e.r, dist = d2(h.pos, e.pos), want = range - 0.4;
+  const baseRange = (h.k.passive?.type === "staff_reach" && (h.staffUntil ?? 0) > t ? (h.k.passive.extendedRange ?? 4.5) : (h.k.lmb.range ?? 2));
+  const range = baseRange + e.r, dist = d2(h.pos, e.pos), want = range - 0.4;
   let dir = null, backing = false;
   if (dist > want) dir = toward(h.pos, e.pos);
-  else if (h.prof.kite > 0 && e.kind === "hero" && (h.k.lmb.range ?? 2) > (e.k?.lmb?.range ?? 2) + 2 && dist < want - 0.8) { dir = toward(e.pos, h.pos); backing = true; }
-  if (dir) step(h, dir, Math.min(Math.abs(dist - want) + 0.01, ms(h, t) * DT * (backing ? +h.prof.kite : 1)));
+  else if (h.prof.kite > 0 && e.kind === "hero" && baseRange > (e.k?.lmb?.range ?? 2) + 2 && dist < want - 0.8) { dir = toward(e.pos, h.pos); backing = true; }
+  if (dir) {
+    step(h, dir, Math.min(Math.abs(dist - want) + 0.01, ms(h, t) * DT * (backing ? +h.prof.kite : 1)));
+    if (backing && h.k.passive?.type === "frost_trail" && t - (h.lastTrailDrop ?? -99) >= 1.0) {
+      h.lastTrailDrop = t;
+      W.zones ??= [];
+      W.zones.push({ type: "frost_trail", team: h.team, pos: { x: h.pos.x, z: h.pos.z }, r: 2.2, until: t + 3.0, speedBoost: 0.20, slowRatio: 0.25 });
+      proc(h, "passive:frost_trail");
+    }
+  }
 }
 // trụ: tướng vừa đánh tướng đồng minh trong tầm → lính gần nhất → tướng gần nhất; phát liên tiếp vào cùng tướng tăng dần
 function towerThink(W, u) {
@@ -458,6 +561,44 @@ function tickDots(W, u) {
   if (u.bleed.until > t && u.bleed.n) { const s = u.bleed.src; hurt(W, s, u, raw(s, s.k.passive.perStack, 1) * u.bleed.n * DT, "physical", { tag: "passive:dot" }); }
   for (const b of u.burns) if (b.until > t) hurt(W, b.src, u, b.dps * DT, "magic", { tag: "passive:dot" });
   if (u.kind !== "hero" || u.dead) return;
+
+  // Kael: Cuồng Nhịp suy giảm dần
+  if (u.cuongNhip && u.cuongNhip.stacks > 0) {
+    const p = u.k.passive;
+    const delay = p?.decayDelay ?? 2.0;
+    if (t - u.cuongNhip.lastHit >= delay) {
+      const decayRate = p?.decayRate ?? 2.0;
+      u.cuongNhip.stacks = Math.max(0, u.cuongNhip.stacks - decayRate * DT);
+    }
+  }
+
+  // Forge: Hạ nhiệt ngoài giao tranh
+  if (u.k?.passive?.type === "heat_gauge" && (u.heat ?? 0) > 0) {
+    if (t - u.lastHurt > 3.0 && t - (u.hitHeroAt ?? -99) > 3.0) {
+      u.heat = Math.max(0, u.heat - 10 * DT);
+    }
+  }
+
+  // Jeli: Sóng chuông ngân theo nhịp
+  if (u.k?.passive?.type === "chime_resonance") {
+    u.chimeTimer = (u.chimeTimer ?? 0) + DT;
+    const interval = u.k.passive.interval ?? 3.5;
+    if (u.chimeTimer >= interval) {
+      u.chimeTimer = 0;
+      const p = u.k.passive;
+      const healAmt = raw(u, p.chimeHeal, 1);
+      const shieldAmt = p.chimeShield ? raw(u, p.chimeShield, 1) : 0;
+      const allies = alliesOf(W, u);
+      const lowestAlly = allies.filter((a) => a !== u && !a.dead).sort((p, q) => p.hp / p.s.hp - q.hp / q.s.hp)[0];
+      if (lowestAlly) {
+        heal(W, u, lowestAlly, healAmt);
+        if (shieldAmt > 0) shieldOn(W, u, lowestAlly, shieldAmt, 2.5, { kit: true });
+      }
+      heal(W, u, u, healAmt * 0.5);
+      proc(u, "passive:chime_resonance");
+    }
+  }
+
   let regen = u.s.hpRegen;
   if (u.regenBuff && u.regenBuff.until > t) regen += u.regenBuff.hps;
   const hf = u.P.restoring_memory; if (hf && t - u.heroCombatAt >= hf.trigger.afterSeconds) regen += hf.effect.amountPerSecond;
@@ -479,6 +620,7 @@ function tickDots(W, u) {
 export function run(W) {
   const order = () => { const a = W.units.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(W.R() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   while (W.t < W.maxT && !finished(W)) {
+    if (W.zones?.length) W.zones = W.zones.filter((z) => z.until > W.t);
     for (const u of order()) {
       if (u.dead) continue;
       if (u.idle) { if (u.kind === "hero" && u.pendingRoot && W.t >= u.pendingRoot.at) { u.rootUntil = W.t + u.pendingRoot.dur; u.pendingRoot = null; } continue; }

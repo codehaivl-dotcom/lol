@@ -7,10 +7,12 @@ heroes:
     stats: { hp: 780, resource: 0, ad: 56, ap: 0, armor: 44, mr: 34, moveSpeed: 6.0, attackSpeed: 0.62, hpRegen: 1.9, resourceRegen: 0 }
     growth: { hp: 112, resource: 0, ad: 3.2, ap: 0, armor: 4.8, mr: 1.8, moveSpeed: 0, attackSpeed: 0.016, hpRegen: 0.18, resourceRegen: 0 }
     passive:
-      type: every_nth_hit          # Lò Nhiệt Dâng Cao: Khi chịu và gây đòn, tích nhiệt tăng giáp và đòn kế đốt cháy
-      n: 3
-      bonusDamage: { type: magic, base: 25, ap: 0.25 }
-      effects: [{ slow: 0.2, duration: 1.0 }]
+      type: heat_gauge             # Thanh Nhiệt Lò Nung: Tích nhiệt khi chịu đòn (0.04/dmg) và gây đòn (+12). Quá nhiệt tăng kháng, xả áp qua RMB tạo thêm khiên & nổ nhiệt
+      heatPerDmgTaken: 0.04
+      heatPerHit: 12
+      heatPerCast: 15
+      shieldPerHeat: 1.6
+      ventDmgPerHeat: 1.2
     lmb: { aim: melee, range: 1.7 }   # Nắm đấm kim loại lò nung
     q:    # Đột Kích Lò Nung: lao thẳng phía trước, hất văng tướng đầu tiên
       aim: skillshot
@@ -23,7 +25,7 @@ heroes:
       dash: { distance: 7.0, toward: true }
       damage: { type: magic, base: [40, 65, 90, 115, 140], ap: 0.3 }
       effects: [{ stun: 0.8 }]
-    rmb:  # Khóa Áp Suất: đóng van tích nhiệt, tạo lớp khiên dày
+    rmb:  # Khóa Áp Suất & Xả Áp: tạo khiên và xả toàn bộ thanh nhiệt tăng khiên & nổ nhiệt diện rộng
       aim: self
       windup: 0
       cooldown: [15, 14, 13, 12, 11]

@@ -1,4 +1,6 @@
-reports/sim/
+reports/sim/*
+!reports/sim/production26/
+!reports/sim/production26/**
 node_modules/
 .spawn/
 __pycache__/

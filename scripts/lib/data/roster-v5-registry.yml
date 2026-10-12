@@ -1,0 +1,171 @@
+# BẢNG ĐĂNG KÝ ROSTER V5 CHUẨN MÁY ĐỌC (MACHINE-READABLE SINGLE SOURCE OF TRUTH)
+# Quy định: Đúng 26 tướng duy nhất trong phạm vi sản xuất đã duyệt (Doc 104).
+# Bất kỳ thay đổi ID/Wave nào phải sửa tại đây và chạy test xác nhận tự động.
+
+version: "5.0"
+approvedCount: 26
+
+waves:
+  wave_1:
+    name: "Wave 1: Vertical Slice Pioneer"
+    count: 5
+    heroes:
+      - id: "linh_hau"
+        number: 38
+        name: "Linh Hầu"
+        role: "fighter"
+        combatClass: "Đấu sĩ cận chiến / Biến điệu tầm trượng"
+      - id: "kael"
+        number: 39
+        name: "Kael"
+        role: "fighter_skirmisher"
+        combatClass: "Song đao cận chiến / Cuồng nhịp tích tầng"
+      - id: "lieu_tien"
+        number: 40
+        name: "Liễu Tiễn"
+        role: "marksman"
+        combatClass: "Xạ thủ băng / Vệt băng thả diều không va chạm"
+      - id: "forge"
+        number: 17
+        name: "Forge"
+        role: "tank_engage"
+        combatClass: "Đỡ đòn lò nổ / Thanh nhiệt xả áp"
+      - id: "jeli"
+        number: 34
+        name: "Jeli"
+        role: "support"
+        combatClass: "Hỗ trợ hộ vệ / Hồi phục nhịp chuông & khiên"
+
+  wave_2:
+    name: "Wave 2: Core Vanguard"
+    count: 6
+    heroes:
+      - id: "phu_dong"
+        number: 43
+        name: "Phù Dong"
+        role: "fighter"
+        combatClass: "Thiết kỵ / Xung kích đà mã & Tre ngà"
+      - id: "kiko"
+        number: 1
+        name: "Kiko"
+        role: "assassin"
+        combatClass: "Ảo ảnh khúc xạ / Phân thân cơ động"
+      - id: "brak"
+        number: 2
+        name: "Brak"
+        role: "fighter"
+        combatClass: "Thủ hộ cự thạch / Nện búa chấn động"
+      - id: "nera"
+        number: 7
+        name: "Nera"
+        role: "marksman"
+        combatClass: "Xạ thủ cổ / Tích tụ năng lượng"
+      - id: "vero"
+        number: 3
+        name: "Vero"
+        role: "mage"
+        combatClass: "Pháp sư tinh thạch / Vùng nổ ma thuật"
+      - id: "rolo"
+        number: 36
+        name: "Rolo"
+        role: "skirmisher"
+        combatClass: "Bộc phá lăn / Lăn pháo cơ động"
+
+  wave_3:
+    name: "Wave 3: Mythic & Beast Vanguard"
+    count: 8
+    heroes:
+      - id: "tan_son"
+        number: 44
+        name: "Tản Sơn"
+        role: "tank"
+        combatClass: "Sơn thần / Dựng lũy sơn thạch che chắn"
+      - id: "trieu_ba"
+        number: 45
+        name: "Triều Bá"
+        role: "mage"
+        combatClass: "Tam long / Thủy triều đẩy kéo khống chế"
+      - id: "dung_thach"
+        number: 46
+        name: "Dũng Thạch"
+        role: "fighter"
+        combatClass: "Cầm rìu / Tiếng đàn trấn giữ & giải hiệu ứng"
+      - id: "co_lo"
+        number: 47
+        name: "Cổ Lỗ"
+        role: "marksman"
+        combatClass: "Pháo đài mai rùa / Trọng pháo công thành"
+      - id: "kora"
+        number: 32
+        name: "Kora"
+        role: "tank"
+        combatClass: "Cua vệ binh / Khiên san hô chuyển hướng sát thương"
+      - id: "moka"
+        number: 31
+        name: "Moka"
+        role: "assassin"
+        combatClass: "Hổ nấm bào tử / Ẩn nấp rình vồ & độc nấm"
+      - id: "aero"
+        number: 15
+        name: "Aero"
+        role: "marksman"
+        combatClass: "Phi công cổ / Oanh tạc tầm cao"
+      - id: "iro"
+        number: 30
+        name: "Iro"
+        role: "mage"
+        combatClass: "Mắt cơ khí / Pháo kích tầm cực xa ngoài màn hình"
+
+  wave_4:
+    name: "Wave 4: Exotic & Arcane Finishers"
+    count: 7
+    heroes:
+      - id: "inka"
+        number: 19
+        name: "Inka"
+        role: "mage"
+        combatClass: "Họa sư cổ / Vẽ luồng mực dẫn hướng"
+      - id: "mok"
+        number: 37
+        name: "Mok"
+        role: "support"
+        combatClass: "Thấu thị nhãn / Kiểm soát tầm nhìn & sương mù"
+      - id: "libro"
+        number: 28
+        name: "Libro"
+        role: "support"
+        combatClass: "Cổ thư / Khế ước sao chép năng lực"
+      - id: "pavo"
+        number: 35
+        name: "Pavo"
+        role: "mage"
+        combatClass: "Khổng tước / Xòe quạt khúc xạ quang học"
+      - id: "kymos"
+        number: 49
+        name: "Kymos"
+        role: "mage"
+        combatClass: "Sóng dao động / Cộng hưởng âm vực"
+      - id: "eelix"
+        number: 33
+        name: "Eelix"
+        role: "assassin"
+        combatClass: "Lôi xà / Phóng điện lướt mặt đất"
+      - id: "oneira"
+        number: 48
+        name: "Oneira"
+        role: "mage"
+        combatClass: "Pháp sư mộng cảnh / Huyễn tưởng ru ngủ"
+
+proposals_out_of_scope:
+  - id: "duong_tien"
+    number: 41
+    status: "REWRITE_POOL"
+    note: "Thao tác căn điểm yếu quá phức tạp cho Tier 1"
+  - id: "pyra"
+    number: 42
+    status: "REWRITE_POOL"
+    note: "Đặt 2 điểm nổ là pháp sư chiến thuật, chưa đủ đơn giản"
+  - id: "bac_quan"
+    number: null
+    status: "REWRITE_POOL"
+    note: "Chưa có ID nghiên cứu riêng, nằm trong Rewrite Pool"

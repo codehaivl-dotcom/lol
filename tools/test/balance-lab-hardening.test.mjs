@@ -1,6 +1,7 @@
 // Test tự động xác minh các cải tiến Hardening cho Balance Lab (P0 & P1)
 import { describe, test, expect } from "bun:test";
 import path from "node:path";
+import { spawnSync } from "node:child_process";
 import { 
   ROOT, 
   HEROES, 
@@ -40,6 +41,21 @@ describe("Balance Lab Hardening Tests", () => {
     expect(loaded).toContain("hao_nhat");
     expect(isCandidate("hao_nhat")).toBe(true);
     expect(isCandidateOverride("hao_nhat")).toBe(true);
+  });
+
+  test("P0-2 Batch Hardening: loadAllCandidates throws when duplicate candidate exists without override", () => {
+    expect(() => {
+      loadAllCandidates({ allowOverride: false });
+    }).toThrow(/\[CANDIDATE_DUPLICATE_ID\]/);
+  });
+
+  test("P0-2 CLI Hardening: CLI batch candidate run fails when duplicate candidate exists without override", () => {
+    const res = spawnSync("bun", ["tools/sim/run.mjs", "parity", "--cand"], {
+      cwd: ROOT,
+      encoding: "utf8"
+    });
+    expect(res.status).not.toBe(0);
+    expect(res.stderr || res.stdout).toContain("[CANDIDATE_DUPLICATE_ID]");
   });
 
   test("P0-3: Single hero duel against baseline panel produces valid winrates without NaN", () => {

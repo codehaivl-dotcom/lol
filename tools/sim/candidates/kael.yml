@@ -2,15 +2,18 @@
 heroes:
   kael:
     role: fighter_skirmisher
-    tuning: { hp: 0.98, dmg: 1.04 }
+    tuning: { hp: 1.0, dmg: 0.95 }
     resource: none
-    stats: { hp: 680, resource: 0, ad: 68, ap: 0, armor: 35, mr: 30, moveSpeed: 6.3, attackSpeed: 0.68, hpRegen: 1.6, resourceRegen: 0 }
-    growth: { hp: 92, resource: 0, ad: 4.4, ap: 0, armor: 3.8, mr: 1.5, moveSpeed: 0, attackSpeed: 0.024, hpRegen: 0.15, resourceRegen: 0 }
+    stats: { hp: 670, resource: 0, ad: 64, ap: 0, armor: 34, mr: 30, moveSpeed: 6.3, attackSpeed: 0.68, hpRegen: 1.6, resourceRegen: 0 }
+    growth: { hp: 88, resource: 0, ad: 3.2, ap: 0, armor: 3.6, mr: 1.4, moveSpeed: 0, attackSpeed: 0.020, hpRegen: 0.14, resourceRegen: 0 }
     passive:
-      type: every_nth_hit          # Cuồng Nhịp: Đòn đánh liên tiếp tích lũy tốc độ đánh và hồi máu nhỏ
-      n: 2
-      bonusDamage: { type: physical, base: 18, ad: 0.35 }
-      effects: [{ heal: 15 }]
+      type: cuong_nhip             # Cuồng Nhịp: Đánh trúng tích tầng tốc đánh (+8%/tầng, max 5 tầng). Tướng +1, lính +0.5. Suy giảm dần sau 2s
+      maxStacks: 5
+      stackPerHit: 1.0
+      stackPerMinion: 0.5
+      aspdPerStack: 0.08
+      decayDelay: 2.0
+      decayRate: 2.0
     lmb: { aim: melee, range: 1.7 }   # Đánh thường bằng song đao cự ly gần
     q:    # Cuồng Trảm Lướt: lướt chém xuyên mục tiêu đầu tiên
       aim: skillshot
@@ -21,7 +24,7 @@ heroes:
       cooldown: [9, 8.5, 8, 7.5, 7]
       cost: [0, 0, 0, 0, 0]
       dash: { distance: 6.5, toward: true }
-      damage: { type: physical, base: [60, 95, 130, 165, 200], bonusAd: 0.85 }
+      damage: { type: physical, base: [50, 80, 110, 140, 170], bonusAd: 0.75 }
     rmb:  # Song Đao Toái Kích: vung song đao chém kép làm chậm đối thủ
       aim: area
       radius: 3.2
@@ -30,14 +33,14 @@ heroes:
       cooldown: [11, 10.5, 10, 9.5, 9]
       cost: [0, 0, 0, 0, 0]
       hits: 2
-      damage: { type: physical, base: [40, 65, 90, 115, 140], ad: 0.4 }
-      effects: [{ slow: 0.3, duration: 1.0 }]
+      damage: { type: physical, base: [35, 55, 75, 95, 115], ad: 0.35 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
     e:    # Kích Thích Huyết Mạch: tăng tốc độ đánh và nhận lượng khiên phản ứng
       aim: self
       windup: 0
       cooldown: [13, 12, 11, 10, 9]
       cost: [0, 0, 0, 0, 0]
-      shield: { base: [60, 95, 130, 165, 200], duration: 2.5 }
+      shield: { base: [55, 85, 115, 145, 175], duration: 2.5 }
     r:    # Huyết Cuồng Phong Ma: chuỗi chém liên hoàn tốc độ cao
       aim: area
       radius: 4.0
@@ -48,7 +51,7 @@ heroes:
       cost: [0, 0, 0]
       dash: { distance: 4.5, toward: true }
       hits: 3
-      damage: { type: physical, base: [80, 130, 180], bonusAd: 0.6 }
-      effects: [{ slow: 0.35, duration: 1.5 }]
+      damage: { type: physical, base: [70, 110, 150], bonusAd: 0.5 }
+      effects: [{ slow: 0.3, duration: 1.5 }]
 builds:
-  kael: [keeneye, thornseed_quiver, qua_mach, heartforge, buoc_van]
+  kael: [buoc_van, qua_mach, heartforge, thornseed_quiver, an_tinh]

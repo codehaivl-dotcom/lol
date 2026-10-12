@@ -171,11 +171,11 @@ Theo chỉ đạo chiến lược của Owner, **Sứa Chuông Jeli (#34)** đư
 
 | ID | Runtime ID | Tên Tướng | Vai Trò | Wave | G0 Concept | G1 Spec | G2 YAML | G3 Lab | G4 Sign | G5 3D | G6 Anim | G7 Int | G8 Play | Trạng Thái Hiện Tại |
 |:---|:---|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
-| #38 | `linh_hau` | Linh Hầu | Fighter | W1 | PASS | DRAFT | READY | RUNNING | PEND | HOLD | HOLD | PEND | PEND | **W1 Active (Dựng kit)** |
-| #39 | `kael` | Kael | Skirmisher | W1 | PASS | DRAFT | READY | RUNNING | PEND | HOLD | HOLD | PEND | PEND | **W1 Active (Dựng kit)** |
-| #40 | `lieu_tien` | Liễu Tiễn | Marksman | W1 | PASS | DRAFT | READY | RUNNING | PEND | HOLD | HOLD | PEND | PEND | **W1 Active (Dựng kit)** |
-| #17 | `forge` | Forge | Tank | W1 | PASS | DRAFT | READY | RUNNING | PEND | HOLD | HOLD | PEND | PEND | **W1 Active (Chạy Lab)** |
-| #34 | `jeli` | Jeli | Support | W1 | PASS | DRAFT | READY | RUNNING | PEND | HOLD | HOLD | PEND | PEND | **W1 Active (Dựng kit)** |
+| #38 | `linh_hau` | Linh Hầu | Fighter | W1 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
+| #39 | `kael` | Kael | Skirmisher | W1 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
+| #40 | `lieu_tien` | Liễu Tiễn | Marksman | W1 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
+| #17 | `forge` | Forge | Tank | W1 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
+| #34 | `jeli` | Jeli | Support | W1 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
 | #43 | `phu_dong` | Phù Dong | Vanguard | W2 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W2 Backlog |
 | #01 | `kiko` | Kiko | Assassin | W2 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W2 Backlog |
 | #02 | `brak` | Brak | Fighter | W2 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W2 Backlog |

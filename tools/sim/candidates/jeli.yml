@@ -7,10 +7,10 @@ heroes:
     stats: { hp: 640, resource: 340, ad: 48, ap: 0, armor: 30, mr: 34, moveSpeed: 6.1, attackSpeed: 0.625, hpRegen: 1.5, resourceRegen: 2.0 }
     growth: { hp: 88, resource: 45, ad: 2.8, ap: 0, armor: 3.5, mr: 1.8, moveSpeed: 0, attackSpeed: 0.015, hpRegen: 0.14, resourceRegen: 0.15 }
     passive:
-      type: every_nth_hit          # Âm Vang Thủy Ba: Đòn đánh định kỳ phát sóng âm hồi phục đồng minh gần nhất
-      n: 3
-      bonusDamage: { type: magic, base: 15, ap: 0.2 }
-      effects: [{ heal: 25 }]
+      type: chime_resonance        # Sóng Chuông Cộng Hưởng: Mỗi 3.5s chuông ngân phát sóng hồi máu đồng minh yếu nhất (35+0.3AP) và tạo khiên nhẹ (25+0.2AP)
+      interval: 3.5
+      chimeHeal: { base: 35, ap: 0.3 }
+      chimeShield: { base: 25, ap: 0.2 }
     lmb: { aim: projectile, range: 6.2 }   # Phóng tia sóng nước nhẹ
     q:    # Thủy Ba Chấn Động: quả cầu bọt nước bay chậm, làm chậm mục tiêu trúng đòn
       aim: skillshot
@@ -22,12 +22,13 @@ heroes:
       cost: [50, 55, 60, 65, 70]
       damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.45 }
       effects: [{ slow: 0.35, duration: 1.5 }]
-    rmb:  # Chuông Nước Hộ Thể: hồi phục máu và tạo khiên cho bản thân và đồng minh
+    rmb:  # Chuông Nước Hộ Thể: hồi phục máu và tạo khiên cho bản thân và đồng minh xung quanh
       aim: self
       windup: 0
       cooldown: [13, 12, 11, 10, 9]
       cost: [65, 70, 75, 80, 85]
-      shield: { base: [65, 95, 125, 155, 185], duration: 3.0, allies: true, radius: 6.0 }
+      shield: { base: [60, 90, 120, 150, 180], duration: 3.0, allies: true, radius: 6.0 }
+      heal: { base: [40, 65, 90, 115, 140], ap: 0.25, allies: true, radius: 6.0 }
     e:    # Thủy Luân Âm Vực: vòng sóng nước làm chậm kẻ địch xung quanh
       aim: area
       radius: 4.2
@@ -37,7 +38,7 @@ heroes:
       cost: [60, 60, 60, 60, 60]
       damage: { type: magic, base: [40, 65, 90, 115, 140], ap: 0.35 }
       effects: [{ slow: 0.3, duration: 1.2 }]
-    r:    # Đại Triều Thánh Chuông: thánh âm chuông sứa hồi phục lượng lớn máu diện rộng
+    r:    # Đại Triều Thánh Chuông: thánh âm chuông sứa đại hồi phục máu và tạo khiên diện rộng
       aim: area
       radius: 6.5
       range: 0
@@ -45,8 +46,9 @@ heroes:
       windup: 0.25
       cooldown: [85, 75, 65]
       cost: [100, 100, 100]
-      damage: { type: magic, base: [100, 160, 220], ap: 0.3 }
-      shield: { base: [120, 200, 280], duration: 3.5, allies: true, radius: 6.5 }
-      effects: [{ slow: 0.4, duration: 2.0 }]
+      damage: { type: magic, base: [80, 130, 180], ap: 0.25 }
+      heal: { base: [100, 170, 240], ap: 0.35, allies: true, radius: 6.5 }
+      shield: { base: [100, 160, 220], duration: 3.5, allies: true, radius: 6.5 }
+      effects: [{ slow: 0.35, duration: 2.0 }]
 builds:
   jeli: [chuong_may, dang_hoi_am, binh_mach, heartforge, buoc_van]

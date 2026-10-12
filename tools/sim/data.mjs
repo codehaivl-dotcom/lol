@@ -79,23 +79,15 @@ export const hpShare = (id) => ROLES.hpShare[(kit(id).role ?? "").includes("tank
 export function setPower(id, P) { const w = hpShare(id); KITS[id] = { ...KITS[id], tuning: { hp: P ** w, dmg: P ** (1 - w) } }; return KITS[id].tuning; }
 export function patchKit(id, fn) { const k = structuredClone(KITS[id]); KITS[id] = fn(k) ?? k; }
 
+export const ROSTER_REGISTRY = YAML.parse(readFileSync(path.resolve(ROOT, "scripts/lib/data/roster-v5-registry.yml"), "utf8"));
+
 export function loadAllCandidates({ allowOverride = false } = {}) {
   const dir = path.resolve(ROOT, "tools/sim/candidates");
   if (!existsSync(dir)) return [];
   return readdirSync(dir)
     .filter((f) => f.endsWith(".yml") && f !== "README.md")
     .sort()
-    .flatMap((f) => {
-      try {
-        return loadCandidates(path.join(dir, f), { allowOverride });
-      } catch (err) {
-        if (err.message.includes("[CANDIDATE_DUPLICATE_ID]")) {
-          console.warn(`[WARN_DUPLICATE_SKIPPED] ${err.message}`);
-          return [];
-        }
-        throw err;
-      }
-    });
+    .flatMap((f) => loadCandidates(path.join(dir, f), { allowOverride }));
 }
 
 export const kit = (id) => { const k = KITS[id]; if (!k) throw new Error(`không có tướng ${id}`); return k; };
