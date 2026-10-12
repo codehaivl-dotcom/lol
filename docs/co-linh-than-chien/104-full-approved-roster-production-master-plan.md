@@ -4,6 +4,8 @@
 **Chỉ thị tối cao của Owner:**  
 > **"Mục tiêu cuối: FULL APPROVED ROSTER PLAYABLE — không phải FULL ROSTER DOCUMENTED. Chấm dứt chuỗi vòng audit concept lặp lại. Đưa TẤT CẢ 26 tướng đã duyệt đi hết dây chuyền production, trở thành nhân vật 3D thực sự có thể chơi trong trận 5v5."**
 
+**Workflow triển khai đa sub-agent cho đủ 26 tướng:** [105 — Hero Factory (source → kit → Lab → 3 audit → Owner → asset → playable)](105-hero-factory-multi-agent-workflow.md). Chỉ đạo điều phối sản xuất, không thay các luật kỹ thuật của 23/62/73/76/79/91.
+
 **Tài liệu tham chiếu:** [100 — Rivalry Audit](100-roster-v5-round4-selection-rivalry-audit.md), [102 — Beginner Concept Shortlist](102-roster-v5-beginner-concept-shortlist.md), [103 — Mythic Quintet Master Concept Bible](103-mythic-quintet-concept-bible.md), [73 — Balance Lab Simulator](73-balance-lab.md), [91 — Khóa Input QWER-D](91-khoa-input-qwer-d.md).  
 **Công cụ Balance Lab tích hợp:** `tools/sim/run.mjs` (chuẩn mô phỏng chỉ số theo doc 73, đã tích hợp trực tiếp vào repository).
 
