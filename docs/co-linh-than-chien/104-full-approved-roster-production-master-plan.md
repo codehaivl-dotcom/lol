@@ -219,3 +219,29 @@ Theo chỉ đạo chiến lược của Owner, **Sứa Chuông Jeli (#34)** đư
    - Đưa bộ kit thông số YAML của **Linh Hầu (#38)**, **Kael (#39)**, **Liễu Tiễn (#40)**, **Forge (#17)** và **Jeli (#34)** vào `tools/sim/candidates/`.
    - Chạy mô phỏng Balance Lab đối đầu với Baseline Comparison Panel (6 tướng đại diện các vai trò).
    - Xuất báo cáo `report.json` và trình Owner xem xét phê duyệt (Gate 4 Sign-Off) trước khi chuyển sang dựng 3D.
+
+
+---
+
+## 10. Toàn Roster: Chạy Balance Lab Song Song 26/26 (Owner Directive 2026-10-12)
+
+**Chỉ thị Owner:** Không chờ kiểm định xong từng Wave mới mở Wave tiếp theo. Mở ngay **26/26 hero trong cùng một chiến dịch Lab**. Wave 1–4 tiếp tục dùng cho thứ tự 3D / runtime / marketing, **không là hàng đợi của Hero Kit và Balance Lab**.
+
+**Registry machine-readable:** tools/sim/production-26-roster.json (26 research IDs và runtime IDs duy nhất). **Bộ điều phối:** tools/sim/production-26.mjs.
+
+    # Kiểm kê đủ 26 tướng, phát hiện những candidate YAML còn thiếu:
+    bun tools/sim/production-26.mjs --dry-run
+
+    # Tạo/chỉnh sửa các kit YAML còn thiếu song song theo Concept Bible đã duyệt.
+    # Một lệnh nhận và xử lý cả roster; tối đa 4 process Lab đồng thời để tránh nghẽn CPU/RAM.
+    bun tools/sim/production-26.mjs --workers 4 --n 200 --seed 1
+
+- Phân công song song việc viết kit/spec cho **toàn bộ 26 tướng**, không phân batch 5; mỗi hero phải đối chiếu với canonical Concept Bible, viết kit hợp lệ, thêm hoặc kiểm tra hỗ trợ của simulator cho core gameplay toy; không dùng generic QWER trá hình.
+- Runner chỉ kiểm thử YAML có thật. Hero chưa có kit ghi **MISSING_KIT**, không được tính là đã kiểm định. Lệnh chạy chiến dịch tự tiếp tục những tướng còn lại dù một hero lỗi.
+- Mỗi hero có log, report.json, report.html; reports/sim/production26/<campaign>/summary.json có trạng thái 26/26, mã ID, số cờ RED/ORANGE, revision, seed, đối chiếu baseline.
+- **FLAG_RED** / **FLAG_REVIEW** / **INVALID_REPORT** / **MISSING_KIT** chặn sign-off. **SIM_FINISHED_REVIEW_REQUIRED** vẫn phải được người duyệt kiểm tra cơ chế thật, NOT_TESTED và utility theo vai trò, không phải auto Gate 4.
+- Những cơ chế hình học/AI/vision/CC chưa được simulator hỗ trợ bắt buộc có bài test bổ sung trước khi gọi Lab complete. Không được giảm độ khó bằng cách bỏ core toy đã duyệt.
+- **Không tự động copy sang heroes.yml, không chi credit 3D trước Gate 4, không tự nhận PASS_ENGINE.** Model/Battle Form/manifest được chuẩn bị song song.
+- **Đầu ra của chiến dịch:** 26 kit ứng viên được xây dựng/kiểm tra đầy đủ; kết quả từng hero với blocker rõ ràng; Owner chỉ phải xem các trường hợp FLAG/NOT_TESTED hay đề xuất sign-off, không tổ chức thêm vòng audit concept.
+
+**Trạng thái khi ban hành lệnh:** 5 file YAML Wave 1 hiện hữu, 21 hero production chưa có YAML theo registry; việc commit runner không có nghĩa đã chạy đủ 26 hoặc đã PASS_MODEL. Agent có môi trường Bun cần chủ động viết nốt 21 kit, chạy full-campaign và giao báo cáo thực thi với số PASS/FLAG/MISSING thật.
