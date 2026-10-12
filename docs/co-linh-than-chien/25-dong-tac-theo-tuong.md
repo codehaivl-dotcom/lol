@@ -1,5 +1,7 @@
 # 25 · Kế hoạch động tác theo vóc dáng, lớp và vũ khí
 
+> **CURRENT ROUTING (2026-10-12):** Animation/body/weapon acceptance criteria here remain usable, but prior six/21/27-hero schedules and historical reports do not control today's work. All current 26-hero production tasks follow [105](105-hero-factory-multi-agent-workflow.md), [104](104-full-approved-roster-production-master-plan.md), and [91 QWER/D](91-khoa-input-qwer-d.md).
+
 **Phạm vi:** 6 tướng playable hiện tại · 30 slot hoạt ảnh (LMB/Q/RMB/E/R) · chỉ thay lớp trình bày.
 
 **Trạng thái:** `PLAN READY` · mapping clip đã có trong code · M1 smoke test và M3 code đã được báo cáo · **chưa nghiệm thu trong trận thật**.
