@@ -16,10 +16,22 @@
 - Master roster: **26 approved production candidates** in canonical registry (`tools/sim/production-26-roster.json`); 4 waves of **5 + 6 + 8 + 7**.
 - **Full Roster Packet Completion**: All **26 heroes** now have complete 10-file Hero Production Packets (total **260 markdown files**, 0 missing, 0 broken absolute links) in `docs/co-linh-than-chien/production-heroes/<id>/`.
 - **Verified 26-Hero Lab Campaign**: Campaign `2026-10-12T08-15-08-077Z` (`reports/sim/production26/2026-10-12T08-15-08-077Z/summary.json`) ran all 26 candidates concurrently ($n=200, \text{seed}=1, \text{workers}=4$). Result: **26/26 FLAG_REVIEW**, **0 FLAG_RED** (red=0 across entire roster), **0 MISSING_KIT**.
-- **Unit Test Suite Coverage**: 44 pass, 0 fail across 8 test files (`bun test tools/test/`), verifying all core gameplay toys for Waves 1, 2, 3, and 4.
+- **Unit Test Suite Coverage (agent-reported; not rerun independently here)**: 44 pass, 0 fail across 8 test files (`bun test tools/test/`), verifying all core gameplay toys for Waves 1, 2, 3, and 4.
 - **Wave 1 & 2 Repairs**: All broken absolute links converted to repository-relative paths; Phù Đổng locked to *rider on iron steed* (not Centaur) and Spawn runtime; `DEF-W2-PD-001` resolved with full behavioral test.
 - **Independent 3-Round Audits**: All 26 heroes audited across Audit 1 (Canon/Fantasy), Audit 2 (Mechanics/Lab with `FLAG_REVIEW (red: 0)`), and Audit 3 (Production Feasibility & Defect Logs `DEF-W1`, `DEF-W2`, `DEF-W3`, `DEF-W4`).
 - **Gate 4 Status**: Strictly locked at **HOLD (CHỜ OWNER KÝ DUYỆT)** across all 26 heroes. No unauthorized 3D production spend or auto-promotion to `heroes.yml`.
+
+## Next execution — close the model-to-game gap (after commit 20bafbb)
+
+**Independent GitHub inspection:** 26 hero packet folders have exactly 10 Markdown files each (260 total). Campaign summary verifies 26 `FLAG_REVIEW`, red=0, 130–177 ORANGE flags per hero. Test files for 15 new gameplay toys exist, but **Bun execution and Spawn integration have not been independently rerun in this handoff**. The 44/44 tests are a team-reported result, not evidence of playable character models.
+
+**Do not commission another 260-file audit round.** Divide next work into three nonblocking tracks:
+
+1. **Model/Bot Calibration (parallel):** Review aggregate ORANGE cause groups against role-matched baselines and team utility, not raw orange count or solo 50%. Confirm candidate/baseline builds, AI target selection, teamfight role composition and whether ability zones actually influence the simulated match. Prioritize pathological **Cổ Lỗ (2v2 14.3%, 3v3 18.7%)**, **Aero (15.4% / 21.6%)**, **Iro (19.8% / 25.1%)**, **Vero (23.1% / 28.7%)** and **Kael (27.5% / 26.3%)** before global stat tuning. Do not excuse all low team rates as "support" or "artillery".
+2. **Spawn Feasibility / Greybox (nonpaid, no hero activation):** Validate critical runtime boundaries with simple placeholders: Tản Sơn ridge collision/ally pass-through; Kora directional projectile shielding; Mok beacon vision/FoW; Kiko decoy bot targeting; Cổ Lỗ projectile minimum range; animation/camera for Phù Đổng mounted rider. Simulator zones/state flags do **not** prove actual Spawn systems.
+3. **Art Preproduction (parallel, no model-credit spend):** Lock 26 Battle Form specs, 3D/weapon/rig/anim/VFX manifests, estimated asset spend, and one pilot import workflow. No final paid 3D generation or official roster activation before explicit Owner Gate 4.
+
+**Decision:** Core design/scope/packet creation = accepted. Gate 3 = `FLAG_REVIEW` (26/26), Gate 4 = `HOLD` (26/26). **Do not equate zero RED with balanced**. Resolve or evidence-review material flags and mechanics blockers; propose a *shortlist* of hero-by-hero Gate 4 decisions with exact revisions and known risks. Owner alone approves sign-off. Report one consolidated status update, do not reopen fantasy/concept decisions.
 
 ## Immediate multi-sub-agent execution
 
