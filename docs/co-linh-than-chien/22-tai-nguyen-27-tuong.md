@@ -1,4 +1,6 @@
 # 22 · Tài nguyên của 27 tướng: đã có / còn thiếu
+
+> **HISTORICAL ROSTER INVENTORY (2026-10-12):** This older 27-hero resource list is retained only for traceability. Current approved production includes **26 heroes** in [104](104-full-approved-roster-production-master-plan.md) and [production registry](../../tools/sim/production-26-roster.json), executed through [105](105-hero-factory-multi-agent-workflow.md). Do not generate from this historical count.
 Ngày 2026-10-07. Câu hỏi của @lukasai: "21 tướng còn lại đủ tài nguyên chưa. Details?"
 
 Cột: Thiết kế = tên, vai trò, tiểu sử, tên chiêu, hướng chơi, brief tạo hình (docs 03 + roster-display-map.csv). Kit = số chiêu runtime trong heroes.yml. Sim = có trong tools/balance. Chân dung/Icon = art.yml. Vũ khí = weapons.yml + grips.yml. VFX/Anim = KIT/ANIM trong skillfx.js.
