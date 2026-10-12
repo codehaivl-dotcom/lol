@@ -3,7 +3,7 @@
 **Hội đồng thẩm định:** Independent Quality Auditor (Hero Factory COLINH)  
 **Tướng:** Rolo (#36) — Runtime ID: `rolo`  
 **Phương châm thẩm định:** *"Kiểm soát lẫn nhau trung thực, không nịnh bợ, bắt lỗi khách quan, có bằng chứng."*  
-**Tài liệu căn cứ:** [104 — Master Plan](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/104-full-approved-roster-production-master-plan.md), [96 — Top 15 Concept Bibles](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/96-roster-v5-top15-concept-bibles.md), [105 — Multi-Agent Workflow](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/105-hero-factory-multi-agent-workflow.md), [91 — Khóa Input QWER-D](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/91-khoa-input-qwer-d.md), [73 — Balance Lab](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/73-balance-lab.md).  
+**Tài liệu căn cứ:** [104 — Master Plan](../104-full-approved-roster-production-master-plan.md), [96 — Top 15 Concept Bibles](../96-roster-v5-top15-concept-bibles.md), [105 — Multi-Agent Workflow](../105-hero-factory-multi-agent-workflow.md), [91 — Khóa Input QWER-D](../91-khoa-input-qwer-d.md), [73 — Balance Lab](../73-balance-lab.md).  
 
 ---
 
@@ -12,7 +12,7 @@
 | Vòng Thẩm Định | Phạm Vi Kiểm Tra | Kết Quả | Ghi Chú / Defect ID |
 |---|---|:---:|---|
 | **VÒNG 1: AUDIT 1** | Canon, Fantasy & Trải Nghiệm Người Chơi (S2) | **PASS** | Tê Tê Khiên bọc vảy chuyển dạng công thủ chuẩn Doc 96 [10]; khóa ID độc bản #36. |
-| **VÒNG 2: AUDIT 2** | Cơ Học Kỹ Thuật & Định Lượng Balance Lab (S6) | **PASS_LAB** | Core toy `scale_shedding` pass unit test. Độ trâu bò chịu trụ 26.9s; duel cân bằng tốt (Min 3: 50%, Min 6: 55.8%, Min 10: 50.4%). |
+| **VÒNG 2: AUDIT 2** | Cơ Học Kỹ Thuật & Định Lượng Balance Lab (S6) | **FLAG_REVIEW (red: 0)** | Core toy `scale_shedding` pass unit test thực tế (base armor +35 -> cast RMB tháo vảy -25 armor penalty, +20% MS, +25% AS -> expiry hoàn giáp). 145 cờ Orange cần review tiếp. |
 | **VÒNG 3: AUDIT 3** | Khả Thi Dây Chuyền 3D, Rig, VFX & Chi Phí (S7) | **HOLD_AT_GATE_4** | `DEF-W2-RL-001` (Major: Bot shed timing), `DEF-W2-RL-002` (Minor: Scale detach morph target), `DEF-W2-RL-003` (Minor: Registry ID lock). Giữ Gate 4 chờ Owner duyệt. |
 | **KẾT LUẬN TOÀN DIỆN** | **TỔNG THỂ HỒ SƠ** | **HOLD (PENDING OWNER SIGN-OFF)** | **Đấu sĩ chuyển dạng độc đáo; kiểm soát nghiêm ngặt; giữ Gate 4 chờ Owner ký duyệt.** |
 
@@ -84,5 +84,5 @@
 
 ## 5. KẾT LUẬN TOÀN DIỆN CỦA HỘI ĐỒNG AUDIT
 
-> **KẾT LUẬN: PASS AUDIT 1 & AUDIT 2 — GIỮ TRẠNG THÁI "HOLD" TẠI GATE 4 CHỜ OWNER KÝ DUYỆT.**  
-> Rolo (#36) là một Đấu sĩ chuyển dạng độc đáo, sở hữu độ trâu bò chịu trụ đứng thứ 2 toàn dự án (26.9s) và tỉ lệ 2v2 cao (57.1%). Đã phân định độc bản hoàn toàn mã ID #36. Hồ sơ sẵn sàng trình Owner ký phê duyệt Gate 4.
+> **KẾT LUẬN: PASS AUDIT 1 — FLAG_REVIEW TẠI AUDIT 2 (red: 0, 145 orange) — GIỮ TRẠNG THÁI "HOLD" TẠI GATE 4 CHỜ OWNER KÝ DUYỆT.**  
+> Rolo (#36) là một Đấu sĩ chuyển dạng độc đáo, sở hữu độ trâu bò chịu trụ đứng thứ 2 toàn dự án (26.9s) và tỉ lệ 2v2 cao (57.1%). Đã phân định độc bản hoàn toàn mã ID #36. Hồ sơ sẵn sàng trình Owner ký phê duyệt Gate 4 sau khi có bằng chứng kiểm thử thực tế.

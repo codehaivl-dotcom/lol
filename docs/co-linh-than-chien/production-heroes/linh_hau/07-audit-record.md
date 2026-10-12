@@ -3,7 +3,7 @@
 **Hội đồng thẩm định:** Independent Quality Auditor (Hero Factory COLINH)  
 **Tướng:** Linh Hầu (#38) — Runtime ID: `linh_hau`  
 **Phương châm thẩm định:** *"Kiểm soát lẫn nhau trung thực, không nịnh bợ, bắt lỗi khách quan, có bằng chứng."*  
-**Tài liệu căn cứ:** [102 — Beginner Concept Shortlist](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/102-roster-v5-beginner-concept-shortlist.md), [104 — Master Plan](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/104-full-approved-roster-production-master-plan.md), [105 — Multi-Agent Workflow](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/105-hero-factory-multi-agent-workflow.md), [91 — Khóa Input QWER-D](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/91-khoa-input-qwer-d.md), [73 — Balance Lab](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/73-balance-lab.md).  
+**Tài liệu căn cứ:** [102 — Beginner Concept Shortlist](../102-roster-v5-beginner-concept-shortlist.md), [104 — Master Plan](../104-full-approved-roster-production-master-plan.md), [105 — Multi-Agent Workflow](../105-hero-factory-multi-agent-workflow.md), [91 — Khóa Input QWER-D](../91-khoa-input-qwer-d.md), [73 — Balance Lab](../73-balance-lab.md).  
 
 ---
 
@@ -12,7 +12,7 @@
 | Vòng Thẩm Định | Phạm Vi Kiểm Tra | Kết Quả | Ghi Chú / Defect ID |
 |---|---|:---:|---|
 | **VÒNG 1: AUDIT 1** | Canon, Fantasy & Trải Nghiệm Người Chơi (S2) | **PASS WITH OBSERVATIONS** | `DEF-W1-LH-001` (Minor: Thế trượng ngắn chưa có skill kích hoạt riêng, tích hợp trong passive) |
-| **VÒNG 2: AUDIT 2** | Cơ Học Kỹ Thuật & Định Lượng Balance Lab (S6) | **PASS_LAB** | Core toy `staff_reach` pass unit test. 0 RED flags. Minh bạch NOT_TESTED. |
+| **VÒNG 2: AUDIT 2** | Cơ Học Kỹ Thuật & Định Lượng Balance Lab (S6) | **FLAG_REVIEW (red: 0)** | Core toy `staff_reach` pass unit test. 0 RED flags (145 orange review-required). Minh bạch NOT_TESTED. |
 | **VÒNG 3: AUDIT 3** | Khả Thi Dây Chuyền 3D, Rig, VFX & Chi Phí (S7) | **HOLD_AT_GATE_4** | `DEF-W1-LH-002` (Minor: Thiếu SFX phân biệt sweetspot). Giữ Gate 4 chờ Owner ký. |
 | **KẾT LUẬN TOÀN DIỆN** | **TỔNG THỂ HỒ SƠ** | **HOLD (PENDING OWNER SIGN-OFF)** | **Đủ điều kiện trình Owner xem xét Gate 4; TUYỆT ĐỐI CHƯA DỰNG 3D.** |
 

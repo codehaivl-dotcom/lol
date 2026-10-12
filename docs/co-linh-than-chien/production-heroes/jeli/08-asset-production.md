@@ -2,7 +2,7 @@
 
 **Trạng thái:** `ASSET_SPEC_FROZEN / READY_FOR_3D_PIPELINE`  
 **Khóa định danh:** `#34 / jeli`  
-**Tuân thủ tiêu chuẩn:** [Tài liệu 28 (Workflow Animation)](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/28-workflow-animation-skill.md), [Tài liệu 25 (Động tác theo tướng)](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/25-dong-tac-theo-tuong.md), [Tài liệu 42 (Quản lý Asset)](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/42-quan-ly-asset.md)
+**Tuân thủ tiêu chuẩn:** [Tài liệu 28 (Workflow Animation)](../28-workflow-animation-skill.md), [Tài liệu 25 (Động tác theo tướng)](../25-dong-tac-theo-tuong.md), [Tài liệu 42 (Quản lý Asset)](../42-quan-ly-asset.md)
 
 ---
 

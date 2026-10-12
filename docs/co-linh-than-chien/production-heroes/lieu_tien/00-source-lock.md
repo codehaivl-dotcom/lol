@@ -13,12 +13,12 @@
 
 | Tài liệu nguồn | Phần trích dẫn chính xác | Nội dung đã khóa |
 |---|---|---|
-| [104 — Master Plan](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/104-full-approved-roster-production-master-plan.md) | §1 Mục 19 (Bảng Master 26) & §4 Wave 1 | Cấp mã nghiên cứu độc bản `#40`, runtime `lieu_tien`, vai trò Xạ thủ (Marksman), Wave 1. Core toy: Vệt sương băng rút lui. |
-| [102 — Beginner Shortlist](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/102-roster-v5-beginner-concept-shortlist.md) | §3.3 LIỄU TIỄN (#40 — Xạ Thủ Sương Băng Chiến Thuật) | Khóa định hướng sửa đổi: Không sinh trụ băng va chạm vật lý phá vỡ navigation; dệt vệt băng tự nhiên ngay dưới chân theo hướng di chuyển khi vừa bắn vừa lùi. |
-| [101 — Beginner Proposal](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/101-roster-v5-beginner-heroes-proposal.md) | §3.3 LIỄU TIỄN & §5 | Phân định rạch ròi với Ashe (LoL): Không làm chậm 100% mọi phát bắn thường; không bắn mưa tên hình nón (Volley); không đại tiễn choáng toàn bản đồ. |
-| [100 — Rivalry Audit](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/100-roster-v5-round4-selection-rivalry-audit.md) | Phân định bộ tứ Xạ thủ (Aero #15, Iro #30, Nera #07, Liễu Tiễn #40) | Liễu Tiễn đại diện cho lối chơi xạ thủ thả diều cơ bản an toàn, bổ trợ kiểm soát không gian rút lui bằng mặt sàn trơn trượt. |
-| [Candidate YAML](file:///d:/Project/Test/24tuong/tools/sim/candidates/lieu_tien.yml) | `tools/sim/candidates/lieu_tien.yml` | Thông số căn bản, passive `frost_trail` (shotsPerTrail: 3, trailRadius: 2.2, trailDuration: 3.0, +20% MS đồng minh, -25% MS địch), Q/W/E/R kit, tuning `{hp: 0.96, dmg: 1.02}`. |
-| [Engine Toy Test](file:///d:/Project/Test/24tuong/tools/test/wave1-gameplay-toys.test.mjs) | `test("Toy 3: Lieu Tien frost trail - kiting speed boost & enemy slow without collision")` | Kiểm chứng thành công logic zone `frost_trail`, speed boost đồng minh và slow đối thủ trên simulator engine. |
+| [104 — Master Plan](../104-full-approved-roster-production-master-plan.md) | §1 Mục 19 (Bảng Master 26) & §4 Wave 1 | Cấp mã nghiên cứu độc bản `#40`, runtime `lieu_tien`, vai trò Xạ thủ (Marksman), Wave 1. Core toy: Vệt sương băng rút lui. |
+| [102 — Beginner Shortlist](../102-roster-v5-beginner-concept-shortlist.md) | §3.3 LIỄU TIỄN (#40 — Xạ Thủ Sương Băng Chiến Thuật) | Khóa định hướng sửa đổi: Không sinh trụ băng va chạm vật lý phá vỡ navigation; dệt vệt băng tự nhiên ngay dưới chân theo hướng di chuyển khi vừa bắn vừa lùi. |
+| [101 — Beginner Proposal](../101-roster-v5-beginner-heroes-proposal.md) | §3.3 LIỄU TIỄN & §5 | Phân định rạch ròi với Ashe (LoL): Không làm chậm 100% mọi phát bắn thường; không bắn mưa tên hình nón (Volley); không đại tiễn choáng toàn bản đồ. |
+| [100 — Rivalry Audit](../100-roster-v5-round4-selection-rivalry-audit.md) | Phân định bộ tứ Xạ thủ (Aero #15, Iro #30, Nera #07, Liễu Tiễn #40) | Liễu Tiễn đại diện cho lối chơi xạ thủ thả diều cơ bản an toàn, bổ trợ kiểm soát không gian rút lui bằng mặt sàn trơn trượt. |
+| [Candidate YAML](../../../tools/sim/candidates/lieu_tien.yml) | `tools/sim/candidates/lieu_tien.yml` | Thông số căn bản, passive `frost_trail` (shotsPerTrail: 3, trailRadius: 2.2, trailDuration: 3.0, +20% MS đồng minh, -25% MS địch), Q/W/E/R kit, tuning `{hp: 0.96, dmg: 1.02}`. |
+| [Engine Toy Test](../../../tools/test/wave1-gameplay-toys.test.mjs) | `test("Toy 3: Lieu Tien frost trail - kiting speed boost & enemy slow without collision")` | Kiểm chứng thành công logic zone `frost_trail`, speed boost đồng minh và slow đối thủ trên simulator engine. |
 
 ---
 

@@ -3,7 +3,7 @@
 **Hội đồng thẩm định:** Independent Quality Auditor (Hero Factory COLINH)  
 **Tướng:** Brak (#02) — Runtime ID: `brak`  
 **Phương châm thẩm định:** *"Kiểm soát lẫn nhau trung thực, không nịnh bợ, bắt lỗi khách quan, có bằng chứng."*  
-**Tài liệu căn cứ:** [102 — Beginner Concept Shortlist](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/102-roster-v5-beginner-concept-shortlist.md), [96 — Top 15 Concept Bibles](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/96-roster-v5-top15-concept-bibles.md), [104 — Master Plan](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/104-full-approved-roster-production-master-plan.md), [105 — Multi-Agent Workflow](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/105-hero-factory-multi-agent-workflow.md), [91 — Khóa Input QWER-D](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/91-khoa-input-qwer-d.md), [73 — Balance Lab](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/73-balance-lab.md).  
+**Tài liệu căn cứ:** [102 — Beginner Concept Shortlist](../102-roster-v5-beginner-concept-shortlist.md), [96 — Top 15 Concept Bibles](../96-roster-v5-top15-concept-bibles.md), [104 — Master Plan](../104-full-approved-roster-production-master-plan.md), [105 — Multi-Agent Workflow](../105-hero-factory-multi-agent-workflow.md), [91 — Khóa Input QWER-D](../91-khoa-input-qwer-d.md), [73 — Balance Lab](../73-balance-lab.md).  
 
 ---
 
@@ -12,7 +12,7 @@
 | Vòng Thẩm Định | Phạm Vi Kiểm Tra | Kết Quả | Ghi Chú / Defect ID |
 |---|---|:---:|---|
 | **VÒNG 1: AUDIT 1** | Canon, Fantasy & Trải Nghiệm Người Chơi (S2) | **PASS** | Đấu sĩ nhịp quyền cơ khí hơi nước chuẩn xác theo Doc 96 [09]. |
-| **VÒNG 2: AUDIT 2** | Cơ Học Kỹ Thuật & Định Lượng Balance Lab (S6) | **PASS_LAB** | Core toy `parry_piston` pass unit test. Hiệu quả giao tranh 2v2 rất cao (62.1%). |
+| **VÒNG 2: AUDIT 2** | Cơ Học Kỹ Thuật & Định Lượng Balance Lab (S6) | **FLAG_REVIEW (red: 0)** | Core toy `parry_piston` pass unit test thực tế (cast RMB -> parry stance -> reduce 60% dmg -> counter-punch stun). Tỉ lệ 2v2 đạt 62.1%; 144 cờ Orange cần review tiếp. |
 | **VÒNG 3: AUDIT 3** | Khả Thi Dây Chuyền 3D, Rig, VFX & Chi Phí (S7) | **HOLD_AT_GATE_4** | `DEF-W2-BK-001` (Major: Parry bot timing), `DEF-W2-BK-002` (Minor: Parry audio-visual feedback), `DEF-W2-BK-003` (Minor: Visual similarity with Forge). Giữ Gate 4 chờ Owner duyệt. |
 | **KẾT LUẬN TOÀN DIỆN** | **TỔNG THỂ HỒ SƠ** | **HOLD (PENDING OWNER SIGN-OFF)** | **Đấu sĩ phản đòn cơ giới đầm tay; sẵn sàng trình Owner ký Gate 4.** |
 
@@ -85,5 +85,5 @@
 
 ## 5. KẾT LUẬN TOÀN DIỆN CỦA HỘI ĐỒNG AUDIT
 
-> **KẾT LUẬN: PASS AUDIT 1 & AUDIT 2 — GIỮ TRẠNG THÁI "HOLD" TẠI GATE 4 CHỜ OWNER KÝ DUYỆT.**  
-> Brak (#02) là hình mẫu đấu sĩ phản đòn cơ giới đầm tay: cơ chế parry độc đáo mang lại tính đối kháng kỹ năng cao, tỉ lệ 2v2 xuất sắc (62.1%) và độ bền bỉ cao. Hồ sơ sẵn sàng trình Owner ký phê duyệt Gate 4.
+> **KẾT LUẬN: PASS AUDIT 1 — FLAG_REVIEW TẠI AUDIT 2 (red: 0, 144 orange) — GIỮ TRẠNG THÁI "HOLD" TẠI GATE 4 CHỜ OWNER KÝ DUYỆT.**  
+> Brak (#02) là hình mẫu đấu sĩ phản đòn cơ giới đầm tay: cơ chế parry độc đáo mang lại tính đối kháng kỹ năng cao, tỉ lệ 2v2 xuất sắc (62.1%) và độ bền bỉ cao. Hồ sơ sẵn sàng trình Owner ký phê duyệt Gate 4 sau khi ghi nhận 3 defect và kết quả kiểm thử thực tế.

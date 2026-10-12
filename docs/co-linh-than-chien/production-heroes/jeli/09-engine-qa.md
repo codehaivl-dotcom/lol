@@ -2,7 +2,7 @@
 
 **Trạng thái:** `QA_SPEC_LOCKED / TEST_PLAN_READY`  
 **Khóa định danh:** `#34 / jeli`  
-**Tuân thủ tiêu chuẩn:** [Tài liệu 11 (Acceptance Bàn Giao)](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/11-acceptance-ban-giao.md), [Tài liệu 10 (Đối Soát Runtime)](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/10-doi-soat-runtime.md) & [Tài liệu 105 (Hero Factory Multi-Agent Workflow)](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/105-hero-factory-multi-agent-workflow.md)
+**Tuân thủ tiêu chuẩn:** [Tài liệu 11 (Acceptance Bàn Giao)](../11-acceptance-ban-giao.md), [Tài liệu 10 (Đối Soát Runtime)](../10-doi-soat-runtime.md) & [Tài liệu 105 (Hero Factory Multi-Agent Workflow)](../105-hero-factory-multi-agent-workflow.md)
 
 ---
 

@@ -71,7 +71,7 @@ export function world(units, { seed = 1, maxT = 60, end = "teamWipe", objective 
 const alive = (W, f) => W.units.filter((u) => !u.dead && f(u));
 const enemiesOf = (W, u) => alive(W, (o) => o.team !== u.team && (u.team !== "neutral" || o.kind === "hero") && !(o.team === "neutral" && u.kind === "minion"));
 const alliesOf = (W, u) => alive(W, (o) => o.team === u.team && o.kind === "hero");
-const ms = (u, t) => {
+export const ms = (u, t) => {
   let m = u.s.moveSpeed * (1 + u.buffs.filter((b) => b.until > t).reduce((a, b) => a + (b.moveSpeed ?? 0), 0)) + u.buffs.filter((b) => b.until > t).reduce((a, b) => a + (b.flatMs ?? 0), 0);
   if (u._world?.zones) {
     for (const z of u._world.zones) {
@@ -91,7 +91,7 @@ const ms = (u, t) => {
   }
   return m * (1 - u.slows.filter((x) => x.until > t).reduce((a, x) => Math.max(a, x.pct), 0));
 };
-const aspd = (u, t) => {
+export const aspd = (u, t) => {
   let a = u.s.attackSpeed * (1 + u.buffs.filter((b) => b.until > t).reduce((a, b) => a + (b.attackSpeed ?? 0), 0));
   if (u.cuongNhip && u.cuongNhip.stacks > 0) {
     const p = u.k?.passive;
@@ -277,7 +277,7 @@ function wantCast(W, h, e, slot, ab) {
   if (ab.dash && ab.dash.toward === false) return dist < 4;
   return !!(ab.damage || ab.effects || ab.heal || ab.shield);
 }
-function castStart(W, h, e, slot, ab, rank) {
+export function castStart(W, h, e, slot, ab, rank) {
   if (ab.mimic) { const m = mimicOf(h, ab, rank); if (m) ab = m; }
   if (slot !== "r") h.lastSlot = slot;
   h.casts[slot] = (h.casts[slot] ?? 0) + 1; if (h.combo) h.combo.used.add(slot); h.combo && (h.combo.lastCast = W.t);
@@ -331,7 +331,7 @@ function struck(W, h, e, ab) {
   if (ab.passMinions) { const firstHero = out.find((x) => x.o.kind === "hero"); const mins = out.filter((x) => x.o.kind !== "hero" && (!firstHero || x.along < firstHero.along)); return [...mins.map((x) => x.o), ...(firstHero ? [firstHero.o] : [])]; }
   return out.length ? [out[0].o] : [];
 }
-function resolve(W, h) {
+export function resolve(W, h) {
   const { ab, rank, tgt, slot } = h.pending; h.pending = null; h._slot = slot;
   const t = W.t, e = tgt;
   if (ab.aim === "self") {
@@ -447,7 +447,7 @@ function itemOnAbilityHero(W, h, o) {
   if (dh && ready(h, dh.group)) { h.buffs.push({ flatMs: dh.effect.amount, until: W.t + dh.durationSeconds }); proc(h, "dang_hoi_am"); h.itemCd[dh.group] = W.t + dh.cooldownSeconds; }
 }
 const proc = (u, k) => { u.procs[k] = (u.procs[k] ?? 0) + 1; };
-function autoAttack(W, h, e) {
+export function autoAttack(W, h, e) {
   const t = W.t, lmb = h.k.lmb, dist = d2(h.pos, e.pos);
   const reach = (h.k.passive?.type === "staff_reach" && (h.staffUntil ?? 0) > t ? (h.k.passive.extendedRange ?? 4.5) : ((h.k.passive?.type === "mounted_momentum" && (h.bambooUntil ?? 0) > t) ? 3.5 : (lmb.range ?? 2)));
   if (dist > reach + e.r + 0.3 || !targetable(e, t)) return false;
@@ -542,7 +542,7 @@ function pickHeroTarget(W, h) {
   if (h.prof.focusLow) return pool.sort((a, b) => (a.hp - b.hp) + (d2(a.pos, h.pos) - d2(b.pos, h.pos)) * 30)[0];
   return pool.sort((a, b) => d2(a.pos, h.pos) - d2(b.pos, h.pos))[0];
 }
-function heroThink(W, h) {
+export function heroThink(W, h) {
   const t = W.t;
   if (h.pendingRoot && t >= h.pendingRoot.at) { h.rootUntil = Math.max(h.rootUntil, t + h.pendingRoot.dur); h.pendingRoot = null; }
   if (h.pending && t >= h.pending.at) resolve(W, h);

@@ -13,11 +13,11 @@
 
 | Tài liệu nguồn | Phần trích dẫn chính xác | Nội dung đã khóa |
 |---|---|---|
-| [104 — Master Plan](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/104-full-approved-roster-production-master-plan.md) | §1 Mục 17 & §4 Wave 1 | Cấp mã nghiên cứu độc bản `#38`, runtime `linh_hau`, vai trò Fighter, Core toy: Biến điệu tầm trượng dài/ngắn. |
-| [102 — Beginner Shortlist](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/102-roster-v5-beginner-concept-shortlist.md) | §2 & §3.1 | Phân định rạch ròi với Kiko (#01): Linh Hầu là đấu sĩ dũng mãnh, đứng thẳng, ngực nở vai rộng, cầm Cổ Thần Trượng. |
-| [100 — Rivalry Audit](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/100-roster-v5-round4-selection-rivalry-audit.md) | Phân định Kiko vs Linh Hầu | Loại bỏ hoàn toàn phân thân tàng hình và múa lốc xoáy (Cyclone knockup). Đòn đánh đầm tay, trực quan. |
-| [Candidate YAML](file:///d:/Project/Test/24tuong/tools/sim/candidates/linh_hau.yml) | `tools/sim/candidates/linh_hau.yml` | Thông số nền tảng, passive `staff_reach` (extended 4.8m, sweetspot 2.8-4.8m), QWER kit. |
-| [Engine Toy Test](file:///d:/Project/Test/24tuong/tools/test/wave1-gameplay-toys.test.mjs) | `test("Toy 1: Linh Hau staff reach modulation...")` | Kiểm chứng thành công stance, range & sweetspot rìa trượng trên simulator engine. |
+| [104 — Master Plan](../104-full-approved-roster-production-master-plan.md) | §1 Mục 17 & §4 Wave 1 | Cấp mã nghiên cứu độc bản `#38`, runtime `linh_hau`, vai trò Fighter, Core toy: Biến điệu tầm trượng dài/ngắn. |
+| [102 — Beginner Shortlist](../102-roster-v5-beginner-concept-shortlist.md) | §2 & §3.1 | Phân định rạch ròi với Kiko (#01): Linh Hầu là đấu sĩ dũng mãnh, đứng thẳng, ngực nở vai rộng, cầm Cổ Thần Trượng. |
+| [100 — Rivalry Audit](../100-roster-v5-round4-selection-rivalry-audit.md) | Phân định Kiko vs Linh Hầu | Loại bỏ hoàn toàn phân thân tàng hình và múa lốc xoáy (Cyclone knockup). Đòn đánh đầm tay, trực quan. |
+| [Candidate YAML](../../../tools/sim/candidates/linh_hau.yml) | `tools/sim/candidates/linh_hau.yml` | Thông số nền tảng, passive `staff_reach` (extended 4.8m, sweetspot 2.8-4.8m), QWER kit. |
+| [Engine Toy Test](../../../tools/test/wave1-gameplay-toys.test.mjs) | `test("Toy 1: Linh Hau staff reach modulation...")` | Kiểm chứng thành công stance, range & sweetspot rìa trượng trên simulator engine. |
 
 ---
 

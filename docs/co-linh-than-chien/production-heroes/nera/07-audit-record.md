@@ -3,7 +3,7 @@
 **Hội đồng thẩm định:** Independent Quality Auditor (Hero Factory COLINH)  
 **Tướng:** Nera (#07) — Runtime ID: `nera`  
 **Phương châm thẩm định:** *"Kiểm soát lẫn nhau trung thực, không nịnh bợ, bắt lỗi khách quan, có bằng chứng."*  
-**Tài liệu căn cứ:** [104 — Master Plan](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/104-full-approved-roster-production-master-plan.md), [96 — Top 15 Concept Bibles](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/96-roster-v5-top15-concept-bibles.md), [105 — Multi-Agent Workflow](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/105-hero-factory-multi-agent-workflow.md), [91 — Khóa Input QWER-D](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/91-khoa-input-qwer-d.md), [73 — Balance Lab](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/73-balance-lab.md).  
+**Tài liệu căn cứ:** [104 — Master Plan](../104-full-approved-roster-production-master-plan.md), [96 — Top 15 Concept Bibles](../96-roster-v5-top15-concept-bibles.md), [105 — Multi-Agent Workflow](../105-hero-factory-multi-agent-workflow.md), [91 — Khóa Input QWER-D](../91-khoa-input-qwer-d.md), [73 — Balance Lab](../73-balance-lab.md).  
 
 ---
 
@@ -12,7 +12,7 @@
 | Vòng Thẩm Định | Phạm Vi Kiểm Tra | Kết Quả | Ghi Chú / Defect ID |
 |---|---|:---:|---|
 | **VÒNG 1: AUDIT 1** | Canon, Fantasy & Trải Nghiệm Người Chơi (S2) | **PASS** | Chuẩn Xạ thủ cơ giới bóng đêm Dạ Neo; bộ chiêu tự bảo kê nỏ tời hai chiều. |
-| **VÒNG 2: AUDIT 2** | Cơ Học Kỹ Thuật & Định Lượng Balance Lab (S6) | **PASS_LAB** | Core toy `anchor_tether` pass unit test. Duel 1v1 thấp do đặc thù xạ thủ cần không gian thả diều; team 2v2 đạt 39.0%. |
+| **VÒNG 2: AUDIT 2** | Cơ Học Kỹ Thuật & Định Lượng Balance Lab (S6) | **FLAG_REVIEW (red: 0)** | Core toy `anchor_tether` pass unit test thực tế (3-hit tether -> +18% MS kiting boost -> slow địch -> RMB dash lùi). 167 cờ Orange cần review tiếp. |
 | **VÒNG 3: AUDIT 3** | Khả Thi Dây Chuyền 3D, Rig, VFX & Chi Phí (S7) | **HOLD_AT_GATE_4** | `DEF-W2-NR-001` (Major: Duel tuning & kiting), `DEF-W2-NR-002` (Major: Mana economy), `DEF-W2-NR-003` (Minor: Cable visual rendering). Giữ Gate 4 chờ Owner duyệt. |
 | **KẾT LUẬN TOÀN DIỆN** | **TỔNG THỂ HỒ SƠ** | **HOLD (PENDING OWNER SIGN-OFF)** | **Xạ thủ nỏ tời độc đáo; ghi nhận defect cần điều chỉnh; giữ Gate 4 chờ Owner phê duyệt.** |
 
@@ -84,5 +84,5 @@
 
 ## 5. KẾT LUẬN TOÀN DIỆN CỦA HỘI ĐỒNG AUDIT
 
-> **KẾT LUẬN: PASS AUDIT 1 & AUDIT 2 — GIỮ TRẠNG THÁI "HOLD" TẠI GATE 4 CHỜ OWNER KÝ DUYỆT.**  
-> Nera (#07) là một thiết kế Xạ thủ tự bảo kê giàu tính chiến thuật và độc đáo; ghi nhận 2 defect Major về cân bằng sát thương và tiêu hao mana cần tinh chỉnh trước khi test 5v5. Hồ sơ sẵn sàng trình Owner ký phê duyệt Gate 4.
+> **KẾT LUẬN: PASS AUDIT 1 — FLAG_REVIEW TẠI AUDIT 2 (red: 0, 167 orange) — GIỮ TRẠNG THÁI "HOLD" TẠI GATE 4 CHỜ OWNER KÝ DUYỆT.**  
+> Nera (#07) là một thiết kế Xạ thủ tự bảo kê giàu tính chiến thuật và độc đáo; ghi nhận 3 defect (2 Major, 1 Minor) cần tinh chỉnh trước khi test 5v5. Hồ sơ sẵn sàng trình Owner ký phê duyệt Gate 4 sau khi có bằng chứng kiểm thử thực tế.

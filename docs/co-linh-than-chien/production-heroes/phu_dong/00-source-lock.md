@@ -13,12 +13,12 @@
 
 | Tài liệu nguồn | Phần trích dẫn chính xác | Nội dung đã khóa |
 |---|---|---|
-| [104 — Master Plan](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/104-full-approved-roster-production-master-plan.md) | §1 Mục 20 & §4 Wave 2 | Cấp mã nghiên cứu độc bản `#43`, runtime `phu_dong`, vai trò Tiên phong (Vanguard / Initiator / Fighter). Core toy: Thiết Mã Xung Lượng & Cổ Trúc Lôi Đình. |
-| [103 — Mythic Quintet Bible](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/103-mythic-quintet-concept-bible.md) | §2.1 (Phù Đổng) | Phê duyệt chuẩn hình thể Mounted War Entity (chủ tướng cưỡi ngựa sắt, tuyệt đối không lai ghép Centaur), phân định Mythic Form vs Battle Form, core toy nhổ tre sấm sét. |
-| [102 — Beginner Shortlist](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/102-roster-v5-beginner-concept-shortlist.md) | §1 Danh mục & §3.5 | Cảm hứng truyền thuyết Thánh Gióng; ngựa sắt và chủ tướng là một thực thể điều khiển thống nhất (1 hitbox, 1 controller, 1 thanh máu, không có cơ chế xuống ngựa). |
-| [100 — Rivalry Audit](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/100-roster-v5-round4-selection-rivalry-audit.md) | Phân định Đấu sĩ kỵ mã | Tách bạch phong cách kỵ mã lôi hỏa với các tướng kỵ binh phương Tây; đòn đánh nặng uy lực chấn động, khai mở giao tranh trực diện. |
-| [Candidate YAML](file:///d:/Project/Test/24tuong/tools/sim/candidates/phu_dong.yml) | `tools/sim/candidates/phu_dong.yml` | Thông số nền tảng, passive `mounted_momentum` (max 100, momentumPerSec 25, bonusMsRatio 0.20, chargeStun 0.6, chargeBonusAd 0.50), QWER kit. |
-| [Engine Toy Test](file:///d:/Project/Test/24tuong/tools/test/wave2-gameplay-toys.test.mjs) | `test("Toy 1: Phu Dong mounted momentum & bamboo transformation...")` | Kiểm chứng thành công tích đà Xung Lượng, cú húc gây choáng và trạng thái Cổ Trúc mở rộng tầm quét 3.5m trên simulator engine. |
+| [104 — Master Plan](../104-full-approved-roster-production-master-plan.md) | §1 Mục 20 & §4 Wave 2 | Cấp mã nghiên cứu độc bản `#43`, runtime `phu_dong`, vai trò Tiên phong (Vanguard / Initiator / Fighter). Core toy: Thiết Mã Xung Lượng & Cổ Trúc Lôi Đình. |
+| [103 — Mythic Quintet Bible](../103-mythic-quintet-concept-bible.md) | §2.1 (Phù Đổng) | Phê duyệt chuẩn hình thể Mounted War Entity (chủ tướng cưỡi ngựa sắt, tuyệt đối không lai ghép Centaur), phân định Mythic Form vs Battle Form, core toy nhổ tre sấm sét. |
+| [102 — Beginner Shortlist](../102-roster-v5-beginner-concept-shortlist.md) | §1 Danh mục & §3.5 | Cảm hứng truyền thuyết Thánh Gióng; ngựa sắt và chủ tướng là một thực thể điều khiển thống nhất (1 hitbox, 1 controller, 1 thanh máu, không có cơ chế xuống ngựa). |
+| [100 — Rivalry Audit](../100-roster-v5-round4-selection-rivalry-audit.md) | Phân định Đấu sĩ kỵ mã | Tách bạch phong cách kỵ mã lôi hỏa với các tướng kỵ binh phương Tây; đòn đánh nặng uy lực chấn động, khai mở giao tranh trực diện. |
+| [Candidate YAML](../../../tools/sim/candidates/phu_dong.yml) | `tools/sim/candidates/phu_dong.yml` | Thông số nền tảng, passive `mounted_momentum` (max 100, momentumPerSec 25, bonusMsRatio 0.20, chargeStun 0.6, chargeBonusAd 0.50), QWER kit. |
+| [Engine Toy Test](../../../tools/test/wave2-gameplay-toys.test.mjs) | `test("Toy 1: Phu Dong mounted momentum & bamboo transformation...")` | Kiểm chứng thành công tích đà Xung Lượng, cú húc gây choáng và trạng thái Cổ Trúc mở rộng tầm quét 3.5m trên simulator engine. |
 
 ---
 

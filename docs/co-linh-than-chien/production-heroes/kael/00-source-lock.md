@@ -13,11 +13,11 @@
 
 | Tài liệu nguồn | Phần trích dẫn chính xác | Nội dung đã khóa |
 |---|---|---|
-| [104 — Master Plan](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/104-full-approved-roster-production-master-plan.md) | §1 Mục 18 & §4 Wave 1 | Cấp mã nghiên cứu độc bản `#39`, runtime `kael`, vai trò Skirmisher (Đấu sĩ đánh tay), Core toy: Cuồng nhịp chém liên hoàn. |
-| [102 — Beginner Shortlist](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/102-roster-v5-beginner-concept-shortlist.md) | §3.2 (Kael #39) | Chém tay tích tầng Cuồng Nhịp (+8% AS/tầng, max 5 tầng); suy giảm dần sau 2.0s; phân định rõ quy tắc mục tiêu (Tướng 100%, Lính/quái max 2 tầng 30% hồi phục, Trụ 0 tầng 0 hồi phục). |
-| [100 — Rivalry Audit](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/100-roster-v5-round4-selection-rivalry-audit.md) | Phân định Đấu sĩ đánh tay | Thoát khỏi Master Yi / Tryndamere: Không bất tử 5s, không untargetable lướt vô tận, không reset hồi chiêu khi hạ gục. |
-| [Candidate YAML](file:///d:/Project/Test/24tuong/tools/sim/candidates/kael.yml) | `tools/sim/candidates/kael.yml` | Thông số nền tảng, passive `cuong_nhip` (max 5 stacks, 8% AS per stack, decay rate 2.0/s sau 2.0s), Q lướt chém, W chém kép 2 hit, E khiên phản ứng, R chém 3 hit liên hoàn. |
-| [Engine Toy Test](file:///d:/Project/Test/24tuong/tools/test/wave1-gameplay-toys.test.mjs) | `test("Toy 2: Kael Cuong Nhip...")` | Kiểm chứng thành công cơ chế tích tầng Cuồng Nhịp, tăng tốc đánh và quy tắc suy giảm dần sau 2s trên simulator engine. |
+| [104 — Master Plan](../104-full-approved-roster-production-master-plan.md) | §1 Mục 18 & §4 Wave 1 | Cấp mã nghiên cứu độc bản `#39`, runtime `kael`, vai trò Skirmisher (Đấu sĩ đánh tay), Core toy: Cuồng nhịp chém liên hoàn. |
+| [102 — Beginner Shortlist](../102-roster-v5-beginner-concept-shortlist.md) | §3.2 (Kael #39) | Chém tay tích tầng Cuồng Nhịp (+8% AS/tầng, max 5 tầng); suy giảm dần sau 2.0s; phân định rõ quy tắc mục tiêu (Tướng 100%, Lính/quái max 2 tầng 30% hồi phục, Trụ 0 tầng 0 hồi phục). |
+| [100 — Rivalry Audit](../100-roster-v5-round4-selection-rivalry-audit.md) | Phân định Đấu sĩ đánh tay | Thoát khỏi Master Yi / Tryndamere: Không bất tử 5s, không untargetable lướt vô tận, không reset hồi chiêu khi hạ gục. |
+| [Candidate YAML](../../../tools/sim/candidates/kael.yml) | `tools/sim/candidates/kael.yml` | Thông số nền tảng, passive `cuong_nhip` (max 5 stacks, 8% AS per stack, decay rate 2.0/s sau 2.0s), Q lướt chém, W chém kép 2 hit, E khiên phản ứng, R chém 3 hit liên hoàn. |
+| [Engine Toy Test](../../../tools/test/wave1-gameplay-toys.test.mjs) | `test("Toy 2: Kael Cuong Nhip...")` | Kiểm chứng thành công cơ chế tích tầng Cuồng Nhịp, tăng tốc đánh và quy tắc suy giảm dần sau 2s trên simulator engine. |
 
 ---
 

@@ -13,12 +13,12 @@
 
 | Tài liệu nguồn | Phần trích dẫn chính xác | Nội dung đã khóa |
 |---|---|---|
-| [104 — Master Plan](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/104-full-approved-roster-production-master-plan.md) | §1 Mục 1 & §4 Wave 2 | Cấp mã nghiên cứu độc bản `#01`, runtime `kiko`, vai trò Sát thủ (Assassin). Core toy: Ảo ảnh quang học 1-hit threshold. Chuyển sang Wave 2 để Jeli làm mẫu Hỗ trợ Wave 1. |
-| [102 — Beginner Shortlist](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/102-roster-v5-beginner-concept-shortlist.md) | §2 (Phân định Kiko vs. Linh Hầu) | Chính thức xác nhận Phương án B: Giữ nguyên Kiko (#01) là Sát Thủ Ảo Ảnh Song Trảo; Linh Hầu (#38) là Đấu Sĩ Cổ Trượng. Phân định triệt để vóc dáng, dáng chạy và vũ khí. |
-| [100 — Rivalry Audit](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/100-roster-v5-round4-selection-rivalry-audit.md) | §7 Ảnh Hầu / Kiko | Thoát khỏi khuôn mẫu Wukong clone; loại bỏ hoàn toàn tàng hình phân thân múa gậy lốc xoáy; chuyển hóa thành sát thủ outplay quang học và dấu chân giả. |
-| [94 — Deep Audit](file:///d:/Project/Test/24tuong/docs/co-linh-than-chien/94-roster-v5-team-deep-audit.md) | Phiếu cảnh báo & Gỡ bỏ ràng buộc | Kiko phải có silhouette độc lập, bộ động tác nhào lộn 4 chi, vũ khí là vuốt cơ khí gắn mu tay, không được có bất kỳ dáng đứng tựa gậy nào. |
-| [Candidate YAML](file:///d:/Project/Test/24tuong/tools/sim/candidates/kiko.yml) | `tools/sim/candidates/kiko.yml` | Thông số nền tảng, passive `holographic_decoy` (decoyDuration 3.0, bonusMsOnDecoy 0.20, burstBonusAd 0.35), QWER kit. |
-| [Engine Toy Test](file:///d:/Project/Test/24tuong/tools/test/wave2-gameplay-toys.test.mjs) | `test("Toy 2: Kiko holographic decoy 1-hit threshold absorption...")` | Kiểm chứng thành công cơ chế Ảo ảnh quang học hấp thụ trọn vẹn 1 đòn đánh/kỹ năng đầu tiên (1-hit threshold) trên simulator engine. |
+| [104 — Master Plan](../104-full-approved-roster-production-master-plan.md) | §1 Mục 1 & §4 Wave 2 | Cấp mã nghiên cứu độc bản `#01`, runtime `kiko`, vai trò Sát thủ (Assassin). Core toy: Ảo ảnh quang học 1-hit threshold. Chuyển sang Wave 2 để Jeli làm mẫu Hỗ trợ Wave 1. |
+| [102 — Beginner Shortlist](../102-roster-v5-beginner-concept-shortlist.md) | §2 (Phân định Kiko vs. Linh Hầu) | Chính thức xác nhận Phương án B: Giữ nguyên Kiko (#01) là Sát Thủ Ảo Ảnh Song Trảo; Linh Hầu (#38) là Đấu Sĩ Cổ Trượng. Phân định triệt để vóc dáng, dáng chạy và vũ khí. |
+| [100 — Rivalry Audit](../100-roster-v5-round4-selection-rivalry-audit.md) | §7 Ảnh Hầu / Kiko | Thoát khỏi khuôn mẫu Wukong clone; loại bỏ hoàn toàn tàng hình phân thân múa gậy lốc xoáy; chuyển hóa thành sát thủ outplay quang học và dấu chân giả. |
+| [94 — Deep Audit](../94-roster-v5-team-deep-audit.md) | Phiếu cảnh báo & Gỡ bỏ ràng buộc | Kiko phải có silhouette độc lập, bộ động tác nhào lộn 4 chi, vũ khí là vuốt cơ khí gắn mu tay, không được có bất kỳ dáng đứng tựa gậy nào. |
+| [Candidate YAML](../../../tools/sim/candidates/kiko.yml) | `tools/sim/candidates/kiko.yml` | Thông số nền tảng, passive `holographic_decoy` (decoyDuration 3.0, bonusMsOnDecoy 0.20, burstBonusAd 0.35), QWER kit. |
+| [Engine Toy Test](../../../tools/test/wave2-gameplay-toys.test.mjs) | `test("Toy 2: Kiko holographic decoy 1-hit threshold absorption...")` | Kiểm chứng thành công cơ chế Ảo ảnh quang học hấp thụ trọn vẹn 1 đòn đánh/kỹ năng đầu tiên (1-hit threshold) trên simulator engine. |
 
 ---
 
