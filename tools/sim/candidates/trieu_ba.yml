@@ -1,0 +1,52 @@
+# ỨNG VIÊN WAVE 3 · #45 Triều Bá · Hắc Long Thủy Tộc · Chúa Tể Thủy Vực
+heroes:
+  trieu_ba:
+    role: mage
+    tuning: { hp: 0.96, dmg: 1.02 }
+    resource: mana
+    stats: { hp: 620, resource: 360, ad: 50, ap: 0, armor: 26, mr: 30, moveSpeed: 6.2, attackSpeed: 0.64, hpRegen: 1.4, resourceRegen: 2.0 }
+    growth: { hp: 84, resource: 45, ad: 2.8, ap: 0, armor: 3.2, mr: 1.5, moveSpeed: 0, attackSpeed: 0.015, hpRegen: 0.13, resourceRegen: 0.16 }
+    passive:
+      type: orbital_dragons        # Tam Long Xoáy Nước: 3 quả cầu thủy long lượn quanh thân cho giáp phản xạ (+12 armor/mr mỗi rồng); phóng rồng để lại vệt nước kéo địch, mất rồng tạm mất giáp
+      maxDragons: 3
+      resistPerDragon: 12
+      dragonRecharge: 4.0
+      trailSlow: 0.25
+    lmb: { aim: projectile, range: 6.0, damageType: magic, ap: 0.2 } # Bắn tia thủy kích ba chĩa
+    q:    # Thủy Long Đạn Đạo: phóng 1 rồng nước đạn đạo thẳng, để lại vệt nước xoáy làm chậm địch
+      aim: skillshot
+      width: 1.5
+      speed: 26
+      range: 8.5
+      windup: 0.15
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [45, 50, 55, 60, 65]
+      damage: { type: magic, base: [65, 100, 135, 170, 205], ap: 0.65 }
+      effects: [{ slow: 0.25, duration: 1.2 }]
+    rmb:  # Triều Dòng Quy Hồi: giật thu hồi rồng nước, kéo nhẹ kẻ địch đứng trên vệt nước về phía mình
+      aim: self
+      windup: 0
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [55, 60, 65, 70, 75]
+      shield: { base: [60, 95, 130, 165, 200], duration: 2.5 }
+    e:    # Thủy Ba Xoáy Ngầm: dâng cột nước xoáy đẩy lùi kẻ địch cận chiến và gây sát thương diện rộng
+      aim: area
+      radius: 3.8
+      range: 0
+      windup: 0.1
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [60, 65, 70, 75, 80]
+      damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.50 }
+      effects: [{ slow: 0.35, duration: 1.5 }]
+    r:    # Đại Hồng Thủy: dâng sóng thần nước đen quét dọc làn đường đẩy lùi và ngắt kỹ năng niệm chú
+      aim: area
+      radius: 6.5
+      range: 8.0
+      delay: 0.3
+      windup: 0.25
+      cooldown: [80, 70, 60]
+      cost: [100, 100, 100]
+      damage: { type: magic, base: [180, 280, 380], ap: 0.85 }
+      effects: [{ stun: 0.8 }]
+builds:
+  trieu_ba: [chuong_may, dang_hoi_am, binh_mach, heartforge, buoc_van]

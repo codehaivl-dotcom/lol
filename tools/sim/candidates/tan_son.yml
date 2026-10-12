@@ -1,0 +1,53 @@
+# ỨNG VIÊN WAVE 3 · #44 Tản Sơn · Thánh Sơn Cổ Thạch · Thành Lũy Cổ Sơn
+heroes:
+  tan_son:
+    role: tank
+    tuning: { hp: 1.06, dmg: 0.94 }
+    resource: none
+    stats: { hp: 780, resource: 0, ad: 58, ap: 0, armor: 44, mr: 36, moveSpeed: 6.2, attackSpeed: 0.62, hpRegen: 2.0, resourceRegen: 0 }
+    growth: { hp: 105, resource: 0, ad: 3.2, ap: 0, armor: 4.5, mr: 2.0, moveSpeed: 0, attackSpeed: 0.014, hpRegen: 0.18, resourceRegen: 0 }
+    passive:
+      type: passable_ridge        # Vách Núi Ngọc Bích Khả Thông & Thái Dương Trấn Áp: Dựng vách ngọc bích đồng minh đi xuyên qua nhận khiên đá, kẻ địch bị chặn; ngực rực hào quang giảm tốc đánh địch
+      ridgeDuration: 3.0
+      ridgeShield: 80
+      ridgeSlow: 0.35
+      solarAsSlow: 0.25
+    lmb: { aim: melee, range: 2.0 } # Nắm đấm cự thạch granite
+    q:    # Sơn Thạch Chấn Kích: dậm mạnh nứt đất gây sát thương và hất tung nhẹ
+      aim: skillshot
+      width: 1.6
+      speed: 22
+      range: 6.5
+      windup: 0.2
+      cooldown: [9, 8.5, 8, 7.5, 7]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [65, 95, 125, 155, 185], bonusAd: 0.70 }
+      effects: [{ slow: 0.35, duration: 1.2 }]
+    rmb:  # Vách Núi Ngọc Bích: dựng tường đá ngọc bích khả thông chặn đạn đạo địch, cho khiên đồng minh
+      aim: self
+      windup: 0.1
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [0, 0, 0, 0, 0]
+      shield: { base: [80, 120, 160, 200, 240], maxHp: 0.08, duration: 3.0 }
+    e:    # Thái Dương Đông Sơn: ngực rực hào quang mặt trời giảm tốc đánh và làm mù nhẹ kẻ địch đối diện
+      aim: area
+      radius: 4.2
+      range: 0
+      windup: 0.15
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [50, 75, 100, 125, 150], ad: 0.50 }
+      effects: [{ slow: 0.25, duration: 1.5 }]
+    r:    # Địa Chấn Cổ Sơn: nhảy dậm xuống sàn nổ bão đá hất tung diện rộng và tạo khiên đá khổng lồ
+      aim: area
+      radius: 5.5
+      range: 5.0
+      delay: 0.3
+      windup: 0.3
+      cooldown: [85, 75, 65]
+      cost: [0, 0, 0]
+      dash: { distance: 5.0, toward: true }
+      damage: { type: physical, base: [160, 250, 340], bonusAd: 0.90 }
+      effects: [{ stun: 1.0 }]
+builds:
+  tan_son: [oathguard_plate, heartforge, iron_plate, bastion_stone, buoc_van]

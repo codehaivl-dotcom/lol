@@ -1,0 +1,55 @@
+# ỨNG VIÊN WAVE 4 · #37 Mok · Đăng Mộc · Hỗ Trợ / Trinh Sát Cổ Đăng Tác Chiến
+heroes:
+  mok:
+    role: support
+    tuning: { hp: 1.02, dmg: 0.92 }
+    resource: mana
+    stats: { hp: 650, resource: 330, ad: 50, ap: 0, armor: 32, mr: 34, moveSpeed: 6.25, attackSpeed: 0.625, hpRegen: 1.6, resourceRegen: 1.8 }
+    growth: { hp: 90, resource: 40, ad: 2.9, ap: 0, armor: 3.6, mr: 1.8, moveSpeed: 0, attackSpeed: 0.015, hpRegen: 0.15, resourceRegen: 0.14 }
+    passive:
+      type: lantern_beacon        # Cổ Đăng Tác Chiến: Cắm đèn lồng gỗ soi sáng bán kính 6.0m trong 8s; tiêu thụ đèn phát nổ sóng huỳnh quang làm chậm 30% và soi tàng hình
+      lanternDuration: 8.0
+      lanternRadius: 6.0
+      detonateSlow: 0.30
+      detonateHeal: 50
+    lmb: { aim: projectile, range: 5.8 } # Bắn hạt huỳnh quang
+    q:    # Cắm Cổ Đăng: cắm đèn lồng soi sáng khu vực chỉ định, gây sát thương nhẹ nếu trúng địch
+      aim: skillshot
+      width: 1.4
+      speed: 26
+      range: 8.0
+      windup: 0.15
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [40, 45, 50, 55, 60]
+      damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.45 }
+      effects: [{ slow: 0.25, duration: 1.2 }]
+    rmb:  # Huỳnh Quang Hộ Mệnh: kích hoạt sóng đèn hồi máu và tạo khiên cho bản thân và đồng minh
+      aim: self
+      windup: 0
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [60, 65, 70, 75, 80]
+      shield: { base: [65, 95, 125, 155, 185], duration: 3.0, allies: true, radius: 5.5 }
+      heal: { base: [45, 70, 95, 120, 145], ap: 0.25, allies: true, radius: 5.5 }
+    e:    # Đăng Mộc Triền Nhiễu: rễ cây cổ thụ quét theo hướng chỉ định trói chân kẻ địch
+      aim: skillshot
+      width: 1.6
+      speed: 24
+      range: 7.0
+      windup: 0.15
+      cooldown: [11, 10.5, 10, 9.5, 9]
+      cost: [55, 60, 65, 70, 75]
+      damage: { type: magic, base: [45, 70, 95, 120, 145], ap: 0.35 }
+      effects: [{ root: 1.0 }]
+    r:    # Vạn Thảo Quang Minh: chiếu bừng đại trận huỳnh quang, hồi máu lớn diện rộng và làm chậm toàn đội địch
+      aim: area
+      radius: 6.5
+      range: 0
+      delay: 0.2
+      windup: 0.25
+      cooldown: [85, 75, 65]
+      cost: [100, 100, 100]
+      heal: { base: [120, 190, 260], ap: 0.40, allies: true, radius: 6.5 }
+      shield: { base: [80, 130, 180], duration: 3.5, allies: true, radius: 6.5 }
+      effects: [{ slow: 0.35, duration: 2.0 }]
+builds:
+  mok: [chuong_may, dang_hoi_am, binh_mach, heartforge, buoc_van]

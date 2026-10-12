@@ -1,0 +1,53 @@
+# ỨNG VIÊN WAVE 4 · #48 Oneira · Mộng Thể · Hỗ Trợ Mặt Nạ Hút Khống Chế & Chuyển Hóa
+heroes:
+  oneira:
+    role: support
+    tuning: { hp: 1.02, dmg: 0.90 }
+    resource: mana
+    stats: { hp: 640, resource: 350, ad: 46, ap: 0, armor: 30, mr: 34, moveSpeed: 6.2, attackSpeed: 0.62, hpRegen: 1.5, resourceRegen: 2.0 }
+    growth: { hp: 88, resource: 45, ad: 2.7, ap: 0, armor: 3.5, mr: 1.8, moveSpeed: 0, attackSpeed: 0.015, hpRegen: 0.14, resourceRegen: 0.16 }
+    passive:
+      type: cc_absorb_transmute    # Mộng Thể Mặt Nạ Hút Khống Chế: Hút 1 hiệu ứng CC cứng/mềm từ đồng minh vào mặt nạ (không hút áp chế/hất tung); 2s sau chuyển hóa thành sóng hồi phục diện rộng
+      transmuteDelay: 2.0
+      transmuteHeal: 80
+      maxAbsorb: 1
+    lmb: { aim: projectile, range: 6.0, damageType: magic, ap: 0.2 } # Bắn luồng khói mộng cảnh
+    q:    # Mộng Ảnh Trói Buộc: phóng quả cầu khói mộng cảnh gây sát thương và trói chân nhẹ mục tiêu
+      aim: skillshot
+      width: 1.5
+      speed: 26
+      range: 8.0
+      windup: 0.15
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [45, 50, 55, 60, 65]
+      damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.45 }
+      effects: [{ root: 1.0 }]
+    rmb:  # Mặt Nạ Hút Khống Chế: hút hiệu ứng khống chế từ đồng minh vào mặt nạ và tạo khiên bảo hộ
+      aim: self
+      windup: 0
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [65, 70, 75, 80, 85]
+      shield: { base: [70, 105, 140, 175, 210], duration: 3.0, allies: true, radius: 6.0 }
+      heal: { base: [45, 70, 95, 120, 145], ap: 0.25, allies: true, radius: 6.0 }
+    e:    # Mộng Cảnh Tương Lân: tạo kết giới sương khói ru ngủ nhẹ kẻ địch bước qua và tăng tốc đồng minh
+      aim: area
+      radius: 4.2
+      range: 7.0
+      windup: 0.15
+      cooldown: [11, 10.5, 10, 9.5, 9]
+      cost: [60, 65, 70, 75, 80]
+      damage: { type: magic, base: [45, 70, 95, 120, 145], ap: 0.35 }
+      effects: [{ slow: 0.35, duration: 1.5 }]
+    r:    # Đại Mộng Giác Tỉnh: giải phóng toàn bộ năng lượng mộng thể, làm choáng kẻ địch và đại hồi phục cho toàn đội
+      aim: area
+      radius: 6.5
+      range: 0
+      delay: 0.2
+      windup: 0.25
+      cooldown: [85, 75, 65]
+      cost: [100, 100, 100]
+      heal: { base: [110, 180, 250], ap: 0.35, allies: true, radius: 6.5 }
+      shield: { base: [90, 140, 190], duration: 3.5, allies: true, radius: 6.5 }
+      effects: [{ stun: 0.8 }]
+builds:
+  oneira: [chuong_may, dang_hoi_am, binh_mach, heartforge, buoc_van]

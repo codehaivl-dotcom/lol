@@ -1,0 +1,742 @@
+{
+  "campaignId": "2026-10-12T08-15-08-077Z",
+  "createdAt": "2026-10-12T08:15:08.124Z",
+  "rosterTotal": 26,
+  "maxConcurrent": 4,
+  "n": 200,
+  "seed": 1,
+  "command": "bun tools/sim/production-26.mjs",
+  "statuses": {
+    "nera": "FLAG_REVIEW",
+    "kiko": "FLAG_REVIEW",
+    "vero": "FLAG_REVIEW",
+    "brak": "FLAG_REVIEW",
+    "aero": "FLAG_REVIEW",
+    "inka": "FLAG_REVIEW",
+    "forge": "FLAG_REVIEW",
+    "libro": "FLAG_REVIEW",
+    "iro": "FLAG_REVIEW",
+    "moka": "FLAG_REVIEW",
+    "eelix": "FLAG_REVIEW",
+    "kora": "FLAG_REVIEW",
+    "jeli": "FLAG_REVIEW",
+    "pavo": "FLAG_REVIEW",
+    "rolo": "FLAG_REVIEW",
+    "mok": "FLAG_REVIEW",
+    "kael": "FLAG_REVIEW",
+    "linh_hau": "FLAG_REVIEW",
+    "lieu_tien": "FLAG_REVIEW",
+    "phu_dong": "FLAG_REVIEW",
+    "trieu_ba": "FLAG_REVIEW",
+    "tan_son": "FLAG_REVIEW",
+    "dung_thach": "FLAG_REVIEW",
+    "co_lo": "FLAG_REVIEW",
+    "oneira": "FLAG_REVIEW",
+    "kymos": "FLAG_REVIEW"
+  },
+  "results": [
+    {
+      "researchId": "#01",
+      "id": "kiko",
+      "wave": 2,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "a74b387325b0",
+      "red": 0,
+      "orange": 173,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.48,
+        0.43249999999999994,
+        0.29833333333333334,
+        0.24250000000000002,
+        0.20916666666666664,
+        0.23916666666666667
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\kiko\\report.json"
+    },
+    {
+      "researchId": "#02",
+      "id": "brak",
+      "wave": 2,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "1aa59c9d5a41",
+      "red": 0,
+      "orange": 144,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.295,
+        0.39666666666666667,
+        0.40499999999999997,
+        0.3875,
+        0.3116666666666667,
+        0.425
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\brak\\report.json"
+    },
+    {
+      "researchId": "#03",
+      "id": "vero",
+      "wave": 2,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "f6bbdc3487d3",
+      "red": 0,
+      "orange": 161,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.24333333333333332,
+        0.11416666666666668,
+        0.07416666666666667,
+        0.060000000000000005,
+        0.11750000000000001,
+        0.17916666666666667
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\vero\\report.json"
+    },
+    {
+      "researchId": "#07",
+      "id": "nera",
+      "wave": 2,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "aa7aa36c3a04",
+      "red": 0,
+      "orange": 167,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.19666666666666666,
+        0.17416666666666666,
+        0.09416666666666668,
+        0.09666666666666666,
+        0.20166666666666666,
+        0.1758333333333333
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\nera\\report.json"
+    },
+    {
+      "researchId": "#15",
+      "id": "aero",
+      "wave": 3,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "defe6b2ca2ac",
+      "red": 0,
+      "orange": 167,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.105,
+        0.07916666666666666,
+        0.05333333333333334,
+        0.051666666666666666,
+        0.08833333333333333,
+        0.17666666666666667
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\aero\\report.json"
+    },
+    {
+      "researchId": "#17",
+      "id": "forge",
+      "wave": 1,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "c51e7a08b080",
+      "red": 0,
+      "orange": 132,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.44166666666666665,
+        0.5708333333333333,
+        0.4558333333333333,
+        0.5950000000000001,
+        0.5520833333333334,
+        0.49374999999999997
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\forge\\report.json"
+    },
+    {
+      "researchId": "#19",
+      "id": "inka",
+      "wave": 4,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "d7c34dbb7dae",
+      "red": 0,
+      "orange": 158,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.16833333333333333,
+        0.15416666666666667,
+        0.15833333333333333,
+        0.15916666666666665,
+        0.16416666666666666,
+        0.17500000000000002
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\inka\\report.json"
+    },
+    {
+      "researchId": "#28",
+      "id": "libro",
+      "wave": 4,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "0b212440547c",
+      "red": 0,
+      "orange": 147,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.11,
+        0.05625,
+        0.10125,
+        0.09083333333333334,
+        0.08166666666666667,
+        0.10291666666666666
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\libro\\report.json"
+    },
+    {
+      "researchId": "#30",
+      "id": "iro",
+      "wave": 3,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "29f919f02578",
+      "red": 0,
+      "orange": 177,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.17916666666666667,
+        0.16416666666666668,
+        0.15,
+        0.1475,
+        0.19166666666666665,
+        0.16916666666666666
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\iro\\report.json"
+    },
+    {
+      "researchId": "#31",
+      "id": "moka",
+      "wave": 3,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "2d35f1ffc65d",
+      "red": 0,
+      "orange": 166,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.3541666666666667,
+        0.3041666666666667,
+        0.205,
+        0.15666666666666665,
+        0.1375,
+        0.2141666666666667
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\moka\\report.json"
+    },
+    {
+      "researchId": "#32",
+      "id": "kora",
+      "wave": 3,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "a80d24e091e8",
+      "red": 0,
+      "orange": 130,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.30916666666666665,
+        0.3916666666666666,
+        0.5225,
+        0.4579166666666667,
+        0.49833333333333335,
+        0.42083333333333334
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\kora\\report.json"
+    },
+    {
+      "researchId": "#33",
+      "id": "eelix",
+      "wave": 4,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "86ac75054072",
+      "red": 0,
+      "orange": 174,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.49333333333333335,
+        0.25916666666666666,
+        0.16416666666666668,
+        0.235,
+        0.18083333333333332,
+        0.20833333333333334
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\eelix\\report.json"
+    },
+    {
+      "researchId": "#34",
+      "id": "jeli",
+      "wave": 1,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "14e829f70292",
+      "red": 0,
+      "orange": 143,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.24583333333333335,
+        0.15666666666666665,
+        0.15833333333333333,
+        0.19416666666666668,
+        0.24041666666666664,
+        0.24125
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\jeli\\report.json"
+    },
+    {
+      "researchId": "#35",
+      "id": "pavo",
+      "wave": 4,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "658883ca1bb4",
+      "red": 0,
+      "orange": 155,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.16666666666666666,
+        0.10666666666666667,
+        0.11416666666666668,
+        0.12083333333333333,
+        0.14625,
+        0.15291666666666667
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\pavo\\report.json"
+    },
+    {
+      "researchId": "#36",
+      "id": "rolo",
+      "wave": 2,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "ddf392c1d2f0",
+      "red": 0,
+      "orange": 145,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.5,
+        0.5575,
+        0.5041666666666665,
+        0.3745833333333333,
+        0.3741666666666667,
+        0.6216666666666667
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\rolo\\report.json"
+    },
+    {
+      "researchId": "#37",
+      "id": "mok",
+      "wave": 4,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "2f3b56944d25",
+      "red": 0,
+      "orange": 146,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.17208333333333334,
+        0.051666666666666666,
+        0.08791666666666666,
+        0.030416666666666665,
+        0.15166666666666667,
+        0.22083333333333333
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\mok\\report.json"
+    },
+    {
+      "researchId": "#38",
+      "id": "linh_hau",
+      "wave": 1,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "1a0527095de6",
+      "red": 0,
+      "orange": 145,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.555,
+        0.48,
+        0.36833333333333335,
+        0.24083333333333332,
+        0.2316666666666667,
+        0.4875
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\linh_hau\\report.json"
+    },
+    {
+      "researchId": "#39",
+      "id": "kael",
+      "wave": 1,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "f8e0c07ad9f5",
+      "red": 0,
+      "orange": 154,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.4841666666666667,
+        0.21916666666666665,
+        0.13166666666666668,
+        0.15,
+        0.07083333333333335,
+        0.26
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\kael\\report.json"
+    },
+    {
+      "researchId": "#40",
+      "id": "lieu_tien",
+      "wave": 1,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "72f7350ccaf0",
+      "red": 0,
+      "orange": 163,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.21666666666666667,
+        0.35250000000000004,
+        0.19166666666666665,
+        0.2275,
+        0.4083333333333334,
+        0.4791666666666667
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\lieu_tien\\report.json"
+    },
+    {
+      "researchId": "#43",
+      "id": "phu_dong",
+      "wave": 2,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "e03e8c16bc3a",
+      "red": 0,
+      "orange": 143,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.5499999999999999,
+        0.7041666666666666,
+        0.5912499999999999,
+        0.5441666666666667,
+        0.5645833333333333,
+        0.695
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\phu_dong\\report.json"
+    },
+    {
+      "researchId": "#44",
+      "id": "tan_son",
+      "wave": 3,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "90018b4859e0",
+      "red": 0,
+      "orange": 137,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.27791666666666665,
+        0.41958333333333336,
+        0.3545833333333334,
+        0.3475,
+        0.37374999999999997,
+        0.3829166666666666
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\tan_son\\report.json"
+    },
+    {
+      "researchId": "#45",
+      "id": "trieu_ba",
+      "wave": 3,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "517ed7a6985e",
+      "red": 0,
+      "orange": 149,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.26625000000000004,
+        0.21541666666666667,
+        0.2325,
+        0.1875,
+        0.18208333333333335,
+        0.23458333333333334
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\trieu_ba\\report.json"
+    },
+    {
+      "researchId": "#46",
+      "id": "dung_thach",
+      "wave": 3,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "5ed1f05a40a5",
+      "red": 0,
+      "orange": 145,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.5041666666666667,
+        0.36833333333333335,
+        0.14416666666666667,
+        0.22624999999999998,
+        0.19708333333333336,
+        0.4683333333333333
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\dung_thach\\report.json"
+    },
+    {
+      "researchId": "#47",
+      "id": "co_lo",
+      "wave": 3,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "41b2ccb3dc30",
+      "red": 0,
+      "orange": 174,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.0525,
+        0.06583333333333334,
+        0.025833333333333333,
+        0.02,
+        0.03,
+        0.02666666666666667
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\co_lo\\report.json"
+    },
+    {
+      "researchId": "#48",
+      "id": "oneira",
+      "wave": 4,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "370e7c50fa70",
+      "red": 0,
+      "orange": 144,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.13375,
+        0.0575,
+        0.13083333333333333,
+        0.125,
+        0.16333333333333333,
+        0.20666666666666667
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\oneira\\report.json"
+    },
+    {
+      "researchId": "#49",
+      "id": "kymos",
+      "wave": 4,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "8e0b6c10c9db",
+      "red": 0,
+      "orange": 146,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.24416666666666664,
+        0.20625000000000002,
+        0.2304166666666667,
+        0.17916666666666667,
+        0.25,
+        0.24333333333333332
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T08-15-08-077Z\\kymos\\report.json"
+    }
+  ],
+  "finishedAt": "2026-10-12T08:23:33.011Z"
+}

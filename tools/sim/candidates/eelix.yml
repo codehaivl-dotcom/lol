@@ -1,0 +1,51 @@
+# ỨNG VIÊN WAVE 4 · #33 Eelix · Lươn Đêm Thủy Uyên · Sát Thủ Trườn Lướt Bóng Tối
+heroes:
+  eelix:
+    role: assassin
+    tuning: { hp: 0.98, dmg: 1.03 }
+    resource: none
+    stats: { hp: 630, resource: 0, ad: 66, ap: 0, armor: 30, mr: 30, moveSpeed: 6.6, attackSpeed: 0.70, hpRegen: 1.5, resourceRegen: 0 }
+    growth: { hp: 86, resource: 0, ad: 3.7, ap: 0, armor: 3.4, mr: 1.2, moveSpeed: 0, attackSpeed: 0.024, hpRegen: 0.13, resourceRegen: 0 }
+    passive:
+      type: shadow_wake            # Lươn Sóng Thủy Uyên: Phun vệt nước đen lơ lửng 0.3m; trườn lướt trên vệt nhận +35% MS, đòn tấn công giật lôi điện lan tỏa (+45% bonus AD)
+      wakeDuration: 3.5
+      wakeSpeedBonus: 0.35
+      chainLightningAd: 0.45
+    lmb: { aim: melee, range: 1.7 } # Cắn xé điện quang lơ lửng
+    q:    # Thủy Uyên Trườn Lướt: phóng vệt nước đen và lướt vút dọc đường xuyên qua mục tiêu
+      aim: skillshot
+      width: 1.4
+      speed: 30
+      range: 7.2
+      windup: 0.1
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [0, 0, 0, 0, 0]
+      dash: { distance: 7.2, toward: true }
+      damage: { type: physical, base: [65, 100, 135, 170, 205], bonusAd: 0.85 }
+      effects: [{ slow: 0.25, duration: 1.2 }]
+    rmb:  # Hắc Thủy Thuẫn: lặn ngập vào bóng tối vệt nước nhận khiên và tăng tốc độ trườn
+      aim: self
+      windup: 0
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [0, 0, 0, 0, 0]
+      shield: { base: [60, 95, 130, 165, 200], duration: 2.5 }
+    e:    # Lôi Điện Xung Phá: phóng luồng sét giật lan tỏa vào kẻ địch đứng trên vệt nước
+      aim: area
+      radius: 3.6
+      range: 0
+      windup: 0.1
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [50, 80, 110, 140, 170], ad: 0.50 }
+      effects: [{ slow: 0.35, duration: 1.0 }]
+    r:    # Thâm Hải Cuồng Nộ: cuộn tròn lao thẳng xuyên thủng mục tiêu sốc điện sát thương cực đại
+      aim: single_target
+      range: 7.5
+      windup: 0.2
+      cooldown: [70, 60, 50]
+      cost: [0, 0, 0]
+      dash: { distance: 7.5, toward: true }
+      damage: { type: physical, base: [190, 290, 390], bonusAd: 1.20 }
+      effects: [{ stun: 0.8 }]
+builds:
+  eelix: [keeneye, quickstring, heartforge, thornseed_quiver, bastion_stone]

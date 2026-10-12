@@ -1,0 +1,51 @@
+# ỨNG VIÊN WAVE 4 · #19 Inka · Mực Mù Thư Pháp · Pháp Sư Phong Tỏa Vùng Tuyến Tính
+heroes:
+  inka:
+    role: mage
+    tuning: { hp: 0.96, dmg: 1.02 }
+    resource: mana
+    stats: { hp: 615, resource: 360, ad: 48, ap: 0, armor: 28, mr: 32, moveSpeed: 6.15, attackSpeed: 0.625, hpRegen: 1.4, resourceRegen: 2.0 }
+    growth: { hp: 85, resource: 45, ad: 2.8, ap: 0, armor: 3.3, mr: 1.5, moveSpeed: 0, attackSpeed: 0.015, hpRegen: 0.13, resourceRegen: 0.16 }
+    passive:
+      type: ink_path               # Vệt Mực Thư Pháp Tuyến Tính: Kỹ năng vẽ đường mực tồn tại 4s trên sàn (+20% MS đồng minh, làm chậm địch 25%); kích nổ giao điểm mực gây sát thương phép
+      inkDuration: 4.0
+      inkAllySpeed: 0.20
+      inkEnemySlow: 0.25
+    lmb: { aim: projectile, range: 6.0, damageType: magic, ap: 0.2 } # Vung cọ bắn giọt mực
+    q:    # Thư Pháp Tuyến Kích: vung cọ vẽ vệt mực thẳng gây sát thương và để lại đường mực
+      aim: skillshot
+      width: 1.5
+      speed: 28
+      range: 8.5
+      windup: 0.15
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [45, 50, 55, 60, 65]
+      damage: { type: magic, base: [65, 100, 135, 170, 205], ap: 0.65 }
+      effects: [{ slow: 0.25, duration: 1.2 }]
+    rmb:  # Mặc Thủy Hộ Thể: vẩy vòng mực bảo hộ tạo khiên và làm mù nhẹ kẻ địch xung quanh
+      aim: self
+      windup: 0
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [55, 60, 65, 70, 75]
+      shield: { base: [65, 100, 135, 170, 205], duration: 2.5 }
+    e:    # Giao Điểm Kích Nổ: kích nổ các đường mực trên mặt đất trói chân kẻ địch đứng trên đó
+      aim: area
+      radius: 4.0
+      range: 7.5
+      windup: 0.15
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [60, 65, 70, 75, 80]
+      damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.50 }
+      effects: [{ root: 1.0 }]
+    r:    # Thiên Địa Mặc Họa: vẽ đại đồ trận thư pháp khổng lồ chia cắt chiến trường và phát nổ
+      aim: area
+      radius: 6.5
+      range: 8.0
+      delay: 0.3
+      windup: 0.3
+      cooldown: [80, 70, 60]
+      cost: [100, 100, 100]
+      damage: { type: magic, base: [180, 280, 380], ap: 0.85 }
+      effects: [{ slow: 0.40, duration: 2.0 }]
+builds:
+  inka: [chuong_may, dang_hoi_am, binh_mach, heartforge, buoc_van]

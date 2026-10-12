@@ -1,0 +1,52 @@
+# ỨNG VIÊN WAVE 4 · #28 Libro · Ghi Nợ · Hỗ Trợ Sổ Nợ Nghiệp Báo
+heroes:
+  libro:
+    role: support
+    tuning: { hp: 1.02, dmg: 0.90 }
+    resource: mana
+    stats: { hp: 630, resource: 350, ad: 46, ap: 0, armor: 30, mr: 34, moveSpeed: 6.15, attackSpeed: 0.62, hpRegen: 1.5, resourceRegen: 2.2 }
+    growth: { hp: 86, resource: 45, ad: 2.6, ap: 0, armor: 3.4, mr: 1.8, moveSpeed: 0, attackSpeed: 0.014, hpRegen: 0.14, resourceRegen: 0.18 }
+    passive:
+      type: debt_ledger            # Sổ Nợ Nghiệp Báo: Mở sổ nợ hoãn 70% sát thương bộc phát trong 2.5s thành Nợ Treo cho 1 đồng minh; chuyển thành sát thương DoT 3s trừ dần bằng hồi máu/khiên
+      debtPostponeRatio: 0.70
+      debtWindow: 2.5
+      debtPaybackDur: 3.0
+    lmb: { aim: projectile, range: 6.0, damageType: magic, ap: 0.2 } # Phóng phiến đá thẻ tre
+    q:    # Trang Sử Trừng Phạt: phóng phiến đá cổ bay nhanh gây sát thương và làm chậm mục tiêu
+      aim: skillshot
+      width: 1.4
+      speed: 28
+      range: 8.5
+      windup: 0.15
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [45, 50, 55, 60, 65]
+      damage: { type: magic, base: [55, 85, 115, 145, 175], ap: 0.50 }
+      effects: [{ slow: 0.25, duration: 1.2 }]
+    rmb:  # Sổ Nợ Ký Ức: mở Sổ Nợ tạo khiên bảo hộ khổng lồ và hoãn sát thương nhận vào
+      aim: self
+      windup: 0
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [65, 70, 75, 80, 85]
+      shield: { base: [75, 115, 155, 195, 235], duration: 3.0, allies: true, radius: 6.0 }
+      heal: { base: [40, 65, 90, 115, 140], ap: 0.25, allies: true, radius: 6.0 }
+    e:    # Ân Hạn Nghiệp Báo: phóng cuộn thư cổ bao bọc đồng minh, tăng tốc chạy và hồi máu
+      aim: single_target
+      range: 7.5
+      windup: 0.1
+      cooldown: [11, 10.5, 10, 9.5, 9]
+      cost: [55, 60, 65, 70, 75]
+      heal: { base: [50, 80, 110, 140, 170], ap: 0.35, ally: true, range: 7.5 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
+    r:    # Chung Quyết Phán Thư: mở toàn bộ đại thư phán quyết, tạo kết giới hoãn sát thương cho cả đội và làm choáng kẻ địch dồn dập
+      aim: area
+      radius: 6.5
+      range: 0
+      delay: 0.2
+      windup: 0.25
+      cooldown: [85, 75, 65]
+      cost: [100, 100, 100]
+      shield: { base: [110, 170, 230], duration: 3.5, allies: true, radius: 6.5 }
+      heal: { base: [90, 150, 210], ap: 0.30, allies: true, radius: 6.5 }
+      effects: [{ slow: 0.35, duration: 2.0 }]
+builds:
+  libro: [chuong_may, dang_hoi_am, binh_mach, heartforge, buoc_van]

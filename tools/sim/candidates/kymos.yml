@@ -1,0 +1,53 @@
+# ỨNG VIÊN WAVE 4 · #49 Kymos · Thạch Âm Cổ Thạch · Hỗ Trợ Khánh Đá Điểm Rung Hạ Âm
+heroes:
+  kymos:
+    role: support
+    tuning: { hp: 1.04, dmg: 0.90 }
+    resource: mana
+    stats: { hp: 660, resource: 340, ad: 48, ap: 0, armor: 34, mr: 36, moveSpeed: 6.15, attackSpeed: 0.62, hpRegen: 1.6, resourceRegen: 1.8 }
+    growth: { hp: 92, resource: 40, ad: 2.7, ap: 0, armor: 3.8, mr: 2.0, moveSpeed: 0, attackSpeed: 0.014, hpRegen: 0.15, resourceRegen: 0.15 }
+    passive:
+      type: acoustic_node         # Thạch Âm Điểm Rung Hạ Âm: Cắm khánh đá tạo vùng hạ âm 3.5s giảm 40% sát thương bộc phát nhận vào cho đồng minh đứng gần tâm điểm (anti-burst)
+      nodeDuration: 3.5
+      nodeRadius: 4.5
+      burstMitigation: 0.40
+    lmb: { aim: projectile, range: 5.8, damageType: magic, ap: 0.2 } # Bắn sóng âm rung chấn
+    q:    # Thạch Ba Kích: phóng sóng rung chấn theo đường thẳng gây sát thương và làm chậm mục tiêu
+      aim: skillshot
+      width: 1.5
+      speed: 26
+      range: 8.0
+      windup: 0.15
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [45, 50, 55, 60, 65]
+      damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.45 }
+      effects: [{ slow: 0.3, duration: 1.2 }]
+    rmb:  # Điểm Rung Hạ Âm: cắm khánh đá xuống đất tạo vùng triệt tiêu sóng xung kích, giảm 40% sát thương sốc cho đồng minh
+      aim: self
+      windup: 0
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [60, 65, 70, 75, 80]
+      shield: { base: [75, 110, 145, 180, 215], duration: 3.5, allies: true, radius: 5.5 }
+      heal: { base: [40, 65, 90, 115, 140], ap: 0.25, allies: true, radius: 5.5 }
+    e:    # Cộng Hưởng Thạch Cầm: sóng âm rung động đẩy nhẹ kẻ địch cận chiến và gây sát thương
+      aim: area
+      radius: 4.0
+      range: 0
+      windup: 0.1
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [55, 60, 65, 70, 75]
+      damage: { type: magic, base: [45, 70, 95, 120, 145], ap: 0.35 }
+      effects: [{ slow: 0.25, duration: 1.2 }]
+    r:    # Vạn Âm Tĩnh Lặng: phóng xung sóng hạ âm cực đại triệt tiêu sát thương, câm lặng nhẹ kẻ địch và hồi máu đồng minh
+      aim: area
+      radius: 6.5
+      range: 0
+      delay: 0.2
+      windup: 0.25
+      cooldown: [85, 75, 65]
+      cost: [100, 100, 100]
+      heal: { base: [110, 170, 230], ap: 0.35, allies: true, radius: 6.5 }
+      shield: { base: [90, 140, 190], duration: 3.5, allies: true, radius: 6.5 }
+      effects: [{ slow: 0.35, duration: 2.0 }]
+builds:
+  kymos: [chuong_may, dang_hoi_am, binh_mach, heartforge, buoc_van]

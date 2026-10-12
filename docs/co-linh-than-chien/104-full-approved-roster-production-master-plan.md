@@ -182,21 +182,21 @@ Theo chỉ đạo chiến lược của Owner, **Sứa Chuông Jeli (#34)** đư
 | #07 | `nera` | Nera | Marksman | W2 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
 | #03 | `vero` | Vero | Assassin | W2 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
 | #36 | `rolo` | Rolo | Fighter | W2 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
-| #44 | `tan_son` | Tản Sơn | Tank | W3 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W3 Backlog |
-| #45 | `trieu_ba` | Triều Bá | Mage | W3 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W3 Backlog |
-| #46 | `dung_thach` | Dũng Thạch | Fighter | W3 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W3 Backlog |
-| #47 | `co_lo` | Cổ Lỗ | Marksman | W3 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W3 Backlog |
-| #32 | `kora` | Kora | Tank | W3 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W3 Backlog |
-| #31 | `moka` | Moka | Assassin | W3 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W3 Backlog |
-| #15 | `aero` | Aero | Marksman | W3 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W3 Backlog |
-| #30 | `iro` | Iro | Marksman | W3 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W3 Backlog |
-| #19 | `inka` | Inka | Mage | W4 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W4 Backlog |
-| #37 | `mok` | Mok | Scout | W4 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W4 Backlog |
-| #28 | `libro` | Libro | Support | W4 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W4 Backlog |
-| #35 | `pavo` | Pavo | Mage | W4 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W4 Backlog |
-| #49 | `kymos` | Kymos | Support | W4 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W4 Backlog |
-| #33 | `eelix` | Eelix | Assassin | W4 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W4 Spike Blocker |
-| #48 | `oneira` | Oneira | Support | W4 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W4 Spike Blocker |
+| #44 | `tan_son` | Tản Sơn | Tank | W3 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W3 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #45 | `trieu_ba` | Triều Bá | Mage | W3 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W3 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #46 | `dung_thach` | Dũng Thạch | Fighter | W3 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W3 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #47 | `co_lo` | Cổ Lỗ | Marksman | W3 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W3 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #32 | `kora` | Kora | Tank | W3 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W3 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #31 | `moka` | Moka | Assassin | W3 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W3 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #15 | `aero` | Aero | Marksman | W3 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W3 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #30 | `iro` | Iro | Marksman | W3 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W3 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #19 | `inka` | Inka | Mage | W4 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W4 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #37 | `mok` | Mok | Scout | W4 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W4 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #28 | `libro` | Libro | Support | W4 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W4 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #35 | `pavo` | Pavo | Mage | W4 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W4 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #49 | `kymos` | Kymos | Support | W4 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W4 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #33 | `eelix` | Eelix | Assassin | W4 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W4 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #48 | `oneira` | Oneira | Support | W4 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W4 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
 
 ---
 

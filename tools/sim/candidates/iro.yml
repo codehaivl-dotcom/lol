@@ -1,0 +1,53 @@
+# ỨNG VIÊN WAVE 3 · #30 Iro · Mắt Thiên Cơ · Xạ Thủ Bắn Tỉa Ngắm Tĩnh
+heroes:
+  iro:
+    role: marksman
+    tuning: { hp: 0.94, dmg: 1.05 }
+    resource: mana
+    stats: { hp: 590, resource: 340, ad: 65, ap: 0, armor: 26, mr: 30, moveSpeed: 6.0, attackSpeed: 0.60, hpRegen: 1.3, resourceRegen: 1.5 }
+    growth: { hp: 80, resource: 35, ad: 4.2, ap: 0, armor: 3.0, mr: 1.2, moveSpeed: 0, attackSpeed: 0.018, hpRegen: 0.11, resourceRegen: 0.12 }
+    passive:
+      type: laser_sniper          # Mắt Thiên Cơ Ngắm Tĩnh Tầm Xa: Đứng yên tích ngắm tăng cự ly (+1.5m/s, max +6m) và sát thương (+30%); laser đỏ báo trước 1.0s
+      focusPerSec: 1.5
+      maxFocusRange: 6.0
+      focusDmgBonus: 0.30
+      laserWarnTime: 1.0
+    lmb: { aim: projectile, range: 7.5 } # Tia xung kích thấu kính pha lê
+    q:    # Tụ Quang Xuyên Phá: tụ năng lượng 0.8s bắn tia laser đỏ xuyên thấu cực mạnh tầm xa
+      aim: skillshot
+      width: 1.4
+      speed: 40
+      range: 12.0
+      windup: 0.25
+      passMinions: true
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [45, 50, 55, 60, 65]
+      damage: { type: physical, base: [70, 110, 150, 190, 230], bonusAd: 0.95 }
+      effects: [{ slow: 0.2, duration: 1.0 }]
+    rmb:  # Thấu Kính Phòng Vệ: tạo trường quang học đẩy lùi kẻ địch cận chiến và nhận khiên bảo hộ
+      aim: self
+      windup: 0
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [50, 50, 50, 50, 50]
+      shield: { base: [65, 95, 125, 155, 185], duration: 2.5 }
+    e:    # Khóa Tiêu Cự: chiếu tia laser làm lộ diện mục tiêu và giảm giáp của chúng
+      aim: single_target
+      range: 9.0
+      windup: 0.1
+      cooldown: [11, 10.5, 10, 9.5, 9]
+      cost: [55, 60, 65, 70, 75]
+      damage: { type: physical, base: [45, 70, 95, 120, 145], ad: 0.40 }
+      effects: [{ slow: 0.3, duration: 1.5 }]
+    r:    # Thiên Cơ Hủy Diệt Pháo: bắn phát pháo laser vệ tinh tầm cực đại hủy diệt mục tiêu
+      aim: skillshot
+      width: 2.0
+      speed: 45
+      range: 22.0
+      windup: 0.5
+      passMinions: true
+      cooldown: [85, 75, 65]
+      cost: [100, 100, 100]
+      damage: { type: physical, base: [200, 310, 420], bonusAd: 1.20 }
+      effects: [{ slow: 0.45, duration: 2.0 }]
+builds:
+  iro: [keeneye, quickstring, thornseed_quiver, qua_mach, buoc_van]

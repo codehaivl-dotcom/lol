@@ -1,0 +1,52 @@
+# ỨNG VIÊN WAVE 4 · #35 Pavo · Khổng Tước · Pháp Sư Quạt Mắt Dọa Sợ
+heroes:
+  pavo:
+    role: mage
+    tuning: { hp: 0.98, dmg: 1.02 }
+    resource: mana
+    stats: { hp: 620, resource: 350, ad: 50, ap: 0, armor: 28, mr: 32, moveSpeed: 6.2, attackSpeed: 0.64, hpRegen: 1.4, resourceRegen: 1.8 }
+    growth: { hp: 86, resource: 42, ad: 3.0, ap: 0, armor: 3.3, mr: 1.6, moveSpeed: 0, attackSpeed: 0.016, hpRegen: 0.13, resourceRegen: 0.15 }
+    passive:
+      type: peacock_gaze           # Khổng Tước Quạt Mắt Dọa Sợ: Xòe quạt đuôi; kẻ địch đối diện đang nhìn vào Pavo bị hoảng sợ chạy lùi (flee/fear 1.2s); kẻ địch quay lưng né được hoàn toàn
+      gazeFear: 1.2
+      gazeRadius: 5.5
+    lmb: { aim: projectile, range: 6.2, damageType: magic, ap: 0.2 } # Bắn lông vũ quang học
+    q:    # Kim Vũ Tiễn: phóng chùm lông vũ cơ khí hình quạt xé rách kẻ địch phía trước
+      aim: fan
+      width: 1.2
+      speed: 30
+      range: 8.0
+      windup: 0.15
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [45, 50, 55, 60, 65]
+      fan: { count: 3, spread: 35 }
+      damage: { type: magic, base: [65, 100, 135, 170, 205], ap: 0.65 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
+    rmb:  # Khai Mạc Khổng Tước: xòe quạt đuôi giương mắt thôi miên dọa sợ kẻ địch đối diện và nhận khiên
+      aim: self
+      windup: 0
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [55, 60, 65, 70, 75]
+      shield: { base: [65, 100, 135, 170, 205], duration: 2.5 }
+      effects: [{ slow: 0.35, duration: 1.2 }]
+    e:    # Huyễn Ảnh Quang Tráo: tạo quả cầu gương ánh sáng làm chậm và gây sát thương diện rộng
+      aim: area
+      radius: 3.8
+      range: 7.0
+      windup: 0.15
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [60, 65, 70, 75, 80]
+      damage: { type: magic, base: [50, 80, 110, 140, 170], ap: 0.50 }
+      effects: [{ slow: 0.3, duration: 1.2 }]
+    r:    # Vạn Nhãn Thôi Miên: chiếu chùm hào quang cực đại từ quạt đuôi ép toàn đội địch tháo chạy
+      aim: area
+      radius: 6.0
+      range: 0
+      delay: 0.2
+      windup: 0.25
+      cooldown: [80, 70, 60]
+      cost: [100, 100, 100]
+      damage: { type: magic, base: [180, 280, 380], ap: 0.85 }
+      effects: [{ stun: 0.8 }]
+builds:
+  pavo: [chuong_may, dang_hoi_am, binh_mach, heartforge, buoc_van]

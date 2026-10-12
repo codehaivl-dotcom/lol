@@ -1,0 +1,50 @@
+# ỨNG VIÊN WAVE 3 · #31 Moka · Hổ Nấm Răng Kiếm · Sát Thủ Phục Kích Rừng
+heroes:
+  moka:
+    role: assassin
+    tuning: { hp: 0.98, dmg: 1.03 }
+    resource: none
+    stats: { hp: 640, resource: 0, ad: 68, ap: 0, armor: 32, mr: 30, moveSpeed: 6.55, attackSpeed: 0.68, hpRegen: 1.5, resourceRegen: 0 }
+    growth: { hp: 88, resource: 0, ad: 3.8, ap: 0, armor: 3.5, mr: 1.3, moveSpeed: 0, attackSpeed: 0.022, hpRegen: 0.13, resourceRegen: 0 }
+    passive:
+      type: spore_pounce           # Hổ Nấm Bào Tử Rình Vồ: Bào tử bám vào mục tiêu làm lộ diện 4s; vồ mồi từ cự ly xa khi mục tiêu dính bào tử (+40% bonus AD sát thương bộc phát)
+      sporeDuration: 4.0
+      pounceBonusAd: 0.40
+      pounceRange: 7.0
+    lmb: { aim: melee, range: 1.8 } # Vuốt cào hổ răng kiếm
+    q:    # Bào Tử Phóng Thích: vung đuôi bắn chùm bào tử gây sát thương và đánh dấu mục tiêu
+      aim: skillshot
+      width: 1.4
+      speed: 28
+      range: 6.5
+      windup: 0.1
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [65, 100, 135, 170, 205], bonusAd: 0.85 }
+      effects: [{ slow: 0.25, duration: 1.2 }]
+    rmb:  # Ẩn Tích Bào Quang: hòa mình vào bào tử nhận khiên và tăng mạnh tốc độ di chuyển
+      aim: self
+      windup: 0
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [0, 0, 0, 0, 0]
+      shield: { base: [60, 95, 130, 165, 200], duration: 2.5 }
+    e:    # Toái Cốt Trảm Kích: cào xé mục tiêu gây sát thương sâu và làm chậm
+      aim: area
+      radius: 3.2
+      range: 0
+      windup: 0.1
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [50, 80, 110, 140, 170], ad: 0.55 }
+      effects: [{ slow: 0.35, duration: 1.0 }]
+    r:    # Mãnh Hổ Tuyệt Sát: tiếng gầm cảnh báo 0.8s rồi vồ mồi từ xa cắn xé bộc phát làm choáng
+      aim: single_target
+      range: 7.0
+      windup: 0.25
+      cooldown: [70, 60, 50]
+      cost: [0, 0, 0]
+      dash: { distance: 7.0, toward: true }
+      damage: { type: physical, base: [190, 290, 390], bonusAd: 1.25 }
+      effects: [{ stun: 0.8 }]
+builds:
+  moka: [keeneye, quickstring, heartforge, thornseed_quiver, bastion_stone]

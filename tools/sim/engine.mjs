@@ -80,6 +80,13 @@ export const ms = (u, t) => {
           if (z.team === u.team) m *= 1 + (z.speedBoost ?? 0.20);
           else m *= 1 - (z.slowRatio ?? 0.25);
         }
+        if (z.type === "ink_path") {
+          if (z.team === u.team) m *= 1 + (z.speedBoost ?? 0.20);
+          else m *= 1 - (z.slowRatio ?? 0.25);
+        }
+        if (z.type === "shadow_wake") {
+          if (z.team === u.team) m *= 1 + (z.speedBoost ?? 0.35);
+        }
       }
     }
   }
@@ -88,6 +95,18 @@ export const ms = (u, t) => {
   }
   if (u.k?.passive?.type === "scale_shedding" && (u.shedUntil ?? 0) > t) {
     m *= 1 + (u.k.passive.shedSpeedBonus ?? 0.20);
+  }
+  if (u.k?.passive?.type === "carpet_bomb_strafe") {
+    m *= 1 + (u.k.passive.strafeSpeedBonus ?? 0.15);
+  }
+  if (u.k?.passive?.type === "siege_stance" && (u.siegeUntil ?? 0) > t) {
+    m = 0;
+  }
+  if (u.k?.passive?.type === "directional_shield" && (u.guardUntil ?? 0) > t) {
+    m *= 1 - (u.k.passive.shieldSpeedPenalty ?? 0.20);
+  }
+  if (u.k?.passive?.type === "shadow_wake" && (u.shadowWakeUntil ?? 0) > t) {
+    m *= 1 + (u.k.passive.wakeSpeedBonus ?? 0.35);
   }
   return m * (1 - u.slows.filter((x) => x.until > t).reduce((a, x) => Math.max(a, x.pct), 0));
 };
@@ -102,6 +121,9 @@ export const aspd = (u, t) => {
   }
   if (u.k?.passive?.type === "scale_shedding" && (u.shedUntil ?? 0) > t) {
     a *= 1 + (u.k.passive.shedAspdBonus ?? 0.25);
+  }
+  if ((u.solarSlowUntil ?? 0) > t) {
+    a *= 1 - (u.solarSlowPct ?? 0.25);
   }
   return a;
 };
@@ -136,9 +158,49 @@ export function hurt(W, src, tgt, amount, type, opt = {}) {
       proc(tgt, "passive:parry_piston_proc");
     }
   }
+  // Kora: Directional shield đón đỡ phía trước
+  if (tgt.guardUntil && tgt.guardUntil > W.t && src.kind === "hero") {
+    amount *= 1 - (tgt.k?.passive?.frontMitigation ?? 0.60);
+    proc(tgt, "passive:directional_shield_block");
+  }
+  // Libro: Sổ Nợ hoãn sát thương
+  if (tgt.debtUntil && tgt.debtUntil > W.t && !opt.debt) {
+    const postRatio = tgt.debtRatio ?? 0.70;
+    const postAmt = amount * postRatio;
+    amount *= (1 - postRatio);
+    tgt.debtPool = (tgt.debtPool ?? 0) + postAmt;
+    proc(tgt, "passive:debt_postponed");
+  }
+  // Kymos: Acoustic node giảm sát thương sốc cho đồng minh
+  if (W.zones) {
+    for (const z of W.zones) {
+      if (z.type === "acoustic_node" && z.team === tgt.team && z.until > W.t && d2(tgt.pos, z.pos) <= z.r) {
+        amount *= 1 - (z.burstMitigation ?? 0.40);
+        proc(tgt, "passive:acoustic_mitigation");
+        break;
+      }
+    }
+  }
   const pre = amount;
   let tgtArmor = tgt.s.armor;
   let tgtMr = tgt.s.mr;
+  // Trieu Ba: Tam long xoáy nước cho giáp/kháng phép
+  if (tgt.k?.passive?.type === "orbital_dragons") {
+    const dN = tgt.dragons ?? 3;
+    const res = dN * (tgt.k.passive.resistPerDragon ?? 12);
+    tgtArmor += res;
+    tgtMr += res;
+  }
+  // Tan Son: Vách núi ngọc bích gia cố giáp
+  if (tgt.k?.passive?.type === "passable_ridge" && (tgt.ridgeUntil ?? 0) > W.t) {
+    tgtArmor += 25;
+    tgtMr += 25;
+  }
+  // Co Lo: Mai rùa cắm chốt tăng giáp lưng
+  if (tgt.k?.passive?.type === "siege_stance" && (tgt.siegeUntil ?? 0) > W.t) {
+    tgtArmor += (tgt.k.passive.siegeArmorBonus ?? 40);
+    tgtMr += (tgt.k.passive.siegeMrBonus ?? 40);
+  }
   // Forge: Quá nhiệt tăng sức chống chịu
   if (tgt.k?.passive?.type === "heat_gauge" && (tgt.heat ?? 0) >= 50) {
     const bonusRes = (tgt.heat - 50) * 0.3;
@@ -374,6 +436,60 @@ export function resolve(W, h) {
       h.shedUntil = t + (h.k.passive.shedDuration ?? 5.0);
       proc(h, "passive:scale_shedding_burst");
     }
+    if (h.k.passive?.type === "passable_ridge" && slot === "rmb") {
+      h.ridgeUntil = t + (h.k.passive.ridgeDuration ?? 3.0);
+      W.zones ??= [];
+      W.zones.push({ type: "passable_ridge", team: h.team, pos: { x: h.pos.x, z: h.pos.z }, r: 3.5, until: t + (h.k.passive.ridgeDuration ?? 3.0) });
+      proc(h, "passive:passable_ridge");
+    }
+    if (h.k.passive?.type === "orbital_dragons" && slot === "rmb") {
+      h.dragons = 3;
+      proc(h, "passive:dragons_recalled");
+    }
+    if (h.k.passive?.type === "fissure_cleave" && slot === "rmb") {
+      h.slows = []; h.rootUntil = Math.min(h.rootUntil, t);
+      for (const enemy of enemiesOf(W, h)) {
+        if (d2(enemy.pos, h.pos) <= 5.0) enemy.buffs.push({ dmgM: -0.25, until: t + 1.5 });
+      }
+      h.lockUntil = Math.max(h.lockUntil, t + 1.0);
+      proc(h, "passive:celestial_harp");
+    }
+    if (h.k.passive?.type === "siege_stance" && slot === "rmb") {
+      h.siegeUntil = t + 5.0;
+      proc(h, "passive:siege_mode");
+    }
+    if (h.k.passive?.type === "directional_shield" && slot === "rmb") {
+      h.guardUntil = t + 3.5;
+      proc(h, "passive:directional_guard");
+    }
+    if (h.k.passive?.type === "debt_ledger" && slot === "rmb") {
+      h.debtUntil = t + (h.k.passive.debtWindow ?? 2.5);
+      h.debtRatio = h.k.passive.debtPostponeRatio ?? 0.70;
+      proc(h, "passive:debt_ledger");
+    }
+    if (h.k.passive?.type === "peacock_gaze" && slot === "rmb") {
+      for (const enemy of enemiesOf(W, h)) {
+        if (d2(enemy.pos, h.pos) <= (h.k.passive.gazeRadius ?? 5.5)) {
+          enemy.charmUntil = Math.max(enemy.charmUntil, t + (h.k.passive.gazeFear ?? 1.2));
+          enemy.charmBy = h;
+        }
+      }
+      proc(h, "passive:peacock_fear");
+    }
+    if (h.k.passive?.type === "acoustic_node" && slot === "rmb") {
+      W.zones ??= [];
+      W.zones.push({ type: "acoustic_node", team: h.team, pos: { x: h.pos.x, z: h.pos.z }, r: 4.5, until: t + 3.5, burstMitigation: 0.40 });
+      proc(h, "passive:acoustic_node");
+    }
+    if (h.k.passive?.type === "lantern_beacon" && slot === "rmb") {
+      proc(h, "passive:lantern_detonated");
+    }
+    if (h.k.passive?.type === "cc_absorb_transmute" && slot === "rmb") {
+      for (const ally of alliesOf(W, h)) {
+        ally.slows = []; ally.rootUntil = Math.min(ally.rootUntil, t);
+      }
+      proc(h, "passive:cc_transmuted");
+    }
     return;
   }
   if (ab.dash?.to === "ally") dashAlly(W, h, e, ab);
@@ -393,6 +509,53 @@ export function resolve(W, h) {
   }
   if (h.k.passive?.type === "heat_gauge") {
     h.heat = Math.min(100, (h.heat ?? 0) + (h.k.passive.heatPerCast ?? 15));
+  }
+  if (h.k.passive?.type === "orbital_dragons" && slot === "q") {
+    h.dragons = Math.max(0, (h.dragons ?? 3) - 1);
+    W.zones ??= [];
+    if (e) W.zones.push({ type: "water_trail", team: h.team, pos: { x: (h.pos.x + e.pos.x)/2, z: (h.pos.z + e.pos.z)/2 }, r: 3.0, until: t + 3.0, slowRatio: 0.25 });
+    proc(h, "passive:dragon_launch");
+  }
+  if (h.k.passive?.type === "passable_ridge" && slot === "e") {
+    for (const enemy of enemiesOf(W, h)) {
+      if (d2(enemy.pos, h.pos) <= 5.0) {
+        enemy.solarSlowUntil = t + 2.0;
+        enemy.solarSlowPct = 0.25;
+      }
+    }
+    proc(h, "passive:solar_aegis");
+  }
+  if (h.k.passive?.type === "spore_pounce" && slot === "q" && e) {
+    e.sporeUntil = t + (h.k.passive.sporeDuration ?? 4.0);
+    proc(h, "passive:spore_applied");
+  }
+  if (h.k.passive?.type === "carpet_bomb_strafe" && slot === "q") {
+    W.zones ??= [];
+    W.zones.push({ type: "plasma_strafe", src: h, team: h.team, pos: { x: h.pos.x, z: h.pos.z }, r: 2.8, until: t + 3.0, dps: h.s.ad * (h.k.passive.plasmaDpsAd ?? 0.3) });
+    proc(h, "passive:plasma_strafe");
+  }
+  if (h.k.passive?.type === "laser_sniper" && slot === "q") {
+    proc(h, "passive:sniper_shot");
+  }
+  if (h.k.passive?.type === "ink_path" && slot === "q") {
+    W.zones ??= [];
+    W.zones.push({ type: "ink_path", team: h.team, pos: { x: h.pos.x, z: h.pos.z }, r: 2.5, until: t + 4.0, speedBoost: 0.20, slowRatio: 0.25 });
+    proc(h, "passive:ink_path");
+  }
+  if (h.k.passive?.type === "lantern_beacon") {
+    if (slot === "q" && e) {
+      W.zones ??= [];
+      W.zones.push({ type: "lantern_beacon", team: h.team, pos: { x: e.pos.x, z: e.pos.z }, r: 6.0, until: t + 8.0 });
+      proc(h, "passive:lantern_placed");
+    } else if (slot === "rmb") {
+      proc(h, "passive:lantern_detonated");
+    }
+  }
+  if (h.k.passive?.type === "shadow_wake" && slot === "q") {
+    h.shadowWakeUntil = t + 3.5;
+    W.zones ??= [];
+    W.zones.push({ type: "shadow_wake", team: h.team, pos: { x: h.pos.x, z: h.pos.z }, r: 2.5, until: t + 3.5, speedBoost: 0.35 });
+    proc(h, "passive:shadow_wake");
   }
   const hitList = struck(W, h, e, ab);
   if (ab.dash && ab.dash.toward) { const go = Math.min(ab.dash.distance, Math.max(0, d2(h.pos, e.pos) - 1.2 - e.r)); step(h, toward(h.pos, e.pos), go); }
@@ -449,7 +612,14 @@ function itemOnAbilityHero(W, h, o) {
 const proc = (u, k) => { u.procs[k] = (u.procs[k] ?? 0) + 1; };
 export function autoAttack(W, h, e) {
   const t = W.t, lmb = h.k.lmb, dist = d2(h.pos, e.pos);
-  const reach = (h.k.passive?.type === "staff_reach" && (h.staffUntil ?? 0) > t ? (h.k.passive.extendedRange ?? 4.5) : ((h.k.passive?.type === "mounted_momentum" && (h.bambooUntil ?? 0) > t) ? 3.5 : (lmb.range ?? 2)));
+  if (h.k.passive?.type === "siege_stance" && (h.siegeUntil ?? 0) > t) {
+    if (dist < (h.k.passive.blindspotRadius ?? 2.5)) return false; // Vùng mù cận chiến pháo đài
+  }
+  const reach = (h.k.passive?.type === "staff_reach" && (h.staffUntil ?? 0) > t ? (h.k.passive.extendedRange ?? 4.5) :
+                ((h.k.passive?.type === "mounted_momentum" && (h.bambooUntil ?? 0) > t) ? 3.5 :
+                ((h.k.passive?.type === "siege_stance" && (h.siegeUntil ?? 0) > t) ? (h.k.passive.siegeRange ?? 8.5) :
+                ((h.k.passive?.type === "laser_sniper") ? ((lmb.range ?? 7.5) + Math.min(h.k.passive.maxFocusRange ?? 6.0, (h.focusTime ?? 0) * (h.k.passive.focusPerSec ?? 1.5))) :
+                (lmb.range ?? 2)))));
   if (dist > reach + e.r + 0.3 || !targetable(e, t)) return false;
   const iv = 1 / aspd(h, t);
   h.atkReady = t + iv; h.lockUntil = t + Math.min(0.35, iv * 0.3); h.hitN++; h._now = t;
@@ -459,6 +629,23 @@ export function autoAttack(W, h, e) {
   if (projectile) return true;
   hurt(W, h, e, amt, type, { tag: "aa" });
   const p = h.k.passive;
+  if (p?.type === "fissure_cleave" && h.hitN % (p.cleaveHit ?? 3) === 0) {
+    const bonusTrue = amt * (p.trueDmgRatio ?? 0.35);
+    hurt(W, h, e, bonusTrue, "true", { tag: "passive:fissure_cleave" });
+    proc(h, "passive:fissure_cleave");
+  }
+  if (p?.type === "spore_pounce" && (e.sporeUntil ?? 0) > t) {
+    const pounceBonus = amt * (p.pounceBonusAd ?? 0.40);
+    hurt(W, h, e, pounceBonus, "physical", { tag: "passive:spore_pounce" });
+    proc(h, "passive:spore_pounce");
+    e.sporeUntil = 0; // Vồ mồi tiêu thụ dấu ấn bào tử
+  }
+  if (p?.type === "shadow_wake" && (h.shadowWakeUntil ?? 0) > t) {
+    const chainBonus = amt * (p.chainLightningAd ?? 0.45);
+    hurt(W, h, e, chainBonus, "magic", { tag: "passive:chain_lightning" });
+    proc(h, "passive:shadow_wake_strike");
+    h.shadowWakeUntil = 0; // Đòn chém tiêu thụ cường hóa lôi điện
+  }
   if (p?.type === "staff_reach" && (h.staffUntil ?? 0) > t) {
     if (dist >= (p.sweetspotMin ?? 2.8)) {
       const bonus = amt * (p.sweetspotBonus ?? 0.25);
@@ -697,6 +884,22 @@ export function tickDots(W, u) {
     u.echoPopAt = 0;
     hurt(W, u.echoSrc, u, popDmg, "magic", { echo: true, tag: "passive:delayed_echo_pop" });
     proc(u.echoSrc, "passive:delayed_echo_pop");
+  }
+
+  // Libro: Nợ đáo hạn trả dần
+  if (u.debtPool && u.debtPool > 0 && (u.debtUntil ?? 0) <= t) {
+    const dps = u.debtPool / 3.0;
+    hurt(W, u, u, dps * DT, "true", { debt: true, tag: "passive:debt_payback" });
+    u.debtPool = Math.max(0, u.debtPool - dps * DT);
+  }
+
+  // Aero: Plasma strafe zone damage
+  if (W.zones && u.kind === "hero") {
+    for (const z of W.zones) {
+      if (z.type === "plasma_strafe" && z.team !== u.team && z.until > t && d2(u.pos, z.pos) <= z.r) {
+        hurt(W, z.src ?? u, u, z.dps * DT, "magic", { tag: "passive:plasma_strafe_dot" });
+      }
+    }
   }
 
   let regen = u.s.hpRegen;

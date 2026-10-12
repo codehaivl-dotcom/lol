@@ -1,0 +1,70 @@
+[INFO_BASELINE_PANEL] --heroes chỉ định 1 tướng ('moka'). Tự động ghép Baseline Comparison Panel gồm 6 tướng chuẩn (moc_lam, kha_tan, van_dao, hoa_tuy, bach_dien, mac_lien) để thực hiện đối kháng và kiểm thử combo!
+parity: 42/42 khớp · deterministic true
+progress: 7 tướng × 6 mốc
+duel phút 3: moka 44.8% · moc_lam 68.1% · kha_tan 95.3% · van_dao 38.3% · hoa_tuy 79.8% · bach_dien 23.2% · mac_lien 0.6%
+duel phút 6: moka 40.6% · moc_lam 69.4% · kha_tan 83.1% · van_dao 38.5% · hoa_tuy 88.3% · bach_dien 25.1% · mac_lien 4.9%
+duel phút 10: moka 30.8% · moc_lam 74.3% · kha_tan 78.5% · van_dao 42.6% · hoa_tuy 89.2% · bach_dien 32.1% · mac_lien 2.7%
+duel phút 15: moka 27.3% · moc_lam 64.7% · kha_tan 63.6% · van_dao 45.1% · hoa_tuy 95.7% · bach_dien 49.0% · mac_lien 4.6%
+duel phút 20: moka 32.9% · moc_lam 77.4% · kha_tan 62.6% · van_dao 45.2% · hoa_tuy 93.6% · bach_dien 37.6% · mac_lien 0.8%
+duel phút full: moka 28.2% · moc_lam 75.7% · kha_tan 60.6% · van_dao 67.9% · hoa_tuy 90.4% · bach_dien 27.3% · mac_lien 0.0%
+gank moka: p6 0.0%/0.1% · p10 0.0%/0.0% · p15 0.0%/0.0%
+gank moc_lam: p6 0.0%/6.0% · p10 0.0%/0.1% · p15 0.0%/0.0%
+gank kha_tan: p6 0.0%/3.3% · p10 0.0%/0.0% · p15 0.0%/0.0%
+gank van_dao: p6 0.0%/5.2% · p10 0.0%/1.6% · p15 0.0%/0.0%
+gank hoa_tuy: p6 0.3%/39.7% · p10 0.1%/32.8% · p15 0.4%/18.0%
+gank bach_dien: p6 0.0%/0.5% · p10 0.0%/0.1% · p15 0.0%/0.0%
+gank mac_lien: p6 0.0%/0.0% · p10 0.0%/0.0% · p15 0.0%/0.0%
+team 2v2: 20.1 s · moka 41.8% · moc_lam 62.2% · kha_tan 51.7% · van_dao 40.7% · hoa_tuy 78.1% · bach_dien 43.3% · mac_lien 30.5%
+team 3v3: 21.7 s · moka 37.1% · moc_lam 57.3% · kha_tan 54.4% · van_dao 44.6% · hoa_tuy 68.4% · bach_dien 45.3% · mac_lien 43.1%
+tower moka: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+tower moc_lam: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+tower kha_tan: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+tower van_dao: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+tower hoa_tuy: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+tower bach_dien: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+tower mac_lien: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+wave moka: p3 0.0% dọn 15s -100.0% · p6 100.0% dọn 15s -56.3% · p10 100.0% dọn 12s -31.5% · p15 100.0% dọn 10s -20.0% · p20 100.0% dọn 10s -15.5%
+wave moc_lam: p3 100.0% dọn 29s -75.3% · p6 100.0% dọn 25s -47.6% · p10 100.0% dọn 19s -19.0% · p15 100.0% dọn 12s -9.5% · p20 100.0% dọn 11s -8.8%
+wave kha_tan: p3 30.0% dọn 19s -98.9% · p6 100.0% dọn 18s -46.1% · p10 100.0% dọn 18s -28.7% · p15 100.0% dọn 16s -16.6% · p20 100.0% dọn 16s -8.9%
+wave van_dao: p3 0.0% dọn 22s -100.0% · p6 100.0% dọn 28s -60.1% · p10 100.0% dọn 17s -18.4% · p15 100.0% dọn 17s -10.8% · p20 100.0% dọn 16s -7.8%
+wave hoa_tuy: p3 0.0% dọn 15s -100.0% · p6 100.0% dọn 19s -79.1% · p10 100.0% dọn 11s -32.2% · p15 100.0% dọn 6s -14.4% · p20 100.0% dọn 7s -12.1%
+wave bach_dien: p3 0.0% dọn 13s -100.0% · p6 100.0% dọn 25s -86.9% · p10 100.0% dọn 18s -48.2% · p15 100.0% dọn 13s -27.2% · p20 100.0% dọn 12s -21.4%
+wave mac_lien: p3 0.0% dọn 10s -100.0% · p6 40.0% dọn 19s -94.2% · p10 100.0% dọn 14s -53.2% · p15 100.0% dọn 11s -28.9% · p20 100.0% dọn 10s -19.6%
+jungle moka: jade_hare 4s 94.1% · mountain_boar 8s 86.7% · stone_monkey 7s 90.2% · mountain_turtle 14s 79.6% · river_serpent 8s 87.3% · wood_golem 15s 66.0% · white_crane 14s 72.4%
+jungle moc_lam: jade_hare 6s 94.3% · mountain_boar 12s 91.0% · stone_monkey 9s 91.7% · mountain_turtle 18s 84.8% · river_serpent 11s 90.8% · wood_golem 26s 71.5% · white_crane 24s 76.6%
+jungle kha_tan: jade_hare 4s 95.3% · mountain_boar 8s 87.6% · stone_monkey 7s 90.3% · mountain_turtle 11s 89.7% · river_serpent 8s 87.6% · wood_golem 17s 80.8% · white_crane 15s 81.2%
+jungle van_dao: jade_hare 10s 95.2% · mountain_boar 19s 88.9% · stone_monkey 15s 88.3% · mountain_turtle 25s 86.4% · river_serpent 19s 87.7% · wood_golem 41s 58.6% · white_crane 38s 65.3%
+jungle hoa_tuy: jade_hare 6s 94.4% · mountain_boar 10s 87.3% · stone_monkey 8s 88.4% · mountain_turtle 14s 80.2% · river_serpent 12s 83.0% · wood_golem 17s 68.2% · white_crane 16s 70.7%
+jungle bach_dien: jade_hare 7s 91.5% · mountain_boar 12s 81.2% · stone_monkey 11s 81.0% · mountain_turtle 17s 77.1% · river_serpent 14s 77.8% · wood_golem 25s 51.1% · white_crane 22s 58.0%
+jungle mac_lien: jade_hare 5s 91.5% · mountain_boar 11s 79.8% · stone_monkey 8s 84.5% · mountain_turtle 14s 74.6% · river_serpent 11s 78.0% · wood_golem 21s 47.9% · white_crane 21s 48.2%
+boss solo: moka 0.0% · moc_lam 0.0% · kha_tan 0.0% · van_dao 0.0% · hoa_tuy 0.0% · bach_dien 0.0% · mac_lien 0.0% | đội: 2 người 40.0% 62s chết 1.6 · 3 người 100.0% 31s chết 0.2 · 5 người 100.0% 16s chết 0.0
+combo phút 3: xong
+combo phút 6: xong
+combo phút 10: xong
+combo phút 15: xong
+combo phút 20: xong
+combo phút full: xong
+combo cao nhất: hoa_tuy→moka p6 108.0% · hoa_tuy→moka p15 107.2% · hoa_tuy→moka p10 107.1% · hoa_tuy→moka p15 106.9% · hoa_tuy→moka p15 106.5% · moka→mac_lien p10 106.3% · hoa_tuy→mac_lien p6 106.3% · moka→hoa_tuy p10 105.8%
+
+FLAG_RED · rev 4272ea8de834 · red 25 · orange 169 · yellow 17
+→ D:\Project\Test\24tuong\reports\sim\production26\2026-10-12T08-04-13-338Z\moka/report.html
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 5 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 6 lần trong một combo (proc bất thường)
+  RED  moka: passive:spore_pounce kích 6 lần trong một combo (proc bất thường)

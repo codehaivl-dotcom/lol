@@ -1,0 +1,50 @@
+# ỨNG VIÊN WAVE 3 · #32 Kora · Hải Mẫu Cổ Giáp · Đỡ Đòn Càng Thép Cửa Đập
+heroes:
+  kora:
+    role: tank
+    tuning: { hp: 1.08, dmg: 0.92 }
+    resource: none
+    stats: { hp: 800, resource: 0, ad: 55, ap: 0, armor: 46, mr: 38, moveSpeed: 6.2, attackSpeed: 0.60, hpRegen: 2.2, resourceRegen: 0 }
+    growth: { hp: 110, resource: 0, ad: 3.0, ap: 0, armor: 4.6, mr: 2.0, moveSpeed: 0, attackSpeed: 0.012, hpRegen: 0.20, resourceRegen: 0 }
+    passive:
+      type: directional_shield     # Hải Mẫu Hộ Giáp Cửa Đập: Giương hai càng thép giảm 60% sát thương đạn đạo phía trước, sườn và sau lưng chịu đủ sát thương, di chuyển chậm hơn 20% khi giương càng
+      frontMitigation: 0.60
+      shieldSpeedPenalty: 0.20
+    lmb: { aim: melee, range: 1.9 } # Kẹp càng thép đồng thau
+    q:    # Thiết Càng Nghiền Ép: kẹp nghiến mục tiêu phía trước gây sát thương và làm choáng nhẹ
+      aim: melee
+      range: 2.2
+      windup: 0.15
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [60, 90, 120, 150, 180], bonusAd: 0.70 }
+      effects: [{ stun: 0.6 }]
+    rmb:  # Cửa Đập Phòng Ngự: giương 2 càng thép tạo thế chắn đạn và nhận lá chắn hấp thụ
+      aim: self
+      windup: 0
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [0, 0, 0, 0, 0]
+      shield: { base: [90, 135, 180, 225, 270], maxHp: 0.09, duration: 3.5 }
+    e:    # Hải Triều Xung Kích: ủi thân cua tới trước hất văng kẻ địch sang hai bên
+      aim: skillshot
+      width: 1.8
+      speed: 20
+      range: 5.5
+      windup: 0.1
+      cooldown: [11, 10.5, 10, 9.5, 9]
+      cost: [0, 0, 0, 0, 0]
+      dash: { distance: 5.5, toward: true }
+      damage: { type: physical, base: [50, 75, 100, 125, 150], ad: 0.50 }
+      effects: [{ slow: 0.35, duration: 1.2 }]
+    r:    # Hải Trấn Thần Uy: dập cả hai càng xuống đất tạo địa chấn sóng thần khóa chân kẻ địch xung quanh
+      aim: area
+      radius: 5.5
+      range: 0
+      delay: 0.2
+      windup: 0.3
+      cooldown: [85, 75, 65]
+      cost: [0, 0, 0]
+      damage: { type: physical, base: [150, 240, 330], bonusAd: 0.85 }
+      effects: [{ stun: 1.0 }]
+builds:
+  kora: [oathguard_plate, heartforge, iron_plate, bastion_stone, buoc_van]

@@ -1,0 +1,54 @@
+# ỨNG VIÊN WAVE 3 · #46 Dũng Thạch · Thần Rìu & Thiên Cầm · Đấu Sĩ Cuồng Chiến Hài Hòa
+heroes:
+  dung_thach:
+    role: fighter
+    tuning: { hp: 1.04, dmg: 0.98 }
+    resource: none
+    stats: { hp: 740, resource: 0, ad: 68, ap: 0, armor: 38, mr: 32, moveSpeed: 6.35, attackSpeed: 0.66, hpRegen: 1.8, resourceRegen: 0 }
+    growth: { hp: 98, resource: 0, ad: 3.8, ap: 0, armor: 4.0, mr: 1.8, moveSpeed: 0, attackSpeed: 0.018, hpRegen: 0.15, resourceRegen: 0 }
+    passive:
+      type: fissure_cleave         # Trảm Kích Rìu Nứt Đất & Thiên Cầm Giải Hòa: Đòn thứ 3 nứt rãnh địa chấn sát thương chuẩn; chiêu W gảy đàn giải CC mềm và giảm 25% dmg địch xung quanh
+      cleaveHit: 3
+      trueDmgRatio: 0.35
+      harpDmgReduction: 0.25
+      harpDuration: 1.5
+      harpChannel: 1.0
+    lmb: { aim: melee, range: 2.1 } # Vung Đại Rìu Cổ Linh
+    q:    # Khai Sơn Phách: giáng mạnh rìu nứt đất theo đường thẳng gây sát thương và làm chậm
+      aim: skillshot
+      width: 1.6
+      speed: 24
+      range: 6.8
+      windup: 0.18
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [65, 100, 135, 170, 205], bonusAd: 0.80 }
+      effects: [{ slow: 0.3, duration: 1.2 }]
+    rmb:  # Thiên Cầm Thánh Âm: gảy đàn giải phóng khống chế mềm, giảm 25% sát thương địch xung quanh, khựng 1s
+      aim: self
+      windup: 0.1
+      cooldown: [15, 14, 13, 12, 11]
+      cost: [0, 0, 0, 0, 0]
+      shield: { base: [70, 105, 140, 175, 210], duration: 2.5 }
+    e:    # Cuồng Phách Toái Giáp: xoay tròn đại rìu chém xung quanh và hút máu
+      aim: area
+      radius: 3.5
+      range: 0
+      windup: 0.1
+      cooldown: [9, 8.5, 8, 7.5, 7]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [50, 80, 110, 140, 170], ad: 0.60 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
+    r:    # Thiên Địa Bạt Sơn: nhảy vồ giáng đại rìu nổ tung mặt đất hất tung diện rộng
+      aim: area
+      radius: 4.8
+      range: 5.5
+      delay: 0.3
+      windup: 0.25
+      cooldown: [75, 65, 55]
+      cost: [0, 0, 0]
+      dash: { distance: 5.5, toward: true }
+      damage: { type: physical, base: [180, 280, 380], bonusAd: 1.10 }
+      effects: [{ stun: 0.8 }]
+builds:
+  dung_thach: [heartforge, oathguard_plate, iron_plate, keeneye, bastion_stone]

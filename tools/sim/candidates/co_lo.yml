@@ -1,0 +1,55 @@
+# ỨNG VIÊN WAVE 3 · #47 Cổ Lỗ · Huyền Quy Thần Cơ Sư · Xạ Thủ Pháo Đài Công Thành
+heroes:
+  co_lo:
+    role: marksman
+    tuning: { hp: 0.95, dmg: 1.04 }
+    resource: mana
+    stats: { hp: 600, resource: 330, ad: 64, ap: 0, armor: 28, mr: 30, moveSpeed: 6.1, attackSpeed: 0.625, hpRegen: 1.3, resourceRegen: 1.4 }
+    growth: { hp: 82, resource: 35, ad: 4.0, ap: 0, armor: 3.2, mr: 1.2, moveSpeed: 0, attackSpeed: 0.020, hpRegen: 0.12, resourceRegen: 0.12 }
+    passive:
+      type: siege_stance          # Pháo Đài Mai Rùa: Cắm chốt tầm bắn tăng lên 8.5m, nhận giáp lưng mai rùa (+40); có điểm mù cận chiến 2.5m không bắn được
+      siegeRange: 8.5
+      blindspotRadius: 2.5
+      siegeArmorBonus: 40
+      siegeMrBonus: 40
+    lmb: { aim: projectile, range: 5.5 } # Bắn nỏ thần cơ khí đa nòng
+    q:    # Liên Châu Xuyên Kích: phóng chùm 3 mũi tên liên tiếp xuyên phá theo đường thẳng
+      aim: skillshot
+      width: 1.4
+      speed: 32
+      range: 8.5
+      windup: 0.15
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [40, 45, 50, 55, 60]
+      hits: 3
+      damage: { type: physical, base: [25, 40, 55, 70, 85], bonusAd: 0.35 }
+      effects: [{ slow: 0.2, duration: 1.0 }]
+    rmb:  # Cắm Chốt Huyền Quy: mai rùa cắm chân xuống đất sau 0.6s, chuyển sang trạng thái pháo đài tầm 8.5m
+      aim: self
+      windup: 0.1
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [50, 50, 50, 50, 50]
+      shield: { base: [70, 105, 140, 175, 210], duration: 3.0 }
+    e:    # Thần Cơ Kích Thoái: bắn mũi tên cọc đẩy lùi kẻ địch cận chiến tạo cự ly an toàn
+      aim: skillshot
+      width: 1.5
+      speed: 28
+      range: 5.0
+      windup: 0.1
+      cooldown: [11, 10.5, 10, 9.5, 9]
+      cost: [55, 60, 65, 70, 75]
+      damage: { type: physical, base: [50, 80, 110, 140, 170], ad: 0.50 }
+      knockback: 3.5
+      effects: [{ slow: 0.3, duration: 1.2 }]
+    r:    # Vạn Tiễn Quy Tông: phóng bão tiễn liên châu dội mưa sao băng xuống vùng chỉ định
+      aim: area
+      radius: 4.5
+      range: 12.0
+      delay: 0.4
+      windup: 0.3
+      cooldown: [80, 70, 60]
+      cost: [100, 100, 100]
+      damage: { type: physical, base: [190, 290, 390], bonusAd: 1.05 }
+      effects: [{ slow: 0.4, duration: 1.5 }]
+builds:
+  co_lo: [keeneye, quickstring, thornseed_quiver, qua_mach, buoc_van]

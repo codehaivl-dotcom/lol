@@ -1,0 +1,54 @@
+# ỨNG VIÊN WAVE 3 · #15 Aero · Phi Công Cổ Khí · Xạ Thủ Oanh Tạc Thảm Bom
+heroes:
+  aero:
+    role: marksman
+    tuning: { hp: 0.95, dmg: 1.03 }
+    resource: mana
+    stats: { hp: 610, resource: 320, ad: 62, ap: 0, armor: 28, mr: 30, moveSpeed: 6.4, attackSpeed: 0.68, hpRegen: 1.4, resourceRegen: 1.6 }
+    growth: { hp: 84, resource: 35, ad: 3.7, ap: 0, armor: 3.2, mr: 1.2, moveSpeed: 0, attackSpeed: 0.025, hpRegen: 0.12, resourceRegen: 0.12 }
+    passive:
+      type: carpet_bomb_strafe    # Oanh Tạc Rải Thảm Tuyến Tính: Luôn di chuyển liên tục (+15% MS); lướt xả bom plasma thành vệt chia cắt giao tranh
+      strafeSpeedBonus: 0.15
+      plasmaDuration: 3.0
+      plasmaDpsAd: 0.30
+    lmb: { aim: projectile, range: 6.2 } # Súng plasma hai nòng của phi cơ
+    q:    # Tuyến Tính Oanh Tạc: bay lướt thả vệt bom plasma thiêu đốt kẻ địch trên đường bay
+      aim: skillshot
+      width: 1.8
+      speed: 30
+      range: 7.5
+      windup: 0.1
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [40, 45, 50, 55, 60]
+      dash: { distance: 7.5, toward: true }
+      damage: { type: physical, base: [60, 95, 130, 165, 200], bonusAd: 0.80 }
+      effects: [{ slow: 0.25, duration: 1.2 }]
+    rmb:  # Tăng Áp Lượn Vòng: kích hoạt tua-bin nhận khiên nhẹ và tăng tốc độ bay né tránh
+      aim: self
+      windup: 0
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [50, 50, 50, 50, 50]
+      shield: { base: [65, 95, 125, 155, 185], duration: 2.5 }
+    e:    # Pháo Sáng Phản Lực: bắn loạt pháo sáng đẩy lùi bản thân về phía sau làm chậm địch
+      aim: skillshot
+      width: 1.5
+      speed: 26
+      range: 5.5
+      windup: 0.1
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [55, 60, 65, 70, 75]
+      dash: { distance: 4.5, toward: false }
+      damage: { type: physical, base: [50, 80, 110, 140, 170], ad: 0.50 }
+      effects: [{ slow: 0.35, duration: 1.2 }]
+    r:    # Đại Oanh Tạc Chiến Dịch: cất cánh quét trên không dội bão bom plasma chia cắt toàn bộ đội hình địch
+      aim: area
+      radius: 5.5
+      range: 10.0
+      delay: 0.3
+      windup: 0.25
+      cooldown: [75, 65, 55]
+      cost: [100, 100, 100]
+      damage: { type: physical, base: [180, 280, 380], bonusAd: 1.10 }
+      effects: [{ slow: 0.40, duration: 2.0 }]
+builds:
+  aero: [keeneye, quickstring, thornseed_quiver, qua_mach, buoc_van]
