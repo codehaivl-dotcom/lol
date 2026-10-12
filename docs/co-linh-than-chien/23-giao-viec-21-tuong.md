@@ -1,4 +1,6 @@
 # 23 · Phiếu giao việc: phần còn thiếu của 21 tướng
+
+> **CURRENT ROUTING / OWNER OVERRIDE (2026-10-12):** [105 · Hero Factory](105-hero-factory-multi-agent-workflow.md) is the mandatory workflow for **all 26** approved production heroes. **Only A–J deliverable contracts (§1) and seven independent review responsibilities (§5.1) remain applicable here.** This document's 21-hero roster, serial three-hero batches, old simulator limitations, old activation schedule and legacy LMB/RMB keybinding examples are **HISTORICAL**, superseded by [104](104-full-approved-roster-production-master-plan.md), [73](73-balance-lab.md) and [91](91-khoa-input-qwer-d.md). Do not obey old batch/task order as current directive.
 Ngày 2026-10-07. Viết cho agent làm tướng. Bảng tổng ở doc 22, mô tả tạo hình ở doc 03 (mục brief tạo hình, khoảng dòng 265+), tên chiêu ở `data/roster-display-map.csv`.
 
 ## 0. Luật chung (bắt buộc đọc trước)
