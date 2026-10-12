@@ -1,5 +1,7 @@
 # 34 · Ma trận VO/SFX theo slot — roster 27
 
+> **CURRENT ROUTING (2026-10-12):** Keep this document as the **VO/SFX specialist coverage template**, NOT the production roster. The legacy **27-hero** inventory and old input labels are historical; [105](105-hero-factory-multi-agent-workflow.md) + [104](104-full-approved-roster-production-master-plan.md) + [91](91-khoa-input-qwer-d.md) govern all 26 current approved heroes. No asset/audio is assumed complete just because a coverage row exists.
+
 **Trạng thái:** `PROPOSAL / COVERAGE PLAN — NOT APPROVED FOR RECORDING OR INTEGRATION`. Chưa có line VO, phụ đề, cue, file âm thanh, quyền sử dụng hay binding runtime nào được duyệt trong tài liệu này.
 
 **Phạm vi:** lập coverage gate cho roster 27 Cổ Linh theo các slot `passive`, `lmb`, `q`, `rmb`, `e`, `r` (tối đa 162 ô kiểm tra). Đây là kế hoạch nội dung/manifest; không mở khóa tướng, đổi gameplay, xác nhận event runtime hoặc tạo asset.
