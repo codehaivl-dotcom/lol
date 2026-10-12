@@ -1,5 +1,7 @@
 # 62 · Production Bible và bộ mô phỏng studio
 
+> **CURRENT ROUTING (2026-10-12):** [105 · Hero Factory](105-hero-factory-multi-agent-workflow.md) is the **sole current hero production workflow**. Reuse **§1 six-field handoff contract and 3 evidence axes** from this document; all earlier 2026-10-09 source/receipt/system-specific progress below is historical evidence, not current 26-hero scheduling or gate approval.
+
 **Cập nhật bàn giao 09/10/2026:** chủ dự án xác nhận luật Sân Tập và reconnect đã fix; hai mục này **ĐÃ ĐÓNG THEO XÁC NHẬN OWNER**, không mở lại hoặc xin duyệt lại. Các report/source fixture 9351 là evidence lịch sử, không xác định trạng thái world sau đó. Ưu tiên [66 · Bàn giao cho Savi](66-ban-giao-cho-savi.md).
 
 **Lượt sửa hiện hành:** doc63→64→65, code9351e23c6c6b4cc55a160dbf7aec268973b6394d sau fetch cuối. Receipt373b dưới đây là lịch sử. Kết quả sửa theo27ID ở `production-closure.json/md`; test/data đã chạy lại theo9351. Gói runnable mới nằm tại `artifacts/production-handoff` của dự án, gồm catalog/tool/sourcefixtures; ZIP báo cáo cũ không đủ chạy độc lập.
