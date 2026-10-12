@@ -1,5 +1,7 @@
 # 73 · COLINH Balance Lab — chuẩn giả lập cân bằng vĩnh viễn
 
+> **CURRENT ROUTING (2026-10-12):** [105 · Hero Factory](105-hero-factory-multi-agent-workflow.md) controls agent dispatch, audits and Owner Gate 4; **this file remains authoritative for Balance Lab mechanics/labels/reporting**. The [26-hero campaign runner](../../tools/sim/production-26.mjs) supports all-roster concurrent simulation of authored candidate kits, not automatic kit writing. `gates.yml` thresholds marked `proposal` are not Owner-approved. Do not infer PASS_ENGINE or Gate 4 from PASS_MODEL.
+
 > Quyết định @lukasai 2026-10-10: "dev bộ giả lập thành công cụ tiêu chuẩn luôn. Sau này dùng mãi mãi." · "sau khi xong bộ Lab simu này → đưa vào agents.md như 1 quy trình bắt buộc. Tướng pass → sản xuất". One-Combo Kill Test (item + skill + nội tại) là gate bắt buộc.
 
 ## 1. Nguyên tắc
