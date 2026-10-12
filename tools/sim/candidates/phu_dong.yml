@@ -1,0 +1,55 @@
+# ỨNG VIÊN WAVE 2 · #43 Phù Dong · Thiết Mã Thiên Tướng · Tiên Phong Kỵ Mã Thần Thoại
+heroes:
+  phu_dong:
+    role: fighter
+    tuning: { hp: 1.05, dmg: 0.96 }
+    resource: none
+    stats: { hp: 760, resource: 0, ad: 66, ap: 0, armor: 40, mr: 34, moveSpeed: 6.4, attackSpeed: 0.64, hpRegen: 1.8, resourceRegen: 0 }
+    growth: { hp: 102, resource: 0, ad: 3.6, ap: 0, armor: 4.2, mr: 1.8, moveSpeed: 0, attackSpeed: 0.016, hpRegen: 0.16, resourceRegen: 0 }
+    passive:
+      type: mounted_momentum       # Thiết Mã Xung Lượng: Di chuyển tích đà chạy (+MS), đòn đánh đầu có đà húc làm choáng nhẹ. Khi bật R chuyển thế Nhổ Tre Thần quét rộng 3.5m
+      maxMomentum: 100
+      momentumPerSec: 25
+      bonusMsRatio: 0.20
+      chargeStun: 0.6
+      chargeBonusAd: 0.50
+    lmb: { aim: melee, range: 2.1 } # Đánh thường bằng Cổ Thần Kiếm trên lưng thiết mã
+    q:    # Thiết Mã Đột Kích: ngựa sắt hí vang lao thẳng tới trước, gây sát thương và húc văng mục tiêu
+      aim: skillshot
+      width: 1.6
+      speed: 24
+      range: 7.2
+      windup: 0.15
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [0, 0, 0, 0, 0]
+      dash: { distance: 7.2, toward: true }
+      damage: { type: physical, base: [60, 95, 130, 165, 200], bonusAd: 0.75 }
+      effects: [{ slow: 0.3, duration: 1.2 }]
+    rmb:  # Kim Giáp Thiết Thuẫn: dậm móng sắt lôi hỏa tạo khiên chắn và kháng hiệu ứng
+      aim: self
+      windup: 0
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [0, 0, 0, 0, 0]
+      shield: { base: [80, 120, 160, 200, 240], maxHp: 0.08, duration: 3.0 }
+    e:    # Lôi Hỏa Trảm: vung kiếm chém đường vòng cung lôi đình xé toạc phòng tuyến
+      aim: area
+      radius: 3.6
+      range: 0
+      windup: 0.1
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [55, 85, 115, 145, 175], ad: 0.65 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
+    r:    # Thiên Lôi Cổ Trúc: Thần kiếm gãy vụn, nhổ bật cụm tre sấm sét quét sạch chiến trường
+      aim: area
+      radius: 4.8
+      range: 5.5
+      delay: 0.4
+      windup: 0.3
+      cooldown: [80, 70, 60]
+      cost: [0, 0, 0]
+      dash: { distance: 5.5, toward: true }
+      damage: { type: physical, base: [180, 290, 400], bonusAd: 1.15 }
+      effects: [{ stun: 1.0 }]
+builds:
+  phu_dong: [oathguard_plate, heartforge, iron_plate, keeneye, bastion_stone]

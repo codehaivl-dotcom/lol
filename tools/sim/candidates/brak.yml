@@ -1,0 +1,52 @@
+# ỨNG VIÊN WAVE 2 · #02 Brak · Nhịp Quyền · Đấu Sĩ Cự Thạch Piston Parry
+heroes:
+  brak:
+    role: fighter
+    tuning: { hp: 1.04, dmg: 0.98 }
+    resource: none
+    stats: { hp: 730, resource: 0, ad: 68, ap: 0, armor: 38, mr: 32, moveSpeed: 6.2, attackSpeed: 0.65, hpRegen: 1.8, resourceRegen: 0 }
+    growth: { hp: 96, resource: 0, ad: 3.8, ap: 0, armor: 3.9, mr: 1.6, moveSpeed: 0, attackSpeed: 0.017, hpRegen: 0.16, resourceRegen: 0 }
+    passive:
+      type: parry_piston           # Nhịp Quyền Piston: Chặn đòn đánh chính xác và phản kích bằng cú đấm piston hơi nước bộc phát (+30% bonus dmg, làm choáng nhẹ)
+      parryWindow: 0.75
+      counterBonusRatio: 0.35
+      counterStun: 0.5
+    lmb: { aim: melee, range: 1.8 } # Đấm tay bọc giáp piston đồng đỏ
+    q:    # Piston Trực Quyền: dậm chân nén áp suất đấm thẳng một cú cực mạnh xuyên phá
+      aim: skillshot
+      width: 1.5
+      speed: 26
+      range: 5.5
+      windup: 0.15
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [65, 100, 135, 170, 205], bonusAd: 0.85 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
+    rmb:  # Nghênh Kích Thủ Thế: giơ hai tay bọc thép đón đỡ đòn, giảm 50% sát thương và kích hoạt phản kích
+      aim: self
+      windup: 0
+      cooldown: [12, 11, 10, 9, 8]
+      cost: [0, 0, 0, 0, 0]
+      shield: { base: [80, 125, 170, 215, 260], duration: 2.0 }
+    e:    # Địa Chấn Xung Kích: nện nắm đấm xuống đất tạo sóng xung kích hình quạt
+      aim: area
+      radius: 3.8
+      range: 0
+      windup: 0.15
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [50, 80, 110, 140, 170], ad: 0.6 }
+      effects: [{ slow: 0.3, duration: 1.2 }]
+    r:    # Hơi Nước Bộc Phá: xả áp suất tối đa, lao tới quật ngã và nện liên hoàn búa tạ
+      aim: area
+      radius: 4.5
+      range: 6.0
+      delay: 0.3
+      windup: 0.2
+      cooldown: [75, 65, 55]
+      cost: [0, 0, 0]
+      dash: { distance: 6.0, toward: true }
+      damage: { type: physical, base: [160, 260, 360], bonusAd: 1.1 }
+      effects: [{ stun: 1.0 }]
+builds:
+  brak: [oathguard_plate, heartforge, keeneye, iron_plate, bastion_stone]

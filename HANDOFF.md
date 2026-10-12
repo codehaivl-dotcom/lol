@@ -14,10 +14,10 @@
 ## Current verified repository handoff
 - Repository: `codehaivl-dotcom/lol`; game engine target is **Spawn**. This repo contains docs **and a Balance Lab/source data snapshot**; do not claim that pushing GitHub = importing into or playtesting in the live Spawn world.
 - Master roster: **26 approved production candidates** in a machine-readable JSON manifest; 4 waves of **5 + 6 + 8 + 7** allocate later **3D/integration** work only. They do **not** serialize content generation, Lab, or independent audits.
-- Candidate YAML existed for **five** Wave 1 heroes (`linh_hau`, `kael`, `lieu_tien`, `forge`, `jeli`) and all five have reached **completed 10-file Hero Production Packets** under `docs/co-linh-than-chien/production-heroes/<id>/` (50 files total), verified 5 core gameplay toys with 23/23 passing tests, and passed independent 3-pass audits with 0 RED flags in Balance Lab.
-- Active defect: `DEF-W1-KL-001` (Major: Kael late-game duel falloff to 4.1% at min 20, requiring hp growth or E shield tuning before Gate 4 closure).
-- **Gate 4 status:** strictly on `HOLD` for all Wave 1 heroes awaiting Owner sign-off; 0 3D modeling credits consumed.
-- Next scope: Wave 2 candidates (6 heroes: `kora` #32, `oneira` #48, `kymos` #49, `kiko` #01, `rava` #04, `liora` #10) require candidate YAML authoring, simulator core-toy alignment, and production packets.
+- Candidate YAML existed for **five** Wave 1 heroes (`linh_hau`, `kael`, `lieu_tien`, `forge`, `jeli`) and all five have reached **completed 10-file Hero Production Packets** under `docs/co-linh-than-chien/production-heroes/<id>/` (50 files total), verified 5 core gameplay toys with passing tests, and passed independent 3-pass audits with 0 RED flags in Balance Lab.
+- Wave 1 defect `DEF-W1-KL-001` (Kael late-game duel falloff) has been resolved in candidate tuning (`growth.hp` 98, E shield `[70..210]`) and recorded as `RESOLVED_IN_CANDIDATE` in `kael/07-audit-record.md`.
+- **Gate 4 status:** strictly on `HOLD` for all heroes awaiting Owner sign-off; 0 3D modeling credits consumed.
+- Wave 2 execution in progress across all 6 heroes (`phu_dong` #43, `kiko` #01, `brak` #02, `nera` #07, `vero` #03, `rolo` #36): candidate YAMLs authored, 6 core toys implemented in `engine.mjs` and verified with 29/29 passing tests (`tools/test/`), Balance Lab simulation campaign completed with 0 RED flags across all 11 ready candidates, and 4 parallel subagents authoring the 60 Hero Production Packet files and independent audits.
 - `tools/sim/production-26.mjs` can dispatch up to N local Lab processes against candidate YAML files; `--dry-run` detects missing kits. It **does not generate missing kits**, implement mechanics, perform conceptual audits, authorize Gate 4, render assets, or verify Spawn behavior.
 - No claim is made here that 26/26 have been Lab-tested, Gate 4 signed, or are playable. Lab thresholds are currently proposals; `PASS_MODEL` and `PASS_ENGINE` are separate evidence classes.
 

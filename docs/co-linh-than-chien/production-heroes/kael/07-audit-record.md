@@ -81,7 +81,7 @@
 
 | DEFECT ID | Mức Độ | Giai Đoạn | Mô Tả Lỗi / Bất Cập | Yêu Cầu Khắc Phục Cụ Thể | Trạng Thái |
 |---|:---:|:---:|---|---|:---:|
-| **DEF-W1-KL-001** | **MAJOR** | Audit 2 (Balance) | **Kael quá mỏng manh ở mid-late game (Thua 1v1 tới 95.9% ở phút 20):** Lượng máu và khiên không đủ để tiếp cận mục tiêu trong meta khống chế và sốc sát thương. | S4 Balance Designer cần tăng máu tăng trưởng (`growth.hp` từ 88 lên 98-102) hoặc tăng chỉ số khiên chiêu E (`shield.base` từ [55..175] lên [70..210] + tỉ lệ theo AD). | `OPEN` |
+| **DEF-W1-KL-001** | **MAJOR** | Audit 2 (Balance) | **Kael quá mỏng manh ở mid-late game (Thua 1v1 tới 95.9% ở phút 20):** Lượng máu và khiên không đủ để tiếp cận mục tiêu trong meta khống chế và sốc sát thương. | Đã khắc phục trong `kael.yml`: Tăng máu tăng trưởng `growth.hp` từ 88 lên 98; tăng khiên chiêu E lên `[70, 105, 140, 175, 210]`. | `RESOLVED_IN_CANDIDATE` |
 | **DEF-W1-KL-002** | **MINOR** | Audit 2 (Mechanics) | Quy tắc tích tầng trên lính trong simulator hiện đang cho 0.5 tầng/hit nhưng chưa chặn cứng trần tối đa 2 tầng như yêu cầu của Doc 102 §3.2. | Bổ sung logic `if (e.kind === 'minion' && h.cuongNhip.stacks >= 2) return;` trong `engine.mjs` trước Gate 7. | `OPEN` |
 
 ---

@@ -1,0 +1,51 @@
+# ỨNG VIÊN WAVE 2 · #01 Kiko · Ảnh Hầu · Sát Thủ Song Trảo & Ảo Ảnh Khúc Xạ
+heroes:
+  kiko:
+    role: assassin
+    tuning: { hp: 0.98, dmg: 1.02 }
+    resource: none
+    stats: { hp: 630, resource: 0, ad: 67, ap: 0, armor: 30, mr: 30, moveSpeed: 6.5, attackSpeed: 0.70, hpRegen: 1.5, resourceRegen: 0 }
+    growth: { hp: 86, resource: 0, ad: 3.7, ap: 0, armor: 3.4, mr: 1.2, moveSpeed: 0, attackSpeed: 0.022, hpRegen: 0.13, resourceRegen: 0 }
+    passive:
+      type: holographic_decoy      # Ảo Ảnh Quang Học: Sau khi tung chiêu hoặc dash, tạo 1 ảo ảnh targetable (1-hit threshold) thu hút chiêu thức/đòn đánh của đối phương
+      decoyDuration: 3.0
+      bonusMsOnDecoy: 0.20
+      burstBonusAd: 0.35
+    lmb: { aim: melee, range: 1.6 } # Đánh thường bằng song trảo cơ khí gắn mu tay
+    q:    # Toái Trảo Đột Kích: nhào lộn 4 chi lao tới xé rách mục tiêu
+      aim: skillshot
+      width: 1.3
+      speed: 28
+      range: 6.0
+      windup: 0.1
+      cooldown: [8, 7.5, 7, 6.5, 6]
+      cost: [0, 0, 0, 0, 0]
+      dash: { distance: 6.0, toward: true }
+      damage: { type: physical, base: [65, 100, 135, 170, 205], bonusAd: 0.85 }
+    rmb:  # Ảo Ảnh Phân Thân: lùi lại và bung ảo ảnh quang học chạy về phía trước đánh lừa
+      aim: self
+      windup: 0
+      cooldown: [14, 13, 12, 11, 10]
+      cost: [0, 0, 0, 0, 0]
+      shield: { base: [60, 95, 130, 165, 200], duration: 2.0 }
+    e:    # Khúc Xạ Trảm Kích: quét trảo hai bên gây sát thương và làm chậm
+      aim: area
+      radius: 3.2
+      range: 0
+      windup: 0.1
+      cooldown: [9, 8.5, 8, 7.5, 7]
+      cost: [0, 0, 0, 0, 0]
+      hits: 2
+      damage: { type: physical, base: [40, 65, 90, 115, 140], ad: 0.45 }
+      effects: [{ slow: 0.3, duration: 1.2 }]
+    r:    # Vạn Ảnh Trảo Sát: biến ảo xung quanh mục tiêu tung chuỗi cào xé cực mạnh
+      aim: single_target
+      range: 6.5
+      windup: 0.2
+      cooldown: [70, 60, 50]
+      cost: [0, 0, 0]
+      dash: { distance: 6.5, toward: true }
+      damage: { type: physical, base: [180, 280, 380], bonusAd: 1.2 }
+      effects: [{ stun: 0.8 }]
+builds:
+  kiko: [keeneye, quickstring, heartforge, thornseed_quiver, bastion_stone]

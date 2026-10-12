@@ -5,7 +5,7 @@ heroes:
     tuning: { hp: 1.0, dmg: 0.95 }
     resource: none
     stats: { hp: 670, resource: 0, ad: 64, ap: 0, armor: 34, mr: 30, moveSpeed: 6.3, attackSpeed: 0.68, hpRegen: 1.6, resourceRegen: 0 }
-    growth: { hp: 88, resource: 0, ad: 3.2, ap: 0, armor: 3.6, mr: 1.4, moveSpeed: 0, attackSpeed: 0.020, hpRegen: 0.14, resourceRegen: 0 }
+    growth: { hp: 98, resource: 0, ad: 3.2, ap: 0, armor: 3.6, mr: 1.4, moveSpeed: 0, attackSpeed: 0.020, hpRegen: 0.14, resourceRegen: 0 }
     passive:
       type: cuong_nhip             # Cuồng Nhịp: Đánh trúng tích tầng tốc đánh (+8%/tầng, max 5 tầng). Tướng +1, lính +0.5. Suy giảm dần sau 2s
       maxStacks: 5
@@ -40,7 +40,7 @@ heroes:
       windup: 0
       cooldown: [13, 12, 11, 10, 9]
       cost: [0, 0, 0, 0, 0]
-      shield: { base: [55, 85, 115, 145, 175], duration: 2.5 }
+      shield: { base: [70, 105, 140, 175, 210], duration: 2.5 }
     r:    # Huyết Cuồng Phong Ma: chuỗi chém liên hoàn tốc độ cao
       aim: area
       radius: 4.0

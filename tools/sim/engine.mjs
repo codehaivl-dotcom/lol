@@ -83,6 +83,12 @@ const ms = (u, t) => {
       }
     }
   }
+  if (u.k?.passive?.type === "mounted_momentum" && (u.momentum ?? 0) > 0) {
+    m *= 1 + (u.momentum / 100) * (u.k.passive.bonusMsRatio ?? 0.20);
+  }
+  if (u.k?.passive?.type === "scale_shedding" && (u.shedUntil ?? 0) > t) {
+    m *= 1 + (u.k.passive.shedSpeedBonus ?? 0.20);
+  }
   return m * (1 - u.slows.filter((x) => x.until > t).reduce((a, x) => Math.max(a, x.pct), 0));
 };
 const aspd = (u, t) => {
@@ -93,6 +99,9 @@ const aspd = (u, t) => {
   }
   if (u.k?.passive?.type === "staff_reach" && (u.staffUntil ?? 0) <= t) {
     a *= 1 + (u.k.passive.shortAspdBonus ?? 0.15);
+  }
+  if (u.k?.passive?.type === "scale_shedding" && (u.shedUntil ?? 0) > t) {
+    a *= 1 + (u.k.passive.shedAspdBonus ?? 0.25);
   }
   return a;
 };
@@ -110,6 +119,23 @@ function raw(src, d, r, tgt) {
 export function hurt(W, src, tgt, amount, type, opt = {}) {
   if (!(amount > 0) || tgt.dead) return 0;
   if (tgt.kind === "hero" && src.kind === "hero") amount *= src.dmgM ?? 1; // combat.js: tuning.dmg chỉ tướng↔tướng
+  // Kiko: Ảo ảnh quang học hấp thụ đòn đánh đầu tiên
+  if (tgt.decoyUntil && tgt.decoyUntil > W.t && !tgt.decoyHit) {
+    tgt.decoyHit = true;
+    proc(tgt, "passive:decoy_absorbed");
+    return 0;
+  }
+  // Brak: Parry Piston đón đỡ và phản kích
+  if (tgt.parryUntil && tgt.parryUntil > W.t) {
+    tgt.parryUntil = 0;
+    amount *= 0.4; // giảm 60% sát thương
+    if (src.kind === "hero") {
+      const counterDmg = tgt.s.ad * (tgt.k?.passive?.counterBonusRatio ?? 0.35);
+      hurt(W, tgt, src, counterDmg, "physical", { tag: "passive:parry_counter" });
+      applyEffects(W, tgt, src, [{ stun: tgt.k?.passive?.counterStun ?? 0.5 }]);
+      proc(tgt, "passive:parry_piston_proc");
+    }
+  }
   const pre = amount;
   let tgtArmor = tgt.s.armor;
   let tgtMr = tgt.s.mr;
@@ -119,8 +145,25 @@ export function hurt(W, src, tgt, amount, type, opt = {}) {
     tgtArmor += bonusRes;
     tgtMr += bonusRes;
   }
+  // Rolo: Tháo vảy chuyển dạng (thủ tăng/công giảm giáp)
+  if (tgt.k?.passive?.type === "scale_shedding") {
+    const p = tgt.k.passive;
+    if ((tgt.shedUntil ?? 0) > W.t) {
+      tgtArmor -= (p.shedResistPenalty ?? 25);
+      tgtMr -= (p.shedResistPenalty ?? 25);
+    } else {
+      tgtArmor += (p.baseResistBonus ?? 35);
+      tgtMr += (p.baseResistBonus ?? 35);
+    }
+  }
   if (type === "physical") amount *= 100 / (100 + Math.max(0, tgtArmor * (1 - (src.armorPen ?? 0))));
   else if (type === "magic") amount *= 100 / (100 + Math.max(0, tgtMr - (src.magicPen ?? 0)));
+  // Vero: Tích lũy vết nứt thời gian
+  if (src.k?.passive?.type === "delayed_echo" && tgt.kind === "hero" && !opt.echo) {
+    tgt.echoDmg = (tgt.echoDmg ?? 0) + amount * (src.k.passive.echoRatio ?? 0.30);
+    tgt.echoPopAt = W.t + (src.k.passive.echoDelay ?? 2.5);
+    tgt.echoSrc = src;
+  }
   if (tgt.mark && tgt.mark.until > W.t && !opt.mark) { const m = tgt.mark; tgt.mark = null; hurt(W, m.src, tgt, m.amount, m.type, { mark: true, tag: "skill:mark" }); if (tgt.dead) return amount; }
   tgt.m.mitigated = (tgt.m.mitigated ?? 0) + (pre - amount);
   let left = amount;
@@ -318,6 +361,19 @@ function resolve(W, h) {
       W.zones.push({ type: "frost_trail", team: h.team, pos: { x: h.pos.x, z: h.pos.z }, r: 2.5, until: t + 3.5, speedBoost: 0.25, slowRatio: 0.30 });
       proc(h, "passive:frost_trail");
     }
+    if (h.k.passive?.type === "holographic_decoy" && (slot === "rmb" || slot === "q")) {
+      h.decoyUntil = t + (h.k.passive.decoyDuration ?? 3.0);
+      h.decoyHit = false;
+      proc(h, "passive:decoy_spawn");
+    }
+    if (h.k.passive?.type === "parry_piston" && slot === "rmb") {
+      h.parryUntil = t + (h.k.passive.parryWindow ?? 0.75);
+      proc(h, "passive:parry_stance");
+    }
+    if (h.k.passive?.type === "scale_shedding" && slot === "rmb") {
+      h.shedUntil = t + (h.k.passive.shedDuration ?? 5.0);
+      proc(h, "passive:scale_shedding_burst");
+    }
     return;
   }
   if (ab.dash?.to === "ally") dashAlly(W, h, e, ab);
@@ -325,6 +381,15 @@ function resolve(W, h) {
   if (h.k.passive?.type === "staff_reach" && slot === "q") {
     h.staffUntil = t + (h.k.passive.extendDuration ?? 4.0);
     proc(h, "passive:staff_extend");
+  }
+  if (h.k.passive?.type === "mounted_momentum" && slot === "r") {
+    h.bambooUntil = t + 6.0;
+    proc(h, "passive:bamboo_transformation");
+  }
+  if (h.k.passive?.type === "holographic_decoy" && slot === "q") {
+    h.decoyUntil = t + (h.k.passive.decoyDuration ?? 3.0);
+    h.decoyHit = false;
+    proc(h, "passive:decoy_spawn");
   }
   if (h.k.passive?.type === "heat_gauge") {
     h.heat = Math.min(100, (h.heat ?? 0) + (h.k.passive.heatPerCast ?? 15));
@@ -384,7 +449,7 @@ function itemOnAbilityHero(W, h, o) {
 const proc = (u, k) => { u.procs[k] = (u.procs[k] ?? 0) + 1; };
 function autoAttack(W, h, e) {
   const t = W.t, lmb = h.k.lmb, dist = d2(h.pos, e.pos);
-  const reach = (h.k.passive?.type === "staff_reach" && (h.staffUntil ?? 0) > t ? (h.k.passive.extendedRange ?? 4.5) : (lmb.range ?? 2));
+  const reach = (h.k.passive?.type === "staff_reach" && (h.staffUntil ?? 0) > t ? (h.k.passive.extendedRange ?? 4.5) : ((h.k.passive?.type === "mounted_momentum" && (h.bambooUntil ?? 0) > t) ? 3.5 : (lmb.range ?? 2)));
   if (dist > reach + e.r + 0.3 || !targetable(e, t)) return false;
   const iv = 1 / aspd(h, t);
   h.atkReady = t + iv; h.lockUntil = t + Math.min(0.35, iv * 0.3); h.hitN++; h._now = t;
@@ -400,6 +465,27 @@ function autoAttack(W, h, e) {
       hurt(W, h, e, bonus, "physical", { tag: "passive:staff_sweetspot" });
       applyEffects(W, h, e, [{ slow: 0.2, duration: 0.8 }]);
       proc(h, "passive:staff_sweetspot");
+    }
+  }
+  if (p?.type === "mounted_momentum") {
+    if ((h.bambooUntil ?? 0) > t) {
+      const sweepBonus = amt * 0.35;
+      hurt(W, h, e, sweepBonus, "physical", { tag: "passive:bamboo_sweep" });
+      if (!h._bambooProcLogged) { proc(h, "passive:bamboo_sweep"); h._bambooProcLogged = true; }
+    } else if ((h.momentum ?? 0) >= 80) {
+      const chargeDmg = h.s.ad * (p.chargeBonusAd ?? 0.50);
+      hurt(W, h, e, chargeDmg, "physical", { tag: "passive:mounted_charge" });
+      applyEffects(W, h, e, [{ stun: p.chargeStun ?? 0.6 }]);
+      proc(h, "passive:mounted_momentum_hit");
+      h.momentum = 0;
+    }
+  }
+  if (p?.type === "anchor_tether" && e.kind === "hero" && h.hitN % (p.shotsPerAnchor ?? 3) === 0) {
+    h.buffs.push({ moveSpeed: p.kitingSpeedBoost ?? 0.18, until: t + (p.anchorDuration ?? 3.0) });
+    applyEffects(W, h, e, [{ slow: 0.25, duration: 1.5 }]);
+    if (!h._anchorProcLogged || t - h._anchorProcLogged >= (p.anchorDuration ?? 3.0)) {
+      proc(h, "passive:anchor_kiting");
+      h._anchorProcLogged = t;
     }
   }
   if (p?.type === "cuong_nhip") {
@@ -555,7 +641,7 @@ function titanThink(W, u) {
   if ((u.atkReady ?? 0) <= t) { u.atkReady = t + A.fist.interval; hurt(W, u, v, A.fist.dmg[r], "physical"); }
 }
 
-function tickDots(W, u) {
+export function tickDots(W, u) {
   if (u.dead) return;
   const t = W.t;
   if (u.bleed.until > t && u.bleed.n) { const s = u.bleed.src; hurt(W, s, u, raw(s, s.k.passive.perStack, 1) * u.bleed.n * DT, "physical", { tag: "passive:dot" }); }
@@ -597,6 +683,20 @@ function tickDots(W, u) {
       heal(W, u, u, healAmt * 0.5);
       proc(u, "passive:chime_resonance");
     }
+  }
+
+  // Phù Dong: Tích đà di chuyển liên tục
+  if (u.k?.passive?.type === "mounted_momentum") {
+    u.momentum = Math.min(100, (u.momentum ?? 0) + (u.k.passive.momentumPerSec ?? 25) * DT);
+  }
+
+  // Vero: Kích nổ vết nứt thời gian
+  if (u.echoPopAt && t >= u.echoPopAt && (u.echoDmg ?? 0) > 0 && !u.dead && u.echoSrc) {
+    const popDmg = u.echoDmg;
+    u.echoDmg = 0;
+    u.echoPopAt = 0;
+    hurt(W, u.echoSrc, u, popDmg, "magic", { echo: true, tag: "passive:delayed_echo_pop" });
+    proc(u.echoSrc, "passive:delayed_echo_pop");
   }
 
   let regen = u.s.hpRegen;

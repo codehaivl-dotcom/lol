@@ -1,0 +1,54 @@
+# ỨNG VIÊN WAVE 2 · #36 Rolo · Tê Tê Khiên · Đấu Sĩ Tháo Vảy Chuyển Dạng Công Thủ
+heroes:
+  rolo:
+    role: fighter
+    tuning: { hp: 1.05, dmg: 0.98 }
+    resource: none
+    stats: { hp: 750, resource: 0, ad: 65, ap: 0, armor: 42, mr: 34, moveSpeed: 6.1, attackSpeed: 0.65, hpRegen: 1.8, resourceRegen: 0 }
+    growth: { hp: 98, resource: 0, ad: 3.6, ap: 0, armor: 4.2, mr: 1.6, moveSpeed: 0, attackSpeed: 0.018, hpRegen: 0.16, resourceRegen: 0 }
+    passive:
+      type: scale_shedding         # Tháo Vảy Chuyển Dạng: Ở dạng Bọc Thép (+35 Giáp/Kháng Phép). Kích hoạt W bung vảy thành Dạng Cuồng Chiến (-25 Giáp, +20% MS, +25% AS) trong 5s
+      baseResistBonus: 35
+      shedDuration: 5.0
+      shedResistPenalty: 25
+      shedSpeedBonus: 0.20
+      shedAspdBonus: 0.25
+    lmb: { aim: melee, range: 1.8 } # Vuốt móng và vảy giáp sắc bén
+    q:    # Bộc Phá Vảy Sừng: vung đuôi quất mạnh bắn tung vảy sắc ra phía trước
+      aim: skillshot
+      width: 1.5
+      speed: 26
+      range: 6.5
+      windup: 0.12
+      cooldown: [9, 8.5, 8, 7.5, 7]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [60, 95, 130, 165, 200], bonusAd: 0.8 }
+      effects: [{ slow: 0.25, duration: 1.0 }]
+    rmb:  # Tháo Vảy Cuồng Nộ: bung bung lớp vảy sừng tạo khiên ngắn hạn và chuyển sang thế công cực hạn
+      aim: self
+      windup: 0
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [0, 0, 0, 0, 0]
+      shield: { base: [75, 115, 155, 195, 235], duration: 2.5 }
+    e:    # Địa Chấn Tê Tê: dập đuôi nặng nề xuống đất làm chậm và hất rung mặt đất xung quanh
+      aim: area
+      radius: 3.6
+      range: 0
+      windup: 0.15
+      cooldown: [10, 9.5, 9, 8.5, 8]
+      cost: [0, 0, 0, 0, 0]
+      damage: { type: physical, base: [50, 80, 110, 140, 170], ad: 0.6 }
+      effects: [{ slow: 0.35, duration: 1.2 }]
+    r:    # Thiết Giáp Càn Quét: bọc vảy lao dũng mãnh húc tung đội hình địch và cày nát sàn đấu
+      aim: area
+      radius: 4.5
+      range: 6.5
+      delay: 0.3
+      windup: 0.2
+      cooldown: [75, 65, 55]
+      cost: [0, 0, 0]
+      dash: { distance: 6.5, toward: true }
+      damage: { type: physical, base: [160, 260, 360], bonusAd: 1.1 }
+      effects: [{ stun: 0.9 }]
+builds:
+  rolo: [oathguard_plate, heartforge, iron_plate, keeneye, bastion_stone]

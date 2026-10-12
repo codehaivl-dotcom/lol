@@ -1,0 +1,56 @@
+# ỨNG VIÊN WAVE 2 · #07 Nera · Dạ Neo · Xạ Thủ Cổ & Tời Neo Hai Chiều Tự Bảo Kê
+heroes:
+  nera:
+    role: marksman
+    tuning: { hp: 1.0, dmg: 1.0 }
+    resource: mana
+    stats: { hp: 600, resource: 340, ad: 62, ap: 0, armor: 28, mr: 30, moveSpeed: 6.2, attackSpeed: 0.67, hpRegen: 1.4, resourceRegen: 1.6 }
+    growth: { hp: 84, resource: 40, ad: 3.5, ap: 0, armor: 3.2, mr: 1.2, moveSpeed: 0, attackSpeed: 0.024, hpRegen: 0.12, resourceRegen: 0.1 }
+    passive:
+      type: anchor_tether          # Dạ Neo Tự Bảo Kê: Đòn đánh thứ 3 găm xích neo lên mục tiêu, tăng 15% MS cho Nera khi di chuyển cách xa mục tiêu để giữ cự ly an toàn
+      shotsPerAnchor: 3
+      kitingSpeedBoost: 0.18
+      anchorDuration: 3.0
+    lmb: { aim: projectile, range: 7.0, speed: 38 } # Bắn mũi tên nỏ tời cơ khí
+    q:    # Xuyên Thấu Tiễn: bắn mũi tên năng lượng xuyên lính làm chậm tướng đầu tiên
+      aim: skillshot
+      width: 1.4
+      speed: 34
+      range: 9.5
+      windup: 0.12
+      cooldown: [7, 6.5, 6, 5.5, 5]
+      cost: [40, 45, 50, 55, 60]
+      damage: { type: physical, base: [60, 95, 130, 165, 200], bonusAd: 0.85 }
+      effects: [{ slow: 0.25, duration: 1.2 }]
+    rmb:  # Phóng Tời Hai Chiều: bắn móc neo tời, kéo Nera trốn lùi lại 4.5m và giật làm chậm kẻ địch
+      aim: skillshot
+      width: 1.6
+      speed: 30
+      range: 7.0
+      windup: 0.1
+      cooldown: [13, 12, 11, 10, 9]
+      cost: [60, 65, 70, 75, 80]
+      dash: { distance: 4.5, toward: false }
+      damage: { type: physical, base: [50, 80, 110, 140, 170], ad: 0.5 }
+      effects: [{ slow: 0.35, duration: 1.5 }]
+    e:    # Lưới Neo Dây Bẫy: rải cụm dây tời gai góc cản bước kẻ địch lao vào
+      aim: area
+      radius: 3.4
+      range: 7.5
+      windup: 0.15
+      cooldown: [11, 10.5, 10, 9.5, 9]
+      cost: [55, 60, 65, 70, 75]
+      damage: { type: physical, base: [45, 75, 105, 135, 165], ad: 0.55 }
+      effects: [{ slow: 0.3, duration: 1.5 }]
+    r:    # Đại Cực Neo Trấn Áp: bắn móc neo khổng lồ cắm sâu vào tướng địch, kéo mạnh lệch vị trí và làm choáng
+      aim: skillshot
+      width: 1.8
+      speed: 32
+      range: 12.0
+      windup: 0.25
+      cooldown: [80, 70, 60]
+      cost: [100, 100, 100]
+      damage: { type: physical, base: [180, 280, 380], bonusAd: 1.1 }
+      effects: [{ stun: 1.2 }]
+builds:
+  nera: [keeneye, quickstring, thornseed_quiver, heartforge, bastion_stone]

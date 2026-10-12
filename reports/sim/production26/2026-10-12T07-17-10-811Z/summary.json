@@ -1,0 +1,442 @@
+{
+  "campaignId": "2026-10-12T07-17-10-811Z",
+  "createdAt": "2026-10-12T07:17:10.839Z",
+  "rosterTotal": 26,
+  "maxConcurrent": 4,
+  "n": 200,
+  "seed": 1,
+  "command": "bun tools/sim/production-26.mjs",
+  "statuses": {
+    "nera": "FLAG_RED",
+    "aero": "MISSING_KIT",
+    "kiko": "FLAG_REVIEW",
+    "inka": "MISSING_KIT",
+    "libro": "MISSING_KIT",
+    "iro": "MISSING_KIT",
+    "moka": "MISSING_KIT",
+    "kora": "MISSING_KIT",
+    "eelix": "MISSING_KIT",
+    "vero": "FLAG_REVIEW",
+    "pavo": "MISSING_KIT",
+    "brak": "FLAG_REVIEW",
+    "mok": "MISSING_KIT",
+    "rolo": "FLAG_REVIEW",
+    "linh_hau": "FLAG_REVIEW",
+    "forge": "FLAG_REVIEW",
+    "jeli": "FLAG_REVIEW",
+    "tan_son": "MISSING_KIT",
+    "trieu_ba": "MISSING_KIT",
+    "dung_thach": "MISSING_KIT",
+    "co_lo": "MISSING_KIT",
+    "oneira": "MISSING_KIT",
+    "kymos": "MISSING_KIT",
+    "kael": "FLAG_REVIEW",
+    "lieu_tien": "FLAG_REVIEW",
+    "phu_dong": "FLAG_RED"
+  },
+  "results": [
+    {
+      "researchId": "#01",
+      "id": "kiko",
+      "wave": 2,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "1cdc1d6fce21",
+      "red": 0,
+      "orange": 173,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.48,
+        0.43249999999999994,
+        0.29833333333333334,
+        0.24250000000000002,
+        0.20916666666666664,
+        0.23916666666666667
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T07-17-10-811Z\\kiko\\report.json"
+    },
+    {
+      "researchId": "#02",
+      "id": "brak",
+      "wave": 2,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "9f948d834768",
+      "red": 0,
+      "orange": 144,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.295,
+        0.39666666666666667,
+        0.40499999999999997,
+        0.3875,
+        0.3116666666666667,
+        0.425
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T07-17-10-811Z\\brak\\report.json"
+    },
+    {
+      "researchId": "#03",
+      "id": "vero",
+      "wave": 2,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "a34039eeffcf",
+      "red": 0,
+      "orange": 161,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.24333333333333332,
+        0.11416666666666668,
+        0.07416666666666667,
+        0.060000000000000005,
+        0.11750000000000001,
+        0.17916666666666667
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T07-17-10-811Z\\vero\\report.json"
+    },
+    {
+      "researchId": "#07",
+      "id": "nera",
+      "wave": 2,
+      "status": "FLAG_RED",
+      "modelVerdict": "FLAG_RED",
+      "revision": "6ad72204deff",
+      "red": 25,
+      "orange": 167,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.19666666666666666,
+        0.17416666666666666,
+        0.09416666666666668,
+        0.09666666666666666,
+        0.20166666666666666,
+        0.1758333333333333
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T07-17-10-811Z\\nera\\report.json"
+    },
+    {
+      "researchId": "#15",
+      "id": "aero",
+      "wave": 3,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#17",
+      "id": "forge",
+      "wave": 1,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "f209f2fa919c",
+      "red": 0,
+      "orange": 132,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.44166666666666665,
+        0.5708333333333333,
+        0.4558333333333333,
+        0.5950000000000001,
+        0.5520833333333334,
+        0.49374999999999997
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T07-17-10-811Z\\forge\\report.json"
+    },
+    {
+      "researchId": "#19",
+      "id": "inka",
+      "wave": 4,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#28",
+      "id": "libro",
+      "wave": 4,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#30",
+      "id": "iro",
+      "wave": 3,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#31",
+      "id": "moka",
+      "wave": 3,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#32",
+      "id": "kora",
+      "wave": 3,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#33",
+      "id": "eelix",
+      "wave": 4,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#34",
+      "id": "jeli",
+      "wave": 1,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "aab7ab31d96e",
+      "red": 0,
+      "orange": 143,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.24583333333333335,
+        0.15666666666666665,
+        0.15833333333333333,
+        0.19416666666666668,
+        0.24041666666666664,
+        0.24125
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T07-17-10-811Z\\jeli\\report.json"
+    },
+    {
+      "researchId": "#35",
+      "id": "pavo",
+      "wave": 4,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#36",
+      "id": "rolo",
+      "wave": 2,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "3b82cdc5a041",
+      "red": 0,
+      "orange": 145,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.5,
+        0.5575,
+        0.5041666666666665,
+        0.3745833333333333,
+        0.3741666666666667,
+        0.6216666666666667
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T07-17-10-811Z\\rolo\\report.json"
+    },
+    {
+      "researchId": "#37",
+      "id": "mok",
+      "wave": 4,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#38",
+      "id": "linh_hau",
+      "wave": 1,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "d932018b4a96",
+      "red": 0,
+      "orange": 145,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.555,
+        0.48,
+        0.36833333333333335,
+        0.24083333333333332,
+        0.2316666666666667,
+        0.4875
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T07-17-10-811Z\\linh_hau\\report.json"
+    },
+    {
+      "researchId": "#39",
+      "id": "kael",
+      "wave": 1,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "6ca5d0f6a348",
+      "red": 0,
+      "orange": 154,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.4841666666666667,
+        0.21916666666666665,
+        0.13166666666666668,
+        0.15,
+        0.07083333333333335,
+        0.26
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T07-17-10-811Z\\kael\\report.json"
+    },
+    {
+      "researchId": "#40",
+      "id": "lieu_tien",
+      "wave": 1,
+      "status": "FLAG_REVIEW",
+      "modelVerdict": "FLAG",
+      "revision": "aae2b479469d",
+      "red": 0,
+      "orange": 163,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.21666666666666667,
+        0.35250000000000004,
+        0.19166666666666665,
+        0.2275,
+        0.4083333333333334,
+        0.4791666666666667
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T07-17-10-811Z\\lieu_tien\\report.json"
+    },
+    {
+      "researchId": "#43",
+      "id": "phu_dong",
+      "wave": 2,
+      "status": "FLAG_RED",
+      "modelVerdict": "FLAG_RED",
+      "revision": "0fcd455c65dc",
+      "red": 43,
+      "orange": 143,
+      "notTested": [
+        "PASS_ENGINE: Chưa chạy và kiểm chứng trên engine Spawn thực tế",
+        "Địa hình và vách tường (Tản Sơn): Chưa mô phỏng va chạm geometry vật lý và chắn đường di chuyển thực tế",
+        "Tầm nhìn và Cổ Đăng (Mok): Chưa mô phỏng sương mù chiến tranh (Fog of War) và chia sẻ tầm nhìn qua vách",
+        "Ảo ảnh quang học (Kiko): Chưa mô phỏng hành vi AI nhắm mục tiêu vào bóng đánh lừa",
+        "Chắn đạn hướng (Kora): Chưa mô phỏng góc chắn đạn đạo thực thời",
+        "Crit, hút máu, sát thương chuẩn, phản sát thương, silence: Chưa có data field runtime hỗ trợ"
+      ],
+      "duelRates": [
+        0.5499999999999999,
+        0.7041666666666666,
+        0.5912499999999999,
+        0.5441666666666667,
+        0.5645833333333333,
+        0.695
+      ],
+      "report": "D:\\Project\\Test\\24tuong\\reports\\sim\\production26\\2026-10-12T07-17-10-811Z\\phu_dong\\report.json"
+    },
+    {
+      "researchId": "#44",
+      "id": "tan_son",
+      "wave": 3,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#45",
+      "id": "trieu_ba",
+      "wave": 3,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#46",
+      "id": "dung_thach",
+      "wave": 3,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#47",
+      "id": "co_lo",
+      "wave": 3,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#48",
+      "id": "oneira",
+      "wave": 4,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    },
+    {
+      "researchId": "#49",
+      "id": "kymos",
+      "wave": 4,
+      "status": "MISSING_KIT",
+      "message": "Candidate YAML not yet authored; no simulation attempted."
+    }
+  ],
+  "finishedAt": "2026-10-12T07:20:10.722Z"
+}

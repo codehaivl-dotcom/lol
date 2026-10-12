@@ -1,0 +1,50 @@
+[INFO_BASELINE_PANEL] --heroes chỉ định 1 tướng ('rolo'). Tự động ghép Baseline Comparison Panel gồm 6 tướng chuẩn (moc_lam, kha_tan, van_dao, hoa_tuy, bach_dien, mac_lien) để thực hiện đối kháng và kiểm thử combo!
+parity: 42/42 khớp · deterministic true
+progress: 7 tướng × 6 mốc
+duel phút 3: rolo 50.0% · moc_lam 68.1% · kha_tan 95.2% · van_dao 31.7% · hoa_tuy 81.3% · bach_dien 23.2% · mac_lien 0.5%
+duel phút 6: rolo 55.8% · moc_lam 66.2% · kha_tan 83.4% · van_dao 32.5% · hoa_tuy 88.7% · bach_dien 18.6% · mac_lien 4.9%
+duel phút 10: rolo 50.4% · moc_lam 72.8% · kha_tan 78.6% · van_dao 30.7% · hoa_tuy 89.3% · bach_dien 25.0% · mac_lien 3.2%
+duel phút 15: rolo 37.5% · moc_lam 64.8% · kha_tan 64.3% · van_dao 36.8% · hoa_tuy 95.7% · bach_dien 46.8% · mac_lien 4.3%
+duel phút 20: rolo 37.4% · moc_lam 69.0% · kha_tan 62.7% · van_dao 49.3% · hoa_tuy 94.2% · bach_dien 36.7% · mac_lien 0.8%
+duel phút full: rolo 62.2% · moc_lam 68.6% · kha_tan 47.4% · van_dao 61.5% · hoa_tuy 90.4% · bach_dien 20.0% · mac_lien 0.0%
+gank rolo: p6 0.0%/0.5% · p10 0.0%/0.0% · p15 0.0%/0.0%
+gank moc_lam: p6 0.0%/2.9% · p10 0.0%/0.1% · p15 0.0%/0.0%
+gank kha_tan: p6 0.0%/1.1% · p10 0.0%/0.0% · p15 0.0%/0.0%
+gank van_dao: p6 0.0%/3.5% · p10 0.0%/0.9% · p15 0.0%/0.0%
+gank hoa_tuy: p6 0.0%/27.3% · p10 0.0%/20.1% · p15 0.0%/9.5%
+gank bach_dien: p6 0.0%/0.3% · p10 0.0%/0.0% · p15 0.0%/0.0%
+gank mac_lien: p6 0.0%/0.0% · p10 0.0%/0.0% · p15 0.0%/0.0%
+team 2v2: 22.5 s · rolo 57.1% · moc_lam 62.6% · kha_tan 50.0% · van_dao 37.0% · hoa_tuy 78.1% · bach_dien 39.4% · mac_lien 27.5%
+team 3v3: 24.6 s · rolo 47.1% · moc_lam 54.9% · kha_tan 50.6% · van_dao 42.2% · hoa_tuy 70.1% · bach_dien 45.3% · mac_lien 39.9%
+tower rolo: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+tower moc_lam: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+tower kha_tan: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+tower van_dao: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+tower hoa_tuy: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+tower bach_dien: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+tower mac_lien: phá NaN% máu trụ, còn 0.0% máu, chết không lính KHÔNG
+wave rolo: p3 90.0% dọn 31s -88.2% · p6 100.0% dọn 27s -51.0% · p10 100.0% dọn 21s -24.2% · p15 100.0% dọn 15s -12.9% · p20 100.0% dọn 15s -7.5%
+wave moc_lam: p3 100.0% dọn 29s -75.3% · p6 100.0% dọn 25s -47.6% · p10 100.0% dọn 19s -19.0% · p15 100.0% dọn 12s -9.5% · p20 100.0% dọn 11s -8.8%
+wave kha_tan: p3 30.0% dọn 19s -98.9% · p6 100.0% dọn 18s -46.1% · p10 100.0% dọn 18s -28.7% · p15 100.0% dọn 16s -16.6% · p20 100.0% dọn 16s -8.9%
+wave van_dao: p3 0.0% dọn 22s -100.0% · p6 100.0% dọn 28s -60.1% · p10 100.0% dọn 17s -18.4% · p15 100.0% dọn 17s -10.8% · p20 100.0% dọn 16s -7.8%
+wave hoa_tuy: p3 0.0% dọn 15s -100.0% · p6 100.0% dọn 19s -79.1% · p10 100.0% dọn 11s -32.2% · p15 100.0% dọn 6s -14.4% · p20 100.0% dọn 7s -12.1%
+wave bach_dien: p3 0.0% dọn 13s -100.0% · p6 100.0% dọn 25s -86.9% · p10 100.0% dọn 18s -48.2% · p15 100.0% dọn 13s -27.2% · p20 100.0% dọn 12s -21.4%
+wave mac_lien: p3 0.0% dọn 10s -100.0% · p6 40.0% dọn 19s -94.2% · p10 100.0% dọn 14s -53.2% · p15 100.0% dọn 11s -28.9% · p20 100.0% dọn 10s -19.6%
+jungle rolo: jade_hare 8s 94.4% · mountain_boar 14s 88.7% · stone_monkey 10s 92.0% · mountain_turtle 20s 85.5% · river_serpent 13s 89.7% · wood_golem 28s 68.8% · white_crane 25s 75.9%
+jungle moc_lam: jade_hare 6s 94.3% · mountain_boar 12s 91.0% · stone_monkey 9s 91.7% · mountain_turtle 18s 84.8% · river_serpent 11s 90.8% · wood_golem 26s 71.5% · white_crane 24s 76.6%
+jungle kha_tan: jade_hare 4s 95.3% · mountain_boar 8s 87.6% · stone_monkey 7s 90.3% · mountain_turtle 11s 89.7% · river_serpent 8s 87.6% · wood_golem 17s 80.8% · white_crane 15s 81.2%
+jungle van_dao: jade_hare 10s 95.2% · mountain_boar 19s 88.9% · stone_monkey 15s 88.3% · mountain_turtle 25s 86.4% · river_serpent 19s 87.7% · wood_golem 41s 58.6% · white_crane 38s 65.3%
+jungle hoa_tuy: jade_hare 6s 94.4% · mountain_boar 10s 87.3% · stone_monkey 8s 88.4% · mountain_turtle 14s 80.2% · river_serpent 12s 83.0% · wood_golem 17s 68.2% · white_crane 16s 70.7%
+jungle bach_dien: jade_hare 7s 91.5% · mountain_boar 12s 81.2% · stone_monkey 11s 81.0% · mountain_turtle 17s 77.1% · river_serpent 14s 77.8% · wood_golem 25s 51.1% · white_crane 22s 58.0%
+jungle mac_lien: jade_hare 5s 91.5% · mountain_boar 11s 79.8% · stone_monkey 8s 84.5% · mountain_turtle 14s 74.6% · river_serpent 11s 78.0% · wood_golem 21s 47.9% · white_crane 21s 48.2%
+boss solo: rolo 0.0% · moc_lam 0.0% · kha_tan 0.0% · van_dao 0.0% · hoa_tuy 0.0% · bach_dien 0.0% · mac_lien 0.0% | đội: 2 người 40.0% 66s chết 1.4 · 3 người 100.0% 36s chết 0.3 · 5 người 100.0% 17s chết 0.0
+combo phút 3: xong
+combo phút 6: xong
+combo phút 10: xong
+combo phút 15: xong
+combo phút 20: xong
+combo phút full: xong
+combo cao nhất: hoa_tuy→mac_lien p6 106.3% · hoa_tuy→bach_dien p15 105.7% · hoa_tuy→mac_lien p15 102.3% · hoa_tuy→mac_lien p10 101.8% · hoa_tuy→bach_dien p10 99.8% · hoa_tuy→mac_lien p20 99.8% · hoa_tuy→bach_dien p6 98.4% · hoa_tuy→kha_tan p6 93.4%
+
+FLAG · rev cce6db448a6e · red 0 · orange 145 · yellow 15
+→ D:\Project\Test\24tuong\reports\sim\production26\2026-10-12T07-21-06-914Z\rolo/report.html
