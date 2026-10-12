@@ -1,5 +1,7 @@
 # Workflow VFX skill — Cổ Linh Thần Chiến
 
+> **CURRENT ROUTING (2026-10-12):** [105 · Hero Factory](105-hero-factory-multi-agent-workflow.md) is mandatory workflow; this file remains **the VFX specialist contract**. Old LMB/RMB slot names are *data migration aliases* (`lmb` → basic attack; `rmb` → W), **not input controls**. Use [91](91-khoa-input-qwer-d.md), [76](76-chuan-hinh-hoc-skill.md) and [79](79-chuan-ultimate.md). Superseded roster sizes/batch order here do not override 26-hero production.
+
 Áp dụng cho mọi tướng mới và mọi lần sửa effect. Chốt từ phản hồi của @lukasai (2026-10-07):
 "vẫn hơi đặc", "cứng, quá nắn nót, quá vuông, quá tam giác", "skill đã đẹp rồi. Chỉ còn phần định vị mục tiêu vẫn hình học".
 
