@@ -3,10 +3,11 @@
 > **Owner directive, 2026-10-12:** ALL 26 approved heroes must reach PLAYABLE PASS. This is a production project, not a document-only concept audit. Do not process heroes in serial batches of five.
 
 ## Start here — required read order
-1. [105 · HERO FACTORY — canonical multi-agent workflow](docs/co-linh-than-chien/105-hero-factory-multi-agent-workflow.md). **S0–S9, three independent audits, complete Hero Production Packet and sign-off are mandatory.**
-2. [104 · Full Approved Roster Production Master Plan](docs/co-linh-than-chien/104-full-approved-roster-production-master-plan.md) + [26-hero machine-readable registry](tools/sim/production-26-roster.json). Registry is the only current 26-hero scope/ID list; waves schedule assets/integration only, NOT serial concept/kit/Lab work.
-3. [Doc routing/authority index](docs/co-linh-than-chien/README.md). Read only relevant specialist standards after 105, e.g. 23 A–J, 62 handoff, 73 Balance Lab, 76 geometry, 79 ultimate, 91 input, 28 animation, 30 VFX, 42 assets, 11 QA.
-4. The specific hero's **latest approved concept source and art reference** (docs 100, 102, 103, 96/99 as applicable). Do not replace approved fantasy or mythology artwork with generic kits or legacy designs.
+1. [HANDOFF.md](HANDOFF.md) — latest production status, multi-agent task allocation, blockers, and runnable commands.
+2. [105 · HERO FACTORY — canonical multi-agent workflow](docs/co-linh-than-chien/105-hero-factory-multi-agent-workflow.md). **S0–S9, three independent audits, complete Hero Production Packet and sign-off are mandatory.** 
+3. [104 · Full Approved Roster Production Master Plan](docs/co-linh-than-chien/104-full-approved-roster-production-master-plan.md) + [26-hero machine-readable registry](tools/sim/production-26-roster.json). Registry is the only current 26-hero scope/ID list; waves schedule assets/integration only, NOT serial concept/kit/Lab work.
+4. [Doc routing/authority index](docs/co-linh-than-chien/README.md). Read only relevant specialist standards after 105, e.g. 23 A–J, 62 handoff, 73 Balance Lab, 76 geometry, 79 ultimate, 91 input, 28 animation, 30 VFX, 42 assets, 11 QA.
+5. The specific hero's **latest approved concept source and art reference** (docs 100, 102, 103, 96/99 as applicable). Do not replace approved fantasy or mythology artwork with generic kits or legacy designs.
 
 ## Do not compromise these rules
 - Input: four hero skills **Q/W/E/R**, R = ultimate, **D = universal dash**. Basic attack is separate; old YAML `rmb` means W by migration contract, `lmb` is basic attack. Source: doc 91.
