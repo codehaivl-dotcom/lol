@@ -1,6 +1,7 @@
 # 105 · HERO FACTORY — Workflow đa sub-agent cho 26 tướng đã duyệt
 
-**Trạng thái:** `PRODUCTION_ORCHESTRATION_SPEC / READY_FOR_AGENT_ADOPTION / NOT_ENGINE_VERIFIED`
+**Trạng thái:** `OWNER_LOCK / CANONICAL_HERO_PRODUCTION_WORKFLOW / NOT_ENGINE_VERIFIED`
+**Entry points:** [AGENTS.md](../../AGENTS.md) · [HANDOFF.md](../../HANDOFF.md) · [Documentation Router](README.md). All specialist documentation is routed here for 26-hero work; historical batch instructions are superseded, not deleted.
 **Mục tiêu Owner:** toàn bộ 26/26 tướng trong `tools/sim/production-26-roster.json` được triển khai đầy đủ tới `PLAYABLE PASS`, không nghiên cứu lại roster, không giam việc thiết kế/Lab theo wave 5 tướng.
 **Phạm vi:** design → lore/class/difficulty → kit → skill visual contract → mechanics/test → Balance Lab → audit độc lập → Owner sign-off → 3D/animation/VFX/SFX → playable QA.
 
