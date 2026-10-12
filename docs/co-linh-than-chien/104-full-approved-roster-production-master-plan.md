@@ -171,17 +171,17 @@ Theo chỉ đạo chiến lược của Owner, **Sứa Chuông Jeli (#34)** đư
 
 | ID | Runtime ID | Tên Tướng | Vai Trò | Wave | G0 Concept | G1 Spec | G2 YAML | G3 Lab | G4 Sign | G5 3D | G6 Anim | G7 Int | G8 Play | Trạng Thái Hiện Tại |
 |:---|:---|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
-| #38 | `linh_hau` | Linh Hầu | Fighter | W1 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
-| #39 | `kael` | Kael | Skirmisher | W1 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
-| #40 | `lieu_tien` | Liễu Tiễn | Marksman | W1 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
-| #17 | `forge` | Forge | Tank | W1 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
-| #34 | `jeli` | Jeli | Support | W1 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
-| #43 | `phu_dong` | Phù Dong | Vanguard | W2 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
-| #01 | `kiko` | Kiko | Assassin | W2 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
-| #02 | `brak` | Brak | Fighter | W2 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
-| #07 | `nera` | Nera | Marksman | W2 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
-| #03 | `vero` | Vero | Assassin | W2 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
-| #36 | `rolo` | Rolo | Fighter | W2 | PASS | PASS | PASS | PASS (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 Lab PASS / Gate 4 HOLD)** |
+| #38 | `linh_hau` | Linh Hầu | Fighter | W1 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #39 | `kael` | Kael | Skirmisher | W1 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #40 | `lieu_tien` | Liễu Tiễn | Marksman | W1 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #17 | `forge` | Forge | Tank | W1 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #34 | `jeli` | Jeli | Support | W1 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W1 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #43 | `phu_dong` | Phù Dong | Vanguard | W2 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #01 | `kiko` | Kiko | Assassin | W2 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #02 | `brak` | Brak | Fighter | W2 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #07 | `nera` | Nera | Marksman | W2 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #03 | `vero` | Vero | Assassin | W2 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
+| #36 | `rolo` | Rolo | Fighter | W2 | PASS | PASS | PASS | FLAG_REVIEW (red=0) | HOLD | HOLD | HOLD | PEND | PEND | **W2 Active (Gate 3 FLAG_REVIEW / Gate 4 HOLD)** |
 | #44 | `tan_son` | Tản Sơn | Tank | W3 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W3 Backlog |
 | #45 | `trieu_ba` | Triều Bá | Mage | W3 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W3 Backlog |
 | #46 | `dung_thach` | Dũng Thạch | Fighter | W3 | PASS | DRAFT | QUEUE | QUEUE | PEND | HOLD | HOLD | PEND | PEND | W3 Backlog |
@@ -222,6 +222,21 @@ Theo chỉ đạo chiến lược của Owner, **Sứa Chuông Jeli (#34)** đư
    - Chạy mô phỏng Balance Lab đối đầu với Baseline Comparison Panel (6 tướng đại diện các vai trò).
    - Xuất báo cáo `report.json` và trình Owner xem xét phê duyệt (Gate 4 Sign-Off) trước khi chuyển sang dựng 3D.
 
+
+---
+
+
+### QA RECTIFICATION — Commit 55d7d90 / campaign 2026-10-12T07-21-06-914Z
+
+**Verified source:** [machine summary](../../reports/sim/production26/2026-10-12T07-21-06-914Z/summary.json) (the root repository report path is `reports/sim/production26/2026-10-12T07-21-06-914Z/summary.json`). This is an independent review of recorded output; no fresh Bun run or live Spawn playtest is claimed.
+
+- **26/26 accounted for: 11 FLAG_REVIEW, 15 MISSING_KIT, zero SIM_FINISHED_REVIEW_REQUIRED.** The eleven completed simulator jobs each have **red=0 but orange>0**. `FLAG_REVIEW` is the **actual runner status**, not `PASS_MODEL` clean. The tracker G3 cells have been corrected accordingly.
+- Six Wave 2 independent `07-audit-record.md` files contain **9 OPEN MAJOR + 9 OPEN MINOR defects** (18 total), rather than the 7 Major / 10 Minor reported in the narrative. Their Audit2 PASS_LAB claims cannot promote Gate 3 while flags and essential-mechanic coverage remain unresolved.
+- Example contradictions: Phu Dong visual is **mounted rider on separate steed, NOT centaur** (doc 103 and its source lock), yet the red-team audit calls for a centaur rig and Unity URP (incorrect for Spawn target); Kiko's decoy targeting AI is NOT_TESTED; several gameplay toy unit tests assert fields or manually set state rather than proving cast→effect→expiry.
+- All eleven Gate 4 cells remain **HOLD**. No sign-off is implied by any prior packet label, report, or test count. Costly 3D final-generation stays HOLD. Art spec/visual brief, mechanics work, source fixes and further packets may proceed.
+- Parallel policy remains in force: **do not defer 15 missing hero packets/kits until Wave 2 flags close**. Repair flagged 11 and build missing 15 concurrently. Each repaired kit must be rerun; preserve prior reports and defect history.
+
+**Reopen condition:** actual working mechanics tests for core toys + coherent player/bot/runtime semantics; revised seeded model reports with explicit disposition for impactful ORANGE flags and NOT_TESTED; independent audit evidence and decision-ready owner Gate 4 review. Do not auto-green merely by hiding flags or relaxing thresholds.
 
 ---
 
