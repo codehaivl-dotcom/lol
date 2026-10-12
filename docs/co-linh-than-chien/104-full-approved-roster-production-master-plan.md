@@ -1,5 +1,8 @@
 # 104 · Kế Hoạch Sản Xuất Roster Toàn Diện Đã Duyệt (Full Approved Roster Production Master Plan)
 
+> **CURRENT PRODUCTION STATUS — campaign 2026-10-12T08-15-08-077Z / source commit 20bafbb (reviewed 2026-10-12):** **26 unique hero candidate YAML + 260/260 packet files + 26 completed Lab jobs** verified on GitHub; **26 FLAG_REVIEW (red=0, orange 130–177 each), 0 MISSING_KIT, 0 Owner Gate 4 signed, 0 PASS_ENGINE evidenced**. See [machine summary](../../reports/sim/production26/2026-10-12T08-15-08-077Z/summary.json) and [HANDOFF](../../HANDOFF.md). The historical 11/15 and 5/21 figures further down refer to earlier campaigns ONLY. **Do not restart old Wave 1/2 authoring, do not mark FLAG_REVIEW as PASS; next priority is role-aware calibration and Spawn greybox integration checks.**
+
+
 **Trạng thái tài liệu:** `OWNER_APPROVED_PRODUCTION_DIRECTIVE / MASTER_EXECUTION_PLAN_V2`  
 **Chỉ thị tối cao của Owner:**  
 > **"Mục tiêu cuối: FULL APPROVED ROSTER PLAYABLE — không phải FULL ROSTER DOCUMENTED. Chấm dứt chuỗi vòng audit concept lặp lại. Đưa TẤT CẢ 26 tướng đã duyệt đi hết dây chuyền production, trở thành nhân vật 3D thực sự có thể chơi trong trận 5v5."**
@@ -214,7 +217,9 @@ Theo chỉ đạo chiến lược của Owner, **Sứa Chuông Jeli (#34)** đư
 
 ---
 
-## 7. Hành Động Kế Tiếp (Immediate Action Items)
+## 7. HISTORICAL ACTION ITEMS — SUPERSEDED (Wave 1 preparation, recorded for provenance)
+
+> This section describes a completed old setup phase. Current action is defined in the status banner above and HANDOFF.md.
 
 1. **Khóa Wave 0:** Chạy automated test kiểm tra registry 26/26 hero.
 2. **Khai hỏa Wave 1 (5 Tướng Nhập Môn):**
@@ -226,7 +231,7 @@ Theo chỉ đạo chiến lược của Owner, **Sứa Chuông Jeli (#34)** đư
 ---
 
 
-### QA RECTIFICATION — Commit 55d7d90 / campaign 2026-10-12T07-21-06-914Z
+### HISTORICAL QA RECTIFICATION — Commit 55d7d90 / campaign 2026-10-12T07-21-06-914Z
 
 **Verified source:** [machine summary](../../reports/sim/production26/2026-10-12T07-21-06-914Z/summary.json) (the root repository report path is `reports/sim/production26/2026-10-12T07-21-06-914Z/summary.json`). This is an independent review of recorded output; no fresh Bun run or live Spawn playtest is claimed.
 
@@ -261,4 +266,4 @@ Theo chỉ đạo chiến lược của Owner, **Sứa Chuông Jeli (#34)** đư
 - **Không tự động copy sang heroes.yml, không chi credit 3D trước Gate 4, không tự nhận PASS_ENGINE.** Model/Battle Form/manifest được chuẩn bị song song.
 - **Đầu ra của chiến dịch:** 26 kit ứng viên được xây dựng/kiểm tra đầy đủ; kết quả từng hero với blocker rõ ràng; Owner chỉ phải xem các trường hợp FLAG/NOT_TESTED hay đề xuất sign-off, không tổ chức thêm vòng audit concept.
 
-**Trạng thái khi ban hành lệnh:** 5 file YAML Wave 1 hiện hữu, 21 hero production chưa có YAML theo registry; việc commit runner không có nghĩa đã chạy đủ 26 hoặc đã PASS_MODEL. Agent có môi trường Bun cần chủ động viết nốt 21 kit, chạy full-campaign và giao báo cáo thực thi với số PASS/FLAG/MISSING thật.
+**Historical status at date of that directive, NOT current:** 5 file YAML Wave 1 hiện hữu, 21 hero production chưa có YAML theo registry; việc commit runner không có nghĩa đã chạy đủ 26 hoặc đã PASS_MODEL. Agent có môi trường Bun cần chủ động viết nốt 21 kit, chạy full-campaign và giao báo cáo thực thi với số PASS/FLAG/MISSING thật.
