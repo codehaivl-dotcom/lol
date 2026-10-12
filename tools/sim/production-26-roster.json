@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Full 26 approved heroes - one concurrent simulation campaign; art/integration waves do not block Lab",
+  "ownerSignOffRequired": true,
+  "notes": "Registry is production-scope only. Candidate kits and simulator results do not imply gameplay approval. NOT_TESTED mechanics require explicit evidence.",
+  "heroes": [
+    {
+      "researchId": "#01",
+      "id": "kiko",
+      "wave": 2
+    },
+    {
+      "researchId": "#02",
+      "id": "brak",
+      "wave": 2
+    },
+    {
+      "researchId": "#03",
+      "id": "vero",
+      "wave": 2
+    },
+    {
+      "researchId": "#07",
+      "id": "nera",
+      "wave": 2
+    },
+    {
+      "researchId": "#15",
+      "id": "aero",
+      "wave": 3
+    },
+    {
+      "researchId": "#17",
+      "id": "forge",
+      "wave": 1
+    },
+    {
+      "researchId": "#19",
+      "id": "inka",
+      "wave": 4
+    },
+    {
+      "researchId": "#28",
+      "id": "libro",
+      "wave": 4
+    },
+    {
+      "researchId": "#30",
+      "id": "iro",
+      "wave": 3
+    },
+    {
+      "researchId": "#31",
+      "id": "moka",
+      "wave": 3
+    },
+    {
+      "researchId": "#32",
+      "id": "kora",
+      "wave": 3
+    },
+    {
+      "researchId": "#33",
+      "id": "eelix",
+      "wave": 4
+    },
+    {
+      "researchId": "#34",
+      "id": "jeli",
+      "wave": 1
+    },
+    {
+      "researchId": "#35",
+      "id": "pavo",
+      "wave": 4
+    },
+    {
+      "researchId": "#36",
+      "id": "rolo",
+      "wave": 2
+    },
+    {
+      "researchId": "#37",
+      "id": "mok",
+      "wave": 4
+    },
+    {
+      "researchId": "#38",
+      "id": "linh_hau",
+      "wave": 1
+    },
+    {
+      "researchId": "#39",
+      "id": "kael",
+      "wave": 1
+    },
+    {
+      "researchId": "#40",
+      "id": "lieu_tien",
+      "wave": 1
+    },
+    {
+      "researchId": "#43",
+      "id": "phu_dong",
+      "wave": 2
+    },
+    {
+      "researchId": "#44",
+      "id": "tan_son",
+      "wave": 3
+    },
+    {
+      "researchId": "#45",
+      "id": "trieu_ba",
+      "wave": 3
+    },
+    {
+      "researchId": "#46",
+      "id": "dung_thach",
+      "wave": 3
+    },
+    {
+      "researchId": "#47",
+      "id": "co_lo",
+      "wave": 3
+    },
+    {
+      "researchId": "#48",
+      "id": "oneira",
+      "wave": 4
+    },
+    {
+      "researchId": "#49",
+      "id": "kymos",
+      "wave": 4
+    }
+  ]
+}
