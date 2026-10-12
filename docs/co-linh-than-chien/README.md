@@ -1,102 +1,56 @@
-# Cổ Linh Thần Chiến — tài liệu thiết kế
+# COLINH — Documentation Index (canonical routing)
 
-> **Agent đọc trước:** [`HANDOFF.md`](../../HANDOFF.md) → [71 · Sơ đồ hệ thống](71-so-do-he-thong.md) → [72 · Luật handoff](72-luat-handoff.md). Không đọc hết bộ docs.
+**Current owner scope (2026-10-12): 26 approved production candidates → 26/26 PLAYABLE PASS.** For hero production, **105 is the ONLY process/workflow authority.** Do not scan or follow every historical TODO in numeric order.
 
-## Bàn giao Codex → Savi · 09/10/2026
+**Mandatory entry:** [AGENTS.md](../../AGENTS.md) → [HANDOFF.md](../../HANDOFF.md) → **[105 · Hero Factory — Multi-Agent Workflow](105-hero-factory-multi-agent-workflow.md)** → [104 · Production Master Plan](104-full-approved-roster-production-master-plan.md) → [26-ID JSON registry](../../tools/sim/production-26-roster.json).
 
-**Cập nhật bàn giao 09/10/2026:** chủ dự án xác nhận luật Sân Tập và reconnect đã fix; hai mục này **ĐÃ ĐÓNG THEO XÁC NHẬN OWNER**, không mở lại hoặc xin duyệt lại. Các report/source fixture 9351 là evidence lịch sử, không xác định trạng thái world sau đó. Ưu tiên [66 · Bàn giao cho Savi](66-ban-giao-cho-savi.md).
+## A. The small set to follow NOW — hero factory
 
-Đọc **66 → 63 → 59** để triển khai item; 60 là nghiên cứu, 61/65 là prototype Mạch Đăng. Catalog: `../../tools/balance/items/candidate-v01.json`. [Dashboard mô hình lịch sử](../../reports/production-2026-10-09/index.html).
+| Need | Current authority |
+|---|---|
+| **How agents work, three audits, stages S0–S9** | **[105](105-hero-factory-multi-agent-workflow.md)** — mandatory; one pipeline for all 26 |
+| Which heroes, research/runtime IDs, waves, sign-off/gates | [104](104-full-approved-roster-production-master-plan.md) + [production-26-roster.json](../../tools/sim/production-26-roster.json) |
+| Q/W/E/R, basic attack, D universal dash | [91](91-khoa-input-qwer-d.md) + [09](09-data-contract-va-roster.md) |
+| Per-hero A–J checklist, seven-domain sign-off | [23 §1 and §5.1](23-giao-viec-21-tuong.md) — **requirements only**; its previous 21-hero 3-per-batch schedule is HISTORICAL |
+| End-to-end handoff contract; laws/data/assets/model/proof | [62](62-production-bible-va-bo-mo-phong.md) |
+| Kit YAML, simulation reports/seed/revision/creator approval | [73](73-balance-lab.md) + [campaign runner](../../tools/sim/production-26.mjs) |
+| Basic/skill geometry vs preview vs telegraph vs VFX | [76](76-chuan-hinh-hoc-skill.md) |
+| Ultimate (R) performance, read, effects, phases | [79](79-chuan-ultimate.md) |
+| Character body/rig/animation | [25](25-dong-tac-theo-tuong.md) + [28](28-workflow-animation-skill.md) |
+| VFX/ability visuals | [30](30-workflow-vfx-skill.md) + [56](56-vfx-audit-toan-bo.md) + [78](78-audit-skill-2026-10-11.md) (historical defects/evidence) |
+| Manifest/CDN/source/rights | [42](42-quan-ly-asset.md) |
+| VO/SFX per ability, VI/EN | [34](34-ma-tran-vo-sfx-roster-27.md) (technical coverage only; old 27-hero scope superseded) + [05](05-tu-dien-viet-hoa.md) |
+| Runtime QA and evidence acceptance | [11](11-acceptance-ban-giao.md) |
 
-- [52-quy-hoach-ui-hud-module](52-quy-hoach-ui-hud-module.md)
-- [58-nghien-cuu-va-thiet-ke-he-item](58-nghien-cuu-va-thiet-ke-he-item.md)
-- [59-he-trang-bi-de-xuat](59-he-trang-bi-de-xuat.md)
-- [60-nghien-cuu-moba-chien-thuat-va-luat](60-nghien-cuu-moba-chien-thuat-va-luat.md)
-- [61-mach-dang-va-cong-tac-phong-thu](61-mach-dang-va-cong-tac-phong-thu.md)
-- [62-production-bible-va-bo-mo-phong](62-production-bible-va-bo-mo-phong.md)
-- [63-item-integration-handoff](63-item-integration-handoff.md)
-- [64-slice-authoritative-handoff](64-slice-authoritative-handoff.md)
-- [65-vision-map-acceptance](65-vision-map-acceptance.md)
+**Do not duplicate the detailed specialist checklists in 105.** It orchestrates them; specialist documents continue to define domain-specific acceptance.
 
-**Bản handoff chuẩn V1.** Đây là mục lục duy nhất của bộ docs. Tóm tắt một trang cho Savi nằm ở [design.md](../../design.md).
+## B. Approved design references — consult only the relevant hero
 
-**[00 · MOBA Bible](00-bible-moba.md)**: luật MOBA của game, cập nhật mỗi khi có luật mới.
+| Context | References and what to take |
+|---|---|
+| 10 Strong Keep, 6 Keep/Rewrite, 2 Under Spike | [100 · V5 roster selection](100-roster-v5-round4-selection-rivalry-audit.md) + [96 · concept bibles](96-roster-v5-top15-concept-bibles.md) + [99 · Mok](99-hero-concept-mok-scout-master-bible.md), respecting latest specific status |
+| Linh Hầu #38, Kael #39, Liễu Tiễn #40 | [102 · Beginner shortlist](102-roster-v5-beginner-concept-shortlist.md); Dương Tiễn/Pyra proposals are outside approved production 26 |
+| Phù Dong #43, Tản Sơn #44, Triều Bá #45, Dũng Thạch #46, Cổ Lỗ #47 | [103 · Mythic Quintet](103-mythic-quintet-concept-bible.md) + [five approved artworks](art-concepts/) (preserve fantasy and approved Mythic Form) |
+| Visual diversity / anatomy and silhouette research | [74](74-thu-vien-tao-hinh.md) + [75](75-prototype-tao-hinh.md) are a **library / prototype**, not permission to redesign an already approved hero |
+| Idea quality / player fantasy audit criteria | [93](93-roster-v5-team-audit-brief.md) is a reusable rubric, **not a new elimination round** |
 
-## Tài liệu theo thứ tự đọc
+## C. Other systems (NOT hero workflow authority)
 
-1. [Thế giới, lịch sử và cốt truyện](01-the-gioi-va-cot-truyen.md)
-2. [Bản đồ và art bible](02-ban-do-va-my-thuat.md)
-3. [Roster và tạo hình 27 Cổ Linh](03-danh-sach-tuong.md)
-4. [Nguyên tắc thiết kế, tham khảo và cân bằng](04-bao-toan-gameplay.md)
-5. [Từ điển và localization VI–EN](05-tu-dien-viet-hoa.md)
-6. [GDD sản xuất V1](06-gdd-san-xuat-v1.md)
-7. [Layout map Cửu Mạch](07-layout-ban-do-v1.md)
-8. [Combat, tiến trình, objectives và kinh tế](08-combat-kinh-te-v1.md)
-9. [Data contract, ID và localization schema](09-data-contract-va-roster.md)
-10. [Tham khảo và quyết định thiết kế](10-doi-soat-runtime.md)
-11. [Acceptance và bàn giao](11-acceptance-ban-giao.md)
-12. [Thang chỉ số tham khảo](12-bang-chi-so-tuong.md)
-13. [Playtest slice 1: Mạch Giữa](13-playtest-slice-1.md)
-14. [**TODO + luật sảnh Slice 1.5** (phạm vi hiện hành)](14-todo-lobby-va-playtest.md)
+- [00 MOBA Bible](00-bible-moba.md) · [01 world/lore](01-the-gioi-va-cot-truyen.md) · [02 map/art](02-ban-do-va-my-thuat.md) · [06 product GDD](06-gdd-san-xuat-v1.md).
+- [14 lobby/slice](14-todo-lobby-va-playtest.md) · [27 5v5 map handoff](27-handoff-map-5v5-ba-duong.md) · [48 modular architecture](48-quyet-dinh-kien-truc-v1.md) · [63 item integration](63-item-integration-handoff.md) · [65 map vision acceptance](65-vision-map-acceptance.md).
+- [08 combat/economy](08-combat-kinh-te-v1.md) · [58–60 item/research](58-nghien-cuu-va-thiet-ke-he-item.md) · [70 combat/TTK audit](70-combat-ttk-audit.md).
+- [71 system diagram](71-so-do-he-thong.md) and [66 prior engineering handoff](66-ban-giao-cho-savi.md) — subsystem or historical reference, not the hero factory's entrypoint.
 
-## Tài liệu bổ sung và kế hoạch đang làm
+## D. History / archive — DO NOT execute as current production orders
 
-15. [TODO trận thử 1v1](15-todo-thu-tran-1v1.md)
-16. [Khoảng trống gameplay](16-gap-gameplay.md)
-17. [Thiết kế map Mạch Giữa](17-thiet-ke-map-mach-giua.md)
-18. [Research map MOBA](18-research-map-moba.md)
-19. [Research HUD và gameplay](19-research-hud-gameplay.md)
-20. [Khoảng trống skill/VFX/target](20-gap-skill-vfx-target.md)
-21. [Audit balance và kế hoạch VFX](21-audit-balance-va-plan-vfx.md)
-22. [Tài nguyên 27 tướng](22-tai-nguyen-27-tuong.md)
-23. [Giao việc 21 tướng](23-giao-viec-21-tuong.md)
-24. [TODO hoàn thiện 6 tướng](24-todo-hoan-thien-6-tuong.md)
-25. [Kế hoạch động tác theo vóc dáng, class và vũ khí](25-dong-tac-theo-tuong.md)
-26. [Hồ sơ sản xuất phim lore](26-video-lore-intro.md)
-27. [Handoff sản xuất map 5v5 ba đường](27-handoff-map-5v5-ba-duong.md)
-28. [Workflow animation skill cho tướng](28-workflow-animation-skill.md)
-29. [TODO VFX trong suốt](29-todo-vfx-trong-suot.md)
-30. [Workflow VFX skill](30-workflow-vfx-skill.md)
-31. [Concept lính và boss](31-concept-linh-va-boss.md)
-32. [TODO Siêu Linh Binh](32-todo-sieu-linh-binh.md)
-33. [TODO Linh Binh 3D](33-todo-linh-binh-3d.md)
-34. [Ma trận VO/SFX theo slot — roster 27](34-ma-tran-vo-sfx-roster-27.md)
-35. [Spec boss Thuồng Luồng / Cổ Linh Long (tạm)](35-spec-boss-thuong-luong-co-linh-long.md)
-39. [Áo Bão chắn đạn (Vân Dao E)](39-spec-ao-bao-chan-dan.md)
+Old numeric documents, research reports, balance notes and audits are **preserved for provenance**. In particular:
+- [03 old 27-roster](03-danh-sach-tuong.md), [22 old 27-hero inventory](22-tai-nguyen-27-tuong.md), [23 old 21-hero schedule](23-giao-viec-21-tuong.md), [24 old six-hero TODO](24-todo-hoan-thien-6-tuong.md), [85/86 old roster proposals](85-de-xuat-18-tuong.md): do not use their roster size/waves to override approved 26.
+- [90–99 discovery and audit series](90-hero-inspiration-research.md), [101 beginner proposal](101-roster-v5-beginner-heroes-proposal.md), [92 36 candidates](92-roster-discovery-v5-concept-candidates.md): take accepted source details only, not superseded production decisions.
+- [77 VFX audit](77-audit-vfx-skill-2026-10-10.md), [78 skill audit](78-audit-skill-2026-10-11.md), [AUDIT-2026-10-07](AUDIT-2026-10-07.md), [balance log](balance-log.md): preserve historical evidence, rerun/revalidate on actual current revision.
+- A legacy link to root `HANDOFF.md` is now valid; references to `72-luat-handoff.md`, `assets/INDEX.md` and `tools/balance/` may be stale or absent in this repo snapshot. **Verify files exist before following older links or tool commands.**
 
-Báo cáo: [Audit docs](AUDIT-2026-10-07.md) · [Mô phỏng balance](balance-sim-2026-10-07.md) · [Balance log](balance-log.md). Kiểm tự động: `bun tools/audit/docs-check.mjs`.
+## E. Conflict and evidence rules
 
-Playtest client thật: [Hội đồng Codex — 08/10/2026](reports/2026-10-08-playtest-codex.md), kèm snapshot JSON và trạng thái retest. Đây là evidence, không thay luật hiện hành ở doc 14.
+Owner's latest explicit decisions override historical plans. **105 decides process, 104/registry decides production membership and gate allocation, 91 decides input, per-hero approved concept decides fantasy, specialized docs decide mechanics/art/QA details.** When a historical document conflicts, keep it as history, record the conflict, and follow current authority.
 
-## Phạm vi hiện hành: Slice 1.5
-
-Vòng đang làm là **Slice 1.5: Sảnh kiểu LOL + Mạch Giữa**. Luật chốt ở **14 §B0** (B0.1–B0.9: phạm vi, phase, mode, lệnh sảnh, kết quả, ngôn ngữ, Sân Tập, quyền, danh tính, schema). Với vòng này, 14 thắng các mục tương ứng của 06, 09, 11, 13. Các tài liệu đó giữ đích V1 dài hạn và có dòng dẫn sang 14. Quyết định D13–D18 ở 10.
-
-**Thứ tự đọc cho người code vòng này:** 14 (toàn bộ) → 09 §1–2 → 08 (số trận) → 13 (luật trận Mạch Giữa) → 11 §Slice 1.5 (nghiệm thu).
-
-## Nguồn chuẩn
-
-**Game mới hoàn toàn** (quyết định 2026-10-07): tướng, tạo hình, kit và số liệu là của Cổ Linh. Data game khác trong `data/legacy-source/` và `data/legacy-kits-v1.json` **chỉ để tham khảo**, không import, không ship.
-
-- Số gameplay: `scripts/lib/data/*.yml` (tạo khi build), tune bằng mô phỏng theo 04 §3. Trước khi có file đó, 08 là spec khởi điểm.
-- Tên, role, tên chiêu VI–EN và ID tướng: `data/roster-display-map.csv`.
-- Quyết định đã chốt: 10 (D1–D12). Audit: `AUDIT-2026-10-07.md`.
-
-## Quy ước nhãn
-
-- **[USER LOCK]** chủ dự án đã chốt; không tự đổi.
-- **[V1 SPEC]** quyết định thiết kế của dự án; số là giá trị khởi điểm, chỉnh qua `balance-log` + mô phỏng (04 §3).
-- **[THAM KHẢO]** giá trị khởi điểm mượn từ data tham khảo; phải qua mô phỏng trước khi khóa.
-- **[TBD-SIM]** chưa có số; đặt bằng mô phỏng, không phải chờ "nguồn".
-- [37 · Skill Thuồng Luồng (TẠM)](37-skill-thuong-luong.md)
-- [40 · Audit kiến trúc UI + tiêu chuẩn UI](40-audit-kien-truc-ui.md)
-- [41 · Thư viện VFX](41-thu-vien-vfx.md)
-- [42 · Quản lý asset: manifest + luật khai báo](42-quan-ly-asset.md) · index: [assets/INDEX.md](../../assets/INDEX.md)
-- [43 · Nghiên cứu tối ưu Sảnh → Chọn tướng → Trận (Liên Quân/LoL, nguyên lý)](43-nghien-cuu-toi-uu-sanh-tran-tuong.md)
-- [44 · Kế hoạch tách Place + Module (Sảnh / Map / Dev)](44-ke-hoach-tach-place-module.md)
-
-- 45 kế hoạch phân phối asset + tách map (v1, thứ tự đã thay bởi 48)
-- 46 tổng hợp kiến trúc + tự audit
-- 47 review độc lập (wisp)
-- 48 **quyết định kiến trúc V1 (v3)**: modular trong `main`, `main` là trọng tài duy nhất, giữ schema place.state; 3 bước B1–B3 giao agent
-- 49 roadmap phase sau: tách place + hợp đồng chuyển place (doc 48 v2.4 nguyên văn); spike P-1…P-7 không chặn vòng hiện tại
+PASS_MODEL ≠ PASS_ENGINE ≠ OWNER_SIGNED ≠ PLAYABLE_PASS. A file, document, concept PNG, YAML comment, screenshot or clean test suite is not evidence of an implemented hero. Every passed gate needs dated source revision and verifiable test/asset/play evidence. No silent batch credit spend.
