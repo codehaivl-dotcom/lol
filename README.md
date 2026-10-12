@@ -1,13 +1,26 @@
-# Cổ Linh Thần Chiến — tài liệu
+# CỔ LINH THẦN CHIẾN — Production Repository
 
-Bộ tài liệu thiết kế và báo cáo từ repo Spawn của Cổ Linh Thần Chiến.
+**Current production objective:** 26 approved heroes → complete 3D/animation/VFX/SFX/gameplay → **26/26 PLAYABLE PASS** in Spawn. The repository contains documentation, a Balance Lab toolkit and a **source data snapshot**; it does not itself prove live Spawn integration.
 
-- Snapshot Spawn: `9fa6e041d5793c8ae061b4db4be6afb732b5d61f`.
-- 139 tài liệu/dataset; danh sách và SHA256 trong [DOCS-SNAPSHOT.json](DOCS-SNAPSHOT.json).
-- [Mục lục tài liệu](docs/co-linh-than-chien/README.md).
-- [MOBA Bible](docs/co-linh-than-chien/00-bible-moba.md), [thế giới và cốt truyện](docs/co-linh-than-chien/01-the-gioi-va-cot-truyen.md).
-- [Nghiên cứu cảm hứng tướng MOBA cho roster mới](docs/co-linh-than-chien/90-hero-inspiration-research.md), [đề xuất 18 tướng cũ](docs/co-linh-than-chien/85-de-xuat-18-tuong.md), [Cửu Mạch 5v5](docs/co-linh-than-chien/86-concept-cuu-mach.md), [bảng duyệt tạo hình](DUYET-TAO-HINH-18.md).
+## Mandatory reading for all agents
 
-Phạm vi gồm tài liệu và dữ liệu tham khảo nằm trong docs. Không chứa source game, assets, engine hay các file chỉ thị agent. Các liên kết tới phần đã loại có thể không mở được tại GitHub.
+1. [AGENTS.md](AGENTS.md) — mandatory entrypoint and agent rules.
+2. [HANDOFF.md](HANDOFF.md) — current work status, assignments and handoff for new sub-agents.
+3. **[105 · Hero Factory (single workflow)](docs/co-linh-than-chien/105-hero-factory-multi-agent-workflow.md)** — all 26 heroes, S0–S9, independent Audit 1/2/3, Gate 4 and production.
+4. [104 · Master Plan](docs/co-linh-than-chien/104-full-approved-roster-production-master-plan.md) + [26-hero registry](tools/sim/production-26-roster.json) — approved scope and IDs.
+5. [Documentation routing index](docs/co-linh-than-chien/README.md) — specialist technical standards and historical references.
 
-Trạng thái PASS/FAIL/NOT TESTED và PROPOSAL được giữ nguyên theo tài liệu gốc; bản đồng bộ này không tạo thêm quyết định gameplay.
+The previous 6/21/24/27-hero plans and serial three/five-hero batching are **historical**. Do not treat old schedule text as an instruction to override the current 26-hero source of truth.
+
+## All-roster Lab campaign
+
+```bash
+bun install
+bun test tools/test/
+bun tools/sim/production-26.mjs --dry-run
+bun tools/sim/production-26.mjs --workers 4 --n 200 --seed 1
+```
+
+This dispatches **existing candidate kits** in parallel but does not author missing YAML, verify the exact core toy, sign Owner Gate 4, generate 3D assets, or prove the Spawn game is playable. Report all NOT_TESTED/FLAG/BLOCKED states explicitly.
+
+**Archive:** The original design and import snapshot provenance remains in [DOCS-SNAPSHOT.json](DOCS-SNAPSHOT.json). Preserve prior design decisions, audits, old reports and asset receipts; use [the docs index](docs/co-linh-than-chien/README.md) to distinguish current authorities from historical material.
